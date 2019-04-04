@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Recomm View Controller-->
+        <!--D+精選-->
         <scene sceneID="S0A-oB-vYf">
             <objects>
                 <viewController id="aTC-Qr-tcT" customClass="DRecommViewController" customModule="HowCarD_" customModuleProvider="target" sceneMemberID="viewController">
@@ -86,7 +86,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2Vz-nx-rfg"/>
                     </view>
-                    <navigationItem key="navigationItem" id="2y1-oh-C9d"/>
+                    <navigationItem key="navigationItem" title="D+精選" id="2y1-oh-C9d"/>
                     <connections>
                         <outlet property="tableView" destination="kST-D6-0Q3" id="GmG-8Z-c1W"/>
                     </connections>

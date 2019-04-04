@@ -22,8 +22,13 @@ enum ImageAsset: String {
     case Icons_36px_Wallet_Normal
     case Icons_36px_Wallet_Selected
     
-    // Nav Bar - DRecomm
+    // Nav Bar
     case Icons_24px_Back
+    case Icons_24px_Compare
+    
+    // Nav Bar - Cards
+    case Icons_24px_Filter_Normal
+    case Icons_24px_Filter_Filtered
     
     // Image
     case Image_Placeholder

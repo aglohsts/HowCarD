@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fub-Yx-VF8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eX3-ky-3xV">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,20 +10,40 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Discounts View Controller-->
+        <!--卡好康-->
         <scene sceneID="OCO-CL-QoW">
             <objects>
-                <viewController storyboardIdentifier="DiscountsViewController" id="fub-Yx-VF8" customClass="DiscountsViewController" customModule="HowCarD" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DiscountsViewController" id="fub-Yx-VF8" customClass="DiscountsViewController" customModule="HowCarD_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uKi-9H-2E0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="7mG-X2-hxW"/>
                     </view>
+                    <navigationItem key="navigationItem" title="卡好康" id="fcu-Ib-1W4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5AE-yN-MtE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-158" y="170"/>
+            <point key="canvasLocation" x="750.72463768115949" y="169.41964285714286"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Elt-Sg-kxe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eX3-ky-3xV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="phb-Gr-UZM">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.43529411759999997" green="0.74509803919999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fub-Yx-VF8" kind="relationship" relationship="rootViewController" id="ei0-cT-zn5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qKZ-he-JCw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-159.42028985507247" y="169.41964285714286"/>
         </scene>
     </scenes>
 </document>

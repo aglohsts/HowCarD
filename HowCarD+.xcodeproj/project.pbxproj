@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -32,6 +32,9 @@
 		CA171BAD2254CBC70042BBDC /* DRecommTopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171BA52254BED90042BBDC /* DRecommTopViewController.swift */; };
 		CA171BAF2255A1120042BBDC /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171BAE2255A1120042BBDC /* UIView+Extension.swift */; };
 		CA171BB22255EDFF0042BBDC /* HCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171BB12255EDFF0042BBDC /* HCBaseViewController.swift */; };
+		CA2F7DC322563872005E4361 /* Filter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA2F7DC222563872005E4361 /* Filter.storyboard */; };
+		CA2F7DC6225638D7005E4361 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2F7DC5225638D7005E4361 /* FilterViewController.swift */; };
+		CA2F7DC822563BE2005E4361 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2F7DC722563BE2005E4361 /* UIButton+Extension.swift */; };
 		F046E3020440D087E1F00B31 /* Pods_HowCarD_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A471D918A639FEEC5AA07E /* Pods_HowCarD_.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +69,9 @@
 		CA171BA72254C2D60042BBDC /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		CA171BAE2255A1120042BBDC /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		CA171BB12255EDFF0042BBDC /* HCBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCBaseViewController.swift; sourceTree = "<group>"; };
+		CA2F7DC222563872005E4361 /* Filter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Filter.storyboard; sourceTree = "<group>"; };
+		CA2F7DC5225638D7005E4361 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		CA2F7DC722563BE2005E4361 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +92,6 @@
 				5B5A0842CFBB48209D25D8D8 /* Pods-HowCarD+.debug.xcconfig */,
 				6F7DA0CF1E2FC5FC71E1B720 /* Pods-HowCarD+.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -140,6 +145,7 @@
 				CA171B7E22533FA50042BBDC /* Cards.storyboard */,
 				CA171B822253408F0042BBDC /* Wallet.storyboard */,
 				CA171B842253409A0042BBDC /* QA.storyboard */,
+				CA2F7DC222563872005E4361 /* Filter.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -153,6 +159,7 @@
 				CA171B8E225350090042BBDC /* Cards */,
 				CA171B8F225350140042BBDC /* Wallet */,
 				CA171B902253501F0042BBDC /* QA */,
+				CA2F7DC4225638BD005E4361 /* Filter */,
 				CA171B77225339E90042BBDC /* HCTabBarViewController.swift */,
 			);
 			path = Controller;
@@ -166,6 +173,7 @@
 				CA171B9F225457BA0042BBDC /* UITableView+Extension.swift */,
 				CA171BA72254C2D60042BBDC /* UICollectionView+Extension.swift */,
 				CA171BAE2255A1120042BBDC /* UIView+Extension.swift */,
+				CA2F7DC722563BE2005E4361 /* UIButton+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -227,6 +235,14 @@
 				CA171BB12255EDFF0042BBDC /* HCBaseViewController.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		CA2F7DC4225638BD005E4361 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				CA2F7DC5225638D7005E4361 /* FilterViewController.swift */,
+			);
+			path = Filter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,6 +307,7 @@
 			files = (
 				CA171B6C225330090042BBDC /* LaunchScreen.storyboard in Resources */,
 				CA171B832253408F0042BBDC /* Wallet.storyboard in Resources */,
+				CA2F7DC322563872005E4361 /* Filter.storyboard in Resources */,
 				CA171BA92254C9160042BBDC /* DRecommendation.storyboard in Resources */,
 				CA171B69225330090042BBDC /* Assets.xcassets in Resources */,
 				CA171B7F22533FA50042BBDC /* Cards.storyboard in Resources */,
@@ -353,6 +370,7 @@
 				CA171B92225350350042BBDC /* CardsViewController.swift in Sources */,
 				CA171BAF2255A1120042BBDC /* UIView+Extension.swift in Sources */,
 				CA171B62225330070042BBDC /* AppDelegate.swift in Sources */,
+				CA2F7DC822563BE2005E4361 /* UIButton+Extension.swift in Sources */,
 				CA171B8822534F6D0042BBDC /* DRecommViewController.swift in Sources */,
 				CA171B7D22533D5D0042BBDC /* UIImage+Extension.swift in Sources */,
 				CA171BAD2254CBC70042BBDC /* DRecommTopViewController.swift in Sources */,
@@ -361,6 +379,7 @@
 				CA171BAC2254CBB60042BBDC /* DRecommCollectionViewCell.swift in Sources */,
 				CA171B96225350510042BBDC /* QAViewController.swift in Sources */,
 				CA171B7B22533B290042BBDC /* UIStoryboard+Extension.swift in Sources */,
+				CA2F7DC6225638D7005E4361 /* FilterViewController.swift in Sources */,
 				CA171B8D22534FF30042BBDC /* DiscountsViewController.swift in Sources */,
 				CA171B9B2253A0910042BBDC /* DRecommTableViewHeaderCell.swift in Sources */,
 				CA171B78225339E90042BBDC /* HCTabBarViewController.swift in Sources */,
