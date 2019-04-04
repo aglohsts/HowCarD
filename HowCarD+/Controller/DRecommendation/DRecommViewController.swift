@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DRecommViewController: UIViewController {
+class DRecommViewController: HCBaseViewController {
     
     let categoryArray = ["最新卡片", "精選卡片", "最新優惠", "精選優惠"]
     
@@ -20,16 +20,19 @@ class DRecommViewController: UIViewController {
             tableView.dataSource = self
             
             tableView.separatorStyle = .none
+            
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setupTableView()
     }
     
-
+    private func setupTableView(){
+        tableView.showsVerticalScrollIndicator = false
+    }
     /*
     // MARK: - Navigation
 

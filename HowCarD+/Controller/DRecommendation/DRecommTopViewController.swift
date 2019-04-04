@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DRecommTopViewController: UIViewController {
+class DRecommTopViewController: HCBaseViewController {
 
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -30,7 +30,7 @@ class DRecommTopViewController: UIViewController {
 
     private func setupCollectionView(){
         
-        
+        collectionView.showsHorizontalScrollIndicator = false
     }
 
 }

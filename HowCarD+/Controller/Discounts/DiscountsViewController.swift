@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DiscountsViewController: UIViewController {
+class DiscountsViewController: HCBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

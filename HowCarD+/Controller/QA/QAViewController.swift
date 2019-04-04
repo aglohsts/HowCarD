@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QAViewController: UIViewController {
+class QAViewController: HCBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

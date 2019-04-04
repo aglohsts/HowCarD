@@ -7,15 +7,22 @@
 //
 
 import UIKit
+import IQKeyboardManager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    static let shared = UIApplication.shared.delegate as! AppDelegate
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        IQKeyboardManager.shared().isEnabled = true
+        
+        IQKeyboardManager.shared().shouldResignOnTouchOutside = true
+        
         return true
     }
 
