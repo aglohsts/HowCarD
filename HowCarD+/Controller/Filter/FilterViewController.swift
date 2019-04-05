@@ -18,6 +18,8 @@ class FilterViewController: HCBaseViewController {
         }
     }
     
+    var isSelected: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -67,14 +69,31 @@ extension FilterViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if indexPath.section == 0 {
-            return CGSize(width: UIScreen.width / 3, height: 170.0)
-        } else if indexPath.section == 1 {
-            return CGSize(width: UIScreen.width / 2, height: 170.0)
-        } else if indexPath.section == 2 {
-            return CGSize(width: UIScreen.width / 4, height: 170.0)
+            return CGSize(width: UIScreen.width / 4 - 19, height: 105.0)
+        } else {
+            return CGSize(width: UIScreen.width / 3 - 20, height: 49.0)
         }
         
-        return CGSize.zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        return UIEdgeInsets(top: 24.0, left: 15, bottom: 0, right: 15)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 15.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return 15.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        return CGSize(width: UIScreen.width, height: 25.0)
     }
 }
 
@@ -90,21 +109,36 @@ extension FilterViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 7
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: FilterIconCollectionViewCell.self),
-            for: indexPath
-        )
+        if indexPath.section == 0 {
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: String(describing: FilterIconCollectionViewCell.self),
+                for: indexPath
+            )
+            
+            guard let choiceCell = cell as? FilterIconCollectionViewCell else { return cell }
+            
+            choiceCell.layoutCell(iconImage: UIImage.asset(.Image_Placeholder2) ?? UIImage(), choiceTitle: "123")
+            
+            
+            return choiceCell
+        } else {
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: String(describing: FilterTextCollectionViewCell.self),
+                for: indexPath
+            )
+            
+            guard let choiceCell = cell as? FilterTextCollectionViewCell else { return cell }
+            
+            choiceCell.layoutCell(choiceTitle: "456")
+            
+            
+            return choiceCell
+        }
         
-        guard let choiceCell = cell as? FilterIconCollectionViewCell else { return cell }
-        
-        choiceCell.layoutCell(iconImage: UIImage.asset(.Image_Placeholder2) ?? UIImage(), choiceTitle: "123")
-        
-       
-        return choiceCell
     }
 }
