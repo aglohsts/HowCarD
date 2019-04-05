@@ -8,7 +8,7 @@
 
 import UIKit
 
-private enum Tab: String {
+enum Tab: String {
 
     case dRecommend = "D+精選"
     
@@ -44,31 +44,13 @@ private enum Tab: String {
         
         controller.tabBarItem = tabBarItem()
         
+//        controller.navigationItem.title = navBarTitle()
+
+        
 //        controller.tabBarItem.imageInsets = UIEdgeInsets(top: <#T##CGFloat#>, left: <#T##CGFloat#>, bottom: <#T##CGFloat#>, right: <#T##CGFloat#>)
         
         return controller
     }
-    
-//    func title() -> String {
-//
-//        var title: String
-//
-//        switch self {
-//
-//        case .dRecommend: title
-//
-//        case .discounts: title
-//
-//        case .cards: title
-//
-//        case .wallet: title
-//
-//        case .qa: title
-//        }
-//
-//        return title
-//
-//    }
     
     func tabBarItem() -> UITabBarItem {
         
@@ -107,9 +89,7 @@ private enum Tab: String {
                 image: UIImage.asset(.Icons_36px_QA_Normal),
                 selectedImage: UIImage.asset(.Icons_36px_QA_Selected)
             )
-            
         }
-        
     }
 }
 

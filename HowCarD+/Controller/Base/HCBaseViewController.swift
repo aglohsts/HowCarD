@@ -9,7 +9,27 @@
 import UIKit
 import IQKeyboardManager
 
+extension Tab {
+    func navBarTitle() -> String {
+        
+        switch self {
+        case .dRecommend: return Tab.dRecommend.rawValue
+            
+        case .discounts: return Tab.discounts.rawValue
+            
+        case .cards: return Tab.cards.rawValue
+            
+        case .wallet: return Tab.wallet.rawValue
+            
+        case .qa: return Tab.qa.rawValue
+        }
+    }
+    
+}
+
 class HCBaseViewController: UIViewController {
+    
+    private let tabs: [Tab] = [.dRecommend, .discounts, .cards, .wallet, .qa]
 
     var isHideNavigationBar: Bool {
         
@@ -33,13 +53,16 @@ class HCBaseViewController: UIViewController {
             navigationItem.hidesBackButton = true
         }
         
-        navigationController?.navigationBar.barTintColor = UIColor.white.withAlphaComponent(0.9)
+//        navigationController?.navigationBar.barTintColor = UIColor.white.withAlphaComponent(0.9)
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         navigationController?.navigationBar.backIndicatorImage = UIImage.asset(.Icons_24px_Back)
         
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage.asset(.Icons_24px_Back)
+        
+        navigationController?.navigationBar.tintColor = UIColor(red: 111/255, green: 190/255, blue: 219/255, alpha: 1)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -9,6 +9,8 @@
 import UIKit
 
 class DiscountsViewController: HCBaseViewController {
+    
+    var isFiltered: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()

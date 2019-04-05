@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Cards View Controller-->
+        <!--卡了解-->
         <scene sceneID="6EI-KF-uUc">
             <objects>
                 <viewController storyboardIdentifier="CardsViewController" id="nSA-CA-lRB" customClass="CardsViewController" customModule="HowCarD_" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,7 +20,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2ia-Te-znZ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="FWc-vW-JMi"/>
+                    <navigationItem key="navigationItem" title="卡了解" id="FWc-vW-JMi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pZ5-5R-Q3J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

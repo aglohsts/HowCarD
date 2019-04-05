@@ -9,11 +9,25 @@
 import UIKit
 
 class CardsViewController: HCBaseViewController {
+    
+    var isFiltered: Bool = false {
+        didSet {
+            if isFiltered {
+                
+                self.navigationItem.leftBarButtonItem = UIBarButtonItem(
+                    image: UIImage.asset(.Icons_24px_Filter_Filtered),
+                    style: .plain, target: self,
+                    action: #selector(showFilter)
+                )
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setNavBar()
+        
     }
     
     private func setNavBar(){
@@ -22,9 +36,11 @@ class CardsViewController: HCBaseViewController {
         
     }
     
-    @objc func showFilter() {
+    @objc private func showFilter() {
         
-        if let filterVC = UIStoryboard(name: StoryboardCategory.filter, bundle: nil).instantiateViewController(withIdentifier: String(describing: FilterViewController.self)) as? FilterViewController
+        if let filterVC = UIStoryboard(
+            name: StoryboardCategory.filter,
+            bundle: nil).instantiateViewController(withIdentifier: String(describing: FilterViewController.self)) as? FilterViewController
         {
             let navVC = UINavigationController(rootViewController: filterVC)
             
