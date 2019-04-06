@@ -22,6 +22,15 @@ class CardsViewController: HCBaseViewController {
             }
         }
     }
+    
+    @IBOutlet weak var tableView: UITableView!{
+        didSet {
+            tableView.delegate = self
+            
+            tableView.dataSource = self
+        }
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,15 +56,45 @@ class CardsViewController: HCBaseViewController {
             self.present(navVC, animated:true, completion: nil)
         }
     }
-    
-   
-    
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+extension CardsViewController: UITableViewDelegate {
     
-    */
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+}
 
+extension CardsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: CardInfoTableViewCell.self),
+            for: indexPath
+        )
+        
+        guard let cardInfoCell = cell as? CardInfoTableViewCell else { return cell }
+        
+        cardInfoCell.layoutCell(
+            tableViewCellIsTapped: true,
+            bookMarkIsTapped: true,
+            bankIcon: UIImage.asset(.Image_Placeholder) ?? UIImage(),
+            bankName: "台新銀行",
+            cardImage: UIImage.asset(.Image_Placeholder2) ?? UIImage()
+        )
+        
+        return cardInfoCell
+    }
+    
+    
 }

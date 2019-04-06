@@ -27,6 +27,8 @@ enum ImageAsset: String {
     case Icons_24px_Compare
     case Icons_24px_Dismiss
     case Icons_24px_ResetSelect
+    case Icon_Bookmark_Normal
+    case Icon_Bookmark_Saved
     
     // Nav Bar - Cards
     case Icons_24px_Filter_Normal
