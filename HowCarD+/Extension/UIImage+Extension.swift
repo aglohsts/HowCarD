@@ -27,12 +27,19 @@ enum ImageAsset: String {
     case Icons_24px_Compare
     case Icons_24px_Dismiss
     case Icons_24px_ResetSelect
-    case Icon_Bookmark_Normal
-    case Icon_Bookmark_Saved
+    case Icons_Bookmark_Normal
+    case Icons_Bookmark_Saved
     
     // Nav Bar - Cards
     case Icons_24px_Filter_Normal
     case Icons_24px_Filter_Filtered
+    case Icons_24px_Share
+    
+    // Other Icons - Cards
+    case Icons_ApplyCard
+    case Icons_Website
+    case Icons_ArrowDown
+    case Icons_ArrowUp
     
     // Image
     case Image_Placeholder

@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="792" width="414" height="70"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRS-CF-sKb">
-                                        <rect key="frame" x="30" y="10" width="354" height="50"/>
+                                        <rect key="frame" x="16" y="10" width="382" height="50"/>
                                         <color key="backgroundColor" red="0.43529411759999997" green="0.74509803919999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
@@ -43,8 +43,8 @@
                                     <constraint firstAttribute="width" secondItem="hHY-kw-RG5" secondAttribute="height" multiplier="207:35" id="G5T-V9-h99"/>
                                     <constraint firstItem="gRS-CF-sKb" firstAttribute="top" secondItem="hHY-kw-RG5" secondAttribute="top" constant="10" id="GFs-do-JPS"/>
                                     <constraint firstItem="gRS-CF-sKb" firstAttribute="centerY" secondItem="hHY-kw-RG5" secondAttribute="centerY" id="nHH-Wv-aUy"/>
-                                    <constraint firstItem="gRS-CF-sKb" firstAttribute="leading" secondItem="hHY-kw-RG5" secondAttribute="leading" constant="30" id="uyY-4x-aBd"/>
-                                    <constraint firstAttribute="trailing" secondItem="gRS-CF-sKb" secondAttribute="trailing" constant="30" id="vFS-Js-ISU"/>
+                                    <constraint firstItem="gRS-CF-sKb" firstAttribute="leading" secondItem="hHY-kw-RG5" secondAttribute="leading" constant="16" id="uyY-4x-aBd"/>
+                                    <constraint firstAttribute="trailing" secondItem="gRS-CF-sKb" secondAttribute="trailing" constant="16" id="vFS-Js-ISU"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hVe-ST-5St">

@@ -31,7 +31,7 @@
                                 <rect key="frame" x="0.0" y="183" width="414" height="679"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DRecommTableViewHeaderCell" rowHeight="153" id="DVK-4h-12p" customClass="DRecommTableViewHeaderCell" customModule="HowCarD_" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DRecommTableViewHeaderCell" rowHeight="153" id="DVK-4h-12p" customClass="DRecommTableViewHeaderCell" customModule="HowCarD_" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="153"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DVK-4h-12p" id="rnB-qz-Be6">
@@ -63,7 +63,7 @@
                                             <outlet property="bannerLabel" destination="lQW-Vi-OFB" id="F88-zE-tlm"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="146" id="6ta-LD-oHV" customClass="DRecommTableViewContentCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="146" id="6ta-LD-oHV" customClass="DRecommTableViewContentCell">
                                         <rect key="frame" x="0.0" y="181" width="414" height="146"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6ta-LD-oHV" id="bfc-bC-Bhb">
@@ -126,13 +126,13 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="moy-1j-BUQ">
                                     <size key="itemSize" width="75" height="85"/>
-                                    <size key="headerReferenceSize" width="5" height="0.0"/>
-                                    <size key="footerReferenceSize" width="5" height="0.0"/>
+                                    <size key="headerReferenceSize" width="10" height="0.0"/>
+                                    <size key="footerReferenceSize" width="10" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DRecommCollectionViewCell" id="wOZ-Cc-AYQ" customClass="DRecommCollectionViewCell" customModule="HowCarD_" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="5" width="75" height="85"/>
+                                        <rect key="frame" x="10" y="5" width="75" height="85"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="75" height="85"/>
@@ -173,11 +173,11 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zzg-0R-tKc">
-                                    <rect key="frame" x="0.0" y="0.0" width="5" height="95"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="10" height="95"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                                 <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="k9P-Nb-4ef">
-                                    <rect key="frame" x="80" y="0.0" width="5" height="95"/>
+                                    <rect key="frame" x="85" y="0.0" width="10" height="95"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>

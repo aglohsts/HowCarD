@@ -10,7 +10,7 @@ import UIKit
 
 class CardInfoTableViewCell: UITableViewCell {
     
-    var tabArray = ["回饋", "電影", "加油"]
+    var tagArray = ["回饋", "電影", "加油"]
     
     var isRead: Bool = false {
         didSet {
@@ -26,9 +26,9 @@ class CardInfoTableViewCell: UITableViewCell {
     var isSaved: Bool = false {
         didSet {
             if isSaved {
-                bookMarkImageView.image = UIImage.asset(.Icon_Bookmark_Saved)
+                bookMarkImageView.image = UIImage.asset(.Icons_Bookmark_Saved)
             } else {
-                bookMarkImageView.image = UIImage.asset(.Icon_Bookmark_Normal)
+                bookMarkImageView.image = UIImage.asset(.Icons_Bookmark_Normal)
             }
         }
     }
@@ -53,7 +53,8 @@ class CardInfoTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        setupCollectionView()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -74,6 +75,14 @@ class CardInfoTableViewCell: UITableViewCell {
         cardImageView.image = cardImage
         
     }
+    
+    func setupCollectionView(){
+        tagCollectionView.agRegisterCellWithNib(
+            identifier: String(describing: CardTagCollectionViewCell.self),
+            bundle: nil
+        )
+        
+    }
 
 }
 
@@ -83,21 +92,21 @@ extension CardInfoTableViewCell: UICollectionViewDelegate {
 
 extension CardInfoTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tabArray.count
+        return tagArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: CardTabCollectionViewCell.self),
+            withReuseIdentifier: String(describing: CardTagCollectionViewCell.self),
             for: indexPath
         )
         
-        guard let tabCell = cell as? CardTabCollectionViewCell else { return cell }
+        guard let tagCell = cell as? CardTagCollectionViewCell else { return cell }
         
-        tabCell.layoutCell(tab: tabArray[indexPath.item])
+        tagCell.layoutCell(tag: tagArray[indexPath.item])
         
         
-        return tabCell
+        return tagCell
     }
 }
