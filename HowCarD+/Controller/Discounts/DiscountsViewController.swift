@@ -38,13 +38,13 @@ class DiscountsViewController: HCBaseViewController {
 //            withReuseIdentifier: String(describing: DiscountHeaderCollectionReusableView.self)
 //        )
 
-        let nib = UINib(nibName: String(describing: DiscountHeaderCollectionReusableView.self), bundle: nil)
-
-        collectionView.register(
-            nib,
-            forSupplementaryViewOfKind: String(describing: DiscountHeaderCollectionReusableView.self),
-            withReuseIdentifier: String(describing: DiscountHeaderCollectionReusableView.self)
-        )
+//        let nib = UINib(nibName: String(describing: DiscountHeaderCollectionReusableView.self), bundle: nil)
+//
+//        collectionView.register(
+//            nib,
+//            forSupplementaryViewOfKind: String(describing: DiscountHeaderCollectionReusableView.self),
+//            withReuseIdentifier: String(describing: DiscountHeaderCollectionReusableView.self)
+//        )
 
     }
 
@@ -110,9 +110,9 @@ extension DiscountsViewController: UICollectionViewDataSource {
 
         discountCell.layoutCell(
             image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
-            discountName: "123",
+            discountName: "123456789012345678901234567890",
             target: "OO銀行 XX卡",
-            timePeriod: 1577836799
+            timePeriod: 1546272000
         )
 
         return discountCell

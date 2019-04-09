@@ -20,12 +20,15 @@ class DiscountCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        imageView.roundCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner], radius: 10.0)
+
     }
 
     func layoutCell(image: UIImage, discountName: String, target: String, timePeriod: Int) {
 
         imageView.image = image
-
+        
         discountNameLabel.text = discountName
 
         targetLabel.text = target
@@ -35,9 +38,9 @@ class DiscountCollectionViewCell: UICollectionViewCell {
 
     func transferToDate(unixTime: Int) -> String {
 
-        let unixTime = TimeInterval(unixTime) / 1000
+        let time = TimeInterval(unixTime)
 
-        let date = Date(timeIntervalSince1970: unixTime)
+        let date = Date(timeIntervalSince1970: time)
 
         let dateFormatter = DateFormatter()
 

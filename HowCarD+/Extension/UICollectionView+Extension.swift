@@ -19,7 +19,7 @@ extension UICollectionView {
 
     func agRegisterHeaderWithClass(identifier: String, bundle: Bundle?, viewClass: AnyClass) {
 
-        let nib = UINib(nibName: identifier, bundle: bundle)
+//        let nib = UINib(nibName: identifier, bundle: bundle)
 
 //        register(nib, forSupplementaryViewOfKind: <#T##String#>, withReuseIdentifier: <#T##String#>)
 //
