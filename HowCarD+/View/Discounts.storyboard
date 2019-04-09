@@ -61,15 +61,18 @@
                         <viewLayoutGuide key="safeArea" id="7mG-X2-hxW"/>
                     </view>
                     <navigationItem key="navigationItem" title="卡好康" id="fcu-Ib-1W4"/>
+                    <connections>
+                        <outlet property="collectionView" destination="3at-GH-K8c" id="9DE-lW-u3s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5AE-yN-MtE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750.72463768115949" y="169.41964285714286"/>
         </scene>
-        <!--View Controller-->
+        <!--Discount Detail View Controller-->
         <scene sceneID="Hgr-Uf-QTT">
             <objects>
-                <viewController id="Z5D-hV-1hf" sceneMemberID="viewController">
+                <viewController id="Z5D-hV-1hf" customClass="DiscountDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ad6-Wp-emF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,10 +131,10 @@
             </objects>
             <point key="canvasLocation" x="-159.42028985507247" y="169.41964285714286"/>
         </scene>
-        <!--View Controller-->
+        <!--Discounts Top View Controller-->
         <scene sceneID="A9D-sR-Lov">
             <objects>
-                <viewController id="ezK-yY-vBW" sceneMemberID="viewController">
+                <viewController id="ezK-yY-vBW" customClass="DiscountsTopViewController" customModule="HowCarD_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="reA-GP-0jP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

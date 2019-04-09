@@ -9,11 +9,11 @@
 import UIKit
 
 class FilterTextCollectionViewCell: UICollectionViewCell {
-    
+
     @IBOutlet weak var choiceLabel: UILabel!
-    
+
     func layoutCell(choiceTitle: String) {
-        
+
         choiceLabel.text = choiceTitle
     }
 }

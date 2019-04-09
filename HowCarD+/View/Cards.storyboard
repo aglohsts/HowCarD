@@ -84,16 +84,7 @@
                                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             </collectionViewFlowLayout>
-                                                            <cells>
-                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mWZ-Bh-Vid">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="55" height="21"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="55" height="21"/>
-                                                                        <autoresizingMask key="autoresizingMask"/>
-                                                                    </view>
-                                                                </collectionViewCell>
-                                                            </cells>
+                                                            <cells/>
                                                         </collectionView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -226,17 +217,7 @@
                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             </collectionViewFlowLayout>
-                                            <cells>
-                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.20000000000000001" contentMode="center" id="hxB-uf-7yh">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                    </view>
-                                                    <size key="customSize" width="50" height="50"/>
-                                                </collectionViewCell>
-                                            </cells>
+                                            <cells/>
                                         </collectionView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

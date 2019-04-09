@@ -1,5 +1,5 @@
 //
-//  DiscountsTopViewController.swift
+//  DiscountDetailViewController.swift
 //  HowCarD+
 //
 //  Created by lohsts on 2019/4/9.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DiscountsTopViewController: UIViewController {
+class DiscountDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

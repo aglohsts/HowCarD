@@ -9,8 +9,9 @@
 import UIKit
 
 enum ImageAsset: String {
-    
+
     // Tab Bar icon
+    // swiftlint:disable identifier_name
     case Icons_36px_Cards_Normal
     case Icons_36px_Cards_Selected
     case Icons_36px_QA_Normal
@@ -21,7 +22,7 @@ enum ImageAsset: String {
     case Icons_36px_Discounts_Selected
     case Icons_36px_Wallet_Normal
     case Icons_36px_Wallet_Selected
-    
+
     // Nav Bar
     case Icons_24px_Back
     case Icons_24px_Compare
@@ -29,27 +30,32 @@ enum ImageAsset: String {
     case Icons_24px_ResetSelect
     case Icons_Bookmark_Normal
     case Icons_Bookmark_Saved
-    
+
     // Nav Bar - Cards
     case Icons_24px_Filter_Normal
     case Icons_24px_Filter_Filtered
     case Icons_24px_Share
-    
+
     // Other Icons - Cards
     case Icons_ApplyCard
     case Icons_Website
     case Icons_ArrowDown
     case Icons_ArrowUp
-    
+
+    // Other ICons - Discounts
+    case Icons_ArrowRight
+
     // Image
     case Image_Placeholder
     case Image_Placeholder2
+
+    // swiftlint:enable identifier_name
 }
 
 extension UIImage {
-    
+
     static func asset(_ asset: ImageAsset) -> UIImage? {
-        
+
         return UIImage(named: asset.rawValue)
     }
 }

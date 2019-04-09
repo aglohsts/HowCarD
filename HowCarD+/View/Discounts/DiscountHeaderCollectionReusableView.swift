@@ -10,9 +10,18 @@ import UIKit
 
 class DiscountHeaderCollectionReusableView: UICollectionReusableView {
 
+    @IBOutlet weak var categoryLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-    
+
+    func layoutView(category: String) {
+
+        categoryLabel.text = category
+    }
+
+    @IBAction func onViewAll(_ sender: Any) {
+    }
+
 }

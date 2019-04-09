@@ -14,11 +14,11 @@ class CardTagCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
+
     @IBOutlet weak var tagLabel: UILabel!
-    
+
     func layoutCell(tag: String) {
-        
+
         tagLabel.text = tag
     }
 

@@ -9,12 +9,12 @@
 import UIKit
 
 class DRecommCollectionViewCell: UICollectionViewCell {
-    
+
     @IBOutlet weak var label: UILabel!
-    
+
     @IBOutlet weak var imageView: UIImageView!
-    
-    func layoutCell(){
+
+    func layoutCell() {
         label.text = "123"
 //        imageView.image = UIImage.asset(.Image_Placeholder)
     }

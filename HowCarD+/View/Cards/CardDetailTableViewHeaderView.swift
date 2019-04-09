@@ -11,8 +11,8 @@ import UIKit
 class CardDetailTableViewHeaderView: UITableViewHeaderFooterView {
 
     @IBOutlet weak var titleLabel: UILabel!
-    
-    func layoutView(title: String){
+
+    func layoutView(title: String) {
         titleLabel.text = title
     }
 }

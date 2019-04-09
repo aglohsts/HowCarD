@@ -12,14 +12,14 @@ class DRecommTableViewHeaderCell: UITableViewCell {
 
     @IBOutlet weak var bannerImageView: UIImageView! {
         didSet {
-            
+
             bannerImageView.layer.cornerRadius = 10
-            
+
         }
     }
-    
+
     @IBOutlet weak var bannerLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -30,11 +30,11 @@ class DRecommTableViewHeaderCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    func layoutCell(image: UIImage, title: String){
-        
+
+    func layoutCell(image: UIImage, title: String) {
+
         bannerImageView.image = image
-        
+
         bannerLabel.text = title
     }
 

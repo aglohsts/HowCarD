@@ -9,12 +9,12 @@
 import UIKit
 
 class FilterIconCollectionViewCell: UICollectionViewCell {
-    
+
     @IBOutlet weak var choiceImgView: UIImageView!
-    
+
     @IBOutlet weak var choiceLabel: UILabel!
-    
-    func layoutCell(iconImage: UIImage, choiceTitle: String){
+
+    func layoutCell(iconImage: UIImage, choiceTitle: String) {
         choiceImgView.image = iconImage
         choiceLabel.text = choiceTitle
     }

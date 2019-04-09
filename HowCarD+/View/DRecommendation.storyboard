@@ -63,14 +63,6 @@
                                             <outlet property="bannerLabel" destination="lQW-Vi-OFB" id="F88-zE-tlm"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="146" id="6ta-LD-oHV" customClass="DRecommTableViewContentCell">
-                                        <rect key="frame" x="0.0" y="181" width="414" height="146"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6ta-LD-oHV" id="bfc-bC-Bhb">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="145.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
@@ -172,7 +164,7 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zzg-0R-tKc">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="123" id="zzg-0R-tKc">
                                     <rect key="frame" x="0.0" y="0.0" width="10" height="95"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>

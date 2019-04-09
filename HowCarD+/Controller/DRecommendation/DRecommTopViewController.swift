@@ -13,52 +13,50 @@ class DRecommTopViewController: HCBaseViewController {
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             collectionView.delegate = self
-            
+
             collectionView.dataSource = self
-            
-            
+
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupCollectionView()
-        
-    }
-    
 
-    private func setupCollectionView(){
-        
+    }
+
+    private func setupCollectionView() {
+
         collectionView.showsHorizontalScrollIndicator = false
     }
 
 }
 
 extension DRecommTopViewController: UICollectionViewDelegate {
-    
 
 }
-
 
 extension DRecommTopViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath)
+    -> UICollectionViewCell {
+
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: DRecommCollectionViewCell.self),
             for: indexPath
         )
-        
+
         guard let newInfoCell = cell as? DRecommCollectionViewCell else { return cell }
-        
+
         newInfoCell.layoutCell()
-        
+
         return newInfoCell
     }
-    
-    
+
 }

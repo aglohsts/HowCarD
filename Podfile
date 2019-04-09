@@ -7,5 +7,6 @@ target 'HowCarD+' do
 
   # Pods for HowCarD+
   pod 'IQKeyboardManager'
+  pod 'SwiftLint'
 
 end
