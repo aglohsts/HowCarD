@@ -178,7 +178,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="FmM-UV-JFj">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="50" estimatedSectionHeaderHeight="50" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="FmM-UV-JFj">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="mIK-Fl-fzT">
@@ -287,13 +287,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Noe-Pj-aTP">
-                                                    <rect key="frame" x="383" y="11" width="15" height="15"/>
+                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="top" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Noe-Pj-aTP">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="15" id="lTv-wW-bt0"/>
-                                                        <constraint firstAttribute="width" constant="15" id="tf2-JU-mJN"/>
+                                                        <constraint firstAttribute="height" constant="40" id="lTv-wW-bt0"/>
                                                     </constraints>
-                                                    <state key="normal" image="Icons_ArrowDown"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="15" maxX="15" maxY="0.0"/>
+                                                    <size key="titleShadowOffset" width="1" height="0.0"/>
+                                                    <state key="normal" image="Icons_ArrowDown" backgroundImage="TransparentBackground"/>
                                                     <connections>
                                                         <action selector="onShowDetail:" destination="ROd-xI-Tew" eventType="touchUpInside" id="NZJ-an-zav"/>
                                                     </connections>
@@ -301,15 +302,16 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="1Cz-cf-tdm" firstAttribute="leading" secondItem="A5m-BU-aua" secondAttribute="trailing" constant="10" id="C5v-KG-tiw"/>
-                                                <constraint firstItem="Noe-Pj-aTP" firstAttribute="centerY" secondItem="A5m-BU-aua" secondAttribute="centerY" id="FD6-68-n06"/>
                                                 <constraint firstItem="1Cz-cf-tdm" firstAttribute="top" secondItem="NnG-w2-ru3" secondAttribute="top" constant="8" id="GT0-LA-o2U"/>
-                                                <constraint firstAttribute="trailing" secondItem="Noe-Pj-aTP" secondAttribute="trailing" constant="16" id="Hal-jt-STP"/>
+                                                <constraint firstItem="Noe-Pj-aTP" firstAttribute="leading" secondItem="NnG-w2-ru3" secondAttribute="leading" id="HDw-qE-iaZ"/>
                                                 <constraint firstItem="A5m-BU-aua" firstAttribute="centerY" secondItem="1Cz-cf-tdm" secondAttribute="centerY" id="R4l-jM-1ja"/>
                                                 <constraint firstItem="Gs6-jq-gm5" firstAttribute="leading" secondItem="1Cz-cf-tdm" secondAttribute="leading" id="USZ-9M-36D"/>
                                                 <constraint firstItem="A5m-BU-aua" firstAttribute="leading" secondItem="NnG-w2-ru3" secondAttribute="leading" constant="16" id="YT5-c5-0Rx"/>
                                                 <constraint firstItem="Gs6-jq-gm5" firstAttribute="top" secondItem="1Cz-cf-tdm" secondAttribute="bottom" constant="8" id="ZfF-C9-TSr"/>
+                                                <constraint firstAttribute="trailing" secondItem="Noe-Pj-aTP" secondAttribute="trailing" id="cmZ-Pf-fHL"/>
                                                 <constraint firstAttribute="bottom" secondItem="Gs6-jq-gm5" secondAttribute="bottom" constant="8" id="mQd-Cj-Xzs"/>
                                                 <constraint firstAttribute="trailing" secondItem="Gs6-jq-gm5" secondAttribute="trailing" constant="16" id="o3N-vu-gAV"/>
+                                                <constraint firstItem="Noe-Pj-aTP" firstAttribute="top" secondItem="NnG-w2-ru3" secondAttribute="top" id="vyB-a8-PuF"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -359,8 +361,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icons_ArrowDown" width="11" height="6"/>
+        <image name="Icons_ArrowDown" width="11" height="7"/>
         <image name="Icons_Website_White" width="17" height="17"/>
         <image name="Image_Placeholder" width="500" height="500"/>
+        <image name="TransparentBackground" width="19" height="19"/>
     </resources>
 </document>

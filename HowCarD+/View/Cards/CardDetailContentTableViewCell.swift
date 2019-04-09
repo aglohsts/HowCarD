@@ -52,17 +52,6 @@ class CardDetailContentTableViewCell: UITableViewCell {
         
         isDetail = !isDetail
         
-//        if isDetail {
-//
-//            contentLabel.text = detailInfo
-//
-//
-//        } else {
-//
-//            contentLabel.text = briefInfo
-//
-//        }
-        
         self.reloadInputViews()
         
         touchHandler?()

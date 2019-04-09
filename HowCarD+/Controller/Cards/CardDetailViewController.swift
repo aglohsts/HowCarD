@@ -93,31 +93,21 @@ extension CardDetailViewController: UITableViewDelegate {
 
         guard let headerView = view as? CardDetailTableViewHeaderView else { return view }
 
-//        headerView.ba
-
         headerView.layoutView(title: "123")
 
         return headerView
-        
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        
-        
-        
+
         guard let headerView = view as? UITableViewHeaderFooterView else { return }
-        
-        
+
         headerView.contentView.backgroundColor = UIColor.blue
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         
-//        DispatchQueue.main.async {
-//            self.tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
-//        }
+        
     }
 }
 
@@ -159,15 +149,6 @@ extension CardDetailViewController: UITableViewDataSource {
             self?.tableView.reloadRows(at: [indexPath], with: .automatic)
 
         }
-//
-//
-//
-//
-//
-//
-//
-//
-//        }
         
         return contentCell
     }
