@@ -50,6 +50,7 @@
 		CAF58D88225CA1AB00818CDD /* MoreDiscountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF58D87225CA1AB00818CDD /* MoreDiscountViewController.swift */; };
 		CAF58D8A225CD97D00818CDD /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF58D89225CD97D00818CDD /* UIImageView+Extension.swift */; };
 		CAF58D8C225DB41000818CDD /* DiscountsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF58D8B225DB41000818CDD /* DiscountsTableViewCell.swift */; };
+		CAFE8279225DE3BD004F4E63 /* DiscountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE8278225DE3BD004F4E63 /* DiscountDetailViewController.swift */; };
 		F046E3020440D087E1F00B31 /* Pods_HowCarD_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A471D918A639FEEC5AA07E /* Pods_HowCarD_.framework */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +103,7 @@
 		CAF58D87225CA1AB00818CDD /* MoreDiscountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreDiscountViewController.swift; sourceTree = "<group>"; };
 		CAF58D89225CD97D00818CDD /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		CAF58D8B225DB41000818CDD /* DiscountsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountsTableViewCell.swift; sourceTree = "<group>"; };
+		CAFE8278225DE3BD004F4E63 /* DiscountDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 				CA171B8C22534FF30042BBDC /* DiscountsViewController.swift */,
 				CAF58D84225C974C00818CDD /* DiscountsTopViewController.swift */,
 				CAF58D87225CA1AB00818CDD /* MoreDiscountViewController.swift */,
+				CAFE8278225DE3BD004F4E63 /* DiscountDetailViewController.swift */,
 			);
 			path = Discounts;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				CAF58D8C225DB41000818CDD /* DiscountsTableViewCell.swift in Sources */,
 				CAF58D88225CA1AB00818CDD /* MoreDiscountViewController.swift in Sources */,
 				CAF58D8A225CD97D00818CDD /* UIImageView+Extension.swift in Sources */,
+				CAFE8279225DE3BD004F4E63 /* DiscountDetailViewController.swift in Sources */,
 				CA47A187225B133F00AD16AF /* CardTagCollectionViewCell.swift in Sources */,
 				CA171B9B2253A0910042BBDC /* DRecommTableViewHeaderCell.swift in Sources */,
 				CA171B78225339E90042BBDC /* HCTabBarViewController.swift in Sources */,

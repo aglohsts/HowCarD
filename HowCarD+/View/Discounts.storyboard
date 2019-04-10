@@ -137,6 +137,8 @@
                     <navigationItem key="navigationItem" title="卡好康" id="fcu-Ib-1W4"/>
                     <connections>
                         <outlet property="tableView" destination="EYd-br-vV8" id="v3M-vR-fXM"/>
+                        <segue destination="Z5D-hV-1hf" kind="show" identifier="MoreDiscount" id="OSM-kZ-DbS"/>
+                        <segue destination="q99-ua-Y4A" kind="show" identifier="DetailFromDiscountVC" id="sSU-7m-rkm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5AE-yN-MtE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -146,13 +148,13 @@
         <!--More Discount View Controller-->
         <scene sceneID="Hgr-Uf-QTT">
             <objects>
-                <viewController id="Z5D-hV-1hf" customClass="MoreDiscountViewController" sceneMemberID="viewController">
+                <viewController id="Z5D-hV-1hf" customClass="MoreDiscountViewController" customModule="HowCarD_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ad6-Wp-emF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="peF-0h-0YE">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JPA-nO-Ewk">
                                     <size key="itemSize" width="50" height="50"/>
@@ -174,12 +176,66 @@
                     </view>
                     <navigationItem key="navigationItem" id="Zsl-ib-RxU"/>
                     <connections>
-                        <outlet property="collectionView" destination="peF-0h-0YE" id="Mgg-WL-8eX"/>
+                        <outlet property="collectionView" destination="peF-0h-0YE" id="GDs-UL-vC2"/>
+                        <segue destination="q99-ua-Y4A" kind="show" identifier="DetailFromMoreDiscountVC" id="Nzb-4r-Q1N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vQd-XA-Hc4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1613" y="169"/>
+            <point key="canvasLocation" x="1680" y="169"/>
+        </scene>
+        <!--Discount Detail View Controller-->
+        <scene sceneID="6W5-Vo-i92">
+            <objects>
+                <viewController id="q99-ua-Y4A" customClass="DiscountDetailViewController" customModule="HowCarD_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Ny-sb-uOP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A6Q-VR-oxZ">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="mYu-OF-53C">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="270"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QrY-j1-GLj">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="270"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="QrY-j1-GLj" secondAttribute="bottom" id="TJO-Ai-k1e"/>
+                                        <constraint firstItem="QrY-j1-GLj" firstAttribute="top" secondItem="mYu-OF-53C" secondAttribute="top" id="bhc-PY-cRX"/>
+                                        <constraint firstItem="QrY-j1-GLj" firstAttribute="leading" secondItem="mYu-OF-53C" secondAttribute="leading" id="us6-EK-Wl0"/>
+                                        <constraint firstAttribute="trailing" secondItem="QrY-j1-GLj" secondAttribute="trailing" id="vGW-4Z-mgC"/>
+                                    </constraints>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="88" id="guO-gH-YR3">
+                                        <rect key="frame" x="0.0" y="298" width="414" height="88"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="guO-gH-YR3" id="HCG-S0-Pcu">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="87.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="m54-Ob-2R2" firstAttribute="bottom" secondItem="A6Q-VR-oxZ" secondAttribute="bottom" id="CaY-v4-EVc"/>
+                            <constraint firstItem="m54-Ob-2R2" firstAttribute="trailing" secondItem="A6Q-VR-oxZ" secondAttribute="trailing" id="PIa-S3-6GQ"/>
+                            <constraint firstItem="A6Q-VR-oxZ" firstAttribute="top" secondItem="m54-Ob-2R2" secondAttribute="top" id="UgS-Ff-mHQ"/>
+                            <constraint firstItem="A6Q-VR-oxZ" firstAttribute="leading" secondItem="m54-Ob-2R2" secondAttribute="leading" id="dEH-A5-nhL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="m54-Ob-2R2"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i8H-Cm-Ea5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1612" y="964"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Elt-Sg-kxe">
@@ -248,4 +304,7 @@
         <image name="Icons_ArrowRight" width="6" height="12"/>
         <image name="TransparentBackground" width="19" height="19"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Nzb-4r-Q1N"/>
+    </inferredMetricsTieBreakers>
 </document>

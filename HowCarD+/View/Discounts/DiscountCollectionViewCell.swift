@@ -58,7 +58,7 @@ class DiscountCollectionViewCell: UICollectionViewCell {
 
         targetLabel.text = target
 
-        timePeriodLabel.text = "至\(transferToDate(unixTime: timePeriod))"
+        timePeriodLabel.text = "至 \(transferToDate(unixTime: timePeriod))"
         
         self.isLiked = isLiked
     }

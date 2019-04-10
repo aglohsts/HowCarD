@@ -22,14 +22,14 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DZX-E0-eMb">
                         <rect key="frame" x="0.0" y="0.0" width="255" height="347"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O9o-wg-BD1">
-                                <rect key="frame" x="0.0" y="0.0" width="255" height="255"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O9o-wg-BD1">
+                                <rect key="frame" x="0.0" y="0.0" width="255" height="191.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="O9o-wg-BD1" secondAttribute="height" multiplier="1:1" id="qOm-wD-JMn"/>
+                                    <constraint firstAttribute="width" secondItem="O9o-wg-BD1" secondAttribute="height" multiplier="4:3" id="qOm-wD-JMn"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DiscountsNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucc-Uk-8dU">
-                                <rect key="frame" x="8" y="271" width="239" height="18"/>
+                                <rect key="frame" x="8" y="207.5" width="239" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bT-IE-RDi">
-                                <rect key="frame" x="212" y="233" width="35" height="35"/>
+                                <rect key="frame" x="212" y="169.5" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="VzA-wU-mfL"/>
                                     <constraint firstAttribute="width" constant="35" id="dIS-PZ-DhU"/>

@@ -61,7 +61,7 @@ extension DiscountsTableViewCell: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath)
         -> CGSize {
             
-            return CGSize(width: UIScreen.width / 2 - 25, height: 300.0)
+            return CGSize(width: UIScreen.width / 2 - 25, height: 250.0)
             
     }
     

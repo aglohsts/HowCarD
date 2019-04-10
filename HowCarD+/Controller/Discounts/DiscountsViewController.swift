@@ -33,6 +33,8 @@ class DiscountsViewController: HCBaseViewController {
     private struct Segue {
         
         static let moreDiscount = "MoreDiscount"
+        
+        static let detailDiscount = "DetailFromMoreDiscountVC"
     }
     
     var discountInfos: [DiscountInfo] = [
@@ -180,7 +182,11 @@ extension DiscountsViewController {
         
         if segue.identifier == Segue.moreDiscount {
             
-            guard let moreDiscountVC = segue.destination as? MoreDiscountViewController, let selectedPath = tableView.indexPathForSelectedRow else { return }
+            guard let moreDiscountVC = segue.destination as? MoreDiscountViewController,
+                let selectedPath = sender as? IndexPath
+            else {
+                return
+            }
             
             moreDiscountVC.discountDetails = self.discountInfos[selectedPath.row].discountDetails
         }
@@ -215,7 +221,8 @@ extension DiscountsViewController: UITableViewDataSource {
         discountTableViewCell.discountDetails = discountInfos[indexPath.row].discountDetails
         
         discountTableViewCell.toMoreDiscountHandler = {
-            self.performSegue(withIdentifier: Segue.moreDiscount, sender: nil)
+            
+            self.performSegue(withIdentifier: Segue.moreDiscount, sender: indexPath)
             
         }
         

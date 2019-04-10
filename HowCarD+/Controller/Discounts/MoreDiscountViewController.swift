@@ -10,6 +10,11 @@ import UIKit
 
 class MoreDiscountViewController: UIViewController {
     
+    private struct Segue {
+        
+        static let detailDiscount = "DetailFromMoreDiscountVC"
+    }
+    
     var discountDetails: [DiscountDetail] = []
 
     @IBOutlet weak var collectionView: UICollectionView! {
@@ -65,7 +70,7 @@ extension MoreDiscountViewController: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath)
         -> CGSize {
             
-            return CGSize(width: UIScreen.width, height: 300.0)
+            return CGSize(width: UIScreen.width - 30, height: 350.0)
     }
     
     func collectionView(
@@ -106,10 +111,7 @@ extension MoreDiscountViewController: UICollectionViewDelegateFlowLayout {
 
 extension MoreDiscountViewController: UICollectionViewDelegate {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return 350
-    }
+    
 }
 
 extension MoreDiscountViewController: UICollectionViewDataSource {
@@ -128,8 +130,10 @@ extension MoreDiscountViewController: UICollectionViewDataSource {
             for: indexPath
         )
         
-        guard let discountCell = cell as? DiscountCollectionViewCell else { return cell }
+//        return cell
         
+        guard let discountCell = cell as? DiscountCollectionViewCell else { return cell }
+
         discountCell.layoutCell(
             image: discountDetails[indexPath.row].image,
             discountName: discountDetails[indexPath.row].name,
@@ -137,9 +141,9 @@ extension MoreDiscountViewController: UICollectionViewDataSource {
             timePeriod: discountDetails[indexPath.row].timePeriod,
             isLiked: discountDetails[indexPath.row].isLiked
         )
-        
+
         discountCell.touchHandler = {
-            
+
             self.discountDetails[indexPath.row].isLiked = !self.discountDetails[indexPath.row].isLiked
         }
         
