@@ -18,9 +18,6 @@ class DRecommViewController: HCBaseViewController {
             tableView.delegate = self
 
             tableView.dataSource = self
-
-            tableView.separatorStyle = .none
-
         }
     }
 
@@ -32,6 +29,8 @@ class DRecommViewController: HCBaseViewController {
 
     private func setupTableView() {
         tableView.showsVerticalScrollIndicator = false
+        
+        tableView.separatorStyle = .none
     }
     /*
     // MARK: - Navigation

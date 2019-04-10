@@ -46,4 +46,13 @@ extension UIView {
             layer.cornerRadius = newValue
         }
     }
+    
+    func roundCorners(_ corners: CACornerMask, radius: CGFloat) {
+        
+        layer.maskedCorners = corners
+        
+        layer.cornerRadius = radius
+        
+        clipsToBounds = true
+    }
 }

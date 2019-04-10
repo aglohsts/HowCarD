@@ -8,114 +8,194 @@
 
 import UIKit
 
-class DiscountsViewController: HCBaseViewController {
+struct DiscountDetail {
+    
+    let image: UIImage
+    
+    let name: String
+    
+    let target: String
+    
+    let timePeriod: Int
+    
+    var isLiked: Bool
+}
 
+struct DiscountInfo {
+    let category: String
+    
+    let discountDetails: [DiscountDetail]
+}
+
+class DiscountsViewController: HCBaseViewController {
+    
+    var discountInfos: [DiscountInfo] = [
+        DiscountInfo(
+            category: "銀行",
+            discountDetails: [
+                DiscountDetail(
+                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
+                    name: "123456789012345678901234567890",
+                    target: "OO銀行 XX卡",
+                    timePeriod: 1575072000,
+                    isLiked: false),
+                DiscountDetail(
+                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
+                    name: "123456789012345678901234567890",
+                    target: "OO銀行 XX卡",
+                    timePeriod: 1575072000,
+                    isLiked: false),
+                DiscountDetail(
+                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
+                    name: "123456789012345678901234567890",
+                    target: "OO銀行 XX卡",
+                    timePeriod: 1575072000,
+                    isLiked: false),
+                DiscountDetail(
+                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
+                    name: "123456789012345678901234567890",
+                    target: "OO銀行 XX卡",
+                    timePeriod: 1575072000,
+                    isLiked: false)
+            ]),
+        
+        DiscountInfo(
+            category: "回饋",
+            discountDetails: [
+                DiscountDetail(
+                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
+                    name: "123456789012345678901234567890",
+                    target: "OO銀行 XX卡",
+                    timePeriod: 1575072000,
+                    isLiked: false),
+                DiscountDetail(
+                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
+                    name: "123456789012345678901234567890",
+                    target: "OO銀行 XX卡",
+                    timePeriod: 1575072000,
+                    isLiked: false),
+                DiscountDetail(
+                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
+                    name: "123456789012345678901234567890",
+                    target: "OO銀行 XX卡",
+                    timePeriod: 1575072000,
+                    isLiked: false),
+                DiscountDetail(
+                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
+                    name: "123456789012345678901234567890",
+                    target: "OO銀行 XX卡",
+                    timePeriod: 1575072000,
+                    isLiked: false),
+                DiscountDetail(
+                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
+                    name: "123456789012345678901234567890",
+                    target: "OO銀行 XX卡",
+                    timePeriod: 1575072000,
+                    isLiked: false)
+            ]
+        ),
+        
+        DiscountInfo(
+            category: "外幣消費",
+            discountDetails: [
+                DiscountDetail(
+                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
+                    name: "123456789012345678901234567890",
+                    target: "OO銀行 XX卡",
+                    timePeriod: 1575072000,
+                    isLiked: false),
+                DiscountDetail(
+                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
+                    name: "123456789012345678901234567890",
+                    target: "OO銀行 XX卡",
+                    timePeriod: 1575072000,
+                    isLiked: false),
+                DiscountDetail(
+                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
+                    name: "123456789012345678901234567890",
+                    target: "OO銀行 XX卡",
+                    timePeriod: 1575072000,
+                    isLiked: false)
+            ]
+        )
+    ]
+    
     var isFiltered: Bool = false
 
-    @IBOutlet weak var collectionView: UICollectionView! {
+    @IBOutlet weak var tableView: UITableView! {
         didSet {
-            collectionView.delegate = self
-
-            collectionView.dataSource = self
+            tableView.delegate = self
+            
+            tableView.dataSource = self
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setupCollectionView()
+        
+        setNavBar()
+        
+        setTableView()
     }
-
-    private func setupCollectionView() {
-
-        collectionView.agRegisterCellWithNib(
-            identifier: String(describing: DiscountCollectionViewCell.self),
-            bundle: nil)
-
-//        collectionView.register(
-//            DiscountHeaderCollectionReusableView.self,
-//            forSupplementaryViewOfKind: String(describing: DiscountHeaderCollectionReusableView.self),
-//            withReuseIdentifier: String(describing: DiscountHeaderCollectionReusableView.self)
-//        )
-
-//        let nib = UINib(nibName: String(describing: DiscountHeaderCollectionReusableView.self), bundle: nil)
+    
+    private func setTableView() {
+        
+        tableView.separatorStyle = .none
+        
+        tableView.showsVerticalScrollIndicator = false
+    }
+    
+    private func setNavBar() {
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage.asset(.Icons_Heart_Selected),
+            style: .plain,
+            target: self,
+            action: #selector(showLikeList))
+    }
+    
+    @objc private func showLikeList() {
+        
+//        if let filterVC = UIStoryboard(
+//            name: StoryboardCategory.filter,
+//            bundle: nil).instantiateViewController(
+//                withIdentifier: String(describing: FilterViewController.self)) as? FilterViewController {
+//            let navVC = UINavigationController(rootViewController: filterVC)
 //
-//        collectionView.register(
-//            nib,
-//            forSupplementaryViewOfKind: String(describing: DiscountHeaderCollectionReusableView.self),
-//            withReuseIdentifier: String(describing: DiscountHeaderCollectionReusableView.self)
-//        )
-
+//            self.present(navVC, animated: true, completion: nil)
+//        }
     }
 
 }
 
-extension DiscountsViewController: UICollectionViewDelegate {
-
+extension DiscountsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 350
+    }
 }
 
-extension DiscountsViewController: UICollectionViewDataSource {
-
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+extension DiscountsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return discountInfos.count
     }
-
-    // Section Header
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        viewForSupplementaryElementOfKind kind: String,
-        at indexPath: IndexPath)
-    -> UICollectionReusableView {
-
-//        let view = collectionView.dequeueReusableSupplementaryView(
-//        ofKind: String(describing: DiscountHeaderCollectionReusableView.self),
-//        withReuseIdentifier: String(describing: DiscountHeaderCollectionReusableView.self),
-//        for: indexPath
-//        )
-//
-//        guard let headerView = view as? DiscountHeaderCollectionReusableView else { return view }
-//
-//        headerView.layoutView(category: "銀行")
-//
-//        return headerView
-        return UICollectionReusableView()
-    }
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        willDisplaySupplementaryView view: UICollectionReusableView,
-        forElementKind elementKind: String,
-        at indexPath: IndexPath) {
-        guard let headerView = view as? DiscountHeaderCollectionReusableView else { return }
-
-        headerView.backgroundColor = .blue
-    }
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
-    }
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath)
-    -> UICollectionViewCell {
-
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: DiscountCollectionViewCell.self),
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: DiscountsTableViewCell.self),
             for: indexPath
         )
-
-        guard let discountCell = cell as? DiscountCollectionViewCell else { return cell }
-
-        discountCell.layoutCell(
-            image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
-            discountName: "123456789012345678901234567890",
-            target: "OO銀行 XX卡",
-            timePeriod: 1546272000
-        )
-
-        return discountCell
+        
+        guard let discountTableViewCell = cell as? DiscountsTableViewCell else { return cell }
+        
+        discountTableViewCell.categoryLabel.text = discountInfos[indexPath.row].category
+        
+        discountTableViewCell.discountDetails = discountInfos[indexPath.row].discountDetails
+        
+        return discountTableViewCell
     }
-
+    
 }

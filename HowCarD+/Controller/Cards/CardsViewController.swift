@@ -45,7 +45,11 @@ class CardsViewController: HCBaseViewController {
             style: .plain,
             target: self,
             action: #selector(showFilter))
-
+    }
+    
+    private func setTableView() {
+        
+        tableView.separatorStyle = .none
     }
 
     @objc private func showFilter() {

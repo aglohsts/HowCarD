@@ -44,6 +44,9 @@ enum ImageAsset: String {
 
     // Other ICons - Discounts
     case Icons_ArrowRight
+    case CircleButtonWhiteBackground
+    case Icons_Heart_Normal
+    case Icons_Heart_Selected
 
     // Image
     case Image_Placeholder
