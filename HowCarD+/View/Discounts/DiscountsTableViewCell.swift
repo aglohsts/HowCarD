@@ -14,6 +14,8 @@ class DiscountsTableViewCell: UITableViewCell {
     
     var toMoreDiscountHandler: (() -> Void)?
     
+    var toDiscountDetailHandler: (() -> Void)?
+    
     var discountDetails: [DiscountDetail] = []
 
     @IBOutlet weak var collectionView: UICollectionView! {
@@ -102,7 +104,10 @@ extension DiscountsTableViewCell: UICollectionViewDelegateFlowLayout {
 }
 
 extension DiscountsTableViewCell: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        toDiscountDetailHandler?()
+    }
 }
 
 extension DiscountsTableViewCell: UICollectionViewDataSource {

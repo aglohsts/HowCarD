@@ -12,7 +12,7 @@ class MoreDiscountViewController: UIViewController {
     
     private struct Segue {
         
-        static let detailDiscount = "DetailFromMoreDiscountVC"
+        static let discountDetail = "DetailFromMoreDiscountVC"
     }
     
     var discountDetails: [DiscountDetail] = []
@@ -63,6 +63,20 @@ class MoreDiscountViewController: UIViewController {
 
 }
 
+extension MoreDiscountViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Segue.discountDetail {
+            
+            guard let discountDetailVC = segue.destination as? DiscountDetailViewController
+                else {
+                    return
+            }
+        }
+    }
+}
+
 extension MoreDiscountViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
@@ -111,6 +125,10 @@ extension MoreDiscountViewController: UICollectionViewDelegateFlowLayout {
 
 extension MoreDiscountViewController: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        self.performSegue(withIdentifier: Segue.discountDetail, sender: nil)
+    }
     
 }
 
@@ -146,7 +164,7 @@ extension MoreDiscountViewController: UICollectionViewDataSource {
 
             self.discountDetails[indexPath.row].isLiked = !self.discountDetails[indexPath.row].isLiked
         }
-        
+
         return discountCell
     }
     

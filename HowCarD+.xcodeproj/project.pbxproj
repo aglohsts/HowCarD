@@ -51,6 +51,9 @@
 		CAF58D8A225CD97D00818CDD /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF58D89225CD97D00818CDD /* UIImageView+Extension.swift */; };
 		CAF58D8C225DB41000818CDD /* DiscountsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF58D8B225DB41000818CDD /* DiscountsTableViewCell.swift */; };
 		CAFE8279225DE3BD004F4E63 /* DiscountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE8278225DE3BD004F4E63 /* DiscountDetailViewController.swift */; };
+		CAFE827B225DF071004F4E63 /* DiscountDetailTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE827A225DF071004F4E63 /* DiscountDetailTableViewHeaderFooterView.swift */; };
+		CAFE827D225DF081004F4E63 /* DiscountDetailTableViewHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE827C225DF081004F4E63 /* DiscountDetailTableViewHeaderFooterView.xib */; };
+		CAFE827F225DF304004F4E63 /* DiscountDetailContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE827E225DF304004F4E63 /* DiscountDetailContentTableViewCell.swift */; };
 		F046E3020440D087E1F00B31 /* Pods_HowCarD_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A471D918A639FEEC5AA07E /* Pods_HowCarD_.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +107,9 @@
 		CAF58D89225CD97D00818CDD /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		CAF58D8B225DB41000818CDD /* DiscountsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountsTableViewCell.swift; sourceTree = "<group>"; };
 		CAFE8278225DE3BD004F4E63 /* DiscountDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountDetailViewController.swift; sourceTree = "<group>"; };
+		CAFE827A225DF071004F4E63 /* DiscountDetailTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountDetailTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
+		CAFE827C225DF081004F4E63 /* DiscountDetailTableViewHeaderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscountDetailTableViewHeaderFooterView.xib; sourceTree = "<group>"; };
+		CAFE827E225DF304004F4E63 /* DiscountDetailContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountDetailContentTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +319,9 @@
 				CAF40390225C77E20037F1DD /* DiscountCollectionViewCell.swift */,
 				CAF58D82225C81D800818CDD /* DiscountCollectionViewCell.xib */,
 				CAF58D8B225DB41000818CDD /* DiscountsTableViewCell.swift */,
+				CAFE827C225DF081004F4E63 /* DiscountDetailTableViewHeaderFooterView.xib */,
+				CAFE827A225DF071004F4E63 /* DiscountDetailTableViewHeaderFooterView.swift */,
+				CAFE827E225DF304004F4E63 /* DiscountDetailContentTableViewCell.swift */,
 			);
 			path = Discounts;
 			sourceTree = "<group>";
@@ -382,6 +391,7 @@
 				CA171B832253408F0042BBDC /* Wallet.storyboard in Resources */,
 				CA2F7DC322563872005E4361 /* Filter.storyboard in Resources */,
 				CA171BA92254C9160042BBDC /* DRecommendation.storyboard in Resources */,
+				CAFE827D225DF081004F4E63 /* DiscountDetailTableViewHeaderFooterView.xib in Resources */,
 				CA171B69225330090042BBDC /* Assets.xcassets in Resources */,
 				CAF58D83225C81D800818CDD /* DiscountCollectionViewCell.xib in Resources */,
 				CA171B7F22533FA50042BBDC /* Cards.storyboard in Resources */,
@@ -475,6 +485,8 @@
 				CAF58D85225C974C00818CDD /* DiscountsTopViewController.swift in Sources */,
 				CA171B94225350450042BBDC /* WalletViewController.swift in Sources */,
 				CA47A184225AF7CD00AD16AF /* CardDetailViewController.swift in Sources */,
+				CAFE827F225DF304004F4E63 /* DiscountDetailContentTableViewCell.swift in Sources */,
+				CAFE827B225DF071004F4E63 /* DiscountDetailTableViewHeaderFooterView.swift in Sources */,
 				CA171BAC2254CBB60042BBDC /* DRecommCollectionViewCell.swift in Sources */,
 				CA171B96225350510042BBDC /* QAViewController.swift in Sources */,
 				CAF40392225C77E20037F1DD /* DiscountCollectionViewCell.swift in Sources */,
