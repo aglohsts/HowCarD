@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MoreDiscountViewController: UIViewController {
+class MoreDiscountViewController: HCBaseViewController {
     
     private struct Segue {
         

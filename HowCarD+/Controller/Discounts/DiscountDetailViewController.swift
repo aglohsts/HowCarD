@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DiscountDetailViewController: UIViewController {
+class DiscountDetailViewController: HCBaseViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     
@@ -41,13 +41,13 @@ class DiscountDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setupTableView()
     }
     
     private func setupTableView() {
         
         tableView.agRegisterHeaderWithNib(
-            identifier: String(describing: DiscountDetailContentTableViewCell.self),
+            identifier: String(describing: DiscountDetailTableViewHeaderFooterView.self),
             bundle: nil
         )
         
@@ -66,7 +66,7 @@ extension DiscountDetailViewController: UITableViewDelegate {
         
         guard let headerView = view as? DiscountDetailTableViewHeaderFooterView else { return view }
         
-        headerView.layoutView(contentTitle: "123")
+        headerView.layoutView(contentTitle: "123123")
         
         return headerView
     }
@@ -75,15 +75,20 @@ extension DiscountDetailViewController: UITableViewDelegate {
         
         guard let headerView = view as? DiscountDetailTableViewHeaderFooterView else { return }
         
-        headerView.contentView.backgroundColor = UIColor.blue
+        headerView.contentView.backgroundColor = UIColor.white
     }
 }
 
 extension DiscountDetailViewController: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         
         return 3
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
