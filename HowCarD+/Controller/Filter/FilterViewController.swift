@@ -52,7 +52,7 @@ extension FilterViewController {
             image: UIImage.asset(.Icons_24px_Dismiss),
             style: .plain,
             target: self,
-            action: #selector(dismissFilter))
+            action: #selector(dismissSelf))
 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage.asset(.Icons_24px_ResetSelect),
@@ -62,7 +62,7 @@ extension FilterViewController {
 
     }
 
-    @objc private func dismissFilter() {
+    @objc private func dismissSelf() {
 
         if (self.presentingViewController) != nil {
             dismiss(animated: true, completion: nil)

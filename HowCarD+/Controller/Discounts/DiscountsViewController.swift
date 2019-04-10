@@ -164,14 +164,14 @@ class DiscountsViewController: HCBaseViewController {
     
     @objc private func showLikeList() {
         
-//        if let filterVC = UIStoryboard(
-//            name: StoryboardCategory.filter,
-//            bundle: nil).instantiateViewController(
-//                withIdentifier: String(describing: FilterViewController.self)) as? FilterViewController {
-//            let navVC = UINavigationController(rootViewController: filterVC)
-//
-//            self.present(navVC, animated: true, completion: nil)
-//        }
+        if let discountLikedListVC = UIStoryboard(
+            name: StoryboardCategory.discounts,
+            bundle: nil).instantiateViewController(
+                withIdentifier: String(describing: DiscountLikedListViewController.self)) as? DiscountLikedListViewController {
+            let navVC = UINavigationController(rootViewController: discountLikedListVC)
+
+            self.present(navVC, animated: true, completion: nil)
+        }
     }
 
 }
