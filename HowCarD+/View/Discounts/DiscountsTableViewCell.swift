@@ -12,6 +12,8 @@ class DiscountsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var categoryLabel: UILabel!
     
+    var toMoreDiscountHandler: (() -> Void)?
+    
     var discountDetails: [DiscountDetail] = []
 
     @IBOutlet weak var collectionView: UICollectionView! {
@@ -43,6 +45,13 @@ class DiscountsTableViewCell: UITableViewCell {
         collectionView.showsHorizontalScrollIndicator = false
         
     }
+    
+    @IBAction func onViewAll(_ sender: Any) {
+        toMoreDiscountHandler?()
+        
+//        guard let discountsVC = sender.source as? DiscountsViewController else { return }
+        // sender: UIStoryboardSegue
+    }
 }
 
 extension DiscountsTableViewCell: UICollectionViewDelegateFlowLayout {
@@ -52,7 +61,7 @@ extension DiscountsTableViewCell: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath)
         -> CGSize {
             
-            return CGSize(width: UIScreen.width / 2 - 20, height: 300.0)
+            return CGSize(width: UIScreen.width / 2 - 25, height: 300.0)
             
     }
     
@@ -62,7 +71,7 @@ extension DiscountsTableViewCell: UICollectionViewDelegateFlowLayout {
         insetForSectionAt section: Int)
         -> UIEdgeInsets {
             
-            return UIEdgeInsets(top: 24.0, left: 10, bottom: 24, right: 10)
+            return UIEdgeInsets(top: 24.0, left: 16, bottom: 24, right: 15)
     }
     //
     //    func collectionView(
@@ -98,10 +107,6 @@ extension DiscountsTableViewCell: UICollectionViewDelegate {
 
 extension DiscountsTableViewCell: UICollectionViewDataSource {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return discountDetails.count
     }
@@ -124,21 +129,6 @@ extension DiscountsTableViewCell: UICollectionViewDataSource {
                 target: discountDetails[indexPath.row].target,
                 timePeriod: discountDetails[indexPath.row].timePeriod,
                 isLiked: discountDetails[indexPath.row].isLiked
-                
-                // 1577750400: 2019/12/31 but shows 2020/12/31
-                // 1577664000: 2019/12/30 but shows 2020/12/30
-                // 1577577600: 2019/12/29 but shows 2020/12/29
-                // 1575072000: 2019/11/30 (ok)
-                // 1546300800: 2019/1/1 (ok)
-                // 1548892800: 2019/1/31 (ok)
-                
-                // 1609372800: 2020/12/31 but shows 2021/12/31
-                
-                // 1546214400: 2018/12/31 but shows 2019/12/31
-                // 1546128000: 2018/12/30 but shows 2019/12/30
-                // 1546041600: 2018/12/29 (ok)
-                // 1514764800: 2018/1/1 (ok)
-                
             )
             
             discountCell.touchHandler = {

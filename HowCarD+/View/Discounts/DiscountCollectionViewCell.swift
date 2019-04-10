@@ -79,7 +79,7 @@ class DiscountCollectionViewCell: UICollectionViewCell {
         
         dateFormatter.timeZone = TimeZone.current
 
-        dateFormatter.dateFormat = "YYYY/MM/dd"
+        dateFormatter.dateFormat = "yyyy/MM/dd"
 
         return dateFormatter.string(from: date)
     }

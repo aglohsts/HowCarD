@@ -22,12 +22,18 @@ struct DiscountDetail {
 }
 
 struct DiscountInfo {
+    
     let category: String
     
     let discountDetails: [DiscountDetail]
 }
 
 class DiscountsViewController: HCBaseViewController {
+    
+    private struct Segue {
+        
+        static let moreDiscount = "MoreDiscount"
+    }
     
     var discountInfos: [DiscountInfo] = [
         DiscountInfo(
@@ -37,7 +43,7 @@ class DiscountsViewController: HCBaseViewController {
                     image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
                     name: "123456789012345678901234567890",
                     target: "OO銀行 XX卡",
-                    timePeriod: 1575072000,
+                    timePeriod: 1577750400,
                     isLiked: false),
                 DiscountDetail(
                     image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
@@ -168,6 +174,19 @@ class DiscountsViewController: HCBaseViewController {
 
 }
 
+extension DiscountsViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Segue.moreDiscount {
+            
+            guard let moreDiscountVC = segue.destination as? MoreDiscountViewController, let selectedPath = tableView.indexPathForSelectedRow else { return }
+            
+            moreDiscountVC.discountDetails = self.discountInfos[selectedPath.row].discountDetails
+        }
+    }
+}
+
 extension DiscountsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -194,6 +213,11 @@ extension DiscountsViewController: UITableViewDataSource {
         discountTableViewCell.categoryLabel.text = discountInfos[indexPath.row].category
         
         discountTableViewCell.discountDetails = discountInfos[indexPath.row].discountDetails
+        
+        discountTableViewCell.toMoreDiscountHandler = {
+            self.performSegue(withIdentifier: Segue.moreDiscount, sender: nil)
+            
+        }
         
         return discountTableViewCell
     }
