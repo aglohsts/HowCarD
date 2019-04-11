@@ -261,8 +261,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="discountImageView" destination="gOv-9C-ijA" id="Wqa-fb-TZg"/>
                                             <outlet property="discountNameLabel" destination="cCx-vQ-ako" id="Bqu-Y2-2u1"/>
-                                            <outlet property="imageView" destination="gOv-9C-ijA" id="SgR-xY-Uph"/>
                                             <outlet property="targetLabel" destination="KwQ-28-sYz" id="Efk-nm-YpG"/>
                                             <outlet property="timePeriodLabel" destination="kaV-LG-DYu" id="wFS-ta-BLq"/>
                                         </connections>

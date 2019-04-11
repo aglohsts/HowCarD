@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Kanna
+import Alamofire
 
 class CardsViewController: HCBaseViewController {
 
@@ -35,6 +37,12 @@ class CardsViewController: HCBaseViewController {
         super.viewDidLoad()
 
         setNavBar()
+//    AF.request("https://www.taishinbank.com.tw/TS/TS02/TS0201/TS020101/TS02010101/TS0201010104/TS020101010409/index.htm").responseString { response in
+//            
+//            if let html = response.value {
+//                print(html)
+//            }
+//        }
 
     }
 

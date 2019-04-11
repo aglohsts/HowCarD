@@ -23,6 +23,8 @@ struct StoryboardCategory {
     static let qa = "QA"
 
     static let filter = "Filter"
+    
+    static let auth = "Auth"
 
 }
 
@@ -41,6 +43,8 @@ extension UIStoryboard {
     static var qa: UIStoryboard { return hcStoryboard(name: StoryboardCategory.qa) }
 
     static var filter: UIStoryboard { return hcStoryboard(name: StoryboardCategory.filter)}
+    
+    static var auth: UIStoryboard { return hcStoryboard(name: StoryboardCategory.auth)}
 
     private static func hcStoryboard(name: String) -> UIStoryboard {
 

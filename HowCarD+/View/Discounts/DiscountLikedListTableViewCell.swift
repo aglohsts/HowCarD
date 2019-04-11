@@ -16,7 +16,7 @@ class DiscountLikedListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var timePeriodLabel: UILabel!
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var discountImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

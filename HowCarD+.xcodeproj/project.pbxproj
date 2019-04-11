@@ -56,6 +56,9 @@
 		CAFE827F225DF304004F4E63 /* DiscountDetailContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE827E225DF304004F4E63 /* DiscountDetailContentTableViewCell.swift */; };
 		CAFE8281225E09CD004F4E63 /* DiscountLikedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE8280225E09CD004F4E63 /* DiscountLikedListViewController.swift */; };
 		CAFE8283225E3CE8004F4E63 /* DiscountLikedListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE8282225E3CE8004F4E63 /* DiscountLikedListTableViewCell.swift */; };
+		CAFE8285225EE349004F4E63 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAFE8284225EE349004F4E63 /* Auth.storyboard */; };
+		CAFE8287225F1D93004F4E63 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAFE8286225F1D92004F4E63 /* GoogleService-Info.plist */; };
+		CAFE828A225F3C9D004F4E63 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE8289225F3C9D004F4E63 /* SignUpViewController.swift */; };
 		F046E3020440D087E1F00B31 /* Pods_HowCarD_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A471D918A639FEEC5AA07E /* Pods_HowCarD_.framework */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +117,9 @@
 		CAFE827E225DF304004F4E63 /* DiscountDetailContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountDetailContentTableViewCell.swift; sourceTree = "<group>"; };
 		CAFE8280225E09CD004F4E63 /* DiscountLikedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountLikedListViewController.swift; sourceTree = "<group>"; };
 		CAFE8282225E3CE8004F4E63 /* DiscountLikedListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountLikedListTableViewCell.swift; sourceTree = "<group>"; };
+		CAFE8284225EE349004F4E63 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		CAFE8286225F1D92004F4E63 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CAFE8289225F3C9D004F4E63 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +179,7 @@
 				CA171B68225330090042BBDC /* Assets.xcassets */,
 				CA171B6A225330090042BBDC /* LaunchScreen.storyboard */,
 				CA171B6D225330090042BBDC /* Info.plist */,
+				CAFE8286225F1D92004F4E63 /* GoogleService-Info.plist */,
 			);
 			path = "HowCarD+";
 			sourceTree = "<group>";
@@ -191,6 +198,7 @@
 				CA171B822253408F0042BBDC /* Wallet.storyboard */,
 				CA171B842253409A0042BBDC /* QA.storyboard */,
 				CA2F7DC222563872005E4361 /* Filter.storyboard */,
+				CAFE8284225EE349004F4E63 /* Auth.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -198,6 +206,7 @@
 		CA171B76225339900042BBDC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CAFE8288225F3C7E004F4E63 /* Auth */,
 				CA171BB02255EDEB0042BBDC /* Base */,
 				CA171B8622534F440042BBDC /* DRecommendation */,
 				CA171B8B22534FE20042BBDC /* Discounts */,
@@ -332,6 +341,14 @@
 			path = Discounts;
 			sourceTree = "<group>";
 		};
+		CAFE8288225F3C7E004F4E63 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				CAFE8289225F3C9D004F4E63 /* SignUpViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -395,7 +412,9 @@
 			files = (
 				CA171B6C225330090042BBDC /* LaunchScreen.storyboard in Resources */,
 				CA171B832253408F0042BBDC /* Wallet.storyboard in Resources */,
+				CAFE8287225F1D93004F4E63 /* GoogleService-Info.plist in Resources */,
 				CA2F7DC322563872005E4361 /* Filter.storyboard in Resources */,
+				CAFE8285225EE349004F4E63 /* Auth.storyboard in Resources */,
 				CA171BA92254C9160042BBDC /* DRecommendation.storyboard in Resources */,
 				CAFE827D225DF081004F4E63 /* DiscountDetailTableViewHeaderFooterView.xib in Resources */,
 				CA171B69225330090042BBDC /* Assets.xcassets in Resources */,
@@ -512,6 +531,7 @@
 				CA171B9D22544E330042BBDC /* DRecommTableViewContentCell.swift in Sources */,
 				CA171BA0225457BA0042BBDC /* UITableView+Extension.swift in Sources */,
 				CA2F7DD82257793A005E4361 /* FilterTextCollectionViewCell.swift in Sources */,
+				CAFE828A225F3C9D004F4E63 /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
