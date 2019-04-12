@@ -43,6 +43,10 @@ class CardsViewController: HCBaseViewController {
 //                print(html)
 //            }
 //        }
+        
+        HCFirebase.shared.postBank(BankObject(fullName: "台新國際商業銀行", briefName: "台新銀行", code: "812", contact: "(02)2655-3355", website: "https://www.taishinbank.com.tw/"))
+        HCFirebase.shared.postBank(BankObject(fullName: "星展銀行有限公司", briefName: "星展銀行", code: "810", contact: "(02)6612-9889", website: "https://www.dbs.com.tw/index-zh/default.page"))
+        HCFirebase.shared.postBank(BankObject(fullName: "渣打國際商業銀行", briefName: "渣打銀行", code: "083", contact: "(02)4058-0088", website: "https://www.sc.com/tw/"))
 
     }
 

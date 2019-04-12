@@ -42,6 +42,8 @@ class SignUpViewController: HCBaseViewController {
                     
                     if error == nil {
                         
+                        
+                        
                         print("You have successfully signed up")
                         
                         self.dismiss(animated: true, completion: nil)

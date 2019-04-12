@@ -12,5 +12,7 @@ target 'HowCarD+' do
   pod 'Alamofire', '~> 5.0.0-beta.3'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
 
 end
