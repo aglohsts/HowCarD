@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class WalletViewController: HCBaseViewController {
 
@@ -29,5 +31,29 @@ class WalletViewController: HCBaseViewController {
     }
     
     @IBAction func onSignIn(_ sender: Any) {
+        
+        if let signInVC = UIStoryboard(
+            name: StoryboardCategory.auth,
+            bundle: nil).instantiateViewController(
+                withIdentifier: String(describing: SignInViewController.self)) as? SignInViewController {
+            let navVC = UINavigationController(rootViewController: signInVC)
+            
+            self.present(navVC, animated: true, completion: nil)
+        }
     }
+    
+    @IBAction func onSignOut(_ sender: Any) {
+        
+        if Auth.auth().currentUser != nil {
+            do {
+                try Auth.auth().signOut()
+//                let vc = UIStoryboard(name: StoryboardCategory.dRecommend, bundle: nil).instantiateViewController(withIdentifier: String(describing: ))
+//                present(vc, animated: true, completion: nil)
+                
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
 }

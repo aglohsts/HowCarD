@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: HCBaseViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     
@@ -27,42 +27,42 @@ class SignUpViewController: UIViewController {
     @IBAction func onSignUp(_ sender: Any) {
         
         if emailTextField.text == "" {
-            let alertController = UIAlertController(title: "Error", message: "Please enter your email and password", preferredStyle: .alert)
             
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(defaultAction)
-            
-            present(alertController, animated: true, completion: nil)
+            presentAlertWith(title: "Error", message: "請輸入帳號、密碼。")
             
         } else {
             
-            Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+            guard let email = emailTextField.text,
+                let password = passwordTextField.text,
+                let confirmPwd = confirmPwdTextField.text else { return }
+            
+            if password == confirmPwd {
                 
-                if error == nil {
-                    print("You have successfully signed up")
-                    //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
+                Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
                     
-                    if let dRecommendVC = UIStoryboard(
-                        name: StoryboardCategory.filter,
-                        bundle: nil).instantiateViewController(
-                            withIdentifier: String(describing: DRecommViewController.self)) as? DRecommViewController {
-//                        let navVC = UINavigationController(rootViewController: filterVC)
+                    if error == nil {
                         
-                        self.present(dRecommendVC, animated: true, completion: nil)
+                        print("You have successfully signed up")
+                        
+                        self.dismiss(animated: true, completion: nil)
+                        
+//                        if let dRecommendVC = UIStoryboard(
+//                            name: StoryboardCategory.filter,
+//                            bundle: nil).instantiateViewController(
+//                                withIdentifier: String(describing: DRecommViewController.self)) as? DRecommViewController {
+//                            //                        let navVC = UINavigationController(rootViewController: filterVC)
+//
+//                            self.present(dRecommendVC, animated: true, completion: nil)
+                    } else {
+                        
+                        guard let error = error else { return }
+                        
+                        self.presentAlertWith(title: "Error", message: error.localizedDescription)
                     }
-                    
-                } else {
-                    let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                    
-                    let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(defaultAction)
-                    
-                    self.present(alertController, animated: true, completion: nil)
                 }
+            } else {
+                presentAlertWith(title: "Error", message: "請確認輸入相同的密碼。")
             }
         }
-        
     }
-
-
 }
