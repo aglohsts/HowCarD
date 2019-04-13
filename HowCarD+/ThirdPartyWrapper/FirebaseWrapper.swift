@@ -25,6 +25,8 @@ class HCFirebase {
         FirebaseApp.configure()
     }
     
+    var getDocuments: (() -> [QueryDocumentSnapshot])?
+    
     private func reference(to collectionReference: HCCollectionReference) -> CollectionReference {
         
         return Firestore.firestore().collection(collectionReference.rawValue)
@@ -35,7 +37,7 @@ class HCFirebase {
         reference(to: .banks).addDocument(data: [
             
             BankObject.CodingKeys.code.rawValue : bank.code,
-            
+
             BankObject.CodingKeys.contact.rawValue : bank.contact,
             
             BankObject.CodingKeys.fullName.rawValue : bank.fullName,
@@ -46,4 +48,32 @@ class HCFirebase {
         ])
     }
     
+    func showBank(completion: @escaping ([QueryDocumentSnapshot]) -> Void){
+
+        let query = self.reference(to: .banks).addSnapshotListener { (snapshot, error) in
+            
+            guard let snapshot = snapshot else {
+                
+                guard let error = error else { return }
+                
+                print("Error fetching document: \(error)")
+                
+                return
+            }
+            
+            completion(snapshot.documents)
+            
+        }
+    
+    }
+    
+//    func showBank() -> [QueryDocumentSnapshot] {
+//
+//
+//        getBank()
+//
+//        print(self.documents)
+//
+//        return self.documents
+//    }
 }
