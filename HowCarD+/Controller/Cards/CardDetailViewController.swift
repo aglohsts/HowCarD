@@ -21,7 +21,11 @@ struct CardIntro {
 
 class CardDetailViewController: UIViewController {
 
-    var tagArray = ["回饋", "電影", "加油"]
+    @IBOutlet weak var cardNameLabel: UILabel!
+    
+    @IBOutlet weak var bankNameLabel: UILabel!
+    
+    var tagArray = ["回饋", "網路購物"]
 
     lazy var datas: [CardIntro] = [
 
@@ -68,6 +72,8 @@ class CardDetailViewController: UIViewController {
         setupCollectionView()
 
         setNavBar()
+        
+        setHeaderViewContent(cardName: "@Gogo卡", bankName: "台新銀行")
     }
 
     private func setupTableView() {
@@ -79,6 +85,11 @@ class CardDetailViewController: UIViewController {
 
         tableView.separatorStyle = .none
 
+    }
+    
+    private func setHeaderViewContent(cardName: String, bankName: String){
+        cardNameLabel.text = cardName
+        bankNameLabel.text = bankName
     }
 
     private func setNavBar() {
@@ -113,7 +124,7 @@ extension CardDetailViewController: UITableViewDelegate {
 
         guard let headerView = view as? CardDetailTableViewHeaderView else { return }
 
-        headerView.contentView.backgroundColor = UIColor.blue
+        headerView.contentView.backgroundColor = UIColor.lightGray
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -182,7 +193,7 @@ extension CardDetailViewController: UICollectionViewDelegate {
 
 extension CardDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return tagArray.count
     }
 
     func collectionView(

@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         IQKeyboardManager.shared().shouldResignOnTouchOutside = true
         
-        HCFirebase.shared.configure()
+        HCFirebaseManager.shared.configure()
 
         return true
     }

@@ -136,6 +136,7 @@
                                             <outlet property="bankNameLabel" destination="l9i-0B-f6P" id="Yh9-8j-zDl"/>
                                             <outlet property="bookMarkImageView" destination="7zi-Ql-wnX" id="SLD-k9-Pzy"/>
                                             <outlet property="cardImageView" destination="REc-lU-akm" id="WhS-o3-Y4l"/>
+                                            <outlet property="cardNameLabel" destination="7mW-wP-mdW" id="fY2-th-YtI"/>
                                             <outlet property="tagCollectionView" destination="TvH-0C-sst" id="WcF-2M-a0O"/>
                                             <segue destination="pX2-kF-epT" kind="show" id="3vY-b0-yYr"/>
                                         </connections>
@@ -314,6 +315,8 @@
                         <viewLayoutGuide key="safeArea" id="FeA-6y-Ro9"/>
                     </view>
                     <connections>
+                        <outlet property="bankNameLabel" destination="UtK-LT-Qtf" id="YMM-tr-TUA"/>
+                        <outlet property="cardNameLabel" destination="KgA-Zd-9mc" id="Qcr-Vv-rQr"/>
                         <outlet property="tableView" destination="FmM-UV-JFj" id="tfN-n9-aBW"/>
                         <outlet property="tagCollectionView" destination="poh-c1-eQ5" id="rwA-EA-HPF"/>
                     </connections>

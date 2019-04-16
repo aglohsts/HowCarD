@@ -43,10 +43,10 @@ class CardsViewController: HCBaseViewController {
 //                print(html)
 //            }
 //        }
-        
-//        HCFirebase.shared.postBank(BankObject(fullName: "台新國際商業銀行", briefName: "台新銀行", code: "812", contact: "(02)2655-3355", website: "https://www.taishinbank.com.tw/"))
+    
 
-        HCFirebase.shared.showBank(completion: { documents in
+
+        HCFirebaseManager.shared.showBank(completion: { documents in
             
             for document in documents {
                 
@@ -58,13 +58,16 @@ class CardsViewController: HCBaseViewController {
                     website: String(describing: document.data()[BankObject.CodingKeys.website.rawValue])
                 ))
                 
-                
             }
             
             })
         
-        
-
+        HCFirebaseManager.shared.showCard(completion: { (documents) in
+            for document in documents{
+                print(document.data())
+            }
+            
+            })
     }
 
     private func setNavBar() {
@@ -110,7 +113,7 @@ extension CardsViewController: UITableViewDelegate {
 extension CardsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return 3
+        return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -126,6 +129,7 @@ extension CardsViewController: UITableViewDataSource {
             bookMarkIsTapped: true,
             bankIcon: UIImage.asset(.Image_Placeholder) ?? UIImage(),
             bankName: "台新銀行",
+            cardName: "@Gogo卡",
             cardImage: UIImage.asset(.Image_Placeholder2) ?? UIImage()
         )
 

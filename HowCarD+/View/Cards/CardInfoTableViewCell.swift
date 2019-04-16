@@ -10,7 +10,7 @@ import UIKit
 
 class CardInfoTableViewCell: UITableViewCell {
 
-    var tagArray = ["回饋", "電影", "加油"]
+    var tagArray = ["回饋", "網路購物"]
 
     var isRead: Bool = false {
         didSet {
@@ -43,6 +43,8 @@ class CardInfoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cardImageView: UIImageView!
 
+    @IBOutlet weak var cardNameLabel: UILabel!
+    
     @IBOutlet weak var tagCollectionView: UICollectionView! {
         didSet {
             tagCollectionView.delegate = self
@@ -67,6 +69,7 @@ class CardInfoTableViewCell: UITableViewCell {
         bookMarkIsTapped: Bool,
         bankIcon: UIImage,
         bankName: String,
+        cardName: String,
         cardImage: UIImage
         ) {
 
@@ -77,6 +80,8 @@ class CardInfoTableViewCell: UITableViewCell {
 //        bankIconImageView.image = bankIcon
 
         bankNameLabel.text = bankName
+        
+        cardNameLabel.text = cardName
 
         cardImageView.image = cardImage
 

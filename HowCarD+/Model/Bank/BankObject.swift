@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct BankObject {
+struct BankObject: Codable {
     
     let fullName: String
     
@@ -33,6 +33,3 @@ struct BankObject {
         case website
     }
 }
-
-
-
