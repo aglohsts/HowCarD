@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias Cards = [CardObject]
+
 struct CardObject: Codable {
     
     let basicInfo: CardBasicInfo
@@ -44,14 +46,8 @@ struct CardDetailInfo: Codable {
     let content: [ CardContent ]
 }
 
-struct CardInfoSection: Codable {
-    
-    let sectionTitle: String
-    
-    let cardContent: [ CardContent ]
-}
-
 struct CardContent: Codable {
+    
     let title: String
     
     let briefContent: String?

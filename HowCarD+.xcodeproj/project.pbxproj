@@ -39,6 +39,7 @@
 		CA2F7DD62256FA0D005E4361 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2F7DD52256FA0D005E4361 /* UIScreen+Extension.swift */; };
 		CA2F7DD82257793A005E4361 /* FilterTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2F7DD72257793A005E4361 /* FilterTextCollectionViewCell.swift */; };
 		CA2F7DDB22579B8B005E4361 /* CardInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2F7DDA22579B8B005E4361 /* CardInfoTableViewCell.swift */; };
+		CA323DB522684C57007A39FD /* HCParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA323DB422684C57007A39FD /* HCParser.swift */; };
 		CA47A184225AF7CD00AD16AF /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47A183225AF7CD00AD16AF /* CardDetailViewController.swift */; };
 		CA47A187225B133F00AD16AF /* CardTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47A185225B133F00AD16AF /* CardTagCollectionViewCell.swift */; };
 		CA47A188225B133F00AD16AF /* CardTagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA47A186225B133F00AD16AF /* CardTagCollectionViewCell.xib */; };
@@ -112,6 +113,7 @@
 		CA2F7DD52256FA0D005E4361 /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
 		CA2F7DD72257793A005E4361 /* FilterTextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTextCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA2F7DDA22579B8B005E4361 /* CardInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoTableViewCell.swift; sourceTree = "<group>"; };
+		CA323DB422684C57007A39FD /* HCParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCParser.swift; sourceTree = "<group>"; };
 		CA47A183225AF7CD00AD16AF /* CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
 		CA47A185225B133F00AD16AF /* CardTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA47A186225B133F00AD16AF /* CardTagCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardTagCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -381,11 +383,12 @@
 			path = HTTP;
 			sourceTree = "<group>";
 		};
-		CA6B5C9F22684B9000B180A2 /* New Group */ = {
+		CA6B5C9F22684B9000B180A2 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
+				CA323DB422684C57007A39FD /* HCParser.swift */,
 			);
-			path = "New Group";
+			path = Parser;
 			sourceTree = "<group>";
 		};
 		CA70B0642261D67F008F631B /* Card */ = {
@@ -432,7 +435,7 @@
 		CAFE828F22607D56004F4E63 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CA6B5C9F22684B9000B180A2 /* New Group */,
+				CA6B5C9F22684B9000B180A2 /* Parser */,
 				CA6B5C6F22670CE900B180A2 /* HTTP */,
 				CAF42EDC2265CD7D0071D104 /* FirebaseManager */,
 				CA70B0642261D67F008F631B /* Card */,
@@ -628,6 +631,7 @@
 				CA47A184225AF7CD00AD16AF /* CardDetailViewController.swift in Sources */,
 				CAFE827F225DF304004F4E63 /* DiscountDetailContentTableViewCell.swift in Sources */,
 				CAFE827B225DF071004F4E63 /* DiscountDetailTableViewHeaderFooterView.swift in Sources */,
+				CA323DB522684C57007A39FD /* HCParser.swift in Sources */,
 				CA171BAC2254CBB60042BBDC /* DRecommCollectionViewCell.swift in Sources */,
 				CA171B96225350510042BBDC /* QAViewController.swift in Sources */,
 				CAF40392225C77E20037F1DD /* DiscountCollectionViewCell.swift in Sources */,

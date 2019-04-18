@@ -8,13 +8,11 @@
 
 import Foundation
 
-typealias CardHandler = (Result<CardObject>) -> Void
+typealias CardHandler = (Result<[CardObject]>) -> Void
 
 class CardProvider {
     
     let decoder = JSONDecoder()
-    
-    let cardObject = CardObject()
     
     func getCard(completion: @escaping CardHandler) {
         
@@ -32,7 +30,11 @@ class CardProvider {
                     
                     print(json)
                     
-                    let cardObject = try strongSelf.decoder.decode(HC, from: <#T##Data#>)
+                    let cardObject = try strongSelf.decoder.decode([CardObject].self, from: data)
+                    
+                    print(cardObject)
+                    
+                    completion(Result.success(cardObject))
                     
                 } catch {
                     

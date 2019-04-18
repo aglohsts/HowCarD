@@ -28,8 +28,6 @@ class HCFirebaseManager {
     
     var cards: [CardObject] = []
     
-    var cardInfo: CardInfo?
-    
     var level1: [QueryDocumentSnapshot]?
     
     var level2: [QueryDocumentSnapshot]?
@@ -117,16 +115,16 @@ class HCFirebaseManager {
     
     func addCard(_ card: CardObject) {
         
-        firestoreRef(to: .cards).addDocument(data: [
-            CardObject.CodingKeys.name.rawValue: card.name,
-            
-            CardObject.CodingKeys.bank.rawValue: card.bank,
-            
-            CardObject.CodingKeys.tags.rawValue: card.tags,
-            
-            CardObject.CodingKeys.cardInfoSection.rawValue: card.cardInfoSection
-            
-        ])
+//        firestoreRef(to: .cards).addDocument(data: [
+//            CardObject.CodingKeys.name.rawValue: card.name,
+//            
+//            CardObject.CodingKeys.bank.rawValue: card.bank,
+//            
+//            CardObject.CodingKeys.tags.rawValue: card.tags,
+//            
+//            CardObject.CodingKeys.cardInfoSection.rawValue: card.cardInfoSection
+//            
+//        ])
     }
     
     func showCard(completion: @escaping ([QueryDocumentSnapshot]) -> Void) {
