@@ -49,7 +49,7 @@ class HCFirebaseManager {
         return Firestore.firestore().collection(collectionReference.rawValue)
     }
     
-    private func realtimeRef() -> DatabaseReference {
+    func realtimeRef() -> DatabaseReference {
         return Database.database().reference()
     }
     

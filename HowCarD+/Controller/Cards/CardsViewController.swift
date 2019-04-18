@@ -10,6 +10,8 @@ import UIKit
 
 class CardsViewController: HCBaseViewController {
     
+    let cardProvider = CardProvider()
+    
     var banks = [BankObject]()
 
     var isFiltered: Bool = false {
@@ -43,31 +45,11 @@ class CardsViewController: HCBaseViewController {
 //                print(html)
 //            }
 //        }
-    
 
-
-        HCFirebaseManager.shared.showBank(completion: { documents in
-            
-            for document in documents {
-                
-                self.banks.append(BankObject(
-                    fullName: String(describing: document.data()[BankObject.CodingKeys.fullName.rawValue]),
-                    briefName: String(describing: document.data()[BankObject.CodingKeys.briefName.rawValue]),
-                    code: String(describing: document.data()[BankObject.CodingKeys.code.rawValue]),
-                    contact: String(describing: document.data()[BankObject.CodingKeys.contact.rawValue]),
-                    website: String(describing: document.data()[BankObject.CodingKeys.website.rawValue])
-                ))
-                
-            }
-            
-            })
+        getCards()
         
-        HCFirebaseManager.shared.showCard(completion: { (documents) in
-            for document in documents{
-                print(document.data())
-            }
-            
-            })
+        
+        
     }
 
     private func setNavBar() {
@@ -94,6 +76,23 @@ class CardsViewController: HCBaseViewController {
 
             self.present(navVC, animated: true, completion: nil)
         }
+    }
+    
+    func getCards() {
+        
+        cardProvider.getCard(completion: { [weak self] result in
+            
+            switch result {
+                
+            case .success(let cards):
+                
+                print(cards)
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        })
     }
 
 }

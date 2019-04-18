@@ -10,61 +10,57 @@ import Foundation
 
 struct CardObject: Codable {
     
+    let basicInfo: CardBasicInfo
+    
+    let detailInfo: [CardDetailInfo]
+}
+
+struct CardBasicObject: Codable {
+    
+    let cardBasic: [CardBasicInfo]
+}
+
+struct CardBasicInfo: Codable {
+    
+    let bank: String
+    
+    let id: Int
+    
+    let image: String
+    
     let name: String
     
-    let bank: String // collection id path
+    let officialWeb: String
     
-    let tags: [Tags.RawValue]
+    let getCardWeb: String
     
-    let cardInfoSection: [CardInfoSection]
+    let tags: [ Tags.RawValue ]
+}
+
+struct CardDetailInfo: Codable {
     
-    enum CodingKeys: String, CodingKey {
-        
-        case name
-        
-        case bank
-        
-        case tags
-        
-        case cardInfoSection
-    }
+    let sectionTitle: String
+    
+    let content: [ CardContent ]
 }
 
 struct CardInfoSection: Codable {
+    
     let sectionTitle: String
     
-    let cardInfo: [CardInfo]
-    
-    enum CodingKeys: String, CodingKey {
-        
-        case sectionTitle
-        
-        case cardInfo
-    }
+    let cardContent: [ CardContent ]
 }
 
-struct CardInfo: Codable {
+struct CardContent: Codable {
     let title: String
     
-    let briefContent: String
+    let briefContent: String?
     
     let detailContent: String?
     
     let timePeriod: String?
     
     let lastDate: Int? // unixTime
-    
-    enum CodingKeys: String, CodingKey {
-        case title
-        
-        case briefContent
-        
-        case detailContent
-        
-        case timePeriod
-        
-        case lastDate
-    }
 }
 
 enum Tags: String {

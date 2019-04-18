@@ -8,12 +8,11 @@ target 'HowCarD+' do
   # Pods for HowCarD+
   pod 'IQKeyboardManager'
   pod 'SwiftLint'
-  pod 'Kanna', '~> 5.0.0'
-  pod 'Alamofire', '~> 5.0.0-beta.3'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
   pod 'Firebase/Database'
+  pod 'Kingfisher'
 
 end
