@@ -165,9 +165,9 @@ extension CardDetailViewController: UITableViewDelegate {
             withIdentifier: String(describing: CardDetailTableViewHeaderView.self)
         )
 
-        guard let headerView = view as? CardDetailTableViewHeaderView else { return view }
+        guard let headerView = view as? CardDetailTableViewHeaderView, let cardObject = self.cardObject else { return view }
 
-        headerView.layoutView(title: "123")
+        headerView.layoutView(title: cardObject.detailInfo[section].sectionTitle)
 
         return headerView
     }
@@ -214,37 +214,22 @@ extension CardDetailViewController: UITableViewDataSource {
 
         var data = cardObject.detailInfo[indexPath.section].content[indexPath.row]
         
-        contentCell.layoutCell(title: data.title, content: data.briefContent, isDetail: data.isDetail)
+        let content = data.isDetail ? data.detailContent : data.briefContent
         
-//        if let isDetail = data.isDetail {
-//
-//            guard let detailContent = data.detailContent, let briefContent = data.briefContent else { return cell }
-//
-//            let content = isDetail ? detailContent : briefContent
-//
-//            contentCell.layoutCell(title: data.title, content: content, isDetail: isDetail)
-//
-//            print(content)
-//        } else {
-//
-//            guard let content = data.briefContent else { return cell }
-//
-//            contentCell.layoutCell(title: data.title, content: content, isDetail: nil)
-//
-//            print(content)
-//        }
+        contentCell.layoutCell(title: data.title, content: content, isDetail: data.isDetail)
 
         contentCell.touchHandler = { [weak self] in
 
             guard let indexPath = tableView.indexPath(for: cell) else { return }
+   
+//            data.isDetail = !data.isDetail
             
-            if data.isDetail != nil {
+            self?.cardObject?.detailInfo[indexPath.section].content[indexPath.row].isDetail = !(self?.cardObject?.detailInfo[indexPath.section].content[indexPath.row].isDetail)!
+            
+            contentCell.isDetail = !contentCell.isDetail
                 
-                data.isDetail! = !data.isDetail!
-                
-                contentCell.layoutCell(title: data.title, content: data.detailContent, isDetail: data.isDetail)
-            }
-
+//            contentCell.layoutCell(title: data.title, content: data.detailContent, isDetail: data.isDetail)
+            
             self?.tableView.reloadRows(at: [indexPath], with: .automatic)
 
         }

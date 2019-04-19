@@ -16,26 +16,19 @@ class CardDetailContentTableViewCell: UITableViewCell {
 
     var detailInfo: String = ""
 
-    var isDetail: Bool? = false {
+    var isDetail: Bool = false {
         didSet {
-            
-            if isDetail != nil {
+  
+            if isDetail {
                 
-                if isDetail! {
-                    
-                    arrowButton.setImage(UIImage.asset(.Icons_ArrowUp), for: .normal)
-                    
-                    //                contentLabel.text = detailInfo
-                } else {
-                    arrowButton.setImage(UIImage.asset(.Icons_ArrowDown), for: .normal)
-                    
-                    //                contentLabel.text = briefInfo
-                }
+                arrowButton.setImage(UIImage.asset(.Icons_ArrowUp), for: .normal)
+                
+                //                contentLabel.text = detailInfo
             } else {
+                arrowButton.setImage(UIImage.asset(.Icons_ArrowDown), for: .normal)
                 
-                arrowButton.isHidden = true
+                //                contentLabel.text = briefInfo
             }
-            
         }
     }
 
@@ -57,18 +50,13 @@ class CardDetailContentTableViewCell: UITableViewCell {
 
     @IBAction func onShowDetail(_ sender: Any) {
         
-        if isDetail != nil {
-            
-            isDetail! = !isDetail!
-        }
-
         self.reloadInputViews()
 
         touchHandler?()
 
     }
 
-    func layoutCell(title: String, content: String?, isDetail: Bool?) {
+    func layoutCell(title: String, content: String?, isDetail: Bool) {
 
         titleLabel.text = title
 
