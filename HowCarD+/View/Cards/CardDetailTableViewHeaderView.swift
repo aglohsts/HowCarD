@@ -15,4 +15,8 @@ class CardDetailTableViewHeaderView: UITableViewHeaderFooterView {
     func layoutView(title: String) {
         titleLabel.text = title
     }
+    
+    override func prepareForReuse() {
+        
+    }
 }

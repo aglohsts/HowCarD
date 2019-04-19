@@ -10,7 +10,12 @@ import UIKit
 
 class CardInfoTableViewCell: UITableViewCell {
 
-    var tagArray = ["回饋", "網路購物"]
+    var tagArray = [String]() {
+        
+        didSet {
+            self.tagCollectionView.reloadData()
+        }
+    }
 
     var isRead: Bool = false {
         didSet {
@@ -67,10 +72,10 @@ class CardInfoTableViewCell: UITableViewCell {
     func layoutCell(
         tableViewCellIsTapped: Bool,
         bookMarkIsTapped: Bool,
-        bankIcon: UIImage,
         bankName: String,
         cardName: String,
-        cardImage: UIImage
+        cardImage: String,
+        tags: [String]
         ) {
 
         isRead = tableViewCellIsTapped
@@ -83,7 +88,9 @@ class CardInfoTableViewCell: UITableViewCell {
         
         cardNameLabel.text = cardName
 
-        cardImageView.image = cardImage
+        cardImageView.loadImage(cardImage)
+        
+        self.tagArray = tags
 
     }
 

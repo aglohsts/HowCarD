@@ -20,10 +20,26 @@ struct CardIntro {
 }
 
 class CardDetailViewController: UIViewController {
-
-    @IBOutlet weak var cardNameLabel: UILabel!
     
-    @IBOutlet weak var bankNameLabel: UILabel!
+    var cardID: String = ""
+    
+    let cardProvider = CardProvider()
+
+    @IBOutlet weak var cardNameLabel: UILabel! {
+        
+        didSet {
+            
+            cardNameLabel.text = ""
+        }
+    }
+    
+    @IBOutlet weak var bankNameLabel: UILabel! {
+        
+        didSet {
+            
+            bankNameLabel.text = ""
+        }
+    }
     
     var tagArray = ["回饋", "網路購物"]
 
@@ -45,6 +61,19 @@ class CardDetailViewController: UIViewController {
                   isDetail: false)
 
     ]
+    
+    var cardObject: CardObject? {
+        
+        didSet {
+            
+            DispatchQueue.main.async {
+                
+                self.tableView.reloadData()
+                
+                self.setHeaderViewContent(cardName: self.cardObject?.basicInfo.name ?? "", bankName: self.cardObject?.basicInfo.bank ?? "")
+            }
+        }
+    }
 
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -73,7 +102,7 @@ class CardDetailViewController: UIViewController {
 
         setNavBar()
         
-        setHeaderViewContent(cardName: "@Gogo卡", bankName: "台新銀行")
+        getcardDetail()
     }
 
     private func setupTableView() {
@@ -84,11 +113,12 @@ class CardDetailViewController: UIViewController {
         )
 
         tableView.separatorStyle = .none
-
     }
     
-    private func setHeaderViewContent(cardName: String, bankName: String){
+    private func setHeaderViewContent(cardName: String, bankName: String) {
+        
         cardNameLabel.text = cardName
+        
         bankNameLabel.text = bankName
     }
 
@@ -104,6 +134,28 @@ class CardDetailViewController: UIViewController {
 
     @objc private func onShare() {
 
+    }
+}
+
+extension CardDetailViewController {
+    
+    func getcardDetail() {
+        
+        cardProvider.getCards(id: cardID, completion: { [weak self] result in
+            
+            switch result {
+                
+            case .success(let cards):
+                
+                print(cards)
+                
+                self?.cardObject = cards
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        })
     }
 }
 
@@ -135,11 +187,17 @@ extension CardDetailViewController: UITableViewDelegate {
 extension CardDetailViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return datas.count
+        
+        guard let cardObject = cardObject else { return 0 }
+        
+        return cardObject.detailInfo.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        
+        guard let cardObject = cardObject else { return 0 }
+        
+        return cardObject.detailInfo[section].content.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -149,22 +207,43 @@ extension CardDetailViewController: UITableViewDataSource {
             for: indexPath
         )
 
-        guard let contentCell = cell as? CardDetailContentTableViewCell else { return cell }
+        guard let contentCell = cell as? CardDetailContentTableViewCell, var cardObject = cardObject else {
+            
+            return cell
+        }
 
-        let data = datas[indexPath.row]
-
-        let content = data.isDetail ? data.contentDetail : data.content
-
-        contentCell.layoutCell(
-            title: data.title,
-            detailContent: content,
-            isDetail: data.isDetail)
+        var data = cardObject.detailInfo[indexPath.section].content[indexPath.row]
+        
+        contentCell.layoutCell(title: data.title, content: data.briefContent, isDetail: data.isDetail)
+        
+//        if let isDetail = data.isDetail {
+//
+//            guard let detailContent = data.detailContent, let briefContent = data.briefContent else { return cell }
+//
+//            let content = isDetail ? detailContent : briefContent
+//
+//            contentCell.layoutCell(title: data.title, content: content, isDetail: isDetail)
+//
+//            print(content)
+//        } else {
+//
+//            guard let content = data.briefContent else { return cell }
+//
+//            contentCell.layoutCell(title: data.title, content: content, isDetail: nil)
+//
+//            print(content)
+//        }
 
         contentCell.touchHandler = { [weak self] in
 
             guard let indexPath = tableView.indexPath(for: cell) else { return }
-
-            self?.datas[indexPath.row].isDetail = !self!.datas[indexPath.row].isDetail
+            
+            if data.isDetail != nil {
+                
+                data.isDetail! = !data.isDetail!
+                
+                contentCell.layoutCell(title: data.title, content: data.detailContent, isDetail: data.isDetail)
+            }
 
             self?.tableView.reloadRows(at: [indexPath], with: .automatic)
 

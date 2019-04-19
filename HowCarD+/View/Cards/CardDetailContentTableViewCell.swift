@@ -16,18 +16,26 @@ class CardDetailContentTableViewCell: UITableViewCell {
 
     var detailInfo: String = ""
 
-    var isDetail: Bool = false {
+    var isDetail: Bool? = false {
         didSet {
-            if isDetail {
-
-                arrowButton.setImage(UIImage.asset(.Icons_ArrowUp), for: .normal)
-
-//                contentLabel.text = detailInfo
+            
+            if isDetail != nil {
+                
+                if isDetail! {
+                    
+                    arrowButton.setImage(UIImage.asset(.Icons_ArrowUp), for: .normal)
+                    
+                    //                contentLabel.text = detailInfo
+                } else {
+                    arrowButton.setImage(UIImage.asset(.Icons_ArrowDown), for: .normal)
+                    
+                    //                contentLabel.text = briefInfo
+                }
             } else {
-                arrowButton.setImage(UIImage.asset(.Icons_ArrowDown), for: .normal)
-
-//                contentLabel.text = briefInfo
+                
+                arrowButton.isHidden = true
             }
+            
         }
     }
 
@@ -48,8 +56,11 @@ class CardDetailContentTableViewCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
 
     @IBAction func onShowDetail(_ sender: Any) {
-
-        isDetail = !isDetail
+        
+        if isDetail != nil {
+            
+            isDetail! = !isDetail!
+        }
 
         self.reloadInputViews()
 
@@ -57,12 +68,17 @@ class CardDetailContentTableViewCell: UITableViewCell {
 
     }
 
-    func layoutCell(title: String, detailContent: String, isDetail: Bool) {
+    func layoutCell(title: String, content: String?, isDetail: Bool?) {
 
         titleLabel.text = title
 
-        contentLabel.text = detailContent
+        contentLabel.text = content
 
         self.isDetail = isDetail
+    }
+    
+    override func prepareForReuse() {
+        
+        arrowButton.isHidden = false
     }
 }

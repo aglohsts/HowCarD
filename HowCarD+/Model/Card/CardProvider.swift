@@ -8,15 +8,17 @@
 
 import Foundation
 
-typealias CardHandler = (Result<[CardObject]>) -> Void
+typealias CardHandler = (Result<CardObject>) -> Void
+
+typealias CardBasicInfoHandler = (Result<[CardBasicInfoObject]>) -> Void
 
 class CardProvider {
     
     let decoder = JSONDecoder()
     
-    func getCard(completion: @escaping CardHandler) {
+    func getCards(id: String, completion: @escaping CardHandler) {
         
-        HTTPClient.shared.request(CardRequest.allCards, completion: { [weak self] (result) in
+        HTTPClient.shared.request(CardRequest.cardDetail(id), completion: { [weak self] (result) in
             
             guard let strongSelf = self else { return }
             
@@ -26,15 +28,42 @@ class CardProvider {
                 
                 do {
                     
-                    let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
+//                    let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
                     
-                    print(json)
-                    
-                    let cardObject = try strongSelf.decoder.decode([CardObject].self, from: data)
-                    
-                    print(cardObject)
+                    let cardObject = try strongSelf.decoder.decode(CardObject.self, from: data)
                     
                     completion(Result.success(cardObject))
+                    
+                } catch {
+                    
+                    completion(Result.failure(error))
+                }
+                
+            case .failure(let error):
+                
+                completion(Result.failure(error))
+            }
+            
+        })
+    }
+    
+    func getCardBasicInfo(completion: @escaping CardBasicInfoHandler) {
+        
+        HTTPClient.shared.request(CardRequest.basicInfo, completion: { [weak self] (result) in
+            
+            guard let strongSelf = self else { return }
+            
+            switch result {
+                
+            case .success(let data):
+                
+                do {
+                    
+                    // let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
+                    
+                    let cardBasicInfoObject = try strongSelf.decoder.decode([CardBasicInfoObject].self, from: data)
+                    
+                    completion(Result.success(cardBasicInfoObject))
                     
                 } catch {
                     

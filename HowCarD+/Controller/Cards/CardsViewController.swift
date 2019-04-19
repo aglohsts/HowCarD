@@ -8,11 +8,27 @@
 
 import UIKit
 
+private enum Segue: String {
+    
+    case toDetail = "toCardDetail"
+}
+
 class CardsViewController: HCBaseViewController {
     
     let cardProvider = CardProvider()
     
     var banks = [BankObject]()
+    
+    var cardsBasicInfo = [CardBasicInfoObject]() {
+        
+        didSet {
+            
+            DispatchQueue.main.async {
+                
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     var isFiltered: Bool = false {
         didSet {
@@ -46,9 +62,11 @@ class CardsViewController: HCBaseViewController {
 //            }
 //        }
 
-        getCards()
+//        getAllCards()
         
+        getCardBasicInfo()
         
+        setTableView()
         
     }
 
@@ -77,16 +95,21 @@ class CardsViewController: HCBaseViewController {
             self.present(navVC, animated: true, completion: nil)
         }
     }
+}
+
+extension CardsViewController {
     
-    func getCards() {
+    func getCardBasicInfo() {
         
-        cardProvider.getCard(completion: { [weak self] result in
+        cardProvider.getCardBasicInfo(completion: { [weak self] result in
             
             switch result {
                 
-            case .success(let cards):
+            case .success(let cardsBasicInfo):
                 
-                print(cards)
+                print(cardsBasicInfo)
+                
+                self?.cardsBasicInfo = cardsBasicInfo
                 
             case .failure(let error):
                 
@@ -94,7 +117,19 @@ class CardsViewController: HCBaseViewController {
             }
         })
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Segue.toDetail.rawValue {
+            
+            let cardDetailVC = segue.destination as? CardDetailViewController
+            
+            guard let id = sender as? String else { return }
+            
+            cardDetailVC?.cardID = id
+            
+        }
+    }
 }
 
 extension CardsViewController: UITableViewDelegate {
@@ -104,7 +139,8 @@ extension CardsViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
+        performSegue(withIdentifier: Segue.toDetail.rawValue, sender: cardsBasicInfo[indexPath.row].id)
     }
 
 }
@@ -112,7 +148,7 @@ extension CardsViewController: UITableViewDelegate {
 extension CardsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return 1
+        return cardsBasicInfo.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -126,10 +162,10 @@ extension CardsViewController: UITableViewDataSource {
         cardInfoCell.layoutCell(
             tableViewCellIsTapped: true,
             bookMarkIsTapped: true,
-            bankIcon: UIImage.asset(.Image_Placeholder) ?? UIImage(),
-            bankName: "台新銀行",
-            cardName: "@Gogo卡",
-            cardImage: UIImage.asset(.Image_Placeholder2) ?? UIImage()
+            bankName: cardsBasicInfo[indexPath.row].bank,
+            cardName: cardsBasicInfo[indexPath.row].name,
+            cardImage: cardsBasicInfo[indexPath.row].image,
+            tags: cardsBasicInfo[indexPath.row].tags
         )
 
         return cardInfoCell

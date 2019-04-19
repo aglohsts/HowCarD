@@ -10,13 +10,17 @@ import Foundation
 
 enum CardRequest: HCRequest {
     
-    case allCards
+    case cardDetail(String)
+    
+    case basicInfo
     
     var headers: [String: String] {
         
         switch self {
             
-        case .allCards: return [:]
+        case .cardDetail(_): return [:]
+            
+        case .basicInfo: return [:]
             
         }
     }
@@ -25,7 +29,9 @@ enum CardRequest: HCRequest {
         
         switch self {
             
-        case .allCards: return nil
+        case .cardDetail(_): return nil
+            
+        case .basicInfo: return nil
             
         }
     }
@@ -34,7 +40,9 @@ enum CardRequest: HCRequest {
         
         switch self {
             
-        case .allCards: return HCHTTPMethod.GET.rawValue
+        case .cardDetail(_): return HCHTTPMethod.GET.rawValue
+            
+        case .basicInfo: return HCHTTPMethod.GET.rawValue
             
         }
     }
@@ -43,7 +51,9 @@ enum CardRequest: HCRequest {
         
         switch self {
             
-        case .allCards: return "/data/cards.json"
+        case .cardDetail(let id): return "/data/cards/\(id).json"
+            
+        case .basicInfo: return "/data/cardsBasic.json"
             
         }
     }

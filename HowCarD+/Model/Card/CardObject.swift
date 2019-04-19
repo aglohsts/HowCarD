@@ -8,25 +8,18 @@
 
 import Foundation
 
-typealias Cards = [CardObject]
-
 struct CardObject: Codable {
     
-    let basicInfo: CardBasicInfo
+    let basicInfo: CardBasicInfoObject
     
-    let detailInfo: [CardDetailInfo]
+    var detailInfo: [CardDetailInfo]
 }
 
-struct CardBasicObject: Codable {
-    
-    let cardBasic: [CardBasicInfo]
-}
-
-struct CardBasicInfo: Codable {
+struct CardBasicInfoObject: Codable {
     
     let bank: String
     
-    let id: Int
+    let id: String
     
     let image: String
     
@@ -43,7 +36,7 @@ struct CardDetailInfo: Codable {
     
     let sectionTitle: String
     
-    let content: [ CardContent ]
+    var content: [ CardContent ]
 }
 
 struct CardContent: Codable {
@@ -57,6 +50,8 @@ struct CardContent: Codable {
     let timePeriod: String?
     
     let lastDate: Int? // unixTime
+    
+    var isDetail: Bool
 }
 
 enum Tags: String {
