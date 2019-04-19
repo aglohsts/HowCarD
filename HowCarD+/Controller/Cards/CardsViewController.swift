@@ -8,12 +8,12 @@
 
 import UIKit
 
-private enum Segue: String {
-    
-    case toDetail = "toCardDetail"
-}
-
 class CardsViewController: HCBaseViewController {
+    
+    private struct Segue {
+        
+        static let toDetail = "toCardDetail"
+    }
     
     let cardProvider = CardProvider()
     
@@ -120,7 +120,7 @@ extension CardsViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == Segue.toDetail.rawValue {
+        if segue.identifier == Segue.toDetail {
             
             let cardDetailVC = segue.destination as? CardDetailViewController
             
@@ -140,9 +140,8 @@ extension CardsViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        performSegue(withIdentifier: Segue.toDetail.rawValue, sender: cardsBasicInfo[indexPath.row].id)
+        performSegue(withIdentifier: Segue.toDetail, sender: cardsBasicInfo[indexPath.row].id)
     }
-
 }
 
 extension CardsViewController: UITableViewDataSource {

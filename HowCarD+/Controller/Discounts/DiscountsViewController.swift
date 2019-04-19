@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct DiscountDetail {
+struct DiscountDetailDelete {
     
     let image: UIImage
     
@@ -21,11 +21,11 @@ struct DiscountDetail {
     var isLiked: Bool
 }
 
-struct DiscountInfo {
+struct DiscountInfoDelete {
     
     let category: String
     
-    let discountDetails: [DiscountDetail]
+    let discountDetails: [DiscountDetailDelete]
 }
 
 class DiscountsViewController: HCBaseViewController {
@@ -37,29 +37,29 @@ class DiscountsViewController: HCBaseViewController {
         static let discountDetail = "DetailFromDiscountVC"
     }
     
-    var discountInfos: [DiscountInfo] = [
-        DiscountInfo(
+    var discountInfos: [DiscountInfoDelete] = [
+        DiscountInfoDelete(
             category: "銀行",
             discountDetails: [
-                DiscountDetail(
+                DiscountDetailDelete(
                     image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
                     name: "123456789012345678901234567890",
                     target: "OO銀行 XX卡",
                     timePeriod: 1577750400,
                     isLiked: false),
-                DiscountDetail(
+                DiscountDetailDelete(
                     image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
                     name: "123456789012345678901234567890",
                     target: "OO銀行 XX卡",
                     timePeriod: 1575072000,
                     isLiked: false),
-                DiscountDetail(
+                DiscountDetailDelete(
                     image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
                     name: "123456789012345678901234567890",
                     target: "OO銀行 XX卡",
                     timePeriod: 1575072000,
                     isLiked: false),
-                DiscountDetail(
+                DiscountDetailDelete(
                     image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
                     name: "123456789012345678901234567890",
                     target: "OO銀行 XX卡",
@@ -67,34 +67,34 @@ class DiscountsViewController: HCBaseViewController {
                     isLiked: false)
             ]),
         
-        DiscountInfo(
+        DiscountInfoDelete(
             category: "回饋",
             discountDetails: [
-                DiscountDetail(
+                DiscountDetailDelete(
                     image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
                     name: "123456789012345678901234567890",
                     target: "OO銀行 XX卡",
                     timePeriod: 1575072000,
                     isLiked: false),
-                DiscountDetail(
+                DiscountDetailDelete(
                     image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
                     name: "123456789012345678901234567890",
                     target: "OO銀行 XX卡",
                     timePeriod: 1575072000,
                     isLiked: false),
-                DiscountDetail(
+                DiscountDetailDelete(
                     image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
                     name: "123456789012345678901234567890",
                     target: "OO銀行 XX卡",
                     timePeriod: 1575072000,
                     isLiked: false),
-                DiscountDetail(
+                DiscountDetailDelete(
                     image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
                     name: "123456789012345678901234567890",
                     target: "OO銀行 XX卡",
                     timePeriod: 1575072000,
                     isLiked: false),
-                DiscountDetail(
+                DiscountDetailDelete(
                     image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
                     name: "123456789012345678901234567890",
                     target: "OO銀行 XX卡",
@@ -103,22 +103,22 @@ class DiscountsViewController: HCBaseViewController {
             ]
         ),
         
-        DiscountInfo(
+        DiscountInfoDelete(
             category: "外幣消費",
             discountDetails: [
-                DiscountDetail(
+                DiscountDetailDelete(
                     image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
                     name: "123456789012345678901234567890",
                     target: "OO銀行 XX卡",
                     timePeriod: 1575072000,
                     isLiked: false),
-                DiscountDetail(
+                DiscountDetailDelete(
                     image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
                     name: "123456789012345678901234567890",
                     target: "OO銀行 XX卡",
                     timePeriod: 1575072000,
                     isLiked: false),
-                DiscountDetail(
+                DiscountDetailDelete(
                     image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
                     name: "123456789012345678901234567890",
                     target: "OO銀行 XX卡",

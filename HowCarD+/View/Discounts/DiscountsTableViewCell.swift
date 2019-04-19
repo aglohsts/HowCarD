@@ -16,7 +16,7 @@ class DiscountsTableViewCell: UITableViewCell {
     
     var toDiscountDetailHandler: (() -> Void)?
     
-    var discountDetails: [DiscountDetail] = []
+    var discountDetails: [DiscountDetailDelete] = []
 
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {

@@ -221,17 +221,20 @@ extension CardDetailViewController: UITableViewDataSource {
         contentCell.touchHandler = { [weak self] in
 
             guard let indexPath = tableView.indexPath(for: cell) else { return }
-   
-//            data.isDetail = !data.isDetail
-            
             self?.cardObject?.detailInfo[indexPath.section].content[indexPath.row].isDetail = !(self?.cardObject?.detailInfo[indexPath.section].content[indexPath.row].isDetail)!
             
             contentCell.isDetail = !contentCell.isDetail
                 
 //            contentCell.layoutCell(title: data.title, content: data.detailContent, isDetail: data.isDetail)
             
-            self?.tableView.reloadRows(at: [indexPath], with: .automatic)
-
+//            self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+//            let contentOffset = self?.tableView.contentOffset
+//            CATransaction.begin()
+            self?.tableView.reloadData()
+//            CATransaction.setCompletionBlock({
+//                self?.tableView.contentOffset = contentOffset!
+//            })
+//            CATransaction.commit()
         }
 
         return contentCell

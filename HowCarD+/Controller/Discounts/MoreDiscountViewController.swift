@@ -15,7 +15,7 @@ class MoreDiscountViewController: HCBaseViewController {
         static let discountDetail = "DetailFromMoreDiscountVC"
     }
     
-    var discountDetails: [DiscountDetail] = []
+    var discountDetails: [DiscountDetailDelete] = []
 
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {

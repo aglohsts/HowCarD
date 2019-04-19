@@ -16,7 +16,7 @@ class DiscountDetailViewController: HCBaseViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     
-    @IBOutlet weak var subTitleLabel: UILabel!
+    @IBOutlet weak var targetLabel: UILabel!
     
     @IBOutlet weak var timePeriodLabel: UILabel!
     

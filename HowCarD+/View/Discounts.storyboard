@@ -314,8 +314,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SubTitleLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSf-aK-Cn3">
-                                                    <rect key="frame" x="16" y="39" width="103" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TargetLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSf-aK-Cn3">
+                                                    <rect key="frame" x="16" y="39" width="90.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -401,8 +401,8 @@
                     <connections>
                         <outlet property="imageView" destination="QrY-j1-GLj" id="znp-Iu-eT1"/>
                         <outlet property="likeButton" destination="rCm-dm-mVX" id="nhB-g8-hYZ"/>
-                        <outlet property="subTitleLabel" destination="gSf-aK-Cn3" id="F8L-7K-9AU"/>
                         <outlet property="tableView" destination="A6Q-VR-oxZ" id="mLr-ru-7PV"/>
+                        <outlet property="targetLabel" destination="gSf-aK-Cn3" id="F8L-7K-9AU"/>
                         <outlet property="timePeriodLabel" destination="mff-Aw-rO1" id="quU-Oi-60T"/>
                         <outlet property="titleLabel" destination="Udv-Ob-f0G" id="zQM-gE-Dsf"/>
                     </connections>
