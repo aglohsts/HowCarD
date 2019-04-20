@@ -41,6 +41,8 @@
 		CA2F7DDB22579B8B005E4361 /* CardInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2F7DDA22579B8B005E4361 /* CardInfoTableViewCell.swift */; };
 		CA323DB522684C57007A39FD /* HCParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA323DB422684C57007A39FD /* HCParser.swift */; };
 		CA38706A2269BC6700D06B90 /* DiscountObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3870692269BC6700D06B90 /* DiscountObject.swift */; };
+		CA38706C2269DFA300D06B90 /* DiscountProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38706B2269DFA300D06B90 /* DiscountProvider.swift */; };
+		CA38706E2269E01100D06B90 /* DiscountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38706D2269E01100D06B90 /* DiscountRequest.swift */; };
 		CA47A184225AF7CD00AD16AF /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47A183225AF7CD00AD16AF /* CardDetailViewController.swift */; };
 		CA47A187225B133F00AD16AF /* CardTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47A185225B133F00AD16AF /* CardTagCollectionViewCell.swift */; };
 		CA47A188225B133F00AD16AF /* CardTagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA47A186225B133F00AD16AF /* CardTagCollectionViewCell.xib */; };
@@ -116,6 +118,8 @@
 		CA2F7DDA22579B8B005E4361 /* CardInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoTableViewCell.swift; sourceTree = "<group>"; };
 		CA323DB422684C57007A39FD /* HCParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCParser.swift; sourceTree = "<group>"; };
 		CA3870692269BC6700D06B90 /* DiscountObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountObject.swift; sourceTree = "<group>"; };
+		CA38706B2269DFA300D06B90 /* DiscountProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountProvider.swift; sourceTree = "<group>"; };
+		CA38706D2269E01100D06B90 /* DiscountRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountRequest.swift; sourceTree = "<group>"; };
 		CA47A183225AF7CD00AD16AF /* CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
 		CA47A185225B133F00AD16AF /* CardTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA47A186225B133F00AD16AF /* CardTagCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardTagCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -364,6 +368,8 @@
 			isa = PBXGroup;
 			children = (
 				CA3870692269BC6700D06B90 /* DiscountObject.swift */,
+				CA38706B2269DFA300D06B90 /* DiscountProvider.swift */,
+				CA38706D2269E01100D06B90 /* DiscountRequest.swift */,
 			);
 			path = Discount;
 			sourceTree = "<group>";
@@ -650,6 +656,8 @@
 				CA171B7B22533B290042BBDC /* UIStoryboard+Extension.swift in Sources */,
 				CAFE8281225E09CD004F4E63 /* DiscountLikedListViewController.swift in Sources */,
 				CA2F7DC6225638D7005E4361 /* FilterViewController.swift in Sources */,
+				CA38706E2269E01100D06B90 /* DiscountRequest.swift in Sources */,
+				CA38706C2269DFA300D06B90 /* DiscountProvider.swift in Sources */,
 				CA171B8D22534FF30042BBDC /* DiscountsViewController.swift in Sources */,
 				CAF58D8C225DB41000818CDD /* DiscountsTableViewCell.swift in Sources */,
 				CAF58D88225CA1AB00818CDD /* MoreDiscountViewController.swift in Sources */,

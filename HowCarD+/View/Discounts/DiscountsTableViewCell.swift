@@ -16,7 +16,16 @@ class DiscountsTableViewCell: UITableViewCell {
     
     var toDiscountDetailHandler: (() -> Void)?
     
-    var discountDetails: [DiscountDetailDelete] = []
+    var discountInfos: [DiscountInfo] = [] {
+        
+        didSet {
+            
+            DispatchQueue.main.async {
+                
+                self.collectionView.reloadData()
+            }
+        }
+    }
 
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -35,7 +44,13 @@ class DiscountsTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+    }
+    
+    func layoutTableViewCell(category: String, discountInfos: [DiscountInfo]) {
+        
+        categoryLabel.text = category
+        
+        self.discountInfos = discountInfos
     }
     
     private func setupCollectionView() {
@@ -63,7 +78,7 @@ extension DiscountsTableViewCell: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath)
         -> CGSize {
             
-            return CGSize(width: UIScreen.width / 2 - 25, height: 250.0)
+            return CGSize(width: UIScreen.width / 2 - 25, height: 200.0)
             
     }
     
@@ -113,7 +128,7 @@ extension DiscountsTableViewCell: UICollectionViewDelegate {
 extension DiscountsTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return discountDetails.count
+        return discountInfos.count
     }
     
     func collectionView(
@@ -129,16 +144,17 @@ extension DiscountsTableViewCell: UICollectionViewDataSource {
             guard let discountCell = cell as? DiscountCollectionViewCell else { return cell }
             
             discountCell.layoutCell(
-                image: discountDetails[indexPath.row].image,
-                discountName: discountDetails[indexPath.row].name,
-                target: discountDetails[indexPath.row].target,
-                timePeriod: discountDetails[indexPath.row].timePeriod,
-                isLiked: discountDetails[indexPath.row].isLiked
+                image: discountInfos[indexPath.row].image,
+                discountTitle: discountInfos[indexPath.row].title,
+                bankName: discountInfos[indexPath.row].bankName,
+                cardName: discountInfos[indexPath.row].cardName,
+                timePeriod: discountInfos[indexPath.row].timePeriod,
+                isLiked: false
             )
             
             discountCell.touchHandler = {
                 
-                self.discountDetails[indexPath.row].isLiked = !self.discountDetails[indexPath.row].isLiked
+//                self.discountDetails[indexPath.row].isLiked = !self.discountDetails[indexPath.row].isLiked
             }
             
             return discountCell

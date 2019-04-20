@@ -17,7 +17,7 @@ struct DiscountObject: Codable {
 
 struct DiscountInfo: Codable {
     
-    let id: String
+    let discountId: String
     
     let image: String
     
@@ -25,11 +25,19 @@ struct DiscountInfo: Codable {
     
     let bankName: String
     
+    let cardId: String
+    
     let cardName: String
     
     let timePeriod: String
     
     let lastDate: Int
+    
+    let officialWeb: String
+    
+    let isRegisterNeeded: Bool
+    
+    let registerWeb: String?
 }
 
 struct DiscountDetail: Codable {

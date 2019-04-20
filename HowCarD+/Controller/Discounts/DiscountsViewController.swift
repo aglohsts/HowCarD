@@ -30,11 +30,24 @@ struct DiscountInfoDelete {
 
 class DiscountsViewController: HCBaseViewController {
     
+    let discountProvider = DiscountProvider()
+    
     private struct Segue {
         
         static let moreDiscount = "MoreDiscount"
         
         static let discountDetail = "DetailFromDiscountVC"
+    }
+    
+    var discountObjects: [DiscountObject] = [] {
+        
+        didSet {
+            
+            DispatchQueue.main.async {
+                
+                self.tableView.reloadData()
+            }
+        }
     }
     
     var discountInfos: [DiscountInfoDelete] = [
@@ -144,6 +157,8 @@ class DiscountsViewController: HCBaseViewController {
         setNavBar()
         
         setTableView()
+        
+        getAllDiscount()
     }
     
     private func setTableView() {
@@ -199,6 +214,25 @@ extension DiscountsViewController {
 
         }
     }
+    
+    func getAllDiscount() {
+        
+        discountProvider.getCards(completion: { [weak self] result in
+            
+            switch result {
+                
+            case .success(let discountObjects):
+                
+                print(discountObjects)
+                
+                self?.discountObjects = discountObjects
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        })
+    }
 }
 
 extension DiscountsViewController: UITableViewDelegate {
@@ -214,9 +248,15 @@ extension DiscountsViewController: UITableViewDelegate {
 }
 
 extension DiscountsViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return discountObjects.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return discountInfos.count
+        return discountObjects[section].discountInfos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -227,10 +267,11 @@ extension DiscountsViewController: UITableViewDataSource {
         )
         
         guard let discountTableViewCell = cell as? DiscountsTableViewCell else { return cell }
-        
-        discountTableViewCell.categoryLabel.text = discountInfos[indexPath.row].category
-        
-        discountTableViewCell.discountDetails = discountInfos[indexPath.row].discountDetails
+
+        discountTableViewCell.layoutTableViewCell(
+            category: discountObjects[indexPath.section].category,
+            discountInfos: discountObjects[indexPath.section].discountInfos
+        )
         
         discountTableViewCell.toMoreDiscountHandler = {
             

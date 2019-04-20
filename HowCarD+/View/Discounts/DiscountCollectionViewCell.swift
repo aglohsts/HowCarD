@@ -26,7 +26,7 @@ class DiscountCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var backView: UIView!
     
-    @IBOutlet weak var discountNameLabel: UILabel!
+    @IBOutlet weak var discountTitleLabel: UILabel!
 
     @IBOutlet weak var targetLabel: UILabel!
 
@@ -50,15 +50,15 @@ class DiscountCollectionViewCell: UICollectionViewCell {
         )
     }
 
-    func layoutCell(image: UIImage, discountName: String, target: String, timePeriod: Int, isLiked: Bool) {
+    func layoutCell(image: String, discountTitle: String, bankName: String, cardName: String, timePeriod: String, isLiked: Bool) {
 
-        imageView.image = image
+        imageView.loadImage(image, placeHolder: UIImage.asset(.Image_Placeholder))
         
-        discountNameLabel.text = discountName
+        discountTitleLabel.text = discountTitle
 
-        targetLabel.text = target
+        targetLabel.text = "\(bankName) \(cardName)"
 
-        timePeriodLabel.text = "至 \(transferToDate(unixTime: timePeriod))"
+        timePeriodLabel.text = timePeriod
         
         self.isLiked = isLiked
     }

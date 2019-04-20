@@ -59,7 +59,7 @@ class CardProvider {
                 
                 do {
                     
-                    // let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
+                    let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
                     
                     let cardBasicInfoObject = try strongSelf.decoder.decode([CardBasicInfoObject].self, from: data)
                     

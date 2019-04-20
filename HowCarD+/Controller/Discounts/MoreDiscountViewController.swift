@@ -10,6 +10,8 @@ import UIKit
 
 class MoreDiscountViewController: HCBaseViewController {
     
+    var discountID: String = ""
+    
     private struct Segue {
         
         static let discountDetail = "DetailFromMoreDiscountVC"
@@ -152,13 +154,13 @@ extension MoreDiscountViewController: UICollectionViewDataSource {
         
         guard let discountCell = cell as? DiscountCollectionViewCell else { return cell }
 
-        discountCell.layoutCell(
-            image: discountDetails[indexPath.row].image,
-            discountName: discountDetails[indexPath.row].name,
-            target: discountDetails[indexPath.row].target,
-            timePeriod: discountDetails[indexPath.row].timePeriod,
-            isLiked: discountDetails[indexPath.row].isLiked
-        )
+//        discountCell.layoutCell(
+//            image: discountDetails[indexPath.row].image,
+//            discountName: discountDetails[indexPath.row].name,
+//            target: discountDetails[indexPath.row].target,
+//            timePeriod: discountDetails[indexPath.row].timePeriod,
+//            isLiked: discountDetails[indexPath.row].isLiked
+//        )
 
         discountCell.touchHandler = {
 

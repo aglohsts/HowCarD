@@ -23,31 +23,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="255" height="347"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O9o-wg-BD1">
-                                <rect key="frame" x="0.0" y="0.0" width="255" height="191.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="255" height="127.5"/>
+                                <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="O9o-wg-BD1" secondAttribute="height" multiplier="4:3" id="qOm-wD-JMn"/>
+                                    <constraint firstAttribute="width" secondItem="O9o-wg-BD1" secondAttribute="height" multiplier="2:1" id="qOm-wD-JMn"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DiscountsNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucc-Uk-8dU">
-                                <rect key="frame" x="8" y="207.5" width="239" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TargetLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IA5-P0-Da3">
-                                <rect key="frame" x="8" y="298" width="239" height="17"/>
+                                <rect key="frame" x="8" y="143.5" width="239" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TimePeriodLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCr-q6-azg">
-                                <rect key="frame" x="8" y="323" width="102" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TargetLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IA5-P0-Da3">
+                                <rect key="frame" x="8" y="300.5" width="239" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TimePeriodLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCr-q6-azg">
+                                <rect key="frame" x="8" y="324.5" width="95" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bT-IE-RDi">
-                                <rect key="frame" x="212" y="169.5" width="35" height="35"/>
+                                <rect key="frame" x="212" y="105.5" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="VzA-wU-mfL"/>
                                     <constraint firstAttribute="width" constant="35" id="dIS-PZ-DhU"/>
@@ -88,7 +89,7 @@
             <size key="customSize" width="255" height="397"/>
             <connections>
                 <outlet property="backView" destination="DZX-E0-eMb" id="wkU-9S-uOy"/>
-                <outlet property="discountNameLabel" destination="Ucc-Uk-8dU" id="qAZ-u2-hko"/>
+                <outlet property="discountTitleLabel" destination="Ucc-Uk-8dU" id="qAZ-u2-hko"/>
                 <outlet property="imageView" destination="O9o-wg-BD1" id="Nvf-bg-8cX"/>
                 <outlet property="likeButton" destination="9bT-IE-RDi" id="RmW-gF-WSr"/>
                 <outlet property="targetLabel" destination="IA5-P0-Da3" id="JYQ-cV-twV"/>
