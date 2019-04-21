@@ -40,8 +40,6 @@ class CardDetailViewController: UIViewController {
             bankNameLabel.text = ""
         }
     }
-    
-    var tagArray = ["回饋", "網路購物"]
 
     lazy var datas: [CardIntro] = [
 
@@ -69,6 +67,8 @@ class CardDetailViewController: UIViewController {
             DispatchQueue.main.async {
                 
                 self.tableView.reloadData()
+                
+                self.tagCollectionView.reloadData()
                 
                 self.setHeaderViewContent(cardName: self.cardObject?.basicInfo.name ?? "", bankName: self.cardObject?.basicInfo.bank ?? "")
             }
@@ -150,6 +150,8 @@ extension CardDetailViewController {
                 print(cards)
                 
                 self?.cardObject = cards
+                
+                
                 
             case .failure(let error):
                 
@@ -260,7 +262,7 @@ extension CardDetailViewController: UICollectionViewDelegate {
 
 extension CardDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tagArray.count
+        return self.cardObject?.basicInfo.tags.count ?? 0
     }
 
     func collectionView(
@@ -273,9 +275,9 @@ extension CardDetailViewController: UICollectionViewDataSource {
             for: indexPath
         )
 
-        guard let tagCell = cell as? CardTagCollectionViewCell else { return cell }
+        guard let tagCell = cell as? CardTagCollectionViewCell, let cardObject = cardObject else { return cell }
 
-        tagCell.layoutCell(tag: tagArray[indexPath.item])
+        tagCell.layoutCell(tag: cardObject.basicInfo.tags[indexPath.item])
 
         return tagCell
     }

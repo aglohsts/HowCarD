@@ -10,7 +10,20 @@ import UIKit
 
 class MoreDiscountViewController: HCBaseViewController {
     
-    var discountID: String = ""
+    var discountCategoryId: String = ""
+    
+    var discountObject: DiscountObject? {
+        
+        didSet {
+            
+            DispatchQueue.main.async {
+                
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
+    let discountProvider = DiscountProvider()
     
     private struct Segue {
         
@@ -31,6 +44,8 @@ class MoreDiscountViewController: HCBaseViewController {
         super.viewDidLoad()
 
         setupCollectionView()
+        
+        getDiscountByCategory()
     }
     
     private func setupCollectionView() {
@@ -76,6 +91,25 @@ extension MoreDiscountViewController {
                     return
             }
         }
+    }
+    
+    func getDiscountByCategory() {
+        
+        discountProvider.getByCategory(id: discountCategoryId, completion: { [weak self] result in
+            
+            switch result {
+                
+            case .success(let discountObject):
+                
+                print(discountObject)
+                
+                self?.discountObject = discountObject
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        })
     }
 }
 
@@ -137,7 +171,9 @@ extension MoreDiscountViewController: UICollectionViewDelegate {
 extension MoreDiscountViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return discountDetails.count
+        guard let discountObject = discountObject else { return 0 }
+        
+        return discountObject.discountInfos.count
     }
     
     func collectionView(
@@ -152,15 +188,18 @@ extension MoreDiscountViewController: UICollectionViewDataSource {
         
 //        return cell
         
-        guard let discountCell = cell as? DiscountCollectionViewCell else { return cell }
-
-//        discountCell.layoutCell(
-//            image: discountDetails[indexPath.row].image,
-//            discountName: discountDetails[indexPath.row].name,
-//            target: discountDetails[indexPath.row].target,
-//            timePeriod: discountDetails[indexPath.row].timePeriod,
-//            isLiked: discountDetails[indexPath.row].isLiked
-//        )
+        guard let discountCell = cell as? DiscountCollectionViewCell,
+            let discountObject = discountObject
+            else { return cell }
+        
+        discountCell.layoutCell(
+            image: discountObject.discountInfos[indexPath.row].image,
+            discountTitle: discountObject.discountInfos[indexPath.row].title,
+            bankName: discountObject.discountInfos[indexPath.row].bankName,
+            cardName: discountObject.discountInfos[indexPath.row].cardName,
+            timePeriod: discountObject.discountInfos[indexPath.row].timePeriod,
+            isLiked: false
+        )
 
         discountCell.touchHandler = {
 

@@ -199,18 +199,25 @@ extension DiscountsViewController {
             
             guard let moreDiscountVC = segue.destination as? MoreDiscountViewController,
                 let selectedPath = sender as? IndexPath
+                
             else {
                 return
             }
             
             moreDiscountVC.discountDetails = self.discountInfos[selectedPath.row].discountDetails
             
+            moreDiscountVC.discountCategoryId = discountObjects[selectedPath.section].categoryId
+            
         } else if segue.identifier == Segue.discountDetail {
             
-            guard let discountDetailVC = segue.destination as? DiscountDetailViewController
+            guard let discountDetailVC = segue.destination as? DiscountDetailViewController,
+                let selectedPath = sender as? IndexPath
+                
             else {
                 return
             }
+            
+            discountDetailVC.discountId = discountObjects[selectedPath.section].discountInfos[selectedPath.row].discountId
 
         }
     }

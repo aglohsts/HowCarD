@@ -28,6 +28,12 @@ class DiscountDetailViewController: HCBaseViewController {
         }
     }
     
+    var discountId: String = ""
+    
+    let discountProvider = DiscountProvider()
+    
+    var discountDetail: DiscountDetail?
+    
     var isLiked: Bool = false {
         didSet {
             if isLiked {
@@ -42,7 +48,12 @@ class DiscountDetailViewController: HCBaseViewController {
         super.viewDidLoad()
 
         setupTableView()
+        
+        getDetail()
     }
+}
+
+extension DiscountDetailViewController {
     
     private func setupTableView() {
         
@@ -55,6 +66,25 @@ class DiscountDetailViewController: HCBaseViewController {
         
         imageView.image = UIImage.asset(.Image_Placeholder)
         
+    }
+    
+    func getDetail() {
+        
+        discountProvider.getDetail(id: discountId, completion: { [weak self] result in
+            
+            switch result {
+                
+            case .success(let discountDetail):
+                
+                print(discountDetail)
+                
+                self?.discountDetail = discountDetail
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        })
     }
 }
 

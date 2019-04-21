@@ -19,6 +19,8 @@ class FilterViewController: HCBaseViewController {
     }
 
     var isSelected: Bool = false
+    
+    var selectedArray: [IndexPath] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,8 @@ class FilterViewController: HCBaseViewController {
     private func setupCollectionView() {
 
         collectionView.showsVerticalScrollIndicator = false
+        
+        collectionView.allowsMultipleSelection = true
     }
 
     @IBAction func onDoneSelect(_ sender: Any) {
@@ -70,6 +74,16 @@ extension FilterViewController {
     }
 
     @objc private func resetSelect() {
+    }
+    
+    func handleMultipleSelection(collectionView: UICollectionView, cell: UICollectionView, indexPath: IndexPath) {
+        
+        if selectedArray.count > 0 {
+            
+            selectedArray.forEach { (selectedPath) in
+                <#code#>
+            }
+        }
     }
 }
 
@@ -125,7 +139,12 @@ extension FilterViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension FilterViewController: UICollectionViewDelegate {
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let cell = collectionView.cellForItem(at: indexPath)
+        
+        
+    }
 }
 
 extension FilterViewController: UICollectionViewDataSource {

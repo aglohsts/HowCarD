@@ -10,17 +10,21 @@ import Foundation
 
 enum DiscountRequest: HCRequest {
     
-    case cardDetail(String)
+    case discountDetail(String)
     
-    case allDiscount
+    case discountLobby
+    
+    case discountByCategory(String)
     
     var headers: [String: String] {
         
         switch self {
             
-        case .cardDetail(_): return [:]
+        case .discountDetail(_): return [:]
             
-        case .allDiscount: return [:]
+        case .discountLobby: return [:]
+            
+        case .discountByCategory(_): return [:]
             
         }
     }
@@ -29,10 +33,11 @@ enum DiscountRequest: HCRequest {
         
         switch self {
             
-        case .cardDetail(_): return nil
+        case .discountDetail(_): return nil
             
-        case .allDiscount: return nil
+        case .discountLobby: return nil
             
+        case .discountByCategory(_): return nil
         }
     }
     
@@ -40,10 +45,11 @@ enum DiscountRequest: HCRequest {
         
         switch self {
             
-        case .cardDetail(_): return HCHTTPMethod.GET.rawValue
+        case .discountDetail(_): return HCHTTPMethod.GET.rawValue
             
-        case .allDiscount: return HCHTTPMethod.GET.rawValue
+        case .discountLobby: return HCHTTPMethod.GET.rawValue
             
+        case .discountByCategory(_): return HCHTTPMethod.GET.rawValue
         }
     }
     
@@ -51,10 +57,11 @@ enum DiscountRequest: HCRequest {
         
         switch self {
             
-        case .cardDetail(let id): return "/data/cards/\(id).json"
+        case .discountDetail(let discountId): return "/data/discounts/detail/\(discountId).json"
             
-        case .allDiscount: return "/data/discounts.json"
+        case .discountLobby: return "/data/discounts/lobby.json"
             
+        case .discountByCategory(let categoryId): return "/data/discounts/category/\(categoryId).json"
         }
     }
 }

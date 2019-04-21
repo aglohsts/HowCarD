@@ -12,6 +12,8 @@ struct DiscountObject: Codable {
     
     let category: String
     
+    let categoryId: String
+    
     let discountInfos: [DiscountInfo]
 }
 
@@ -45,6 +47,7 @@ struct DiscountDetail: Codable {
     let info: DiscountInfo
     
     let detailContent: [DiscountDetailContent]
+    
 }
 
 struct DiscountDetailContent: Codable {
