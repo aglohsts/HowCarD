@@ -15,5 +15,6 @@ target 'HowCarD+' do
   pod 'Firebase/Database'
   pod 'Kingfisher'
   pod 'FoldingCell'
+  pod 'HFCardCollectionViewLayout'
 
 end

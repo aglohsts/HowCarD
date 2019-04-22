@@ -29,8 +29,6 @@ class MoreDiscountViewController: HCBaseViewController {
         
         static let discountDetail = "DetailFromMoreDiscountVC"
     }
-    
-    var discountDetails: [DiscountDetailDelete] = []
 
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -86,10 +84,14 @@ extension MoreDiscountViewController {
         
         if segue.identifier == Segue.discountDetail {
             
-            guard let discountDetailVC = segue.destination as? DiscountDetailViewController
+            guard let discountDetailVC = segue.destination as? DiscountDetailViewController,
+                let discountObject = discountObject,
+                let selectedPath = sender as? IndexPath
                 else {
                     return
             }
+            
+            discountDetailVC.discountId = discountObject.discountInfos[selectedPath.row].discountId
         }
     }
     
@@ -120,7 +122,7 @@ extension MoreDiscountViewController: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath)
         -> CGSize {
             
-            return CGSize(width: UIScreen.width - 30, height: 350.0)
+            return CGSize(width: UIScreen.width - 30, height: 280.0)
     }
     
     func collectionView(
@@ -163,7 +165,7 @@ extension MoreDiscountViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        self.performSegue(withIdentifier: Segue.discountDetail, sender: nil)
+        self.performSegue(withIdentifier: Segue.discountDetail, sender: indexPath)
     }
     
 }
@@ -203,7 +205,7 @@ extension MoreDiscountViewController: UICollectionViewDataSource {
 
         discountCell.touchHandler = {
 
-            self.discountDetails[indexPath.row].isLiked = !self.discountDetails[indexPath.row].isLiked
+//            self.discountDetails[indexPath.row].isLiked = !self.discountDetails[indexPath.row].isLiked
         }
 
         return discountCell

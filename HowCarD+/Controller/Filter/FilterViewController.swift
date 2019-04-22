@@ -76,15 +76,15 @@ extension FilterViewController {
     @objc private func resetSelect() {
     }
     
-    func handleMultipleSelection(collectionView: UICollectionView, cell: UICollectionView, indexPath: IndexPath) {
-        
+//    func handleMultipleSelection(collectionView: UICollectionView, cell: UICollectionView, indexPath: IndexPath) {
+//        
 //        if selectedArray.count > 0 {
 //            
 //            selectedArray.forEach { (selectedPath) in
 //                <#code#>
 //            }
 //        }
-    }
+//    }
 }
 
 extension FilterViewController: UICollectionViewDelegateFlowLayout {
@@ -142,8 +142,7 @@ extension FilterViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let cell = collectionView.cellForItem(at: indexPath)
-        
-        
+    
     }
 }
 

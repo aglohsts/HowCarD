@@ -15,22 +15,23 @@ class WalletViewController: HCBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        confirmUserSignnedIn()
     }
 
-    @IBAction func onSignUp(_ sender: Any) {
+    
+}
+
+extension WalletViewController {
+    
+    func confirmUserSignnedIn() {
         
-        if let signUpVC = UIStoryboard(
-            name: StoryboardCategory.auth,
-            bundle: nil).instantiateViewController(
-                withIdentifier: String(describing: SignUpViewController.self)) as? SignUpViewController {
-            let navVC = UINavigationController(rootViewController: signUpVC)
+        if Auth.auth().currentUser == nil {
             
-            self.present(navVC, animated: true, completion: nil)
+            presentSignInVC()
         }
     }
     
-    @IBAction func onSignIn(_ sender: Any) {
+    func presentSignInVC() {
         
         if let signInVC = UIStoryboard(
             name: StoryboardCategory.auth,
@@ -42,18 +43,29 @@ class WalletViewController: HCBaseViewController {
         }
     }
     
-    @IBAction func onSignOut(_ sender: Any) {
+    func presentSignUpVC() {
+        
+        if let signUpVC = UIStoryboard(
+            name: StoryboardCategory.auth,
+            bundle: nil).instantiateViewController(
+                withIdentifier: String(describing: SignUpViewController.self)) as? SignUpViewController {
+            let navVC = UINavigationController(rootViewController: signUpVC)
+            
+            self.present(navVC, animated: true, completion: nil)
+        }
+    }
+    
+    func signOut() {
         
         if Auth.auth().currentUser != nil {
             do {
                 try Auth.auth().signOut()
-//                let vc = UIStoryboard(name: StoryboardCategory.dRecommend, bundle: nil).instantiateViewController(withIdentifier: String(describing: ))
-//                present(vc, animated: true, completion: nil)
+                //                let vc = UIStoryboard(name: StoryboardCategory.dRecommend, bundle: nil).instantiateViewController(withIdentifier: String(describing: ))
+                //                present(vc, animated: true, completion: nil)
                 
             } catch let error as NSError {
                 print(error.localizedDescription)
             }
         }
     }
-    
 }

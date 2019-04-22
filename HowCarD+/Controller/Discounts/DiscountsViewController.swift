@@ -204,7 +204,7 @@ extension DiscountsViewController {
                 return
             }
             
-            moreDiscountVC.discountDetails = self.discountInfos[selectedPath.row].discountDetails
+//            moreDiscountVC.discountDetails = self.discountInfos[selectedPath.row].discountDetails
             
             moreDiscountVC.discountCategoryId = discountObjects[selectedPath.section].categoryId
             
@@ -246,7 +246,7 @@ extension DiscountsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 350
+        return 250
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -286,7 +286,7 @@ extension DiscountsViewController: UITableViewDataSource {
             
         }
         
-        discountTableViewCell.toDiscountDetailHandler = {
+        discountTableViewCell.toDiscountDetailHandler = { (indexPath) in
             
             self.performSegue(withIdentifier: Segue.discountDetail, sender: indexPath)
         }

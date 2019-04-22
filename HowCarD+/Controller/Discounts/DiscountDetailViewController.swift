@@ -28,16 +28,20 @@ class DiscountDetailViewController: HCBaseViewController {
         }
     }
     
-    var discountId: String = "" {
-        
-        didSet {
-            print("yo")
-        }
-    }
+    var discountId: String = ""
     
     let discountProvider = DiscountProvider()
     
-    var discountDetail: DiscountDetail?
+    var discountDetail: DiscountDetail? {
+        
+        didSet {
+            
+            DispatchQueue.main.async {
+                
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     var isLiked: Bool = false {
         didSet {
@@ -69,8 +73,23 @@ extension DiscountDetailViewController {
         
         tableView.separatorStyle = .none
         
-        imageView.image = UIImage.asset(.Image_Placeholder)
+        self.tableView.sectionHeaderHeight = UITableView.automaticDimension
         
+        self.tableView.estimatedSectionHeaderHeight = 200
+        
+    }
+    
+    private func layoutTopView(title: String, bankName: String, cardName: String, timePeriod: String, image: String) {
+        
+        let url = URL(string: image)!
+        
+        imageView.loadImageByURL(url, placeHolder: UIImage.asset(.Image_Placeholder))
+
+        titleLabel.text = title
+        
+        targetLabel.text = "\(bankName) \(cardName)"
+        
+        timePeriodLabel.text = timePeriod
     }
     
     func getDetail() {
@@ -85,6 +104,17 @@ extension DiscountDetailViewController {
                 
                 self?.discountDetail = discountDetail
                 
+                DispatchQueue.main.async {
+                    
+                    self?.layoutTopView(
+                        title: discountDetail.info.title,
+                        bankName: discountDetail.info.bankName,
+                        cardName: discountDetail.info.cardName,
+                        timePeriod: discountDetail.info.timePeriod,
+                        image: discountDetail.info.image
+                    )
+                }
+
             case .failure(let error):
                 
                 print(error)
@@ -94,14 +124,16 @@ extension DiscountDetailViewController {
 }
 
 extension DiscountDetailViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = tableView.dequeueReusableHeaderFooterView(
             withIdentifier: String(describing: DiscountDetailTableViewHeaderFooterView.self)
         )
         
-        guard let headerView = view as? DiscountDetailTableViewHeaderFooterView else { return view }
+        guard let headerView = view as? DiscountDetailTableViewHeaderFooterView,
+            let discountDetail = discountDetail else { return view }
         
-        headerView.layoutView(contentTitle: "123123")
+        headerView.layoutView(contentTitle: discountDetail.detailContent[section].briefContent)
         
         return headerView
     }
@@ -118,7 +150,7 @@ extension DiscountDetailViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 3
+        return discountDetail?.detailContent.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -133,9 +165,12 @@ extension DiscountDetailViewController: UITableViewDataSource {
             for: indexPath
         )
         
-        guard let contentCell = cell as? DiscountDetailContentTableViewCell else { return cell }
+        guard let contentCell = cell as? DiscountDetailContentTableViewCell, let discountDetail = discountDetail else {
+            
+            return cell
+        }
         
-        contentCell.layoutCell(content: "12345678")
+        contentCell.layoutCell(content: discountDetail.detailContent[indexPath.row].detailContent)
         
         return contentCell
     }
