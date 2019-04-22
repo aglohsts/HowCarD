@@ -9,21 +9,13 @@
 import UIKit
 import FoldingCell
 
-class DRecommViewController: HCBaseViewController {
+class DRecommViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView! {
-        
-        didSet {
-            
-            tableView.delegate = self
-            
-            tableView.dataSource = self
-        }
-    }
+    @IBOutlet weak var tableView: UITableView!
     
     enum Const {
         static let closeCellHeight: CGFloat = 135
-        static let openCellHeight: CGFloat = 410
+        static let openCellHeight: CGFloat = 488
         static let rowsCount = 10
     }
     
@@ -38,7 +30,7 @@ class DRecommViewController: HCBaseViewController {
         cellHeights = Array(repeating: Const.closeCellHeight, count: Const.rowsCount)
         tableView.estimatedRowHeight = Const.closeCellHeight
         tableView.rowHeight = UITableView.automaticDimension
-//        tableView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background"))
+        //        tableView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background"))
         if #available(iOS 10.0, *) {
             tableView.refreshControl = UIRefreshControl()
             tableView.refreshControl?.addTarget(self, action: #selector(refreshHandler), for: .valueChanged)
@@ -58,41 +50,38 @@ class DRecommViewController: HCBaseViewController {
 
 // MARK: - TableView
 
-extension DRecommViewController: UITableViewDelegate, UITableViewDataSource {
+extension DRecommViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return 10
     }
     
     func tableView(_: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        guard case let cell as DRecommTableViewHeaderCell = cell else {
-//            return
-//        }
-//        
-//        cell.backgroundColor = .clear
-//        
-//        if cellHeights[indexPath.row] == Const.closeCellHeight {
-//            cell.unfold(false, animated: false, completion: nil)
-//        } else {
-//            cell.unfold(true, animated: false, completion: nil)
-//        }
+        guard case let cell as FoldingCell = cell else {
+            return
+        }
         
-//        cell.number = indexPath.row
+        cell.backgroundColor = .clear
+        
+        if cellHeights[indexPath.row] == Const.closeCellHeight {
+            cell.unfold(false, animated: false, completion: nil)
+        } else {
+            cell.unfold(true, animated: false, completion: nil)
+        }
+        
+        //        cell.number = indexPath.row
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: DRecommTableViewHeaderCell.self), for: indexPath
-        ) as? DRecommTableViewHeaderCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FoldingCell", for: indexPath) as? FoldingCell else {
             
             return UITableViewCell()
         }
         
         let durations: [TimeInterval] = [0.26, 0.2, 0.2]
-        cell.durationsForExpandedState = [0.26, 0.2, 0.2]
-        cell.durationsForCollapsedState = [0.26, 0.2, 0.2]
-        
+        cell.durationsForExpandedState = durations
+        cell.durationsForCollapsedState = durations
         return cell
     }
     
@@ -102,11 +91,9 @@ extension DRecommViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: DRecommTableViewHeaderCell.self), for: indexPath
-            ) as? DRecommTableViewHeaderCell else {
-                
-                return
+        guard let cell = tableView.cellForRow(at: indexPath) as? FoldingCell else {
+            
+            return
         }
         
         if cell.isAnimating() {
@@ -128,6 +115,10 @@ extension DRecommViewController: UITableViewDelegate, UITableViewDataSource {
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { () -> Void in
             tableView.beginUpdates()
             tableView.endUpdates()
+            
+            if cell.frame.maxY > tableView.frame.maxY {
+                tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.bottom, animated: true)
+            }
         }, completion: nil)
     }
 }

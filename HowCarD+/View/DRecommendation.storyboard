@@ -31,7 +31,7 @@
                                 <rect key="frame" x="0.0" y="183" width="414" height="679"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DRecommTableViewHeaderCell" rowHeight="376" id="DVK-4h-12p" customClass="DRecommTableViewHeaderCell" customModule="HowCarD_" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FoldingCell" rowHeight="376" id="DVK-4h-12p" customClass="FoldingCell" customModule="FoldingCell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="376"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DVK-4h-12p" id="rnB-qz-Be6">
@@ -39,14 +39,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cnj-UH-Vgx" customClass="RotatedView" customModule="FoldingCell">
-                                                    <rect key="frame" x="8" y="10" width="398" height="125"/>
+                                                    <rect key="frame" x="10" y="10" width="394" height="125"/>
                                                     <color key="backgroundColor" red="0.43529411759999997" green="0.74509803919999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="125" id="pc9-cy-5TP"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4xl-Jh-vzR">
-                                                    <rect key="frame" x="16" y="160" width="382" height="250"/>
+                                                    <rect key="frame" x="10" y="160" width="394" height="250"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="250" id="u1A-UX-kAz"/>
@@ -54,12 +54,12 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="4xl-Jh-vzR" firstAttribute="leading" secondItem="rnB-qz-Be6" secondAttribute="leading" constant="16" id="0xJ-Xg-p1A"/>
-                                                <constraint firstAttribute="trailing" secondItem="4xl-Jh-vzR" secondAttribute="trailing" constant="16" id="AdE-KT-qOu"/>
+                                                <constraint firstItem="4xl-Jh-vzR" firstAttribute="leading" secondItem="rnB-qz-Be6" secondAttribute="leading" constant="10" id="0xJ-Xg-p1A"/>
+                                                <constraint firstAttribute="trailing" secondItem="4xl-Jh-vzR" secondAttribute="trailing" constant="10" id="AdE-KT-qOu"/>
                                                 <constraint firstItem="cnj-UH-Vgx" firstAttribute="top" secondItem="rnB-qz-Be6" secondAttribute="top" constant="10" id="Hs8-Mn-oQb"/>
-                                                <constraint firstItem="cnj-UH-Vgx" firstAttribute="leading" secondItem="rnB-qz-Be6" secondAttribute="leading" constant="8" id="SDy-wV-e6N"/>
+                                                <constraint firstItem="cnj-UH-Vgx" firstAttribute="leading" secondItem="rnB-qz-Be6" secondAttribute="leading" constant="10" id="SDy-wV-e6N"/>
                                                 <constraint firstItem="4xl-Jh-vzR" firstAttribute="top" secondItem="rnB-qz-Be6" secondAttribute="top" constant="160" identifier="containerViewTop" id="f33-1f-k2g"/>
-                                                <constraint firstAttribute="trailing" secondItem="cnj-UH-Vgx" secondAttribute="trailing" constant="8" id="lLj-n8-gOW"/>
+                                                <constraint firstAttribute="trailing" secondItem="cnj-UH-Vgx" secondAttribute="trailing" constant="10" id="lLj-n8-gOW"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <userDefinedRuntimeAttributes>
@@ -75,6 +75,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="aTC-Qr-tcT" id="dyn-TY-iwZ"/>
+                                    <outlet property="delegate" destination="aTC-Qr-tcT" id="nkN-eO-JB7"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

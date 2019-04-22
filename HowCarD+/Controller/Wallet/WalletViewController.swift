@@ -12,6 +12,16 @@ import FirebaseAuth
 
 class WalletViewController: HCBaseViewController {
 
+    @IBOutlet weak var collectionView: UICollectionView! {
+        
+        didSet {
+            
+            collectionView.delegate = self
+            
+            collectionView.dataSource = self
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -68,4 +78,20 @@ extension WalletViewController {
             }
         }
     }
+}
+
+extension WalletViewController: UICollectionViewDelegate {
+
+}
+
+extension WalletViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return UICollectionViewCell()
+    }
+    
+
 }
