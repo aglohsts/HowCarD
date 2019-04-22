@@ -263,7 +263,7 @@ extension DiscountsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return discountObjects[section].discountInfos.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -288,7 +288,7 @@ extension DiscountsViewController: UITableViewDataSource {
         
         discountTableViewCell.toDiscountDetailHandler = {
             
-            self.performSegue(withIdentifier: Segue.discountDetail, sender: nil)
+            self.performSegue(withIdentifier: Segue.discountDetail, sender: indexPath)
         }
         
         return discountTableViewCell

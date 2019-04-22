@@ -73,6 +73,8 @@ class HTTPClient {
                 
             case 200..<300:
                 
+                print(request)
+                
                 completion(Result.success(data!))
                 
             case 400..<500:

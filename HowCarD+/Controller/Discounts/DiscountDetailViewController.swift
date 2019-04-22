@@ -28,7 +28,12 @@ class DiscountDetailViewController: HCBaseViewController {
         }
     }
     
-    var discountId: String = ""
+    var discountId: String = "" {
+        
+        didSet {
+            print("yo")
+        }
+    }
     
     let discountProvider = DiscountProvider()
     

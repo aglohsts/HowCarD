@@ -78,12 +78,12 @@ extension FilterViewController {
     
     func handleMultipleSelection(collectionView: UICollectionView, cell: UICollectionView, indexPath: IndexPath) {
         
-        if selectedArray.count > 0 {
-            
-            selectedArray.forEach { (selectedPath) in
-                <#code#>
-            }
-        }
+//        if selectedArray.count > 0 {
+//            
+//            selectedArray.forEach { (selectedPath) in
+//                <#code#>
+//            }
+//        }
     }
 }
 

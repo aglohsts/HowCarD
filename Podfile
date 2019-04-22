@@ -14,5 +14,6 @@ target 'HowCarD+' do
   pod 'Firebase/Storage'
   pod 'Firebase/Database'
   pod 'Kingfisher'
+  pod 'FoldingCell'
 
 end

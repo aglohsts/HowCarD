@@ -63,6 +63,8 @@ class DiscountProvider {
                     
                     let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
                     
+                    guard let dict = json as? [String: Any] else { return }
+                    
                     let discountDetail = try strongSelf.decoder.decode(DiscountDetail.self, from: data)
                     
                     completion(Result.success(discountDetail))
