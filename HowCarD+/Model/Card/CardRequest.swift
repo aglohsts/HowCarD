@@ -51,9 +51,9 @@ enum CardRequest: HCRequest {
         
         switch self {
             
-        case .cardDetail(let id): return "/data/cards/\(id).json"
+        case .cardDetail(let id): return "/data/cards/detail/\(id).json"
             
-        case .basicInfo: return "/data/cardsBasic.json"
+        case .basicInfo: return "/data/cards/basic.json"
             
         }
     }

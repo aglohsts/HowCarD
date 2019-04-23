@@ -13,6 +13,8 @@ class DRecommViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    let dRecommProvider = DRecommProvider()
+    
     enum Const {
         static let closeCellHeight: CGFloat = 135
         static let openCellHeight: CGFloat = 488
@@ -23,7 +25,10 @@ class DRecommViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setup()
+        
+        getData()
     }
     
     private func setup() {
@@ -123,6 +128,84 @@ extension DRecommViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+extension DRecommViewController {
+    
+    func getData() {
+        
+        getNewCards()
+        getNewDiscounts()
+        getSelectedCards()
+        getSelectedDiscounts()
+    }
+    
+    func getNewCards() {
+        
+        dRecommProvider.getNewCards(completion: { [weak self] result in
+            
+            switch result {
+            
+            case .success(let newCards):
+            
+            print(newCards)
+            
+            case .failure(let error):
+            
+            print(error)
+            }
+        })
+    }
+    
+    func getSelectedCards() {
+        
+        dRecommProvider.getSelectedCards(completion: { [weak self] result in
+            
+            switch result {
+                
+            case .success(let selectedCards):
+                
+                print(selectedCards)
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        })
+    }
+    
+    func getNewDiscounts() {
+        
+        dRecommProvider.getNewDiscounts(completion: { [weak self] result in
+            
+            switch result {
+                
+            case .success(let newDiscounts):
+                
+                print(newDiscounts)
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        })
+    }
+    
+    func getSelectedDiscounts() {
+        
+        dRecommProvider.getSelectedDiscounts(completion: { [weak self] result in
+            
+            switch result {
+                
+            case .success(let selectedDiscounts):
+                
+                print(selectedDiscounts)
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        })
+    }
+}
 //
 //
 //
