@@ -12,12 +12,38 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DRecommSectionHeaderView" customModule="HowCarD_" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vk6-pi-fXH">
+                    <rect key="frame" x="10" y="42.5" width="3" height="15"/>
+                    <color key="backgroundColor" red="0.43529411759999997" green="0.74509803919999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="2yV-KS-vMd"/>
+                        <constraint firstAttribute="width" constant="3" id="AVp-OL-6gH"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q37-Wu-vgl">
+                    <rect key="frame" x="29" y="41" width="369" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Q37-Wu-vgl" firstAttribute="leading" secondItem="Vk6-pi-fXH" secondAttribute="trailing" constant="16" id="7ak-G1-CmG"/>
+                <constraint firstItem="Vk6-pi-fXH" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="SjU-5f-57q"/>
+                <constraint firstItem="Vk6-pi-fXH" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Xya-cC-t4x"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Q37-Wu-vgl" secondAttribute="trailing" constant="16" id="ruy-Rm-Awt"/>
+                <constraint firstItem="Q37-Wu-vgl" firstAttribute="centerY" secondItem="Vk6-pi-fXH" secondAttribute="centerY" id="wkT-lS-7fL"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="sectionHeaderLabel" destination="Q37-Wu-vgl" id="mL6-vY-wZ8"/>
+            </connections>
         </view>
     </objects>
 </document>

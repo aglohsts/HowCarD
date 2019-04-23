@@ -9,9 +9,25 @@
 import UIKit
 import FoldingCell
 
-class DRecommViewController: UIViewController {
+class DRecommViewController: HCBaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    
+    var newCards = [CardBasicInfoObject]()
+    
+    var selectedCards = [CardBasicInfoObject]()
+    
+    var newDiscounts = [DiscountDetail]()
+    
+    var selectedDiscounts = [DiscountDetail]()
+    
+    let group = DispatchGroup()
+    
+    var dRecommArray: [[Any]] {
+        return [newCards, newDiscounts, selectedCards, selectedDiscounts]
+    }
+    
+    let titleArray = ["最新卡片", "最新優惠", "精選卡片", "精選優惠"]
     
     let dRecommProvider = DRecommProvider()
     
@@ -26,12 +42,20 @@ class DRecommViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setup()
+        setupTableView()
         
         getData()
     }
     
-    private func setup() {
+    private func setupTableView() {
+        
+        tableView.agRegisterHeaderWithNib(
+            identifier: String(describing: DRecommSectionHeaderView.self),
+            bundle: nil
+        )
+        
+        tableView.separatorStyle = .none
+        
         cellHeights = Array(repeating: Const.closeCellHeight, count: Const.rowsCount)
         tableView.estimatedRowHeight = Const.closeCellHeight
         tableView.rowHeight = UITableView.automaticDimension
@@ -55,14 +79,10 @@ class DRecommViewController: UIViewController {
 
 // MARK: - TableView
 
-extension DRecommViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-        return 10
-    }
+extension DRecommViewController: UITableViewDelegate {
     
     func tableView(_: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard case let cell as FoldingCell = cell else {
+        guard case let cell as DRecommTableViewCell = cell else {
             return
         }
         
@@ -77,26 +97,13 @@ extension DRecommViewController: UITableViewDataSource, UITableViewDelegate {
         //        cell.number = indexPath.row
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FoldingCell", for: indexPath) as? FoldingCell else {
-            
-            return UITableViewCell()
-        }
-        
-        let durations: [TimeInterval] = [0.26, 0.2, 0.2]
-        cell.durationsForExpandedState = durations
-        cell.durationsForCollapsedState = durations
-        return cell
-    }
-    
     func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return cellHeights[indexPath.row]
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let cell = tableView.cellForRow(at: indexPath) as? FoldingCell else {
+        guard let cell = tableView.cellForRow(at: indexPath) as? DRecommTableViewCell else {
             
             return
         }
@@ -126,6 +133,84 @@ extension DRecommViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }, completion: nil)
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let view = tableView.dequeueReusableHeaderFooterView(
+            withIdentifier: String(describing: DRecommSectionHeaderView.self)
+        )
+        
+        guard let headerView = view as? DRecommSectionHeaderView else { return view }
+        
+        headerView.layoutView(category: titleArray[section])
+        
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+        guard let headerView = view as? DRecommSectionHeaderView else { return }
+        
+        headerView.contentView.backgroundColor = UIColor.white
+    }
+}
+
+extension DRecommViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return titleArray.count
+    }
+    
+    func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+        return dRecommArray[section].count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: DRecommTableViewCell.self),
+            for: indexPath) as? DRecommTableViewCell else {
+            
+            return UITableViewCell()
+        }
+        
+        let durations: [TimeInterval] = [0.26, 0.2, 0.2]
+        cell.durationsForExpandedState = durations
+        cell.durationsForCollapsedState = durations
+        
+        switch indexPath.section {
+        case 0, 2:
+            
+            let dRecommData = dRecommArray[indexPath.section][indexPath.row] as? CardBasicInfoObject
+            
+            guard let card = dRecommData else { return UITableViewCell() }
+            
+            cell.layoutCell(
+                image: card.image,
+                title: card.name,
+                target: card.bank
+            )
+            
+        case 1, 3:
+            
+            let dRecommData = dRecommArray[indexPath.section][indexPath.row] as? DiscountDetail
+            
+            guard let discount = dRecommData else { return UITableViewCell() }
+            
+            cell.layoutCell(
+                image: discount.info.image,
+                title: discount.info.title,
+                target: "\(discount.info.bankName) \(discount.info.cardName)"
+            )
+            
+        default: return UITableViewCell()
+        }
+        
+        return cell
+    }
+    
 }
 
 extension DRecommViewController {
@@ -136,9 +221,16 @@ extension DRecommViewController {
         getNewDiscounts()
         getSelectedCards()
         getSelectedDiscounts()
+        
+        group.notify(queue: .main, execute: { [weak self] in
+            
+            self?.tableView.reloadData()
+        })
     }
     
     func getNewCards() {
+        
+        group.enter()
         
         dRecommProvider.getNewCards(completion: { [weak self] result in
             
@@ -146,16 +238,22 @@ extension DRecommViewController {
             
             case .success(let newCards):
             
-            print(newCards)
+                print(newCards)
+                
+                self?.newCards = newCards
             
             case .failure(let error):
             
             print(error)
             }
+            
+            self?.group.leave()
         })
     }
     
     func getSelectedCards() {
+        
+        group.enter()
         
         dRecommProvider.getSelectedCards(completion: { [weak self] result in
             
@@ -165,14 +263,20 @@ extension DRecommViewController {
                 
                 print(selectedCards)
                 
+                self?.selectedCards = selectedCards
+                
             case .failure(let error):
                 
                 print(error)
             }
+            
+            self?.group.leave()
         })
     }
     
     func getNewDiscounts() {
+        
+        group.enter()
         
         dRecommProvider.getNewDiscounts(completion: { [weak self] result in
             
@@ -182,14 +286,20 @@ extension DRecommViewController {
                 
                 print(newDiscounts)
                 
+                self?.newDiscounts = newDiscounts
+                
             case .failure(let error):
                 
                 print(error)
             }
+            
+            self?.group.leave()
         })
     }
     
     func getSelectedDiscounts() {
+        
+        group.enter()
         
         dRecommProvider.getSelectedDiscounts(completion: { [weak self] result in
             
@@ -199,10 +309,14 @@ extension DRecommViewController {
                 
                 print(selectedDiscounts)
                 
+                self?.selectedDiscounts = selectedDiscounts
+                
             case .failure(let error):
                 
                 print(error)
             }
+            
+            self?.group.leave()
         })
     }
 }

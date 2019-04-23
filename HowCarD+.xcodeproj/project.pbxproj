@@ -23,8 +23,7 @@
 		CA171B92225350350042BBDC /* CardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B91225350350042BBDC /* CardsViewController.swift */; };
 		CA171B94225350450042BBDC /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B93225350450042BBDC /* WalletViewController.swift */; };
 		CA171B96225350510042BBDC /* QAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B95225350510042BBDC /* QAViewController.swift */; };
-		CA171B9B2253A0910042BBDC /* DRecommTableViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B9A2253A0910042BBDC /* DRecommTableViewHeaderCell.swift */; };
-		CA171B9D22544E330042BBDC /* DRecommTableViewContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B9C22544E330042BBDC /* DRecommTableViewContentCell.swift */; };
+		CA171B9D22544E330042BBDC /* DRecommTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B9C22544E330042BBDC /* DRecommTableViewCell.swift */; };
 		CA171BA0225457BA0042BBDC /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B9F225457BA0042BBDC /* UITableView+Extension.swift */; };
 		CA171BA82254C2D60042BBDC /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171BA72254C2D60042BBDC /* UICollectionView+Extension.swift */; };
 		CA171BA92254C9160042BBDC /* DRecommendation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA171B74225334260042BBDC /* DRecommendation.storyboard */; };
@@ -110,8 +109,7 @@
 		CA171B91225350350042BBDC /* CardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewController.swift; sourceTree = "<group>"; };
 		CA171B93225350450042BBDC /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		CA171B95225350510042BBDC /* QAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAViewController.swift; sourceTree = "<group>"; };
-		CA171B9A2253A0910042BBDC /* DRecommTableViewHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommTableViewHeaderCell.swift; sourceTree = "<group>"; };
-		CA171B9C22544E330042BBDC /* DRecommTableViewContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommTableViewContentCell.swift; sourceTree = "<group>"; };
+		CA171B9C22544E330042BBDC /* DRecommTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommTableViewCell.swift; sourceTree = "<group>"; };
 		CA171B9F225457BA0042BBDC /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		CA171BA32254BC990042BBDC /* DRecommCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA171BA52254BED90042BBDC /* DRecommTopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommTopViewController.swift; sourceTree = "<group>"; };
@@ -336,8 +334,7 @@
 		CA171B992253623F0042BBDC /* DRecommendation */ = {
 			isa = PBXGroup;
 			children = (
-				CA171B9A2253A0910042BBDC /* DRecommTableViewHeaderCell.swift */,
-				CA171B9C22544E330042BBDC /* DRecommTableViewContentCell.swift */,
+				CA171B9C22544E330042BBDC /* DRecommTableViewCell.swift */,
 				CA171BA32254BC990042BBDC /* DRecommCollectionViewCell.swift */,
 				CA6B5E2B226E861800182FFB /* DRecommCardTableViewCell.swift */,
 				CA6B5E33226E865D00182FFB /* DRecommCardTableViewCell.xib */,
@@ -717,11 +714,10 @@
 				CA6B5C752267599E00B180A2 /* CardProvider.swift in Sources */,
 				CAFE8279225DE3BD004F4E63 /* DiscountDetailViewController.swift in Sources */,
 				CA47A187225B133F00AD16AF /* CardTagCollectionViewCell.swift in Sources */,
-				CA171B9B2253A0910042BBDC /* DRecommTableViewHeaderCell.swift in Sources */,
 				CA6B5C6C2266B89100B180A2 /* HCConstant.swift in Sources */,
 				CA171B78225339E90042BBDC /* HCTabBarViewController.swift in Sources */,
 				CA47A18A225B332C00AD16AF /* CardDetailTableViewHeaderView.swift in Sources */,
-				CA171B9D22544E330042BBDC /* DRecommTableViewContentCell.swift in Sources */,
+				CA171B9D22544E330042BBDC /* DRecommTableViewCell.swift in Sources */,
 				CAFE829522608051004F4E63 /* FirebaseManager.swift in Sources */,
 				CA6B5C6E2266FF3F00B180A2 /* KingfisherWrapper.swift in Sources */,
 				CA6B5C7122670D2700B180A2 /* HTTPCilent.swift in Sources */,
