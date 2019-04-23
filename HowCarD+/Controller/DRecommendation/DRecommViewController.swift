@@ -11,6 +11,13 @@ import FoldingCell
 
 class DRecommViewController: HCBaseViewController {
     
+    private struct Segue {
+        
+        static let cardDetail = "toCardDetail"
+        
+        static let discountDetail = "toDiscountDetail"
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     
     var newCards = [CardBasicInfoObject]()
@@ -33,7 +40,7 @@ class DRecommViewController: HCBaseViewController {
     
     enum Const {
         static let closeCellHeight: CGFloat = 135
-        static let openCellHeight: CGFloat = 488
+        static let openCellHeight: CGFloat = 280
         static let rowsCount = 10
     }
     
@@ -77,16 +84,47 @@ class DRecommViewController: HCBaseViewController {
     }
 }
 
+extension DRecommViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Segue.cardDetail {
+            
+            guard let cardDetailVC = segue.destination as? CardDetailViewController,
+                let selectedPath = sender as? IndexPath
+                
+                else {
+                    return
+            }
+            
+//            moreDiscountVC.discountCategoryId = discountObjects[selectedPath.section].categoryId
+            
+        } else if segue.identifier == Segue.discountDetail {
+            
+            guard let discountDetailVC = segue.destination as? DiscountDetailViewController,
+                let selectedPath = sender as? IndexPath
+                
+                else {
+                    return
+            }
+            
+//            discountDetailVC.discountId = discountObjects[selectedPath.section].discountInfos[selectedPath.row].discountId
+            
+        }
+    }
+}
+
 // MARK: - TableView
 
 extension DRecommViewController: UITableViewDelegate {
     
     func tableView(_: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
         guard case let cell as DRecommTableViewCell = cell else {
             return
         }
         
-        cell.backgroundColor = .clear
+        cell.backgroundColor = .white
         
         if cellHeights[indexPath.row] == Const.closeCellHeight {
             cell.unfold(false, animated: false, completion: nil)
@@ -151,7 +189,7 @@ extension DRecommViewController: UITableViewDelegate {
         
         guard let headerView = view as? DRecommSectionHeaderView else { return }
         
-        headerView.contentView.backgroundColor = UIColor.white
+        headerView.contentView.backgroundColor = .white
     }
 }
 
@@ -190,7 +228,11 @@ extension DRecommViewController: UITableViewDataSource {
             cell.layoutCell(
                 image: card.image,
                 title: card.name,
-                target: card.bank
+                target: card.bank,
+                briefIntroArray: card.briefIntro,
+                tagArray: card.tags,
+                timePeriod: nil,
+                note: card.note
             )
             
         case 1, 3:
@@ -202,7 +244,11 @@ extension DRecommViewController: UITableViewDataSource {
             cell.layoutCell(
                 image: discount.info.image,
                 title: discount.info.title,
-                target: "\(discount.info.bankName) \(discount.info.cardName)"
+                target: "\(discount.info.bankName) \(discount.info.cardName)",
+                briefIntroArray: discount.briefIntro,
+                tagArray: nil,
+                timePeriod: discount.info.timePeriod,
+                note: discount.note
             )
             
         default: return UITableViewCell()

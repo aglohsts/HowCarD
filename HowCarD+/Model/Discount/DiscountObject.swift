@@ -48,6 +48,9 @@ struct DiscountDetail: Codable {
     
     let detailContent: [DiscountDetailContent]
     
+    let briefIntro: [ BriefIntro ]
+    
+    let note: String
 }
 
 struct DiscountDetailContent: Codable {

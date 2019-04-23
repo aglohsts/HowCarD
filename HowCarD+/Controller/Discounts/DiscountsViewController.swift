@@ -204,8 +204,6 @@ extension DiscountsViewController {
                 return
             }
             
-//            moreDiscountVC.discountDetails = self.discountInfos[selectedPath.row].discountDetails
-            
             moreDiscountVC.discountCategoryId = discountObjects[selectedPath.section].categoryId
             
         } else if segue.identifier == Segue.discountDetail {

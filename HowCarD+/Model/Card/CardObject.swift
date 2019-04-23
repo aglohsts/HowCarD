@@ -30,6 +30,10 @@ struct CardBasicInfoObject: Codable {
     let getCardWeb: String
     
     let tags: [ Tags.RawValue ]
+    
+    let briefIntro: [ BriefIntro ]
+    
+    let note: String
 }
 
 struct CardDetailInfo: Codable {
