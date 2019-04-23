@@ -165,7 +165,7 @@
         <!--Card Detail View Controller-->
         <scene sceneID="afl-CY-B0f">
             <objects>
-                <viewController id="pX2-kF-epT" customClass="CardDetailViewController" customModule="HowCarD_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CardDetailViewController" id="pX2-kF-epT" customClass="CardDetailViewController" customModule="HowCarD_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0J1-MC-8Tz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

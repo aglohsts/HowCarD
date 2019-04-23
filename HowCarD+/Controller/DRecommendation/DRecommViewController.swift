@@ -235,6 +235,10 @@ extension DRecommViewController: UITableViewDataSource {
                 note: card.note
             )
             
+            cell.toDetailHandler = {
+                self.performSegue(withIdentifier: Segue.cardDetail, sender: indexPath)
+            }
+            
         case 1, 3:
             
             let dRecommData = dRecommArray[indexPath.section][indexPath.row] as? DiscountDetail
@@ -250,6 +254,10 @@ extension DRecommViewController: UITableViewDataSource {
                 timePeriod: discount.info.timePeriod,
                 note: discount.note
             )
+            
+            cell.toDetailHandler = {
+                self.performSegue(withIdentifier: Segue.discountDetail, sender: indexPath)
+            }
             
         default: return UITableViewCell()
         }

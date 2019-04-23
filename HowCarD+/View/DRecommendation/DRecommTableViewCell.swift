@@ -193,7 +193,10 @@ extension DRecommTableViewCell: UICollectionViewDataSource {
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath)
+    -> UICollectionViewCell {
         
         switch collectionView {
             

@@ -263,6 +263,7 @@
                     <navigationItem key="navigationItem" title="D+精選" id="2y1-oh-C9d"/>
                     <connections>
                         <outlet property="tableView" destination="kST-D6-0Q3" id="GmG-8Z-c1W"/>
+                        <segue destination="UsM-Xp-6eK" kind="show" identifier="toCardDetail" id="i6q-tP-cYx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="URD-Qm-O9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -372,6 +373,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NHZ-RU-MjP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1357.9710144927537" y="-173.4375"/>
+        </scene>
+        <!--CardDetailViewController-->
+        <scene sceneID="FhQ-Rz-OMj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Cards" referencedIdentifier="CardDetailViewController" id="UsM-Xp-6eK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ANm-b7-nVQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1256" y="56"/>
         </scene>
     </scenes>
     <resources>
