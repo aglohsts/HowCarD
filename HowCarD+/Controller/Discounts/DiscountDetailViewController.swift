@@ -67,7 +67,7 @@ extension DiscountDetailViewController {
     private func setupTableView() {
         
         tableView.agRegisterHeaderWithNib(
-            identifier: String(describing: DiscountDetailTableViewHeaderFooterView.self),
+            identifier: String(describing: HCTableViewSectionHeaderView.self),
             bundle: nil
         )
         
@@ -127,10 +127,10 @@ extension DiscountDetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = tableView.dequeueReusableHeaderFooterView(
-            withIdentifier: String(describing: DiscountDetailTableViewHeaderFooterView.self)
+            withIdentifier: String(describing: HCTableViewSectionHeaderView.self)
         )
         
-        guard let headerView = view as? DiscountDetailTableViewHeaderFooterView,
+        guard let headerView = view as? HCTableViewSectionHeaderView,
             let discountDetail = discountDetail else { return view }
         
         headerView.layoutView(contentTitle: discountDetail.detailContent[section].briefContent)
@@ -140,7 +140,7 @@ extension DiscountDetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
-        guard let headerView = view as? DiscountDetailTableViewHeaderFooterView else { return }
+        guard let headerView = view as? HCTableViewSectionHeaderView else { return }
         
         headerView.contentView.backgroundColor = UIColor.white
     }

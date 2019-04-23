@@ -66,8 +66,6 @@
 		CA6B5E2E226E861800182FFB /* DRecommDiscountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6B5E2C226E861800182FFB /* DRecommDiscountTableViewCell.xib */; };
 		CA6B5E34226E865D00182FFB /* DRecommDiscountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6B5E32226E865D00182FFB /* DRecommDiscountTableViewCell.swift */; };
 		CA6B5E35226E865D00182FFB /* DRecommCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6B5E33226E865D00182FFB /* DRecommCardTableViewCell.xib */; };
-		CA6B5E37226EA4AD00182FFB /* DRecommSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6B5E36226EA4AD00182FFB /* DRecommSectionHeaderView.swift */; };
-		CA6B5E39226EA4C700182FFB /* DRecommSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6B5E38226EA4C700182FFB /* DRecommSectionHeaderView.xib */; };
 		CA70B0672261D69D008F631B /* CardObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70B0662261D69D008F631B /* CardObject.swift */; };
 		CAF40392225C77E20037F1DD /* DiscountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF40390225C77E20037F1DD /* DiscountCollectionViewCell.swift */; };
 		CAF58D83225C81D800818CDD /* DiscountCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF58D82225C81D800818CDD /* DiscountCollectionViewCell.xib */; };
@@ -75,8 +73,8 @@
 		CAF58D8A225CD97D00818CDD /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF58D89225CD97D00818CDD /* UIImageView+Extension.swift */; };
 		CAF58D8C225DB41000818CDD /* DiscountsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF58D8B225DB41000818CDD /* DiscountsTableViewCell.swift */; };
 		CAFE8279225DE3BD004F4E63 /* DiscountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE8278225DE3BD004F4E63 /* DiscountDetailViewController.swift */; };
-		CAFE827B225DF071004F4E63 /* DiscountDetailTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE827A225DF071004F4E63 /* DiscountDetailTableViewHeaderFooterView.swift */; };
-		CAFE827D225DF081004F4E63 /* DiscountDetailTableViewHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE827C225DF081004F4E63 /* DiscountDetailTableViewHeaderFooterView.xib */; };
+		CAFE827B225DF071004F4E63 /* HCTableViewSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE827A225DF071004F4E63 /* HCTableViewSectionHeaderView.swift */; };
+		CAFE827D225DF081004F4E63 /* HCTableViewSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE827C225DF081004F4E63 /* HCTableViewSectionHeaderView.xib */; };
 		CAFE827F225DF304004F4E63 /* DiscountDetailContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE827E225DF304004F4E63 /* DiscountDetailContentTableViewCell.swift */; };
 		CAFE8281225E09CD004F4E63 /* DiscountLikedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE8280225E09CD004F4E63 /* DiscountLikedListViewController.swift */; };
 		CAFE8283225E3CE8004F4E63 /* DiscountLikedListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE8282225E3CE8004F4E63 /* DiscountLikedListTableViewCell.swift */; };
@@ -155,8 +153,6 @@
 		CA6B5E2C226E861800182FFB /* DRecommDiscountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DRecommDiscountTableViewCell.xib; sourceTree = "<group>"; };
 		CA6B5E32226E865D00182FFB /* DRecommDiscountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommDiscountTableViewCell.swift; sourceTree = "<group>"; };
 		CA6B5E33226E865D00182FFB /* DRecommCardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DRecommCardTableViewCell.xib; sourceTree = "<group>"; };
-		CA6B5E36226EA4AD00182FFB /* DRecommSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommSectionHeaderView.swift; sourceTree = "<group>"; };
-		CA6B5E38226EA4C700182FFB /* DRecommSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DRecommSectionHeaderView.xib; sourceTree = "<group>"; };
 		CA70B0662261D69D008F631B /* CardObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardObject.swift; sourceTree = "<group>"; };
 		CAF40390225C77E20037F1DD /* DiscountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCollectionViewCell.swift; sourceTree = "<group>"; };
 		CAF58D82225C81D800818CDD /* DiscountCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscountCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -164,8 +160,8 @@
 		CAF58D89225CD97D00818CDD /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		CAF58D8B225DB41000818CDD /* DiscountsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountsTableViewCell.swift; sourceTree = "<group>"; };
 		CAFE8278225DE3BD004F4E63 /* DiscountDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountDetailViewController.swift; sourceTree = "<group>"; };
-		CAFE827A225DF071004F4E63 /* DiscountDetailTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountDetailTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
-		CAFE827C225DF081004F4E63 /* DiscountDetailTableViewHeaderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscountDetailTableViewHeaderFooterView.xib; sourceTree = "<group>"; };
+		CAFE827A225DF071004F4E63 /* HCTableViewSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCTableViewSectionHeaderView.swift; sourceTree = "<group>"; };
+		CAFE827C225DF081004F4E63 /* HCTableViewSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HCTableViewSectionHeaderView.xib; sourceTree = "<group>"; };
 		CAFE827E225DF304004F4E63 /* DiscountDetailContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountDetailContentTableViewCell.swift; sourceTree = "<group>"; };
 		CAFE8280225E09CD004F4E63 /* DiscountLikedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountLikedListViewController.swift; sourceTree = "<group>"; };
 		CAFE8282225E3CE8004F4E63 /* DiscountLikedListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountLikedListTableViewCell.swift; sourceTree = "<group>"; };
@@ -244,6 +240,7 @@
 		CA171B732253333D0042BBDC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CA1BFCE3226F457F008F38BC /* Common */,
 				CA8E8DA1226DC9400037CF14 /* Wallet */,
 				CA171B992253623F0042BBDC /* DRecommendation */,
 				CAF4038F225C77B40037F1DD /* Discounts */,
@@ -348,8 +345,6 @@
 				CA6B5E33226E865D00182FFB /* DRecommCardTableViewCell.xib */,
 				CA6B5E32226E865D00182FFB /* DRecommDiscountTableViewCell.swift */,
 				CA6B5E2C226E861800182FFB /* DRecommDiscountTableViewCell.xib */,
-				CA6B5E36226EA4AD00182FFB /* DRecommSectionHeaderView.swift */,
-				CA6B5E38226EA4C700182FFB /* DRecommSectionHeaderView.xib */,
 				CA1BFCDB226F05E1008F38BC /* BriefInfoCollectionViewCell.swift */,
 				CA1BFCDC226F05E1008F38BC /* BriefInfoCollectionViewCell.xib */,
 				CA1BFCE1226F0FFC008F38BC /* ToMoreInfoCollectionViewCell.swift */,
@@ -364,6 +359,15 @@
 				CA171BB12255EDFF0042BBDC /* HCBaseViewController.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		CA1BFCE3226F457F008F38BC /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CAFE827C225DF081004F4E63 /* HCTableViewSectionHeaderView.xib */,
+				CAFE827A225DF071004F4E63 /* HCTableViewSectionHeaderView.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		CA23A32E226E1EDC008B8DD8 /* DRecommendation */ = {
@@ -473,8 +477,6 @@
 				CAF40390225C77E20037F1DD /* DiscountCollectionViewCell.swift */,
 				CAF58D82225C81D800818CDD /* DiscountCollectionViewCell.xib */,
 				CAF58D8B225DB41000818CDD /* DiscountsTableViewCell.swift */,
-				CAFE827C225DF081004F4E63 /* DiscountDetailTableViewHeaderFooterView.xib */,
-				CAFE827A225DF071004F4E63 /* DiscountDetailTableViewHeaderFooterView.swift */,
 				CAFE827E225DF304004F4E63 /* DiscountDetailContentTableViewCell.swift */,
 				CAFE8282225E3CE8004F4E63 /* DiscountLikedListTableViewCell.swift */,
 			);
@@ -598,9 +600,8 @@
 				CA2F7DC322563872005E4361 /* Filter.storyboard in Resources */,
 				CAFE8285225EE349004F4E63 /* Auth.storyboard in Resources */,
 				CA171BA92254C9160042BBDC /* DRecommendation.storyboard in Resources */,
-				CAFE827D225DF081004F4E63 /* DiscountDetailTableViewHeaderFooterView.xib in Resources */,
+				CAFE827D225DF081004F4E63 /* HCTableViewSectionHeaderView.xib in Resources */,
 				CA171B69225330090042BBDC /* Assets.xcassets in Resources */,
-				CA6B5E39226EA4C700182FFB /* DRecommSectionHeaderView.xib in Resources */,
 				CAF58D83225C81D800818CDD /* DiscountCollectionViewCell.xib in Resources */,
 				CA171B7F22533FA50042BBDC /* Cards.storyboard in Resources */,
 				CA171B67225330070042BBDC /* Main.storyboard in Resources */,
@@ -697,7 +698,6 @@
 				CA47A190225B42C000AD16AF /* CardDetailContentTableViewCell.swift in Sources */,
 				CA25DFDA226E200C003AC89C /* DRecommRequest.swift in Sources */,
 				CAFE828C22603F15004F4E63 /* UIViewController+Extention.swift in Sources */,
-				CA6B5E37226EA4AD00182FFB /* DRecommSectionHeaderView.swift in Sources */,
 				CA171B62225330070042BBDC /* AppDelegate.swift in Sources */,
 				CA171B8822534F6D0042BBDC /* DRecommViewController.swift in Sources */,
 				CA1BFCE2226F0FFC008F38BC /* ToMoreInfoCollectionViewCell.swift in Sources */,
@@ -712,7 +712,7 @@
 				CAFE827F225DF304004F4E63 /* DiscountDetailContentTableViewCell.swift in Sources */,
 				CA25DFD8226E1FFC003AC89C /* DRecommProvider.swift in Sources */,
 				CA1BFCDD226F05E1008F38BC /* BriefInfoCollectionViewCell.swift in Sources */,
-				CAFE827B225DF071004F4E63 /* DiscountDetailTableViewHeaderFooterView.swift in Sources */,
+				CAFE827B225DF071004F4E63 /* HCTableViewSectionHeaderView.swift in Sources */,
 				CA323DB522684C57007A39FD /* HCParser.swift in Sources */,
 				CA171BAC2254CBB60042BBDC /* DRecommCollectionViewCell.swift in Sources */,
 				CA171B96225350510042BBDC /* QAViewController.swift in Sources */,

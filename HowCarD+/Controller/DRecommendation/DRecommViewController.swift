@@ -57,7 +57,7 @@ class DRecommViewController: HCBaseViewController {
     private func setupTableView() {
         
         tableView.agRegisterHeaderWithNib(
-            identifier: String(describing: DRecommSectionHeaderView.self),
+            identifier: String(describing: HCTableViewSectionHeaderView.self),
             bundle: nil
         )
         
@@ -97,16 +97,26 @@ extension DRecommViewController {
                     return
             }
             
+            let dRecommData = dRecommArray[selectedPath.section][selectedPath.row] as? CardBasicInfoObject
+            
+            guard let card = dRecommData else { return }
+            
+            cardDetailVC.cardID = card.id
+            
 //            moreDiscountVC.discountCategoryId = discountObjects[selectedPath.section].categoryId
             
         } else if segue.identifier == Segue.discountDetail {
-            
+
             guard let discountDetailVC = segue.destination as? DiscountDetailViewController,
-                let selectedPath = sender as? IndexPath
-                
-                else {
+                let selectedPath = sender as? IndexPath else {
                     return
             }
+            
+            let dRecommData = dRecommArray[selectedPath.section][selectedPath.row] as? DiscountDetail
+            
+            guard let discount = dRecommData else { return }
+            
+            discountDetailVC.discountId = discount.info.discountId
             
 //            discountDetailVC.discountId = discountObjects[selectedPath.section].discountInfos[selectedPath.row].discountId
             
@@ -175,19 +185,19 @@ extension DRecommViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let view = tableView.dequeueReusableHeaderFooterView(
-            withIdentifier: String(describing: DRecommSectionHeaderView.self)
+            withIdentifier: String(describing: HCTableViewSectionHeaderView.self)
         )
         
-        guard let headerView = view as? DRecommSectionHeaderView else { return view }
+        guard let headerView = view as? HCTableViewSectionHeaderView else { return view }
         
-        headerView.layoutView(category: titleArray[section])
+        headerView.layoutView(contentTitle: titleArray[section])
         
         return headerView
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
-        guard let headerView = view as? DRecommSectionHeaderView else { return }
+        guard let headerView = view as? HCTableViewSectionHeaderView else { return }
         
         headerView.contentView.backgroundColor = .white
     }
@@ -229,11 +239,11 @@ extension DRecommViewController: UITableViewDataSource {
                 image: card.image,
                 title: card.name,
                 target: card.bank,
-                briefIntroArray: card.briefIntro,
-                tagArray: card.tags,
                 timePeriod: nil,
                 note: card.note
             )
+            
+            cell.layoutCollectionView(briefIntroArray: card.briefIntro, tagArray: card.tags)
             
             cell.toDetailHandler = {
                 self.performSegue(withIdentifier: Segue.cardDetail, sender: indexPath)
@@ -249,11 +259,11 @@ extension DRecommViewController: UITableViewDataSource {
                 image: discount.info.image,
                 title: discount.info.title,
                 target: "\(discount.info.bankName) \(discount.info.cardName)",
-                briefIntroArray: discount.briefIntro,
-                tagArray: nil,
                 timePeriod: discount.info.timePeriod,
                 note: discount.note
             )
+            
+            cell.layoutCollectionView(briefIntroArray: discount.briefIntro, tagArray: nil)
             
             cell.toDetailHandler = {
                 self.performSegue(withIdentifier: Segue.discountDetail, sender: indexPath)
@@ -264,7 +274,6 @@ extension DRecommViewController: UITableViewDataSource {
         
         return cell
     }
-    
 }
 
 extension DRecommViewController {

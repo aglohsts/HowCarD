@@ -264,11 +264,12 @@
                     <connections>
                         <outlet property="tableView" destination="kST-D6-0Q3" id="GmG-8Z-c1W"/>
                         <segue destination="UsM-Xp-6eK" kind="show" identifier="toCardDetail" id="i6q-tP-cYx"/>
+                        <segue destination="YPn-ob-sqO" kind="show" identifier="toDiscountDetail" id="PAy-xF-RIe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="URD-Qm-O9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="597.10144927536237" y="36.830357142857139"/>
+            <point key="canvasLocation" x="432" y="37"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="L2d-HX-vrZ">
@@ -381,6 +382,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ANm-b7-nVQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1256" y="56"/>
+        </scene>
+        <!--DiscountDetailViewController-->
+        <scene sceneID="PEJ-0i-Ou1">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Discounts" referencedIdentifier="DiscountDetailViewController" id="YPn-ob-sqO" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nUR-Ip-o5h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1274" y="147"/>
         </scene>
     </scenes>
     <resources>

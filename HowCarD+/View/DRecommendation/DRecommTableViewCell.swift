@@ -94,7 +94,7 @@ class DRecommTableViewCell: FoldingCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func layoutCell(image: String, title: String, target: String, briefIntroArray: [BriefIntro], tagArray: [String]?, timePeriod: String?, note: String) {
+    func layoutCell(image: String, title: String, target: String, timePeriod: String?, note: String) {
         
         foreImageView.loadImage(image, placeHolder: UIImage.asset(.Image_Placeholder))
         
@@ -108,15 +108,6 @@ class DRecommTableViewCell: FoldingCell {
         
         containerTargetLabel.text = target
         
-        if tagArray != nil {
-            self.tagArray = tagArray!
-        } else {
-            
-            foreCollectionView.isHidden = true
-            
-            containerCollectionView.isHidden = true
-        }
-        
         if timePeriod != nil {
             foreTimePeriodLabel.text = timePeriod!
             
@@ -129,6 +120,20 @@ class DRecommTableViewCell: FoldingCell {
         }
         
         noteLabel.text = note
+        
+        
+    }
+    
+    func layoutCollectionView(briefIntroArray: [BriefIntro], tagArray: [String]?) {
+        
+        if tagArray != nil {
+            self.tagArray = tagArray!
+        } else {
+            
+            foreCollectionView.isHidden = true
+            
+            containerCollectionView.isHidden = true
+        }
         
         self.briefIntroArray = briefIntroArray
     }
@@ -158,6 +163,10 @@ class DRecommTableViewCell: FoldingCell {
         containerCollectionView.showsHorizontalScrollIndicator = false
         
         briefIntroCollectionView.showsHorizontalScrollIndicator = false
+    }
+    
+    override func prepareForReuse() {
+//        isUnfolded = false
     }
 }
 

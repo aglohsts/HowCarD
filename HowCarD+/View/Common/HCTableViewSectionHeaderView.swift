@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DiscountDetailTableViewHeaderFooterView: UITableViewHeaderFooterView {
+class HCTableViewSectionHeaderView: UITableViewHeaderFooterView {
 
     @IBOutlet weak var label: UILabel!
 
