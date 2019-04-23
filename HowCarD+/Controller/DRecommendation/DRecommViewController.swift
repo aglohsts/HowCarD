@@ -16,7 +16,11 @@ class DRecommViewController: HCBaseViewController {
         static let cardDetail = "toCardDetail"
         
         static let discountDetail = "toDiscountDetail"
+        
+        static let topVC = "DRecommTopVC"
     }
+    
+    @IBOutlet weak var containerView: UIView!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -103,8 +107,6 @@ extension DRecommViewController {
             
             cardDetailVC.cardID = card.id
             
-//            moreDiscountVC.discountCategoryId = discountObjects[selectedPath.section].categoryId
-            
         } else if segue.identifier == Segue.discountDetail {
 
             guard let discountDetailVC = segue.destination as? DiscountDetailViewController,
@@ -118,8 +120,26 @@ extension DRecommViewController {
             
             discountDetailVC.discountId = discount.info.discountId
             
-//            discountDetailVC.discountId = discountObjects[selectedPath.section].discountInfos[selectedPath.row].discountId
+        } else if segue.identifier == Segue.topVC {
             
+            guard let dRecommTopVC = segue.destination as? DRecommTopViewController else { return }
+            
+            dRecommTopVC.touchHandler = {
+                
+                if let dRecommCategoryDetailVC = UIStoryboard(
+                    name: StoryboardCategory.dRecommend,
+                    bundle: nil).instantiateViewController(
+                        withIdentifier: String(describing: DRecommCategoryDetailViewController.self))
+                    as? DRecommCategoryDetailViewController {
+//                    let navVC = UINavigationController(rootViewController: signInVC)
+                    
+                    dRecommCategoryDetailVC.modalPresentationStyle = .overFullScreen
+                    
+                    dRecommCategoryDetailVC.modalTransitionStyle = .crossDissolve
+                    
+                    self.present(dRecommCategoryDetailVC, animated: true, completion: nil)
+                }
+            }
         }
     }
 }
@@ -300,8 +320,6 @@ extension DRecommViewController {
             switch result {
             
             case .success(let newCards):
-            
-                print(newCards)
                 
                 self?.newCards = newCards
             
@@ -324,8 +342,6 @@ extension DRecommViewController {
                 
             case .success(let selectedCards):
                 
-                print(selectedCards)
-                
                 self?.selectedCards = selectedCards
                 
             case .failure(let error):
@@ -347,8 +363,6 @@ extension DRecommViewController {
                 
             case .success(let newDiscounts):
                 
-                print(newDiscounts)
-                
                 self?.newDiscounts = newDiscounts
                 
             case .failure(let error):
@@ -369,8 +383,6 @@ extension DRecommViewController {
             switch result {
                 
             case .success(let selectedDiscounts):
-                
-                print(selectedDiscounts)
                 
                 self?.selectedDiscounts = selectedDiscounts
                 

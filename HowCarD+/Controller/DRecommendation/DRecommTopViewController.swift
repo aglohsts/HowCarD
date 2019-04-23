@@ -9,6 +9,8 @@
 import UIKit
 
 class DRecommTopViewController: HCBaseViewController {
+    
+    var touchHandler: (() -> Void)?
 
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -35,6 +37,10 @@ class DRecommTopViewController: HCBaseViewController {
 
 extension DRecommTopViewController: UICollectionViewDelegate {
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        touchHandler?()
+    }
 }
 
 extension DRecommTopViewController: UICollectionViewDataSource {
