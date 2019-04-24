@@ -32,13 +32,6 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tzr-5S-lFe">
                                                     <rect key="frame" x="29" y="8" width="385" height="200"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7zi-Ql-wnX">
-                                                            <rect key="frame" x="8" y="0.0" width="19" height="19"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="19" id="Z0f-Wj-5NU"/>
-                                                                <constraint firstAttribute="height" constant="19" id="ezV-pJ-qOa"/>
-                                                            </constraints>
-                                                        </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9i-0B-f6P">
                                                             <rect key="frame" x="8" y="180" width="54" height="12"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -86,20 +79,28 @@
                                                             </collectionViewFlowLayout>
                                                             <cells/>
                                                         </collectionView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FI-Ac-viR">
+                                                            <rect key="frame" x="8" y="8" width="35" height="26"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <connections>
+                                                                <action selector="onCollectCard:" destination="gFs-gU-LIA" eventType="touchUpInside" id="vP7-mN-NWP"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="7zi-Ql-wnX" firstAttribute="top" secondItem="Tzr-5S-lFe" secondAttribute="top" id="4eE-zn-dox"/>
-                                                        <constraint firstItem="7mW-wP-mdW" firstAttribute="top" secondItem="7zi-Ql-wnX" secondAttribute="bottom" id="AGU-3f-EsD"/>
                                                         <constraint firstItem="TvH-0C-sst" firstAttribute="leading" secondItem="l9i-0B-f6P" secondAttribute="trailing" constant="8" id="Cxo-e8-vLZ"/>
+                                                        <constraint firstItem="7mW-wP-mdW" firstAttribute="top" secondItem="Tzr-5S-lFe" secondAttribute="top" constant="19" id="KXC-41-1kD"/>
                                                         <constraint firstItem="1Bq-TT-nzD" firstAttribute="leading" secondItem="TvH-0C-sst" secondAttribute="trailing" constant="8" id="Kg4-mh-kJ8"/>
                                                         <constraint firstAttribute="trailing" secondItem="1Bq-TT-nzD" secondAttribute="trailing" id="Lqd-Kc-gcE"/>
                                                         <constraint firstItem="1Bq-TT-nzD" firstAttribute="top" secondItem="Tzr-5S-lFe" secondAttribute="top" id="Lqd-WX-IG2"/>
                                                         <constraint firstAttribute="bottom" secondItem="TvH-0C-sst" secondAttribute="bottom" constant="5" id="XA8-ba-Bn5"/>
+                                                        <constraint firstItem="2FI-Ac-viR" firstAttribute="leading" secondItem="Tzr-5S-lFe" secondAttribute="leading" constant="8" id="YCq-O7-VjO"/>
                                                         <constraint firstItem="l9i-0B-f6P" firstAttribute="leading" secondItem="Tzr-5S-lFe" secondAttribute="leading" constant="8" id="jbz-dn-xig"/>
                                                         <constraint firstItem="7mW-wP-mdW" firstAttribute="leading" secondItem="TvH-0C-sst" secondAttribute="leading" id="nvj-pk-xbL"/>
                                                         <constraint firstAttribute="bottom" secondItem="l9i-0B-f6P" secondAttribute="bottom" constant="8" id="pmA-1Z-8c7"/>
-                                                        <constraint firstItem="7zi-Ql-wnX" firstAttribute="leading" secondItem="Tzr-5S-lFe" secondAttribute="leading" constant="8" id="sC1-Sv-qwA"/>
+                                                        <constraint firstItem="2FI-Ac-viR" firstAttribute="top" secondItem="Tzr-5S-lFe" secondAttribute="top" constant="8" id="uz1-Bt-nmI"/>
                                                         <constraint firstAttribute="bottom" secondItem="1Bq-TT-nzD" secondAttribute="bottom" id="xYC-3U-ROd"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
@@ -134,9 +135,9 @@
                                         <connections>
                                             <outlet property="backView" destination="Tzr-5S-lFe" id="ldM-jg-Yve"/>
                                             <outlet property="bankNameLabel" destination="l9i-0B-f6P" id="Yh9-8j-zDl"/>
-                                            <outlet property="bookMarkImageView" destination="7zi-Ql-wnX" id="SLD-k9-Pzy"/>
                                             <outlet property="cardImageView" destination="REc-lU-akm" id="WhS-o3-Y4l"/>
                                             <outlet property="cardNameLabel" destination="7mW-wP-mdW" id="fY2-th-YtI"/>
+                                            <outlet property="collectedBtn" destination="2FI-Ac-viR" id="3fc-vr-m1N"/>
                                             <outlet property="tagCollectionView" destination="TvH-0C-sst" id="WcF-2M-a0O"/>
                                         </connections>
                                     </tableViewCell>
@@ -220,6 +221,14 @@
                                             </collectionViewFlowLayout>
                                             <cells/>
                                         </collectionView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SK6-Pp-Qzm">
+                                            <rect key="frame" x="365" y="8" width="41" height="28"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <state key="normal" title="Button"/>
+                                            <connections>
+                                                <action selector="onCollectCard:" destination="pX2-kF-epT" eventType="touchUpInside" id="Ug5-7m-0Xf"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
@@ -234,6 +243,8 @@
                                         <constraint firstItem="UtK-LT-Qtf" firstAttribute="leading" secondItem="KgA-Zd-9mc" secondAttribute="leading" id="Xie-NM-aic"/>
                                         <constraint firstItem="vXz-En-Azq" firstAttribute="leading" secondItem="mIK-Fl-fzT" secondAttribute="leading" constant="16" id="nfv-JO-1U4"/>
                                         <constraint firstItem="KgA-Zd-9mc" firstAttribute="top" secondItem="vXz-En-Azq" secondAttribute="top" id="oN9-YT-HJh"/>
+                                        <constraint firstItem="SK6-Pp-Qzm" firstAttribute="top" secondItem="mIK-Fl-fzT" secondAttribute="top" constant="8" id="rq6-Bh-XQf"/>
+                                        <constraint firstAttribute="trailing" secondItem="SK6-Pp-Qzm" secondAttribute="trailing" constant="8" id="tJK-Ih-KLu"/>
                                         <constraint firstItem="KgA-Zd-9mc" firstAttribute="leading" secondItem="vXz-En-Azq" secondAttribute="trailing" constant="16" id="uzs-63-DXo"/>
                                         <constraint firstItem="vXz-En-Azq" firstAttribute="top" secondItem="mIK-Fl-fzT" secondAttribute="top" constant="16" id="zxX-Xp-ywC"/>
                                     </constraints>
@@ -321,6 +332,7 @@
                     <connections>
                         <outlet property="bankNameLabel" destination="UtK-LT-Qtf" id="YMM-tr-TUA"/>
                         <outlet property="cardNameLabel" destination="KgA-Zd-9mc" id="Qcr-Vv-rQr"/>
+                        <outlet property="collectedBtn" destination="SK6-Pp-Qzm" id="noD-Ov-for"/>
                         <outlet property="tableView" destination="FmM-UV-JFj" id="tfN-n9-aBW"/>
                         <outlet property="tagCollectionView" destination="poh-c1-eQ5" id="rwA-EA-HPF"/>
                     </connections>

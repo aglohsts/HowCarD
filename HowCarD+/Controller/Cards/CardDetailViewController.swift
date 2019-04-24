@@ -8,22 +8,39 @@
 
 import UIKit
 
-struct CardIntro {
-
-    let title: String
-
-    let content: String
-
-    let contentDetail: String
-
-    var isDetail: Bool
-}
-
 class CardDetailViewController: UIViewController {
     
     var cardID: String = ""
     
     let cardProvider = CardProvider()
+    
+    var collectedCardIds = [String]()
+    
+    @IBOutlet weak var collectedBtn: UIButton!
+    
+    var isCollected: Bool = false{
+    
+        didSet {
+
+            if isCollected {
+                
+                DispatchQueue.main.async {
+                    
+//                    self.collectedBtn.setImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControl.State#>)
+                    
+                    self.collectedBtn.setTitle("V", for: .normal)
+                }
+            } else {
+
+                DispatchQueue.main.async {
+                    
+//                    self.collectedBtn.setImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControl.State#>)
+                    
+                    self.collectedBtn.setTitle("X", for: .normal)
+                }
+            }
+        }
+    }
 
     @IBOutlet weak var cardNameLabel: UILabel! {
         
@@ -40,25 +57,6 @@ class CardDetailViewController: UIViewController {
             bankNameLabel.text = ""
         }
     }
-
-    lazy var datas: [CardIntro] = [
-
-        CardIntro(title: "123",
-                  content: "12345",
-                  contentDetail: "123456789123456789123456789123456789123456789123456789123456789",
-                  isDetail: false),
-
-        CardIntro(title: "123",
-                  content: "12345",
-                  contentDetail: "123456789123456789123456789123456789123456789123456789123456789",
-                  isDetail: false),
-
-        CardIntro(title: "123",
-                  content: "12345",
-                  contentDetail: "123456789123456789123456789123456789123456789123456789123456789",
-                  isDetail: false)
-
-    ]
     
     var cardObject: CardObject? {
         
@@ -103,6 +101,7 @@ class CardDetailViewController: UIViewController {
         setNavBar()
         
         getcardDetail()
+    
     }
 
     private func setupTableView() {
@@ -135,6 +134,12 @@ class CardDetailViewController: UIViewController {
     @objc private func onShare() {
 
     }
+    
+    @IBAction func onCollectCard(_ sender: Any) {
+        
+        isCollected = !isCollected
+        
+    }
 }
 
 extension CardDetailViewController {
@@ -143,15 +148,19 @@ extension CardDetailViewController {
         
         cardProvider.getCards(id: cardID, completion: { [weak self] result in
             
+            guard let strongSelf = self else { return }
+            
             switch result {
                 
             case .success(let cards):
                 
                 print(cards)
                 
-                self?.cardObject = cards
+                strongSelf.cardObject = cards
                 
-                
+//                guard let cardObject = strongSelf.cardObject else { return }
+//                
+//                strongSelf.isCollected = cardObject.basicInfo.isCollected
                 
             case .failure(let error):
                 

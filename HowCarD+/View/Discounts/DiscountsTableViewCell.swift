@@ -179,8 +179,6 @@ extension DiscountsTableViewCell: UICollectionViewDataSource {
                     
                     // show signInVC
                 }
-                
-                
             }
             
             return discountCell

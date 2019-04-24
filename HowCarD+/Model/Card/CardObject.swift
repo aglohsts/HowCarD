@@ -15,7 +15,7 @@ protocol Collapsable {
 
 struct CardObject: Codable {
     
-    let basicInfo: CardBasicInfoObject
+    var basicInfo: CardBasicInfoObject
     
     var detailInfo: [CardDetailInfo]
 }
@@ -42,6 +42,8 @@ struct CardBasicInfoObject: Codable, Collapsable {
     
     var cellHeight: CGFloat  = 135
     
+    var isCollected: Bool = false
+    
     enum CodingKeys: String, CodingKey {
         
         case bank
@@ -52,7 +54,7 @@ struct CardBasicInfoObject: Codable, Collapsable {
         
         case name
         
-        case  officialWeb
+        case officialWeb
         
         case getCardWeb
         
@@ -83,7 +85,20 @@ struct CardContent: Codable {
     
     let lastDate: Int? // unixTime
     
-    var isDetail: Bool
+    var isDetail: Bool = false
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case title
+        
+        case briefContent
+        
+        case detailContent
+        
+        case timePeriod
+        
+        case lastDate
+    }
 }
 
 enum Tags: String {

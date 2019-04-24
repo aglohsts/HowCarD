@@ -30,7 +30,7 @@ private enum UserDocumentData: String {
 
 enum UserCollection: String {
     
-    case interestedCards
+    case collectedCards
     
     case likedDiscounts
     

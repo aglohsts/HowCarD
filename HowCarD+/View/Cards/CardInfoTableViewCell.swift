@@ -9,6 +9,8 @@
 import UIKit
 
 class CardInfoTableViewCell: UITableViewCell {
+    
+    var collectButtonDidTouchHandler: (() -> Void)?
 
     var tagArray = [String]() {
         
@@ -27,20 +29,28 @@ class CardInfoTableViewCell: UITableViewCell {
             }
         }
     }
-
-    var isSaved: Bool = false {
+    
+    var isCollected: Bool = false {
+        
         didSet {
-            if isSaved {
-                bookMarkImageView.image = UIImage.asset(.Icons_Bookmark_Saved)
+            
+            if isCollected {
+                
+                //                collectedBtn.setImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControl.State#>)
+                
+                collectedBtn.setTitle("V", for: .normal)
             } else {
-                bookMarkImageView.image = UIImage.asset(.Icons_Bookmark_Normal)
+                
+                //                collectedBtn.setImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControl.State#>)
+                
+                collectedBtn.setTitle("X", for: .normal)
             }
         }
     }
+    
+    @IBOutlet weak var collectedBtn: UIButton!
 
     @IBOutlet weak var backView: UIView!
-
-    @IBOutlet weak var bookMarkImageView: UIImageView!
 
 //    @IBOutlet weak var bankIconImageView: UIImageView!
 
@@ -71,7 +81,7 @@ class CardInfoTableViewCell: UITableViewCell {
 
     func layoutCell(
         tableViewCellIsTapped: Bool,
-        bookMarkIsTapped: Bool,
+        isCollected: Bool,
         bankName: String,
         cardName: String,
         cardImage: String,
@@ -80,7 +90,7 @@ class CardInfoTableViewCell: UITableViewCell {
 
         isRead = tableViewCellIsTapped
 
-        isSaved = bookMarkIsTapped
+        self.isCollected = isCollected
 
 //        bankIconImageView.image = bankIcon
 
@@ -95,13 +105,18 @@ class CardInfoTableViewCell: UITableViewCell {
     }
 
     func setupCollectionView() {
+        
         tagCollectionView.agRegisterCellWithNib(
             identifier: String(describing: CardTagCollectionViewCell.self),
             bundle: nil
         )
-
     }
-
+    
+    @IBAction func onCollectCard(_ sender: Any) {
+        
+        collectButtonDidTouchHandler?()
+    }
+    
 }
 
 extension CardInfoTableViewCell: UICollectionViewDelegate {
