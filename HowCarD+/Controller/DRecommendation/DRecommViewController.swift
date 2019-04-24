@@ -20,6 +20,16 @@ class DRecommViewController: HCBaseViewController {
         static let topVC = "DRecommTopVC"
     }
     
+    // swiftlint:disable force_cast
+    
+    let dRecommCategoryDetailVC = UIStoryboard(
+        name: StoryboardCategory.dRecommend,
+        bundle: nil).instantiateViewController(
+            withIdentifier: String(describing: DRecommCategoryDetailViewController.self))
+        as! DRecommCategoryDetailViewController
+    
+    // swiftlint:enable force_cast
+    
     @IBOutlet weak var containerView: UIView!
     
     @IBOutlet weak var tableView: UITableView!
@@ -34,9 +44,7 @@ class DRecommViewController: HCBaseViewController {
     
     let group = DispatchGroup()
     
-    var dRecommArray: [[Any]] {
-        return [newCards, newDiscounts, selectedCards, selectedDiscounts]
-    }
+    var dRecommArray: [[Collapsable]] = []
     
     let titleArray = ["最新卡片", "最新優惠", "精選卡片", "精選優惠"]
     
@@ -47,8 +55,6 @@ class DRecommViewController: HCBaseViewController {
         static let openCellHeight: CGFloat = 280
         static let rowsCount = 10
     }
-    
-    var cellHeights: [CGFloat] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,8 +73,8 @@ class DRecommViewController: HCBaseViewController {
         
         tableView.separatorStyle = .none
         
-        cellHeights = Array(repeating: Const.closeCellHeight, count: Const.rowsCount)
         tableView.estimatedRowHeight = Const.closeCellHeight
+        
         tableView.rowHeight = UITableView.automaticDimension
         //        tableView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background"))
         if #available(iOS 10.0, *) {
@@ -126,33 +132,21 @@ extension DRecommViewController {
             
             dRecommTopVC.touchHandler = {
                 
-                if let dRecommCategoryDetailVC = UIStoryboard(
-                    name: StoryboardCategory.dRecommend,
-                    bundle: nil).instantiateViewController(
-                        withIdentifier: String(describing: DRecommCategoryDetailViewController.self))
-                    as? DRecommCategoryDetailViewController {
-//                    let navVC = UINavigationController(rootViewController: signInVC)
+                if self.dRecommCategoryDetailVC.view.superview == nil {
                     
-                    self.addChild(dRecommCategoryDetailVC)
+                    self.addChild(self.dRecommCategoryDetailVC)
                     
                     let toContainerLeftBottom = self.containerView.frame.origin.y + self.containerView.frame.height
                     
-                    dRecommCategoryDetailVC.view.frame = CGRect(
+                    self.dRecommCategoryDetailVC.view.frame = CGRect(
                         x: 0, y: toContainerLeftBottom,
                         width: UIScreen.main.bounds.width,
-                        height: UIScreen.main.bounds.height - toContainerLeftBottom
+                        height: self.tableView.frame.height
                     )
+                
+                    self.view.addSubview(self.dRecommCategoryDetailVC.view)
                     
-                    self.view.addSubview(dRecommCategoryDetailVC.view)
-                    
-                    dRecommCategoryDetailVC.didMove(toParent: self)
-                    
-//                    dRecommCategoryDetailVC.modalPresentationStyle = .overFullScreen
-//
-//                    dRecommCategoryDetailVC.modalTransitionStyle = .crossDissolve
-//
-//                    self.present(dRecommCategoryDetailVC, animated: true, completion: nil)
-                    
+                    self.dRecommCategoryDetailVC.didMove(toParent: self)
                 }
             }
         }
@@ -171,7 +165,7 @@ extension DRecommViewController: UITableViewDelegate {
         
         cell.backgroundColor = .white
         
-        if cellHeights[indexPath.row] == Const.closeCellHeight {
+        if dRecommArray[indexPath.section][indexPath.row].cellHeight == Const.closeCellHeight {
             cell.unfold(false, animated: false, completion: nil)
         } else {
             cell.unfold(true, animated: false, completion: nil)
@@ -181,7 +175,7 @@ extension DRecommViewController: UITableViewDelegate {
     }
     
     func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return cellHeights[indexPath.row]
+        return dRecommArray[indexPath.section][indexPath.row].cellHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -196,13 +190,14 @@ extension DRecommViewController: UITableViewDelegate {
         }
         
         var duration = 0.0
-        let cellIsCollapsed = cellHeights[indexPath.row] == Const.closeCellHeight
+        let cellIsCollapsed = dRecommArray[indexPath.section][indexPath.row].cellHeight == Const.closeCellHeight
+        
         if cellIsCollapsed {
-            cellHeights[indexPath.row] = Const.openCellHeight
+            dRecommArray[indexPath.section][indexPath.row].cellHeight = Const.openCellHeight
             cell.unfold(true, animated: true, completion: nil)
             duration = 0.5
         } else {
-            cellHeights[indexPath.row] = Const.closeCellHeight
+            dRecommArray[indexPath.section][indexPath.row].cellHeight = Const.closeCellHeight
             cell.unfold(false, animated: true, completion: nil)
             duration = 0.8
         }
@@ -242,7 +237,7 @@ extension DRecommViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return titleArray.count
+        return dRecommArray.count
     }
     
     func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -262,6 +257,14 @@ extension DRecommViewController: UITableViewDataSource {
         let durations: [TimeInterval] = [0.26, 0.2, 0.2]
         cell.durationsForExpandedState = durations
         cell.durationsForCollapsedState = durations
+
+//        let cellIsCollapsed = cellHeights[indexPath.section][indexPath.row] == Const.closeCellHeight
+//
+//        if cellIsCollapsed {
+//            cell.unfold(true, animated: false, completion: nil)
+//        } else {
+//            cell.unfold(false, animated: false, completion: nil)
+//        }
         
         switch indexPath.section {
         case 0, 2:
@@ -321,6 +324,10 @@ extension DRecommViewController {
         getSelectedDiscounts()
         
         group.notify(queue: .main, execute: { [weak self] in
+            
+            guard let strongSelf = self else { return }
+            
+            self?.dRecommArray = [strongSelf.newCards, strongSelf.newDiscounts, strongSelf.selectedCards, strongSelf.selectedDiscounts]
             
             self?.tableView.reloadData()
         })

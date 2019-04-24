@@ -6,7 +6,7 @@
 //  Copyright © 2019 lohsts. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct DiscountObject: Codable {
     
@@ -42,7 +42,7 @@ struct DiscountInfo: Codable {
     let registerWeb: String?
 }
 
-struct DiscountDetail: Codable {
+struct DiscountDetail: Codable, Collapsable {
     
     let info: DiscountInfo
     
@@ -51,6 +51,19 @@ struct DiscountDetail: Codable {
     let briefIntro: [ BriefIntro ]
     
     let note: String
+    
+    var cellHeight: CGFloat = 135
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case info
+        
+        case detailContent
+        
+        case briefIntro
+        
+        case note
+    }
 }
 
 struct DiscountDetailContent: Codable {

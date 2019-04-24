@@ -6,7 +6,12 @@
 //  Copyright © 2019 lohsts. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+protocol Collapsable {
+    
+    var cellHeight: CGFloat { get set }
+}
 
 struct CardObject: Codable {
     
@@ -15,7 +20,7 @@ struct CardObject: Codable {
     var detailInfo: [CardDetailInfo]
 }
 
-struct CardBasicInfoObject: Codable {
+struct CardBasicInfoObject: Codable, Collapsable {
     
     let bank: String
     
@@ -34,6 +39,29 @@ struct CardBasicInfoObject: Codable {
     let briefIntro: [ BriefIntro ]
     
     let note: String
+    
+    var cellHeight: CGFloat  = 135
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case bank
+        
+        case id
+        
+        case image
+        
+        case name
+        
+        case  officialWeb
+        
+        case getCardWeb
+        
+        case tags
+        
+        case briefIntro
+        
+        case note
+    }
 }
 
 struct CardDetailInfo: Codable {

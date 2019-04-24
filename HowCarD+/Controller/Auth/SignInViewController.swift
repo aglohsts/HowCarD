@@ -18,6 +18,22 @@ class SignInViewController: HCBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setNavBar()
+    }
+    
+    private func setNavBar() {
+
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage.asset(.Icons_24px_Dismiss),
+            style: .plain,
+            target: self,
+            action: #selector(onDismiss))
+    }
+    
+    @objc private func onDismiss() {
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func onSignIn(_ sender: Any) {
@@ -47,6 +63,34 @@ class SignInViewController: HCBaseViewController {
                     self.presentAlertWith(title: "Error", message: error.localizedDescription)
                 }
             }
+        }
+    }
+    
+    @IBAction func toSignUp(_ sender: Any) {
+        
+//        presentSignUpVC()
+        
+//        self.dismiss(animated: false, completion: {[weak self] in
+//
+//            self?.presentSignUpVC()
+//
+//        })
+        
+        
+    }
+}
+
+extension SignInViewController {
+    
+    func presentSignUpVC() {
+        
+        if let signUpVC = UIStoryboard(
+            name: StoryboardCategory.auth,
+            bundle: nil).instantiateViewController(
+                withIdentifier: String(describing: SignUpViewController.self)) as? SignUpViewController {
+            let navVC = UINavigationController(rootViewController: signUpVC)
+            
+            self.present(navVC, animated: false, completion: nil)
         }
     }
 }

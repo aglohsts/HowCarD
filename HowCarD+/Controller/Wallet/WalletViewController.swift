@@ -25,18 +25,39 @@ class WalletViewController: HCBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setNavBar()
+        
+//        confirmUserSignnedIn()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         confirmUserSignnedIn()
     }
-
-    
 }
 
 extension WalletViewController {
     
+    private func setNavBar() {
+        
+        // TODO: Log out icon
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+        image: UIImage.asset(.Image_Placeholder2),
+        style: .plain,
+        target: self,
+        action: #selector(onSignOut))
+    }
+    
+    @objc private func onSignOut() {
+        
+        signOut()
+    }
+    
     func confirmUserSignnedIn() {
         
         if Auth.auth().currentUser == nil {
-            
+        
             presentSignInVC()
         }
     }
@@ -86,12 +107,19 @@ extension WalletViewController: UICollectionViewDelegate {
 
 extension WalletViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: String(describing: WalletCollectionViewCell.self),
+            for: indexPath
+        )
+        
+        guard let walletCell = cell as? WalletCollectionViewCell
+            else { return cell }
+        
+        return walletCell
     }
-    
-
 }

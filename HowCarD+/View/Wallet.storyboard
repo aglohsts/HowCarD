@@ -23,14 +23,21 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewLayout key="collectionViewLayout" id="6LE-I8-ywY" customClass="HFCardCollectionViewLayout" customModule="HFCardCollectionViewLayout"/>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ycq-0M-tJH" customClass="HFCardCollectionViewCell" customModule="HFCardCollectionViewLayout">
-                                        <rect key="frame" x="2" y="0.0" width="410" height="177"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WalletCollectionViewCell" id="jaw-8k-yK6" customClass="WalletCollectionViewCell" customModule="HowCarD_" customModuleProvider="target">
+                                        <rect key="frame" x="3.5" y="0.0" width="407" height="223"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="410" height="177"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="407" height="223"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="edy-t9-xUD">
+                                                    <rect key="frame" x="110" y="75" width="240" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.79958307740000001" green="0.9175652862" blue="0.95275133850000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </view>
+                                            </subviews>
                                         </view>
-                                        <size key="customSize" width="410" height="177"/>
+                                        <size key="customSize" width="407" height="223"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

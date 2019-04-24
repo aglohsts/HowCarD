@@ -21,7 +21,21 @@ class SignUpViewController: HCBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setNavBar()
+    }
+    
+    private func setNavBar() {
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage.asset(.Icons_24px_Dismiss),
+            style: .plain,
+            target: self,
+            action: #selector(onDismiss))
+    }
+    
+    @objc private func onDismiss() {
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func onSignUp(_ sender: Any) {

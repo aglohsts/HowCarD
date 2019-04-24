@@ -13,7 +13,7 @@ class DRecommCategoryDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.definesPresentationContext = true
+//        self.definesPresentationContext = true
     }
 
     @IBAction func onDismiss(_ sender: Any) {
