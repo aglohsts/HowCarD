@@ -28,7 +28,7 @@ private enum UserDocumentData: String {
     case uid
 }
 
-private enum UserCollection: String {
+enum UserCollection: String {
     
     case interestedCards
     
@@ -107,7 +107,7 @@ class HCFirebaseManager {
             ])
     }
     
-    func addLikedDiscounts(uid: String, discountId: String) {
+    func addLikedDiscount(uid: String, discountId: String) {
         
         firestoreRef(to: .users).document(uid)
             .collection(UserCollection.likedDiscounts.rawValue)
@@ -116,7 +116,105 @@ class HCFirebaseManager {
                 ])
     }
     
-    func addInterestedCard() {
+    func deleteLikedDiscount(uid: String, discountId: String) {
+        
+        firestoreRef(to: .users).document(uid)
+            .collection(UserCollection.likedDiscounts.rawValue)
+            .whereField(DataKey.discountId.rawValue, isEqualTo: discountId)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        print("\(document.documentID) => \(document.data())")
+                    }
+                    
+                    querySnapshot!.documents.forEach({ [weak self] (document) in
+                        
+                        // document.documentID
+                        // 用 documentID 去刪除 document
+                        
+                        self?.firestoreRef(to: .users)
+                            .document(uid).collection(UserCollection.likedDiscounts.rawValue)
+                            .document(document.documentID).delete()
+                        })
+                }
+            }
+//        firestoreRef(to: .users).document(uid)
+//            .collection(UserCollection.likedDiscounts.rawValue).document()
+    }
+    
+    func addLikedDiscountByArray(uid: String, discountIdArray: [String]) {
+        
+        discountIdArray.forEach { (discountId) in
+            
+            firestoreRef(to: .users).document(uid)
+                .collection(UserCollection.likedDiscounts.rawValue)
+                .addDocument(data: [
+                    DataKey.discountId.rawValue: "\(discountId)"
+                    ])
+        }
+    }
+    
+    func deleteLikedDiscountByArray(uid: String, discountIdArray: [String]) {
+        
+        discountIdArray.forEach { (discountId) in
+            
+            firestoreRef(to: .users).document(uid)
+                .collection(UserCollection.likedDiscounts.rawValue)
+                .whereField(DataKey.discountId.rawValue, isEqualTo: discountId)
+                .getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        for document in querySnapshot!.documents {
+                            print("\(document.documentID) => \(document.data())")
+                        }
+                        
+                        querySnapshot!.documents.forEach({ [weak self] (document) in
+                            
+                            // document.documentID
+                            // 用 documentID 去刪除 document
+                            
+                            self?.firestoreRef(to: .users)
+                                .document(uid).collection(UserCollection.likedDiscounts.rawValue)
+                                .document(document.documentID).delete()
+                        })
+                    }
+            }
+        }
+    }
+    
+    func deleteByArray(userCollection: UserCollection, uid: String, discountIdArray: [String]) {
+        
+        discountIdArray.forEach { (discountId) in
+            
+            firestoreRef(to: .users).document(uid)
+                .collection(userCollection.rawValue)
+                .whereField(DataKey.discountId.rawValue, isEqualTo: discountId)
+                .getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        for document in querySnapshot!.documents {
+                            print("\(document.documentID) => \(document.data())")
+                        }
+                        
+                        querySnapshot!.documents.forEach({ [weak self] (document) in
+                            
+                            // document.documentID
+                            // 用 documentID 去刪除 document
+                            
+                            self?.firestoreRef(to: .users)
+                                .document(uid).collection(UserCollection.likedDiscounts.rawValue)
+                                .document(document.documentID).delete()
+                        })
+                    }
+            }
+        }
+    }
+    
+    func addInterestedCardByArray() {
         
         
     }

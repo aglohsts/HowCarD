@@ -14,7 +14,7 @@ struct DiscountObject: Codable {
     
     let categoryId: String
     
-    let discountInfos: [DiscountInfo]
+    var discountInfos: [DiscountInfo]
 }
 
 struct DiscountInfo: Codable {
@@ -40,6 +40,33 @@ struct DiscountInfo: Codable {
     let isRegisterNeeded: Bool
     
     let registerWeb: String?
+    
+    var isLiked: Bool = false
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case discountId
+        
+        case image
+        
+        case title
+        
+        case bankName
+        
+        case cardId
+        
+        case cardName
+        
+        case timePeriod
+        
+        case lastDate
+        
+        case officialWeb
+        
+        case isRegisterNeeded
+        
+        case registerWeb
+    }
 }
 
 struct DiscountDetail: Codable, Collapsable {

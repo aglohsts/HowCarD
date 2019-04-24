@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class DiscountsTableViewCell: UITableViewCell {
     
@@ -15,6 +16,8 @@ class DiscountsTableViewCell: UITableViewCell {
     var toMoreDiscountHandler: (() -> Void)?
     
     var toDiscountDetailHandler: ((IndexPath) -> Void)?
+    
+    var likeButtonDidTouchHandler: ((DiscountInfo, UITableViewCell) -> Void)?
     
     var discountInfos: [DiscountInfo] = [] {
         
@@ -149,12 +152,35 @@ extension DiscountsTableViewCell: UICollectionViewDataSource {
                 bankName: discountInfos[indexPath.row].bankName,
                 cardName: discountInfos[indexPath.row].cardName,
                 timePeriod: discountInfos[indexPath.row].timePeriod,
-                isLiked: false
+                isLiked: discountInfos[indexPath.row].isLiked
             )
             
             discountCell.touchHandler = {
                 
-//                self.discountDetails[indexPath.row].isLiked = !self.discountDetails[indexPath.row].isLiked
+                self.discountInfos[indexPath.row].isLiked = !self.discountInfos[indexPath.row].isLiked
+                
+                self.likeButtonDidTouchHandler?(self.discountInfos[indexPath.row], self)
+                
+                let user = Auth.auth().currentUser
+                
+                if user != nil {
+//                    HCFirebaseManager.shared.addLikedDiscount(
+//                        uid: user!.uid,
+//                        discountId: self.discountInfos[indexPath.row].discountId
+//                    )
+
+                    
+                    HCFirebaseManager.shared.deleteLikedDiscount(
+                        uid: user!.uid,
+                        discountId: self.discountInfos[indexPath.row].discountId
+                    )
+                    
+                 } else {
+                    
+                    // show signInVC
+                }
+                
+                
             }
             
             return discountCell

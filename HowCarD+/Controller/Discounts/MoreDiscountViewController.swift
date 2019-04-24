@@ -12,6 +12,8 @@ class MoreDiscountViewController: HCBaseViewController {
     
     var discountCategoryId: String = ""
     
+    var ids: [String] = []
+    
     var discountObject: DiscountObject? {
         
         didSet {
@@ -194,13 +196,15 @@ extension MoreDiscountViewController: UICollectionViewDataSource {
             let discountObject = discountObject
             else { return cell }
         
+        let flag = ids.contains(discountObject.discountInfos[indexPath.row].discountId)
+        
         discountCell.layoutCell(
             image: discountObject.discountInfos[indexPath.row].image,
             discountTitle: discountObject.discountInfos[indexPath.row].title,
             bankName: discountObject.discountInfos[indexPath.row].bankName,
             cardName: discountObject.discountInfos[indexPath.row].cardName,
             timePeriod: discountObject.discountInfos[indexPath.row].timePeriod,
-            isLiked: false
+            isLiked: flag
         )
 
         discountCell.touchHandler = {

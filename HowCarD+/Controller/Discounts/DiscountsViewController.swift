@@ -8,26 +8,6 @@
 
 import UIKit
 
-struct DiscountDetailDelete {
-    
-    let image: UIImage
-    
-    let name: String
-    
-    let target: String
-    
-    let timePeriod: Int
-    
-    var isLiked: Bool
-}
-
-struct DiscountInfoDelete {
-    
-    let category: String
-    
-    let discountDetails: [DiscountDetailDelete]
-}
-
 class DiscountsViewController: HCBaseViewController {
     
     let discountProvider = DiscountProvider()
@@ -49,97 +29,6 @@ class DiscountsViewController: HCBaseViewController {
             }
         }
     }
-    
-    var discountInfos: [DiscountInfoDelete] = [
-        DiscountInfoDelete(
-            category: "銀行",
-            discountDetails: [
-                DiscountDetailDelete(
-                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
-                    name: "123456789012345678901234567890",
-                    target: "OO銀行 XX卡",
-                    timePeriod: 1577750400,
-                    isLiked: false),
-                DiscountDetailDelete(
-                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
-                    name: "123456789012345678901234567890",
-                    target: "OO銀行 XX卡",
-                    timePeriod: 1575072000,
-                    isLiked: false),
-                DiscountDetailDelete(
-                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
-                    name: "123456789012345678901234567890",
-                    target: "OO銀行 XX卡",
-                    timePeriod: 1575072000,
-                    isLiked: false),
-                DiscountDetailDelete(
-                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
-                    name: "123456789012345678901234567890",
-                    target: "OO銀行 XX卡",
-                    timePeriod: 1575072000,
-                    isLiked: false)
-            ]),
-        
-        DiscountInfoDelete(
-            category: "回饋",
-            discountDetails: [
-                DiscountDetailDelete(
-                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
-                    name: "123456789012345678901234567890",
-                    target: "OO銀行 XX卡",
-                    timePeriod: 1575072000,
-                    isLiked: false),
-                DiscountDetailDelete(
-                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
-                    name: "123456789012345678901234567890",
-                    target: "OO銀行 XX卡",
-                    timePeriod: 1575072000,
-                    isLiked: false),
-                DiscountDetailDelete(
-                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
-                    name: "123456789012345678901234567890",
-                    target: "OO銀行 XX卡",
-                    timePeriod: 1575072000,
-                    isLiked: false),
-                DiscountDetailDelete(
-                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
-                    name: "123456789012345678901234567890",
-                    target: "OO銀行 XX卡",
-                    timePeriod: 1575072000,
-                    isLiked: false),
-                DiscountDetailDelete(
-                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
-                    name: "123456789012345678901234567890",
-                    target: "OO銀行 XX卡",
-                    timePeriod: 1575072000,
-                    isLiked: false)
-            ]
-        ),
-        
-        DiscountInfoDelete(
-            category: "外幣消費",
-            discountDetails: [
-                DiscountDetailDelete(
-                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
-                    name: "123456789012345678901234567890",
-                    target: "OO銀行 XX卡",
-                    timePeriod: 1575072000,
-                    isLiked: false),
-                DiscountDetailDelete(
-                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
-                    name: "123456789012345678901234567890",
-                    target: "OO銀行 XX卡",
-                    timePeriod: 1575072000,
-                    isLiked: false),
-                DiscountDetailDelete(
-                    image: UIImage.asset(.Image_Placeholder) ?? UIImage(),
-                    name: "123456789012345678901234567890",
-                    target: "OO銀行 XX卡",
-                    timePeriod: 1575072000,
-                    isLiked: false)
-            ]
-        )
-    ]
     
     var isFiltered: Bool = false
 
@@ -198,13 +87,15 @@ extension DiscountsViewController {
         if segue.identifier == Segue.moreDiscount {
             
             guard let moreDiscountVC = segue.destination as? MoreDiscountViewController,
-                let selectedPath = sender as? IndexPath
+                let datas = sender as? (IndexPath, [String])
                 
             else {
                 return
             }
             
-            moreDiscountVC.discountCategoryId = discountObjects[selectedPath.section].categoryId
+            moreDiscountVC.discountCategoryId = discountObjects[datas.0.section].categoryId
+            
+            moreDiscountVC.ids = datas.1
             
         } else if segue.identifier == Segue.discountDetail {
             
@@ -278,15 +169,51 @@ extension DiscountsViewController: UITableViewDataSource {
             discountInfos: discountObjects[indexPath.section].discountInfos
         )
         
-        discountTableViewCell.toMoreDiscountHandler = {
+        discountTableViewCell.toMoreDiscountHandler = { [weak self] in
             
-            self.performSegue(withIdentifier: Segue.moreDiscount, sender: indexPath)
+            guard let strongSelf = self else { return }
             
+            let ids: [String] = strongSelf.discountObjects[indexPath.section].discountInfos.compactMap({ info in
+                
+                if info.isLiked == true {
+                    
+                    return info.discountId
+                }
+                
+                return nil
+            })
+            
+            strongSelf.performSegue(
+                withIdentifier: Segue.moreDiscount,
+                sender: (
+                    indexPath,
+                    ids
+                )
+            )
         }
         
         discountTableViewCell.toDiscountDetailHandler = { (indexPath) in
             
             self.performSegue(withIdentifier: Segue.discountDetail, sender: indexPath)
+        }
+        
+        discountTableViewCell.likeButtonDidTouchHandler = { [weak self] (object, cell) in
+            
+            guard let strongSelf = self else { return }
+            
+            guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
+            
+            let datas: [DiscountInfo] = strongSelf.discountObjects[indexPath.section].discountInfos.map({ item in
+                
+                if item.discountId == object.discountId {
+                    return object
+                }
+                
+                return item
+            })
+            
+            strongSelf.discountObjects[indexPath.section].discountInfos = datas
+            
         }
         
         return discountTableViewCell
