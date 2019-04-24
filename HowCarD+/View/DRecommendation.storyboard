@@ -393,27 +393,59 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mpS-N1-plE">
-                                <rect key="frame" x="0.0" y="244" width="414" height="618"/>
+                                <rect key="frame" x="2" y="44" width="410" height="818"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zzl-5c-wLT">
+                                        <rect key="frame" x="8" y="8" width="394" height="22"/>
+                                        <state key="normal" image="Icons_24px_Dismiss"/>
+                                        <connections>
+                                            <action selector="onDismiss:" destination="8RX-Pa-my8" eventType="touchUpInside" id="Re3-xm-fSs"/>
+                                        </connections>
+                                    </button>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="naf-8T-ah4">
+                                        <rect key="frame" x="0.0" y="30" width="410" height="788"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="111" id="s2B-H9-ajX">
+                                                <rect key="frame" x="0.0" y="28" width="410" height="111"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s2B-H9-ajX" id="dse-3s-sOz">
+                                                    <rect key="frame" x="0.0" y="0.0" width="410" height="110.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
                                 <color key="backgroundColor" red="0.79958307740000001" green="0.9175652862" blue="0.95275133850000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="naf-8T-ah4" firstAttribute="top" secondItem="Zzl-5c-wLT" secondAttribute="bottom" id="4g6-QE-onK"/>
+                                    <constraint firstAttribute="trailing" secondItem="Zzl-5c-wLT" secondAttribute="trailing" constant="8" id="Ly3-G3-BrX"/>
+                                    <constraint firstAttribute="trailing" secondItem="naf-8T-ah4" secondAttribute="trailing" id="aS1-Jp-4Oi"/>
+                                    <constraint firstItem="Zzl-5c-wLT" firstAttribute="top" secondItem="mpS-N1-plE" secondAttribute="top" constant="8" id="bDg-4M-kbG"/>
+                                    <constraint firstItem="Zzl-5c-wLT" firstAttribute="leading" secondItem="mpS-N1-plE" secondAttribute="leading" constant="8" id="fLz-fk-Bwg"/>
+                                    <constraint firstItem="naf-8T-ah4" firstAttribute="leading" secondItem="mpS-N1-plE" secondAttribute="leading" id="fwE-go-3Kp"/>
+                                    <constraint firstAttribute="bottom" secondItem="naf-8T-ah4" secondAttribute="bottom" id="gjP-GR-5s1"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="agCornerRadius">
-                                        <real key="value" value="4"/>
+                                        <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="mpS-N1-plE" firstAttribute="leading" secondItem="uOk-6X-N1g" secondAttribute="leading" id="Bd5-cX-UD0"/>
-                            <constraint firstItem="mpS-N1-plE" firstAttribute="top" secondItem="uOk-6X-N1g" secondAttribute="top" constant="200" id="LO4-Og-Gvp"/>
+                            <constraint firstItem="mpS-N1-plE" firstAttribute="leading" secondItem="uOk-6X-N1g" secondAttribute="leading" constant="2" id="Bd5-cX-UD0"/>
+                            <constraint firstItem="mpS-N1-plE" firstAttribute="top" secondItem="uOk-6X-N1g" secondAttribute="top" id="LO4-Og-Gvp"/>
                             <constraint firstItem="uOk-6X-N1g" firstAttribute="bottom" secondItem="mpS-N1-plE" secondAttribute="bottom" id="Wo6-L0-Qcn"/>
-                            <constraint firstItem="uOk-6X-N1g" firstAttribute="trailing" secondItem="mpS-N1-plE" secondAttribute="trailing" id="ZLi-Cb-2FE"/>
+                            <constraint firstItem="uOk-6X-N1g" firstAttribute="trailing" secondItem="mpS-N1-plE" secondAttribute="trailing" constant="2" id="ZLi-Cb-2FE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uOk-6X-N1g"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nco-P5-htq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2187" y="37"/>
+            <point key="canvasLocation" x="2186.9565217391305" y="36.830357142857139"/>
         </scene>
         <!--DiscountDetailViewController-->
         <scene sceneID="PEJ-0i-Ou1">
@@ -421,10 +453,11 @@
                 <viewControllerPlaceholder storyboardName="Discounts" referencedIdentifier="DiscountDetailViewController" id="YPn-ob-sqO" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nUR-Ip-o5h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1238" y="139"/>
+            <point key="canvasLocation" x="1274" y="141"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Icons_24px_Dismiss" width="15" height="15"/>
         <image name="Image_Placeholder" width="500" height="500"/>
     </resources>
 </document>

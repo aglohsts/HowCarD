@@ -133,11 +133,26 @@ extension DRecommViewController {
                     as? DRecommCategoryDetailViewController {
 //                    let navVC = UINavigationController(rootViewController: signInVC)
                     
-                    dRecommCategoryDetailVC.modalPresentationStyle = .overFullScreen
+                    self.addChild(dRecommCategoryDetailVC)
                     
-                    dRecommCategoryDetailVC.modalTransitionStyle = .crossDissolve
+                    let toContainerLeftBottom = self.containerView.frame.origin.y + self.containerView.frame.height
                     
-                    self.present(dRecommCategoryDetailVC, animated: true, completion: nil)
+                    dRecommCategoryDetailVC.view.frame = CGRect(
+                        x: 0, y: toContainerLeftBottom,
+                        width: UIScreen.main.bounds.width,
+                        height: UIScreen.main.bounds.height - toContainerLeftBottom
+                    )
+                    
+                    self.view.addSubview(dRecommCategoryDetailVC.view)
+                    
+                    dRecommCategoryDetailVC.didMove(toParent: self)
+                    
+//                    dRecommCategoryDetailVC.modalPresentationStyle = .overFullScreen
+//
+//                    dRecommCategoryDetailVC.modalTransitionStyle = .crossDissolve
+//
+//                    self.present(dRecommCategoryDetailVC, animated: true, completion: nil)
+                    
                 }
             }
         }

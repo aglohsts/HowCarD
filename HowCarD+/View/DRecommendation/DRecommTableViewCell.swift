@@ -166,7 +166,9 @@ class DRecommTableViewCell: FoldingCell {
     }
     
     override func prepareForReuse() {
+
 //        isUnfolded = false
+
     }
 }
 
