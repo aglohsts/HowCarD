@@ -11,9 +11,37 @@ import Firebase
 import FirebaseFirestore
 import FirebaseDatabase
 
-enum FirestoreCollectionReference: String {
+private enum FirestoreCollectionReference: String {
     case banks
     case cards
+    case users
+}
+
+private enum UserDocumentData: String {
+    
+    case firstName
+    
+    case lastName
+    
+    case email
+    
+    case uid
+}
+
+private enum UserCollection: String {
+    
+    case interestedCards
+    
+    case likedDiscounts
+    
+    case myCards
+}
+
+private enum DataKey: String {
+    
+    case discountId
+    
+    case cardId
 }
 
 class HCFirebaseManager {
@@ -67,6 +95,30 @@ class HCFirebaseManager {
             listener(true)
             
         }
+    }
+    
+    func addNewUser(uid: String, firstName: String, lastName: String, email: String) {
+        
+        firestoreRef(to: .users).document(uid).setData([
+            UserDocumentData.firstName.rawValue: "\(firstName)",
+            UserDocumentData.lastName.rawValue: "\(lastName)",
+            UserDocumentData.uid.rawValue: "\(uid)",
+            UserDocumentData.email.rawValue: "\(email)"
+            ])
+    }
+    
+    func addLikedDiscounts(uid: String, discountId: String) {
+        
+        firestoreRef(to: .users).document(uid)
+            .collection(UserCollection.likedDiscounts.rawValue)
+            .addDocument(data: [
+                DataKey.discountId.rawValue: "\(discountId)"
+                ])
+    }
+    
+    func addInterestedCard() {
+        
+        
     }
     
     func addBank(_ bank: BankObject) {
@@ -181,8 +233,6 @@ class HCFirebaseManager {
                     self.secondDocumentID = document.documentID
                     self.showCardInfo()
                 }
-                
-                
         }
     }
     
@@ -209,23 +259,6 @@ class HCFirebaseManager {
                 for document in snapshot.documents {
                     print(document.data())
                 }
-                
-//                do {
-//                    try snapshot.documents.forEach({ (documents) in
-//                        let cardInfo: CardInfo = try documents.decoded()
-//
-//                        print(cardInfo)
-//                    })
-//
-//
-//                } catch let error {
-//                    print(error)
-//                }
         }
-        
-        
-        
     }
-
-
 }

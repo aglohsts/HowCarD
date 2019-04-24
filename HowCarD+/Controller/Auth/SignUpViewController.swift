@@ -16,6 +16,10 @@ class SignUpViewController: HCBaseViewController {
     
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var firstNameTextField: UITextField!
+    
+    @IBOutlet weak var lastNameTextField: UITextField!
+    
     @IBOutlet weak var confirmPwdTextField: UITextField!
     
     override func viewDidLoad() {
@@ -40,23 +44,30 @@ class SignUpViewController: HCBaseViewController {
     
     @IBAction func onSignUp(_ sender: Any) {
         
-        if emailTextField.text == "" {
+        if emailTextField.text == "" || passwordTextField.text == "" || confirmPwdTextField.text == "" || firstNameTextField.text == "" || lastNameTextField.text == "" {
             
-            presentAlertWith(title: "Error", message: "請輸入帳號、密碼。")
+            presentAlertWith(title: "Error", message: "請輸入您的帳號資訊。")
             
         } else {
             
             guard let email = emailTextField.text,
                 let password = passwordTextField.text,
-                let confirmPwd = confirmPwdTextField.text else { return }
+                let confirmPwd = confirmPwdTextField.text,
+            let firstName = firstNameTextField.text,
+            let lastName = lastNameTextField.text else { return }
             
             if password == confirmPwd {
                 
                 Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
                     
-                    if error == nil {
+                    if error == nil, user != nil {
                         
-                        
+                        HCFirebaseManager.shared.addNewUser(
+                            uid: user!.user.uid,
+                            firstName: firstName,
+                            lastName: lastName,
+                            email: email
+                        )
                         
                         print("You have successfully signed up")
                         
