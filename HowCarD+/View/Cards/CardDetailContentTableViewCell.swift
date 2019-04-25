@@ -32,7 +32,7 @@ class CardDetailContentTableViewCell: UITableViewCell {
         }
     }
 
-    var touchHandler: (() -> Void)?
+    var showDetailDidTouchHandler: (() -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -52,7 +52,7 @@ class CardDetailContentTableViewCell: UITableViewCell {
         
         self.reloadInputViews()
 
-        touchHandler?()
+        showDetailDidTouchHandler?()
 
     }
 

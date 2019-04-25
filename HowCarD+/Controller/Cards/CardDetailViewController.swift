@@ -16,9 +16,11 @@ class CardDetailViewController: UIViewController {
     
     var collectedCardIds = [String]()
     
+    var cardCollectTouchHandler: (() -> Void)?
+    
     @IBOutlet weak var collectedBtn: UIButton!
     
-    var isCollected: Bool = false{
+    var isCollected: Bool = false {
     
         didSet {
 
@@ -39,6 +41,13 @@ class CardDetailViewController: UIViewController {
                     self.collectedBtn.setTitle("X", for: .normal)
                 }
             }
+            
+//            self.cardObject?.basicInfo.isCollected = isCollected
+        }
+        willSet {
+            
+            self.cardObject?.basicInfo.isCollected = isCollected
+
         }
     }
 
@@ -89,8 +98,6 @@ class CardDetailViewController: UIViewController {
         }
     }
 
-    var touchHandler: (() -> Void)?
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -139,6 +146,7 @@ class CardDetailViewController: UIViewController {
         
         isCollected = !isCollected
         
+        cardCollectTouchHandler?()
     }
 }
 
@@ -159,8 +167,10 @@ extension CardDetailViewController {
                 strongSelf.cardObject = cards
                 
 //                guard let cardObject = strongSelf.cardObject else { return }
-//                
+//
 //                strongSelf.isCollected = cardObject.basicInfo.isCollected
+                
+                strongSelf.cardObject?.basicInfo.isCollected = strongSelf.isCollected
                 
             case .failure(let error):
                 
@@ -229,7 +239,7 @@ extension CardDetailViewController: UITableViewDataSource {
         
         contentCell.layoutCell(title: data.title, content: content, isDetail: data.isDetail)
 
-        contentCell.touchHandler = { [weak self] in
+        contentCell.showDetailDidTouchHandler = { [weak self] in
 
             guard let indexPath = tableView.indexPath(for: cell) else { return }
             self?.cardObject?.detailInfo[indexPath.section].content[indexPath.row].isDetail = !(self?.cardObject?.detailInfo[indexPath.section].content[indexPath.row].isDetail)!

@@ -57,14 +57,6 @@ class CardsViewController: HCBaseViewController {
         super.viewDidLoad()
 
         setNavBar()
-//    AF.request("https://www.taishinbank.com.tw/TS/TS02/TS0201/TS020101/TS02010101/TS0201010104/TS020101010409/index.htm").responseString { response in
-//            
-//            if let html = response.value {
-//                print(html)
-//            }
-//        }
-
-//        getAllCards()
         
         getCardBasicInfo()
         
@@ -130,13 +122,37 @@ extension CardsViewController {
             
             cardDetailVC?.cardID = cardsBasicInfo[datas.0.row].id
             
-//            cardDetailVC?.cardObject?.basicInfo.isCollected = datas.1
-            
             cardDetailVC?.loadViewIfNeeded()
             
-            cardDetailVC?.isCollected = datas.1
+            guard let vc = cardDetailVC else { return }
             
+            vc.isCollected = datas.1
+            
+            vc.cardCollectTouchHandler = { [weak self] in
+                
+                guard let strongSelf = self else { return }
+                
+                strongSelf.cardsBasicInfo[datas.0.row].isCollected = vc.isCollected
+                
+                strongSelf.updateIsCollectedCardId()
+            }
         }
+    }
+    
+    func updateIsCollectedCardId() {
+        
+        self.collectedCardIds = self.cardsBasicInfo.compactMap({ info in
+            
+            if info.isCollected == true {
+                
+                return info.id
+            }
+            
+            return nil
+        })
+        
+        print("=======")
+        print(collectedCardIds)
     }
 }
 
@@ -181,15 +197,7 @@ extension CardsViewController: UITableViewDataSource {
             
             strongSelf.cardsBasicInfo[indexPath.row].isCollected = !strongSelf.cardsBasicInfo[indexPath.row].isCollected
             
-            strongSelf.collectedCardIds = strongSelf.cardsBasicInfo.compactMap({ info in
-                
-                if info.isCollected == true {
-                    
-                    return info.id
-                }
-                
-                return nil
-            })
+            strongSelf.updateIsCollectedCardId()
         }
         return cardInfoCell
     }
