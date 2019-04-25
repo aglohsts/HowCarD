@@ -215,18 +215,14 @@ class HCFirebaseManager {
         }
     }
     
-    func getId(uid: String, userCollection: UserCollection) {
+    func getId(uid: String, userCollection: UserCollection, completion: @escaping ([String]) -> Void) {
         
-        
-        // , completion: @escaping ([QueryDocumentSnapshot]) -> Void
-        
-        switch userCollection {
-            
-        case .collectedCards, .myCards:
-            
-            firestoreRef(to: .users).document(uid).collection(userCollection.rawValue).addSnapshotListener { (snapshot, error) in
+        firestoreRef(to: .users)
+            .document(uid)
+            .collection(userCollection.rawValue)
+            .getDocuments { (snapshot, error) in
                 
-                guard let snapshot = snapshot else {
+                guard let documents = snapshot?.documents else {
                     
                     guard let error = error else { return }
                     
@@ -235,41 +231,21 @@ class HCFirebaseManager {
                     return
                 }
                 
-                for document in snapshot.documents {
+                switch userCollection {
                     
-                    print(document.documentID)
-                    
-                    print(document.data())
-                }
-
-                //            completion(snapshot.documents)
-            }
-            
-        case .likedDiscounts:
-            
-            firestoreRef(to: .users).document(uid).collection(userCollection.rawValue).addSnapshotListener { (snapshot, error) in
+                case .collectedCards, .myCards:
                 
-                guard let snapshot = snapshot else {
+                let ids = documents.compactMap({ $0[DataKey.cardId.rawValue] as? String })
                     
-                    guard let error = error else { return }
+                completion(ids)
                     
-                    print("Error fetching document: \(error)")
+                case .likedDiscounts:
                     
-                    return
-                }
-                
-                for document in snapshot.documents {
+                let ids = documents.compactMap({ $0[DataKey.discountId.rawValue] as? String })
                     
-                    print(document.documentID)
-                    
-                    print(document.data())
-                }
-                
-                //            completion(snapshot.documents)
-            }
+                completion(ids)
+                }      
         }
-        
-        
     }
     
     func addLikedDiscountByArray(uid: String, discountIdArray: [String]) {

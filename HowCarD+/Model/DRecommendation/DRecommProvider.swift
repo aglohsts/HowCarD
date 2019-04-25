@@ -32,11 +32,9 @@ class DRecommProvider {
                 
                 do {
                     
-                    let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
+//                    let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
                     
                     let newCards = try strongSelf.decoder.decode([CardBasicInfoObject].self, from: data)
-                    
-                    print(newCards)
                     
                     completion(Result.success(newCards))
                     
@@ -65,11 +63,9 @@ class DRecommProvider {
                 
                 do {
                     
-                    let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
+//                    let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
                     
                     let selectedCards = try strongSelf.decoder.decode([CardBasicInfoObject].self, from: data)
-                    
-                    print(selectedCards)
 
                     completion(Result.success(selectedCards))
                     
@@ -98,11 +94,9 @@ class DRecommProvider {
                 
                 do {
                     
-                    let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
+//                    let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
                     
                     let newDiscounts = try strongSelf.decoder.decode([DiscountDetail].self, from: data)
-                    
-                    print(newDiscounts)
 
                     completion(Result.success(newDiscounts))
                     
@@ -131,11 +125,9 @@ class DRecommProvider {
                 
                 do {
                     
-                    let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
+//                    let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
                     
                     let selectedDiscounts = try strongSelf.decoder.decode([DiscountDetail].self, from: data)
-                    
-                    print(selectedDiscounts)
 
                     completion(Result.success(selectedDiscounts))
                     

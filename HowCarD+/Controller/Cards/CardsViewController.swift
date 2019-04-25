@@ -11,6 +11,8 @@ import FirebaseAuth
 
 class CardsViewController: HCBaseViewController {
     
+    let group = DispatchGroup()
+    
     var collectedCardIds = [String]()
     
     private struct Segue {
@@ -59,9 +61,14 @@ class CardsViewController: HCBaseViewController {
 
         setNavBar()
         
-        getCardBasicInfo()
+//        getCardBasicInfo()
         
         setTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        getData()
     }
 
     private func setNavBar() {
@@ -93,7 +100,76 @@ class CardsViewController: HCBaseViewController {
 
 extension CardsViewController {
     
+    func getData() {
+        
+        getCardBasicInfo()
+        getUserCollectedCardId()
+        
+        group.notify(queue: .main, execute: { [weak self] in
+            
+            guard let strongSelf = self else { return }
+            
+            strongSelf.collectedCardIds.forEach({ (id) in
+                
+                for index in 0 ..< strongSelf.cardsBasicInfo.count {
+                    
+                    if strongSelf.cardsBasicInfo[index].id == id {
+                        
+                        strongSelf.cardsBasicInfo[index].isCollected = true
+                    }
+                    
+                }
+                
+                DispatchQueue.main.async {
+                    
+                    strongSelf.tableView.reloadData()
+                }
+                
+                
+//                for var cardBasicInfoObject in strongSelf.cardsBasicInfo {
+//                    
+//                    if cardBasicInfoObject.id == id {
+//                        
+//                        cardBasicInfoObject.isCollected = true
+//                        
+//                        DispatchQueue.main.async {
+//                            
+//                            strongSelf.tableView.reloadData()
+//                        }
+//                    }
+//                }
+                
+//                strongSelf.cardsBasicInfo.forEach({ (cardBasicInfoObject) in
+//
+//                    if cardBasicInfoObject.id == id {
+//
+//                        cardBasicInfoObject.isCollected = true
+//                    }
+//                })
+            })
+        })
+    }
+    
+    func getUserCollectedCardId() {
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        group.enter()
+        
+        HCFirebaseManager.shared.getId(uid: uid, userCollection: .collectedCards, completion: { [weak self] ids in
+            
+            print(ids)
+            
+            self?.collectedCardIds = ids
+            // TODO
+            
+            self?.group.leave()
+        })
+    }
+    
     func getCardBasicInfo() {
+        
+        group.enter()
         
         cardProvider.getCardBasicInfo(completion: { [weak self] result in
             
@@ -101,14 +177,14 @@ extension CardsViewController {
                 
             case .success(let cardsBasicInfo):
                 
-                print(cardsBasicInfo)
-                
                 self?.cardsBasicInfo = cardsBasicInfo
                 
             case .failure(let error):
                 
                 print(error)
             }
+            
+            self?.group.leave()
         })
     }
     
