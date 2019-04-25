@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class CardsViewController: HCBaseViewController {
     
@@ -25,11 +24,11 @@ class CardsViewController: HCBaseViewController {
     var banks = [BankObject]()
     
     var cardsBasicInfo = [CardBasicInfoObject]() {
-        
+
         didSet {
-            
+
             DispatchQueue.main.async {
-                
+
                 self.tableView.reloadData()
             }
         }
@@ -61,14 +60,13 @@ class CardsViewController: HCBaseViewController {
 
         setNavBar()
         
-//        getCardBasicInfo()
-        
         setTableView()
+        
+        getData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        getData()
+  
     }
 
     private func setNavBar() {
@@ -124,44 +122,19 @@ extension CardsViewController {
                     
                     strongSelf.tableView.reloadData()
                 }
-                
-                
-//                for var cardBasicInfoObject in strongSelf.cardsBasicInfo {
-//                    
-//                    if cardBasicInfoObject.id == id {
-//                        
-//                        cardBasicInfoObject.isCollected = true
-//                        
-//                        DispatchQueue.main.async {
-//                            
-//                            strongSelf.tableView.reloadData()
-//                        }
-//                    }
-//                }
-                
-//                strongSelf.cardsBasicInfo.forEach({ (cardBasicInfoObject) in
-//
-//                    if cardBasicInfoObject.id == id {
-//
-//                        cardBasicInfoObject.isCollected = true
-//                    }
-//                })
             })
         })
     }
     
     func getUserCollectedCardId() {
         
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
         
         group.enter()
         
-        HCFirebaseManager.shared.getId(uid: uid, userCollection: .collectedCards, completion: { [weak self] ids in
-            
-            print(ids)
+        HCFirebaseManager.shared.getId(uid: user.uid, userCollection: .collectedCards, completion: { [weak self] ids in
             
             self?.collectedCardIds = ids
-            // TODO
             
             self?.group.leave()
         })
@@ -223,15 +196,9 @@ extension CardsViewController {
                 
                 return info.id
             }
-            
             return nil
         })
-        
-        print("=======")
-        print(collectedCardIds)
     }
-    
-    
 }
 
 extension CardsViewController: UITableViewDelegate {
@@ -273,16 +240,22 @@ extension CardsViewController: UITableViewDataSource {
             
             guard let strongSelf = self else { return }
             
-            guard let uid = Auth.auth().currentUser?.uid else { return }
+            guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
             
             if strongSelf.cardsBasicInfo[indexPath.row].isCollected {
                 
-                HCFirebaseManager.shared.deleteId(userCollection: .collectedCards, uid: uid, id: strongSelf.cardsBasicInfo[indexPath.row].id)
-                
+                HCFirebaseManager.shared.deleteId(
+                    userCollection: .collectedCards,
+                    uid: user.uid,
+                    id: strongSelf.cardsBasicInfo[indexPath.row].id
+                )
             } else {
                 
-                HCFirebaseManager.shared.addId(userCollection: .collectedCards, uid: uid, id: strongSelf.cardsBasicInfo[indexPath.row].id)
-                
+                HCFirebaseManager.shared.addId(
+                    userCollection: .collectedCards,
+                    uid: user.uid,
+                    id: strongSelf.cardsBasicInfo[indexPath.row].id
+                )
             }
             
             strongSelf.cardsBasicInfo[indexPath.row].isCollected = !strongSelf.cardsBasicInfo[indexPath.row].isCollected

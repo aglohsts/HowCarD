@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class CardDetailViewController: UIViewController {
     
@@ -145,14 +144,19 @@ class CardDetailViewController: UIViewController {
     
     @IBAction func onCollectCard(_ sender: Any) {
         
-        guard let uid = Auth.auth().currentUser?.uid, let cardObject = cardObject else { return }
+        guard let user = HCFirebaseManager.shared.agAuth().currentUser,
+            let cardObject = cardObject else { return }
         
         if isCollected {
             
-            HCFirebaseManager.shared.deleteId(userCollection: .collectedCards, uid: uid, id: cardObject.basicInfo.id)
+            HCFirebaseManager.shared.deleteId(
+                userCollection: .collectedCards,
+                uid: user.uid,
+                id: cardObject.basicInfo.id
+            )
         } else {
             
-            HCFirebaseManager.shared.addId(userCollection: .collectedCards, uid: uid, id: cardObject.basicInfo.id)
+            HCFirebaseManager.shared.addId(userCollection: .collectedCards, uid: user.uid, id: cardObject.basicInfo.id)
         }
         
         isCollected = !isCollected
@@ -197,7 +201,10 @@ extension CardDetailViewController: UITableViewDelegate {
             withIdentifier: String(describing: CardDetailTableViewHeaderView.self)
         )
 
-        guard let headerView = view as? CardDetailTableViewHeaderView, let cardObject = self.cardObject else { return view }
+        guard let headerView = view as? CardDetailTableViewHeaderView,
+            let cardObject = self.cardObject else {
+                return view
+        }
 
         headerView.layoutView(title: cardObject.detailInfo[section].sectionTitle)
 
@@ -244,7 +251,7 @@ extension CardDetailViewController: UITableViewDataSource {
             return cell
         }
 
-        var data = cardObject.detailInfo[indexPath.section].content[indexPath.row]
+        let data = cardObject.detailInfo[indexPath.section].content[indexPath.row]
         
         let content = data.isDetail ? data.detailContent : data.briefContent
         
@@ -253,7 +260,8 @@ extension CardDetailViewController: UITableViewDataSource {
         contentCell.showDetailDidTouchHandler = { [weak self] in
 
             guard let indexPath = tableView.indexPath(for: cell) else { return }
-            self?.cardObject?.detailInfo[indexPath.section].content[indexPath.row].isDetail = !(self?.cardObject?.detailInfo[indexPath.section].content[indexPath.row].isDetail)!
+            self?.cardObject?.detailInfo[indexPath.section].content[indexPath.row].isDetail =
+                !(self?.cardObject?.detailInfo[indexPath.section].content[indexPath.row].isDetail)!
             
             contentCell.isDetail = !contentCell.isDetail
                 

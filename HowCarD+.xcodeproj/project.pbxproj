@@ -50,7 +50,6 @@
 		CA38706A2269BC6700D06B90 /* DiscountObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3870692269BC6700D06B90 /* DiscountObject.swift */; };
 		CA38706C2269DFA300D06B90 /* DiscountProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38706B2269DFA300D06B90 /* DiscountProvider.swift */; };
 		CA38706E2269E01100D06B90 /* DiscountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38706D2269E01100D06B90 /* DiscountRequest.swift */; };
-		CA387070226D883E00D06B90 /* FoldingCellWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38706F226D883E00D06B90 /* FoldingCellWrapper.swift */; };
 		CA47A184225AF7CD00AD16AF /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47A183225AF7CD00AD16AF /* CardDetailViewController.swift */; };
 		CA47A187225B133F00AD16AF /* CardTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47A185225B133F00AD16AF /* CardTagCollectionViewCell.swift */; };
 		CA47A188225B133F00AD16AF /* CardTagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA47A186225B133F00AD16AF /* CardTagCollectionViewCell.xib */; };
@@ -138,7 +137,6 @@
 		CA3870692269BC6700D06B90 /* DiscountObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountObject.swift; sourceTree = "<group>"; };
 		CA38706B2269DFA300D06B90 /* DiscountProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountProvider.swift; sourceTree = "<group>"; };
 		CA38706D2269E01100D06B90 /* DiscountRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountRequest.swift; sourceTree = "<group>"; };
-		CA38706F226D883E00D06B90 /* FoldingCellWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldingCellWrapper.swift; sourceTree = "<group>"; };
 		CA47A183225AF7CD00AD16AF /* CardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
 		CA47A185225B133F00AD16AF /* CardTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTagCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA47A186225B133F00AD16AF /* CardTagCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardTagCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -529,7 +527,6 @@
 			isa = PBXGroup;
 			children = (
 				CA6B5C6D2266FF3F00B180A2 /* KingfisherWrapper.swift */,
-				CA38706F226D883E00D06B90 /* FoldingCellWrapper.swift */,
 			);
 			path = ThirdPartyWrapper;
 			sourceTree = "<group>";
@@ -690,7 +687,6 @@
 				CA171BA82254C2D60042BBDC /* UICollectionView+Extension.swift in Sources */,
 				CA2F7DD62256FA0D005E4361 /* UIScreen+Extension.swift in Sources */,
 				CA171B92225350350042BBDC /* CardsViewController.swift in Sources */,
-				CA387070226D883E00D06B90 /* FoldingCellWrapper.swift in Sources */,
 				CA2F7DDB22579B8B005E4361 /* CardInfoTableViewCell.swift in Sources */,
 				CAFE828E22605F99004F4E63 /* SignInViewController.swift in Sources */,
 				CA2D6B0322647BD600C25883 /* QueryDocumentSnapshot+Extension.swift in Sources */,

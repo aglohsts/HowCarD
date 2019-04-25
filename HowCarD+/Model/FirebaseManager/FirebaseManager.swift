@@ -80,6 +80,11 @@ class HCFirebaseManager {
         return Database.database().reference()
     }
     
+    func agAuth() -> Auth {
+        
+        return Auth.auth()
+    }
+    
     func addSignUpListener(listener: @escaping (Bool) -> Void ) {
         Auth.auth().addStateDidChangeListener { [weak self] (_, user) in
             
@@ -244,7 +249,7 @@ class HCFirebaseManager {
                 let ids = documents.compactMap({ $0[DataKey.discountId.rawValue] as? String })
                     
                 completion(ids)
-                }      
+                }
         }
     }
     
@@ -267,7 +272,7 @@ class HCFirebaseManager {
             firestoreRef(to: .users).document(uid)
                 .collection(UserCollection.likedDiscounts.rawValue)
                 .whereField(DataKey.discountId.rawValue, isEqualTo: discountId)
-                .getDocuments() { (querySnapshot, err) in
+                .getDocuments { (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
                     } else {
@@ -325,7 +330,7 @@ class HCFirebaseManager {
                 firestoreRef(to: .users).document(uid)
                     .collection(userCollection.rawValue)
                     .whereField(DataKey.cardId.rawValue, isEqualTo: id)
-                    .getDocuments() { (querySnapshot, err) in
+                    .addSnapshotListener { (querySnapshot, err) in
                         if let err = err {
                             print("Error getting documents: \(err)")
                         } else {
@@ -350,7 +355,7 @@ class HCFirebaseManager {
                 firestoreRef(to: .users).document(uid)
                     .collection(userCollection.rawValue)
                     .whereField(DataKey.discountId.rawValue, isEqualTo: id)
-                    .getDocuments() { (querySnapshot, err) in
+                    .getDocuments { (querySnapshot, err) in
                         if let err = err {
                             print("Error getting documents: \(err)")
                         } else {
