@@ -46,7 +46,7 @@ class SignUpViewController: HCBaseViewController {
         
         if emailTextField.text == "" || passwordTextField.text == "" || confirmPwdTextField.text == "" || firstNameTextField.text == "" || lastNameTextField.text == "" {
             
-            presentAlertWith(title: "Error", message: "請輸入您的帳號資訊。")
+            presentAlertWith1Action(title: "Error", message: "請輸入您的帳號資訊。")
             
         } else {
             
@@ -84,11 +84,11 @@ class SignUpViewController: HCBaseViewController {
                         
                         guard let error = error else { return }
                         
-                        self.presentAlertWith(title: "Error", message: error.localizedDescription)
+                        self.presentAlertWith1Action(title: "Error", message: error.localizedDescription)
                     }
                 }
             } else {
-                presentAlertWith(title: "Error", message: "請確認輸入相同的密碼。")
+                presentAlertWith1Action(title: "Error", message: "請確認輸入相同的密碼。")
             }
         }
     }

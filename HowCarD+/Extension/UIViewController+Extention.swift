@@ -10,7 +10,12 @@ import UIKit
 
 extension UIViewController {
     
-    func presentAlertWith(title: String, message : String, actionButtonText: String = "OK") {
+    func presentAlertWith1Action(
+        title: String,
+        message : String,
+        actionButtonText: String = "OK",
+        completion: (()->Void)? = nil
+        ) {
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
@@ -21,6 +26,31 @@ extension UIViewController {
         
         alertController.addAction(defaultAction)
         
-        self.present(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: completion)
+    }
+    
+    // TODO: 改按選擇後的action
+    
+    func presentAlertWith3Actions(
+        title: String,
+        message : String,
+        action1ButtonText: String,
+        alertAction1: ((UIAlertAction)->Void)?,
+        action2ButtonText: String,
+        alertAction2: ((UIAlertAction)->Void)?,
+        completion: (()->Void)? = nil
+        ) {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        
+        let action1 = UIAlertAction(title: action1ButtonText, style: .default, handler: alertAction1)
+ 
+        let action2 = UIAlertAction(title: action2ButtonText, style: .default, handler: alertAction2)
+            
+        alertController.addAction(action1)
+        
+        alertController.addAction(action2)
+            
+        self.present(alertController, animated: true, completion: completion)
     }
 }

@@ -42,7 +42,7 @@ class SignInViewController: HCBaseViewController {
             
             // 提示用戶是不是忘記輸入 textfield ？
             
-            presentAlertWith(title: "Error", message: "請確認輸入帳號及密碼。")
+            presentAlertWith1Action(title: "Error", message: "請確認輸入帳號及密碼。")
             
         } else {
             
@@ -60,7 +60,7 @@ class SignInViewController: HCBaseViewController {
                     // 提示用戶從 firebase 返回了一個錯誤。
                     guard let error = error else { return }
                     
-                    self.presentAlertWith(title: "Error", message: error.localizedDescription)
+                    self.presentAlertWith1Action(title: "Error", message: error.localizedDescription)
                 }
             }
         }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class CardDetailViewController: UIViewController {
     
@@ -143,6 +144,16 @@ class CardDetailViewController: UIViewController {
     }
     
     @IBAction func onCollectCard(_ sender: Any) {
+        
+        guard let uid = Auth.auth().currentUser?.uid, let cardObject = cardObject else { return }
+        
+        if isCollected {
+            
+            HCFirebaseManager.shared.deleteId(userCollection: .collectedCards, uid: uid, id: cardObject.basicInfo.id)
+        } else {
+            
+            HCFirebaseManager.shared.addId(userCollection: .collectedCards, uid: uid, id: cardObject.basicInfo.id)
+        }
         
         isCollected = !isCollected
         

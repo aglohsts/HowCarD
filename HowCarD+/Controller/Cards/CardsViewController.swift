@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class CardsViewController: HCBaseViewController {
     
@@ -61,7 +62,6 @@ class CardsViewController: HCBaseViewController {
         getCardBasicInfo()
         
         setTableView()
-        
     }
 
     private func setNavBar() {
@@ -154,6 +154,8 @@ extension CardsViewController {
         print("=======")
         print(collectedCardIds)
     }
+    
+    
 }
 
 extension CardsViewController: UITableViewDelegate {
@@ -194,6 +196,18 @@ extension CardsViewController: UITableViewDataSource {
         cardInfoCell.collectButtonDidTouchHandler = { [weak self] in
             
             guard let strongSelf = self else { return }
+            
+            guard let uid = Auth.auth().currentUser?.uid else { return }
+            
+            if strongSelf.cardsBasicInfo[indexPath.row].isCollected {
+                
+                HCFirebaseManager.shared.deleteId(userCollection: .collectedCards, uid: uid, id: strongSelf.cardsBasicInfo[indexPath.row].id)
+                
+            } else {
+                
+                HCFirebaseManager.shared.addId(userCollection: .collectedCards, uid: uid, id: strongSelf.cardsBasicInfo[indexPath.row].id)
+                
+            }
             
             strongSelf.cardsBasicInfo[indexPath.row].isCollected = !strongSelf.cardsBasicInfo[indexPath.row].isCollected
             
