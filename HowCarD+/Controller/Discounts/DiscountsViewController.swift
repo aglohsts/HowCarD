@@ -107,7 +107,7 @@ extension DiscountsViewController {
             
             moreDiscountVC.discountCategoryId = discountObjects[datas.0.section].categoryId
             
-            moreDiscountVC.ids = datas.1
+//            moreDiscountVC.ids = datas.1
             
         } else if segue.identifier == Segue.discountDetail {
             
@@ -216,31 +216,48 @@ extension DiscountsViewController {
                 
                 strongSelf.likedDiscountId = ids
                 
-                strongSelf.likedDiscountId.forEach({ (id) in
+                for index1 in 0 ..< strongSelf.discountObjects.count {
                     
-                    for index1 in 0 ..< strongSelf.discountObjects.count {
+                    for index2 in 0 ..< strongSelf.discountObjects[index1].discountInfos.count {
                         
-                        for index2 in 0 ..< strongSelf.discountObjects[index1].discountInfos.count {
-                            
-//                            strongSelf.discountObjects[index1].discountInfos[index2].isLiked = false
-                            
+                        strongSelf.discountObjects[index1].discountInfos[index2].isLiked = false
+                        
+                        strongSelf.likedDiscountId.forEach({ (id) in
                             if strongSelf.discountObjects[index1].discountInfos[index2].discountId == id {
                                 
                                 strongSelf.discountObjects[index1].discountInfos[index2].isLiked = true
-                            }
-                            
-                        }
+                            } 
+                        })
                     }
-                })
+                    
+                }
+                
+                DispatchQueue.main.async {
+                    
+                    strongSelf.tableView.reloadData()
+                    
+                }
             })
-        DispatchQueue.main.async {
             
-            self.tableView.reloadData()
-            
-        }
-    }
+                
+//                strongSelf.likedDiscountId.forEach({ (id) in
+//
+//                    for index3 in 0 ..< strongSelf.discountObjects.count {
+//
+//                        for index4 in 0 ..< strongSelf.discountObjects[index3].discountInfos.count {
+//
+////                            strongSelf.discountObjects[index1].discountInfos[index2].isLiked = false
+//
+//                            if strongSelf.discountObjects[index3].discountInfos[index4].discountId == id {
+//
+//                                strongSelf.discountObjects[index3].discountInfos[index4].isLiked = true
+//                            }
+//                        }
+//                    }
+//                })
+//            })
         
-    
+    }
 }
 
 extension DiscountsViewController: UITableViewDelegate {
@@ -309,10 +326,10 @@ extension DiscountsViewController: UITableViewDataSource {
             self.performSegue(withIdentifier: Segue.discountDetail, sender: indexPath)
         }
         
-        discountTableViewCell.likeButtonDidTouchHandler = { [weak self] (object, cell) in
-            
-            guard let strongSelf = self else { return }
-            
+//        discountTableViewCell.likeButtonDidTouchHandler = { [weak self] (object, cell) in
+//
+//            guard let strongSelf = self else { return }
+        
 //            guard let indexPath = strongSelf.tableView.indexPath(for: cell) else { return }
 //
 //            let datas: [DiscountInfo] = strongSelf.discountObjects[indexPath.section].discountInfos.map({ item in
@@ -353,7 +370,7 @@ extension DiscountsViewController: UITableViewDataSource {
 //
             
             
-        }
+//        }
         
         return discountTableViewCell
     }

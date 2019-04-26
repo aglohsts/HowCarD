@@ -10,9 +10,17 @@ import UIKit
 
 class MoreDiscountViewController: HCBaseViewController {
     
+    let group = DispatchGroup()
+    
     var discountCategoryId: String = ""
     
-    var ids: [String] = []
+    var likedDiscountId: [String] = [] {
+        
+        didSet {
+            
+            likedDiscountId = HCFirebaseManager.shared.likedDiscountIds
+        }
+    }
     
     var discountObject: DiscountObject? {
         
@@ -45,7 +53,7 @@ class MoreDiscountViewController: HCBaseViewController {
 
         setupCollectionView()
         
-        getDiscountByCategory()
+        getData()
     }
     
     private func setupCollectionView() {
@@ -97,9 +105,44 @@ extension MoreDiscountViewController {
         }
     }
     
+    func getData() {
+        
+        getDiscountByCategory()
+        getUserLikedDiscountId()
+        
+        group.notify(queue: .main, execute: { [weak self] in
+            
+            guard let strongSelf = self else { return }
+            
+            if strongSelf.discountObject != nil {
+                
+                strongSelf.likedDiscountId.forEach({ (id) in
+                    
+                    for index in 0 ..< strongSelf.discountObject!.discountInfos.count {
+                        
+                        if strongSelf.discountObject!.discountInfos[index].discountId == id {
+                            
+                            strongSelf.discountObject!.discountInfos[index].isLiked = true
+                        }
+                        
+                    }
+                    
+                })
+                
+                DispatchQueue.main.async {
+                    strongSelf.collectionView.reloadData()
+                }
+            }
+        })
+    }
+    
     func getDiscountByCategory() {
         
+        group.enter()
+        
         discountProvider.getByCategory(id: discountCategoryId, completion: { [weak self] result in
+            
+            guard let strongSelf = self else { return }
             
             switch result {
                 
@@ -107,12 +150,28 @@ extension MoreDiscountViewController {
                 
                 print(discountObject)
                 
-                self?.discountObject = discountObject
-                
+                strongSelf.discountObject = discountObject
+
             case .failure(let error):
                 
                 print(error)
             }
+            
+            strongSelf.group.leave()
+        })
+    }
+    
+    func getUserLikedDiscountId() {
+        
+        guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+        
+        group.enter()
+        
+        HCFirebaseManager.shared.getId(uid: user.uid, userCollection: .likedDiscounts, completion: { [weak self] ids in
+            
+            self?.likedDiscountId = ids
+            
+            self?.group.leave()
         })
     }
 }
@@ -192,27 +251,47 @@ extension MoreDiscountViewController: UICollectionViewDataSource {
         
 //        return cell
         
-        guard let discountCell = cell as? DiscountCollectionViewCell,
-            let discountObject = discountObject
+        guard let discountCollectionViewCell = cell as? DiscountCollectionViewCell
             else { return cell }
         
-        let flag = ids.contains(discountObject.discountInfos[indexPath.row].discountId)
+//        let flag = ids.contains(discountObject.discountInfos[indexPath.row].discountId)
         
-        discountCell.layoutCell(
-            image: discountObject.discountInfos[indexPath.row].image,
-            discountTitle: discountObject.discountInfos[indexPath.row].title,
-            bankName: discountObject.discountInfos[indexPath.row].bankName,
-            cardName: discountObject.discountInfos[indexPath.row].cardName,
-            timePeriod: discountObject.discountInfos[indexPath.row].timePeriod,
-            isLiked: flag
+        discountCollectionViewCell.layoutCell(
+            image: self.discountObject?.discountInfos[indexPath.item].image ?? "",
+            discountTitle: self.discountObject?.discountInfos[indexPath.item].title ?? "",
+            bankName: self.discountObject?.discountInfos[indexPath.item].bankName ?? "",
+            cardName: self.discountObject?.discountInfos[indexPath.item].cardName ?? "",
+            timePeriod: self.discountObject?.discountInfos[indexPath.item].timePeriod ?? "",
+            isLiked: self.discountObject?.discountInfos[indexPath.item].isLiked ?? false
         )
 
-        discountCell.likeBtnTouchHandler = {
+        discountCollectionViewCell.likeBtnTouchHandler = { [weak self] in
 
-//            self.discountDetails[indexPath.row].isLiked = !self.discountDetails[indexPath.row].isLiked
-        }
+            guard let strongSelf = self, let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+            
+                if strongSelf.discountObject!.discountInfos[indexPath.item].isLiked {
+                    
+                    HCFirebaseManager.shared.deleteId(
+                        userCollection: .likedDiscounts,
+                        uid: user.uid,
+                        id: strongSelf.discountObject!.discountInfos[indexPath.item].discountId
+                    )
+                } else {
+                    
+                    HCFirebaseManager.shared.addId(
+                        userCollection: .likedDiscounts,
+                        uid: user.uid,
+                        id: strongSelf.discountObject!.discountInfos[indexPath.item].discountId
+                    )
+                }
+            strongSelf.discountObject!.discountInfos[indexPath.row].isLiked = !strongSelf.discountObject!.discountInfos[indexPath.row].isLiked
 
-        return discountCell
+                NotificationCenter.default.post(
+                    name: Notification.Name(rawValue: NotificationNames.likeButtonTapped.rawValue),
+                    object: nil
+                )
+            }
+        return discountCollectionViewCell
     }
-    
+
 }

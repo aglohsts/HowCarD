@@ -17,7 +17,7 @@ class DiscountsTableViewCell: UITableViewCell {
     
     var toDiscountDetailHandler: ((IndexPath) -> Void)?
     
-    var likeButtonDidTouchHandler: ((DiscountInfo, UITableViewCell) -> Void)?
+//    var likeButtonDidTouchHandler: ((DiscountInfo, UITableViewCell) -> Void)?
     
     var discountInfos: [DiscountInfo] = [] {
         
