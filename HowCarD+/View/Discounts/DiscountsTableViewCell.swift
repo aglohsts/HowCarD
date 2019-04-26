@@ -155,30 +155,34 @@ extension DiscountsTableViewCell: UICollectionViewDataSource {
                 isLiked: discountInfos[indexPath.row].isLiked
             )
             
-            discountCell.touchHandler = {
-                
-                self.discountInfos[indexPath.row].isLiked = !self.discountInfos[indexPath.row].isLiked
-                
-                self.likeButtonDidTouchHandler?(self.discountInfos[indexPath.row], self)
-                
-                let user = Auth.auth().currentUser
-                
-                if user != nil {
-//                    HCFirebaseManager.shared.addLikedDiscount(
-//                        uid: user!.uid,
-//                        discountId: self.discountInfos[indexPath.row].discountId
-//                    )
+            discountCell.touchHandler = { [weak self] in
 
+                // TODO: handle 沒登入：跳提醒登入或註冊然後 present SignInVC
+                
+                // TODO: handle 不同類別但同 discountID 的優惠
+                
+                guard let strongSelf = self, let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+                
+                if strongSelf.discountInfos[indexPath.row].isLiked {
                     
-                    HCFirebaseManager.shared.deleteLikedDiscount(
-                        uid: user!.uid,
-                        discountId: self.discountInfos[indexPath.row].discountId
+                    HCFirebaseManager.shared.deleteId(
+                        userCollection: .likedDiscounts,
+                        uid: user.uid,
+                        id: strongSelf.discountInfos[indexPath.row].discountId
                     )
+                } else {
                     
-                 } else {
-                    
-                    // show signInVC
+                    HCFirebaseManager.shared.addId(
+                        userCollection: .likedDiscounts,
+                        uid: user.uid,
+                        id: strongSelf.discountInfos[indexPath.row].discountId
+                    )
                 }
+                
+                strongSelf.discountInfos[indexPath.row].isLiked = !strongSelf.discountInfos[indexPath.row].isLiked
+                
+                strongSelf.likeButtonDidTouchHandler?(strongSelf.discountInfos[indexPath.row], strongSelf)
+                
             }
             
             return discountCell

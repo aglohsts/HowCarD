@@ -51,6 +51,12 @@ class HCFirebaseManager {
     
     static let shared = HCFirebaseManager()
     
+    var likedDiscountIds = [String]()
+    
+    var collectedCardIds = [String]()
+    
+    var myCardIds = [String]()
+    
     var firstDocumentID: String = ""
     
     var secondDocumentID: String = ""
@@ -152,14 +158,6 @@ class HCFirebaseManager {
         
         switch userCollection {
             
-        case .collectedCards, .myCards:
-        
-            firestoreRef(to: .users).document(uid)
-                .collection(userCollection.rawValue)
-                .addDocument(data: [
-                    DataKey.cardId.rawValue: "\(id)"
-                    ])
-            
         case .likedDiscounts:
             
             firestoreRef(to: .users).document(uid)
@@ -167,14 +165,64 @@ class HCFirebaseManager {
                 .addDocument(data: [
                     DataKey.discountId.rawValue: "\(id)"
                     ])
+            
+            likedDiscountIds.append(id)
+            
+        case .collectedCards:
+        
+            firestoreRef(to: .users).document(uid)
+                .collection(userCollection.rawValue)
+                .addDocument(data: [
+                    DataKey.cardId.rawValue: "\(id)"
+                    ])
+            
+            collectedCardIds.append(id)
+        
+        case .myCards:
+            
+            firestoreRef(to: .users).document(uid)
+                .collection(userCollection.rawValue)
+                .addDocument(data: [
+                    DataKey.cardId.rawValue: "\(id)"
+                    ])
+            
+            myCardIds.append(id)
         }
     }
     
     func deleteId(userCollection: UserCollection, uid: String, id: String) {
         
+        var ids = [String]()
+        
         switch userCollection {
             
-        case .collectedCards, .myCards:
+        case .likedDiscounts:
+            
+            ids = likedDiscountIds
+            
+            firestoreRef(to: .users).document(uid)
+                .collection(userCollection.rawValue)
+                .whereField(DataKey.discountId.rawValue, isEqualTo: id)
+                .getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        for document in querySnapshot!.documents {
+                            print("\(document.documentID) => \(document.data())")
+                        }
+                        
+                        querySnapshot!.documents.forEach({ [weak self] (document) in
+                            // 用 documentID 去刪除 document
+                            self?.firestoreRef(to: .users)
+                                .document(uid).collection(userCollection.rawValue)
+                                .document(document.documentID).delete()
+                        })
+                    }
+            }
+            
+        case .collectedCards:
+            
+            ids = collectedCardIds
             
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
@@ -196,11 +244,13 @@ class HCFirebaseManager {
                     }
             }
             
-        case .likedDiscounts:
+        case .myCards:
+            
+            ids = myCardIds
             
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
-                .whereField(DataKey.discountId.rawValue, isEqualTo: id)
+                .whereField(DataKey.cardId.rawValue, isEqualTo: id)
                 .getDocuments() { (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
@@ -218,14 +268,39 @@ class HCFirebaseManager {
                     }
             }
         }
+        guard let index = ids.firstIndex(of: id) else { return }
+        
+        ids.remove(at: index)
     }
     
     func getId(uid: String, userCollection: UserCollection, completion: @escaping ([String]) -> Void) {
         
+        var ids = [String]()
+        
+        switch userCollection {
+        case .likedDiscounts:
+            
+            ids = likedDiscountIds
+            
+        case .collectedCards:
+            
+            ids = collectedCardIds
+            
+        case .myCards:
+            ids = myCardIds
+        }
+        
+        if ids.count > 0 {
+            
+            completion(ids)
+            
+            return
+        }
+        
         firestoreRef(to: .users)
             .document(uid)
             .collection(userCollection.rawValue)
-            .getDocuments { (snapshot, error) in
+            .getDocuments { [weak self] (snapshot, error) in
                 
                 guard let documents = snapshot?.documents else {
                     
@@ -240,13 +315,13 @@ class HCFirebaseManager {
                     
                 case .collectedCards, .myCards:
                 
-                let ids = documents.compactMap({ $0[DataKey.cardId.rawValue] as? String })
+                ids = documents.compactMap({ $0[DataKey.cardId.rawValue] as? String })
                     
                 completion(ids)
-                    
+ 
                 case .likedDiscounts:
                     
-                let ids = documents.compactMap({ $0[DataKey.discountId.rawValue] as? String })
+                ids = documents.compactMap({ $0[DataKey.discountId.rawValue] as? String })
                     
                 completion(ids)
                 }

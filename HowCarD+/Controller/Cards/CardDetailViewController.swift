@@ -144,6 +144,8 @@ class CardDetailViewController: UIViewController {
     
     @IBAction func onCollectCard(_ sender: Any) {
         
+        // TODO: handle 沒登入：跳提醒登入或註冊然後 present SignInVC
+        
         guard let user = HCFirebaseManager.shared.agAuth().currentUser,
             let cardObject = cardObject else { return }
         
@@ -259,9 +261,10 @@ extension CardDetailViewController: UITableViewDataSource {
 
         contentCell.showDetailDidTouchHandler = { [weak self] in
 
-            guard let indexPath = tableView.indexPath(for: cell) else { return }
-            self?.cardObject?.detailInfo[indexPath.section].content[indexPath.row].isDetail =
-                !(self?.cardObject?.detailInfo[indexPath.section].content[indexPath.row].isDetail)!
+            guard let strongSelf = self,
+                let indexPath = tableView.indexPath(for: cell) else { return }
+            strongSelf.cardObject?.detailInfo[indexPath.section].content[indexPath.row].isDetail =
+                !(strongSelf.cardObject?.detailInfo[indexPath.section].content[indexPath.row].isDetail)!
             
             contentCell.isDetail = !contentCell.isDetail
                 
@@ -270,7 +273,7 @@ extension CardDetailViewController: UITableViewDataSource {
 //            self?.tableView.reloadRows(at: [indexPath], with: .automatic)
 //            let contentOffset = self?.tableView.contentOffset
 //            CATransaction.begin()
-            self?.tableView.reloadData()
+            strongSelf.tableView.reloadData()
 //            CATransaction.setCompletionBlock({
 //                self?.tableView.contentOffset = contentOffset!
 //            })

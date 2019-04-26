@@ -115,7 +115,6 @@ extension CardsViewController {
                         
                         strongSelf.cardsBasicInfo[index].isCollected = true
                     }
-                    
                 }
                 
                 DispatchQueue.main.async {

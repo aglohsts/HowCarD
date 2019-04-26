@@ -10,6 +10,10 @@ import UIKit
 
 class DiscountsViewController: HCBaseViewController {
     
+    let group = DispatchGroup()
+    
+    var likedDiscountId = [String]()
+    
     let discountProvider = DiscountProvider()
     
     private struct Segue {
@@ -47,7 +51,7 @@ class DiscountsViewController: HCBaseViewController {
         
         setTableView()
         
-        getAllDiscount()
+        getData()
     }
     
     private func setTableView() {
@@ -113,7 +117,40 @@ extension DiscountsViewController {
         }
     }
     
+    func getData() {
+        
+        getAllDiscount()
+        getUserLikedDiscountId()
+        
+        group.notify(queue: .main, execute: { [weak self] in
+            
+            guard let strongSelf = self else { return }
+            
+            strongSelf.likedDiscountId.forEach({ (id) in
+                
+                for index1 in 0 ..< strongSelf.discountObjects.count {
+                    
+                    for index2 in 0 ..< strongSelf.discountObjects[index1].discountInfos.count {
+                        
+                        if strongSelf.discountObjects[index1].discountInfos[index2].discountId == id {
+                            
+                            strongSelf.discountObjects[index1].discountInfos[index2].isLiked = true
+                        }
+                    }
+                }
+                
+                DispatchQueue.main.async {
+                    
+                    strongSelf.tableView.reloadData()
+                }
+                
+            })
+        })
+    }
+    
     func getAllDiscount() {
+        
+        group.enter()
         
         discountProvider.getCards(completion: { [weak self] result in
             
@@ -129,6 +166,22 @@ extension DiscountsViewController {
                 
                 print(error)
             }
+            
+            self?.group.leave()
+        })
+    }
+    
+    func getUserLikedDiscountId() {
+        
+        guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+        
+        group.enter()
+        
+        HCFirebaseManager.shared.getId(uid: user.uid, userCollection: .likedDiscounts, completion: { [weak self] ids in
+            
+            self?.likedDiscountId = ids
+            
+            self?.group.leave()
         })
     }
 }
@@ -203,7 +256,7 @@ extension DiscountsViewController: UITableViewDataSource {
             
             guard let strongSelf = self else { return }
             
-            guard let indexPath = self?.tableView.indexPath(for: cell) else { return }
+            guard let indexPath = strongSelf.tableView.indexPath(for: cell) else { return }
             
             let datas: [DiscountInfo] = strongSelf.discountObjects[indexPath.section].discountInfos.map({ item in
                 
@@ -215,6 +268,28 @@ extension DiscountsViewController: UITableViewDataSource {
             })
             
             strongSelf.discountObjects[indexPath.section].discountInfos = datas
+            
+            strongSelf.likedDiscountId.forEach({ (id) in
+
+                for index1 in 0 ..< strongSelf.discountObjects.count {
+
+                    for index2 in 0 ..< strongSelf.discountObjects[index1].discountInfos.count {
+
+                        if strongSelf.discountObjects[index1].discountInfos[index2].discountId == id {
+
+                            strongSelf.discountObjects[index1].discountInfos[index2].isLiked = true
+                        }
+                    }
+                }
+
+                DispatchQueue.main.async {
+
+                    strongSelf.tableView.reloadData()
+                    
+                    discountTableViewCell.collectionView.reloadData()
+                }
+
+            })
             
         }
         
