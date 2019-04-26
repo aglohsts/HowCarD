@@ -15,10 +15,6 @@ enum NotificationNames: String {
 
 class DiscountsViewController: HCBaseViewController {
     
-    let group = DispatchGroup()
-    
-    var likedDiscountId = [String]()
-    
     let discountProvider = DiscountProvider()
     
     private struct Segue {
@@ -27,6 +23,10 @@ class DiscountsViewController: HCBaseViewController {
         
         static let discountDetail = "DetailFromDiscountVC"
     }
+    
+    let group = DispatchGroup()
+    
+    var likedDiscountId = [String]()
     
     var discountObjects: [DiscountObject] = [] {
         

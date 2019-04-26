@@ -124,14 +124,12 @@ extension MoreDiscountViewController {
                             
                             strongSelf.discountObject!.discountInfos[index].isLiked = true
                         }
-                        
                     }
-                    
                 })
-                
-                DispatchQueue.main.async {
-                    strongSelf.collectionView.reloadData()
-                }
+            }
+            
+            DispatchQueue.main.async {
+                strongSelf.collectionView.reloadData()
             }
         })
     }

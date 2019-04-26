@@ -28,6 +28,10 @@ class DiscountDetailViewController: HCBaseViewController {
         }
     }
     
+    let group = DispatchGroup()
+    
+    var likedDiscountId = [String]()
+    
     var discountId: String = ""
     
     let discountProvider = DiscountProvider()
@@ -58,7 +62,7 @@ class DiscountDetailViewController: HCBaseViewController {
 
         setupTableView()
         
-        getDetail()
+        getData()
     }
 }
 
@@ -92,7 +96,39 @@ extension DiscountDetailViewController {
         timePeriodLabel.text = timePeriod
     }
     
+    func getData() {
+        
+        getDetail()
+        getUserLikedDiscountId()
+        
+        group.notify(queue: .main, execute: { [weak self] in
+            
+            guard let strongSelf = self else { return }
+            
+            if strongSelf.discountDetail != nil {
+                
+                strongSelf.likedDiscountId.forEach({ (id) in
+ 
+                    if strongSelf.discountDetail!.info.discountId == id {
+                        
+                        strongSelf.discountDetail!.info.isLiked = true
+                    }
+
+                })
+                
+                
+            }
+            
+            DispatchQueue.main.async {
+                strongSelf.tableView.reloadData()
+            }
+            
+            })
+    }
+    
     func getDetail() {
+        
+        group.enter()
         
         discountProvider.getDetail(id: discountId, completion: { [weak self] result in
             
@@ -119,6 +155,22 @@ extension DiscountDetailViewController {
                 
                 print(error)
             }
+            
+            self?.group.leave()
+        })
+    }
+    
+    func getUserLikedDiscountId() {
+        
+        guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+        
+        group.enter()
+        
+        HCFirebaseManager.shared.getId(uid: user.uid, userCollection: .likedDiscounts, completion: { [weak self] ids in
+            
+            self?.likedDiscountId = ids
+            
+            self?.group.leave()
         })
     }
 }

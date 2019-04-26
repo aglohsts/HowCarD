@@ -71,7 +71,7 @@ struct DiscountInfo: Codable {
 
 struct DiscountDetail: Codable, Collapsable {
     
-    let info: DiscountInfo
+    var info: DiscountInfo
     
     let detailContent: [DiscountDetailContent]
     
