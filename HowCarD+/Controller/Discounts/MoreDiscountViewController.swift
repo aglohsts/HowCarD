@@ -207,7 +207,7 @@ extension MoreDiscountViewController: UICollectionViewDataSource {
             isLiked: flag
         )
 
-        discountCell.touchHandler = {
+        discountCell.likeBtnTouchHandler = {
 
 //            self.discountDetails[indexPath.row].isLiked = !self.discountDetails[indexPath.row].isLiked
         }

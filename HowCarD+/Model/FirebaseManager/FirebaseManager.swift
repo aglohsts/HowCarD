@@ -192,13 +192,9 @@ class HCFirebaseManager {
     
     func deleteId(userCollection: UserCollection, uid: String, id: String) {
         
-        var ids = [String]()
-        
         switch userCollection {
             
         case .likedDiscounts:
-            
-            ids = likedDiscountIds
             
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
@@ -220,9 +216,11 @@ class HCFirebaseManager {
                     }
             }
             
-        case .collectedCards:
+            guard let index = likedDiscountIds.firstIndex(of: id) else { return }
             
-            ids = collectedCardIds
+            likedDiscountIds.remove(at: index)
+            
+        case .collectedCards:
             
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
@@ -243,11 +241,13 @@ class HCFirebaseManager {
                         })
                     }
             }
+            
+            guard let index = collectedCardIds.firstIndex(of: id) else { return }
+            
+            collectedCardIds.remove(at: index)
             
         case .myCards:
             
-            ids = myCardIds
-            
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
                 .whereField(DataKey.cardId.rawValue, isEqualTo: id)
@@ -267,65 +267,103 @@ class HCFirebaseManager {
                         })
                     }
             }
+            
+            guard let index = myCardIds.firstIndex(of: id) else { return }
+            
+            myCardIds.remove(at: index)
         }
-        guard let index = ids.firstIndex(of: id) else { return }
-        
-        ids.remove(at: index)
     }
     
     func getId(uid: String, userCollection: UserCollection, completion: @escaping ([String]) -> Void) {
         
-        var ids = [String]()
-        
         switch userCollection {
         case .likedDiscounts:
             
-            ids = likedDiscountIds
+            if likedDiscountIds.count > 0 {
+                
+                completion(likedDiscountIds)
+                
+                return
+            }
+            
+            firestoreRef(to: .users)
+                .document(uid)
+                .collection(userCollection.rawValue)
+                .getDocuments { [weak self] (snapshot, error) in
+                    
+                    guard let strongSelf = self, let documents = snapshot?.documents else {
+                        
+                        guard let error = error else { return }
+                        
+                        print("Error fetching document: \(error)")
+                        
+                        return
+                }
+                
+                strongSelf.likedDiscountIds = documents.compactMap({ $0[DataKey.discountId.rawValue] as? String })
+                
+                completion(strongSelf.likedDiscountIds)
+                    
+            }
+            
             
         case .collectedCards:
             
-            ids = collectedCardIds
+            if collectedCardIds.count > 0 {
+                
+                completion(collectedCardIds)
+                
+                return
+            }
+            
+            firestoreRef(to: .users)
+                .document(uid)
+                .collection(userCollection.rawValue)
+                .getDocuments { [weak self] (snapshot, error) in
+                    
+                    guard let strongSelf = self, let documents = snapshot?.documents else {
+                        
+                        guard let error = error else { return }
+                        
+                        print("Error fetching document: \(error)")
+                        
+                        return
+                }
+                    
+                strongSelf.collectedCardIds = documents.compactMap({ $0[DataKey.cardId.rawValue] as? String })
+                
+                completion(strongSelf.collectedCardIds)
+            }
             
         case .myCards:
-            ids = myCardIds
-        }
-        
-        if ids.count > 0 {
             
-            completion(ids)
-            
-            return
-        }
-        
-        firestoreRef(to: .users)
+            if myCardIds.count > 0 {
+                
+                completion(myCardIds)
+                
+                return
+            }
+                    
+            firestoreRef(to: .users)
             .document(uid)
             .collection(userCollection.rawValue)
             .getDocuments { [weak self] (snapshot, error) in
+            
+            guard let strongSelf = self, let documents = snapshot?.documents else {
+            
+            guard let error = error else { return }
+            
+            print("Error fetching document: \(error)")
+            
+            return
+            }
                 
-                guard let documents = snapshot?.documents else {
-                    
-                    guard let error = error else { return }
-                    
-                    print("Error fetching document: \(error)")
-                    
-                    return
-                }
-                
-                switch userCollection {
-                    
-                case .collectedCards, .myCards:
-                
-                ids = documents.compactMap({ $0[DataKey.cardId.rawValue] as? String })
-                    
-                completion(ids)
- 
-                case .likedDiscounts:
-                    
-                ids = documents.compactMap({ $0[DataKey.discountId.rawValue] as? String })
-                    
-                completion(ids)
-                }
+            strongSelf.myCardIds = documents.compactMap({ $0[DataKey.cardId.rawValue] as? String })
+            
+            completion(strongSelf.myCardIds)
+            }
         }
+
     }
     
     func addLikedDiscountByArray(uid: String, discountIdArray: [String]) {

@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum NotificationNames: String {
+    
+    case likeButtonTapped
+}
+
 class DiscountsViewController: HCBaseViewController {
     
     let group = DispatchGroup()
@@ -52,6 +57,8 @@ class DiscountsViewController: HCBaseViewController {
         setTableView()
         
         getData()
+        
+        discountAddObserver()
     }
     
     private func setTableView() {
@@ -184,6 +191,56 @@ extension DiscountsViewController {
             self?.group.leave()
         })
     }
+    
+    func discountAddObserver() {
+        
+        NotificationCenter.default
+            .addObserver(
+                self,
+                selector: #selector(updateCollectedDiscount),
+                name: NSNotification.Name(NotificationNames.likeButtonTapped.rawValue),
+                object: nil
+        )
+    }
+    
+    @objc func updateCollectedDiscount() {
+        
+        guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+        /// 比對 id 有哪些 isLike == true， true 的話改物件狀態
+        HCFirebaseManager.shared.getId(
+            uid: user.uid,
+            userCollection: .likedDiscounts,
+            completion: { [weak self] (ids) in
+                
+                guard let strongSelf = self else { return }
+                
+                strongSelf.likedDiscountId = ids
+                
+                strongSelf.likedDiscountId.forEach({ (id) in
+                    
+                    for index1 in 0 ..< strongSelf.discountObjects.count {
+                        
+                        for index2 in 0 ..< strongSelf.discountObjects[index1].discountInfos.count {
+                            
+//                            strongSelf.discountObjects[index1].discountInfos[index2].isLiked = false
+                            
+                            if strongSelf.discountObjects[index1].discountInfos[index2].discountId == id {
+                                
+                                strongSelf.discountObjects[index1].discountInfos[index2].isLiked = true
+                            }
+                            
+                        }
+                    }
+                })
+            })
+        DispatchQueue.main.async {
+            
+            self.tableView.reloadData()
+            
+        }
+    }
+        
+    
 }
 
 extension DiscountsViewController: UITableViewDelegate {
@@ -256,40 +313,45 @@ extension DiscountsViewController: UITableViewDataSource {
             
             guard let strongSelf = self else { return }
             
-            guard let indexPath = strongSelf.tableView.indexPath(for: cell) else { return }
+//            guard let indexPath = strongSelf.tableView.indexPath(for: cell) else { return }
+//
+//            let datas: [DiscountInfo] = strongSelf.discountObjects[indexPath.section].discountInfos.map({ item in
+//
+//                if item.discountId == object.discountId {
+//                    return object
+//                }
+//
+//                return item
+//            })
             
-            let datas: [DiscountInfo] = strongSelf.discountObjects[indexPath.section].discountInfos.map({ item in
-                
-                if item.discountId == object.discountId {
-                    return object
-                }
-                
-                return item
-            })
             
-            strongSelf.discountObjects[indexPath.section].discountInfos = datas
             
-            strongSelf.likedDiscountId.forEach({ (id) in
-
-                for index1 in 0 ..< strongSelf.discountObjects.count {
-
-                    for index2 in 0 ..< strongSelf.discountObjects[index1].discountInfos.count {
-
-                        if strongSelf.discountObjects[index1].discountInfos[index2].discountId == id {
-
-                            strongSelf.discountObjects[index1].discountInfos[index2].isLiked = true
-                        }
-                    }
-                }
-
-                DispatchQueue.main.async {
-
-                    strongSelf.tableView.reloadData()
-                    
-                    discountTableViewCell.collectionView.reloadData()
-                }
-
-            })
+//            strongSelf.discountObjects[indexPath.section].discountInfos = datas
+            
+            /// 反向物件的 isLiked
+//            strongSelf.discountObjects[indexPath.section].discountInfos[indexPath.row].isLiked =
+//                !strongSelf.discountObjects[indexPath.section].discountInfos[indexPath.row].isLiked
+//
+//            if strongSelf.discountObjects[indexPath.section].discountInfos[indexPath.row].isLiked {
+//
+//                HCFirebaseManager.shared.deleteId(
+//                    userCollection: .likedDiscounts,
+//                    uid: user.uid,
+//                    id: strongSelf.discountObjects[indexPath.section]
+//                        .discountInfos[indexPath.row].discountId
+//                )
+//            } else {
+//
+//                HCFirebaseManager.shared.addId(
+//                    userCollection: .likedDiscounts,
+//                    uid: user.uid,
+//                    id: strongSelf.discountObjects[indexPath.section]
+//                        .discountInfos[indexPath.row].discountId
+//                )
+//            }
+        
+//
+            
             
         }
         

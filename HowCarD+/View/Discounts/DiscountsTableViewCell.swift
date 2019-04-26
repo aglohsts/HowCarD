@@ -82,7 +82,6 @@ extension DiscountsTableViewCell: UICollectionViewDelegateFlowLayout {
         -> CGSize {
             
             return CGSize(width: UIScreen.width / 2 - 25, height: 200.0)
-            
     }
     
     func collectionView(
@@ -144,9 +143,9 @@ extension DiscountsTableViewCell: UICollectionViewDataSource {
                 for: indexPath
             )
             
-            guard let discountCell = cell as? DiscountCollectionViewCell else { return cell }
+            guard let discountCollectionViewCell = cell as? DiscountCollectionViewCell else { return cell }
             
-            discountCell.layoutCell(
+            discountCollectionViewCell.layoutCell(
                 image: discountInfos[indexPath.row].image,
                 discountTitle: discountInfos[indexPath.row].title,
                 bankName: discountInfos[indexPath.row].bankName,
@@ -155,7 +154,7 @@ extension DiscountsTableViewCell: UICollectionViewDataSource {
                 isLiked: discountInfos[indexPath.row].isLiked
             )
             
-            discountCell.touchHandler = { [weak self] in
+            discountCollectionViewCell.likeBtnTouchHandler = { [weak self] in
 
                 // TODO: handle 沒登入：跳提醒登入或註冊然後 present SignInVC
                 
@@ -181,11 +180,19 @@ extension DiscountsTableViewCell: UICollectionViewDataSource {
                 
                 strongSelf.discountInfos[indexPath.row].isLiked = !strongSelf.discountInfos[indexPath.row].isLiked
                 
-                strongSelf.likeButtonDidTouchHandler?(strongSelf.discountInfos[indexPath.row], strongSelf)
+
+                
+                
+                NotificationCenter.default.post(
+                    name: Notification.Name(rawValue: NotificationNames.likeButtonTapped.rawValue),
+                    object: nil
+                )
+//                strongSelf.likeButtonDidTouchHandler?(strongSelf.discountInfos[indexPath.row], strongSelf)
                 
             }
             
-            return discountCell
+            
+            return discountCollectionViewCell
     }
     
 }

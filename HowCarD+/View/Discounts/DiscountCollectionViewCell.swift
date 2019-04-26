@@ -32,7 +32,7 @@ class DiscountCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var timePeriodLabel: UILabel!
     
-    var touchHandler: (() -> Void)?
+    var likeBtnTouchHandler: (() -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -66,7 +66,7 @@ class DiscountCollectionViewCell: UICollectionViewCell {
     @IBAction func onLike(_ sender: Any) {
         isLiked = !isLiked
         
-        touchHandler?()
+        likeBtnTouchHandler?()
     }
     
     func transferToDate(unixTime: Int) -> String {
