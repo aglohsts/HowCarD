@@ -12,13 +12,7 @@ class CardsViewController: HCBaseViewController {
     
     let group = DispatchGroup()
     
-    var collectedCardIds = [String]() {
-        
-        didSet {
-            
-            collectedCardIds = HCFirebaseManager.shared.collectedCardIds
-        }
-    }
+    var collectedCardIds = [String]()
     
     private struct Segue {
         

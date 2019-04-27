@@ -88,6 +88,4 @@ extension LikedDiscountViewController: UITableViewDataSource {
         
         return likedDiscountCell
     }
-    
-    
 }

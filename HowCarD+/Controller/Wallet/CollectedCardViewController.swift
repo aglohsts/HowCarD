@@ -9,22 +9,85 @@
 import UIKit
 
 class CollectedCardViewController: HCBaseViewController {
+    
+    let group = DispatchGroup()
 
+    @IBOutlet weak var tableView: UITableView! {
+        
+        didSet {
+            
+            tableView.delegate = self
+            
+            tableView.dataSource = self
+        }
+    }
+    
+    var collectedCardIds: [String] = []
+    
+    var cardsBasicInfo = [CardBasicInfoObject]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        getData()
+    }
+
+}
+
+extension CollectedCardViewController {
+    
+    func getData() {
+        
+        getCardBasicInfo()
+        getUsercollectedCardId()
+        
+        group.notify(queue: .main, execute: {
+            
+            // 拿到資料後要比對user收藏的cardID和物件，畫面顯示有收藏的
+        })
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func getCardBasicInfo() {
+        
+        // TODO: 打api拿所有card
     }
-    */
+    
+    func getUsercollectedCardId() {
+        
+        guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+        
+        group.enter()
+        
+        HCFirebaseManager.shared.getId(uid: user.uid, userCollection: .collectedCards, completion: { [weak self] ids in
+            
+            self?.collectedCardIds = ids
+            
+            self?.group.leave()
+        })
+    }
+}
 
+extension CollectedCardViewController: UITableViewDelegate {
+    
+}
+
+extension CollectedCardViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return collectedCardIds.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: CollectedCardTableViewCell.self),
+            for: indexPath
+        )
+        
+        guard let collectedCardCell = cell as? CollectedCardTableViewCell else { return cell }
+        
+        // TODO: Layout cell
+        
+        return collectedCardCell
+    }
 }
