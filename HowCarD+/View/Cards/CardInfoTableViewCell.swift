@@ -116,7 +116,6 @@ class CardInfoTableViewCell: UITableViewCell {
         
         collectButtonDidTouchHandler?()
     }
-    
 }
 
 extension CardInfoTableViewCell: UICollectionViewDelegate {

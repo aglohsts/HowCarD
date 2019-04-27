@@ -162,13 +162,9 @@ extension WalletViewController: UICollectionViewDelegate {
             
             updateContainer(tab: .likedDiscount)
             
-            performSegue(withIdentifier: Segue.likedDiscount, sender: nil)
-            
         case TabCategory.collectedCard.rawValue:
             
             updateContainer(tab: .collectedCard)
-            
-            performSegue(withIdentifier: Segue.collectedCard, sender: nil)
             
         default: return
         }
