@@ -80,6 +80,8 @@ class DiscountDetailViewController: HCBaseViewController {
         setupTableView()
         
         getData()
+        
+        discountAddObserver()
     }
     
     @IBAction func onLikeDiscount(_ sender: Any) {
@@ -216,6 +218,32 @@ extension DiscountDetailViewController {
             
             self?.group.leave()
         })
+    }
+    
+    func discountAddObserver() {
+        
+        NotificationCenter.default
+            .addObserver(
+                self,
+                selector: #selector(updateCollectedDiscount),
+                name: NSNotification.Name(NotificationNames.likeButtonTapped.rawValue),
+                object: nil
+        )
+    }
+    
+    @objc func updateCollectedDiscount() {
+        
+        likedDiscountId = HCFirebaseManager.shared.likedDiscountIds
+        
+        likedDiscountId.forEach({ (id) in
+            
+                if discountDetail?.info.discountId == id {
+                    
+                    discountDetail?.info.isLiked = true
+                }
+        })
+        
+        tableView.reloadData()
     }
 }
 

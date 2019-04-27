@@ -331,6 +331,7 @@
                     </view>
                     <connections>
                         <outlet property="bankNameLabel" destination="UtK-LT-Qtf" id="YMM-tr-TUA"/>
+                        <outlet property="cardImageView" destination="vXz-En-Azq" id="4gM-w3-XgR"/>
                         <outlet property="cardNameLabel" destination="KgA-Zd-9mc" id="Qcr-Vv-rQr"/>
                         <outlet property="collectedBtn" destination="SK6-Pp-Qzm" id="noD-Ov-for"/>
                         <outlet property="tableView" destination="FmM-UV-JFj" id="tfN-n9-aBW"/>

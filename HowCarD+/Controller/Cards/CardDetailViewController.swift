@@ -16,6 +16,8 @@ class CardDetailViewController: UIViewController {
     
     var collectedCardIds = [String]()
     
+    @IBOutlet weak var cardImageView: UIImageView!
+    
     var cardCollectTouchHandler: (() -> Void)?
     
     @IBOutlet weak var collectedBtn: UIButton!
@@ -120,11 +122,13 @@ class CardDetailViewController: UIViewController {
         tableView.separatorStyle = .none
     }
     
-    private func setHeaderViewContent(cardName: String, bankName: String) {
+    private func setHeaderViewContent(cardName: String, bankName: String, image: String) {
         
         cardNameLabel.text = cardName
         
         bankNameLabel.text = bankName
+        
+        cardImageView.loadImage(image, placeHolder: UIIma)
     }
 
     private func setNavBar() {

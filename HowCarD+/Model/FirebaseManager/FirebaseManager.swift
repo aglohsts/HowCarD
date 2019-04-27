@@ -51,7 +51,12 @@ class HCFirebaseManager {
     
     static let shared = HCFirebaseManager()
     
-    var likedDiscountIds = [String]()
+    var likedDiscountIds = [String]() {
+        
+        didSet {
+            print("Luke --- \(self.likedDiscountIds)")
+        }
+    }
     
     var collectedCardIds = [String]()
     
