@@ -78,7 +78,11 @@ class CardDetailViewController: UIViewController {
                 
                 self.tagCollectionView.reloadData()
                 
-                self.setHeaderViewContent(cardName: self.cardObject?.basicInfo.name ?? "", bankName: self.cardObject?.basicInfo.bank ?? "")
+                self.setHeaderViewContent(
+                    cardName: self.cardObject?.basicInfo.name ?? "",
+                    bankName: self.cardObject?.basicInfo.bank ?? "",
+                    image: self.cardObject?.basicInfo.image ?? ""
+                )
             }
         }
     }
@@ -109,7 +113,6 @@ class CardDetailViewController: UIViewController {
         setNavBar()
         
         getcardDetail()
-    
     }
 
     private func setupTableView() {
@@ -128,7 +131,7 @@ class CardDetailViewController: UIViewController {
         
         bankNameLabel.text = bankName
         
-        cardImageView.loadImage(image, placeHolder: UIIma)
+        cardImageView.loadImage(image, placeHolder: UIImage.asset(.Image_Placeholder))
     }
 
     private func setNavBar() {

@@ -7,20 +7,24 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
+import HFCardCollectionViewLayout
 
 class WalletViewController: HCBaseViewController {
 
-    @IBOutlet weak var collectionView: UICollectionView! {
+    @IBOutlet weak var tabCollectionView: UICollectionView! {
         
         didSet {
             
-            collectionView.delegate = self
+            tabCollectionView.delegate = self
             
-            collectionView.dataSource = self
+            tabCollectionView.dataSource = self
         }
     }
+    
+    @IBOutlet weak var likedDiscountContainerView: UIView!
+    
+    @IBOutlet weak var collectedCardsContainerView: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +60,7 @@ extension WalletViewController {
     
     func confirmUserSignnedIn() {
         
-        if Auth.auth().currentUser == nil {
+        if HCFirebaseManager.shared.agAuth().currentUser == nil {
         
             presentSignInVC()
         }
@@ -88,9 +92,9 @@ extension WalletViewController {
     
     func signOut() {
         
-        if Auth.auth().currentUser != nil {
+        if HCFirebaseManager.shared.agAuth().currentUser != nil {
             do {
-                try Auth.auth().signOut()
+                try HCFirebaseManager.shared.agAuth().signOut()
                 //                let vc = UIStoryboard(name: StoryboardCategory.dRecommend, bundle: nil).instantiateViewController(withIdentifier: String(describing: ))
                 //                present(vc, animated: true, completion: nil)
                 
@@ -102,24 +106,17 @@ extension WalletViewController {
 }
 
 extension WalletViewController: UICollectionViewDelegate {
-
+    
 }
 
 extension WalletViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        <#code#>
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: WalletCollectionViewCell.self),
-            for: indexPath
-        )
-        
-        guard let walletCell = cell as? WalletCollectionViewCell
-            else { return cell }
-        
-        return walletCell
+        <#code#>
     }
+    
+    
 }

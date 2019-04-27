@@ -36,7 +36,7 @@
 		CA1BFCE0226F0B8D008F38BC /* DRecommObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1BFCDF226F0B8D008F38BC /* DRecommObject.swift */; };
 		CA1BFCE2226F0FFC008F38BC /* ToMoreInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1BFCE1226F0FFC008F38BC /* ToMoreInfoCollectionViewCell.swift */; };
 		CA1BFCE5226F485C008F38BC /* DRecommCategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1BFCE4226F485C008F38BC /* DRecommCategoryDetailViewController.swift */; };
-		CA23A32D226DC9BD008B8DD8 /* WalletCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA23A32C226DC9BD008B8DD8 /* WalletCollectionViewCell.swift */; };
+		CA23A32D226DC9BD008B8DD8 /* MyCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA23A32C226DC9BD008B8DD8 /* MyCardCollectionViewCell.swift */; };
 		CA25DFD8226E1FFC003AC89C /* DRecommProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25DFD7226E1FFC003AC89C /* DRecommProvider.swift */; };
 		CA25DFDA226E200C003AC89C /* DRecommRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25DFD9226E200C003AC89C /* DRecommRequest.swift */; };
 		CA2D6B0322647BD600C25883 /* QueryDocumentSnapshot+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D6B0222647BD600C25883 /* QueryDocumentSnapshot+Extension.swift */; };
@@ -67,6 +67,9 @@
 		CA6B5E34226E865D00182FFB /* DRecommDiscountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6B5E32226E865D00182FFB /* DRecommDiscountTableViewCell.swift */; };
 		CA6B5E35226E865D00182FFB /* DRecommCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6B5E33226E865D00182FFB /* DRecommCardTableViewCell.xib */; };
 		CA70B0672261D69D008F631B /* CardObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70B0662261D69D008F631B /* CardObject.swift */; };
+		CAF16FA522746EEF0013D864 /* MyCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF16FA422746EEF0013D864 /* MyCardViewController.swift */; };
+		CAF16FA8227472290013D864 /* LikedDiscountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF16FA7227472290013D864 /* LikedDiscountViewController.swift */; };
+		CAF16FAA2274727E0013D864 /* CollectedCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF16FA92274727E0013D864 /* CollectedCardViewController.swift */; };
 		CAF40392225C77E20037F1DD /* DiscountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF40390225C77E20037F1DD /* DiscountCollectionViewCell.swift */; };
 		CAF58D83225C81D800818CDD /* DiscountCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF58D82225C81D800818CDD /* DiscountCollectionViewCell.xib */; };
 		CAF58D88225CA1AB00818CDD /* MoreDiscountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF58D87225CA1AB00818CDD /* MoreDiscountViewController.swift */; };
@@ -123,7 +126,7 @@
 		CA1BFCDF226F0B8D008F38BC /* DRecommObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommObject.swift; sourceTree = "<group>"; };
 		CA1BFCE1226F0FFC008F38BC /* ToMoreInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToMoreInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA1BFCE4226F485C008F38BC /* DRecommCategoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommCategoryDetailViewController.swift; sourceTree = "<group>"; };
-		CA23A32C226DC9BD008B8DD8 /* WalletCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCollectionViewCell.swift; sourceTree = "<group>"; };
+		CA23A32C226DC9BD008B8DD8 /* MyCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA25DFD7226E1FFC003AC89C /* DRecommProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommProvider.swift; sourceTree = "<group>"; };
 		CA25DFD9226E200C003AC89C /* DRecommRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommRequest.swift; sourceTree = "<group>"; };
 		CA2D6B0222647BD600C25883 /* QueryDocumentSnapshot+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueryDocumentSnapshot+Extension.swift"; sourceTree = "<group>"; };
@@ -154,6 +157,9 @@
 		CA6B5E32226E865D00182FFB /* DRecommDiscountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommDiscountTableViewCell.swift; sourceTree = "<group>"; };
 		CA6B5E33226E865D00182FFB /* DRecommCardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DRecommCardTableViewCell.xib; sourceTree = "<group>"; };
 		CA70B0662261D69D008F631B /* CardObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardObject.swift; sourceTree = "<group>"; };
+		CAF16FA422746EEF0013D864 /* MyCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardViewController.swift; sourceTree = "<group>"; };
+		CAF16FA7227472290013D864 /* LikedDiscountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedDiscountViewController.swift; sourceTree = "<group>"; };
+		CAF16FA92274727E0013D864 /* CollectedCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectedCardViewController.swift; sourceTree = "<group>"; };
 		CAF40390225C77E20037F1DD /* DiscountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCollectionViewCell.swift; sourceTree = "<group>"; };
 		CAF58D82225C81D800818CDD /* DiscountCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscountCollectionViewCell.xib; sourceTree = "<group>"; };
 		CAF58D87225CA1AB00818CDD /* MoreDiscountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreDiscountViewController.swift; sourceTree = "<group>"; };
@@ -325,6 +331,9 @@
 			isa = PBXGroup;
 			children = (
 				CA171B93225350450042BBDC /* WalletViewController.swift */,
+				CAF16FA422746EEF0013D864 /* MyCardViewController.swift */,
+				CAF16FA7227472290013D864 /* LikedDiscountViewController.swift */,
+				CAF16FA92274727E0013D864 /* CollectedCardViewController.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -467,7 +476,7 @@
 		CA8E8DA1226DC9400037CF14 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
-				CA23A32C226DC9BD008B8DD8 /* WalletCollectionViewCell.swift */,
+				CA23A32C226DC9BD008B8DD8 /* MyCardCollectionViewCell.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -698,6 +707,7 @@
 				CA25DFDA226E200C003AC89C /* DRecommRequest.swift in Sources */,
 				CAFE828C22603F15004F4E63 /* UIViewController+Extention.swift in Sources */,
 				CA171B62225330070042BBDC /* AppDelegate.swift in Sources */,
+				CAF16FA522746EEF0013D864 /* MyCardViewController.swift in Sources */,
 				CA171B8822534F6D0042BBDC /* DRecommViewController.swift in Sources */,
 				CA1BFCE2226F0FFC008F38BC /* ToMoreInfoCollectionViewCell.swift in Sources */,
 				CA70B0672261D69D008F631B /* CardObject.swift in Sources */,
@@ -712,13 +722,15 @@
 				CAFE827F225DF304004F4E63 /* DiscountDetailContentTableViewCell.swift in Sources */,
 				CA25DFD8226E1FFC003AC89C /* DRecommProvider.swift in Sources */,
 				CA1BFCDD226F05E1008F38BC /* BriefInfoCollectionViewCell.swift in Sources */,
+				CAF16FAA2274727E0013D864 /* CollectedCardViewController.swift in Sources */,
+				CAF16FA8227472290013D864 /* LikedDiscountViewController.swift in Sources */,
 				CAFE827B225DF071004F4E63 /* HCTableViewSectionHeaderView.swift in Sources */,
 				CA323DB522684C57007A39FD /* HCParser.swift in Sources */,
 				CA171BAC2254CBB60042BBDC /* DRecommCollectionViewCell.swift in Sources */,
 				CA171B96225350510042BBDC /* QAViewController.swift in Sources */,
 				CAF40392225C77E20037F1DD /* DiscountCollectionViewCell.swift in Sources */,
 				CA171B7B22533B290042BBDC /* UIStoryboard+Extension.swift in Sources */,
-				CA23A32D226DC9BD008B8DD8 /* WalletCollectionViewCell.swift in Sources */,
+				CA23A32D226DC9BD008B8DD8 /* MyCardCollectionViewCell.swift in Sources */,
 				CAFE8281225E09CD004F4E63 /* DiscountLikedListViewController.swift in Sources */,
 				CA2F7DC6225638D7005E4361 /* FilterViewController.swift in Sources */,
 				CA38706E2269E01100D06B90 /* DiscountRequest.swift in Sources */,
