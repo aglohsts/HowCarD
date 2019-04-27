@@ -9,7 +9,7 @@
 import UIKit
 import HFCardCollectionViewLayout
 
-class MyCardViewController: UIViewController {
+class MyCardViewController: HCBaseViewController {
     
     var cardCollectionViewLayout: HFCardCollectionViewLayout?
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LikedDiscountViewController: UIViewController {
+class LikedDiscountViewController: HCBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
