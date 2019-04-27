@@ -14,13 +14,7 @@ class MoreDiscountViewController: HCBaseViewController {
     
     var discountCategoryId: String = ""
     
-    var likedDiscountIds: [String] = [] {
-        
-        didSet {
-            
-            likedDiscountIds = HCFirebaseManager.shared.likedDiscountIds
-        }
-    }
+    var likedDiscountIds: [String] = []
     
     var discountObject: DiscountObject? {
         

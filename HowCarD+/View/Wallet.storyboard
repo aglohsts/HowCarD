@@ -193,6 +193,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2Yh-2s-93f"/>
                     </view>
+                    <connections>
+                        <outlet property="discountImageView" destination="L4y-oP-zW9" id="ejh-fz-Gcl"/>
+                        <outlet property="discountNameLabel" destination="VcQ-Kt-NQt" id="vuN-hD-H0u"/>
+                        <outlet property="tableView" destination="paf-0c-XAk" id="ezd-Qn-UBQ"/>
+                        <outlet property="targetLabel" destination="JZm-9Q-786" id="mPn-y7-4Xi"/>
+                        <outlet property="timePeriodLabel" destination="oDk-kI-cy0" id="vWL-Zg-KD5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4t1-sm-l6A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
