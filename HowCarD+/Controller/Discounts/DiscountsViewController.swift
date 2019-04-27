@@ -26,7 +26,16 @@ class DiscountsViewController: HCBaseViewController {
     
     let group = DispatchGroup()
     
-    var likedDiscountId = [String]()
+    var likedDiscountIds = [String]() {
+        
+        didSet {
+            
+            if HCFirebaseManager.shared.likedDiscountIds.count > 0 {
+                
+                likedDiscountIds = HCFirebaseManager.shared.likedDiscountIds
+            }
+        }
+    }
     
     var discountObjects: [DiscountObject] = [] {
         
@@ -34,7 +43,7 @@ class DiscountsViewController: HCBaseViewController {
             
             DispatchQueue.main.async {
                 
-                self.tableView.reloadData()
+//                self.tableView.reloadData()
             }
         }
     }
@@ -61,6 +70,24 @@ class DiscountsViewController: HCBaseViewController {
         discountAddObserver()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+//        if likedDiscountIds.count > 0 {
+//
+//            NotificationCenter.default.post(
+//                name: Notification.Name(rawValue: NotificationNames.likeButtonTapped.rawValue),
+//                object: nil
+//            )
+//        }
+    }
+
     private func setTableView() {
         
         tableView.separatorStyle = .none
@@ -133,7 +160,7 @@ extension DiscountsViewController {
             
             guard let strongSelf = self else { return }
             
-            strongSelf.likedDiscountId.forEach({ (id) in
+            strongSelf.likedDiscountIds.forEach({ (id) in
                 
                 for index1 in 0 ..< strongSelf.discountObjects.count {
                     
@@ -145,17 +172,16 @@ extension DiscountsViewController {
                         }
                     }
                 }
-                
-                DispatchQueue.main.async {
-                    
-                    strongSelf.tableView.reloadData()
-                }
-                
             })
+            
+            DispatchQueue.main.async {
+                
+                self?.tableView.reloadData()
+            }
         })
     }
     
-    func getAllDiscount() {
+    private func getAllDiscount() {
         
         group.enter()
         
@@ -178,7 +204,7 @@ extension DiscountsViewController {
         })
     }
     
-    func getUserLikedDiscountId() {
+    private func getUserLikedDiscountId() {
         
         guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
         
@@ -186,7 +212,7 @@ extension DiscountsViewController {
         
         HCFirebaseManager.shared.getId(uid: user.uid, userCollection: .likedDiscounts, completion: { [weak self] ids in
             
-            self?.likedDiscountId = ids
+            self?.likedDiscountIds = ids
             
             self?.group.leave()
         })
@@ -206,7 +232,7 @@ extension DiscountsViewController {
     @objc func updateCollectedDiscount() {
         
         guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
-        /// 比對 id 有哪些 isLike == true， true 的話改物件狀態
+        /// 比對 id 有哪些 isLike == true，true 的話改物件狀態
         HCFirebaseManager.shared.getId(
             uid: user.uid,
             userCollection: .likedDiscounts,
@@ -214,7 +240,7 @@ extension DiscountsViewController {
                 
                 guard let strongSelf = self else { return }
                 
-                strongSelf.likedDiscountId = ids
+                strongSelf.likedDiscountIds = ids
                 
                 for index1 in 0 ..< strongSelf.discountObjects.count {
                     
@@ -222,11 +248,16 @@ extension DiscountsViewController {
                         
                         strongSelf.discountObjects[index1].discountInfos[index2].isLiked = false
                         
-                        strongSelf.likedDiscountId.forEach({ (id) in
+                        strongSelf.likedDiscountIds.forEach({ (id) in
+                            
                             if strongSelf.discountObjects[index1].discountInfos[index2].discountId == id {
                                 
                                 strongSelf.discountObjects[index1].discountInfos[index2].isLiked = true
-                            } 
+                            }
+//                            else {
+//
+//                                strongSelf.discountObjects[index1].discountInfos[index2].isLiked = false
+//                            }
                         })
                     }
                     

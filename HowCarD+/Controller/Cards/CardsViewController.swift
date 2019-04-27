@@ -12,7 +12,13 @@ class CardsViewController: HCBaseViewController {
     
     let group = DispatchGroup()
     
-    var collectedCardIds = [String]()
+    var collectedCardIds = [String]() {
+        
+        didSet {
+            
+            collectedCardIds = HCFirebaseManager.shared.collectedCardIds
+        }
+    }
     
     private struct Segue {
         
@@ -107,6 +113,7 @@ extension CardsViewController {
             
             guard let strongSelf = self else { return }
             
+            /// 拿到 user 收藏的 id 然後把物件有被收藏的 isCollected 改成 true
             strongSelf.collectedCardIds.forEach({ (id) in
                 
                 for index in 0 ..< strongSelf.cardsBasicInfo.count {
@@ -182,22 +189,23 @@ extension CardsViewController {
                 
                 strongSelf.cardsBasicInfo[datas.0.row].isCollected = vc.isCollected
                 
-                strongSelf.updateIsCollectedCardId()
+//                strongSelf.updateIsCollectedCardId()
             }
         }
     }
     
-    func updateIsCollectedCardId() {
-        
-        self.collectedCardIds = self.cardsBasicInfo.compactMap({ info in
-            
-            if info.isCollected == true {
-                
-                return info.id
-            }
-            return nil
-        })
-    }
+    /// 更新此 vc 存的 collectedCardId ==> 直接問 singleton
+//    func updateIsCollectedCardId() {
+//
+//        self.collectedCardIds = self.cardsBasicInfo.compactMap({ info in
+//
+//            if info.isCollected == true {
+//
+//                return info.id
+//            }
+//            return nil
+//        })
+//    }
 }
 
 extension CardsViewController: UITableViewDelegate {
@@ -259,7 +267,7 @@ extension CardsViewController: UITableViewDataSource {
             
             strongSelf.cardsBasicInfo[indexPath.row].isCollected = !strongSelf.cardsBasicInfo[indexPath.row].isCollected
             
-            strongSelf.updateIsCollectedCardId()
+//            strongSelf.updateIsCollectedCardId()
         }
         return cardInfoCell
     }

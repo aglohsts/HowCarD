@@ -67,6 +67,11 @@ class DiscountCollectionViewCell: UICollectionViewCell {
         isLiked = !isLiked
         
         likeBtnTouchHandler?()
+        
+        NotificationCenter.default.post(
+            name: Notification.Name(rawValue: NotificationNames.likeButtonTapped.rawValue),
+            object: nil
+        )
     }
     
     func transferToDate(unixTime: Int) -> String {

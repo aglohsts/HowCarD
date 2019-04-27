@@ -180,18 +180,13 @@ extension DiscountsTableViewCell: UICollectionViewDataSource {
                 
                 strongSelf.discountInfos[indexPath.row].isLiked = !strongSelf.discountInfos[indexPath.row].isLiked
                 
-
-                
+//                strongSelf.likeButtonDidTouchHandler?(strongSelf.discountInfos[indexPath.row], strongSelf)
                 
                 NotificationCenter.default.post(
                     name: Notification.Name(rawValue: NotificationNames.likeButtonTapped.rawValue),
                     object: nil
                 )
-//                strongSelf.likeButtonDidTouchHandler?(strongSelf.discountInfos[indexPath.row], strongSelf)
-                
             }
-            
-            
             return discountCollectionViewCell
     }
     

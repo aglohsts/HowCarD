@@ -30,7 +30,14 @@ class DiscountDetailViewController: HCBaseViewController {
     
     let group = DispatchGroup()
     
-    var likedDiscountId = [String]()
+    var likedDiscountId = [String]() {
+        
+        didSet {
+            
+            likedDiscountId = HCFirebaseManager.shared.likedDiscountIds
+            
+        }
+    }
     
     var discountId: String = ""
     
@@ -39,6 +46,10 @@ class DiscountDetailViewController: HCBaseViewController {
     var discountDetail: DiscountDetail? {
         
         didSet {
+            
+            if discountDetail != nil {
+                isLiked = discountDetail!.info.isLiked
+            }
             
             DispatchQueue.main.async {
                 
@@ -50,10 +61,16 @@ class DiscountDetailViewController: HCBaseViewController {
     var isLiked: Bool = false {
         didSet {
             if isLiked {
-                likeButton.setImage(UIImage.asset(.Icons_Heart_Selected), for: .normal)
+                DispatchQueue.main.async {
+                    
+                    self.likeButton.setImage(UIImage.asset(.Icons_Heart_Selected), for: .normal)
+                }
             } else {
-                likeButton.setImage(UIImage.asset(.Icons_Heart_Normal), for: .normal)
-            }
+                DispatchQueue.main.async {
+                    
+                    self.likeButton.setImage(UIImage.asset(.Icons_Heart_Normal), for: .normal)
+                }
+            } 
         }
     }
     
@@ -63,6 +80,37 @@ class DiscountDetailViewController: HCBaseViewController {
         setupTableView()
         
         getData()
+    }
+    
+    @IBAction func onLikeDiscount(_ sender: Any) {
+    
+        guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+        
+        if self.discountDetail != nil {
+            
+            if self.discountDetail!.info.isLiked {
+                
+                HCFirebaseManager.shared.deleteId(
+                    userCollection: .likedDiscounts,
+                    uid: user.uid,
+                    id: self.discountDetail!.info.discountId
+                )
+            } else {
+                
+                HCFirebaseManager.shared.addId(
+                    userCollection: .likedDiscounts,
+                    uid: user.uid,
+                    id: self.discountDetail!.info.discountId
+                )
+            }
+            
+            self.discountDetail!.info.isLiked = !self.discountDetail!.info.isLiked
+     
+            NotificationCenter.default.post(
+                name: Notification.Name(rawValue: NotificationNames.likeButtonTapped.rawValue),
+                object: nil
+            )
+        }
     }
 }
 
@@ -113,17 +161,13 @@ extension DiscountDetailViewController {
                         
                         strongSelf.discountDetail!.info.isLiked = true
                     }
-
                 })
-                
-                
             }
             
             DispatchQueue.main.async {
                 strongSelf.tableView.reloadData()
             }
-            
-            })
+        })
     }
     
     func getDetail() {

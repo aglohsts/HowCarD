@@ -47,7 +47,6 @@ class CardDetailViewController: UIViewController {
         willSet {
             
             self.cardObject?.basicInfo.isCollected = isCollected
-
         }
     }
 

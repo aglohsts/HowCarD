@@ -85,7 +85,37 @@ class MoreDiscountViewController: HCBaseViewController {
         //            self.present(navVC, animated: true, completion: nil)
         //        }
     }
-
+    
+    @objc func updateCollectedDiscount() {
+        
+        guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+        /// 比對 id 有哪些 isLike == true，true 的話改物件狀態
+        HCFirebaseManager.shared.getId(
+            uid: user.uid,
+            userCollection: .likedDiscounts,
+            completion: { [weak self] (ids) in
+                
+                guard let strongSelf = self else { return }
+                
+                if strongSelf.discountObject != nil {
+                    
+                    strongSelf.likedDiscountId.forEach({ (id) in
+                        
+                        for index in 0 ..< strongSelf.discountObject!.discountInfos.count {
+                            
+                            if strongSelf.discountObject!.discountInfos[index].discountId == id {
+                                
+                                strongSelf.discountObject!.discountInfos[index].isLiked = true
+                            }
+                        }
+                    })
+                }
+                
+                DispatchQueue.main.async {
+                    strongSelf.collectionView.reloadData()
+                }
+        })
+    }
 }
 
 extension MoreDiscountViewController {
