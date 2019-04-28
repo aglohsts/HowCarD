@@ -49,6 +49,12 @@ class DiscountsTableViewCell: HCBaseTableViewCell {
 
     }
     
+    override func setViewBackground(hex: HCColorHex) {
+        super.setViewBackground(hex: hex)
+        
+        collectionView.backgroundColor = .hexStringToUIColor(hex: hex)
+    }
+    
     func layoutTableViewCell(category: String, discountInfos: [DiscountInfo]) {
         
         categoryLabel.text = category
@@ -57,6 +63,8 @@ class DiscountsTableViewCell: HCBaseTableViewCell {
     }
     
     private func setupCollectionView() {
+        
+        setViewBackground(hex: .viewBackground)
         
         collectionView.agRegisterCellWithNib(
             identifier: String(describing: DiscountCollectionViewCell.self),

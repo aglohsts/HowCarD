@@ -11,6 +11,8 @@ import UIKit
 class DRecommTopViewController: HCBaseViewController {
     
     var touchHandler: (() -> Void)?
+    
+    var categorys = ["超商", "行動支付", "網購", "電影", "外幣消費", "加油", "超市"]
 
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -52,7 +54,7 @@ extension DRecommTopViewController: UICollectionViewDelegate {
 
 extension DRecommTopViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return categorys.count
     }
 
     func collectionView(
@@ -67,7 +69,7 @@ extension DRecommTopViewController: UICollectionViewDataSource {
 
         guard let newInfoCell = cell as? DRecommCollectionViewCell else { return cell }
 
-        newInfoCell.layoutCell()
+        newInfoCell.layoutCell(category: categorys[indexPath.item], image: "")
 
         return newInfoCell
     }

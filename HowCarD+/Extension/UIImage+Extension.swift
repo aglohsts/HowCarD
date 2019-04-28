@@ -53,6 +53,9 @@ enum ImageAsset: String {
     case CircleButtonWhiteBackground
     case Icons_Heart_Normal
     case Icons_Heart_Selected
+    
+    // Other Icons - DRecomm
+    case Icons_Next
 
     // Image
     case Image_Placeholder

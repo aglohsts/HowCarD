@@ -14,8 +14,8 @@ class DRecommCollectionViewCell: HCBaseCollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
 
-    func layoutCell() {
-        label.text = "123"
-//        imageView.image = UIImage.asset(.Image_Placeholder)
+    func layoutCell(category: String, image: String) {
+        label.text = category
+        imageView.loadImage(image, placeHolder: UIImage.asset(.Image_Placeholder2))
     }
 }

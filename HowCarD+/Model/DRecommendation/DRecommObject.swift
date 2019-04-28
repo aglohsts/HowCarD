@@ -15,3 +15,9 @@ struct BriefIntro: Codable {
     let content: String
 }
 
+struct DRecommTop: Codable {
+    
+    let category: String
+    
+    let image: String
+}
