@@ -69,6 +69,7 @@
 		CA70B0672261D69D008F631B /* CardObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70B0662261D69D008F631B /* CardObject.swift */; };
 		CAC426F922759219003C6D26 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC426F822759219003C6D26 /* NotificationCenter.swift */; };
 		CAC426FB2275ADFB003C6D26 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC426FA2275ADFB003C6D26 /* Array+Extension.swift */; };
+		CAC426FD2275FCFA003C6D26 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC426FC2275FCFA003C6D26 /* UIColor+Extension.swift */; };
 		CAF16FA522746EEF0013D864 /* MyCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF16FA422746EEF0013D864 /* MyCardViewController.swift */; };
 		CAF16FA8227472290013D864 /* LikedDiscountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF16FA7227472290013D864 /* LikedDiscountViewController.swift */; };
 		CAF16FAA2274727E0013D864 /* CollectedCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF16FA92274727E0013D864 /* CollectedCardViewController.swift */; };
@@ -164,6 +165,7 @@
 		CA70B0662261D69D008F631B /* CardObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardObject.swift; sourceTree = "<group>"; };
 		CAC426F822759219003C6D26 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		CAC426FA2275ADFB003C6D26 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		CAC426FC2275FCFA003C6D26 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		CAF16FA422746EEF0013D864 /* MyCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardViewController.swift; sourceTree = "<group>"; };
 		CAF16FA7227472290013D864 /* LikedDiscountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedDiscountViewController.swift; sourceTree = "<group>"; };
 		CAF16FA92274727E0013D864 /* CollectedCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectedCardViewController.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				CA2D6B0222647BD600C25883 /* QueryDocumentSnapshot+Extension.swift */,
 				CA6B5C722267141100B180A2 /* Bundle+Extension.swift */,
 				CAC426FA2275ADFB003C6D26 /* Array+Extension.swift */,
+				CAC426FC2275FCFA003C6D26 /* UIColor+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -775,6 +778,7 @@
 				CA47A18A225B332C00AD16AF /* CardDetailTableViewHeaderView.swift in Sources */,
 				CA171B9D22544E330042BBDC /* DRecommTableViewCell.swift in Sources */,
 				CAFE829522608051004F4E63 /* FirebaseManager.swift in Sources */,
+				CAC426FD2275FCFA003C6D26 /* UIColor+Extension.swift in Sources */,
 				CA6B5C6E2266FF3F00B180A2 /* KingfisherWrapper.swift in Sources */,
 				CA6B5C7122670D2700B180A2 /* HTTPCilent.swift in Sources */,
 				CA171BA0225457BA0042BBDC /* UITableView+Extension.swift in Sources */,

@@ -62,36 +62,36 @@ enum Tab: String {
         case .dRecommend:
             return UITabBarItem(
                 title: Tab.dRecommend.rawValue,
-                image: UIImage.asset(.Icons_36px_DRec_Normal),
-                selectedImage: UIImage.asset(.Icons_36px_DRec_Selected)
+                image: UIImage.asset(.Icons_36px_DRec_Normal_Line),
+                selectedImage: UIImage.asset(.Icons_36px_DRec_Normal_Line)
             )
 
         case .discounts:
             return UITabBarItem(
                 title: Tab.discounts.rawValue,
-                image: UIImage.asset(.Icons_36px_Discounts_Normal),
-                selectedImage: UIImage.asset(.Icons_36px_Discounts_Selected)
+                image: UIImage.asset(.Icons_36px_Discounts_Normal_Line),
+                selectedImage: UIImage.asset(.Icons_36px_Discounts_Normal_Line)
             )
 
         case .cards:
             return UITabBarItem(
                 title: Tab.cards.rawValue,
-                image: UIImage.asset(.Icons_36px_Cards_Normal),
-                selectedImage: UIImage.asset(.Icons_36px_Cards_Selected)
+                image: UIImage.asset(.Icons_36px_Cards_Normal_Line),
+                selectedImage: UIImage.asset(.Icons_36px_Cards_Normal_Line)
             )
 
         case .wallet:
             return UITabBarItem(
                 title: Tab.wallet.rawValue,
-                image: UIImage.asset(.Icons_36px_Wallet_Normal),
-                selectedImage: UIImage.asset(.Icons_36px_Wallet_Selected)
+                image: UIImage.asset(.Icons_36px_Wallet_Normal_Line),
+                selectedImage: UIImage.asset(.Icons_36px_Wallet_Normal_Line)
             )
 
         case .qa:
             return UITabBarItem(
                 title: Tab.qa.rawValue,
-                image: UIImage.asset(.Icons_36px_QA_Normal),
-                selectedImage: UIImage.asset(.Icons_36px_QA_Selected)
+                image: UIImage.asset(.Icons_36px_QA_Normal_Line),
+                selectedImage: UIImage.asset(.Icons_36px_QA_Normal_Line)
             )
         }
     }
