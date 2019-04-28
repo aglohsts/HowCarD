@@ -36,14 +36,14 @@ class CardInfoTableViewCell: UITableViewCell {
             
             if isCollected {
                 
-                //                collectedBtn.setImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControl.State#>)
+                collectedBtn.setImage(UIImage.asset(.Icons_Bookmark_Saved), for: .normal)
                 
-                collectedBtn.setTitle("V", for: .normal)
+//                collectedBtn.setTitle("V", for: .normal)
             } else {
                 
-                //                collectedBtn.setImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControl.State#>)
+                collectedBtn.setImage(UIImage.asset(.Icons_Bookmark_Normal), for: .normal)
                 
-                collectedBtn.setTitle("X", for: .normal)
+//                collectedBtn.setTitle("X", for: .normal)
             }
         }
     }

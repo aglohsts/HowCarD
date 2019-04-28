@@ -29,22 +29,16 @@ class CardDetailViewController: UIViewController {
             if isCollected {
                 
                 DispatchQueue.main.async {
-                    
-//                    self.collectedBtn.setImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControl.State#>)
-                    
-                    self.collectedBtn.setTitle("V", for: .normal)
+
+                    self.collectedBtn.setImage(UIImage.asset(.Icons_Bookmark_Saved), for: .normal)
                 }
             } else {
 
                 DispatchQueue.main.async {
                     
-//                    self.collectedBtn.setImage(<#T##image: UIImage?##UIImage?#>, for: <#T##UIControl.State#>)
-                    
-                    self.collectedBtn.setTitle("X", for: .normal)
+                    self.collectedBtn.setImage(UIImage.asset(.Icons_Bookmark_Normal), for: .normal)
                 }
             }
-            
-//            self.cardObject?.basicInfo.isCollected = isCollected
         }
         willSet {
             
