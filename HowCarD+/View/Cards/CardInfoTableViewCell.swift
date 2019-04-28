@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardInfoTableViewCell: UITableViewCell {
+class CardInfoTableViewCell: HCTableViewCell {
     
     var collectButtonDidTouchHandler: (() -> Void)?
 

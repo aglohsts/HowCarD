@@ -8,11 +8,18 @@
 
 import UIKit
 
+enum HCColorHex: String {
+    
+    case viewBackground = "F7F8F3"
+    
+    case tint = "6FBEDB"
+}
+
 extension UIColor {
     
-    static func hexStringToUIColor(hex:String) -> UIColor {
+    static func hexStringToUIColor(hex: HCColorHex) -> UIColor {
         
-        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+        var cString: String = hex.rawValue.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
         if (cString.hasPrefix("#")) {
             cString.remove(at: cString.startIndex)

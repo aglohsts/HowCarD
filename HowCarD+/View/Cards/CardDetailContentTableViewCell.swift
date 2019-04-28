@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardDetailContentTableViewCell: UITableViewCell {
+class CardDetailContentTableViewCell: HCTableViewCell {
 
     @IBOutlet weak var arrowButton: UIButton!
 

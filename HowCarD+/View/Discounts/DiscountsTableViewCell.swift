@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 
-class DiscountsTableViewCell: UITableViewCell {
+class DiscountsTableViewCell: HCTableViewCell {
     
     @IBOutlet weak var categoryLabel: UILabel!
     

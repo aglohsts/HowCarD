@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DiscountDetailContentTableViewCell: UITableViewCell {
+class DiscountDetailContentTableViewCell: HCTableViewCell {
 
     @IBOutlet weak var label: UILabel!
     

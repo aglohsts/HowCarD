@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LikedDiscountTableViewCell: UITableViewCell {
+class LikedDiscountTableViewCell: HCTableViewCell {
 
     @IBOutlet weak var discountTitleLabel: UILabel!
     

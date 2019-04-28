@@ -49,7 +49,7 @@ class HCBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setBackgroundColor()
+        setBackgroundColor(.viewBackground)
 
         if isHideNavigationBar {
             navigationItem.hidesBackButton = true
@@ -104,9 +104,9 @@ class HCBaseViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    func setBackgroundColor() {
+    func setBackgroundColor(_ hex: HCColorHex) {
         
-        view.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0.86, alpha: 1)
+        view.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
     }
 
 }
