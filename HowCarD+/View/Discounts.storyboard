@@ -88,7 +88,7 @@
                                                             </constraints>
                                                         </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="EQX-YA-Mzh" firstAttribute="centerY" secondItem="jVe-Mf-CVh" secondAttribute="centerY" id="8sb-ZP-gyx"/>
                                                         <constraint firstItem="5ZS-VR-5Nq" firstAttribute="centerY" secondItem="ayd-Hi-MLx" secondAttribute="centerY" id="I0h-WK-egy"/>
@@ -438,17 +438,17 @@
             </objects>
             <point key="canvasLocation" x="-159.42028985507247" y="169.41964285714286"/>
         </scene>
-        <!--Discounts Top View Controller-->
+        <!--View Controller-->
         <scene sceneID="A9D-sR-Lov">
             <objects>
-                <viewController id="ezK-yY-vBW" customClass="DiscountsTopViewController" customModule="HowCarD_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ezK-yY-vBW" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="reA-GP-0jP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FTC-Yy-BEZ">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3WF-2M-gWA">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -467,7 +467,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="0.94662350171232879" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="FTC-Yy-BEZ" secondAttribute="trailing" id="OjY-9e-S2B"/>
                             <constraint firstItem="FTC-Yy-BEZ" firstAttribute="leading" secondItem="reA-GP-0jP" secondAttribute="leading" id="gWu-qy-EE1"/>
