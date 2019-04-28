@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DRecommDiscountTableViewCell: HCTableViewCell {
+class DRecommDiscountTableViewCell: HCBaseTableViewCell {
 
     @IBOutlet weak var rightImageView: UIImageView!
     

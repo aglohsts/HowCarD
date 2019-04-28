@@ -67,7 +67,8 @@
 		CA6B5E34226E865D00182FFB /* DRecommDiscountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6B5E32226E865D00182FFB /* DRecommDiscountTableViewCell.swift */; };
 		CA6B5E35226E865D00182FFB /* DRecommCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6B5E33226E865D00182FFB /* DRecommCardTableViewCell.xib */; };
 		CA70B0672261D69D008F631B /* CardObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70B0662261D69D008F631B /* CardObject.swift */; };
-		CA9194172276054200DA277E /* HCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9194162276054200DA277E /* HCTableViewCell.swift */; };
+		CA9194172276054200DA277E /* HCBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9194162276054200DA277E /* HCBaseTableViewCell.swift */; };
+		CA919419227606DF00DA277E /* HCBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA919418227606DF00DA277E /* HCBaseCollectionViewCell.swift */; };
 		CAC426F922759219003C6D26 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC426F822759219003C6D26 /* NotificationCenter.swift */; };
 		CAC426FB2275ADFB003C6D26 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC426FA2275ADFB003C6D26 /* Array+Extension.swift */; };
 		CAC426FD2275FCFA003C6D26 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC426FC2275FCFA003C6D26 /* UIColor+Extension.swift */; };
@@ -164,7 +165,8 @@
 		CA6B5E32226E865D00182FFB /* DRecommDiscountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommDiscountTableViewCell.swift; sourceTree = "<group>"; };
 		CA6B5E33226E865D00182FFB /* DRecommCardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DRecommCardTableViewCell.xib; sourceTree = "<group>"; };
 		CA70B0662261D69D008F631B /* CardObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardObject.swift; sourceTree = "<group>"; };
-		CA9194162276054200DA277E /* HCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCTableViewCell.swift; sourceTree = "<group>"; };
+		CA9194162276054200DA277E /* HCBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCBaseTableViewCell.swift; sourceTree = "<group>"; };
+		CA919418227606DF00DA277E /* HCBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCBaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		CAC426F822759219003C6D26 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		CAC426FA2275ADFB003C6D26 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		CAC426FC2275FCFA003C6D26 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -393,7 +395,8 @@
 			children = (
 				CAFE827C225DF081004F4E63 /* HCTableViewSectionHeaderView.xib */,
 				CAFE827A225DF071004F4E63 /* HCTableViewSectionHeaderView.swift */,
-				CA9194162276054200DA277E /* HCTableViewCell.swift */,
+				CA9194162276054200DA277E /* HCBaseTableViewCell.swift */,
+				CA919418227606DF00DA277E /* HCBaseCollectionViewCell.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -754,7 +757,7 @@
 				CA25DFD8226E1FFC003AC89C /* DRecommProvider.swift in Sources */,
 				CA1BFCDD226F05E1008F38BC /* BriefInfoCollectionViewCell.swift in Sources */,
 				CAF16FAA2274727E0013D864 /* CollectedCardViewController.swift in Sources */,
-				CA9194172276054200DA277E /* HCTableViewCell.swift in Sources */,
+				CA9194172276054200DA277E /* HCBaseTableViewCell.swift in Sources */,
 				CAF16FA8227472290013D864 /* LikedDiscountViewController.swift in Sources */,
 				CAFE827B225DF071004F4E63 /* HCTableViewSectionHeaderView.swift in Sources */,
 				CA323DB522684C57007A39FD /* HCParser.swift in Sources */,
@@ -770,6 +773,7 @@
 				CA2F7DC6225638D7005E4361 /* FilterViewController.swift in Sources */,
 				CA38706E2269E01100D06B90 /* DiscountRequest.swift in Sources */,
 				CA38706C2269DFA300D06B90 /* DiscountProvider.swift in Sources */,
+				CA919419227606DF00DA277E /* HCBaseCollectionViewCell.swift in Sources */,
 				CA171B8D22534FF30042BBDC /* DiscountsViewController.swift in Sources */,
 				CAF58D8C225DB41000818CDD /* DiscountsTableViewCell.swift in Sources */,
 				CAF58D88225CA1AB00818CDD /* MoreDiscountViewController.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DRecommCardTableViewCell: HCTableViewCell {
+class DRecommCardTableViewCell: HCBaseTableViewCell {
     
     var tagArray = [String]() {
         

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DRecommCollectionViewCell: UICollectionViewCell {
+class DRecommCollectionViewCell: HCBaseCollectionViewCell {
 
     @IBOutlet weak var label: UILabel!
 

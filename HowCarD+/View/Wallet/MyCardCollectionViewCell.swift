@@ -10,7 +10,7 @@ import UIKit
 import QuartzCore
 import HFCardCollectionViewLayout
 
-class MyCardCollectionViewCell: UICollectionViewCell {
+class MyCardCollectionViewCell: HCBaseCollectionViewCell {
     
     var cardCollectionViewLayout: HFCardCollectionViewLayout?
 }

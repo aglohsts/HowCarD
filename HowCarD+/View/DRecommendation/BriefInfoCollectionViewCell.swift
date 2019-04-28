@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BriefInfoCollectionViewCell: UICollectionViewCell {
+class BriefInfoCollectionViewCell: HCBaseCollectionViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     

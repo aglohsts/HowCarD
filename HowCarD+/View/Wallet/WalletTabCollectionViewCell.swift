@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WalletTabCollectionViewCell: UICollectionViewCell {
+class WalletTabCollectionViewCell: HCBaseCollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     

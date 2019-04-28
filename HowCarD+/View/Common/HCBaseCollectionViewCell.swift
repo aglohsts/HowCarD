@@ -1,30 +1,24 @@
 //
-//  HCTableViewCell.swift
+//  HCBaseCollectionViewCell.swift
 //  HowCarD+
 //
-//  Created by lohsts on 2019/4/28.
+//  Created by lohsts on 2019/4/29.
 //  Copyright © 2019 lohsts. All rights reserved.
 //
 
 import UIKit
 
-class HCTableViewCell: UITableViewCell {
-
+class HCBaseCollectionViewCell: UICollectionViewCell {
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         setViewBackground(hex: .viewBackground)
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     func setViewBackground(hex: HCColorHex) {
         
         backgroundColor = UIColor.hexStringToUIColor(hex: hex)
+        
     }
-
 }

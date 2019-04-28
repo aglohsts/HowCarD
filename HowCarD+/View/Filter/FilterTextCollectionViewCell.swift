@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FilterTextCollectionViewCell: UICollectionViewCell {
+class FilterTextCollectionViewCell: HCBaseCollectionViewCell {
 
     @IBOutlet weak var choiceLabel: UILabel!
 

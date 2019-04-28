@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FilterIconCollectionViewCell: UICollectionViewCell {
+class FilterIconCollectionViewCell: HCBaseCollectionViewCell {
 
     @IBOutlet weak var choiceImgView: UIImageView!
 

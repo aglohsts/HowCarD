@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DiscountCollectionViewCell: UICollectionViewCell {
+class DiscountCollectionViewCell: HCBaseCollectionViewCell {
     
     @IBOutlet weak var likeButton: UIButton!
     

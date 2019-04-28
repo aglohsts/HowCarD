@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ToMoreInfoCollectionViewCell: UICollectionViewCell {
+class ToMoreInfoCollectionViewCell: HCBaseCollectionViewCell {
     
 
     

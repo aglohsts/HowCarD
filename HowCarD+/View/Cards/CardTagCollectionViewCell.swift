@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardTagCollectionViewCell: UICollectionViewCell {
+class CardTagCollectionViewCell: HCBaseCollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

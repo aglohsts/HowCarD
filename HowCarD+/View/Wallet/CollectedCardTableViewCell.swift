@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CollectedCardTableViewCell: HCTableViewCell {
+class CollectedCardTableViewCell: HCBaseTableViewCell {
 
     @IBOutlet weak var cardImageView: UIImageView!
     
