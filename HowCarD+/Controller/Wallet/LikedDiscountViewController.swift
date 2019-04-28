@@ -39,12 +39,6 @@ class LikedDiscountViewController: HCBaseViewController {
         
         discountAddObserver()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-    }
 }
 
 extension LikedDiscountViewController {
@@ -64,8 +58,26 @@ extension LikedDiscountViewController {
                         
                         if self.discountObjects[index1].discountInfos[index2].discountId == id {
                             
-                            /// isLiked == true 的物件 append 進 userLikedDiscounts
-                            self.userLikedDiscounts.append(self.discountObjects[index1].discountInfos[index2])
+                            let result = self.userLikedDiscounts.firstIndex(where: { (info) -> Bool in
+                                
+                                if info.discountId == id {
+                                    
+                                    return true
+                                    
+                                } else {
+                                    
+                                    return false
+                                }
+                            })
+                            
+                            if result != nil {
+                                
+                                continue
+                                
+                            } else {
+                                /// isLiked == true 的物件 append 進 userLikedDiscounts
+                                self.userLikedDiscounts.append(self.discountObjects[index1].discountInfos[index2])
+                            }
                         }
                     }
                 }
@@ -147,8 +159,25 @@ extension LikedDiscountViewController {
                     
                     if self.discountObjects[index1].discountInfos[index2].discountId == id {
                         
-                        /// isLiked == true 的物件 append 進 userLikedDiscounts
-                        self.userLikedDiscounts.append(self.discountObjects[index1].discountInfos[index2])
+                        let result = self.userLikedDiscounts.firstIndex(where: { (info) -> Bool in
+                            
+                            if info.discountId == id {
+                                
+                                return true
+                            } else {
+                                
+                                return false
+                            }
+                        })
+                        
+                        if result != nil {
+                            
+                            continue
+                            
+                        } else {
+                            /// isLiked == true 的物件 append 進 userLikedDiscounts
+                            self.userLikedDiscounts.append(self.discountObjects[index1].discountInfos[index2])
+                        }
                     }
                 }
             }
