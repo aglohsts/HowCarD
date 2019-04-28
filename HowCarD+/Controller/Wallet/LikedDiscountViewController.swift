@@ -64,6 +64,7 @@ extension LikedDiscountViewController {
                         
                         if self.discountObjects[index1].discountInfos[index2].discountId == id {
                             
+                            /// isLiked == true 的物件 append 進 userLikedDiscounts
                             self.userLikedDiscounts.append(self.discountObjects[index1].discountInfos[index2])
                         }
                     }
@@ -124,15 +125,18 @@ extension LikedDiscountViewController {
         NotificationCenter.default
             .addObserver(
                 self,
-                selector: #selector(updateCollectedDiscount),
+                selector: #selector(updateLikedDiscount),
                 name: NSNotification.Name(NotificationNames.discountLikeButtonTapped.rawValue),
                 object: nil
         )
     }
     
-    @objc func updateCollectedDiscount() {
+    @objc func updateLikedDiscount() {
         
         likedDiscountIds = HCFirebaseManager.shared.likedDiscountIds
+        
+        /// 先清空 userLikedDiscounts 再比
+        self.userLikedDiscounts = []
         
         /// 比對 id 有哪些 isLike == true，true 的話改物件狀態
         self.likedDiscountIds.forEach({ (id) in
@@ -143,6 +147,7 @@ extension LikedDiscountViewController {
                     
                     if self.discountObjects[index1].discountInfos[index2].discountId == id {
                         
+                        /// isLiked == true 的物件 append 進 userLikedDiscounts
                         self.userLikedDiscounts.append(self.discountObjects[index1].discountInfos[index2])
                     }
                 }
@@ -164,7 +169,7 @@ extension LikedDiscountViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return likedDiscountIds.count
+        return userLikedDiscounts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

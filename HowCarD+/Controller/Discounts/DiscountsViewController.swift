@@ -8,11 +8,6 @@
 
 import UIKit
 
-enum NotificationNames: String {
-    
-    case discountLikeButtonTapped
-}
-
 class DiscountsViewController: HCBaseViewController {
     
     let discountProvider = DiscountProvider()
@@ -205,13 +200,13 @@ extension DiscountsViewController {
         NotificationCenter.default
             .addObserver(
                 self,
-                selector: #selector(updateCollectedDiscount),
+                selector: #selector(updateLikedDiscount),
                 name: NSNotification.Name(NotificationNames.discountLikeButtonTapped.rawValue),
                 object: nil
         )
     }
     
-    @objc func updateCollectedDiscount() {
+    @objc func updateLikedDiscount() {
         
         self.likedDiscountIds = HCFirebaseManager.shared.likedDiscountIds
         

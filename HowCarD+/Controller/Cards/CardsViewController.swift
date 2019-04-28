@@ -184,6 +184,7 @@ extension CardsViewController {
                 strongSelf.cardsBasicInfo[datas.0.row].isCollected = vc.isCollected
                 
 //                strongSelf.updateIsCollectedCardId()
+                
             }
         }
     }
@@ -262,6 +263,10 @@ extension CardsViewController: UITableViewDataSource {
             strongSelf.cardsBasicInfo[indexPath.row].isCollected = !strongSelf.cardsBasicInfo[indexPath.row].isCollected
             
 //            strongSelf.updateIsCollectedCardId()
+            NotificationCenter.default.post(
+                name: Notification.Name(rawValue: NotificationNames.cardCollectButtonTapped.rawValue),
+                object: nil
+            )
             
         }
         return cardInfoCell

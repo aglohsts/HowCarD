@@ -34,6 +34,8 @@ class CollectedCardViewController: HCBaseViewController {
         
         super.viewDidLoad()
         
+        cardAddObserver()
+        
         setupTableView()
 
         getData()
@@ -110,6 +112,43 @@ extension CollectedCardViewController {
         
         tableView.showsVerticalScrollIndicator = false
     }
+    
+    func cardAddObserver() {
+        
+        NotificationCenter.default
+            .addObserver(
+                self,
+                selector: #selector(updateCollectedCard),
+                name: NSNotification.Name(NotificationNames.cardCollectButtonTapped.rawValue),
+                object: nil
+        )
+    }
+    
+    @objc func updateCollectedCard() {
+        
+        collectedCardIds = HCFirebaseManager.shared.collectedCardIds
+        
+        /// 先清空 userCollectedCards 再比
+        self.userCollectedCards = []
+        
+        /// 比對 id 有哪些 isLike == true，true 的話改物件狀態
+        self.collectedCardIds.forEach({ (id) in
+            
+            for index in 0 ..< self.cardsBasicInfo.count {
+                    
+                if self.cardsBasicInfo[index].id == id {
+                    
+                    /// isLiked == true 的物件 append 進 userCollectedCards
+                    self.userCollectedCards.append(self.cardsBasicInfo[index])
+                }
+            }
+        })
+        
+        DispatchQueue.main.async {
+            
+            self.tableView.reloadData()
+        }
+    }
 }
 
 extension CollectedCardViewController: UITableViewDelegate {
@@ -119,7 +158,7 @@ extension CollectedCardViewController: UITableViewDelegate {
 extension CollectedCardViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return collectedCardIds.count
+        return userCollectedCards.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

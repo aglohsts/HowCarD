@@ -225,13 +225,13 @@ extension DiscountDetailViewController {
         NotificationCenter.default
             .addObserver(
                 self,
-                selector: #selector(updateCollectedDiscount),
+                selector: #selector(updateLikedDiscount),
                 name: NSNotification.Name(NotificationNames.discountLikeButtonTapped.rawValue),
                 object: nil
         )
     }
     
-    @objc func updateCollectedDiscount() {
+    @objc func updateLikedDiscount() {
         
         likedDiscountId = HCFirebaseManager.shared.likedDiscountIds
         

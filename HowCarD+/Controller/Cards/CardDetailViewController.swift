@@ -169,6 +169,11 @@ class CardDetailViewController: UIViewController {
         
         isCollected = !isCollected
         
+        NotificationCenter.default.post(
+            name: Notification.Name(rawValue: NotificationNames.cardCollectButtonTapped.rawValue),
+            object: nil
+        )
+        
         cardCollectTouchHandler?()
     }
 }
