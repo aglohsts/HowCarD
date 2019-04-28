@@ -109,7 +109,7 @@ class DiscountDetailViewController: HCBaseViewController {
             self.discountDetail!.info.isLiked = !self.discountDetail!.info.isLiked
      
             NotificationCenter.default.post(
-                name: Notification.Name(rawValue: NotificationNames.likeButtonTapped.rawValue),
+                name: Notification.Name(rawValue: NotificationNames.discountLikeButtonTapped.rawValue),
                 object: nil
             )
         }
@@ -226,7 +226,7 @@ extension DiscountDetailViewController {
             .addObserver(
                 self,
                 selector: #selector(updateCollectedDiscount),
-                name: NSNotification.Name(NotificationNames.likeButtonTapped.rawValue),
+                name: NSNotification.Name(NotificationNames.discountLikeButtonTapped.rawValue),
                 object: nil
         )
     }

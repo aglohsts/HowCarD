@@ -39,8 +39,7 @@ class CollectedCardTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        
+ 
         setupCollectionView()
     }
 
@@ -78,7 +77,10 @@ extension CollectedCardTableViewCell: UICollectionViewDataSource {
         return tagArray.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath)
+    -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: CardTagCollectionViewCell.self),

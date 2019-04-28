@@ -101,8 +101,6 @@ extension MyCardViewController: UICollectionViewDelegate {
     
 }
 
-
-
 extension MyCardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 15

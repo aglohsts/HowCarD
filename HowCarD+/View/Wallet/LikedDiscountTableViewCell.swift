@@ -10,7 +10,7 @@ import UIKit
 
 class LikedDiscountTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var discountNameLabel: UILabel!
+    @IBOutlet weak var discountTitleLabel: UILabel!
     
     @IBOutlet weak var targetLabel: UILabel!
     
@@ -26,9 +26,9 @@ class LikedDiscountTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func layoutCell(discountName: String, bankName: String, cardName: String, timePeriod: String, discountImage: String) {
+    func layoutCell(discountTitle: String, bankName: String, cardName: String, timePeriod: String, discountImage: String) {
         
-        discountNameLabel.text = discountName
+        discountTitleLabel.text = discountTitle
         
         targetLabel.text = "\(bankName) \(cardName)"
         

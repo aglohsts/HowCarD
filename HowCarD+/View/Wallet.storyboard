@@ -110,36 +110,36 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="646"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="129" id="vch-Lh-pAr" customClass="LikedDiscountTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="129"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LikedDiscountTableViewCell" rowHeight="125" id="vch-Lh-pAr" customClass="LikedDiscountTableViewCell" customModule="HowCarD_" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="125"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vch-Lh-pAr" id="gxH-kT-oSp">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="128.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="124.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MpU-m5-cNP">
-                                                    <rect key="frame" x="5" y="5" width="404" height="118.5"/>
+                                                    <rect key="frame" x="5" y="5" width="404" height="114.5"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L4y-oP-zW9">
-                                                            <rect key="frame" x="293.5" y="8" width="102.5" height="102.5"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L4y-oP-zW9">
+                                                            <rect key="frame" x="297.5" y="8" width="98.5" height="98.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="L4y-oP-zW9" secondAttribute="height" multiplier="1:1" id="pdN-jW-Tay"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DiscountNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcQ-Kt-NQt">
-                                                            <rect key="frame" x="16" y="16" width="261.5" height="18"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DiscountNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcQ-Kt-NQt">
+                                                            <rect key="frame" x="16" y="16" width="265.5" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TargetLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZm-9Q-786">
-                                                            <rect key="frame" x="16" y="50.5" width="261.5" height="18"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TargetLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZm-9Q-786">
+                                                            <rect key="frame" x="16" y="48.5" width="265.5" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TimePeriodLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDk-kI-cy0">
-                                                            <rect key="frame" x="16" y="86.5" width="261.5" height="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TimePeriodLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDk-kI-cy0">
+                                                            <rect key="frame" x="16" y="82.5" width="265.5" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -162,7 +162,7 @@
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="agCornerRadius">
-                                                            <real key="value" value="2"/>
+                                                            <real key="value" value="4"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -175,10 +175,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="discountImageView" destination="L4y-oP-zW9" id="1CT-dD-Yh8"/>
-                                            <outlet property="discountNameLabel" destination="VcQ-Kt-NQt" id="wHa-YW-hyy"/>
-                                            <outlet property="targetLabel" destination="JZm-9Q-786" id="PnA-aO-fb9"/>
-                                            <outlet property="timePeriodLabel" destination="oDk-kI-cy0" id="AAa-2c-B9l"/>
+                                            <outlet property="discountImageView" destination="L4y-oP-zW9" id="jBI-nT-cOE"/>
+                                            <outlet property="discountTitleLabel" destination="VcQ-Kt-NQt" id="8Va-ft-PgI"/>
+                                            <outlet property="targetLabel" destination="JZm-9Q-786" id="9ws-Al-ERO"/>
+                                            <outlet property="timePeriodLabel" destination="oDk-kI-cy0" id="rHI-vs-798"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -194,11 +194,7 @@
                         <viewLayoutGuide key="safeArea" id="2Yh-2s-93f"/>
                     </view>
                     <connections>
-                        <outlet property="discountImageView" destination="L4y-oP-zW9" id="ejh-fz-Gcl"/>
-                        <outlet property="discountNameLabel" destination="VcQ-Kt-NQt" id="vuN-hD-H0u"/>
                         <outlet property="tableView" destination="paf-0c-XAk" id="ezd-Qn-UBQ"/>
-                        <outlet property="targetLabel" destination="JZm-9Q-786" id="mPn-y7-4Xi"/>
-                        <outlet property="timePeriodLabel" destination="oDk-kI-cy0" id="vWL-Zg-KD5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4t1-sm-l6A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -217,7 +213,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="646"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="133" id="pK4-Ts-YXL" customClass="CollectedCardTableViewCell" customModule="HowCarD_" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CollectedCardTableViewCell" rowHeight="133" id="pK4-Ts-YXL" customClass="CollectedCardTableViewCell" customModule="HowCarD_" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="133"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pK4-Ts-YXL" id="Oay-5b-5hx">

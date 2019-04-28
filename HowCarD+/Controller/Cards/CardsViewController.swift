@@ -262,6 +262,7 @@ extension CardsViewController: UITableViewDataSource {
             strongSelf.cardsBasicInfo[indexPath.row].isCollected = !strongSelf.cardsBasicInfo[indexPath.row].isCollected
             
 //            strongSelf.updateIsCollectedCardId()
+            
         }
         return cardInfoCell
     }

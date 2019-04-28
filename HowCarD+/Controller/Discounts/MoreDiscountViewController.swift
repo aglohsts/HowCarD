@@ -86,6 +86,7 @@ class MoreDiscountViewController: HCBaseViewController {
         
         likedDiscountIds = HCFirebaseManager.shared.likedDiscountIds
         
+        /// 比對 id 有哪些 isLike == true，true 的話改物件狀態
         for index in 0 ..< discountObject!.discountInfos.count {
                 
                 discountObject!.discountInfos[index].isLiked = false
@@ -99,48 +100,10 @@ class MoreDiscountViewController: HCBaseViewController {
                 })
         }
         
-        
-        
-//        likedDiscountId.forEach({ (id) in
-//
-//            for index in 0 ..< discountObject!.discountInfos.count {
-//
-//
-//
-//                if discountObject!.discountInfos[index].discountId == id {
-//
-//                    discountObject!.discountInfos[index].isLiked = true
-//                }
-//            }
-//        })
-        
-        collectionView.reloadData()
-        /// 比對 id 有哪些 isLike == true，true 的話改物件狀態
-//        HCFirebaseManager.shared.getId(
-//            uid: user.uid,
-//            userCollection: .likedDiscounts,
-//            completion: { [weak self] (ids) in
-//
-//                guard let strongSelf = self else { return }
-//
-//                if strongSelf.discountObject != nil {
-//
-//                    strongSelf.likedDiscountId.forEach({ (id) in
-//
-//                        for index in 0 ..< strongSelf.discountObject!.discountInfos.count {
-//
-//                            if strongSelf.discountObject!.discountInfos[index].discountId == id {
-//
-//                                strongSelf.discountObject!.discountInfos[index].isLiked = true
-//                            }
-//                        }
-//                    })
-//                }
-//
-//                DispatchQueue.main.async {
-//                    strongSelf.collectionView.reloadData()
-//                }
-//        })
+        DispatchQueue.main.async {
+            
+            self.collectionView.reloadData()
+        }
     }
     
     func discountAddObserver() {
@@ -149,7 +112,7 @@ class MoreDiscountViewController: HCBaseViewController {
             .addObserver(
                 self,
                 selector: #selector(updateCollectedDiscount),
-                name: NSNotification.Name(NotificationNames.likeButtonTapped.rawValue),
+                name: NSNotification.Name(NotificationNames.discountLikeButtonTapped.rawValue),
                 object: nil
         )
     }
@@ -349,10 +312,11 @@ extension MoreDiscountViewController: UICollectionViewDataSource {
                         id: strongSelf.discountObject!.discountInfos[indexPath.item].discountId
                     )
                 }
-            strongSelf.discountObject!.discountInfos[indexPath.row].isLiked = !strongSelf.discountObject!.discountInfos[indexPath.row].isLiked
+            strongSelf.discountObject!.discountInfos[indexPath.row].isLiked =
+                !strongSelf.discountObject!.discountInfos[indexPath.row].isLiked
 
                 NotificationCenter.default.post(
-                    name: Notification.Name(rawValue: NotificationNames.likeButtonTapped.rawValue),
+                    name: Notification.Name(rawValue: NotificationNames.discountLikeButtonTapped.rawValue),
                     object: nil
                 )
             }

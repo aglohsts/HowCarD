@@ -29,6 +29,8 @@ class WalletViewController: HCBaseViewController {
         
         return [likedDiscountContainerView, collectedCardsContainerView]
     }
+    
+    var selectedTab = TabCategory.likedDiscount.rawValue
 
     @IBOutlet weak var tabCollectionView: UICollectionView! {
         
@@ -52,6 +54,19 @@ class WalletViewController: HCBaseViewController {
         setNavBar()
         
 //        confirmUserSignnedIn()
+        
+        if selectedTab == TabCategory.likedDiscount.rawValue {
+            
+            updateContainer(tab: .likedDiscount)
+            
+            tabCollectionView.selectItem(at: IndexPath(item: TabCategory.likedDiscount.rawValue, section: 0), animated: false, scrollPosition: .left)
+            
+        } else if selectedTab == TabCategory.collectedCard.rawValue {
+            
+            updateContainer(tab: .collectedCard)
+            
+            tabCollectionView.selectItem(at: IndexPath(item: TabCategory.collectedCard.rawValue, section: 0), animated: false, scrollPosition: .left)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -162,9 +177,13 @@ extension WalletViewController: UICollectionViewDelegate {
             
             updateContainer(tab: .likedDiscount)
             
+            selectedTab = TabCategory.likedDiscount.rawValue
+            
         case TabCategory.collectedCard.rawValue:
             
             updateContainer(tab: .collectedCard)
+            
+            selectedTab = TabCategory.collectedCard.rawValue
             
         default: return
         }
@@ -190,12 +209,13 @@ extension WalletViewController: UICollectionViewDataSource {
         guard let tabCell = cell as? WalletTabCollectionViewCell
             else { return cell }
         
-        let selectedIndexPath = NSIndexPath(
-            item: TabCategory.likedDiscount.rawValue,
-            section: 0
-        )
-        
-        tabCollectionView.selectItem(at: selectedIndexPath as IndexPath, animated: false, scrollPosition: .top)
+        if indexPath.item == selectedTab {
+            
+            tabCell.isSelected = true
+        } else {
+            
+            tabCell.isSelected = false
+        }
         
         tabCell.layoutCell(imageAsset: tabArray[indexPath.item])
         

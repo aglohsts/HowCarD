@@ -10,7 +10,7 @@ import UIKit
 
 enum NotificationNames: String {
     
-    case likeButtonTapped
+    case discountLikeButtonTapped
 }
 
 class DiscountsViewController: HCBaseViewController {
@@ -26,16 +26,7 @@ class DiscountsViewController: HCBaseViewController {
     
     let group = DispatchGroup()
     
-    var likedDiscountIds = [String]() {
-        
-        didSet {
-            
-            if HCFirebaseManager.shared.likedDiscountIds.count > 0 {
-                
-                likedDiscountIds = HCFirebaseManager.shared.likedDiscountIds
-            }
-        }
-    }
+    var likedDiscountIds: [String] = []
     
     var discountObjects: [DiscountObject] = [] {
         
@@ -79,13 +70,6 @@ class DiscountsViewController: HCBaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-//        if likedDiscountIds.count > 0 {
-//
-//            NotificationCenter.default.post(
-//                name: Notification.Name(rawValue: NotificationNames.likeButtonTapped.rawValue),
-//                object: nil
-//            )
-//        }
     }
 
     private func setTableView() {
@@ -191,8 +175,6 @@ extension DiscountsViewController {
                 
             case .success(let discountObjects):
                 
-                print(discountObjects)
-                
                 self?.discountObjects = discountObjects
                 
             case .failure(let error):
@@ -224,7 +206,7 @@ extension DiscountsViewController {
             .addObserver(
                 self,
                 selector: #selector(updateCollectedDiscount),
-                name: NSNotification.Name(NotificationNames.likeButtonTapped.rawValue),
+                name: NSNotification.Name(NotificationNames.discountLikeButtonTapped.rawValue),
                 object: nil
         )
     }

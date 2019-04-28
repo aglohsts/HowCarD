@@ -24,19 +24,25 @@ class CollectedCardViewController: HCBaseViewController {
     
     var collectedCardIds: [String] = []
     
+    let cardProvider = CardProvider()
+    
     var cardsBasicInfo = [CardBasicInfoObject]()
     
+    var userCollectedCards = [CardBasicInfoObject]()
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        setupTableView()
 
         getData()
     }
-
 }
 
 extension CollectedCardViewController {
     
-    func getData() {
+    private func getData() {
         
         getCardBasicInfo()
         getUsercollectedCardId()
@@ -44,15 +50,47 @@ extension CollectedCardViewController {
         group.notify(queue: .main, execute: {
             
             // 拿到資料後要比對user收藏的cardID和物件，畫面顯示有收藏的
+            
+            self.collectedCardIds.forEach({ (id) in
+                
+                for index in 0 ..< self.cardsBasicInfo.count {
+                    
+                    if id == self.cardsBasicInfo[index].id {
+                        
+                        self.userCollectedCards.append(self.cardsBasicInfo[index])
+                    }
+                }
+            })
+            
+            DispatchQueue.main.async {
+                
+                self.tableView.reloadData()
+            }
         })
     }
     
-    func getCardBasicInfo() {
+    private func getCardBasicInfo() {
         
-        // TODO: 打api拿所有card
+        group.enter()
+        
+        cardProvider.getCardBasicInfo(completion: { [weak self] result in
+            
+            switch result {
+                
+            case .success(let cardsBasicInfo):
+                
+                self?.cardsBasicInfo = cardsBasicInfo
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+            
+            self?.group.leave()
+        })
     }
     
-    func getUsercollectedCardId() {
+    private func getUsercollectedCardId() {
         
         guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
         
@@ -64,6 +102,13 @@ extension CollectedCardViewController {
             
             self?.group.leave()
         })
+    }
+    
+    private func setupTableView() {
+        
+        tableView.separatorStyle = .none
+        
+        tableView.showsVerticalScrollIndicator = false
     }
 }
 
@@ -86,7 +131,11 @@ extension CollectedCardViewController: UITableViewDataSource {
         
         guard let collectedCardCell = cell as? CollectedCardTableViewCell else { return cell }
         
-        // TODO: Layout cell
+        collectedCardCell.layoutCell(
+            cardImage: userCollectedCards[indexPath.row].image,
+            cardName: userCollectedCards[indexPath.row].name,
+            bankName: userCollectedCards[indexPath.row].bank,
+            tags: userCollectedCards[indexPath.row].tags)
         
         return collectedCardCell
     }

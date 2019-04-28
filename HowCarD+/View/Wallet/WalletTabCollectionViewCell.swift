@@ -37,12 +37,8 @@ class WalletTabCollectionViewCell: UICollectionViewCell {
         
         self.bottomBorder.frame = CGRect(x: 0, y: self.frame.height - borderWidth, width: self.frame.width, height: borderWidth)
         
-        self.bottomBorder.backgroundColor = UIColor.lightGray.cgColor
-        
         self.layer.masksToBounds = true
         
         self.layer.addSublayer(bottomBorder)
-        
-        self.isSelected = false
     }
 }
