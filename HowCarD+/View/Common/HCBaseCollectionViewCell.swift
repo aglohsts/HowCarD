@@ -20,5 +20,6 @@ class HCBaseCollectionViewCell: UICollectionViewCell {
         
         backgroundColor = UIColor.hexStringToUIColor(hex: hex)
         
+        contentView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 
 enum HCColorHex: String {
     
-    case viewBackground = "F7F8F3"
+    case viewBackground = "F8f8f8"
     
     case tint = "6FBEDB"
 }
@@ -29,7 +29,7 @@ extension UIColor {
             return UIColor.gray
         }
         
-        var rgbValue:UInt32 = 0
+        var rgbValue: UInt32 = 0
         Scanner(string: cString).scanHexInt32(&rgbValue)
         
         return UIColor(

@@ -120,8 +120,6 @@ class DRecommTableViewCell: FoldingCell {
         }
         
         noteLabel.text = note
-        
-        
     }
     
     func layoutCollectionView(briefIntroArray: [BriefIntro], tagArray: [String]?) {

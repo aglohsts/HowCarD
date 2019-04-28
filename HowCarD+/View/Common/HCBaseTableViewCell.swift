@@ -25,6 +25,8 @@ class HCBaseTableViewCell: UITableViewCell {
     func setViewBackground(hex: HCColorHex) {
         
         backgroundColor = UIColor.hexStringToUIColor(hex: hex)
+        
+        contentView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
     }
 
 }

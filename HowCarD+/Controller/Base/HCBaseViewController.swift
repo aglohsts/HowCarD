@@ -104,7 +104,7 @@ class HCBaseViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    func setBackgroundColor(_ hex: HCColorHex) {
+    func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
         
         view.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
     }

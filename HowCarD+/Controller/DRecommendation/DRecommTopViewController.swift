@@ -31,8 +31,15 @@ class DRecommTopViewController: HCBaseViewController {
     private func setupCollectionView() {
 
         collectionView.showsHorizontalScrollIndicator = false
-    }
+        
+        setBackgroundColor()
 
+    }
+    
+    override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
+        
+        collectionView.backgroundColor = .hexStringToUIColor(hex: hex)
+    }
 }
 
 extension DRecommTopViewController: UICollectionViewDelegate {

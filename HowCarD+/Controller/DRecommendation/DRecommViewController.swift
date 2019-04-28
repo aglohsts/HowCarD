@@ -71,6 +71,8 @@ class DRecommViewController: HCBaseViewController {
             bundle: nil
         )
         
+        setBackgroundColor(.viewBackground)
+        
         tableView.separatorStyle = .none
         
         tableView.estimatedRowHeight = Const.closeCellHeight
@@ -81,6 +83,10 @@ class DRecommViewController: HCBaseViewController {
             tableView.refreshControl = UIRefreshControl()
             tableView.refreshControl?.addTarget(self, action: #selector(refreshHandler), for: .valueChanged)
         }
+    }
+    
+    override func setBackgroundColor(_ hex: HCColorHex) {
+        tableView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
     }
     
     @objc func refreshHandler() {
@@ -229,7 +235,7 @@ extension DRecommViewController: UITableViewDelegate {
         
         guard let headerView = view as? HCTableViewSectionHeaderView else { return }
         
-        headerView.contentView.backgroundColor = .white
+        headerView.contentView.backgroundColor = .hexStringToUIColor(hex: .viewBackground)
     }
 }
 
