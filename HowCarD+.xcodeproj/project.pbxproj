@@ -585,6 +585,7 @@
 				CA171B5C225330070042BBDC /* Resources */,
 				7D56C79157EB607B436A3214 /* [CP] Embed Pods Frameworks */,
 				CAF58D86225C994E00818CDD /* SwiftLint */,
+				CA91941E2276C86100DA277E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -673,6 +674,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HowCarD+/Pods-HowCarD+-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		CA91941E2276C86100DA277E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Info.plist",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\"\n";
 		};
 		CAF58D86225C994E00818CDD /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -939,6 +958,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 54Y59X3FBZ;
 				INFOPLIST_FILE = "HowCarD+/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;

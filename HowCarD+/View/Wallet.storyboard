@@ -25,17 +25,17 @@
                                     <constraint firstAttribute="height" constant="50" id="3p6-ps-dMd"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vv4-1h-KlS">
-                                    <size key="itemSize" width="154" height="50"/>
+                                    <size key="itemSize" width="182" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WalletTabCollectionViewCell" id="oqb-ed-o4u" customClass="WalletTabCollectionViewCell" customModule="HowCarD_" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="154" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="182" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="154" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="182" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Gj-rP-a8x">

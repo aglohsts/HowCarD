@@ -8,6 +8,8 @@
 
 import UIKit
 import IQKeyboardManager
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared().shouldResignOnTouchOutside = true
         
         HCFirebaseManager.shared.configure()
+        
+        Fabric.with([Crashlytics.self])
 
         return true
     }
