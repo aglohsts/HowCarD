@@ -246,6 +246,7 @@
 		CA171B60225330070042BBDC /* HowCarD+ */ = {
 			isa = PBXGroup;
 			children = (
+				CA6B5C692266B83300B180A2 /* Resource */,
 				CAFE829322608028004F4E63 /* ThirdPartyWrapper */,
 				CA171B7922533B110042BBDC /* Extension */,
 				CAC426F722759202003C6D26 /* Enum */,
@@ -269,7 +270,6 @@
 				CAF4038F225C77B40037F1DD /* Discounts */,
 				CA2F7DD922579B58005E4361 /* Cards */,
 				CA2F7DD22256F029005E4361 /* Filter */,
-				CA6B5C692266B83300B180A2 /* Resource */,
 				CA171B65225330070042BBDC /* Main.storyboard */,
 				CA171B74225334260042BBDC /* DRecommendation.storyboard */,
 				CA171B802253407A0042BBDC /* Discounts.storyboard */,

@@ -8,7 +8,6 @@
 
 import UIKit
 import FoldingCell
-import Crashlytics
 
 class DRecommViewController: HCBaseViewController {
     
