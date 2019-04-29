@@ -49,6 +49,8 @@ class DiscountsViewController: HCBaseViewController {
         
         setNavBar()
         
+        setBackgroundColor()
+        
         setTableView()
         
         getData()
@@ -65,6 +67,12 @@ class DiscountsViewController: HCBaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+    }
+    
+    override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
+        super.setBackgroundColor()
+        
+        tableView.backgroundColor = .hexStringToUIColor(hex: hex)
     }
 
     private func setTableView() {

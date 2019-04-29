@@ -22,10 +22,10 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
     var isRead: Bool = false {
         didSet {
             if isRead {
-                backView.layer.backgroundColor = UIColor.lightGray.cgColor
+//                backView.layer.backgroundColor = UIColor.lightGray.cgColor
 
             } else {
-                backView.layer.backgroundColor = UIColor.white.cgColor
+//                backView.layer.backgroundColor = UIColor.white.cgColor
             }
         }
     }

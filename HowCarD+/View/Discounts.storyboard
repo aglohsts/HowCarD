@@ -28,7 +28,7 @@
                                 </connections>
                             </containerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EYd-br-vV8">
-                                <rect key="frame" x="0.0" y="168" width="414" height="694"/>
+                                <rect key="frame" x="0.0" y="96" width="414" height="766"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DiscountsTableViewCell" rowHeight="291" id="h8G-Tj-ZIw" customClass="DiscountsTableViewCell" customModule="HowCarD_" customModuleProvider="target">
@@ -128,7 +128,7 @@
                             <constraint firstItem="EYd-br-vV8" firstAttribute="leading" secondItem="7mG-X2-hxW" secondAttribute="leading" id="Byg-Pa-aaH"/>
                             <constraint firstItem="7mG-X2-hxW" firstAttribute="bottom" secondItem="EYd-br-vV8" secondAttribute="bottom" id="d53-am-KyQ"/>
                             <constraint firstItem="gHX-1g-657" firstAttribute="leading" secondItem="7mG-X2-hxW" secondAttribute="leading" id="hX7-c8-BqM"/>
-                            <constraint firstItem="EYd-br-vV8" firstAttribute="top" secondItem="gHX-1g-657" secondAttribute="bottom" id="kQF-0U-Exd"/>
+                            <constraint firstItem="EYd-br-vV8" firstAttribute="top" secondItem="7mG-X2-hxW" secondAttribute="top" constant="8" id="ifK-0j-zEv"/>
                             <constraint firstItem="7mG-X2-hxW" firstAttribute="trailing" secondItem="gHX-1g-657" secondAttribute="trailing" id="oz8-Vb-e99"/>
                             <constraint firstItem="gHX-1g-657" firstAttribute="top" secondItem="7mG-X2-hxW" secondAttribute="top" id="xh1-sl-9uT"/>
                         </constraints>
@@ -330,7 +330,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="Udv-Ob-f0G" firstAttribute="top" secondItem="vmZ-fe-a2Z" secondAttribute="top" constant="16" id="N9L-F3-OzT"/>
                                                 <constraint firstItem="Udv-Ob-f0G" firstAttribute="leading" secondItem="vmZ-fe-a2Z" secondAttribute="leading" constant="16" id="QLP-ol-iwm"/>
@@ -356,7 +356,7 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="vmZ-fe-a2Z" firstAttribute="top" secondItem="QrY-j1-GLj" secondAttribute="bottom" id="GDd-f8-bI9"/>
                                         <constraint firstItem="rCm-dm-mVX" firstAttribute="top" secondItem="mYu-OF-53C" secondAttribute="top" constant="16" id="K9F-yO-9Sl"/>

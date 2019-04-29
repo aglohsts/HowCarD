@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardDetailViewController: UIViewController {
+class CardDetailViewController: HCBaseViewController {
     
     var cardID: String = ""
     
@@ -99,14 +99,21 @@ class CardDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setBackgroundColor()
 
         setupTableView()
 
         setupCollectionView()
 
-        setNavBar()
+//        setNavBar()
         
         getcardDetail()
+    }
+    
+    override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
+        super.setBackgroundColor()
+        tableView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
     }
 
     private func setupTableView() {
@@ -222,7 +229,7 @@ extension CardDetailViewController: UITableViewDelegate {
 
         guard let headerView = view as? CardDetailTableViewHeaderView else { return }
 
-        headerView.contentView.backgroundColor = UIColor.lightGray
+        headerView.contentView.backgroundColor = UIColor.hexStringToUIColor(hex: .sectionTitleBackground)
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

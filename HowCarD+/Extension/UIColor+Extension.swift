@@ -13,6 +13,10 @@ enum HCColorHex: String {
     case viewBackground = "F8f8f8"
     
     case tint = "6FBEDB"
+    
+    case grayDCDCDC = "DCDCDC"
+    
+    case sectionTitleBackground = "D5ECF4"
 }
 
 extension UIColor {

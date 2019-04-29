@@ -52,6 +52,11 @@ class MoreDiscountViewController: HCBaseViewController {
         discountAddObserver()
     }
     
+    override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
+        super.setBackgroundColor()
+        collectionView.backgroundColor = .hexStringToUIColor(hex: hex)
+    }
+    
     private func setupCollectionView() {
         
         collectionView.agRegisterCellWithNib(
@@ -59,6 +64,8 @@ class MoreDiscountViewController: HCBaseViewController {
             bundle: nil)
         
         collectionView.showsVerticalScrollIndicator = false
+        
+        setBackgroundColor()
     }
 
     private func setNavBar() {

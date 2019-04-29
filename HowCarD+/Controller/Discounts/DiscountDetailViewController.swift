@@ -77,11 +77,19 @@ class DiscountDetailViewController: HCBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setBackgroundColor()
+        
         setupTableView()
         
         getData()
         
         discountAddObserver()
+    }
+    
+    override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
+        super.setBackgroundColor()
+        
+        tableView.backgroundColor = .hexStringToUIColor(hex: hex)
     }
     
     @IBAction func onLikeDiscount(_ sender: Any) {
@@ -266,7 +274,7 @@ extension DiscountDetailViewController: UITableViewDelegate {
         
         guard let headerView = view as? HCTableViewSectionHeaderView else { return }
         
-        headerView.contentView.backgroundColor = UIColor.white
+        headerView.contentView.backgroundColor = UIColor.hexStringToUIColor(hex: .viewBackground)
     }
 }
 

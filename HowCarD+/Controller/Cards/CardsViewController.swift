@@ -57,6 +57,8 @@ class CardsViewController: HCBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setBackgroundColor()
 
         setNavBar()
         
@@ -76,6 +78,11 @@ class CardsViewController: HCBaseViewController {
             style: .plain,
             target: self,
             action: #selector(showFilter))
+    }
+    
+    override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
+        super.setBackgroundColor()
+        tableView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
     }
     
     private func setTableView() {

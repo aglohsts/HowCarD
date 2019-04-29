@@ -31,7 +31,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="K4K-dE-uBT" firstAttribute="leading" secondItem="3Zn-S5-EFQ" secondAttribute="trailing" constant="10" id="ANH-d9-Uvt"/>
                 <constraint firstItem="3Zn-S5-EFQ" firstAttribute="top" secondItem="K4K-dE-uBT" secondAttribute="top" constant="4" id="YAE-Pd-Auf"/>
