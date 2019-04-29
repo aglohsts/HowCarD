@@ -125,6 +125,11 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="L4y-oP-zW9" secondAttribute="height" multiplier="1:1" id="pdN-jW-Tay"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="agCornerRadius">
+                                                                    <real key="value" value="3"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DiscountNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcQ-Kt-NQt">
                                                             <rect key="frame" x="16" y="16" width="265.5" height="18"/>
@@ -132,7 +137,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TargetLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZm-9Q-786">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="TargetLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZm-9Q-786">
                                                             <rect key="frame" x="16" y="48.5" width="265.5" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <nil key="textColor"/>
@@ -141,7 +146,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TimePeriodLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDk-kI-cy0">
                                                             <rect key="frame" x="16" y="82.5" width="265.5" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -150,15 +155,16 @@
                                                         <constraint firstAttribute="bottom" secondItem="L4y-oP-zW9" secondAttribute="bottom" constant="8" id="0lB-Xm-lJo"/>
                                                         <constraint firstAttribute="bottom" secondItem="oDk-kI-cy0" secondAttribute="bottom" constant="16" id="Dlh-PF-xzm"/>
                                                         <constraint firstAttribute="trailing" secondItem="L4y-oP-zW9" secondAttribute="trailing" constant="8" id="ELO-lp-RVA"/>
+                                                        <constraint firstItem="JZm-9Q-786" firstAttribute="top" relation="greaterThanOrEqual" secondItem="VcQ-Kt-NQt" secondAttribute="bottom" constant="8" id="NqU-bU-nsl"/>
                                                         <constraint firstItem="L4y-oP-zW9" firstAttribute="top" secondItem="MpU-m5-cNP" secondAttribute="top" constant="8" id="UpA-vY-BMY"/>
                                                         <constraint firstItem="L4y-oP-zW9" firstAttribute="leading" secondItem="VcQ-Kt-NQt" secondAttribute="trailing" constant="16" id="XJw-RP-VFG"/>
                                                         <constraint firstItem="L4y-oP-zW9" firstAttribute="leading" secondItem="JZm-9Q-786" secondAttribute="trailing" constant="16" id="gyY-RQ-bjj"/>
                                                         <constraint firstItem="L4y-oP-zW9" firstAttribute="leading" secondItem="oDk-kI-cy0" secondAttribute="trailing" constant="16" id="iL7-1h-BAM"/>
                                                         <constraint firstItem="oDk-kI-cy0" firstAttribute="leading" secondItem="JZm-9Q-786" secondAttribute="leading" id="iY7-Jq-rOg"/>
                                                         <constraint firstItem="JZm-9Q-786" firstAttribute="leading" secondItem="VcQ-Kt-NQt" secondAttribute="leading" id="qPQ-Zs-raO"/>
-                                                        <constraint firstItem="JZm-9Q-786" firstAttribute="centerY" secondItem="L4y-oP-zW9" secondAttribute="centerY" id="si5-oe-XHD"/>
                                                         <constraint firstItem="VcQ-Kt-NQt" firstAttribute="top" secondItem="MpU-m5-cNP" secondAttribute="top" constant="16" id="wHi-MW-DAk"/>
                                                         <constraint firstItem="VcQ-Kt-NQt" firstAttribute="leading" secondItem="MpU-m5-cNP" secondAttribute="leading" constant="16" id="wfC-ZV-aME"/>
+                                                        <constraint firstItem="oDk-kI-cy0" firstAttribute="top" relation="greaterThanOrEqual" secondItem="JZm-9Q-786" secondAttribute="bottom" constant="8" id="yBR-ap-opI"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="agCornerRadius">
@@ -228,6 +234,11 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="dvJ-hp-0WF" secondAttribute="height" multiplier="85.6:53.98" id="fvc-jO-gD8"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="agCornerRadius">
+                                                                    <real key="value" value="3"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CardNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNs-9W-u7b">
                                                             <rect key="frame" x="124" y="16" width="264" height="18"/>
@@ -249,12 +260,12 @@
                                                         </label>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cSN-ye-IpW">
                                                             <rect key="frame" x="16" y="82" width="372" height="20"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="Bq1-86-ZYZ"/>
                                                             </constraints>
                                                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0Os-UM-nsw">
-                                                                <size key="itemSize" width="50" height="50"/>
+                                                                <size key="itemSize" width="50" height="20"/>
                                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>

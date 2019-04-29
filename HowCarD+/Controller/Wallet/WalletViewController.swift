@@ -50,6 +50,8 @@ class WalletViewController: HCBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setBackgroundColor()
 
         setNavBar()
         
@@ -74,6 +76,12 @@ class WalletViewController: HCBaseViewController {
         
         confirmUserSignnedIn()
     }
+    
+    override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
+        super.setBackgroundColor()
+        
+        tabCollectionView.backgroundColor = .hexStringToUIColor(hex: hex)
+    }
 }
 
 extension WalletViewController {
@@ -95,7 +103,7 @@ extension WalletViewController {
         
         // TODO: Log out icon
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-        image: UIImage.asset(.Image_Placeholder2),
+        image: UIImage.asset(.Icons_24px_Share),
         style: .plain,
         target: self,
         action: #selector(onSignOut))

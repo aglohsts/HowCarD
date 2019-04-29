@@ -37,8 +37,16 @@ class CollectedCardViewController: HCBaseViewController {
         cardAddObserver()
         
         setupTableView()
+        
+        setBackgroundColor()
 
         getData()
+    }
+    
+    override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
+        super.setBackgroundColor()
+        
+        tableView.backgroundColor = .hexStringToUIColor(hex: hex)
     }
 }
 

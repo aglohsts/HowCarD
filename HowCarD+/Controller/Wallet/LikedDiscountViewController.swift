@@ -33,11 +33,19 @@ class LikedDiscountViewController: HCBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setBackgroundColor()
+        
         setupTableView()
         
         getData()
         
         discountAddObserver()
+    }
+    
+    override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
+        super.setBackgroundColor()
+        
+        tableView.backgroundColor = .hexStringToUIColor(hex: hex)
     }
 }
 
@@ -199,6 +207,11 @@ extension LikedDiscountViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return userLikedDiscounts.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 150
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
