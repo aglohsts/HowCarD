@@ -23,6 +23,8 @@ class DiscountsViewController: HCBaseViewController {
     
     var likedDiscountIds: [String] = []
     
+    var userReadDiscountIds: [String] = []
+    
     var discountObjects: [DiscountObject] = [] {
         
         didSet {
@@ -142,6 +144,7 @@ extension DiscountsViewController {
         
         getAllDiscount()
         getUserLikedDiscountId()
+        getUserReadDiscountId()
         
         group.notify(queue: .main, execute: { [weak self] in
             
@@ -198,6 +201,20 @@ extension DiscountsViewController {
         HCFirebaseManager.shared.getId(uid: user.uid, userCollection: .likedDiscounts, completion: { [weak self] ids in
             
             self?.likedDiscountIds = ids
+            
+            self?.group.leave()
+        })
+    }
+    
+    private func getUserReadDiscountId() {
+        
+        guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+        
+        group.enter()
+        
+        HCFirebaseManager.shared.getId(uid: user.uid, userCollection: .isReadDiscounts, completion: { [weak self] ids in
+            
+            self?.userReadDiscountIds = ids
             
             self?.group.leave()
         })

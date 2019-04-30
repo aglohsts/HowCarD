@@ -297,7 +297,8 @@ extension MoreDiscountViewController: UICollectionViewDataSource {
             bankName: self.discountObject?.discountInfos[indexPath.item].bankName ?? "",
             cardName: self.discountObject?.discountInfos[indexPath.item].cardName ?? "",
             timePeriod: self.discountObject?.discountInfos[indexPath.item].timePeriod ?? "",
-            isLiked: self.discountObject?.discountInfos[indexPath.item].isLiked ?? false
+            isLiked: self.discountObject?.discountInfos[indexPath.item].isLiked ?? false,
+            isRead: self.discountObject?.discountInfos[indexPath.item].isRead ?? false
         )
 
         discountCollectionViewCell.likeBtnTouchHandler = { [weak self] in

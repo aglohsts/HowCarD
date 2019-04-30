@@ -132,6 +132,8 @@ extension DiscountsTableViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         toDiscountDetailHandler?(indexPath)
+        
+        discountInfos[indexPath.row].isRead = true
     }
 }
 
@@ -159,7 +161,8 @@ extension DiscountsTableViewCell: UICollectionViewDataSource {
                 bankName: discountInfos[indexPath.row].bankName,
                 cardName: discountInfos[indexPath.row].cardName,
                 timePeriod: discountInfos[indexPath.row].timePeriod,
-                isLiked: discountInfos[indexPath.row].isLiked
+                isLiked: discountInfos[indexPath.row].isLiked,
+                isRead: discountInfos[indexPath.row].isRead
             )
             
             discountCollectionViewCell.likeBtnTouchHandler = { [weak self] in

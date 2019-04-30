@@ -21,6 +21,21 @@ class DiscountCollectionViewCell: HCBaseCollectionViewCell {
             }
         }
     }
+    
+    var isRead: Bool = false {
+        
+        didSet {
+            
+            if isRead {
+                
+                backView.layer.backgroundColor = UIColor.white.cgColor
+                
+            } else {
+                
+                backView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .tint).cgColor
+            }
+        }
+    }
 
     @IBOutlet weak var imageView: UIImageView!
 
@@ -50,7 +65,7 @@ class DiscountCollectionViewCell: HCBaseCollectionViewCell {
         )
     }
 
-    func layoutCell(image: String, discountTitle: String, bankName: String, cardName: String, timePeriod: String, isLiked: Bool) {
+    func layoutCell(image: String, discountTitle: String, bankName: String, cardName: String, timePeriod: String, isLiked: Bool, isRead: Bool) {
 
         imageView.loadImage(image, placeHolder: UIImage.asset(.Image_Placeholder))
         
@@ -61,6 +76,8 @@ class DiscountCollectionViewCell: HCBaseCollectionViewCell {
         timePeriodLabel.text = timePeriod
         
         self.isLiked = isLiked
+        
+        self.isRead = isRead
     }
 
     @IBAction func onLike(_ sender: Any) {
