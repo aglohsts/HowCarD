@@ -45,6 +45,11 @@ class HCBaseViewController: UIViewController {
 
         return true
     }
+    
+    var isHideNavigationBarUnderLine: Bool {
+        
+        return false
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +58,12 @@ class HCBaseViewController: UIViewController {
 
         if isHideNavigationBar {
             navigationItem.hidesBackButton = true
+        }
+        
+        if isHideNavigationBarUnderLine {
+            
+            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+            self.navigationController?.navigationBar.shadowImage = UIImage()
         }
 
 //        navigationController?.navigationBar.barTintColor = UIColor.white.withAlphaComponent(0.9)
@@ -81,6 +92,11 @@ class HCBaseViewController: UIViewController {
         if !isEnableResignOnTouchOutside {
             IQKeyboardManager.shared().shouldResignOnTouchOutside = false
         }
+        
+        if isHideNavigationBarUnderLine {
+            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+            self.navigationController?.navigationBar.shadowImage = UIImage()
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -97,6 +113,16 @@ class HCBaseViewController: UIViewController {
         if !isEnableResignOnTouchOutside {
             IQKeyboardManager.shared().shouldResignOnTouchOutside = true
         }
+        
+        if isHideNavigationBarUnderLine {
+            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+            self.navigationController?.navigationBar.shadowImage = UIImage()
+        }
+    }
+    
+    func hideNavBarShadow() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: ""), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage(named: "")
     }
 
     @IBAction func popBack(_ sender: UIButton) {

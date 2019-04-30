@@ -103,7 +103,7 @@
 		5B5A0842CFBB48209D25D8D8 /* Pods-HowCarD+.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowCarD+.debug.xcconfig"; path = "Target Support Files/Pods-HowCarD+/Pods-HowCarD+.debug.xcconfig"; sourceTree = "<group>"; };
 		6F7DA0CF1E2FC5FC71E1B720 /* Pods-HowCarD+.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowCarD+.release.xcconfig"; path = "Target Support Files/Pods-HowCarD+/Pods-HowCarD+.release.xcconfig"; sourceTree = "<group>"; };
 		96A471D918A639FEEC5AA07E /* Pods_HowCarD_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowCarD_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA171B5E225330070042BBDC /* HowCarD+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HowCarD+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA171B5E225330070042BBDC /* HowCarD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HowCarD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA171B61225330070042BBDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA171B66225330070042BBDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CA171B68225330090042BBDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -238,7 +238,7 @@
 		CA171B5F225330070042BBDC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CA171B5E225330070042BBDC /* HowCarD+.app */,
+				CA171B5E225330070042BBDC /* HowCarD.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -593,7 +593,7 @@
 			);
 			name = "HowCarD+";
 			productName = HowCarD;
-			productReference = CA171B5E225330070042BBDC /* HowCarD+.app */;
+			productReference = CA171B5E225330070042BBDC /* HowCarD.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -887,7 +887,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -942,7 +942,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -961,13 +961,13 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 54Y59X3FBZ;
 				INFOPLIST_FILE = "HowCarD+/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = lohsts.HowCarD;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HowCarD;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -981,13 +981,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 54Y59X3FBZ;
 				INFOPLIST_FILE = "HowCarD+/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = lohsts.HowCarD;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HowCarD;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

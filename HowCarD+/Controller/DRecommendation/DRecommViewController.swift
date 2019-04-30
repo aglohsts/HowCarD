@@ -71,9 +71,9 @@ class DRecommViewController: HCBaseViewController {
             bundle: nil
         )
         
-        setBackgroundColor(.viewBackground)
-        
         tableView.separatorStyle = .none
+        
+        tableView.showsVerticalScrollIndicator = false
         
         tableView.estimatedRowHeight = Const.closeCellHeight
         
@@ -83,6 +83,8 @@ class DRecommViewController: HCBaseViewController {
             tableView.refreshControl = UIRefreshControl()
             tableView.refreshControl?.addTarget(self, action: #selector(refreshHandler), for: .valueChanged)
         }
+        
+        setBackgroundColor(.viewBackground)
     }
     
     override func setBackgroundColor(_ hex: HCColorHex) {

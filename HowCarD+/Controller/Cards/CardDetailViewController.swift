@@ -124,6 +124,8 @@ class CardDetailViewController: HCBaseViewController {
         )
 
         tableView.separatorStyle = .none
+        
+        tableView.showsVerticalScrollIndicator = false
     }
     
     private func setHeaderViewContent(cardName: String, bankName: String, image: String) {

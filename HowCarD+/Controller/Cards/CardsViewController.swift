@@ -58,11 +58,11 @@ class CardsViewController: HCBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setTableView()
+        
         setBackgroundColor()
 
         setNavBar()
-        
-        setTableView()
         
         getData()
     }
@@ -88,6 +88,8 @@ class CardsViewController: HCBaseViewController {
     private func setTableView() {
         
         tableView.separatorStyle = .none
+        
+        tableView.showsVerticalScrollIndicator = false
     }
 
     @objc private func showFilter() {

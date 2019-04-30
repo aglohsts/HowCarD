@@ -135,6 +135,8 @@ extension DiscountDetailViewController {
         
         tableView.separatorStyle = .none
         
+        tableView.showsVerticalScrollIndicator = false
+        
         self.tableView.sectionHeaderHeight = UITableView.automaticDimension
         
         self.tableView.estimatedSectionHeaderHeight = 200

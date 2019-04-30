@@ -11,6 +11,11 @@ import HFCardCollectionViewLayout
 
 class WalletViewController: HCBaseViewController {
     
+    override var isHideNavigationBarUnderLine: Bool {
+
+        return true
+    }
+    
     private enum TabCategory: Int {
         
         case likedDiscount = 0
@@ -49,6 +54,7 @@ class WalletViewController: HCBaseViewController {
     var tabArray: [ImageAsset] = [.Image_Placeholder, .Image_Placeholder2]
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         setBackgroundColor()
@@ -61,13 +67,20 @@ class WalletViewController: HCBaseViewController {
             
             updateContainer(tab: .likedDiscount)
             
-            tabCollectionView.selectItem(at: IndexPath(item: TabCategory.likedDiscount.rawValue, section: 0), animated: false, scrollPosition: .left)
-            
+            tabCollectionView.selectItem(
+                at: IndexPath(item: TabCategory.likedDiscount.rawValue, section: 0),
+                animated: false,
+                scrollPosition: .left
+            )
         } else if selectedTab == TabCategory.collectedCard.rawValue {
             
             updateContainer(tab: .collectedCard)
             
-            tabCollectionView.selectItem(at: IndexPath(item: TabCategory.collectedCard.rawValue, section: 0), animated: false, scrollPosition: .left)
+            tabCollectionView.selectItem(
+                at: IndexPath(item: TabCategory.collectedCard.rawValue, section: 0),
+                animated: false,
+                scrollPosition: .left
+            )
         }
     }
     
@@ -173,6 +186,52 @@ extension WalletViewController {
             }
         }
     }
+}
+
+extension WalletViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath)
+        -> CGSize {
+            
+            return CGSize(width: UIScreen.width / 2, height: 50.0)
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int)
+        -> UIEdgeInsets {
+            
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+        func collectionView(
+            _ collectionView: UICollectionView,
+            layout collectionViewLayout: UICollectionViewLayout,
+            minimumLineSpacingForSectionAt section: Int)
+            -> CGFloat {
+    
+                return 0
+        }
+    
+        func collectionView(
+            _ collectionView: UICollectionView,
+            layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int)
+            -> CGFloat {
+    
+                return 0
+        }
+    //
+    //    func collectionView(
+    //        _ collectionView: UICollectionView,
+    //        layout collectionViewLayout: UICollectionViewLayout,
+    //        referenceSizeForHeaderInSection section: Int)
+    //        -> CGSize {
+    //
+    //            return CGSize(width: UIScreen.width, height: 25.0)
+    //    }
 }
 
 extension WalletViewController: UICollectionViewDelegate {
