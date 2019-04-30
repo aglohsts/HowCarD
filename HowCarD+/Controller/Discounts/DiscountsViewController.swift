@@ -209,7 +209,7 @@ extension DiscountsViewController {
             .addObserver(
                 self,
                 selector: #selector(updateLikedDiscount),
-                name: NSNotification.Name(NotificationNames.discountLikeButtonTapped.rawValue),
+                name: NSNotification.Name(NotificationNames.updateLikedDiscount.rawValue),
                 object: nil
         )
     }

@@ -191,7 +191,7 @@ extension DiscountsTableViewCell: UICollectionViewDataSource {
 //                strongSelf.likeButtonDidTouchHandler?(strongSelf.discountInfos[indexPath.row], strongSelf)
                 
                 NotificationCenter.default.post(
-                    name: Notification.Name(rawValue: NotificationNames.discountLikeButtonTapped.rawValue),
+                    name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
                     object: nil
                 )
             }

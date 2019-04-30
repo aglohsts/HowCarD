@@ -69,7 +69,7 @@ class DiscountCollectionViewCell: HCBaseCollectionViewCell {
         likeBtnTouchHandler?()
         
         NotificationCenter.default.post(
-            name: Notification.Name(rawValue: NotificationNames.discountLikeButtonTapped.rawValue),
+            name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
             object: nil
         )
     }

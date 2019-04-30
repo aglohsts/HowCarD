@@ -10,7 +10,7 @@ import Foundation
 
 enum NotificationNames: String {
     
-    case discountLikeButtonTapped
+    case updateLikedDiscount
     
-    case cardCollectButtonTapped
+    case updateCollectedCard
 }

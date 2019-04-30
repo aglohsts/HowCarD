@@ -146,7 +146,7 @@ extension LikedDiscountViewController {
             .addObserver(
                 self,
                 selector: #selector(updateLikedDiscount),
-                name: NSNotification.Name(NotificationNames.discountLikeButtonTapped.rawValue),
+                name: NSNotification.Name(NotificationNames.updateLikedDiscount.rawValue),
                 object: nil
         )
     }
@@ -232,5 +232,27 @@ extension LikedDiscountViewController: UITableViewDataSource {
         )
         
         return likedDiscountCell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            
+            guard let selectedIndex = self.likedDiscountIds.firstIndex(of: userLikedDiscounts[indexPath.row].discountId), let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+            
+            likedDiscountIds.remove(at: selectedIndex)
+            
+            HCFirebaseManager.shared.deleteId(userCollection: .likedDiscounts, uid: user.uid, id: self.userLikedDiscounts[indexPath.row].discountId)
+            
+            NotificationCenter.default.post(
+                name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
+                object: nil
+            )
+        }
     }
 }

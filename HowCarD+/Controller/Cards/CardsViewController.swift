@@ -273,7 +273,7 @@ extension CardsViewController: UITableViewDataSource {
             
 //            strongSelf.updateIsCollectedCardId()
             NotificationCenter.default.post(
-                name: Notification.Name(rawValue: NotificationNames.cardCollectButtonTapped.rawValue),
+                name: Notification.Name(rawValue: NotificationNames.updateCollectedCard.rawValue),
                 object: nil
             )
             

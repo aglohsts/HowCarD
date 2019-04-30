@@ -173,7 +173,7 @@ class CardDetailViewController: HCBaseViewController {
         isCollected = !isCollected
         
         NotificationCenter.default.post(
-            name: Notification.Name(rawValue: NotificationNames.cardCollectButtonTapped.rawValue),
+            name: Notification.Name(rawValue: NotificationNames.updateCollectedCard.rawValue),
             object: nil
         )
         

@@ -127,7 +127,7 @@ extension CollectedCardViewController {
             .addObserver(
                 self,
                 selector: #selector(updateCollectedCard),
-                name: NSNotification.Name(NotificationNames.cardCollectButtonTapped.rawValue),
+                name: NSNotification.Name(NotificationNames.updateCollectedCard.rawValue),
                 object: nil
         )
     }

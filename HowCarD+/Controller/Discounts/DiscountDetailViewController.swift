@@ -117,7 +117,7 @@ class DiscountDetailViewController: HCBaseViewController {
             self.discountDetail!.info.isLiked = !self.discountDetail!.info.isLiked
      
             NotificationCenter.default.post(
-                name: Notification.Name(rawValue: NotificationNames.discountLikeButtonTapped.rawValue),
+                name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
                 object: nil
             )
         }
@@ -236,7 +236,7 @@ extension DiscountDetailViewController {
             .addObserver(
                 self,
                 selector: #selector(updateLikedDiscount),
-                name: NSNotification.Name(NotificationNames.discountLikeButtonTapped.rawValue),
+                name: NSNotification.Name(NotificationNames.updateLikedDiscount.rawValue),
                 object: nil
         )
     }
@@ -245,12 +245,17 @@ extension DiscountDetailViewController {
         
         likedDiscountId = HCFirebaseManager.shared.likedDiscountIds
         
+        discountDetail?.info.isLiked = false
+        
         likedDiscountId.forEach({ (id) in
             
-                if discountDetail?.info.discountId == id {
-                    
-                    discountDetail?.info.isLiked = true
-                }
+            if discountDetail?.info.discountId == id {
+                
+                discountDetail?.info.isLiked = true
+            } else {
+                
+                discountDetail?.info.isLiked = false
+            }
         })
         
         tableView.reloadData()

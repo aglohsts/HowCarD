@@ -119,7 +119,7 @@ class MoreDiscountViewController: HCBaseViewController {
             .addObserver(
                 self,
                 selector: #selector(updateLikedDiscount),
-                name: NSNotification.Name(NotificationNames.discountLikeButtonTapped.rawValue),
+                name: NSNotification.Name(NotificationNames.updateLikedDiscount.rawValue),
                 object: nil
         )
     }
@@ -323,7 +323,7 @@ extension MoreDiscountViewController: UICollectionViewDataSource {
                 !strongSelf.discountObject!.discountInfos[indexPath.row].isLiked
 
                 NotificationCenter.default.post(
-                    name: Notification.Name(rawValue: NotificationNames.discountLikeButtonTapped.rawValue),
+                    name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
                     object: nil
                 )
             }
