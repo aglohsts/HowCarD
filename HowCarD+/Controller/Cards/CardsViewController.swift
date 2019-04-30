@@ -115,6 +115,7 @@ extension CardsViewController {
         
         getCardBasicInfo()
         getUserCollectedCardId()
+        getUserReadCardId()
         
         group.notify(queue: .main, execute: { [weak self] in
             
@@ -169,6 +170,20 @@ extension CardsViewController {
                 
                 print(error)
             }
+            
+            self?.group.leave()
+        })
+    }
+    
+    func getUserReadCardId() {
+        
+        guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+        
+        group.enter()
+        
+        HCFirebaseManager.shared.getId(uid: user.uid, userCollection: .isReadCards, completion: { [weak self] ids in
+            
+            self?.userReadCardIds = ids
             
             self?.group.leave()
         })
@@ -237,19 +252,6 @@ extension CardsViewController {
             self.tableView.reloadData()
         }
     }
-    
-    /// 更新此 vc 存的 collectedCardId ==> 直接問 singleton
-//    func updateIsCollectedCardId() {
-//
-//        self.collectedCardIds = self.cardsBasicInfo.compactMap({ info in
-//
-//            if info.isCollected == true {
-//
-//                return info.id
-//            }
-//            return nil
-//        })
-//    }
 }
 
 extension CardsViewController: UITableViewDelegate {
@@ -261,6 +263,21 @@ extension CardsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         performSegue(withIdentifier: Segue.toDetail, sender: (indexPath, cardsBasicInfo[indexPath.row].isCollected))
+        
+        /// Mark card as read
+        cardsBasicInfo[indexPath.row].isRead = true
+        
+        // 先檢查有無重複
+        if userReadCardIds.contains(cardsBasicInfo[indexPath.row].id) {
+            
+            return
+        } else {
+            userReadCardIds.append(cardsBasicInfo[indexPath.row].id)
+            
+            guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+            
+            HCFirebaseManager.shared.addId(userCollection: .isReadCards, uid: user.uid, id: cardsBasicInfo[indexPath.row].id)
+        }
     }
 }
 
@@ -279,7 +296,7 @@ extension CardsViewController: UITableViewDataSource {
         guard let cardInfoCell = cell as? CardInfoTableViewCell else { return cell }
 
         cardInfoCell.layoutCell(
-            tableViewCellIsTapped: true,
+            isRead: cardsBasicInfo[indexPath.row].isRead,
             isCollected: cardsBasicInfo[indexPath.row].isCollected,
             bankName: cardsBasicInfo[indexPath.row].bank,
             cardName: cardsBasicInfo[indexPath.row].name,
@@ -320,5 +337,7 @@ extension CardsViewController: UITableViewDataSource {
         }
         return cardInfoCell
     }
+    
+    
 
 }

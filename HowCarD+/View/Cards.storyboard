@@ -13,7 +13,7 @@
         <!--卡了解-->
         <scene sceneID="6EI-KF-uUc">
             <objects>
-                <viewController storyboardIdentifier="CardsViewController" id="nSA-CA-lRB" customClass="CardsViewController" customModule="HowCarD_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CardsViewController" id="nSA-CA-lRB" customClass="CardsViewController" customModule="HowCarD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zeT-aY-0ew">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CardInfoTableViewCell" rowHeight="216" id="gFs-gU-LIA" customClass="CardInfoTableViewCell" customModule="HowCarD_" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CardInfoTableViewCell" rowHeight="216" id="gFs-gU-LIA" customClass="CardInfoTableViewCell" customModule="HowCarD" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="216"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gFs-gU-LIA" id="LxG-Iy-ZU5">
@@ -64,8 +64,8 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </button>
-                                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TvH-0C-sst">
-                                                            <rect key="frame" x="91" y="185" width="302" height="21"/>
+                                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TvH-0C-sst">
+                                                            <rect key="frame" x="96" y="185" width="302" height="21"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="21" id="vfY-Kh-2DU"/>
@@ -130,6 +130,7 @@
                                                 <constraint firstItem="Tzr-5S-lFe" firstAttribute="leading" secondItem="LxG-Iy-ZU5" secondAttribute="leading" id="56e-Lf-zLh"/>
                                                 <constraint firstItem="REc-lU-akm" firstAttribute="leading" secondItem="1Bq-TT-nzD" secondAttribute="trailing" constant="8" id="5oc-ee-TmS"/>
                                                 <constraint firstItem="l9i-0B-f6P" firstAttribute="trailing" secondItem="REc-lU-akm" secondAttribute="trailing" id="65A-MH-Dpp"/>
+                                                <constraint firstAttribute="trailing" secondItem="TvH-0C-sst" secondAttribute="trailing" constant="16" id="Fee-uw-S6O"/>
                                                 <constraint firstAttribute="bottom" secondItem="Tzr-5S-lFe" secondAttribute="bottom" id="RJf-wP-jni"/>
                                                 <constraint firstItem="l9i-0B-f6P" firstAttribute="top" secondItem="REc-lU-akm" secondAttribute="bottom" constant="8" id="Xt4-9d-1h2"/>
                                                 <constraint firstItem="l9i-0B-f6P" firstAttribute="leading" secondItem="REc-lU-akm" secondAttribute="leading" id="pWn-hA-bBG"/>
@@ -141,6 +142,7 @@
                                             <outlet property="cardImageView" destination="REc-lU-akm" id="WhS-o3-Y4l"/>
                                             <outlet property="cardNameLabel" destination="7mW-wP-mdW" id="fY2-th-YtI"/>
                                             <outlet property="collectedBtn" destination="2FI-Ac-viR" id="3fc-vr-m1N"/>
+                                            <outlet property="readMarkView" destination="1Bq-TT-nzD" id="2jz-V0-xbF"/>
                                             <outlet property="tagCollectionView" destination="TvH-0C-sst" id="WcF-2M-a0O"/>
                                         </connections>
                                     </tableViewCell>
@@ -169,7 +171,7 @@
         <!--Card Detail View Controller-->
         <scene sceneID="afl-CY-B0f">
             <objects>
-                <viewController storyboardIdentifier="CardDetailViewController" id="pX2-kF-epT" customClass="CardDetailViewController" customModule="HowCarD_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CardDetailViewController" id="pX2-kF-epT" customClass="CardDetailViewController" customModule="HowCarD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0J1-MC-8Tz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -257,7 +259,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CardDetailContentTableViewCell" rowHeight="100" id="ROd-xI-Tew" customClass="CardDetailContentTableViewCell" customModule="HowCarD_" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CardDetailContentTableViewCell" rowHeight="100" id="ROd-xI-Tew" customClass="CardDetailContentTableViewCell" customModule="HowCarD" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="164.5" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ROd-xI-Tew" id="NnG-w2-ru3">

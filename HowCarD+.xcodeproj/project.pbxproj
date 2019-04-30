@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA0379B122781F580093086D /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0379B022781F580093086D /* WalletViewController.swift */; };
 		CA171B62225330070042BBDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B61225330070042BBDC /* AppDelegate.swift */; };
 		CA171B67225330070042BBDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA171B65225330070042BBDC /* Main.storyboard */; };
 		CA171B69225330090042BBDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA171B68225330090042BBDC /* Assets.xcassets */; };
@@ -21,7 +22,7 @@
 		CA171B8822534F6D0042BBDC /* DRecommViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B8722534F6D0042BBDC /* DRecommViewController.swift */; };
 		CA171B8D22534FF30042BBDC /* DiscountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B8C22534FF30042BBDC /* DiscountsViewController.swift */; };
 		CA171B92225350350042BBDC /* CardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B91225350350042BBDC /* CardsViewController.swift */; };
-		CA171B94225350450042BBDC /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B93225350450042BBDC /* WalletViewController.swift */; };
+		CA171B94225350450042BBDC /* WalletViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B93225350450042BBDC /* WalletViewController2.swift */; };
 		CA171B96225350510042BBDC /* QAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B95225350510042BBDC /* QAViewController.swift */; };
 		CA171B9D22544E330042BBDC /* DRecommTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B9C22544E330042BBDC /* DRecommTableViewCell.swift */; };
 		CA171BA0225457BA0042BBDC /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B9F225457BA0042BBDC /* UITableView+Extension.swift */; };
@@ -103,6 +104,7 @@
 		5B5A0842CFBB48209D25D8D8 /* Pods-HowCarD+.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowCarD+.debug.xcconfig"; path = "Target Support Files/Pods-HowCarD+/Pods-HowCarD+.debug.xcconfig"; sourceTree = "<group>"; };
 		6F7DA0CF1E2FC5FC71E1B720 /* Pods-HowCarD+.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowCarD+.release.xcconfig"; path = "Target Support Files/Pods-HowCarD+/Pods-HowCarD+.release.xcconfig"; sourceTree = "<group>"; };
 		96A471D918A639FEEC5AA07E /* Pods_HowCarD_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowCarD_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA0379B022781F580093086D /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		CA171B5E225330070042BBDC /* HowCarD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HowCarD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA171B61225330070042BBDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA171B66225330070042BBDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -120,7 +122,7 @@
 		CA171B8722534F6D0042BBDC /* DRecommViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommViewController.swift; sourceTree = "<group>"; };
 		CA171B8C22534FF30042BBDC /* DiscountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountsViewController.swift; sourceTree = "<group>"; };
 		CA171B91225350350042BBDC /* CardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewController.swift; sourceTree = "<group>"; };
-		CA171B93225350450042BBDC /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
+		CA171B93225350450042BBDC /* WalletViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController2.swift; sourceTree = "<group>"; };
 		CA171B95225350510042BBDC /* QAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAViewController.swift; sourceTree = "<group>"; };
 		CA171B9C22544E330042BBDC /* DRecommTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommTableViewCell.swift; sourceTree = "<group>"; };
 		CA171B9F225457BA0042BBDC /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
@@ -349,10 +351,11 @@
 		CA171B8F225350140042BBDC /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
-				CA171B93225350450042BBDC /* WalletViewController.swift */,
+				CA171B93225350450042BBDC /* WalletViewController2.swift */,
 				CAF16FA422746EEF0013D864 /* MyCardViewController.swift */,
 				CAF16FA7227472290013D864 /* LikedDiscountViewController.swift */,
 				CAF16FA92274727E0013D864 /* CollectedCardViewController.swift */,
+				CA0379B022781F580093086D /* WalletViewController.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -745,6 +748,7 @@
 				CA6B5C7722675BC300B180A2 /* CardRequest.swift in Sources */,
 				CAFE8283225E3CE8004F4E63 /* DiscountLikedListTableViewCell.swift in Sources */,
 				CA171BA82254C2D60042BBDC /* UICollectionView+Extension.swift in Sources */,
+				CA0379B122781F580093086D /* WalletViewController.swift in Sources */,
 				CA2F7DD62256FA0D005E4361 /* UIScreen+Extension.swift in Sources */,
 				CA171B92225350350042BBDC /* CardsViewController.swift in Sources */,
 				CA2F7DDB22579B8B005E4361 /* CardInfoTableViewCell.swift in Sources */,
@@ -769,7 +773,7 @@
 				CAFE829222607D8F004F4E63 /* BankObject.swift in Sources */,
 				CAF16FAE22748B040013D864 /* LikedDiscountTableViewCell.swift in Sources */,
 				CA171BB22255EDFF0042BBDC /* HCBaseViewController.swift in Sources */,
-				CA171B94225350450042BBDC /* WalletViewController.swift in Sources */,
+				CA171B94225350450042BBDC /* WalletViewController2.swift in Sources */,
 				CA47A184225AF7CD00AD16AF /* CardDetailViewController.swift in Sources */,
 				CA38706A2269BC6700D06B90 /* DiscountObject.swift in Sources */,
 				CAFE827F225DF304004F4E63 /* DiscountDetailContentTableViewCell.swift in Sources */,

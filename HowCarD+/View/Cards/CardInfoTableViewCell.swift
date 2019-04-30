@@ -20,12 +20,13 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
     }
 
     var isRead: Bool = false {
+        
         didSet {
             if isRead {
-//                backView.layer.backgroundColor = UIColor.lightGray.cgColor
+                readMarkView.layer.backgroundColor = UIColor.lightGray.cgColor
 
             } else {
-//                backView.layer.backgroundColor = UIColor.white.cgColor
+                readMarkView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .tint).cgColor
             }
         }
     }
@@ -52,7 +53,7 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
 
     @IBOutlet weak var backView: UIView!
 
-//    @IBOutlet weak var bankIconImageView: UIImageView!
+    @IBOutlet weak var readMarkView: UIView!
 
     @IBOutlet weak var bankNameLabel: UILabel!
 
@@ -80,7 +81,7 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
     }
 
     func layoutCell(
-        tableViewCellIsTapped: Bool,
+        isRead: Bool,
         isCollected: Bool,
         bankName: String,
         cardName: String,
@@ -88,7 +89,7 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
         tags: [String]
         ) {
 
-        isRead = tableViewCellIsTapped
+        self.isRead = isRead
 
         self.isCollected = isCollected
 

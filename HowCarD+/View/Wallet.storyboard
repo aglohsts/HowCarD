@@ -13,7 +13,7 @@
         <!--卡收好-->
         <scene sceneID="gS9-Za-rez">
             <objects>
-                <viewController storyboardIdentifier="WalletViewController" id="0fN-Xc-ayH" customClass="WalletViewController" customModule="HowCarD_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WalletViewController" id="0fN-Xc-ayH" customClass="WalletViewController2" customModule="HowCarD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hle-y2-pDH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,7 +31,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WalletTabCollectionViewCell" id="oqb-ed-o4u" customClass="WalletTabCollectionViewCell" customModule="HowCarD_" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WalletTabCollectionViewCell" id="oqb-ed-o4u" customClass="WalletTabCollectionViewCell" customModule="HowCarD" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="182" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -39,7 +39,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Gj-rP-a8x">
-                                                    <rect key="frame" x="57" y="5" width="40" height="40"/>
+                                                    <rect key="frame" x="71" y="5" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="3Gj-rP-a8x" secondAttribute="height" multiplier="1:1" id="JnF-vI-NO4"/>
                                                     </constraints>
@@ -98,10 +98,66 @@
             </objects>
             <point key="canvasLocation" x="682.60869565217399" y="144.64285714285714"/>
         </scene>
+        <!--Wallet View Controller-->
+        <scene sceneID="usJ-ob-pK2">
+            <objects>
+                <viewController id="V7q-If-gsN" customClass="WalletViewController" customModule="HowCarD" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6r2-7q-qVu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zxM-GJ-WqL">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSH-gt-qOV">
+                                        <rect key="frame" x="45" y="10" width="62" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="MyCards"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9oh-86-nef">
+                                        <rect key="frame" x="163" y="12" width="89" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="LikeDiscount"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Moe-4V-Gmb">
+                                        <rect key="frame" x="302" y="12" width="99" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="CollectedCard"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.79958307740000001" green="0.9175652862" blue="0.95275133850000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="avQ-OV-4s4"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3fS-NW-Kh9">
+                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3fS-NW-Kh9" firstAttribute="top" secondItem="zxM-GJ-WqL" secondAttribute="bottom" id="6Z7-ql-3K3"/>
+                            <constraint firstItem="3fS-NW-Kh9" firstAttribute="leading" secondItem="Ou2-Cl-FUp" secondAttribute="leading" id="Gcl-5F-aeN"/>
+                            <constraint firstItem="Ou2-Cl-FUp" firstAttribute="bottom" secondItem="3fS-NW-Kh9" secondAttribute="bottom" id="Hj3-QY-j3J"/>
+                            <constraint firstItem="Ou2-Cl-FUp" firstAttribute="trailing" secondItem="3fS-NW-Kh9" secondAttribute="trailing" id="fwz-Tm-Xsh"/>
+                            <constraint firstItem="zxM-GJ-WqL" firstAttribute="top" secondItem="Ou2-Cl-FUp" secondAttribute="top" id="iGa-LR-xVF"/>
+                            <constraint firstItem="zxM-GJ-WqL" firstAttribute="leading" secondItem="Ou2-Cl-FUp" secondAttribute="leading" id="uwE-NS-xmA"/>
+                            <constraint firstItem="Ou2-Cl-FUp" firstAttribute="trailing" secondItem="zxM-GJ-WqL" secondAttribute="trailing" id="zlH-5I-Idp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ou2-Cl-FUp"/>
+                    </view>
+                    <connections>
+                        <outlet property="myCardBtn" destination="nSH-gt-qOV" id="yex-zk-1Xk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="skM-Ld-OVT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1645" y="145"/>
+        </scene>
         <!--Liked Discount View Controller-->
         <scene sceneID="ds0-77-Xbw">
             <objects>
-                <viewController id="rah-Fq-eha" customClass="LikedDiscountViewController" customModule="HowCarD_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rah-Fq-eha" customClass="LikedDiscountViewController" customModule="HowCarD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q2A-nS-xa1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -110,7 +166,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="646"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LikedDiscountTableViewCell" rowHeight="125" id="vch-Lh-pAr" customClass="LikedDiscountTableViewCell" customModule="HowCarD_" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LikedDiscountTableViewCell" rowHeight="125" id="vch-Lh-pAr" customClass="LikedDiscountTableViewCell" customModule="HowCarD" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="125"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vch-Lh-pAr" id="gxH-kT-oSp">
@@ -210,7 +266,7 @@
         <!--Collected Card View Controller-->
         <scene sceneID="G3w-N0-H9c">
             <objects>
-                <viewController id="3jh-Kj-05A" customClass="CollectedCardViewController" customModule="HowCarD_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3jh-Kj-05A" customClass="CollectedCardViewController" customModule="HowCarD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6dc-pQ-qEl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -219,7 +275,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="646"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CollectedCardTableViewCell" rowHeight="133" id="pK4-Ts-YXL" customClass="CollectedCardTableViewCell" customModule="HowCarD_" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CollectedCardTableViewCell" rowHeight="133" id="pK4-Ts-YXL" customClass="CollectedCardTableViewCell" customModule="HowCarD" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="133"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pK4-Ts-YXL" id="Oay-5b-5hx">
@@ -332,7 +388,7 @@
         <!--My Card View Controller-->
         <scene sceneID="xT7-AG-oxh">
             <objects>
-                <viewController id="Y2U-fF-DAp" customClass="MyCardViewController" customModule="HowCarD_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y2U-fF-DAp" customClass="MyCardViewController" customModule="HowCarD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fwu-68-J81">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -342,7 +398,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewLayout key="collectionViewLayout" id="6LE-I8-ywY" customClass="HFCardCollectionViewLayout" customModule="HFCardCollectionViewLayout"/>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WalletCollectionViewCell" id="jaw-8k-yK6" customClass="MyCardCollectionViewCell" customModule="HowCarD_" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WalletCollectionViewCell" id="jaw-8k-yK6" customClass="MyCardCollectionViewCell" customModule="HowCarD" customModuleProvider="target">
                                         <rect key="frame" x="3.5" y="0.0" width="407" height="223"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">

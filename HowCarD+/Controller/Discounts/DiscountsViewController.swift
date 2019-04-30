@@ -241,66 +241,6 @@ extension DiscountsViewController {
             
         }
     }
-        
-        
-        
-//        guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
-//        /// 比對 id 有哪些 isLike == true，true 的話改物件狀態
-//        HCFirebaseManager.shared.getId(
-//            uid: user.uid,
-//            userCollection: .likedDiscounts,
-//            completion: { [weak self] (ids) in
-//
-//                guard let strongSelf = self else { return }
-//
-//                strongSelf.likedDiscountIds = ids
-//
-//                for index1 in 0 ..< strongSelf.discountObjects.count {
-//
-//                    for index2 in 0 ..< strongSelf.discountObjects[index1].discountInfos.count {
-//
-//                        strongSelf.discountObjects[index1].discountInfos[index2].isLiked = false
-//
-//                        strongSelf.likedDiscountIds.forEach({ (id) in
-//
-//                            if strongSelf.discountObjects[index1].discountInfos[index2].discountId == id {
-//
-//                                strongSelf.discountObjects[index1].discountInfos[index2].isLiked = true
-//                            }
-////                            else {
-////
-////                                strongSelf.discountObjects[index1].discountInfos[index2].isLiked = false
-////                            }
-//                        })
-//                    }
-//
-//                }
-//
-//                DispatchQueue.main.async {
-//
-//                    strongSelf.tableView.reloadData()
-//
-//                }
-//            })
-    
-                
-//                strongSelf.likedDiscountId.forEach({ (id) in
-//
-//                    for index3 in 0 ..< strongSelf.discountObjects.count {
-//
-//                        for index4 in 0 ..< strongSelf.discountObjects[index3].discountInfos.count {
-//
-////                            strongSelf.discountObjects[index1].discountInfos[index2].isLiked = false
-//
-//                            if strongSelf.discountObjects[index3].discountInfos[index4].discountId == id {
-//
-//                                strongSelf.discountObjects[index3].discountInfos[index4].isLiked = true
-//                            }
-//                        }
-//                    }
-//                })
-//            })
-        
 }
 
 extension DiscountsViewController: UITableViewDelegate {
