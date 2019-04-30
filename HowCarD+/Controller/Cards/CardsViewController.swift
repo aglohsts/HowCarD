@@ -212,8 +212,28 @@ extension CardsViewController {
                 strongSelf.cardsBasicInfo[datas.0.row].isCollected = vc.isCollected
                 
 //                strongSelf.updateIsCollectedCardId()
-                
             }
+        }
+    }
+    
+    func markCardAsRead(indexPath: IndexPath) {
+
+        cardsBasicInfo[indexPath.row].isRead = true
+        
+        // 先檢查有無重複
+        if userReadCardIds.contains(cardsBasicInfo[indexPath.row].id) {
+            
+            return
+        } else {
+            userReadCardIds.append(cardsBasicInfo[indexPath.row].id)
+            
+            guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+            
+            HCFirebaseManager.shared.addId(
+                userCollection: .isReadCards,
+                uid: user.uid,
+                id: cardsBasicInfo[indexPath.row].id
+            )
         }
     }
     
@@ -244,7 +264,6 @@ extension CardsViewController {
                     cardsBasicInfo[index].isCollected = true
                 }
             })
-            
         }
         
         DispatchQueue.main.async {
@@ -264,20 +283,7 @@ extension CardsViewController: UITableViewDelegate {
         
         performSegue(withIdentifier: Segue.toDetail, sender: (indexPath, cardsBasicInfo[indexPath.row].isCollected))
         
-        /// Mark card as read
-        cardsBasicInfo[indexPath.row].isRead = true
-        
-        // 先檢查有無重複
-        if userReadCardIds.contains(cardsBasicInfo[indexPath.row].id) {
-            
-            return
-        } else {
-            userReadCardIds.append(cardsBasicInfo[indexPath.row].id)
-            
-            guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
-            
-            HCFirebaseManager.shared.addId(userCollection: .isReadCards, uid: user.uid, id: cardsBasicInfo[indexPath.row].id)
-        }
+        markCardAsRead(indexPath: indexPath)
     }
 }
 
