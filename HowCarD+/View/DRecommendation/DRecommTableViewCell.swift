@@ -84,6 +84,28 @@ class DRecommTableViewCell: FoldingCell {
         }
     }
     
+    @IBOutlet weak var foreMarkIsReadView: UIView!
+    
+    @IBOutlet weak var containerMarkIsReadView: UIView!
+    
+    var isRead: Bool = false {
+        
+        didSet {
+            
+            if isRead {
+                
+                foreMarkIsReadView.layer.backgroundColor = UIColor.lightGray.cgColor
+                
+                containerMarkIsReadView.layer.backgroundColor = UIColor.lightGray.cgColor
+            } else {
+                
+                foreMarkIsReadView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .tint).cgColor
+                
+                containerMarkIsReadView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .tint).cgColor
+            }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -94,7 +116,7 @@ class DRecommTableViewCell: FoldingCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func layoutCell(image: String, title: String, target: String, timePeriod: String?, note: String) {
+    func layoutCell(image: String, title: String, target: String, timePeriod: String?, note: String, isRead: Bool) {
         
         foreImageView.loadImage(image, placeHolder: UIImage.asset(.Image_Placeholder))
         
@@ -120,6 +142,8 @@ class DRecommTableViewCell: FoldingCell {
         }
         
         noteLabel.text = note
+        
+        
     }
     
     func layoutCollectionView(briefIntroArray: [BriefIntro], tagArray: [String]?) {

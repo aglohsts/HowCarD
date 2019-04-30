@@ -13,7 +13,7 @@
         <!--D+精選-->
         <scene sceneID="S0A-oB-vYf">
             <objects>
-                <viewController id="aTC-Qr-tcT" customClass="DRecommViewController" customModule="HowCarD_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aTC-Qr-tcT" customClass="DRecommViewController" customModule="HowCarD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="19O-KB-cQx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,7 +31,7 @@
                                 <rect key="frame" x="0.0" y="183" width="414" height="679"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DRecommTableViewCell" rowHeight="571" id="DVK-4h-12p" customClass="DRecommTableViewCell" customModule="HowCarD_" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DRecommTableViewCell" rowHeight="571" id="DVK-4h-12p" customClass="DRecommTableViewCell" customModule="HowCarD" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="571"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DVK-4h-12p" id="rnB-qz-Be6">
@@ -79,9 +79,18 @@
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rYa-SR-ReF">
+                                                            <rect key="frame" x="0.0" y="0.0" width="5" height="125"/>
+                                                            <color key="backgroundColor" red="0.43529411759999997" green="0.74509803919999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="5" id="f3b-dJ-Dvz"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.87820534591805444" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstItem="rYa-SR-ReF" firstAttribute="leading" secondItem="cnj-UH-Vgx" secondAttribute="leading" id="4tP-AR-1Zu"/>
+                                                        <constraint firstAttribute="bottom" secondItem="rYa-SR-ReF" secondAttribute="bottom" id="63g-h0-hNw"/>
                                                         <constraint firstItem="rsO-iR-Edl" firstAttribute="top" secondItem="cnj-UH-Vgx" secondAttribute="top" constant="8" id="Bn0-5w-CLv"/>
                                                         <constraint firstItem="rsO-iR-Edl" firstAttribute="leading" secondItem="1iu-eS-ZYI" secondAttribute="trailing" constant="16" id="K4z-lF-2c8"/>
                                                         <constraint firstAttribute="trailing" secondItem="rsO-iR-Edl" secondAttribute="trailing" constant="16" id="NOc-40-mh0"/>
@@ -91,6 +100,7 @@
                                                         <constraint firstItem="rsO-iR-Edl" firstAttribute="leading" secondItem="c5N-Pz-pYe" secondAttribute="trailing" constant="16" id="aRG-2c-GEc"/>
                                                         <constraint firstItem="c5N-Pz-pYe" firstAttribute="top" secondItem="cnj-UH-Vgx" secondAttribute="top" constant="16" id="aah-JN-aEi"/>
                                                         <constraint firstItem="1iu-eS-ZYI" firstAttribute="leading" secondItem="0J4-2L-0GG" secondAttribute="leading" id="anQ-N0-eBm"/>
+                                                        <constraint firstItem="rYa-SR-ReF" firstAttribute="top" secondItem="cnj-UH-Vgx" secondAttribute="top" id="auP-YI-FUb"/>
                                                         <constraint firstItem="JYj-vd-Tmd" firstAttribute="bottom" secondItem="rsO-iR-Edl" secondAttribute="bottom" id="d0U-Zx-B7H"/>
                                                         <constraint firstAttribute="bottom" secondItem="rsO-iR-Edl" secondAttribute="bottom" constant="8" id="fsP-d5-SXh"/>
                                                         <constraint firstItem="1iu-eS-ZYI" firstAttribute="bottom" secondItem="rsO-iR-Edl" secondAttribute="bottom" id="hRf-6g-4H3"/>
@@ -163,7 +173,7 @@
                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             </collectionViewFlowLayout>
                                                             <cells>
-                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000000000000004" contentMode="center" reuseIdentifier="ToMoreInfoCollectionViewCell" id="uyW-Fu-NsH" customClass="ToMoreInfoCollectionViewCell" customModule="HowCarD_" customModuleProvider="target">
+                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000000000000004" contentMode="center" reuseIdentifier="ToMoreInfoCollectionViewCell" id="uyW-Fu-NsH" customClass="ToMoreInfoCollectionViewCell" customModule="HowCarD" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="3" width="85" height="81"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -199,6 +209,13 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ydN-ZN-3P5">
+                                                            <rect key="frame" x="0.0" y="0.0" width="5" height="250"/>
+                                                            <color key="backgroundColor" red="0.43529411759999997" green="0.74509803919999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="5" id="BEc-FV-1ll"/>
+                                                            </constraints>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.88" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -209,6 +226,7 @@
                                                         <constraint firstItem="7Zy-hb-tZN" firstAttribute="bottom" secondItem="LeZ-3J-yvu" secondAttribute="bottom" id="Ecw-De-ca1"/>
                                                         <constraint firstItem="tFD-g0-H45" firstAttribute="bottom" secondItem="LeZ-3J-yvu" secondAttribute="bottom" id="EsV-s9-YOZ"/>
                                                         <constraint firstAttribute="trailing" secondItem="jsR-oC-C7Y" secondAttribute="trailing" constant="16" id="Pjk-iO-a4s"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ydN-ZN-3P5" secondAttribute="bottom" id="Tan-mF-5Mx"/>
                                                         <constraint firstItem="vWi-2v-3EA" firstAttribute="leading" secondItem="4xl-Jh-vzR" secondAttribute="leading" constant="16" id="UVC-6n-Vcp"/>
                                                         <constraint firstItem="LeZ-3J-yvu" firstAttribute="leading" secondItem="vWi-2v-3EA" secondAttribute="trailing" constant="16" id="V1M-ya-Maa"/>
                                                         <constraint firstItem="LeZ-3J-yvu" firstAttribute="leading" secondItem="CGu-cX-fzI" secondAttribute="trailing" constant="16" id="WV7-JI-7oj"/>
@@ -219,6 +237,8 @@
                                                         <constraint firstItem="jsR-oC-C7Y" firstAttribute="top" secondItem="LeZ-3J-yvu" secondAttribute="bottom" constant="16" id="mkl-Q3-WtV"/>
                                                         <constraint firstItem="tFD-g0-H45" firstAttribute="leading" secondItem="vWi-2v-3EA" secondAttribute="leading" id="nlY-6k-7YO"/>
                                                         <constraint firstAttribute="bottom" secondItem="onq-7q-2fM" secondAttribute="bottom" constant="8" id="rT5-DF-eTK"/>
+                                                        <constraint firstItem="ydN-ZN-3P5" firstAttribute="leading" secondItem="4xl-Jh-vzR" secondAttribute="leading" id="t4g-r6-Jng"/>
+                                                        <constraint firstItem="ydN-ZN-3P5" firstAttribute="top" secondItem="4xl-Jh-vzR" secondAttribute="top" id="tVc-1X-9BO"/>
                                                         <constraint firstAttribute="height" constant="250" id="u1A-UX-kAz"/>
                                                         <constraint firstItem="onq-7q-2fM" firstAttribute="leading" secondItem="jsR-oC-C7Y" secondAttribute="leading" id="uR0-JD-Od1"/>
                                                         <constraint firstItem="CGu-cX-fzI" firstAttribute="top" secondItem="4xl-Jh-vzR" secondAttribute="top" constant="16" id="vog-6b-qSp"/>
@@ -252,6 +272,7 @@
                                             <outlet property="briefIntroCollectionView" destination="jsR-oC-C7Y" id="EwP-qi-vO0"/>
                                             <outlet property="containerCollectionView" destination="7Zy-hb-tZN" id="gvV-oD-CBv"/>
                                             <outlet property="containerImageView" destination="LeZ-3J-yvu" id="Ceh-d0-cQw"/>
+                                            <outlet property="containerMarkIsReadView" destination="ydN-ZN-3P5" id="RPr-NW-uVw"/>
                                             <outlet property="containerTargetLabel" destination="vWi-2v-3EA" id="8M0-Eg-7qP"/>
                                             <outlet property="containerTimePeriodLabel" destination="tFD-g0-H45" id="2TL-NZ-zVF"/>
                                             <outlet property="containerTitleLabel" destination="CGu-cX-fzI" id="xnR-U1-Bk8"/>
@@ -259,6 +280,7 @@
                                             <outlet property="containerViewTop" destination="f33-1f-k2g" id="tuX-3h-YZv"/>
                                             <outlet property="foreCollectionView" destination="1iu-eS-ZYI" id="PUx-ZJ-lGJ"/>
                                             <outlet property="foreImageView" destination="rsO-iR-Edl" id="Ijs-2S-Nz4"/>
+                                            <outlet property="foreMarkIsReadView" destination="rYa-SR-ReF" id="ZEm-kh-2LV"/>
                                             <outlet property="foreTargetLabel" destination="0J4-2L-0GG" id="nxL-6V-7D2"/>
                                             <outlet property="foreTimePeriodLabel" destination="JYj-vd-Tmd" id="U5c-rA-T0i"/>
                                             <outlet property="foreTitleLabel" destination="c5N-Pz-pYe" id="dhJ-uB-ldI"/>
@@ -296,7 +318,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="URD-Qm-O9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="432" y="37"/>
+            <point key="canvasLocation" x="431.8840579710145" y="36.830357142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="L2d-HX-vrZ">
@@ -319,7 +341,7 @@
         <!--Recomm Top View Controller-->
         <scene sceneID="Jjt-8C-EJU">
             <objects>
-                <viewController id="t2c-Fd-c4B" customClass="DRecommTopViewController" customModule="HowCarD_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="t2c-Fd-c4B" customClass="DRecommTopViewController" customModule="HowCarD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UCU-Do-lBu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -334,7 +356,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DRecommCollectionViewCell" id="wOZ-Cc-AYQ" customClass="DRecommCollectionViewCell" customModule="HowCarD_" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DRecommCollectionViewCell" id="wOZ-Cc-AYQ" customClass="DRecommCollectionViewCell" customModule="HowCarD" customModuleProvider="target">
                                         <rect key="frame" x="10" y="5" width="75" height="85"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -413,7 +435,7 @@
         <!--Recomm Category Detail View Controller-->
         <scene sceneID="qNH-Z0-8jM">
             <objects>
-                <viewController storyboardIdentifier="DRecommCategoryDetailViewController" id="8RX-Pa-my8" customClass="DRecommCategoryDetailViewController" customModule="HowCarD_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DRecommCategoryDetailViewController" id="8RX-Pa-my8" customClass="DRecommCategoryDetailViewController" customModule="HowCarD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sIL-GN-Dj0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

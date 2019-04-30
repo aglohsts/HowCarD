@@ -20,6 +20,40 @@ class DRecommViewController: HCBaseViewController {
         static let topVC = "DRecommTopVC"
     }
     
+    private struct DRecommSection {
+        
+        static let newCards = "最新卡片"
+        
+        static let newDiscounts = "最新優惠"
+        
+        static let selectedCards = "精選卡片"
+        
+        static let selectedDiscounts = "精選優惠"
+        
+        enum Index: Int {
+            
+            case newCards = 0
+            
+            case newDiscounts = 1
+            
+            case selectedCards = 2
+            
+            case selectedDiscounts = 3
+        }
+    }
+    
+    private enum DRecommSection2: String {
+        
+        case newCards = "最新卡片"
+        
+        case newDiscounts = "最新優惠"
+        
+        case selectedCards = "精選卡片"
+        
+        case selectedDiscounts = "精選優惠"
+
+    }
+    
     // swiftlint:disable force_cast
     
     let dRecommCategoryDetailVC = UIStoryboard(
@@ -34,19 +68,26 @@ class DRecommViewController: HCBaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var newCards = [CardBasicInfoObject]()
+    var newCards: [CardBasicInfoObject] = []
     
-    var selectedCards = [CardBasicInfoObject]()
+    var selectedCards: [CardBasicInfoObject] = []
     
-    var newDiscounts = [DiscountDetail]()
+    var newDiscounts: [DiscountDetail] = []
     
-    var selectedDiscounts = [DiscountDetail]()
+    var selectedDiscounts: [DiscountDetail] = []
+    
+    var userReadCardIds: [String] = []
     
     let group = DispatchGroup()
     
-    var dRecommArray: [[Collapsable]] = []
+    var dRecommArray: [[Collapsable]] = [] 
     
-    let titleArray = ["最新卡片", "最新優惠", "精選卡片", "精選優惠"]
+    private let titleArray: [String] = [
+        DRecommSection.newCards,
+        DRecommSection.newDiscounts,
+        DRecommSection.selectedCards,
+        DRecommSection.selectedDiscounts
+    ]
     
     let dRecommProvider = DRecommProvider()
     
@@ -218,6 +259,28 @@ extension DRecommViewController: UITableViewDelegate {
                 tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.bottom, animated: true)
             }
         }, completion: nil)
+        
+        // 改物件 isRead
+        switch indexPath.section {
+            
+        case DRecommSection.Index.newCards.rawValue:
+            
+            newCards[indexPath.row].isRead = true
+            
+        case DRecommSection.Index.newDiscounts.rawValue:
+            
+            newDiscounts[indexPath.row].info.isRead = true
+            
+        case DRecommSection.Index.selectedCards.rawValue:
+            
+            selectedCards[indexPath.row].isRead = true
+            
+        case DRecommSection.Index.selectedDiscounts.rawValue:
+            
+            selectedDiscounts[indexPath.row].info.isRead = true
+            
+        default: return
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -275,7 +338,7 @@ extension DRecommViewController: UITableViewDataSource {
 //        }
         
         switch indexPath.section {
-        case 0, 2:
+        case 0, 2: // card
             
             let dRecommData = dRecommArray[indexPath.section][indexPath.row] as? CardBasicInfoObject
             
@@ -286,7 +349,8 @@ extension DRecommViewController: UITableViewDataSource {
                 title: card.name,
                 target: card.bank,
                 timePeriod: nil,
-                note: card.note
+                note: card.note,
+                isRead: card.isRead
             )
             
             cell.layoutCollectionView(briefIntroArray: card.briefIntro, tagArray: card.tags)
@@ -295,7 +359,7 @@ extension DRecommViewController: UITableViewDataSource {
                 self.performSegue(withIdentifier: Segue.cardDetail, sender: indexPath)
             }
             
-        case 1, 3:
+        case 1, 3: // discount
             
             let dRecommData = dRecommArray[indexPath.section][indexPath.row] as? DiscountDetail
             
@@ -306,7 +370,8 @@ extension DRecommViewController: UITableViewDataSource {
                 title: discount.info.title,
                 target: "\(discount.info.bankName) \(discount.info.cardName)",
                 timePeriod: discount.info.timePeriod,
-                note: discount.note
+                note: discount.note,
+                isRead: discount.info.isRead
             )
             
             cell.layoutCollectionView(briefIntroArray: discount.briefIntro, tagArray: nil)
@@ -330,12 +395,13 @@ extension DRecommViewController {
         getNewDiscounts()
         getSelectedCards()
         getSelectedDiscounts()
+        getUserReadCardId()
         
         group.notify(queue: .main, execute: { [weak self] in
             
             guard let strongSelf = self else { return }
             
-            self?.dRecommArray = [strongSelf.newCards, strongSelf.newDiscounts, strongSelf.selectedCards, strongSelf.selectedDiscounts]
+//            self?.dRecommArray = [strongSelf.newCards, strongSelf.newDiscounts, strongSelf.selectedCards, strongSelf.selectedDiscounts]
             
             self?.tableView.reloadData()
         })
@@ -420,6 +486,20 @@ extension DRecommViewController {
                 
                 print(error)
             }
+            
+            self?.group.leave()
+        })
+    }
+    
+    func getUserReadCardId() {
+        
+        guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+        
+        group.enter()
+        
+        HCFirebaseManager.shared.getId(uid: user.uid, userCollection: .isReadCards, completion: { [weak self] ids in
+            
+            self?.userReadCardIds = ids
             
             self?.group.leave()
         })

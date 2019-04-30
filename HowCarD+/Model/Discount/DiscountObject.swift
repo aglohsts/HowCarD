@@ -43,6 +43,8 @@ struct DiscountInfo: Codable {
     
     var isLiked: Bool = false
     
+    var isRead: Bool = false
+    
     enum CodingKeys: String, CodingKey {
         
         case discountId
