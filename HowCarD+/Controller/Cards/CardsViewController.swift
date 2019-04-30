@@ -12,7 +12,9 @@ class CardsViewController: HCBaseViewController {
     
     let group = DispatchGroup()
     
-    var userCollectedCardIds = [String]()
+    var userCollectedCardIds: [String] = []
+    
+    var userReadCardIds: [String] = []
     
     private struct Segue {
         
