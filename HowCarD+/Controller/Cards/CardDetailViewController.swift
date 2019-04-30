@@ -25,6 +25,8 @@ class CardDetailViewController: HCBaseViewController {
     var isCollected: Bool = false {
     
         didSet {
+            
+//            isCollected = self.cardObject?.basicInfo.isCollected ?? false
 
             if isCollected {
                 
@@ -109,6 +111,8 @@ class CardDetailViewController: HCBaseViewController {
 //        setNavBar()
         
         getcardDetail()
+        
+        cardAddObserver()
     }
     
     override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
@@ -208,6 +212,38 @@ extension CardDetailViewController {
                 print(error)
             }
         })
+    }
+    
+    func cardAddObserver() {
+        
+        NotificationCenter.default
+            .addObserver(
+                self,
+                selector: #selector(updateCollectedCard),
+                name: NSNotification.Name(NotificationNames.updateCollectedCard.rawValue),
+                object: nil
+        )
+    }
+    
+    @objc func updateCollectedCard() {
+        
+        let userCollectedCardIds = HCFirebaseManager.shared.collectedCardIds
+        
+        /// 比對 id 有哪些 isLike == true，true 的話改物件狀態
+        isCollected = false
+        
+        userCollectedCardIds.forEach { (id) in
+            
+            if cardID == id {
+                
+                isCollected = true
+            }
+        }
+        
+        DispatchQueue.main.async {
+            
+            self.tableView.reloadData()
+        }
     }
 }
 

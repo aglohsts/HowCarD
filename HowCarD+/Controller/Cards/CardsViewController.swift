@@ -12,7 +12,7 @@ class CardsViewController: HCBaseViewController {
     
     let group = DispatchGroup()
     
-    var collectedCardIds = [String]()
+    var userCollectedCardIds = [String]()
     
     private struct Segue {
         
@@ -65,6 +65,8 @@ class CardsViewController: HCBaseViewController {
         setNavBar()
         
         getData()
+        
+        cardAddObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,7 +119,7 @@ extension CardsViewController {
             guard let strongSelf = self else { return }
             
             /// 拿到 user 收藏的 id 然後把物件有被收藏的 isCollected 改成 true
-            strongSelf.collectedCardIds.forEach({ (id) in
+            strongSelf.userCollectedCardIds.forEach({ (id) in
                 
                 for index in 0 ..< strongSelf.cardsBasicInfo.count {
                     
@@ -143,7 +145,7 @@ extension CardsViewController {
         
         HCFirebaseManager.shared.getId(uid: user.uid, userCollection: .collectedCards, completion: { [weak self] ids in
             
-            self?.collectedCardIds = ids
+            self?.userCollectedCardIds = ids
             
             self?.group.leave()
         })
@@ -195,6 +197,42 @@ extension CardsViewController {
 //                strongSelf.updateIsCollectedCardId()
                 
             }
+        }
+    }
+    
+    func cardAddObserver() {
+        
+        NotificationCenter.default
+            .addObserver(
+                self,
+                selector: #selector(updateCollectedCard),
+                name: NSNotification.Name(NotificationNames.updateCollectedCard.rawValue),
+                object: nil
+        )
+    }
+    
+    @objc func updateCollectedCard() {
+        
+        userCollectedCardIds = HCFirebaseManager.shared.collectedCardIds
+        
+        /// 比對 id 有哪些 isLike == true，true 的話改物件狀態
+        for index in 0 ..< self.cardsBasicInfo.count {
+            
+            cardsBasicInfo[index].isCollected = false
+            
+            self.userCollectedCardIds.forEach ({ (id) in
+                
+                if cardsBasicInfo[index].id == id {
+                    
+                    cardsBasicInfo[index].isCollected = true
+                }
+            })
+            
+        }
+        
+        DispatchQueue.main.async {
+            
+            self.tableView.reloadData()
         }
     }
     

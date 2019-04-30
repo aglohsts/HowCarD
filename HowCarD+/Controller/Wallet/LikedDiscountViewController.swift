@@ -243,11 +243,18 @@ extension LikedDiscountViewController: UITableViewDataSource {
         
         if editingStyle == .delete {
             
-            guard let selectedIndex = self.likedDiscountIds.firstIndex(of: userLikedDiscounts[indexPath.row].discountId), let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+            guard let selectedIndex = self.likedDiscountIds.firstIndex(of: userLikedDiscounts[indexPath.row].discountId),
+                let user = HCFirebaseManager.shared.agAuth().currentUser else {
+                    return   
+            }
             
             likedDiscountIds.remove(at: selectedIndex)
             
-            HCFirebaseManager.shared.deleteId(userCollection: .likedDiscounts, uid: user.uid, id: self.userLikedDiscounts[indexPath.row].discountId)
+            HCFirebaseManager.shared.deleteId(
+                userCollection: .likedDiscounts,
+                uid: user.uid,
+                id: self.userLikedDiscounts[indexPath.row].discountId
+            )
             
             NotificationCenter.default.post(
                 name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
