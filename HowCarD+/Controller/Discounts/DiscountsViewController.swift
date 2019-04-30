@@ -21,20 +21,11 @@ class DiscountsViewController: HCBaseViewController {
     
     let group = DispatchGroup()
     
-    var likedDiscountIds: [String] = []
+    var userLikedDiscountIds: [String] = []
     
     var userReadDiscountIds: [String] = []
     
-    var discountObjects: [DiscountObject] = [] {
-        
-        didSet {
-            
-            DispatchQueue.main.async {
-                
-//                self.tableView.reloadData()
-            }
-        }
-    }
+    var discountObjects: [DiscountObject] = []
     
     var isFiltered: Bool = false
 
@@ -140,6 +131,36 @@ extension DiscountsViewController {
         }
     }
     
+    func markDiscountAsRead(indexPath: IndexPath) {
+        
+        discountObjects[indexPath.section]
+            .discountInfos[indexPath.row].isRead = true
+        
+        // 先檢查有無重複
+        if userReadDiscountIds.contains(discountObjects[indexPath.section]
+            .discountInfos[indexPath.row].discountId) {
+            
+            return
+        } else {
+            userReadDiscountIds.append(discountObjects[indexPath.section]
+                .discountInfos[indexPath.row].discountId)
+            
+            guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+            
+            HCFirebaseManager.shared.addId(
+                userCollection: .isReadDiscounts,
+                uid: user.uid,
+                id: discountObjects[indexPath.section]
+                    .discountInfos[indexPath.row].discountId
+            )
+        }
+        
+        NotificationCenter.default.post(
+            name: Notification.Name(rawValue: NotificationNames.updateReadDiscount.rawValue),
+            object: nil
+        )
+    }
+    
     func getData() {
         
         getAllDiscount()
@@ -148,21 +169,9 @@ extension DiscountsViewController {
         
         group.notify(queue: .main, execute: { [weak self] in
             
-            guard let strongSelf = self else { return }
+            self?.checkLikedDiscount()
             
-            strongSelf.likedDiscountIds.forEach({ (id) in
-                
-                for index1 in 0 ..< strongSelf.discountObjects.count {
-                    
-                    for index2 in 0 ..< strongSelf.discountObjects[index1].discountInfos.count {
-                        
-                        if strongSelf.discountObjects[index1].discountInfos[index2].discountId == id {
-                            
-                            strongSelf.discountObjects[index1].discountInfos[index2].isLiked = true
-                        }
-                    }
-                }
-            })
+            self?.checkReadDiscount()
             
             DispatchQueue.main.async {
                 
@@ -200,7 +209,7 @@ extension DiscountsViewController {
         
         HCFirebaseManager.shared.getId(uid: user.uid, userCollection: .likedDiscounts, completion: { [weak self] ids in
             
-            self?.likedDiscountIds = ids
+            self?.userLikedDiscountIds = ids
             
             self?.group.leave()
         })
@@ -229,11 +238,41 @@ extension DiscountsViewController {
                 name: NSNotification.Name(NotificationNames.updateLikedDiscount.rawValue),
                 object: nil
         )
+        
+        NotificationCenter.default
+            .addObserver(
+                self,
+                selector: #selector(updateReadDiscount),
+                name: NSNotification.Name(NotificationNames.updateReadDiscount.rawValue),
+                object: nil
+        )
     }
     
     @objc func updateLikedDiscount() {
         
-        self.likedDiscountIds = HCFirebaseManager.shared.likedDiscountIds
+        checkLikedDiscount()
+        
+        DispatchQueue.main.async {
+            
+            self.tableView.reloadData()
+            
+        }
+    }
+    
+    @objc func updateReadDiscount() {
+        
+        checkReadDiscount()
+        
+        DispatchQueue.main.async {
+            
+            self.tableView.reloadData()
+            
+        }
+    }
+    
+    func checkLikedDiscount() {
+        
+        self.userLikedDiscountIds = HCFirebaseManager.shared.likedDiscountIds
         
         for index1 in 0 ..< discountObjects.count {
             
@@ -241,7 +280,7 @@ extension DiscountsViewController {
                 
                 discountObjects[index1].discountInfos[index2].isLiked = false
                 
-                likedDiscountIds.forEach({ (id) in
+                userLikedDiscountIds.forEach({ (id) in
                     
                     if discountObjects[index1].discountInfos[index2].discountId == id {
                         
@@ -251,11 +290,26 @@ extension DiscountsViewController {
             }
             
         }
+    }
+    
+    func checkReadDiscount() {
         
-        DispatchQueue.main.async {
+        self.userReadDiscountIds = HCFirebaseManager.shared.isReadDiscountIds
+        
+        for index1 in 0 ..< discountObjects.count {
             
-            self.tableView.reloadData()
-            
+            for index2 in 0 ..< discountObjects[index1].discountInfos.count {
+                
+                discountObjects[index1].discountInfos[index2].isRead = false
+                
+                userLikedDiscountIds.forEach({ (id) in
+                    
+                    if discountObjects[index1].discountInfos[index2].discountId == id {
+                        
+                        discountObjects[index1].discountInfos[index2].isRead = true
+                    }
+                })
+            }
         }
     }
 }
@@ -321,9 +375,14 @@ extension DiscountsViewController: UITableViewDataSource {
             )
         }
         
-        discountTableViewCell.toDiscountDetailHandler = { (indexPath) in
+        discountTableViewCell.toDiscountDetailHandler = { [weak self] (indexPath) in
             
-            self.performSegue(withIdentifier: Segue.discountDetail, sender: indexPath)
+            self?.performSegue(withIdentifier: Segue.discountDetail, sender: indexPath)
+        }
+        
+        discountTableViewCell.isReadTouchHandler = { [weak self] (indexPath) in
+            
+            self?.markDiscountAsRead(indexPath: indexPath)
         }
         
 //        discountTableViewCell.likeButtonDidTouchHandler = { [weak self] (object, cell) in
@@ -374,5 +433,5 @@ extension DiscountsViewController: UITableViewDataSource {
         
         return discountTableViewCell
     }
-    
+
 }

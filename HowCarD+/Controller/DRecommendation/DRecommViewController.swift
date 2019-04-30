@@ -401,7 +401,12 @@ extension DRecommViewController {
             
             guard let strongSelf = self else { return }
             
-//            self?.dRecommArray = [strongSelf.newCards, strongSelf.newDiscounts, strongSelf.selectedCards, strongSelf.selectedDiscounts]
+            self?.dRecommArray = [
+                strongSelf.newCards,
+                strongSelf.newDiscounts,
+                strongSelf.selectedCards,
+                strongSelf.selectedDiscounts
+            ]
             
             self?.tableView.reloadData()
         })

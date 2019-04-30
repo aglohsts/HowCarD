@@ -19,6 +19,8 @@ class DiscountsTableViewCell: HCBaseTableViewCell {
     
 //    var likeButtonDidTouchHandler: ((DiscountInfo, UITableViewCell) -> Void)?
     
+    var isReadTouchHandler: ((IndexPath) -> Void)?
+    
     var discountInfos: [DiscountInfo] = [] {
         
         didSet {
@@ -134,6 +136,8 @@ extension DiscountsTableViewCell: UICollectionViewDelegate {
         toDiscountDetailHandler?(indexPath)
         
         discountInfos[indexPath.row].isRead = true
+        
+        isReadTouchHandler?(indexPath)
     }
 }
 

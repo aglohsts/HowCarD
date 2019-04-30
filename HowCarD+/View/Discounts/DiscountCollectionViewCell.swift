@@ -32,7 +32,7 @@ class DiscountCollectionViewCell: HCBaseCollectionViewCell {
                 
             } else {
                 
-                backView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .tint).cgColor
+                backView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .grayDCDCDC).cgColor
             }
         }
     }
