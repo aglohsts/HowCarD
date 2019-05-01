@@ -16,7 +16,9 @@ enum HCColorHex: String {
     
     case grayDCDCDC = "DCDCDC"
     
-    case sectionTitleBackground = "D5ECF4"
+    case sectionTitleBackground = "D5ECF4" // tint
+    
+    case darkblue = "023246"
 }
 
 extension UIColor {

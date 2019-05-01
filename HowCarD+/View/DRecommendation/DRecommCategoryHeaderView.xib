@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DRecommCategoryHeaderView" customModule="HowCarD" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OZO-PK-dg4">
+                    <rect key="frame" x="0.0" y="3" width="150" height="54"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TiR-e6-30y">
+                            <rect key="frame" x="3" y="4" width="46" height="46"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mH9-JL-uRV">
+                                    <rect key="frame" x="0.5" y="0.5" width="45" height="45"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="TiR-e6-30y" secondAttribute="height" multiplier="1:1" id="9B8-vc-ScX"/>
+                                <constraint firstItem="mH9-JL-uRV" firstAttribute="top" secondItem="TiR-e6-30y" secondAttribute="top" constant="0.5" id="EKw-5e-Mfm"/>
+                                <constraint firstAttribute="bottom" secondItem="mH9-JL-uRV" secondAttribute="bottom" constant="0.5" id="Mhb-zf-exd"/>
+                                <constraint firstAttribute="trailing" secondItem="mH9-JL-uRV" secondAttribute="trailing" constant="0.5" id="Ted-TT-LsM"/>
+                                <constraint firstItem="mH9-JL-uRV" firstAttribute="leading" secondItem="TiR-e6-30y" secondAttribute="leading" constant="0.5" id="Zja-LP-NFG"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9e-BU-2U0">
+                            <rect key="frame" x="57" y="18.5" width="85" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="TiR-e6-30y" firstAttribute="leading" secondItem="OZO-PK-dg4" secondAttribute="leading" constant="3" id="1ie-nD-niC"/>
+                        <constraint firstItem="z9e-BU-2U0" firstAttribute="leading" secondItem="TiR-e6-30y" secondAttribute="trailing" constant="8" id="BTP-Ad-cjo"/>
+                        <constraint firstItem="z9e-BU-2U0" firstAttribute="centerY" secondItem="OZO-PK-dg4" secondAttribute="centerY" id="Ioh-Ev-k5b"/>
+                        <constraint firstAttribute="bottom" secondItem="TiR-e6-30y" secondAttribute="bottom" constant="4" id="Jnk-1k-mz1"/>
+                        <constraint firstAttribute="trailing" secondItem="z9e-BU-2U0" secondAttribute="trailing" constant="8" id="Xat-Sv-cwu"/>
+                        <constraint firstAttribute="width" constant="150" id="YJ5-tZ-z5u"/>
+                        <constraint firstItem="TiR-e6-30y" firstAttribute="top" secondItem="OZO-PK-dg4" secondAttribute="top" constant="4" id="wjJ-aU-vRD"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="OZO-PK-dg4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="3" id="2vo-D8-CUl"/>
+                <constraint firstAttribute="bottom" secondItem="OZO-PK-dg4" secondAttribute="bottom" constant="3" id="hWk-8k-J9G"/>
+                <constraint firstItem="OZO-PK-dg4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="oNg-RI-5nw"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="headerBackView" destination="OZO-PK-dg4" id="bdq-Kc-GR7"/>
+                <outlet property="headerTitleLabel" destination="z9e-BU-2U0" id="1aH-nf-SMc"/>
+                <outlet property="imageBackView" destination="TiR-e6-30y" id="PdU-GP-RV1"/>
+                <outlet property="imageView" destination="mH9-JL-uRV" id="WyW-Zv-Jsi"/>
+            </connections>
+        </view>
+    </objects>
+</document>

@@ -57,12 +57,12 @@ class DiscountCollectionViewCell: HCBaseCollectionViewCell {
     
     func setCellView() {
         
-        imageView.roundCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner], radius: 6.0)
+        imageView.roundCorners([.layerMinXMinYCorner, .layerMaxXMinYCorner], radius: 6.0) // 上左，上右
         
         backView.roundCorners(
             [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner],
             radius: 6.0
-        )
+        ) 
     }
 
     func layoutCell(image: String, discountTitle: String, bankName: String, cardName: String, timePeriod: String, isLiked: Bool, isRead: Bool) {

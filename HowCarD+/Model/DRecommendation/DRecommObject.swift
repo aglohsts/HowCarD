@@ -19,5 +19,7 @@ struct DRecommTop: Codable {
     
     let category: String
     
+    let caategoryId: String
+    
     let image: String
 }
