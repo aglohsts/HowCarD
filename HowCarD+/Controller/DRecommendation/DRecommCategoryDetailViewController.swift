@@ -16,6 +16,8 @@ class DRecommCategoryDetailViewController: HCBaseViewController {
             
             DispatchQueue.main.async {
                 
+                self.categoryLabel.text = self.dRecommTopObject?.category
+                
                 self.tableView.reloadData()
             }
         }
@@ -72,7 +74,7 @@ extension DRecommCategoryDetailViewController {
         
 //        tableView.rowHeight = UITableView.automaticDimension
         
-        categoryLabel.text = dRecommTopObject?.category
+        categoryLabel.text = ""
     }
 }
 
