@@ -113,5 +113,13 @@ class DiscountCollectionViewCell: HCBaseCollectionViewCell {
         } else {
             likeButton.setImage(UIImage.asset(.Icons_Heart_Normal), for: .normal)
         }
+        
+        if isRead {
+            
+            backView.layer.backgroundColor = UIColor.white.cgColor
+        } else {
+            
+            backView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .grayDCDCDC).cgColor
+        }
     }
 }

@@ -135,7 +135,7 @@ extension DiscountsTableViewCell: UICollectionViewDelegate {
         
         toDiscountDetailHandler?(indexPath)
         
-        discountInfos[indexPath.row].isRead = true
+//        discountInfos[indexPath.row].isRead = true
         
         isReadTouchHandler?(indexPath)
     }
@@ -172,8 +172,6 @@ extension DiscountsTableViewCell: UICollectionViewDataSource {
             discountCollectionViewCell.likeBtnTouchHandler = { [weak self] in
 
                 // TODO: handle 沒登入：跳提醒登入或註冊然後 present SignInVC
-                
-                // TODO: handle 不同類別但同 discountID 的優惠
                 
                 guard let strongSelf = self, let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
                 

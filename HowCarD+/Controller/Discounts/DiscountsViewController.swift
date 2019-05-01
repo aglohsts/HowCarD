@@ -302,7 +302,7 @@ extension DiscountsViewController {
                 
                 discountObjects[index1].discountInfos[index2].isRead = false
                 
-                userLikedDiscountIds.forEach({ (id) in
+                userReadDiscountIds.forEach({ (id) in
                     
                     if discountObjects[index1].discountInfos[index2].discountId == id {
                         
@@ -380,9 +380,9 @@ extension DiscountsViewController: UITableViewDataSource {
             self?.performSegue(withIdentifier: Segue.discountDetail, sender: indexPath)
         }
         
-        discountTableViewCell.isReadTouchHandler = { [weak self] (indexPath) in
-            
-            self?.markDiscountAsRead(indexPath: indexPath)
+        discountTableViewCell.isReadTouchHandler = {  (indexPath) in
+ 
+            self.markDiscountAsRead(indexPath: indexPath)
         }
         
 //        discountTableViewCell.likeButtonDidTouchHandler = { [weak self] (object, cell) in

@@ -15,4 +15,6 @@ enum NotificationNames: String {
     case updateCollectedCard
     
     case updateReadDiscount
+    
+    case updateReadCard
 }

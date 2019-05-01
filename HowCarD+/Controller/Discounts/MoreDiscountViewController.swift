@@ -14,7 +14,9 @@ class MoreDiscountViewController: HCBaseViewController {
     
     var discountCategoryId: String = ""
     
-    var likedDiscountIds: [String] = []
+    var userLikedDiscountIds: [String] = []
+    
+    var userReadDiscountIds: [String] = []
     
     var discountObject: DiscountObject? {
         
@@ -91,25 +93,53 @@ class MoreDiscountViewController: HCBaseViewController {
     
     @objc func updateLikedDiscount() {
         
-        likedDiscountIds = HCFirebaseManager.shared.likedDiscountIds
-        
-        /// 比對 id 有哪些 isLike == true，true 的話改物件狀態
-        for index in 0 ..< discountObject!.discountInfos.count {
-                
-                discountObject!.discountInfos[index].isLiked = false
-                
-                likedDiscountIds.forEach({ (id) in
-                    
-                    if discountObject!.discountInfos[index].discountId == id {
-                        
-                        discountObject!.discountInfos[index].isLiked = true
-                    }
-                })
-        }
+        checkLikedDiscount()
         
         DispatchQueue.main.async {
             
             self.collectionView.reloadData()
+        }
+    }
+    
+    @objc func updateReadDiscount() {
+        
+    }
+    
+    func checkLikedDiscount() {
+        
+        userLikedDiscountIds = HCFirebaseManager.shared.likedDiscountIds
+        
+        /// 比對 id 有哪些 isLike == true，true 的話改物件狀態
+        for index in 0 ..< discountObject!.discountInfos.count {
+            
+            discountObject!.discountInfos[index].isLiked = false
+            
+            userLikedDiscountIds.forEach({ (id) in
+                
+                if discountObject!.discountInfos[index].discountId == id {
+                    
+                    discountObject!.discountInfos[index].isLiked = true
+                }
+            })
+        }
+    }
+    
+    func checkReadDiscount() {
+        
+        userReadDiscountIds = HCFirebaseManager.shared.likedDiscountIds
+        
+        /// 比對 id 有哪些 isLike == true，true 的話改物件狀態
+        for index in 0 ..< discountObject!.discountInfos.count {
+            
+            discountObject!.discountInfos[index].isLiked = false
+            
+            userLikedDiscountIds.forEach({ (id) in
+                
+                if discountObject!.discountInfos[index].discountId == id {
+                    
+                    discountObject!.discountInfos[index].isLiked = true
+                }
+            })
         }
     }
     
@@ -120,6 +150,14 @@ class MoreDiscountViewController: HCBaseViewController {
                 self,
                 selector: #selector(updateLikedDiscount),
                 name: NSNotification.Name(NotificationNames.updateLikedDiscount.rawValue),
+                object: nil
+        )
+        
+        NotificationCenter.default
+            .addObserver(
+                self,
+                selector: #selector(updateReadDiscount),
+                name: NSNotification.Name(NotificationNames.updateReadDiscount.rawValue),
                 object: nil
         )
     }
@@ -153,7 +191,7 @@ extension MoreDiscountViewController {
             
             if strongSelf.discountObject != nil {
                 
-                strongSelf.likedDiscountIds.forEach({ (id) in
+                strongSelf.userLikedDiscountIds.forEach({ (id) in
                     
                     for index in 0 ..< strongSelf.discountObject!.discountInfos.count {
                         
@@ -204,7 +242,7 @@ extension MoreDiscountViewController {
         
         HCFirebaseManager.shared.getId(uid: user.uid, userCollection: .likedDiscounts, completion: { [weak self] ids in
             
-            self?.likedDiscountIds = ids
+            self?.userLikedDiscountIds = ids
             
             self?.group.leave()
         })

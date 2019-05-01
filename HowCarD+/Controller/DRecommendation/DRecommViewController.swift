@@ -200,6 +200,88 @@ extension DRecommViewController {
             }
         }
     }
+    
+    func addObserver() {
+        
+        NotificationCenter.default
+            .addObserver(
+                self,
+                selector: #selector(updateReadDiscount),
+                name: NSNotification.Name(NotificationNames.updateReadDiscount.rawValue),
+                object: nil
+        )
+        
+        NotificationCenter.default
+            .addObserver(
+                self,
+                selector: #selector(updateReadCard),
+                name: NSNotification.Name(NotificationNames.updateReadCard.rawValue),
+                object: nil
+        )
+    }
+    
+    @objc func updateReadDiscount() {
+        
+    }
+    
+    @objc func updateReadCard() {
+        
+    }
+    
+    func updateReadStatus(indexPath: IndexPath) {
+        
+        switch indexPath.section {
+            
+        case DRecommSection.Index.newCards.rawValue:
+            
+            newCards[indexPath.row].isRead = true
+            
+            guard var cardBasicInfoObject = dRecommArray[indexPath.section][indexPath.row] as? CardBasicInfoObject else { return }
+            
+            cardBasicInfoObject.isRead = true
+            
+            dRecommArray[indexPath.section][indexPath.row] = cardBasicInfoObject
+            
+        case DRecommSection.Index.newDiscounts.rawValue:
+            
+            newDiscounts[indexPath.row].info.isRead = true
+            
+            guard var discountDetail = dRecommArray[indexPath.section][indexPath.row] as? DiscountDetail else { return }
+            
+            discountDetail.info.isRead = true
+            
+            dRecommArray[indexPath.section][indexPath.row] = discountDetail
+            
+        case DRecommSection.Index.selectedCards.rawValue:
+            
+            selectedCards[indexPath.row].isRead = true
+            
+            guard var cardBasicInfoObject = dRecommArray[indexPath.section][indexPath.row] as? CardBasicInfoObject else { return }
+            
+            cardBasicInfoObject.isRead = true
+            
+            dRecommArray[indexPath.section][indexPath.row] = cardBasicInfoObject
+            
+        case DRecommSection.Index.selectedDiscounts.rawValue:
+            
+            selectedDiscounts[indexPath.row].info.isRead = true
+            
+            guard var discountDetail = dRecommArray[indexPath.section][indexPath.row] as? DiscountDetail else { return }
+            
+            discountDetail.info.isRead = true
+            
+            dRecommArray[indexPath.section][indexPath.row] = discountDetail
+            
+        default: return
+        }
+        
+        DispatchQueue.main.async {
+            
+            self.tableView.reloadData()
+            
+            
+        }
+    }
 }
 
 // MARK: - TableView
@@ -260,27 +342,8 @@ extension DRecommViewController: UITableViewDelegate {
             }
         }, completion: nil)
         
-        // 改物件 isRead
-        switch indexPath.section {
-            
-        case DRecommSection.Index.newCards.rawValue:
-            
-            newCards[indexPath.row].isRead = true
-            
-        case DRecommSection.Index.newDiscounts.rawValue:
-            
-            newDiscounts[indexPath.row].info.isRead = true
-            
-        case DRecommSection.Index.selectedCards.rawValue:
-            
-            selectedCards[indexPath.row].isRead = true
-            
-        case DRecommSection.Index.selectedDiscounts.rawValue:
-            
-            selectedDiscounts[indexPath.row].info.isRead = true
-            
-        default: return
-        }
+        updateReadStatus(indexPath: indexPath)
+        
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -328,14 +391,6 @@ extension DRecommViewController: UITableViewDataSource {
         let durations: [TimeInterval] = [0.26, 0.2, 0.2]
         cell.durationsForExpandedState = durations
         cell.durationsForCollapsedState = durations
-
-//        let cellIsCollapsed = cellHeights[indexPath.section][indexPath.row] == Const.closeCellHeight
-//
-//        if cellIsCollapsed {
-//            cell.unfold(true, animated: false, completion: nil)
-//        } else {
-//            cell.unfold(false, animated: false, completion: nil)
-//        }
         
         switch indexPath.section {
         case 0, 2: // card
@@ -343,6 +398,8 @@ extension DRecommViewController: UITableViewDataSource {
             let dRecommData = dRecommArray[indexPath.section][indexPath.row] as? CardBasicInfoObject
             
             guard let card = dRecommData else { return UITableViewCell() }
+            
+            
             
             cell.layoutCell(
                 image: card.image,

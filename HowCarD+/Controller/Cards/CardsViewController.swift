@@ -119,24 +119,14 @@ extension CardsViewController {
         
         group.notify(queue: .main, execute: { [weak self] in
             
-            guard let strongSelf = self else { return }
+            self?.checkCollectedCard()
             
-            /// 拿到 user 收藏的 id 然後把物件有被收藏的 isCollected 改成 true
-            strongSelf.userCollectedCardIds.forEach({ (id) in
+            self?.checkReadCard()
+            
+            DispatchQueue.main.async {
                 
-                for index in 0 ..< strongSelf.cardsBasicInfo.count {
-                    
-                    if strongSelf.cardsBasicInfo[index].id == id {
-                        
-                        strongSelf.cardsBasicInfo[index].isCollected = true
-                    }
-                }
-                
-                DispatchQueue.main.async {
-                    
-                    strongSelf.tableView.reloadData()
-                }
-            })
+                self?.tableView.reloadData()
+            }
         })
     }
     
@@ -250,12 +240,25 @@ extension CardsViewController {
     
     @objc func updateCollectedCard() {
         
+        checkCollectedCard()
+        
+        DispatchQueue.main.async {
+            
+            self.tableView.reloadData()
+        }
+    }
+    
+    func checkCollectedCard() {
+        
         userCollectedCardIds = HCFirebaseManager.shared.collectedCardIds
         
-        /// 比對 id 有哪些 isLike == true，true 的話改物件狀態
+        /// 比對 id 有哪些 isCollected == true，true 的話改物件狀態
         for index in 0 ..< self.cardsBasicInfo.count {
             
-            cardsBasicInfo[index].isCollected = false
+            if cardsBasicInfo[index].isCollected != false {
+                
+                cardsBasicInfo[index].isCollected = false
+            }
             
             self.userCollectedCardIds.forEach ({ (id) in
                 
@@ -265,10 +268,27 @@ extension CardsViewController {
                 }
             })
         }
+    }
+    
+    func checkReadCard() {
         
-        DispatchQueue.main.async {
+        userReadCardIds = HCFirebaseManager.shared.isReadCardIds
+        
+        /// 比對 id 有哪些 isCollected == true，true 的話改物件狀態
+        for index in 0 ..< self.cardsBasicInfo.count {
             
-            self.tableView.reloadData()
+            if cardsBasicInfo[index].isRead != false {
+                
+                cardsBasicInfo[index].isRead = false
+            }
+            
+            self.userReadCardIds.forEach ({ (id) in
+                
+                if cardsBasicInfo[index].id == id {
+                    
+                    cardsBasicInfo[index].isRead = true
+                }
+            })
         }
     }
 }
@@ -343,7 +363,4 @@ extension CardsViewController: UITableViewDataSource {
         }
         return cardInfoCell
     }
-    
-    
-
 }
