@@ -10,8 +10,6 @@ import Foundation
 
 enum DRecommRequest: HCRequest {
     
-    case cardDetail(String)
-    
     case newCards
     
     case newDiscounts
@@ -20,11 +18,11 @@ enum DRecommRequest: HCRequest {
     
     case selectedDiscounts
     
+    case topDiscountInfos(String)
+    
     var headers: [String: String] {
         
         switch self {
-            
-        case .cardDetail(_): return [:]
             
         case .newCards: return [:]
             
@@ -33,14 +31,14 @@ enum DRecommRequest: HCRequest {
         case .selectedCards: return [:]
             
         case .selectedDiscounts: return [:]
+            
+        case .topDiscountInfos(_): return [:]
         }
     }
     
     var body: [String: Any?]? {
         
         switch self {
-            
-        case .cardDetail(_): return nil
             
         case .newCards: return nil
             
@@ -49,14 +47,14 @@ enum DRecommRequest: HCRequest {
         case .selectedCards: return nil
             
         case .selectedDiscounts: return nil
+            
+        case .topDiscountInfos(_): return nil
         }
     }
     
     var method: String {
         
         switch self {
-            
-        case .cardDetail(_): return HCHTTPMethod.GET.rawValue
             
         case .newCards: return HCHTTPMethod.GET.rawValue
             
@@ -65,14 +63,14 @@ enum DRecommRequest: HCRequest {
         case .selectedCards: return HCHTTPMethod.GET.rawValue
             
         case .selectedDiscounts: return HCHTTPMethod.GET.rawValue
+            
+        case .topDiscountInfos(_): return HCHTTPMethod.GET.rawValue
         }
     }
     
     var endPoint: String {
         
         switch self {
-            
-        case .cardDetail(let id): return "/data/cards/\(id).json"
             
         case .newCards: return "/data/dRecomm/lobby/newCards.json"
             
@@ -81,6 +79,8 @@ enum DRecommRequest: HCRequest {
         case .selectedCards: return "/data/dRecomm/lobby/selectedCards.json"
             
         case .selectedDiscounts: return "/data/dRecomm/lobby/selectedDiscounts.json"
+            
+        case .topDiscountInfos(let id): return "/data/dRecomm/topDiscountInfos/\(id).json"
         }
     }
 }

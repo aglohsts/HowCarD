@@ -24,3 +24,19 @@ struct DRecommTop {
     
     let image: UIImage
 }
+
+struct DRecommTopObjct: Codable {
+    
+    let category: String // 超商
+    
+    let categoryId: String // cvs
+    
+    let sections: [DRecommSection]
+}
+
+struct DRecommSection: Codable {
+    
+    let sectionTitle: String // 711, 全家
+    
+    let discountInfo: [DiscountInfo]
+}

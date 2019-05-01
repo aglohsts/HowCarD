@@ -27,7 +27,6 @@ class DRecommTopViewController: HCBaseViewController {
             collectionView.delegate = self
 
             collectionView.dataSource = self
-
         }
     }
 
