@@ -236,11 +236,29 @@ extension CardsViewController {
                 name: NSNotification.Name(NotificationNames.updateCollectedCard.rawValue),
                 object: nil
         )
+        
+        NotificationCenter.default
+            .addObserver(
+                self,
+                selector: #selector(updateReadCard),
+                name: NSNotification.Name(NotificationNames.updateReadCard.rawValue),
+                object: nil
+        )
     }
     
     @objc func updateCollectedCard() {
         
         checkCollectedCard()
+        
+        DispatchQueue.main.async {
+            
+            self.tableView.reloadData()
+        }
+    }
+    
+    @objc func updateReadCard() {
+        
+        checkReadCard()
         
         DispatchQueue.main.async {
             
