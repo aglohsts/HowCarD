@@ -12,7 +12,15 @@ class DRecommTopViewController: HCBaseViewController {
     
     var touchHandler: (() -> Void)?
     
-    var categorys = ["超商", "行動支付", "網購", "電影", "外幣消費", "加油", "超市"]
+    var dRecommTops: [DRecommTop] = [
+        DRecommTop(category: "超商", caategoryId: "cvs", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
+        DRecommTop(category: "行動支付", caategoryId: "mobilePay", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
+        DRecommTop(category: "網購", caategoryId: "internet", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
+        DRecommTop(category: "電影", caategoryId: "movie", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
+        DRecommTop(category: "外幣消費", caategoryId: "oversea", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
+        DRecommTop(category: "加油", caategoryId: "gas", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
+        DRecommTop(category: "超市", caategoryId: "supermarket", image: UIImage.asset(.Image_Placeholder) ?? UIImage())
+    ]
 
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -27,7 +35,6 @@ class DRecommTopViewController: HCBaseViewController {
         super.viewDidLoad()
 
         setupCollectionView()
-
     }
 
     private func setupCollectionView() {
@@ -35,7 +42,6 @@ class DRecommTopViewController: HCBaseViewController {
         collectionView.showsHorizontalScrollIndicator = false
         
         setBackgroundColor()
-
     }
     
     override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
@@ -54,7 +60,7 @@ extension DRecommTopViewController: UICollectionViewDelegate {
 
 extension DRecommTopViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categorys.count
+        return dRecommTops.count
     }
 
     func collectionView(
@@ -69,7 +75,7 @@ extension DRecommTopViewController: UICollectionViewDataSource {
 
         guard let newInfoCell = cell as? DRecommCollectionViewCell else { return cell }
 
-        newInfoCell.layoutCell(category: categorys[indexPath.item], image: "")
+        newInfoCell.layoutCell(category: dRecommTops[indexPath.item].category, image: "")
 
         return newInfoCell
     }

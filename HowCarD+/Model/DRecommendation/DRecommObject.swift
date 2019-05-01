@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct BriefIntro: Codable {
     
@@ -15,11 +16,11 @@ struct BriefIntro: Codable {
     let content: String
 }
 
-struct DRecommTop: Codable {
+struct DRecommTop {
     
     let category: String
     
     let caategoryId: String
     
-    let image: String
+    let image: UIImage
 }
