@@ -103,6 +103,12 @@ class MoreDiscountViewController: HCBaseViewController {
     
     @objc func updateReadDiscount() {
         
+        checkReadDiscount()
+        
+        DispatchQueue.main.async {
+            
+            self.collectionView.reloadData()
+        }
     }
     
     func checkLikedDiscount() {
@@ -112,8 +118,12 @@ class MoreDiscountViewController: HCBaseViewController {
         /// 比對 id 有哪些 isLike == true，true 的話改物件狀態
         for index in 0 ..< discountObject!.discountInfos.count {
             
-            discountObject!.discountInfos[index].isLiked = false
-            
+            // all false
+            if discountObject!.discountInfos[index].isRead != false {
+                
+                discountObject!.discountInfos[index].isLiked = false
+            }
+            // check if true
             userLikedDiscountIds.forEach({ (id) in
                 
                 if discountObject!.discountInfos[index].discountId == id {
@@ -126,21 +136,53 @@ class MoreDiscountViewController: HCBaseViewController {
     
     func checkReadDiscount() {
         
-        userReadDiscountIds = HCFirebaseManager.shared.likedDiscountIds
+        userReadDiscountIds = HCFirebaseManager.shared.isReadDiscountIds
         
-        /// 比對 id 有哪些 isLike == true，true 的話改物件狀態
+        /// 比對 id 有哪些 isRead == true，true 的話改物件狀態
         for index in 0 ..< discountObject!.discountInfos.count {
             
-            discountObject!.discountInfos[index].isLiked = false
-            
-            userLikedDiscountIds.forEach({ (id) in
+            // all false
+            if discountObject!.discountInfos[index].isRead != false {
+                
+                discountObject!.discountInfos[index].isRead = false
+            }
+            // check if true
+            userReadDiscountIds.forEach({ (id) in
                 
                 if discountObject!.discountInfos[index].discountId == id {
                     
-                    discountObject!.discountInfos[index].isLiked = true
+                    discountObject!.discountInfos[index].isRead = true
                 }
             })
         }
+    }
+    
+    func markDiscountAsRead(indexPath: IndexPath) {
+        
+        if discountObject != nil {
+            
+            discountObject!.discountInfos[indexPath.item].isRead = true
+            
+            if userReadDiscountIds.contains(discountObject!.discountInfos[indexPath.item].discountId) {
+                
+                return
+            } else {
+                userReadDiscountIds.append(discountObject!.discountInfos[indexPath.item].discountId)
+                
+                guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+                
+                HCFirebaseManager.shared.addId(
+                    userCollection: .isReadDiscounts,
+                    uid: user.uid,
+                    id: discountObject!.discountInfos[indexPath.item].discountId
+                )
+            }
+        }
+        
+        NotificationCenter.default.post(
+            name: Notification.Name(rawValue: NotificationNames.updateReadDiscount.rawValue),
+            object: nil
+        )
     }
     
     func discountAddObserver() {
@@ -184,32 +226,23 @@ extension MoreDiscountViewController {
         
         getDiscountByCategory()
         getUserLikedDiscountId()
+        getUserReadDiscountId()
         
         group.notify(queue: .main, execute: { [weak self] in
             
-            guard let strongSelf = self else { return }
-            
-            if strongSelf.discountObject != nil {
+            if self?.discountObject != nil {
                 
-                strongSelf.userLikedDiscountIds.forEach({ (id) in
-                    
-                    for index in 0 ..< strongSelf.discountObject!.discountInfos.count {
-                        
-                        if strongSelf.discountObject!.discountInfos[index].discountId == id {
-                            
-                            strongSelf.discountObject!.discountInfos[index].isLiked = true
-                        }
-                    }
-                })
+                self?.checkLikedDiscount()
+                self?.checkReadDiscount()
             }
             
             DispatchQueue.main.async {
-                strongSelf.collectionView.reloadData()
+                self?.collectionView.reloadData()
             }
         })
     }
     
-    func getDiscountByCategory() {
+    private func getDiscountByCategory() {
         
         group.enter()
         
@@ -234,7 +267,7 @@ extension MoreDiscountViewController {
         })
     }
     
-    func getUserLikedDiscountId() {
+    private func getUserLikedDiscountId() {
         
         guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
         
@@ -243,6 +276,20 @@ extension MoreDiscountViewController {
         HCFirebaseManager.shared.getId(uid: user.uid, userCollection: .likedDiscounts, completion: { [weak self] ids in
             
             self?.userLikedDiscountIds = ids
+            
+            self?.group.leave()
+        })
+    }
+    
+    private func getUserReadDiscountId() {
+        
+        guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+        
+        group.enter()
+        
+        HCFirebaseManager.shared.getId(uid: user.uid, userCollection: .isReadDiscounts, completion: { [weak self] ids in
+            
+            self?.userReadDiscountIds = ids
             
             self?.group.leave()
         })
@@ -300,8 +347,10 @@ extension MoreDiscountViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         self.performSegue(withIdentifier: Segue.discountDetail, sender: indexPath)
+        
+        // isRead
+        markDiscountAsRead(indexPath: indexPath)
     }
-    
 }
 
 extension MoreDiscountViewController: UICollectionViewDataSource {
