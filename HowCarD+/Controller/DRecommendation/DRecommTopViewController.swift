@@ -10,16 +10,16 @@ import UIKit
 
 class DRecommTopViewController: HCBaseViewController {
     
-    var touchHandler: (() -> Void)?
+    var touchHandler: ((String) -> Void)?
     
     var dRecommTops: [DRecommTop] = [
-        DRecommTop(category: "超商", caategoryId: "cvs", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
-        DRecommTop(category: "行動支付", caategoryId: "mobilePay", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
-        DRecommTop(category: "網購", caategoryId: "internet", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
-        DRecommTop(category: "電影", caategoryId: "movie", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
-        DRecommTop(category: "外幣消費", caategoryId: "oversea", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
-        DRecommTop(category: "加油", caategoryId: "gas", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
-        DRecommTop(category: "超市", caategoryId: "supermarket", image: UIImage.asset(.Image_Placeholder) ?? UIImage())
+        DRecommTop(category: "超商", categoryId: "cvs", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
+        DRecommTop(category: "行動支付", categoryId: "mobilePay", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
+        DRecommTop(category: "網購", categoryId: "internet", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
+        DRecommTop(category: "電影", categoryId: "movie", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
+        DRecommTop(category: "外幣消費", categoryId: "oversea", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
+        DRecommTop(category: "加油", categoryId: "gas", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
+        DRecommTop(category: "超市", categoryId: "supermarket", image: UIImage.asset(.Image_Placeholder) ?? UIImage())
     ]
 
     @IBOutlet weak var collectionView: UICollectionView! {
@@ -49,11 +49,14 @@ class DRecommTopViewController: HCBaseViewController {
     }
 }
 
+extension DRecommTopViewController {
+}
+
 extension DRecommTopViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        touchHandler?()
+        touchHandler?(dRecommTops[indexPath.item].categoryId)
     }
 }
 

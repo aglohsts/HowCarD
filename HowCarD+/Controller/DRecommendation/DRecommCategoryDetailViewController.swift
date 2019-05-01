@@ -10,6 +10,17 @@ import UIKit
 
 class DRecommCategoryDetailViewController: HCBaseViewController {
     
+    var dRecommTopObject: DRecommTopObjct? {
+        
+        didSet {
+            
+            DispatchQueue.main.async {
+                
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     @IBOutlet weak var backView: UIView!
     
     @IBOutlet weak var categoryLabel: UILabel!
@@ -61,7 +72,7 @@ extension DRecommCategoryDetailViewController {
         
 //        tableView.rowHeight = UITableView.automaticDimension
         
-        categoryLabel.text = ""
+        categoryLabel.text = dRecommTopObject?.category
     }
 }
 
@@ -103,11 +114,17 @@ extension DRecommCategoryDetailViewController: UITableViewDelegate {
 extension DRecommCategoryDetailViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        
+        guard let dRecommTopObject = self.dRecommTopObject else { return 0 }
+        
+        return dRecommTopObject.sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        
+        guard let dRecommTopObject = self.dRecommTopObject else { return 0 }
+        
+        return dRecommTopObject.sections[section].discountInfos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

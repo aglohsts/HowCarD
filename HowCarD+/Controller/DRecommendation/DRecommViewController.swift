@@ -54,6 +54,8 @@ class DRecommViewController: HCBaseViewController {
 
     }
     
+    let dRecommProvider = DRecommProvider()
+    
     // swiftlint:disable force_cast
     
     let dRecommCategoryDetailVC = UIStoryboard(
@@ -88,8 +90,6 @@ class DRecommViewController: HCBaseViewController {
         DRecommSection.selectedCards,
         DRecommSection.selectedDiscounts
     ]
-    
-    let dRecommProvider = DRecommProvider()
     
     enum Const {
         static let closeCellHeight: CGFloat = 135
@@ -179,23 +179,32 @@ extension DRecommViewController {
             
             guard let dRecommTopVC = segue.destination as? DRecommTopViewController else { return }
             
-            dRecommTopVC.touchHandler = {
+            dRecommTopVC.touchHandler = { [weak self] id in
                 
-                if self.dRecommCategoryDetailVC.view.superview == nil {
+                guard let strongSelf = self else { return }
+                
+                strongSelf.getCategoryDiscountInfo(id: id, completionHandler: { [weak self] dRecommTopObjct in
                     
-                    self.addChild(self.dRecommCategoryDetailVC)
+                    self?.dRecommCategoryDetailVC.loadViewIfNeeded()
                     
-                    let toContainerLeftBottom = self.containerView.frame.origin.y + self.containerView.frame.height
+                    self?.dRecommCategoryDetailVC.dRecommTopObject = dRecommTopObjct
+                })
+                
+                if strongSelf.dRecommCategoryDetailVC.view.superview == nil {
                     
-                    self.dRecommCategoryDetailVC.view.frame = CGRect(
+                    strongSelf.addChild(strongSelf.dRecommCategoryDetailVC)
+                    
+                    let toContainerLeftBottom = strongSelf.containerView.frame.origin.y + strongSelf.containerView.frame.height
+                    
+                    strongSelf.dRecommCategoryDetailVC.view.frame = CGRect(
                         x: 0, y: toContainerLeftBottom,
                         width: UIScreen.main.bounds.width,
-                        height: self.tableView.frame.height
+                        height: strongSelf.tableView.frame.height
                     )
-                
-                    self.view.addSubview(self.dRecommCategoryDetailVC.view)
                     
-                    self.dRecommCategoryDetailVC.didMove(toParent: self)
+                    strongSelf.view.addSubview(strongSelf.dRecommCategoryDetailVC.view)
+                    
+                    strongSelf.dRecommCategoryDetailVC.didMove(toParent: strongSelf)
                 }
             }
         }
@@ -227,6 +236,8 @@ extension DRecommViewController {
     @objc func updateReadCard() {
         
     }
+    
+    
     
     func updateReadStatus(indexPath: IndexPath) {
         
@@ -278,8 +289,6 @@ extension DRecommViewController {
         DispatchQueue.main.async {
             
             self.tableView.reloadData()
-            
-            
         }
     }
 }
@@ -343,7 +352,6 @@ extension DRecommViewController: UITableViewDelegate {
         }, completion: nil)
         
         updateReadStatus(indexPath: indexPath)
-        
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -562,6 +570,23 @@ extension DRecommViewController {
             self?.userReadCardIds = ids
             
             self?.group.leave()
+        })
+    }
+    
+    func getCategoryDiscountInfo(id: String, completionHandler: @escaping (DRecommTopObjct) -> Void) {
+        
+        dRecommProvider.getTopDiscountInfos(id: id, completion: { [weak self] (result) in
+            
+            switch result {
+                
+            case .success(let dRecommTopObjct):
+                
+                completionHandler(dRecommTopObjct)
+                
+            case .failure(let error):
+                
+                print(error)
+            }
         })
     }
 }

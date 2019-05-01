@@ -20,7 +20,7 @@ struct DRecommTop {
     
     let category: String
     
-    let caategoryId: String
+    let categoryId: String
     
     let image: UIImage
 }
@@ -38,5 +38,5 @@ struct DRecommSection: Codable {
     
     let sectionTitle: String // 711, 全家
     
-    let discountInfo: [DiscountInfo]
+    let discountInfos: [DiscountInfo]
 }

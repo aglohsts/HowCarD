@@ -158,7 +158,7 @@ class DRecommProvider {
                 
                 do {
                     
-                    //                    let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
+//                                        let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
                     
                     let dRecommTopObjct = try strongSelf.decoder.decode(DRecommTopObjct.self, from: data)
                     

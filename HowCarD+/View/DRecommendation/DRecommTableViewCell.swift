@@ -143,7 +143,7 @@ class DRecommTableViewCell: FoldingCell {
         
         noteLabel.text = note
         
-        
+        self.isRead = isRead
     }
     
     func layoutCollectionView(briefIntroArray: [BriefIntro], tagArray: [String]?) {
