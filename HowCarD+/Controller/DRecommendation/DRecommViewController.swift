@@ -378,6 +378,10 @@ extension DRecommViewController {
             }
         default: return
         }
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     // swiftlint:enable cyclomatic_complexity
 }
@@ -416,10 +420,6 @@ extension DRecommViewController: UITableViewDelegate {
         
         markAsRead(indexPath: indexPath)
         
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-        
         if cell.isAnimating() {
             return
         }
@@ -445,8 +445,6 @@ extension DRecommViewController: UITableViewDelegate {
                 tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.bottom, animated: true)
             }
         }, completion: nil)
-        
-        
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -713,16 +711,9 @@ extension DRecommViewController {
             
             userReadCardIds.forEach({ (id) in
                 
-                print(id)
-                
                 if newCards[index].id == id {
                     
-                    print("true")
-                    
                     newCards[index].isRead = true
-                } else {
-                    
-                    print("false")
                 }
             })
         }
@@ -732,14 +723,10 @@ extension DRecommViewController {
 //            selectedCards[index].isRead = false
             
             userReadCardIds.forEach({ (id) in
-                print(id)
+                
                 if selectedCards[index].id == id {
                     
-                    print("true")
                     selectedCards[index].isRead = true
-                } else {
-                    
-                    print("false")
                 }
             })
         }

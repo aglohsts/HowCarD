@@ -16,6 +16,25 @@ class DRecommCategoryCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var briefContentLabel: UILabel!
     
+    @IBOutlet weak var backView: UIView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        setCellView()
+    }
+    
+    func setCellView() {
+        
+        backView.roundCorners(
+            [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner],
+            radius: 6.0)
+        
+        discountImageView.roundCorners(
+            [.layerMaxXMinYCorner, .layerMinXMinYCorner],
+            radius: 6.0)
+    }
+    
     func layoutCell(image: String, title: String, briefContent: String) {
         
         discountImageView.loadImage(image, placeHolder: UIImage.asset(.Image_Placeholder))

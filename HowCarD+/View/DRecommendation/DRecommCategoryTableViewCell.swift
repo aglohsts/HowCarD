@@ -63,6 +63,12 @@ class DRecommCategoryTableViewCell: HCBaseTableViewCell {
 
     }
     
+    override func setViewBackground(hex: HCColorHex) {
+        super.setViewBackground(hex: hex)
+        
+        collectionView.backgroundColor = UIColor.hexStringToUIColor(hex: .grayDCDCDC)
+    }
+    
     func layoutCell(subCategory: [DRecommSubCategory], subTitle: String) {
 
         self.subCategory = subCategory
@@ -86,7 +92,7 @@ extension DRecommCategoryTableViewCell: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath)
         -> CGSize {
             
-            return CGSize(width: UIScreen.width / 2 - 25, height: 200.0)
+            return CGSize(width: UIScreen.width / 2 - 60, height: (UIScreen.width / 2 - 60) * 1.3)
     }
     
     func collectionView(
@@ -95,7 +101,7 @@ extension DRecommCategoryTableViewCell: UICollectionViewDelegateFlowLayout {
         insetForSectionAt section: Int)
         -> UIEdgeInsets {
             
-            return UIEdgeInsets(top: 24.0, left: 16, bottom: 24, right: 15)
+            return UIEdgeInsets(top: 8.0, left: 8.0, bottom: 8.0, right: 8.0)
     }
     //
     //    func collectionView(
@@ -125,7 +131,6 @@ extension DRecommCategoryTableViewCell: UICollectionViewDelegateFlowLayout {
     //    }
 }
 
-
 extension DRecommCategoryTableViewCell: UICollectionViewDelegate {
     
 }
@@ -134,7 +139,7 @@ extension DRecommCategoryTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return subCategory.count
+        return subCategory[section].subContent.discountInfos.count
     }
 
     func collectionView(
