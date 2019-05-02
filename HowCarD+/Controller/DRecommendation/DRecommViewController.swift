@@ -414,6 +414,12 @@ extension DRecommViewController: UITableViewDelegate {
             return
         }
         
+        markAsRead(indexPath: indexPath)
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
         if cell.isAnimating() {
             return
         }
@@ -440,11 +446,7 @@ extension DRecommViewController: UITableViewDelegate {
             }
         }, completion: nil)
         
-        markAsRead(indexPath: indexPath)
         
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -711,9 +713,16 @@ extension DRecommViewController {
             
             userReadCardIds.forEach({ (id) in
                 
+                print(id)
+                
                 if newCards[index].id == id {
                     
+                    print("true")
+                    
                     newCards[index].isRead = true
+                } else {
+                    
+                    print("false")
                 }
             })
         }
@@ -723,13 +732,24 @@ extension DRecommViewController {
 //            selectedCards[index].isRead = false
             
             userReadCardIds.forEach({ (id) in
-                
+                print(id)
                 if selectedCards[index].id == id {
                     
+                    print("true")
                     selectedCards[index].isRead = true
+                } else {
+                    
+                    print("false")
                 }
             })
         }
+        
+        self.dRecommArray = [
+            self.newCards,
+            self.newDiscounts,
+            self.selectedCards,
+            self.selectedDiscounts
+        ]
     }
     
     func checkReadDiscount() {
@@ -761,5 +781,12 @@ extension DRecommViewController {
                 }
             })
         }
+        
+        self.dRecommArray = [
+            self.newCards,
+            self.newDiscounts,
+            self.selectedCards,
+            self.selectedDiscounts
+        ]
     }
 }

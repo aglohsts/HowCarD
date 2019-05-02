@@ -16,9 +16,8 @@ class DRecommCategoryTableViewCell: HCBaseTableViewCell {
             
             DispatchQueue.main.async {
                 
-                self.tableView.reloadData()
+                self.collectionView.reloadData()
             }
-            
         }
     }
     
@@ -28,26 +27,35 @@ class DRecommCategoryTableViewCell: HCBaseTableViewCell {
             
             DispatchQueue.main.async {
 
-                self.tableView.reloadData()
+                self.collectionView.reloadData()
             }
         }
     }
     
-    var subTitle: String = ""
-
-    @IBOutlet weak var tableView: UITableView! {
+    var subTitle: String = "" {
         
         didSet {
-            tableView.delegate = self
             
-            tableView.dataSource = self
+            subTitleLabel.text = subTitle
+        }
+    }
+
+    @IBOutlet weak var subTitleLabel: UILabel!
+    
+    @IBOutlet weak var collectionView: UICollectionView! {
+        
+        didSet {
+            
+            collectionView.delegate = self
+            
+            collectionView.dataSource = self
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        setupTableView()
+        setupCollectionView()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -61,79 +69,92 @@ class DRecommCategoryTableViewCell: HCBaseTableViewCell {
         
         self.subTitle = subTitle
     }
-
 }
 
-// inner tableView
+// inner collectionView
 extension DRecommCategoryTableViewCell {
     
-    private func setupTableView() {
-        
-        tableView.agRegisterHeaderWithNib(
-            identifier: String(describing: HCTableViewSectionHeaderView.self),
-            bundle: nil
-        )
-        
-        tableView.estimatedRowHeight = 100
-        
-        tableView.rowHeight = UITableView.automaticDimension
+    private func setupCollectionView() {
+
     }
 }
 
-extension DRecommCategoryTableViewCell: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = tableView.dequeueReusableHeaderFooterView(
-            withIdentifier: String(describing: HCTableViewSectionHeaderView.self)
-        )
-        
-        guard let headerView = view as? HCTableViewSectionHeaderView else { return view }
-        
-        headerView.layoutView(contentTitle: subTitle)
-        
-        return headerView
+extension DRecommCategoryTableViewCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath)
+        -> CGSize {
+            
+            return CGSize(width: UIScreen.width / 2 - 25, height: 200.0)
     }
     
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        
-        guard let headerView = view as? HCTableViewSectionHeaderView else { return }
-        
-        // TODO: background color
-        
-//        headerView.contentView.backgroundColor = UIColor.hexStringToUIColor(hex: .grayDCDCDC)
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int)
+        -> UIEdgeInsets {
+            
+            return UIEdgeInsets(top: 24.0, left: 16, bottom: 24, right: 15)
     }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        return 30
-    }
+    //
+    //    func collectionView(
+    //        _ collectionView: UICollectionView,
+    //        layout collectionViewLayout: UICollectionViewLayout,
+    //        minimumLineSpacingForSectionAt section: Int)
+    //        -> CGFloat {
+    //
+    //            return 15.0
+    //    }
+    //
+    //    func collectionView(
+    //        _ collectionView: UICollectionView,
+    //        layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int)
+    //        -> CGFloat {
+    //
+    //            return 15.0
+    //    }
+    //
+    //    func collectionView(
+    //        _ collectionView: UICollectionView,
+    //        layout collectionViewLayout: UICollectionViewLayout,
+    //        referenceSizeForHeaderInSection section: Int)
+    //        -> CGSize {
+    //
+    //            return CGSize(width: UIScreen.width, height: 25.0)
+    //    }
 }
 
-extension DRecommCategoryTableViewCell: UITableViewDataSource {
+
+extension DRecommCategoryTableViewCell: UICollectionViewDelegate {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+}
+
+extension DRecommCategoryTableViewCell: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return subCategory.count
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return subCategory[section].subContent.discountInfos.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath)
+    -> UICollectionViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: DRecommCategoryDetailTableViewCell.self),
-            for: indexPath) as? DRecommCategoryDetailTableViewCell else {
-                
-                return UITableViewCell()
-        }
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: String(describing: DRecommCategoryCollectionViewCell.self),
+            for: indexPath
+        )
         
-        cell.layoutCell(
+        guard let discountCollectionViewCell = cell as? DRecommCategoryCollectionViewCell else { return cell }
+        
+        discountCollectionViewCell.layoutCell(
             image: subCategory[indexPath.section].subContent.discountInfos[indexPath.row].image,
             title: subCategory[indexPath.section].subContent.discountInfos[indexPath.row].cardName,
             briefContent: subCategory[indexPath.section].subContent.discountInfos[indexPath.row].title
         )
         
-        return cell
+        return discountCollectionViewCell
     }
 }

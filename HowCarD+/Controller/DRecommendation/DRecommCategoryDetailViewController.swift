@@ -70,11 +70,14 @@ extension DRecommCategoryDetailViewController {
         
         tableView.showsVerticalScrollIndicator = false
         
-//        tableView.estimatedRowHeight = 100
-        
-//        tableView.rowHeight = UITableView.automaticDimension
-        
         categoryLabel.text = ""
+    }
+    
+    func updateHeight() {
+        UIView.setAnimationsEnabled(false)
+        tableView.beginUpdates()
+        tableView.endUpdates()
+        UIView.setAnimationsEnabled(true)
     }
 }
 
@@ -108,10 +111,13 @@ extension DRecommCategoryDetailViewController: UITableViewDelegate {
         return 50
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        // TODO: auto dimension
+        return 400
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 500
     }
 }
 
@@ -140,6 +146,7 @@ extension DRecommCategoryDetailViewController: UITableViewDataSource {
             subCategory: dRecommSections.sectionContent[indexPath.section].subCategory,
             subTitle: dRecommSections.sectionContent[indexPath.section].subCategory[indexPath.row].subTitle
         )
+        
         return cell
     }
 }

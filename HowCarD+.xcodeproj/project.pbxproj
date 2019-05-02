@@ -61,6 +61,8 @@
 		CA47A18A225B332C00AD16AF /* CardDetailTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47A189225B332C00AD16AF /* CardDetailTableViewHeaderView.swift */; };
 		CA47A18E225B3CEA00AD16AF /* CardDetailTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA47A18D225B3CEA00AD16AF /* CardDetailTableViewHeaderView.xib */; };
 		CA47A190225B42C000AD16AF /* CardDetailContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47A18F225B42C000AD16AF /* CardDetailContentTableViewCell.swift */; };
+		CA69860A227ABC8000437024 /* InnerTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA698609227ABC8000437024 /* InnerTableView.swift */; };
+		CA69860C227ABF1E00437024 /* DRecommCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA69860B227ABF1E00437024 /* DRecommCategoryCollectionViewCell.swift */; };
 		CA6B5C6C2266B89100B180A2 /* HCConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6B5C6B2266B89100B180A2 /* HCConstant.swift */; };
 		CA6B5C6E2266FF3F00B180A2 /* KingfisherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6B5C6D2266FF3F00B180A2 /* KingfisherWrapper.swift */; };
 		CA6B5C7122670D2700B180A2 /* HTTPCilent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6B5C7022670D2700B180A2 /* HTTPCilent.swift */; };
@@ -164,6 +166,8 @@
 		CA47A189225B332C00AD16AF /* CardDetailTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailTableViewHeaderView.swift; sourceTree = "<group>"; };
 		CA47A18D225B3CEA00AD16AF /* CardDetailTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardDetailTableViewHeaderView.xib; sourceTree = "<group>"; };
 		CA47A18F225B42C000AD16AF /* CardDetailContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailContentTableViewCell.swift; sourceTree = "<group>"; };
+		CA698609227ABC8000437024 /* InnerTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerTableView.swift; sourceTree = "<group>"; };
+		CA69860B227ABF1E00437024 /* DRecommCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA6B5C6B2266B89100B180A2 /* HCConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCConstant.swift; sourceTree = "<group>"; };
 		CA6B5C6D2266FF3F00B180A2 /* KingfisherWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherWrapper.swift; sourceTree = "<group>"; };
 		CA6B5C7022670D2700B180A2 /* HTTPCilent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPCilent.swift; sourceTree = "<group>"; };
@@ -392,6 +396,8 @@
 				CA12C75C2279620400491BD4 /* DRecommCategoryHeaderView.xib */,
 				CA12C75F2279747700491BD4 /* DRecommCategoryTableViewCell.swift */,
 				CA12C761227975AE00491BD4 /* DRecommCategoryDetailTableViewCell.swift */,
+				CA698609227ABC8000437024 /* InnerTableView.swift */,
+				CA69860B227ABF1E00437024 /* DRecommCategoryCollectionViewCell.swift */,
 			);
 			path = DRecommendation;
 			sourceTree = "<group>";
@@ -791,6 +797,7 @@
 				CA38706A2269BC6700D06B90 /* DiscountObject.swift in Sources */,
 				CAFE827F225DF304004F4E63 /* DiscountDetailContentTableViewCell.swift in Sources */,
 				CA25DFD8226E1FFC003AC89C /* DRecommProvider.swift in Sources */,
+				CA69860C227ABF1E00437024 /* DRecommCategoryCollectionViewCell.swift in Sources */,
 				CA1BFCDD226F05E1008F38BC /* BriefInfoCollectionViewCell.swift in Sources */,
 				CAF16FAA2274727E0013D864 /* CollectedCardViewController.swift in Sources */,
 				CA9194172276054200DA277E /* HCBaseTableViewCell.swift in Sources */,
@@ -814,6 +821,7 @@
 				CA38706C2269DFA300D06B90 /* DiscountProvider.swift in Sources */,
 				CA919419227606DF00DA277E /* HCBaseCollectionViewCell.swift in Sources */,
 				CA171B8D22534FF30042BBDC /* DiscountsViewController.swift in Sources */,
+				CA69860A227ABC8000437024 /* InnerTableView.swift in Sources */,
 				CAF58D8C225DB41000818CDD /* DiscountsTableViewCell.swift in Sources */,
 				CAF58D88225CA1AB00818CDD /* MoreDiscountViewController.swift in Sources */,
 				CAF58D8A225CD97D00818CDD /* UIImageView+Extension.swift in Sources */,
