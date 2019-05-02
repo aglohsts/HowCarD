@@ -23,11 +23,14 @@ struct DRecommTopObject: Codable {
     let categoryId: String // cvs
     
     let image: String
-    
-    let sections: [DRecommSection]
 }
 
-struct DRecommSection: Codable {
+struct DRecommSections: Codable {
+    
+    let sectionContent: [DRecommSectionContent]
+}
+
+struct DRecommSectionContent: Codable {
     
     let sectionTitle: String // 711, 全家
     
@@ -38,7 +41,7 @@ struct DRecommSubCategory: Codable {
     
     let subTitle: String
     
-    let subContent: [DRecommSubContent]
+    let subContent: DRecommSubContent
 }
 
 struct DRecommSubContent: Codable {

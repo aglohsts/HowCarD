@@ -10,7 +10,7 @@ import UIKit
 
 class DRecommCategoryDetailViewController: HCBaseViewController {
     
-    var dRecommTopObject: DRecommTopObjct? {
+    var dRecommTopObject: DRecommTopObject? {
         
         didSet {
             
@@ -22,6 +22,8 @@ class DRecommCategoryDetailViewController: HCBaseViewController {
             }
         }
     }
+    
+    var dRecommSections: DRecommSections?
     
     @IBOutlet weak var backView: UIView!
     
@@ -89,7 +91,7 @@ extension DRecommCategoryDetailViewController: UITableViewDelegate {
         
         let url = "https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/21/27/4f/21274f72-38eb-c0f1-0c76-685e5666eff5/AppIcon-0-1x_U007emarketing-0-0-85-220-0-5.png/246x0w.jpg"
         
-        headerView.layoutView(image: url, headerTitle: dRecommTopObject.sections[section].sectionTitle)
+        headerView.layoutView(image: dRecommTopObject.image, headerTitle: dRecommTopObject.category)
         
         return headerView
     }
@@ -117,27 +119,27 @@ extension DRecommCategoryDetailViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        guard let dRecommTopObject = self.dRecommTopObject else { return 0 }
-        
-        return dRecommTopObject.sections.count
+        return dRecommSections?.sectionContent.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        guard let dRecommTopObject = self.dRecommTopObject else { return 0 }
-        
-        return dRecommTopObject.sections[section].discountInfos.count
+        return dRecommSections?.sectionContent[section].subCategory.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: String(describing: DRecommCategoryTableViewCell.self),
-            for: indexPath) as? DRecommCategoryTableViewCell else {
+            for: indexPath) as? DRecommCategoryTableViewCell, let dRecommSections = dRecommSections else {
                 
                 return UITableViewCell()
         }
         
+        cell.layoutCell(
+            subCategory: dRecommSections.sectionContent[indexPath.section].subCategory,
+            subTitle: dRecommSections.sectionContent[indexPath.section].sectionTitle
+        )
         return cell
     }
 }

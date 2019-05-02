@@ -10,7 +10,11 @@ import UIKit
 
 class DRecommCategoryTableViewCell: HCBaseTableViewCell {
     
-    var dRecommTopObject: DRecommTopObjct?
+    var dRecommSection: DRecommSectionContent?
+    
+    var subCategory: [DRecommSubCategory] = []
+    
+    var subTitle: String = ""
 
     @IBOutlet weak var tableView: UITableView! {
         
@@ -32,8 +36,11 @@ class DRecommCategoryTableViewCell: HCBaseTableViewCell {
 
     }
     
-    func layoutCell(dRecommTopObject: DRecommTopObjct) {
-        self.dRecommTopObject = dRecommTopObject
+    func layoutCell(subCategory: [DRecommSubCategory], subTitle: String) {
+
+        self.subCategory = subCategory
+        
+        self.subTitle = subTitle
     }
 
 }
@@ -63,7 +70,7 @@ extension DRecommCategoryTableViewCell: UITableViewDelegate {
         
         guard let headerView = view as? HCTableViewSectionHeaderView else { return view }
         
-        headerView.layoutView(contentTitle: dRecommTopObject?.sections[section].sectionTitle ?? "")
+        headerView.layoutView(contentTitle: subTitle)
         
         return headerView
     }
@@ -103,9 +110,9 @@ extension DRecommCategoryTableViewCell: UITableViewDataSource {
         }
         
         cell.layoutCell(
-            image: dRecommTopObject?.sections[indexPath.section].discountInfos[indexPath.row].image ?? "",
-            title: dRecommTopObject?.sections[indexPath.section].discountInfos[indexPath.row].title ?? "",
-            briefContent: dRecommTopObject?.sections[indexPath.section].discountInfos[indexPath.row].
+            image: subCategory[indexPath.section].subContent.discountInfos[indexPath.row].image,
+            title: subCategory[indexPath.section].subContent.discountInfos[indexPath.row].cardName,
+            briefContent: subCategory[indexPath.section].subContent.discountInfos[indexPath.row].title
         )
         
         return cell

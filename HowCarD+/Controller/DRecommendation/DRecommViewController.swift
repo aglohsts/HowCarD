@@ -683,7 +683,7 @@ extension DRecommViewController {
         })
     }
     
-    func getCategoryDiscountInfo(id: String, completionHandler: @escaping (DRecommTopObjct) -> Void) {
+    func getCategoryDiscountInfo(id: String, completionHandler: @escaping (DRecommTopObject) -> Void) {
         
         dRecommProvider.getTopDiscountInfos(id: id, completion: { [weak self] (result) in
             

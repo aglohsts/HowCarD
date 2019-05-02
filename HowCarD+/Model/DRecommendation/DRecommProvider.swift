@@ -16,7 +16,7 @@ typealias NewDiscountHandler = (Result<[DiscountDetail]>) -> Void
 
 typealias SelectedDiscountHandler = (Result<[DiscountDetail]>) -> Void
 
-typealias DRecommTopHandler = (Result<DRecommTopObjct>) -> Void
+typealias DRecommTopHandler = (Result<DRecommTopObject>) -> Void
 
 class DRecommProvider {
     
@@ -160,7 +160,7 @@ class DRecommProvider {
                     
 //                                        let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
                     
-                    let dRecommTopObjct = try strongSelf.decoder.decode(DRecommTopObjct.self, from: data)
+                    let dRecommTopObjct = try strongSelf.decoder.decode(DRecommTopObject.self, from: data)
                     
                     completion(Result.success(dRecommTopObjct))
                     
