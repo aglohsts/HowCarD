@@ -26,7 +26,7 @@ class QAProvider {
                 
                 do {
                     
-                                        let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
+//                                        let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
                     
                     let bankObjects = try strongSelf.decoder.decode([BankObject].self, from: data)
                     

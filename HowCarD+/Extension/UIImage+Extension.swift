@@ -56,6 +56,10 @@ enum ImageAsset: String {
     
     // Other Icons - DRecomm
     case Icons_Next
+    
+    // Other Icons - QA
+    case Icons_Call
+    case Icons_SendMail
 
     // Image
     case Image_Placeholder

@@ -8,13 +8,15 @@
 
 import UIKit
 
-class CallHelpTableViewCell: UITableViewCell {
+class CallHelpTableViewCell: HCBaseTableViewCell {
 
+    @IBOutlet weak var backView: UIView!
+    
     @IBOutlet weak var bankIconImageView: UIImageView!
     
-    @IBOutlet weak var bankNameLabel: UILabel!
+    @IBOutlet weak var bankIdLabel: UILabel!
     
-    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var bankNameLabel: UILabel!
     
     @IBOutlet weak var callButton: UIButton!
     
@@ -22,7 +24,19 @@ class CallHelpTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        layoutCell()
+    }
+    
+    private func layoutCell() {
+        
+        backView.roundCorners(
+            [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner],
+            radius: 4.0)
+        
+        bankIconImageView.roundCorners(
+            [.layerMinXMaxYCorner, .layerMinXMinYCorner],
+            radius: 4.0)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -31,13 +45,13 @@ class CallHelpTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func layoutCell(bankIconImage: String, bankName: String, phoneNumber: String) {
+    func layoutCell(bankIconImage: String, bankName: String, bankId: String, phoneNumber: String) {
         
         bankIconImageView.loadImage(bankIconImage, placeHolder: UIImage.asset(.Image_Placeholder))
         
-        bankNameLabel.text = bankName
+        bankIdLabel.text = bankId
         
-        phoneNumberLabel.text = phoneNumber
+        bankNameLabel.text = bankName
         
         phoneNum = phoneNumber
     }
