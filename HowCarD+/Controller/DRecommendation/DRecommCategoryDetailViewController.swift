@@ -85,11 +85,11 @@ extension DRecommCategoryDetailViewController: UITableViewDelegate {
             withIdentifier: String(describing: DRecommCategoryHeaderView.self)
         )
         
-        guard let headerView = view as? DRecommCategoryHeaderView else { return view }
+        guard let headerView = view as? DRecommCategoryHeaderView, let dRecommTopObject = dRecommTopObject else { return view }
         
         let url = "https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/21/27/4f/21274f72-38eb-c0f1-0c76-685e5666eff5/AppIcon-0-1x_U007emarketing-0-0-85-220-0-5.png/246x0w.jpg"
         
-        headerView.layoutView(image: url, headerTitle: "711")
+        headerView.layoutView(image: url, headerTitle: dRecommTopObject.sections[section].sectionTitle)
         
         return headerView
     }

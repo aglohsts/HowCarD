@@ -10,6 +10,12 @@ import UIKit
 
 class DRecommCategoryDetailTableViewCell: HCBaseTableViewCell {
 
+    @IBOutlet weak var discountImageView: UIImageView!
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var briefContentLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +27,12 @@ class DRecommCategoryDetailTableViewCell: HCBaseTableViewCell {
         // Configure the view for the selected state
     }
 
+    func layoutCell(image: String, title: String, briefContent: String) {
+        
+        discountImageView.loadImage(image, placeHolder: UIImage.asset(.Image_Placeholder))
+        
+        titleLabel.text = title
+        
+        briefContentLabel.text = briefContent
+    }
 }

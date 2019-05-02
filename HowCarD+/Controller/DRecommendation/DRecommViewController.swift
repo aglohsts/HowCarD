@@ -91,6 +91,8 @@ class DRecommViewController: HCBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addObserver()
+        
         setupTableView()
         
         getData()
@@ -221,149 +223,162 @@ extension DRecommViewController {
     }
     
     @objc func updateReadDiscount() {
+        checkReadDiscount()
         
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     @objc func updateReadCard() {
+        checkReadCard()
         
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
-    
+    // swiftlint:disable cyclomatic_complexity
     func markAsRead(indexPath: IndexPath) {
         
         switch indexPath.section {
             
         case DRecommSection.newCards.rawValue:
             
-            newCards[indexPath.row].isRead = true
-            
-            guard var cardBasicInfoObject = dRecommArray[indexPath.section][indexPath.row] as? CardBasicInfoObject else { return }
-            
-            cardBasicInfoObject.isRead = true
-            
-            dRecommArray[indexPath.section][indexPath.row] = cardBasicInfoObject
-            
-            // Firebase
-            if userReadCardIds.contains(newCards[indexPath.row].id) {
+            if newCards[indexPath.row].isRead != true {
                 
-                return
-            } else {
-                userReadCardIds.append(newCards[indexPath.row].id)
+                newCards[indexPath.row].isRead = true
                 
-                guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+                guard var cardBasicInfoObject = dRecommArray[indexPath.section][indexPath.row] as? CardBasicInfoObject else { return }
                 
-                HCFirebaseManager.shared.addId(
-                    userCollection: .isReadCards,
-                    uid: user.uid,
-                    id: newCards[indexPath.row].id
+                cardBasicInfoObject.isRead = true
+                
+                dRecommArray[indexPath.section][indexPath.row] = cardBasicInfoObject
+                
+                // Firebase
+                if userReadCardIds.contains(newCards[indexPath.row].id) {
+                    
+                    return
+                } else {
+                    userReadCardIds.append(newCards[indexPath.row].id)
+                    
+                    guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+                    
+                    HCFirebaseManager.shared.addId(
+                        userCollection: .isReadCards,
+                        uid: user.uid,
+                        id: newCards[indexPath.row].id
+                    )
+                }
+                
+                NotificationCenter.default.post(
+                    name: Notification.Name(rawValue: NotificationNames.updateReadCard.rawValue),
+                    object: nil
                 )
             }
-            
-            NotificationCenter.default.post(
-                name: Notification.Name(rawValue: NotificationNames.updateReadCard.rawValue),
-                object: nil
-            )
             
         case DRecommSection.newDiscounts.rawValue:
             
-            newDiscounts[indexPath.row].info.isRead = true
-            
-            guard var discountDetail = dRecommArray[indexPath.section][indexPath.row] as? DiscountDetail else { return }
-            
-            discountDetail.info.isRead = true
-            
-            dRecommArray[indexPath.section][indexPath.row] = discountDetail
-            
-            // Firebase
-            if userReadDiscountIds.contains(newDiscounts[indexPath.row].info.discountId) {
+            if newDiscounts[indexPath.row].info.isRead != true {
                 
-                return
-            } else {
-                userReadCardIds.append(newDiscounts[indexPath.row].info.discountId)
+                newDiscounts[indexPath.row].info.isRead = true
                 
-                guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+                guard var discountDetail = dRecommArray[indexPath.section][indexPath.row] as? DiscountDetail else { return }
                 
-                HCFirebaseManager.shared.addId(
-                    userCollection: .isReadDiscounts,
-                    uid: user.uid,
-                    id: newDiscounts[indexPath.row].info.discountId
+                discountDetail.info.isRead = true
+                
+                dRecommArray[indexPath.section][indexPath.row] = discountDetail
+                
+                // Firebase
+                if userReadDiscountIds.contains(newDiscounts[indexPath.row].info.discountId) {
+                    
+                    return
+                } else {
+                    userReadCardIds.append(newDiscounts[indexPath.row].info.discountId)
+                    
+                    guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+                    
+                    HCFirebaseManager.shared.addId(
+                        userCollection: .isReadDiscounts,
+                        uid: user.uid,
+                        id: newDiscounts[indexPath.row].info.discountId
+                    )
+                }
+                
+                NotificationCenter.default.post(
+                    name: Notification.Name(rawValue: NotificationNames.updateReadDiscount.rawValue),
+                    object: nil
                 )
             }
-            
-            NotificationCenter.default.post(
-                name: Notification.Name(rawValue: NotificationNames.updateReadDiscount.rawValue),
-                object: nil
-            )
-            
         case DRecommSection.selectedCards.rawValue:
             
-            selectedCards[indexPath.row].isRead = true
-            
-            guard var cardBasicInfoObject = dRecommArray[indexPath.section][indexPath.row] as? CardBasicInfoObject else { return }
-            
-            cardBasicInfoObject.isRead = true
-            
-            dRecommArray[indexPath.section][indexPath.row] = cardBasicInfoObject
-            
-            // Firebase
-            if userReadCardIds.contains(selectedCards[indexPath.row].id) {
+            if selectedCards[indexPath.row].isRead != true {
                 
-                return
-            } else {
-                userReadCardIds.append(selectedCards[indexPath.row].id)
+                selectedCards[indexPath.row].isRead = true
                 
-                guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+                guard var cardBasicInfoObject = dRecommArray[indexPath.section][indexPath.row] as? CardBasicInfoObject else { return }
                 
-                HCFirebaseManager.shared.addId(
-                    userCollection: .isReadCards,
-                    uid: user.uid,
-                    id: selectedCards[indexPath.row].id
+                cardBasicInfoObject.isRead = true
+                
+                dRecommArray[indexPath.section][indexPath.row] = cardBasicInfoObject
+                
+                // Firebase
+                if userReadCardIds.contains(selectedCards[indexPath.row].id) {
+                    
+                    return
+                } else {
+                    userReadCardIds.append(selectedCards[indexPath.row].id)
+                    
+                    guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+                    
+                    HCFirebaseManager.shared.addId(
+                        userCollection: .isReadCards,
+                        uid: user.uid,
+                        id: selectedCards[indexPath.row].id
+                    )
+                }
+                
+                NotificationCenter.default.post(
+                    name: Notification.Name(rawValue: NotificationNames.updateReadCard.rawValue),
+                    object: nil
                 )
             }
-            
-            NotificationCenter.default.post(
-                name: Notification.Name(rawValue: NotificationNames.updateReadCard.rawValue),
-                object: nil
-            )
-            
         case DRecommSection.selectedDiscounts.rawValue:
             
-            selectedDiscounts[indexPath.row].info.isRead = true
-            
-            guard var discountDetail = dRecommArray[indexPath.section][indexPath.row] as? DiscountDetail else { return }
-            
-            discountDetail.info.isRead = true
-            
-            dRecommArray[indexPath.section][indexPath.row] = discountDetail
-            
-            // Firebase
-            if userReadDiscountIds.contains(selectedDiscounts[indexPath.row].info.discountId) {
+            if selectedDiscounts[indexPath.row].info.isRead != true {
                 
-                return
-            } else {
-                userReadCardIds.append(selectedDiscounts[indexPath.row].info.discountId)
+                selectedDiscounts[indexPath.row].info.isRead = true
                 
-                guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+                guard var discountDetail = dRecommArray[indexPath.section][indexPath.row] as? DiscountDetail else { return }
                 
-                HCFirebaseManager.shared.addId(
-                    userCollection: .isReadDiscounts,
-                    uid: user.uid,
-                    id: selectedDiscounts[indexPath.row].info.discountId
+                discountDetail.info.isRead = true
+                
+                dRecommArray[indexPath.section][indexPath.row] = discountDetail
+                
+                // Firebase
+                if userReadDiscountIds.contains(selectedDiscounts[indexPath.row].info.discountId) {
+                    
+                    return
+                } else {
+                    userReadCardIds.append(selectedDiscounts[indexPath.row].info.discountId)
+                    
+                    guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+                    
+                    HCFirebaseManager.shared.addId(
+                        userCollection: .isReadDiscounts,
+                        uid: user.uid,
+                        id: selectedDiscounts[indexPath.row].info.discountId
+                    )
+                }
+                
+                NotificationCenter.default.post(
+                    name: Notification.Name(rawValue: NotificationNames.updateReadDiscount.rawValue),
+                    object: nil
                 )
             }
-            
-            NotificationCenter.default.post(
-                name: Notification.Name(rawValue: NotificationNames.updateReadDiscount.rawValue),
-                object: nil
-            )
-            
         default: return
         }
-        
-        DispatchQueue.main.async {
-            
-            self.tableView.reloadData()
-        }
     }
+    // swiftlint:enable cyclomatic_complexity
 }
 
 // MARK: - TableView
@@ -425,6 +440,10 @@ extension DRecommViewController: UITableViewDelegate {
         }, completion: nil)
         
         markAsRead(indexPath: indexPath)
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -687,7 +706,7 @@ extension DRecommViewController {
         
         for index in 0 ..< newCards.count {
                 
-            newCards[index].isRead = false
+//            newCards[index].isRead = false
             
             userReadCardIds.forEach({ (id) in
                 
@@ -700,7 +719,7 @@ extension DRecommViewController {
         
         for index in 0 ..< selectedCards.count {
             
-            selectedCards[index].isRead = false
+//            selectedCards[index].isRead = false
             
             userReadCardIds.forEach({ (id) in
                 
@@ -718,7 +737,7 @@ extension DRecommViewController {
         
         for index in 0 ..< newDiscounts.count {
             
-            newDiscounts[index].info.isRead = false
+//            newDiscounts[index].info.isRead = false
             
             userReadDiscountIds.forEach({ (id) in
                 
@@ -731,7 +750,7 @@ extension DRecommViewController {
         
         for index in 0 ..< selectedDiscounts.count {
             
-            selectedDiscounts[index].info.isRead = false
+//            selectedDiscounts[index].info.isRead = false
             
             userReadDiscountIds.forEach({ (id) in
                 

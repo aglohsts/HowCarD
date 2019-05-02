@@ -16,20 +16,13 @@ struct BriefIntro: Codable {
     let content: String
 }
 
-struct DRecommTop {
-    
-    let category: String
-    
-    let categoryId: String
-    
-    let image: UIImage
-}
-
-struct DRecommTopObjct: Codable {
+struct DRecommTopObject: Codable {
     
     let category: String // 超商
     
     let categoryId: String // cvs
+    
+    let image: String
     
     let sections: [DRecommSection]
 }
@@ -37,6 +30,18 @@ struct DRecommTopObjct: Codable {
 struct DRecommSection: Codable {
     
     let sectionTitle: String // 711, 全家
+    
+    let subCategory: [DRecommSubCategory]
+}
+
+struct DRecommSubCategory: Codable {
+    
+    let subTitle: String
+    
+    let subContent: [DRecommSubContent]
+}
+
+struct DRecommSubContent: Codable {
     
     let discountInfos: [DiscountInfo]
 }

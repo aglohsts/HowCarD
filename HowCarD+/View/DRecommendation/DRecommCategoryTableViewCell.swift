@@ -9,6 +9,8 @@
 import UIKit
 
 class DRecommCategoryTableViewCell: HCBaseTableViewCell {
+    
+    var dRecommTopObject: DRecommTopObjct?
 
     @IBOutlet weak var tableView: UITableView! {
         
@@ -21,8 +23,7 @@ class DRecommCategoryTableViewCell: HCBaseTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        
+
         setupTableView()
     }
 
@@ -31,7 +32,9 @@ class DRecommCategoryTableViewCell: HCBaseTableViewCell {
 
     }
     
-    
+    func layoutCell(dRecommTopObject: DRecommTopObjct) {
+        self.dRecommTopObject = dRecommTopObject
+    }
 
 }
 
@@ -60,7 +63,7 @@ extension DRecommCategoryTableViewCell: UITableViewDelegate {
         
         guard let headerView = view as? HCTableViewSectionHeaderView else { return view }
         
-        // TODO: layoutView
+        headerView.layoutView(contentTitle: dRecommTopObject?.sections[section].sectionTitle ?? "")
         
         return headerView
     }
@@ -68,8 +71,6 @@ extension DRecommCategoryTableViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
         guard let headerView = view as? HCTableViewSectionHeaderView else { return }
-        
-        headerView.layoutView(contentTitle: "123")
         
         // TODO: background color
         
@@ -100,6 +101,12 @@ extension DRecommCategoryTableViewCell: UITableViewDataSource {
                 
                 return UITableViewCell()
         }
+        
+        cell.layoutCell(
+            image: dRecommTopObject?.sections[indexPath.section].discountInfos[indexPath.row].image ?? "",
+            title: dRecommTopObject?.sections[indexPath.section].discountInfos[indexPath.row].title ?? "",
+            briefContent: dRecommTopObject?.sections[indexPath.section].discountInfos[indexPath.row].
+        )
         
         return cell
     }
