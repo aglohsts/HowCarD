@@ -90,7 +90,7 @@ enum DRecommRequest: HCRequest {
             
         case .topDiscountInfos(let id): return "/data/dRecomm/categoryDetail/\(id).json"
             
-        case .top: return "https://how-card.firebaseio.com/data/dRecomm/top.json"
+        case .top: return "/data/dRecomm/top.json"
         }
     }
 }

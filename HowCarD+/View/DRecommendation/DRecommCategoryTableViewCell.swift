@@ -10,9 +10,28 @@ import UIKit
 
 class DRecommCategoryTableViewCell: HCBaseTableViewCell {
     
-    var dRecommSection: DRecommSectionContent?
+    var dRecommSection: DRecommSectionContent? {
+        
+        didSet {
+            
+            DispatchQueue.main.async {
+                
+                self.tableView.reloadData()
+            }
+            
+        }
+    }
     
-    var subCategory: [DRecommSubCategory] = []
+    var subCategory: [DRecommSubCategory] = [] {
+        
+        didSet {
+            
+            DispatchQueue.main.async {
+
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     var subTitle: String = ""
 
@@ -93,11 +112,11 @@ extension DRecommCategoryTableViewCell: UITableViewDelegate {
 extension DRecommCategoryTableViewCell: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return subCategory.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return subCategory[section].subContent.discountInfos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

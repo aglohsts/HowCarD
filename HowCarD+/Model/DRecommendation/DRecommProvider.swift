@@ -16,7 +16,9 @@ typealias NewDiscountHandler = (Result<[DiscountDetail]>) -> Void
 
 typealias SelectedDiscountHandler = (Result<[DiscountDetail]>) -> Void
 
-typealias DRecommTopHandler = (Result<DRecommTopObject>) -> Void
+typealias CategoryDetailHandler = (Result<DRecommSections>) -> Void
+
+typealias TopDiscountHandler = (Result<[DRecommTopObject]>) -> Void
 
 class DRecommProvider {
     
@@ -146,7 +148,7 @@ class DRecommProvider {
         })
     }
     
-    func getTopDiscountInfos(id: String, completion: @escaping DRecommTopHandler) {
+    func getDiscountInfos(id: String, completion: @escaping CategoryDetailHandler) {
         
         HTTPClient.shared.request(DRecommRequest.topDiscountInfos(id), completion: { [weak self] (result) in
             
@@ -160,9 +162,41 @@ class DRecommProvider {
                     
 //                                        let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
                     
-                    let dRecommTopObjct = try strongSelf.decoder.decode(DRecommTopObject.self, from: data)
+                    let dRecommSections = try strongSelf.decoder.decode(DRecommSections.self, from: data)
                     
-                    completion(Result.success(dRecommTopObjct))
+                    completion(Result.success(dRecommSections))
+                    
+                } catch {
+                    
+                    completion(Result.failure(error))
+                }
+                
+            case .failure(let error):
+                
+                completion(Result.failure(error))
+            }
+            
+        })
+    }
+    
+    func getDiscountCategory(completion: @escaping
+        TopDiscountHandler) {
+        
+        HTTPClient.shared.request(DRecommRequest.top, completion: { [weak self] (result) in
+            
+            guard let strongSelf = self else { return }
+            
+            switch result {
+                
+            case .success(let data):
+                
+                do {
+                    
+//                    let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments])
+                    
+                    let dRecommTopObjects = try strongSelf.decoder.decode([DRecommTopObject].self, from: data)
+                    
+                    completion(Result.success(dRecommTopObjects))
                     
                 } catch {
                     

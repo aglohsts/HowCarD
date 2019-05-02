@@ -10,20 +10,18 @@ import UIKit
 
 class DRecommCategoryDetailViewController: HCBaseViewController {
     
-    var dRecommTopObject: DRecommTopObject? {
+    var dRecommSections: DRecommSections? {
         
         didSet {
             
             DispatchQueue.main.async {
                 
-                self.categoryLabel.text = self.dRecommTopObject?.categoryTitle
+                self.categoryLabel.text = self.dRecommSections?.categoryTitle
                 
                 self.tableView.reloadData()
             }
         }
     }
-    
-    var dRecommSections: DRecommSections?
     
     @IBOutlet weak var backView: UIView!
     
@@ -87,11 +85,13 @@ extension DRecommCategoryDetailViewController: UITableViewDelegate {
             withIdentifier: String(describing: DRecommCategoryHeaderView.self)
         )
         
-        guard let headerView = view as? DRecommCategoryHeaderView, let dRecommTopObject = dRecommTopObject else { return view }
+        guard let headerView = view as? DRecommCategoryHeaderView else { return view }
         
         let url = "https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/21/27/4f/21274f72-38eb-c0f1-0c76-685e5666eff5/AppIcon-0-1x_U007emarketing-0-0-85-220-0-5.png/246x0w.jpg"
         
-        headerView.layoutView(image: dRecommTopObject.image, headerTitle: dRecommTopObject.categoryTitle)
+        headerView.layoutView(
+            image: dRecommSections?.sectionContent[section].sectionImage ?? "",
+            headerTitle: dRecommSections?.sectionContent[section].sectionTitle ?? "")
         
         return headerView
     }
@@ -138,7 +138,7 @@ extension DRecommCategoryDetailViewController: UITableViewDataSource {
         
         cell.layoutCell(
             subCategory: dRecommSections.sectionContent[indexPath.section].subCategory,
-            subTitle: dRecommSections.sectionContent[indexPath.section].sectionTitle
+            subTitle: dRecommSections.sectionContent[indexPath.section].subCategory[indexPath.row].subTitle
         )
         return cell
     }

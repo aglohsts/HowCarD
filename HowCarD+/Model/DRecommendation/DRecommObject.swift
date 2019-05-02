@@ -27,12 +27,20 @@ struct DRecommTopObject: Codable {
 
 struct DRecommSections: Codable {
     
+    let categoryTitle: String // 超商
+    
+    let categoryId: String // cvs
+    
+    let categoryImage: String
+    
     let sectionContent: [DRecommSectionContent]
 }
 
 struct DRecommSectionContent: Codable {
     
     let sectionTitle: String // 711, 全家
+    
+    let sectionImage: String
     
     let subCategory: [DRecommSubCategory]
 }

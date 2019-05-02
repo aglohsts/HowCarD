@@ -10,9 +10,20 @@ import UIKit
 
 class DRecommTopViewController: HCBaseViewController {
     
+    let dRecommProvider = DRecommProvider()
+    
     var touchHandler: ((String) -> Void)?
     
-    var dRecommTops: [DRecommTopObject] = []
+    var dRecommTops: [DRecommTopObject] = [] {
+        
+        didSet {
+            
+            DispatchQueue.main.async {
+                
+                self.collectionView.reloadData()
+            }
+        }
+    }
 
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -26,6 +37,8 @@ class DRecommTopViewController: HCBaseViewController {
         super.viewDidLoad()
 
         setupCollectionView()
+        
+        getDiscountCategory()
     }
 
     private func setupCollectionView() {
@@ -42,6 +55,23 @@ class DRecommTopViewController: HCBaseViewController {
 }
 
 extension DRecommTopViewController {
+    
+    func getDiscountCategory() {
+        
+        dRecommProvider.getDiscountCategory(completion: { [weak self] (result) in
+            
+            switch result {
+                
+            case .success(let dRecommTops):
+                
+                self?.dRecommTops = dRecommTops
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        })
+    }
 }
 
 extension DRecommTopViewController: UICollectionViewDelegate {
@@ -69,7 +99,7 @@ extension DRecommTopViewController: UICollectionViewDataSource {
 
         guard let newInfoCell = cell as? DRecommCollectionViewCell else { return cell }
 
-        newInfoCell.layoutCell(category: dRecommTops[indexPath.item].category, image: "")
+        newInfoCell.layoutCell(category: dRecommTops[indexPath.item].categoryTitle, image: dRecommTops[indexPath.item].image)
 
         return newInfoCell
     }

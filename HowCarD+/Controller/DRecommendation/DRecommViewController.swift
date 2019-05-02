@@ -176,18 +176,19 @@ extension DRecommViewController {
                 
                 guard let strongSelf = self else { return }
                 
-                strongSelf.getCategoryDiscountInfo(id: id, completionHandler: { [weak self] dRecommTopObjct in
+                strongSelf.getCategoryDiscountInfo(id: id, completionHandler: { [weak self] dRecommSections in
                     
                     self?.dRecommCategoryDetailVC.loadViewIfNeeded()
                     
-                    self?.dRecommCategoryDetailVC.dRecommTopObject = dRecommTopObjct
+                    self?.dRecommCategoryDetailVC.dRecommSections = dRecommSections
                 })
                 
                 if strongSelf.dRecommCategoryDetailVC.view.superview == nil {
                     
                     strongSelf.addChild(strongSelf.dRecommCategoryDetailVC)
                     
-                    let toContainerLeftBottom = strongSelf.containerView.frame.origin.y + strongSelf.containerView.frame.height
+                    let toContainerLeftBottom =
+                        strongSelf.containerView.frame.origin.y + strongSelf.containerView.frame.height
                     
                     strongSelf.dRecommCategoryDetailVC.view.frame = CGRect(
                         x: 0, y: toContainerLeftBottom,
@@ -683,15 +684,15 @@ extension DRecommViewController {
         })
     }
     
-    func getCategoryDiscountInfo(id: String, completionHandler: @escaping (DRecommTopObject) -> Void) {
+    func getCategoryDiscountInfo(id: String, completionHandler: @escaping (DRecommSections) -> Void) {
         
-        dRecommProvider.getTopDiscountInfos(id: id, completion: { [weak self] (result) in
+        dRecommProvider.getDiscountInfos(id: id, completion: { [weak self] (result) in
             
             switch result {
                 
-            case .success(let dRecommTopObjct):
+            case .success(let dRecommSections):
                 
-                completionHandler(dRecommTopObjct)
+                completionHandler(dRecommSections)
                 
             case .failure(let error):
                 

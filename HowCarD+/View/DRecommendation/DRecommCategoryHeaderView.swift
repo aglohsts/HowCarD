@@ -22,11 +22,13 @@ class DRecommCategoryHeaderView: UITableViewHeaderFooterView {
         
         imageView.roundCorners(
             [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner],
-            radius: 17
+            radius: 18
         )
         
-        imageBackView.roundCorners([.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner],
-                                   radius: 17)
+        imageBackView.roundCorners(
+            [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner],
+            radius: 18
+        )
         
         headerBackView.backgroundColor = UIColor.hexStringToUIColor(hex: .darkblue)
         
