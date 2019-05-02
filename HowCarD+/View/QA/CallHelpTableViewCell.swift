@@ -18,6 +18,8 @@ class CallHelpTableViewCell: UITableViewCell {
     
     @IBOutlet weak var callButton: UIButton!
     
+    var phoneNum: String = ""
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -36,5 +38,13 @@ class CallHelpTableViewCell: UITableViewCell {
         bankNameLabel.text = bankName
         
         phoneNumberLabel.text = phoneNumber
+        
+        phoneNum = phoneNumber
+    }
+    
+    @IBAction func onCall(_ sender: UIButton) {
+        
+        guard let number = URL(string: "tel://" + phoneNum) else { return }
+        UIApplication.shared.open(number)
     }
 }

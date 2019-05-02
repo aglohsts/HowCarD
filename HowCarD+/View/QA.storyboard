@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--卡問答-->
+        <!--卡客服-->
         <scene sceneID="wrS-lq-lxo">
             <objects>
                 <viewController storyboardIdentifier="QAViewController" id="JwP-gB-IPc" customClass="QAViewController" customModule="HowCarD" customModuleProvider="target" sceneMemberID="viewController">
@@ -34,7 +34,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bZI-RD-fjJ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="卡問答" id="tE1-xd-3Qb"/>
+                    <navigationItem key="navigationItem" title="卡客服" id="tE1-xd-3Qb"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="br6-zX-2NR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -70,7 +70,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="88" id="J9X-db-lPe" customClass="CallHelpTableViewCell" customModule="HowCarD" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CallHelpTableViewCell" rowHeight="88" id="J9X-db-lPe" customClass="CallHelpTableViewCell" customModule="HowCarD" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J9X-db-lPe" id="xzu-uB-Nt9">
@@ -99,6 +99,9 @@
                                                     <rect key="frame" x="333" y="28" width="46" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="onCall:" destination="J9X-db-lPe" eventType="touchUpInside" id="V4c-TD-25U"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>

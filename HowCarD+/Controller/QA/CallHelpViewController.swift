@@ -9,6 +9,19 @@
 import UIKit
 
 class CallHelpViewController: UIViewController {
+    
+    let qaProvider = QAProvider()
+    
+    var bankObjects: [BankObject] = [] {
+        
+        didSet {
+            
+            DispatchQueue.main.async {
+                
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     @IBOutlet weak var tableView: UITableView! {
         
@@ -23,20 +36,44 @@ class CallHelpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        getBankInfo()
     }
 
 }
 
+extension CallHelpViewController {
+    
+    func getBankInfo() {
+        
+        qaProvider.getBankInfo(completion: { [weak self] (result) in
+            
+            switch result {
+                
+            case .success(let bankObjects):
+                
+                self?.bankObjects = bankObjects
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        })
+    }
+}
+
 extension CallHelpViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 70
+    }
     
 }
 
 extension CallHelpViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 3
+        return bankObjects.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,10 +83,13 @@ extension CallHelpViewController: UITableViewDataSource {
             for: indexPath
         )
         
-        guard let likedDiscountCell = cell as? CallHelpTableViewCell else { return cell }
+        guard let callHelpCell = cell as? CallHelpTableViewCell else { return cell }
         
-        return UITableViewCell()
+        callHelpCell.layoutCell(
+            bankIconImage: bankObjects[indexPath.row].bankInfo.bankIcon,
+            bankName: bankObjects[indexPath.row].bankInfo.bankName,
+            phoneNumber: bankObjects[indexPath.row].bankInfo.mobileFreeServiceNum ?? bankObjects[indexPath.row].bankInfo.cardCustomerServiceNum)
+        
+        return callHelpCell
     }
-    
-    
 }

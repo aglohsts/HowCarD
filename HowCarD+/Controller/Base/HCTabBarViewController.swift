@@ -18,7 +18,7 @@ enum Tab: String {
 
     case wallet = "卡收好"
 
-    case qa = "卡問答"
+    case qa = "卡客服"
 
     func controller() -> UIViewController {
 

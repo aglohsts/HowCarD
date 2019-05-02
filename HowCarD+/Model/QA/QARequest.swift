@@ -7,3 +7,40 @@
 //
 
 import Foundation
+
+enum QARequest: HCRequest {
+    
+    case bankInfo
+    
+    var headers: [String: String] {
+        
+        switch self {
+            
+        case .bankInfo: return [:]
+        }
+    }
+    
+    var body: [String: Any?]? {
+        
+        switch self {
+            
+        case .bankInfo: return nil
+        }
+    }
+    
+    var method: String {
+        
+        switch self {
+            
+        case .bankInfo: return HCHTTPMethod.GET.rawValue
+        }
+    }
+    
+    var endPoint: String {
+        
+        switch self {
+            
+        case .bankInfo: return "/data/qa/bankInfo.json"
+        }
+    }
+}
