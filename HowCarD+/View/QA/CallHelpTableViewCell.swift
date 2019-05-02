@@ -20,7 +20,25 @@ class CallHelpTableViewCell: HCBaseTableViewCell {
     
     @IBOutlet weak var callButton: UIButton!
     
+    @IBOutlet weak var mailButton: UIButton!
+    
     var phoneNum: String = ""
+    
+    var mail: String? {
+        
+        didSet {
+            
+            if mail == nil {
+                
+                mailButton.isHidden = true
+            } else {
+                
+                mailButton.isHidden = false
+            }
+        }
+    }
+    
+    var sendMailHandler: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,7 +63,7 @@ class CallHelpTableViewCell: HCBaseTableViewCell {
         // Configure the view for the selected state
     }
 
-    func layoutCell(bankIconImage: String, bankName: String, bankId: String, phoneNumber: String) {
+    func layoutCell(bankIconImage: String, bankName: String, bankId: String, phoneNumber: String, mail: String?) {
         
         bankIconImageView.loadImage(bankIconImage, placeHolder: UIImage.asset(.Image_Placeholder))
         
@@ -54,11 +72,18 @@ class CallHelpTableViewCell: HCBaseTableViewCell {
         bankNameLabel.text = bankName
         
         phoneNum = phoneNumber
+        
+        self.mail = mail
     }
     
     @IBAction func onCall(_ sender: UIButton) {
         
         guard let number = URL(string: "tel://" + phoneNum) else { return }
         UIApplication.shared.open(number)
+    }
+    
+    @IBAction func onSendMail(_ sender: Any) {
+        
+        sendMailHandler?()
     }
 }

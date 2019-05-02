@@ -26,4 +26,6 @@ struct BankInfo: Codable {
     let mobileFreeServiceNum: String?
     
     let officialWeb: String
+    
+    let mailWeb: String?
 }

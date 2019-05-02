@@ -40,6 +40,37 @@
             </objects>
             <point key="canvasLocation" x="92.753623188405811" y="54.910714285714285"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="W5u-74-pAC">
+            <objects>
+                <viewController id="i3R-c3-Dsd" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3au-Ij-VEz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rnz-IJ-9el">
+                                <rect key="frame" x="121" y="278" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZlN-Rb-eVS">
+                                <rect key="frame" x="20" y="492" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="zdW-2V-6Qm"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A5z-z6-mgq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1230" y="55"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ODS-BU-eSO">
             <objects>
@@ -69,7 +100,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5XF-Yz-TE5">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" placeholder="請輸入銀行代碼或名稱" id="2Yw-dF-MaH">
+                                <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" id="2Yw-dF-MaH">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -92,21 +123,21 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ud-iz-IqI">
-                                                            <rect key="frame" x="91.5" y="24.5" width="259.5" height="14.5"/>
+                                                            <rect key="frame" x="91.5" y="24.5" width="257.5" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whR-tw-k7Q">
-                                                            <rect key="frame" x="91.5" y="41.5" width="259.5" height="17"/>
+                                                            <rect key="frame" x="91.5" y="41.5" width="257.5" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icu-is-gbq">
-                                                            <rect key="frame" x="367" y="29.5" width="25" height="25"/>
+                                                            <rect key="frame" x="365" y="28.5" width="27" height="27"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="25" id="WQK-5o-NYj"/>
+                                                                <constraint firstAttribute="height" constant="27" id="WQK-5o-NYj"/>
                                                                 <constraint firstAttribute="width" secondItem="icu-is-gbq" secondAttribute="height" multiplier="1:1" id="zFL-iX-u7t"/>
                                                             </constraints>
                                                             <state key="normal" image="Icons_Call"/>
@@ -114,12 +145,16 @@
                                                                 <action selector="onCall:" destination="J9X-db-lPe" eventType="touchUpInside" id="V4c-TD-25U"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCR-Ve-EsG">
-                                                            <rect key="frame" x="334" y="29.5" width="25" height="25"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCR-Ve-EsG">
+                                                            <rect key="frame" x="307" y="32.5" width="38" height="19"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" secondItem="dCR-Ve-EsG" secondAttribute="height" multiplier="1:1" id="VAZ-3r-EA0"/>
-                                                                <constraint firstAttribute="height" constant="25" id="bsc-1C-zww"/>
+                                                                <constraint firstAttribute="width" secondItem="dCR-Ve-EsG" secondAttribute="height" multiplier="2:1" id="VAZ-3r-EA0"/>
+                                                                <constraint firstAttribute="width" constant="38" id="je5-hn-ae5"/>
                                                             </constraints>
+                                                            <state key="normal" image="Icons_SendMail"/>
+                                                            <connections>
+                                                                <action selector="onSendMail:" destination="J9X-db-lPe" eventType="touchUpInside" id="I1e-4H-NRQ"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -127,7 +162,7 @@
                                                         <constraint firstItem="whR-tw-k7Q" firstAttribute="leading" secondItem="lg5-K7-KiC" secondAttribute="trailing" constant="8" id="0K2-PZ-GgD"/>
                                                         <constraint firstItem="9Ud-iz-IqI" firstAttribute="leading" secondItem="whR-tw-k7Q" secondAttribute="leading" id="5Fu-HV-s7o"/>
                                                         <constraint firstItem="icu-is-gbq" firstAttribute="centerY" secondItem="AJd-rr-ede" secondAttribute="centerY" id="6dY-5j-aFF"/>
-                                                        <constraint firstItem="icu-is-gbq" firstAttribute="leading" secondItem="dCR-Ve-EsG" secondAttribute="trailing" constant="8" id="6mi-gy-Jao"/>
+                                                        <constraint firstItem="icu-is-gbq" firstAttribute="leading" secondItem="dCR-Ve-EsG" secondAttribute="trailing" constant="20" id="6mi-gy-Jao"/>
                                                         <constraint firstAttribute="bottom" secondItem="lg5-K7-KiC" secondAttribute="bottom" id="APT-tf-YYZ"/>
                                                         <constraint firstItem="whR-tw-k7Q" firstAttribute="centerY" secondItem="AJd-rr-ede" secondAttribute="centerY" constant="8" id="Adb-Zb-BHC"/>
                                                         <constraint firstItem="dCR-Ve-EsG" firstAttribute="centerY" secondItem="AJd-rr-ede" secondAttribute="centerY" id="FQQ-lk-JzJ"/>
@@ -153,6 +188,7 @@
                                             <outlet property="bankIdLabel" destination="9Ud-iz-IqI" id="gzM-wg-r0y"/>
                                             <outlet property="bankNameLabel" destination="whR-tw-k7Q" id="4hQ-Zj-zD3"/>
                                             <outlet property="callButton" destination="icu-is-gbq" id="6Ne-ZC-gGA"/>
+                                            <outlet property="mailButton" destination="dCR-Ve-EsG" id="pp6-ie-7pm"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -179,5 +215,6 @@
     </scenes>
     <resources>
         <image name="Icons_Call" width="71" height="67"/>
+        <image name="Icons_SendMail" width="82" height="41"/>
     </resources>
 </document>
