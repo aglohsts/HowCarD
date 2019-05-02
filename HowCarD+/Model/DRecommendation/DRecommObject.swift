@@ -18,7 +18,7 @@ struct BriefIntro: Codable {
 
 struct DRecommTopObject: Codable {
     
-    let category: String // 超商
+    let categoryTitle: String // 超商
     
     let categoryId: String // cvs
     

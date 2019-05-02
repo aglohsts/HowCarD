@@ -20,6 +20,8 @@ enum DRecommRequest: HCRequest {
     
     case topDiscountInfos(String)
     
+    case top
+    
     var headers: [String: String] {
         
         switch self {
@@ -33,6 +35,8 @@ enum DRecommRequest: HCRequest {
         case .selectedDiscounts: return [:]
             
         case .topDiscountInfos(_): return [:]
+            
+        case .top: return [:]
         }
     }
     
@@ -49,6 +53,8 @@ enum DRecommRequest: HCRequest {
         case .selectedDiscounts: return nil
             
         case .topDiscountInfos(_): return nil
+            
+        case .top: return nil
         }
     }
     
@@ -65,6 +71,8 @@ enum DRecommRequest: HCRequest {
         case .selectedDiscounts: return HCHTTPMethod.GET.rawValue
             
         case .topDiscountInfos(_): return HCHTTPMethod.GET.rawValue
+            
+        case .top: return HCHTTPMethod.GET.rawValue
         }
     }
     
@@ -80,7 +88,9 @@ enum DRecommRequest: HCRequest {
             
         case .selectedDiscounts: return "/data/dRecomm/lobby/selectedDiscounts.json"
             
-        case .topDiscountInfos(let id): return "/data/dRecomm/topDiscountInfos/\(id).json"
+        case .topDiscountInfos(let id): return "/data/dRecomm/categoryDetail/\(id).json"
+            
+        case .top: return "https://how-card.firebaseio.com/data/dRecomm/top.json"
         }
     }
 }

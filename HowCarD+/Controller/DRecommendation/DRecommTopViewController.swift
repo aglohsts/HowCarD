@@ -12,15 +12,7 @@ class DRecommTopViewController: HCBaseViewController {
     
     var touchHandler: ((String) -> Void)?
     
-    var dRecommTops: [DRecommTop] = [
-        DRecommTop(category: "超商", categoryId: "cvs", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
-        DRecommTop(category: "行動支付", categoryId: "mobilePay", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
-        DRecommTop(category: "網購", categoryId: "internet", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
-        DRecommTop(category: "電影", categoryId: "movie", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
-        DRecommTop(category: "外幣消費", categoryId: "oversea", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
-        DRecommTop(category: "加油", categoryId: "gas", image: UIImage.asset(.Image_Placeholder) ?? UIImage()),
-        DRecommTop(category: "超市", categoryId: "supermarket", image: UIImage.asset(.Image_Placeholder) ?? UIImage())
-    ]
+    var dRecommTops: [DRecommTopObject] = []
 
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
