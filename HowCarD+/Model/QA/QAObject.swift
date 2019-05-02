@@ -7,3 +7,23 @@
 //
 
 import Foundation
+
+struct BankObject: Codable {
+    
+    let bankId: String
+    
+    let bankInfo: BankInfo
+}
+
+struct BankInfo: Codable {
+    
+    let bankName: String
+    
+    let bankIcon: String
+    
+    let cardCustomerServiceNum: String
+    
+    let mobileFreeServiceNum: String?
+    
+    let officialWeb: String
+}

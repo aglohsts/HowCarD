@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct BankObject: Codable {
+struct Bank: Codable {
     
     let fullName: String
     

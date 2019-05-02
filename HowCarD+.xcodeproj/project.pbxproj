@@ -16,6 +16,7 @@
 		CA13E913227AF26700DA641F /* CallHelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA13E912227AF26700DA641F /* CallHelpTableViewCell.swift */; };
 		CA13E916227AF4C900DA641F /* QAObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA13E915227AF4C900DA641F /* QAObject.swift */; };
 		CA13E918227AF4D900DA641F /* QAProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA13E917227AF4D900DA641F /* QAProvider.swift */; };
+		CA13E91A227AF54100DA641F /* QARequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA13E919227AF54100DA641F /* QARequest.swift */; };
 		CA171B62225330070042BBDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B61225330070042BBDC /* AppDelegate.swift */; };
 		CA171B67225330070042BBDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA171B65225330070042BBDC /* Main.storyboard */; };
 		CA171B69225330090042BBDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA171B68225330090042BBDC /* Assets.xcassets */; };
@@ -123,6 +124,7 @@
 		CA13E912227AF26700DA641F /* CallHelpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallHelpTableViewCell.swift; sourceTree = "<group>"; };
 		CA13E915227AF4C900DA641F /* QAObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAObject.swift; sourceTree = "<group>"; };
 		CA13E917227AF4D900DA641F /* QAProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAProvider.swift; sourceTree = "<group>"; };
+		CA13E919227AF54100DA641F /* QARequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QARequest.swift; sourceTree = "<group>"; };
 		CA171B5E225330070042BBDC /* HowCarD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HowCarD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA171B61225330070042BBDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA171B66225330070042BBDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 			children = (
 				CA13E915227AF4C900DA641F /* QAObject.swift */,
 				CA13E917227AF4D900DA641F /* QAProvider.swift */,
+				CA13E919227AF54100DA641F /* QARequest.swift */,
 			);
 			path = QA;
 			sourceTree = "<group>";
@@ -452,9 +455,9 @@
 		CA23A32E226E1EDC008B8DD8 /* DRecommendation */ = {
 			isa = PBXGroup;
 			children = (
+				CA1BFCDF226F0B8D008F38BC /* DRecommObject.swift */,
 				CA25DFD7226E1FFC003AC89C /* DRecommProvider.swift */,
 				CA25DFD9226E200C003AC89C /* DRecommRequest.swift */,
-				CA1BFCDF226F0B8D008F38BC /* DRecommObject.swift */,
 			);
 			path = DRecommendation;
 			sourceTree = "<group>";
@@ -869,6 +872,7 @@
 				CA6B5C6E2266FF3F00B180A2 /* KingfisherWrapper.swift in Sources */,
 				CA6B5C7122670D2700B180A2 /* HTTPCilent.swift in Sources */,
 				CA171BA0225457BA0042BBDC /* UITableView+Extension.swift in Sources */,
+				CA13E91A227AF54100DA641F /* QARequest.swift in Sources */,
 				CA2F7DD82257793A005E4361 /* FilterTextCollectionViewCell.swift in Sources */,
 				CAFE828A225F3C9D004F4E63 /* SignUpViewController.swift in Sources */,
 			);
