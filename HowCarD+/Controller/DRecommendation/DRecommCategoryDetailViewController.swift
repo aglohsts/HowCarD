@@ -10,6 +10,11 @@ import UIKit
 
 class DRecommCategoryDetailViewController: HCBaseViewController {
     
+    private struct Segue {
+        
+        static let categoryToDiscountDetail = "CategoryToDiscountDetail"
+    }
+    
     var dRecommSections: DRecommSections? {
         
         didSet {
@@ -61,6 +66,19 @@ class DRecommCategoryDetailViewController: HCBaseViewController {
 }
 
 extension DRecommCategoryDetailViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Segue.categoryToDiscountDetail {
+            
+            guard let discountDetailVC = segue.destination as? DiscountDetailViewController,
+                let id = sender as? String else {
+                    return
+            }
+            
+            discountDetailVC.discountId = id
+        }
+    }
     
     private func setupTableView() {
         
@@ -146,6 +164,11 @@ extension DRecommCategoryDetailViewController: UITableViewDataSource {
             subCategory: dRecommSections.sectionContent[indexPath.section].subCategory,
             subTitle: dRecommSections.sectionContent[indexPath.section].subCategory[indexPath.row].subTitle
         )
+        
+        cell.cellTouchHandler = { [weak self] id in
+            
+            self?.performSegue(withIdentifier: Segue.categoryToDiscountDetail, sender: id)
+        }
         
         return cell
     }

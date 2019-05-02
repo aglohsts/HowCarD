@@ -13,9 +13,9 @@ class DRecommViewController: HCBaseViewController {
     
     private struct Segue {
         
-        static let cardDetail = "toCardDetail"
+        static let cardDetail = "ToCardDetail"
         
-        static let discountDetail = "toDiscountDetail"
+        static let discountDetail = "ToDiscountDetail"
         
         static let topVC = "DRecommTopVC"
     }

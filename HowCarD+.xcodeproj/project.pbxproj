@@ -12,6 +12,10 @@
 		CA12C75D2279620400491BD4 /* DRecommCategoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA12C75C2279620400491BD4 /* DRecommCategoryHeaderView.xib */; };
 		CA12C7602279747700491BD4 /* DRecommCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA12C75F2279747700491BD4 /* DRecommCategoryTableViewCell.swift */; };
 		CA12C762227975AE00491BD4 /* DRecommCategoryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA12C761227975AE00491BD4 /* DRecommCategoryDetailTableViewCell.swift */; };
+		CA13E910227AF18C00DA641F /* CallHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA13E90F227AF18C00DA641F /* CallHelpViewController.swift */; };
+		CA13E913227AF26700DA641F /* CallHelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA13E912227AF26700DA641F /* CallHelpTableViewCell.swift */; };
+		CA13E916227AF4C900DA641F /* QAObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA13E915227AF4C900DA641F /* QAObject.swift */; };
+		CA13E918227AF4D900DA641F /* QAProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA13E917227AF4D900DA641F /* QAProvider.swift */; };
 		CA171B62225330070042BBDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B61225330070042BBDC /* AppDelegate.swift */; };
 		CA171B67225330070042BBDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA171B65225330070042BBDC /* Main.storyboard */; };
 		CA171B69225330090042BBDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA171B68225330090042BBDC /* Assets.xcassets */; };
@@ -115,6 +119,10 @@
 		CA12C75C2279620400491BD4 /* DRecommCategoryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DRecommCategoryHeaderView.xib; sourceTree = "<group>"; };
 		CA12C75F2279747700491BD4 /* DRecommCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		CA12C761227975AE00491BD4 /* DRecommCategoryDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommCategoryDetailTableViewCell.swift; sourceTree = "<group>"; };
+		CA13E90F227AF18C00DA641F /* CallHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallHelpViewController.swift; sourceTree = "<group>"; };
+		CA13E912227AF26700DA641F /* CallHelpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallHelpTableViewCell.swift; sourceTree = "<group>"; };
+		CA13E915227AF4C900DA641F /* QAObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAObject.swift; sourceTree = "<group>"; };
+		CA13E917227AF4D900DA641F /* QAProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAProvider.swift; sourceTree = "<group>"; };
 		CA171B5E225330070042BBDC /* HowCarD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HowCarD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA171B61225330070042BBDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA171B66225330070042BBDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -239,6 +247,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CA13E911227AF24600DA641F /* QA */ = {
+			isa = PBXGroup;
+			children = (
+				CA13E912227AF26700DA641F /* CallHelpTableViewCell.swift */,
+			);
+			path = QA;
+			sourceTree = "<group>";
+		};
+		CA13E914227AF4B600DA641F /* QA */ = {
+			isa = PBXGroup;
+			children = (
+				CA13E915227AF4C900DA641F /* QAObject.swift */,
+				CA13E917227AF4D900DA641F /* QAProvider.swift */,
+			);
+			path = QA;
+			sourceTree = "<group>";
+		};
 		CA171B55225330070042BBDC = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +303,7 @@
 		CA171B732253333D0042BBDC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CA13E911227AF24600DA641F /* QA */,
 				CA1BFCE3226F457F008F38BC /* Common */,
 				CA8E8DA1226DC9400037CF14 /* Wallet */,
 				CA171B992253623F0042BBDC /* DRecommendation */,
@@ -376,6 +402,7 @@
 			isa = PBXGroup;
 			children = (
 				CA171B95225350510042BBDC /* QAViewController.swift */,
+				CA13E90F227AF18C00DA641F /* CallHelpViewController.swift */,
 			);
 			path = QA;
 			sourceTree = "<group>";
@@ -566,6 +593,7 @@
 		CAFE828F22607D56004F4E63 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CA13E914227AF4B600DA641F /* QA */,
 				CA23A32E226E1EDC008B8DD8 /* DRecommendation */,
 				CA6B5C9F22684B9000B180A2 /* Parser */,
 				CA6B5C6F22670CE900B180A2 /* HTTP */,
@@ -762,6 +790,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA13E913227AF26700DA641F /* CallHelpTableViewCell.swift in Sources */,
 				CA1BFCE0226F0B8D008F38BC /* DRecommObject.swift in Sources */,
 				CA6B5E34226E865D00182FFB /* DRecommDiscountTableViewCell.swift in Sources */,
 				CA6B5C7722675BC300B180A2 /* CardRequest.swift in Sources */,
@@ -795,6 +824,7 @@
 				CA171B94225350450042BBDC /* WalletViewController2.swift in Sources */,
 				CA47A184225AF7CD00AD16AF /* CardDetailViewController.swift in Sources */,
 				CA38706A2269BC6700D06B90 /* DiscountObject.swift in Sources */,
+				CA13E916227AF4C900DA641F /* QAObject.swift in Sources */,
 				CAFE827F225DF304004F4E63 /* DiscountDetailContentTableViewCell.swift in Sources */,
 				CA25DFD8226E1FFC003AC89C /* DRecommProvider.swift in Sources */,
 				CA69860C227ABF1E00437024 /* DRecommCategoryCollectionViewCell.swift in Sources */,
@@ -807,6 +837,7 @@
 				CA323DB522684C57007A39FD /* HCParser.swift in Sources */,
 				CA171BAC2254CBB60042BBDC /* DRecommCollectionViewCell.swift in Sources */,
 				CA171B96225350510042BBDC /* QAViewController.swift in Sources */,
+				CA13E918227AF4D900DA641F /* QAProvider.swift in Sources */,
 				CAF40392225C77E20037F1DD /* DiscountCollectionViewCell.swift in Sources */,
 				CA12C75B2279616C00491BD4 /* DRecommCategoryHeaderView.swift in Sources */,
 				CA171B7B22533B290042BBDC /* UIStoryboard+Extension.swift in Sources */,
@@ -819,6 +850,7 @@
 				CA2F7DC6225638D7005E4361 /* FilterViewController.swift in Sources */,
 				CA38706E2269E01100D06B90 /* DiscountRequest.swift in Sources */,
 				CA38706C2269DFA300D06B90 /* DiscountProvider.swift in Sources */,
+				CA13E910227AF18C00DA641F /* CallHelpViewController.swift in Sources */,
 				CA919419227606DF00DA277E /* HCBaseCollectionViewCell.swift in Sources */,
 				CA171B8D22534FF30042BBDC /* DiscountsViewController.swift in Sources */,
 				CA69860A227ABC8000437024 /* InnerTableView.swift in Sources */,

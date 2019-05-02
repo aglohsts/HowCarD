@@ -10,6 +10,8 @@ import UIKit
 
 class DRecommCategoryTableViewCell: HCBaseTableViewCell {
     
+    var cellTouchHandler: ((String) -> Void)?
+    
     var dRecommSection: DRecommSectionContent? {
         
         didSet {
@@ -133,6 +135,10 @@ extension DRecommCategoryTableViewCell: UICollectionViewDelegateFlowLayout {
 
 extension DRecommCategoryTableViewCell: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        cellTouchHandler?(subCategory[indexPath.section].subContent.discountInfos[indexPath.item].discountId)
+    }
 }
 
 extension DRecommCategoryTableViewCell: UICollectionViewDataSource {

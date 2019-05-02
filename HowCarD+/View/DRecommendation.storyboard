@@ -312,8 +312,8 @@
                     <connections>
                         <outlet property="containerView" destination="CSU-Tw-HFa" id="Kx0-eX-ijJ"/>
                         <outlet property="tableView" destination="kST-D6-0Q3" id="GmG-8Z-c1W"/>
-                        <segue destination="UsM-Xp-6eK" kind="show" identifier="toCardDetail" id="i6q-tP-cYx"/>
-                        <segue destination="YPn-ob-sqO" kind="show" identifier="toDiscountDetail" id="PAy-xF-RIe"/>
+                        <segue destination="UsM-Xp-6eK" kind="show" identifier="ToCardDetail" id="i6q-tP-cYx"/>
+                        <segue destination="YPn-ob-sqO" kind="show" identifier="ToDiscountDetail" id="PAy-xF-RIe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="URD-Qm-O9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -533,7 +533,6 @@
                                                                         <outlet property="briefContentLabel" destination="477-WV-L5H" id="4ah-vq-0mJ"/>
                                                                         <outlet property="discountImageView" destination="6Qe-mr-z44" id="XT3-mi-Cj7"/>
                                                                         <outlet property="titleLabel" destination="2Aa-Dw-4dr" id="SD2-fy-0Io"/>
-                                                                        <segue destination="GNR-tl-LLm" kind="show" identifier="ToDiscountDetail" id="nmN-Yz-UMs"/>
                                                                     </connections>
                                                                 </collectionViewCell>
                                                             </cells>
@@ -597,6 +596,7 @@
                         <outlet property="backView" destination="mpS-N1-plE" id="l0D-li-9N1"/>
                         <outlet property="categoryLabel" destination="Wix-GD-0KZ" id="zdC-zV-0ka"/>
                         <outlet property="tableView" destination="naf-8T-ah4" id="I15-4J-D1g"/>
+                        <segue destination="GNR-tl-LLm" kind="show" identifier="CategoryToDiscountDetail" id="1bt-er-UnL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nco-P5-htq" userLabel="First Responder" sceneMemberID="firstResponder"/>
