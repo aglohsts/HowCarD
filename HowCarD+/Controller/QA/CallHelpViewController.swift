@@ -12,7 +12,10 @@ import WebKit
 
 class CallHelpViewController: HCBaseViewController {
     
-    let webVC = HCWebViewController()
+    let webVC = UIStoryboard(
+        name: StoryboardCategory.web,
+        bundle: nil).instantiateViewController(
+            withIdentifier: String(describing: HCWebViewController.self))
     
     let composer = MFMailComposeViewController()
     
@@ -186,22 +189,38 @@ extension CallHelpViewController: UITableViewDataSource {
             
                 callHelpCell.sendMailHandler = { [weak self] in
                     
-//                    self?.showMailComposer(email: (self?.searchResult[indexPath.row].bankInfo.mailWeb)!)
+                    guard let strongSelf = self else { return }
                     
-                    if let webVC = UIStoryboard(
-                        name: StoryboardCategory.web,
-                        bundle: nil).instantiateViewController(
-                            withIdentifier: String(describing: HCWebViewController.self)) as? HCWebViewController {
-//                        let navVC = UINavigationController(rootViewController: webVC)
-                        webVC.urlString = self?.searchResult[indexPath.row].bankInfo.mailWeb ?? ""
-                        
-                        webVC.loadViewIfNeeded()
-                        
-                        
-                        self?.present(webVC, animated: true, completion: nil)
+//                    self?.showMailComposer(email: (self?.searchResult[indexPath.row].bankInfo.mailWeb)!)
+
+                    
+                    // add view
+                    
+                    guard let vc = strongSelf.webVC as? HCWebViewController else { return }
+
+                    if vc.view.superview == nil {
+
+                        vc.urlString = self?.searchResult[indexPath.row].bankInfo.mailWeb ?? ""
+
+                        strongSelf.addChild(vc)
+
+                       
+                       strongSelf.navigationController?.setNavigationBarHidden(true, animated: true)
+//                        strongSelf.navigationController?.isNavigationBarHidden = true
+
+                        vc.view.frame = CGRect(
+                            x: 0,
+                            y: 0,
+                            width: UIScreen.main.bounds.width,
+                            height: UIScreen.main.bounds.height
+                        )
+
+                        vc.didMove(toParent: strongSelf)
                     }
-                }
-//            }
+
+//                }
+            }
+            
             
         } else {
             
@@ -211,18 +230,23 @@ extension CallHelpViewController: UITableViewDataSource {
                 bankId: bankObjects[indexPath.row].bankId,
                 phoneNumber: bankObjects[indexPath.row].bankInfo.mobileFreeServiceNum ??
                     bankObjects[indexPath.row].bankInfo.cardCustomerServiceNum,
-                mailWeb: "lohsts@gmail.com"
+                mailWeb: bankObjects[indexPath.row].bankInfo.mailWeb ?? nil
             )
             
 //            if bankObjects[indexPath.row].bankInfo.email != nil {
             
                 callHelpCell.sendMailHandler = { [weak self] in
                     
-                    guard let strongSelf = self else { return }
-                    strongSelf.view.addSubview(strongSelf.webVC.view)
                     
-                    strongSelf.webVC.didMove(toParent: strongSelf)
-//                    
+//                    guard let strongSelf = self, let vc = strongSelf.webVC else { return }
+//                    strongSelf.view.addSubview(vc.view)
+//
+//                    vc.didMove(toParent: strongSelf)
+//
+                    
+                    
+                    
+                    
 //                    self?.showMailComposer(email: "lohsts@gmail.com")
                 }
 //            }

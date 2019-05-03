@@ -90,13 +90,6 @@ extension DRecommCategoryDetailViewController {
         
         categoryLabel.text = ""
     }
-    
-    func updateHeight() {
-        UIView.setAnimationsEnabled(false)
-        tableView.beginUpdates()
-        tableView.endUpdates()
-        UIView.setAnimationsEnabled(true)
-    }
 }
 
 extension DRecommCategoryDetailViewController: UITableViewDelegate {

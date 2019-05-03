@@ -11,18 +11,15 @@ import WebKit
 
 class HCWebViewController: HCBaseViewController {
     
-    var urlString: String = ""
-
-    @IBOutlet weak var webTitleLabel: UILabel! {
+    var urlString: String = "" {
         
         didSet {
             
-            DispatchQueue.main.async {
-                
-                self.webTitleLabel.text = self.hcWebView.title
-            }
+            self.loadURL(urlString: urlString)
         }
     }
+
+    @IBOutlet weak var webTitleLabel: UILabel!
     
     @IBOutlet weak var hcWebView: WKWebView! {
         
@@ -65,10 +62,25 @@ class HCWebViewController: HCBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        loadURL(urlString: self.urlString)
         
         setupWebView()
+        
+        view.isOpaque = false
+        view.backgroundColor = .clear
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        loadURL(urlString: self.urlString)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UIView.animate(withDuration: 1.5, animations: {
+            self.view.alpha = 1.0
+        })
     }
     
     func loadURL(urlString: String) {
@@ -85,7 +97,10 @@ class HCWebViewController: HCBaseViewController {
         hcWebView.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(
+        forKeyPath keyPath: String?,
+        of object: Any?, change: [NSKeyValueChangeKey : Any]?,
+        context: UnsafeMutableRawPointer?) {
         
         if keyPath == "title" {
             if let title = hcWebView.title {
@@ -96,6 +111,19 @@ class HCWebViewController: HCBaseViewController {
     }
     
     @IBAction func onDismiss(_ sender: Any) {
+        
+        self.willMove(toParent: nil)
+
+        self.view.removeFromSuperview()
+
+        self.parent?.navigationController?.setNavigationBarHidden(false, animated: true)
+        
+//        self.parent?.navigationController?.isNavigationBarHidden = false
+
+        self.removeFromParent()
+        
+        loadURL(urlString: "about:blank")
+        
     }
     
     @IBAction func onGoBack(_ sender: Any) {
