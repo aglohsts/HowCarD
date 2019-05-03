@@ -192,13 +192,14 @@ extension CallHelpViewController: UITableViewDataSource {
                         name: StoryboardCategory.web,
                         bundle: nil).instantiateViewController(
                             withIdentifier: String(describing: HCWebViewController.self)) as? HCWebViewController {
-                        let navVC = UINavigationController(rootViewController: webVC)
+//                        let navVC = UINavigationController(rootViewController: webVC)
+                        webVC.urlString = self?.searchResult[indexPath.row].bankInfo.mailWeb ?? ""
                         
-                        self?.present(navVC, animated: true, completion: nil)
+                        webVC.loadViewIfNeeded()
+                        
+                        
+                        self?.present(webVC, animated: true, completion: nil)
                     }
-                    
-
-                    
                 }
 //            }
             

@@ -14,30 +14,91 @@
         <scene sceneID="PNx-vX-8u5">
             <objects>
                 <viewController storyboardIdentifier="HCWebViewController" id="SPr-ji-ltm" customClass="HCWebViewController" customModule="HowCarD" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rib-Ea-SeX">
+                    <view key="view" alpha="0.90000000000000002" contentMode="scaleToFill" id="rib-Ea-SeX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ePx-gd-ih1">
-                                <rect key="frame" x="0.0" y="54" width="414" height="788"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
+                            <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5v9-Jr-p98" userLabel="topView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="zxO-2A-icf"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x9o-Ds-GaD">
+                                <rect key="frame" x="0.0" y="144" width="414" height="718"/>
+                                <subviews>
+                                    <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePx-gd-ih1">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="668"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <wkWebViewConfiguration key="configuration">
+                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                            <wkPreferences key="preferences"/>
+                                        </wkWebViewConfiguration>
+                                    </wkWebView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytD-aV-fI6">
+                                        <rect key="frame" x="330" y="8" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="next"/>
+                                        <connections>
+                                            <action selector="onGoForward:" destination="SPr-ji-ltm" eventType="touchUpInside" id="p0o-B4-Ox3"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mc-9f-19Y">
+                                        <rect key="frame" x="186" y="12" width="124" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hpd-kY-dEB">
+                                        <rect key="frame" x="5" y="0.0" width="52" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="dismiss"/>
+                                        <connections>
+                                            <action selector="onDismiss:" destination="SPr-ji-ltm" eventType="touchUpInside" id="jsK-gq-rZd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C35-ET-Kq3">
+                                        <rect key="frame" x="84" y="7" width="34" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="back"/>
+                                        <connections>
+                                            <action selector="onGoBack:" destination="SPr-ji-ltm" eventType="touchUpInside" id="Cog-Vz-yLN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ePx-gd-ih1" firstAttribute="top" secondItem="x9o-Ds-GaD" secondAttribute="top" constant="50" id="MA9-SO-5pb"/>
+                                    <constraint firstAttribute="bottom" secondItem="ePx-gd-ih1" secondAttribute="bottom" id="PjO-V7-HFL"/>
+                                    <constraint firstItem="ePx-gd-ih1" firstAttribute="leading" secondItem="x9o-Ds-GaD" secondAttribute="leading" id="Sqn-7B-OJn"/>
+                                    <constraint firstAttribute="trailing" secondItem="ePx-gd-ih1" secondAttribute="trailing" id="i0u-Pw-0wL"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="x9o-Ds-GaD" firstAttribute="top" secondItem="5v9-Jr-p98" secondAttribute="bottom" id="4js-Ws-Ly2"/>
+                            <constraint firstItem="y73-03-cJG" firstAttribute="trailing" secondItem="5v9-Jr-p98" secondAttribute="trailing" id="JAe-4F-wjx"/>
+                            <constraint firstItem="x9o-Ds-GaD" firstAttribute="trailing" secondItem="y73-03-cJG" secondAttribute="trailing" id="Rmb-bZ-deP"/>
+                            <constraint firstItem="5v9-Jr-p98" firstAttribute="leading" secondItem="y73-03-cJG" secondAttribute="leading" id="d38-ah-8n2"/>
+                            <constraint firstItem="x9o-Ds-GaD" firstAttribute="leading" secondItem="y73-03-cJG" secondAttribute="leading" id="p0r-dv-tEi"/>
+                            <constraint firstItem="5v9-Jr-p98" firstAttribute="top" secondItem="y73-03-cJG" secondAttribute="top" id="rN0-XE-Xdd"/>
+                            <constraint firstItem="y73-03-cJG" firstAttribute="bottom" secondItem="x9o-Ds-GaD" secondAttribute="bottom" id="w6g-q2-teR"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="y73-03-cJG"/>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="C35-ET-Kq3" id="Mwo-2G-6zO"/>
+                        <outlet property="forwardButton" destination="ytD-aV-fI6" id="GcO-Jx-TCX"/>
                         <outlet property="hcWebView" destination="ePx-gd-ih1" id="t9R-FE-4fD"/>
+                        <outlet property="webTitleLabel" destination="9mc-9f-19Y" id="xo5-rx-oHB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wfp-6h-3Aq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1230" y="55"/>
+            <point key="canvasLocation" x="1228.985507246377" y="54.910714285714285"/>
         </scene>
     </scenes>
 </document>
