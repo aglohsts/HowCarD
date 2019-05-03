@@ -60,13 +60,14 @@ class HCWebViewController: HCBaseViewController {
 //        }
 //    }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupWebView()
         
         view.isOpaque = false
-        view.backgroundColor = .clear
+//        view.backgroundColor = .clear
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,9 +79,8 @@ class HCWebViewController: HCBaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        UIView.animate(withDuration: 1.5, animations: {
-            self.view.alpha = 1.0
-        })
+        print(forwardButton.frame.origin)
+        print(backButton.frame.origin)
     }
     
     func loadURL(urlString: String) {
@@ -116,7 +116,9 @@ class HCWebViewController: HCBaseViewController {
 
         self.view.removeFromSuperview()
 
-        self.parent?.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.parent?.navigationController?.setNavigationBarHidden(false, animated: false)
+        
+        self.parent?.tabBarController?.tabBar.isHidden = false
         
 //        self.parent?.navigationController?.isNavigationBarHidden = false
 
@@ -137,6 +139,7 @@ class HCWebViewController: HCBaseViewController {
     @IBAction func onGoForward(_ sender: Any) {
         
         if hcWebView.canGoForward {
+            
             hcWebView.goForward()
         }
         

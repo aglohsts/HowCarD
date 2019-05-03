@@ -185,43 +185,42 @@ extension CallHelpViewController: UITableViewDataSource {
                 mailWeb: searchResult[indexPath.row].bankInfo.mailWeb ?? nil
             )
             
-//            if searchResult[indexPath.row].bankInfo.mailWeb != nil {
+            if searchResult[indexPath.row].bankInfo.mailWeb != nil {
             
                 callHelpCell.sendMailHandler = { [weak self] in
                     
-                    guard let strongSelf = self else { return }
+                    guard let strongSelf = self, let vc = strongSelf.webVC as? HCWebViewController else { return }
                     
 //                    self?.showMailComposer(email: (self?.searchResult[indexPath.row].bankInfo.mailWeb)!)
 
-                    
                     // add view
-                    
-                    guard let vc = strongSelf.webVC as? HCWebViewController else { return }
 
                     if vc.view.superview == nil {
 
                         vc.urlString = self?.searchResult[indexPath.row].bankInfo.mailWeb ?? ""
 
                         strongSelf.addChild(vc)
-
-                       
-                       strongSelf.navigationController?.setNavigationBarHidden(true, animated: true)
+                        
+                        strongSelf.navigationController?.setNavigationBarHidden(true, animated: true)
 //                        strongSelf.navigationController?.isNavigationBarHidden = true
+                        
+                        strongSelf.tabBarController?.tabBar.isHidden = true
+                        
+                        guard let tabBarHeight = strongSelf.tabBarController?.tabBar.frame.height else { return }
 
                         vc.view.frame = CGRect(
                             x: 0,
                             y: 0,
                             width: UIScreen.main.bounds.width,
-                            height: UIScreen.main.bounds.height
+                            height: UIScreen.main.bounds.height - tabBarHeight - 50
                         )
+                        
+                        strongSelf.view.addSubview(vc.view)
 
                         vc.didMove(toParent: strongSelf)
                     }
-
-//                }
+                }
             }
-            
-            
         } else {
             
             callHelpCell.layoutCell(
@@ -233,21 +232,36 @@ extension CallHelpViewController: UITableViewDataSource {
                 mailWeb: bankObjects[indexPath.row].bankInfo.mailWeb ?? nil
             )
             
-//            if bankObjects[indexPath.row].bankInfo.email != nil {
+//            if bankObjects[indexPath.row].bankInfo.mailWeb != nil {
             
                 callHelpCell.sendMailHandler = { [weak self] in
                     
-                    
-//                    guard let strongSelf = self, let vc = strongSelf.webVC else { return }
-//                    strongSelf.view.addSubview(vc.view)
+                    guard let strongSelf = self,
+                        let vc = strongSelf.webVC as? HCWebViewController else { return }
 //
-//                    vc.didMove(toParent: strongSelf)
-//
-                    
-                    
-                    
-                    
-//                    self?.showMailComposer(email: "lohsts@gmail.com")
+                    if vc.view.superview == nil {
+                        
+                        vc.urlString = self?.bankObjects[indexPath.row].bankInfo.mailWeb ?? ""
+                        
+                        strongSelf.addChild(vc)
+                        
+                        strongSelf.navigationController?.setNavigationBarHidden(true, animated: true)
+                        //                        strongSelf.navigationController?.isNavigationBarHidden = true
+                        strongSelf.tabBarController?.tabBar.isHidden = true
+                        
+                        guard let tabBarHeight = strongSelf.tabBarController?.tabBar.frame.height else { return }
+                        
+                        vc.view.frame = CGRect(
+                            x: 0,
+                            y: 0,
+                            width: UIScreen.main.bounds.width,
+                            height: UIScreen.main.bounds.height
+                        )
+                        
+                        strongSelf.view.addSubview(vc.view)
+                        
+                        vc.didMove(toParent: strongSelf)
+                    }
                 }
 //            }
         }

@@ -71,7 +71,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" estimatedSectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="5XF-Yz-TE5">
-                                <rect key="frame" x="0.0" y="100" width="414" height="674"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="640"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CallHelpTableViewCell" rowHeight="88" id="J9X-db-lPe" customClass="CallHelpTableViewCell" customModule="HowCarD" customModuleProvider="target">
@@ -96,26 +96,16 @@
                                                             <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icu-is-gbq">
-                                                            <rect key="frame" x="368" y="30" width="24" height="24"/>
+                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icu-is-gbq">
+                                                            <rect key="frame" x="363" y="22" width="37" height="40"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="24" id="WQK-5o-NYj"/>
-                                                                <constraint firstAttribute="width" secondItem="icu-is-gbq" secondAttribute="height" multiplier="1:1" id="zFL-iX-u7t"/>
+                                                                <constraint firstAttribute="width" secondItem="icu-is-gbq" secondAttribute="height" multiplier="37:40" id="AJO-ba-a4N"/>
+                                                                <constraint firstAttribute="height" constant="40" id="TCZ-kw-nfc"/>
                                                             </constraints>
-                                                            <state key="normal" image="Icons_Call"/>
+                                                            <inset key="imageEdgeInsets" minX="10" minY="8" maxX="10" maxY="8"/>
+                                                            <state key="normal" image="Icons_Call" backgroundImage="TransparentBackground"/>
                                                             <connections>
                                                                 <action selector="onCall:" destination="J9X-db-lPe" eventType="touchUpInside" id="V4c-TD-25U"/>
-                                                            </connections>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCR-Ve-EsG">
-                                                            <rect key="frame" x="314" y="33.5" width="34" height="17"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" secondItem="dCR-Ve-EsG" secondAttribute="height" multiplier="2:1" id="VAZ-3r-EA0"/>
-                                                                <constraint firstAttribute="width" constant="34" id="je5-hn-ae5"/>
-                                                            </constraints>
-                                                            <state key="normal" image="Icons_SendMail"/>
-                                                            <connections>
-                                                                <action selector="onSendMail:" destination="J9X-db-lPe" eventType="touchUpInside" id="I1e-4H-NRQ"/>
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whR-tw-k7Q">
@@ -124,21 +114,33 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCR-Ve-EsG">
+                                                            <rect key="frame" x="320" y="20" width="43" height="44"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="dCR-Ve-EsG" secondAttribute="height" multiplier="43:44" id="AmS-gy-Far"/>
+                                                                <constraint firstAttribute="height" constant="44" id="JDB-Ce-3Nu"/>
+                                                            </constraints>
+                                                            <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                                            <state key="normal" image="Icons_WriteMessage" backgroundImage="TransparentBackground"/>
+                                                            <connections>
+                                                                <action selector="onSendMail:" destination="J9X-db-lPe" eventType="touchUpInside" id="I1e-4H-NRQ"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="whR-tw-k7Q" firstAttribute="leading" secondItem="9Ud-iz-IqI" secondAttribute="trailing" constant="8" id="0G5-co-uMl"/>
                                                         <constraint firstItem="icu-is-gbq" firstAttribute="centerY" secondItem="AJd-rr-ede" secondAttribute="centerY" id="6dY-5j-aFF"/>
-                                                        <constraint firstItem="icu-is-gbq" firstAttribute="leading" secondItem="dCR-Ve-EsG" secondAttribute="trailing" constant="20" id="6mi-gy-Jao"/>
                                                         <constraint firstItem="9Ud-iz-IqI" firstAttribute="centerY" secondItem="AJd-rr-ede" secondAttribute="centerY" id="9Qz-Dq-BHg"/>
                                                         <constraint firstAttribute="bottom" secondItem="lg5-K7-KiC" secondAttribute="bottom" id="APT-tf-YYZ"/>
                                                         <constraint firstItem="dCR-Ve-EsG" firstAttribute="centerY" secondItem="AJd-rr-ede" secondAttribute="centerY" id="FQQ-lk-JzJ"/>
                                                         <constraint firstItem="lg5-K7-KiC" firstAttribute="top" secondItem="AJd-rr-ede" secondAttribute="top" id="L99-IT-2cY"/>
+                                                        <constraint firstItem="icu-is-gbq" firstAttribute="leading" secondItem="dCR-Ve-EsG" secondAttribute="trailing" id="Nts-iX-uMO"/>
                                                         <constraint firstItem="dCR-Ve-EsG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="whR-tw-k7Q" secondAttribute="trailing" constant="16" id="Q2I-34-zfM"/>
-                                                        <constraint firstAttribute="trailing" secondItem="icu-is-gbq" secondAttribute="trailing" constant="16" id="Skt-QA-qIL"/>
                                                         <constraint firstItem="whR-tw-k7Q" firstAttribute="centerY" secondItem="AJd-rr-ede" secondAttribute="centerY" id="TtL-9r-Oaa"/>
                                                         <constraint firstItem="9Ud-iz-IqI" firstAttribute="leading" secondItem="lg5-K7-KiC" secondAttribute="trailing" constant="8" id="W8j-nj-H3H"/>
                                                         <constraint firstItem="lg5-K7-KiC" firstAttribute="leading" secondItem="AJd-rr-ede" secondAttribute="leading" id="bkw-O8-mU9"/>
+                                                        <constraint firstAttribute="trailing" secondItem="icu-is-gbq" secondAttribute="trailing" constant="8" id="iAx-wz-Wdk"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -164,7 +166,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="2Yw-dF-MaH" firstAttribute="top" secondItem="h84-wJ-i8d" secondAttribute="top" id="5On-hm-uM9"/>
-                            <constraint firstAttribute="bottom" secondItem="5XF-Yz-TE5" secondAttribute="bottom" id="BrA-A2-Rwq"/>
+                            <constraint firstItem="h84-wJ-i8d" firstAttribute="bottom" secondItem="5XF-Yz-TE5" secondAttribute="bottom" id="BrA-A2-Rwq"/>
                             <constraint firstItem="5XF-Yz-TE5" firstAttribute="top" secondItem="2Yw-dF-MaH" secondAttribute="bottom" id="Kno-ro-Obq"/>
                             <constraint firstItem="5XF-Yz-TE5" firstAttribute="leading" secondItem="aPV-DG-1kZ" secondAttribute="leading" id="O3d-zC-jNL"/>
                             <constraint firstAttribute="trailing" secondItem="5XF-Yz-TE5" secondAttribute="trailing" id="Qru-9a-QZK"/>
@@ -192,7 +194,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icons_Call" width="71" height="67"/>
-        <image name="Icons_SendMail" width="82" height="41"/>
+        <image name="Icons_Call" width="68" height="96"/>
+        <image name="Icons_WriteMessage" width="94" height="96"/>
+        <image name="TransparentBackground" width="19" height="19"/>
     </resources>
 </document>

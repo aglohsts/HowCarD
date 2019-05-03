@@ -18,15 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5v9-Jr-p98" userLabel="topView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="100"/>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5v9-Jr-p98" userLabel="topView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="zxO-2A-icf"/>
+                                    <constraint firstAttribute="height" constant="50" id="zxO-2A-icf"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x9o-Ds-GaD">
-                                <rect key="frame" x="0.0" y="144" width="414" height="718"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
                                 <subviews>
                                     <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePx-gd-ih1">
                                         <rect key="frame" x="0.0" y="50" width="414" height="668"/>
@@ -36,14 +36,6 @@
                                             <wkPreferences key="preferences"/>
                                         </wkWebViewConfiguration>
                                     </wkWebView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytD-aV-fI6">
-                                        <rect key="frame" x="330" y="8" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="next"/>
-                                        <connections>
-                                            <action selector="onGoForward:" destination="SPr-ji-ltm" eventType="touchUpInside" id="p0o-B4-Ox3"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mc-9f-19Y">
                                         <rect key="frame" x="186" y="12" width="124" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -59,25 +51,37 @@
                                             <action selector="onDismiss:" destination="SPr-ji-ltm" eventType="touchUpInside" id="jsK-gq-rZd"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C35-ET-Kq3">
-                                        <rect key="frame" x="84" y="7" width="34" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C35-ET-Kq3">
+                                        <rect key="frame" x="14" y="730" width="34" height="18"/>
                                         <state key="normal" title="back"/>
                                         <connections>
                                             <action selector="onGoBack:" destination="SPr-ji-ltm" eventType="touchUpInside" id="Cog-Vz-yLN"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytD-aV-fI6">
+                                        <rect key="frame" x="84" y="730" width="30" height="18"/>
+                                        <state key="normal" title="next"/>
+                                        <connections>
+                                            <action selector="onGoForward:" destination="SPr-ji-ltm" eventType="touchUpInside" id="p0o-B4-Ox3"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.1647058824" green="0.63137254899999995" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="C35-ET-Kq3" secondAttribute="bottom" constant="20" id="0T0-px-fMJ"/>
+                                    <constraint firstItem="C35-ET-Kq3" firstAttribute="top" secondItem="ePx-gd-ih1" secondAttribute="bottom" constant="12" id="4uk-1a-GHq"/>
+                                    <constraint firstItem="ytD-aV-fI6" firstAttribute="leading" secondItem="C35-ET-Kq3" secondAttribute="trailing" constant="36" id="I5B-yp-GBU"/>
                                     <constraint firstItem="ePx-gd-ih1" firstAttribute="top" secondItem="x9o-Ds-GaD" secondAttribute="top" constant="50" id="MA9-SO-5pb"/>
-                                    <constraint firstAttribute="bottom" secondItem="ePx-gd-ih1" secondAttribute="bottom" id="PjO-V7-HFL"/>
+                                    <constraint firstAttribute="bottom" secondItem="ePx-gd-ih1" secondAttribute="bottom" constant="50" id="PjO-V7-HFL"/>
                                     <constraint firstItem="ePx-gd-ih1" firstAttribute="leading" secondItem="x9o-Ds-GaD" secondAttribute="leading" id="Sqn-7B-OJn"/>
                                     <constraint firstAttribute="trailing" secondItem="ePx-gd-ih1" secondAttribute="trailing" id="i0u-Pw-0wL"/>
+                                    <constraint firstItem="ytD-aV-fI6" firstAttribute="top" secondItem="ePx-gd-ih1" secondAttribute="bottom" constant="12" id="o0m-5F-IXn"/>
+                                    <constraint firstItem="C35-ET-Kq3" firstAttribute="leading" secondItem="x9o-Ds-GaD" secondAttribute="leading" constant="14" id="thB-zr-sz4"/>
+                                    <constraint firstAttribute="bottom" secondItem="ytD-aV-fI6" secondAttribute="bottom" constant="20" id="uEU-ea-Hsw"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.57919406890000003" green="0.1280144453" blue="0.57268613580000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="x9o-Ds-GaD" firstAttribute="top" secondItem="5v9-Jr-p98" secondAttribute="bottom" id="4js-Ws-Ly2"/>
                             <constraint firstItem="y73-03-cJG" firstAttribute="trailing" secondItem="5v9-Jr-p98" secondAttribute="trailing" id="JAe-4F-wjx"/>

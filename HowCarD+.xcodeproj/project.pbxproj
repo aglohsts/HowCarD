@@ -14,6 +14,7 @@
 		CA12C762227975AE00491BD4 /* DRecommCategoryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA12C761227975AE00491BD4 /* DRecommCategoryDetailTableViewCell.swift */; };
 		CA1303CC227B516000C62E7E /* Web.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA1303CB227B516000C62E7E /* Web.storyboard */; };
 		CA1303CF227B51A400C62E7E /* HCWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1303CE227B51A400C62E7E /* HCWebViewController.swift */; };
+		CA1303D1227C1E2E00C62E7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA1303D0227C1E2C00C62E7E /* Assets.xcassets */; };
 		CA13E910227AF18C00DA641F /* CallHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA13E90F227AF18C00DA641F /* CallHelpViewController.swift */; };
 		CA13E913227AF26700DA641F /* CallHelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA13E912227AF26700DA641F /* CallHelpTableViewCell.swift */; };
 		CA13E916227AF4C900DA641F /* QAObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA13E915227AF4C900DA641F /* QAObject.swift */; };
@@ -21,7 +22,6 @@
 		CA13E91A227AF54100DA641F /* QARequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA13E919227AF54100DA641F /* QARequest.swift */; };
 		CA171B62225330070042BBDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B61225330070042BBDC /* AppDelegate.swift */; };
 		CA171B67225330070042BBDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA171B65225330070042BBDC /* Main.storyboard */; };
-		CA171B69225330090042BBDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA171B68225330090042BBDC /* Assets.xcassets */; };
 		CA171B6C225330090042BBDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA171B6A225330090042BBDC /* LaunchScreen.storyboard */; };
 		CA171B78225339E90042BBDC /* HCTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B77225339E90042BBDC /* HCTabBarViewController.swift */; };
 		CA171B7B22533B290042BBDC /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B7A22533B290042BBDC /* UIStoryboard+Extension.swift */; };
@@ -124,6 +124,7 @@
 		CA12C761227975AE00491BD4 /* DRecommCategoryDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommCategoryDetailTableViewCell.swift; sourceTree = "<group>"; };
 		CA1303CB227B516000C62E7E /* Web.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Web.storyboard; sourceTree = "<group>"; };
 		CA1303CE227B51A400C62E7E /* HCWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCWebViewController.swift; sourceTree = "<group>"; };
+		CA1303D0227C1E2C00C62E7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA13E90F227AF18C00DA641F /* CallHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallHelpViewController.swift; sourceTree = "<group>"; };
 		CA13E912227AF26700DA641F /* CallHelpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallHelpTableViewCell.swift; sourceTree = "<group>"; };
 		CA13E915227AF4C900DA641F /* QAObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAObject.swift; sourceTree = "<group>"; };
@@ -132,7 +133,6 @@
 		CA171B5E225330070042BBDC /* HowCarD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HowCarD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA171B61225330070042BBDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA171B66225330070042BBDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CA171B68225330090042BBDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA171B6B225330090042BBDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA171B6D225330090042BBDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA171B74225334260042BBDC /* DRecommendation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DRecommendation.storyboard; sourceTree = "<group>"; };
@@ -519,8 +519,8 @@
 		CA6B5C692266B83300B180A2 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				CA1303D0227C1E2C00C62E7E /* Assets.xcassets */,
 				CA6B5C6A2266B85500B180A2 /* Constant */,
-				CA171B68225330090042BBDC /* Assets.xcassets */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -710,11 +710,11 @@
 				CA1303CC227B516000C62E7E /* Web.storyboard in Resources */,
 				CA171BA92254C9160042BBDC /* DRecommendation.storyboard in Resources */,
 				CAFE827D225DF081004F4E63 /* HCTableViewSectionHeaderView.xib in Resources */,
-				CA171B69225330090042BBDC /* Assets.xcassets in Resources */,
 				CAF58D83225C81D800818CDD /* DiscountCollectionViewCell.xib in Resources */,
 				CA171B7F22533FA50042BBDC /* Cards.storyboard in Resources */,
 				CA171B67225330070042BBDC /* Main.storyboard in Resources */,
 				CA12C75D2279620400491BD4 /* DRecommCategoryHeaderView.xib in Resources */,
+				CA1303D1227C1E2E00C62E7E /* Assets.xcassets in Resources */,
 				CA47A188225B133F00AD16AF /* CardTagCollectionViewCell.xib in Resources */,
 				CA171B852253409A0042BBDC /* QA.storyboard in Resources */,
 				CA6B5E35226E865D00182FFB /* DRecommCardTableViewCell.xib in Resources */,
