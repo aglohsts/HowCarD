@@ -112,13 +112,13 @@ class HCWebViewController: HCBaseViewController {
     
     @IBAction func onDismiss(_ sender: Any) {
         
-        self.willMove(toParent: nil)
-
-        self.view.removeFromSuperview()
-
         self.parent?.navigationController?.setNavigationBarHidden(false, animated: false)
         
         self.parent?.tabBarController?.tabBar.isHidden = false
+        
+        self.willMove(toParent: nil)
+
+        self.view.removeFromSuperview()
         
 //        self.parent?.navigationController?.isNavigationBarHidden = false
 

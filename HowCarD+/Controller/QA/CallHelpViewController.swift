@@ -191,6 +191,7 @@ extension CallHelpViewController: UITableViewDataSource {
                     
                     guard let strongSelf = self, let vc = strongSelf.webVC as? HCWebViewController else { return }
                     
+                    strongSelf.view.endEditing(true)
 //                    self?.showMailComposer(email: (self?.searchResult[indexPath.row].bankInfo.mailWeb)!)
 
                     // add view
@@ -199,24 +200,27 @@ extension CallHelpViewController: UITableViewDataSource {
 
                         vc.urlString = self?.searchResult[indexPath.row].bankInfo.mailWeb ?? ""
 
-                        strongSelf.addChild(vc)
-                        
                         strongSelf.navigationController?.setNavigationBarHidden(true, animated: true)
 //                        strongSelf.navigationController?.isNavigationBarHidden = true
                         
                         strongSelf.tabBarController?.tabBar.isHidden = true
                         
-                        guard let tabBarHeight = strongSelf.tabBarController?.tabBar.frame.height else { return }
-
-                        vc.view.frame = CGRect(
-                            x: 0,
-                            y: 0,
-                            width: UIScreen.main.bounds.width,
-                            height: UIScreen.main.bounds.height - tabBarHeight - 50
-                        )
+                        strongSelf.addChild(vc)
                         
                         strongSelf.view.addSubview(vc.view)
-
+                        
+                        vc.view.translatesAutoresizingMaskIntoConstraints = false
+                        
+                        vc.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 500)
+                        
+                        vc.view.topAnchor.constraint(equalTo: strongSelf.view.topAnchor, constant: 0).isActive = true
+                        
+                        vc.view.leadingAnchor.constraint(equalTo: strongSelf.view.leadingAnchor).isActive = true
+                        
+                        vc.view.trailingAnchor.constraint(equalTo: strongSelf.view.trailingAnchor).isActive = true
+                        
+                        vc.view.bottomAnchor.constraint(equalTo: strongSelf.view.bottomAnchor).isActive = true
+                        
                         vc.didMove(toParent: strongSelf)
                     }
                 }
@@ -239,26 +243,32 @@ extension CallHelpViewController: UITableViewDataSource {
                     guard let strongSelf = self,
                         let vc = strongSelf.webVC as? HCWebViewController else { return }
 //
+                    strongSelf.view.endEditing(true)
+                    
                     if vc.view.superview == nil {
                         
                         vc.urlString = self?.bankObjects[indexPath.row].bankInfo.mailWeb ?? ""
                         
-                        strongSelf.addChild(vc)
-                        
                         strongSelf.navigationController?.setNavigationBarHidden(true, animated: true)
                         //                        strongSelf.navigationController?.isNavigationBarHidden = true
+                        
                         strongSelf.tabBarController?.tabBar.isHidden = true
                         
-                        guard let tabBarHeight = strongSelf.tabBarController?.tabBar.frame.height else { return }
-                        
-                        vc.view.frame = CGRect(
-                            x: 0,
-                            y: 0,
-                            width: UIScreen.main.bounds.width,
-                            height: UIScreen.main.bounds.height
-                        )
+                        strongSelf.addChild(vc)
                         
                         strongSelf.view.addSubview(vc.view)
+                        
+                        vc.view.translatesAutoresizingMaskIntoConstraints = false
+                        
+                        vc.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 500)
+                        
+                        vc.view.topAnchor.constraint(equalTo: strongSelf.view.topAnchor, constant: 0).isActive = true
+                        
+                        vc.view.leadingAnchor.constraint(equalTo: strongSelf.view.leadingAnchor).isActive = true
+                        
+                        vc.view.trailingAnchor.constraint(equalTo: strongSelf.view.trailingAnchor).isActive = true
+                        
+                        vc.view.bottomAnchor.constraint(equalTo: strongSelf.view.bottomAnchor).isActive = true
                         
                         vc.didMove(toParent: strongSelf)
                     }
