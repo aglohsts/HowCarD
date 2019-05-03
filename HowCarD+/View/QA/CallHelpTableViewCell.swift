@@ -24,11 +24,11 @@ class CallHelpTableViewCell: HCBaseTableViewCell {
     
     var phoneNum: String = ""
     
-    var mail: String? {
+    var mailWeb: String? {
         
         didSet {
             
-            if mail == nil {
+            if mailWeb == nil {
                 
                 mailButton.isHidden = true
             } else {
@@ -63,7 +63,7 @@ class CallHelpTableViewCell: HCBaseTableViewCell {
         // Configure the view for the selected state
     }
 
-    func layoutCell(bankIconImage: String, bankName: String, bankId: String, phoneNumber: String, mail: String?) {
+    func layoutCell(bankIconImage: String, bankName: String, bankId: String, phoneNumber: String, mailWeb: String?) {
         
         bankIconImageView.loadImage(bankIconImage, placeHolder: UIImage.asset(.Image_Placeholder))
         
@@ -73,7 +73,7 @@ class CallHelpTableViewCell: HCBaseTableViewCell {
         
         phoneNum = phoneNumber
         
-        self.mail = mail
+        self.mailWeb = mailWeb
     }
     
     @IBAction func onCall(_ sender: UIButton) {

@@ -8,8 +8,11 @@
 
 import UIKit
 import MessageUI
+import WebKit
 
 class CallHelpViewController: HCBaseViewController {
+    
+    let webVC = HCWebViewController()
     
     let composer = MFMailComposeViewController()
     
@@ -65,6 +68,8 @@ class CallHelpViewController: HCBaseViewController {
         setBackgroundColor()
         
         setupTableView()
+        
+        setupSearchBar()
     }
     
     override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
@@ -75,6 +80,21 @@ class CallHelpViewController: HCBaseViewController {
     private func setupTableView() {
         
         tableView.separatorStyle = .none
+    }
+    
+    private func setupSearchBar() {
+        
+        // SearchBar text
+        let textFieldInsideUISearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        
+        textFieldInsideUISearchBar?.textColor = UIColor.darkGray
+        
+        textFieldInsideUISearchBar?.font = textFieldInsideUISearchBar?.font?.withSize(13)
+        
+        // SearchBar placeholder
+        let textFieldInsideUISearchBarLabel = textFieldInsideUISearchBar!.value(forKey: "placeholderLabel") as? UILabel
+        
+        textFieldInsideUISearchBarLabel?.textColor = UIColor.lightGray
     }
 }
 
@@ -87,8 +107,6 @@ extension CallHelpViewController {
             switch result {
                 
             case .success(let bankObjects):
-                
-                
                 
                 self?.bankObjects = bankObjects.sorted(by: { (bankObject, bankObject2) -> Bool in
                     bankObject.bankId < bankObject2.bankId
@@ -122,7 +140,7 @@ extension CallHelpViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 50
+        return 40
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -161,16 +179,28 @@ extension CallHelpViewController: UITableViewDataSource {
                 bankId: searchResult[indexPath.row].bankId,
                 phoneNumber: searchResult[indexPath.row].bankInfo.mobileFreeServiceNum ??
                     searchResult[indexPath.row].bankInfo.cardCustomerServiceNum,
-                mail: searchResult[indexPath.row].bankInfo.mailWeb ?? nil
+                mailWeb: searchResult[indexPath.row].bankInfo.mailWeb ?? nil
             )
             
-            if searchResult[indexPath.row].bankInfo.mailWeb != nil {
-                
+//            if searchResult[indexPath.row].bankInfo.mailWeb != nil {
+            
                 callHelpCell.sendMailHandler = { [weak self] in
                     
-                    self?.showMailComposer(email: (self?.searchResult[indexPath.row].bankInfo.mailWeb)!)
+//                    self?.showMailComposer(email: (self?.searchResult[indexPath.row].bankInfo.mailWeb)!)
+                    
+                    if let webVC = UIStoryboard(
+                        name: StoryboardCategory.web,
+                        bundle: nil).instantiateViewController(
+                            withIdentifier: String(describing: HCWebViewController.self)) as? HCWebViewController {
+                        let navVC = UINavigationController(rootViewController: webVC)
+                        
+                        self?.present(navVC, animated: true, completion: nil)
+                    }
+                    
+
+                    
                 }
-            }
+//            }
             
         } else {
             
@@ -180,14 +210,19 @@ extension CallHelpViewController: UITableViewDataSource {
                 bankId: bankObjects[indexPath.row].bankId,
                 phoneNumber: bankObjects[indexPath.row].bankInfo.mobileFreeServiceNum ??
                     bankObjects[indexPath.row].bankInfo.cardCustomerServiceNum,
-                mail: "lohsts@gmail.com"
+                mailWeb: "lohsts@gmail.com"
             )
             
 //            if bankObjects[indexPath.row].bankInfo.email != nil {
             
                 callHelpCell.sendMailHandler = { [weak self] in
                     
-                    self?.showMailComposer(email: "lohsts@gmail.com")
+                    guard let strongSelf = self else { return }
+                    strongSelf.view.addSubview(strongSelf.webVC.view)
+                    
+                    strongSelf.webVC.didMove(toParent: strongSelf)
+//                    
+//                    self?.showMailComposer(email: "lohsts@gmail.com")
                 }
 //            }
         }

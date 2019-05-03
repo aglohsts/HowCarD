@@ -25,6 +25,8 @@ struct StoryboardCategory {
     static let filter = "Filter"
     
     static let auth = "Auth"
+    
+    static let web = "Web"
 
 }
 
@@ -45,6 +47,8 @@ extension UIStoryboard {
     static var filter: UIStoryboard { return hcStoryboard(name: StoryboardCategory.filter)}
     
     static var auth: UIStoryboard { return hcStoryboard(name: StoryboardCategory.auth)}
+    
+    static var web: UIStoryboard { return hcStoryboard(name: StoryboardCategory.web)}
 
     private static func hcStoryboard(name: String) -> UIStoryboard {
 
