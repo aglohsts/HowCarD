@@ -107,6 +107,16 @@ class HCTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         viewControllers = tabs.map({ $0.controller() })
 
         delegate = self
+        
+        layoutTabBar()
+    }
+    
+    func layoutTabBar() {
+        
+        let fontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 9.0)]
+        UITabBarItem.appearance().setTitleTextAttributes(fontAttributes, for: .normal)
+        
+        UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -2)
     }
 
     func tabBarController(

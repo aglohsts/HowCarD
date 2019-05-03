@@ -97,9 +97,9 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icu-is-gbq">
-                                                            <rect key="frame" x="365" y="28.5" width="27" height="27"/>
+                                                            <rect key="frame" x="368" y="30" width="24" height="24"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="27" id="WQK-5o-NYj"/>
+                                                                <constraint firstAttribute="height" constant="24" id="WQK-5o-NYj"/>
                                                                 <constraint firstAttribute="width" secondItem="icu-is-gbq" secondAttribute="height" multiplier="1:1" id="zFL-iX-u7t"/>
                                                             </constraints>
                                                             <state key="normal" image="Icons_Call"/>
@@ -108,10 +108,10 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCR-Ve-EsG">
-                                                            <rect key="frame" x="307" y="32.5" width="38" height="19"/>
+                                                            <rect key="frame" x="314" y="33.5" width="34" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="dCR-Ve-EsG" secondAttribute="height" multiplier="2:1" id="VAZ-3r-EA0"/>
-                                                                <constraint firstAttribute="width" constant="38" id="je5-hn-ae5"/>
+                                                                <constraint firstAttribute="width" constant="34" id="je5-hn-ae5"/>
                                                             </constraints>
                                                             <state key="normal" image="Icons_SendMail"/>
                                                             <connections>
