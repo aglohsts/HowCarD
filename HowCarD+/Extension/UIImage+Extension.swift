@@ -60,6 +60,16 @@ enum ImageAsset: String {
     // Other Icons - QA
     case Icons_Call
     case Icons_WriteMessage
+    
+    // Other Icons - Web
+    case Icons_WebDismiss_Disable
+    case Icons_WebDismiss_Enable
+    case Icons_WebGoBack_Disable
+    case Icons_WebGoBack_Enable
+    case Icons_WebGoForward_Disable
+    case Icons_WebGoForward_Enable
+    case Icons_WebReload_Disable
+    case Icons_WebReload_Enable
 
     // Image
     case Image_Placeholder

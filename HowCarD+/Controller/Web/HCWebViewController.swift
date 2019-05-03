@@ -11,6 +11,12 @@ import WebKit
 
 class HCWebViewController: HCBaseViewController {
     
+    var goBackObservationToken: NSKeyValueObservation?
+    
+    var goForwardObservationToken: NSKeyValueObservation?
+    
+    var webTitleObservationToken: NSKeyValueObservation?
+    
     var urlString: String = "" {
         
         didSet {
@@ -18,48 +24,26 @@ class HCWebViewController: HCBaseViewController {
             self.loadURL(urlString: urlString)
         }
     }
-
+    
+    @IBOutlet weak var contentView: UIView!
+    
+    @IBOutlet weak var webTopView: UIView!
+    
+    @IBOutlet weak var webBottomView: UIView!
+    
     @IBOutlet weak var webTitleLabel: UILabel!
     
     @IBOutlet weak var hcWebView: WKWebView! {
         
         didSet {
             
-//            hcWebView.navigationDelegate = self
+            hcWebView.navigationDelegate = self
         }
     }
+    
     @IBOutlet weak var backButton: UIButton!
-//        {
-//
-//        didSet {
-//
-//            if hcWebView.canGoBack {
-//
-//                backButton.isEnabled = true
-//                // TODO: set button layout
-//            } else {
-//
-//                backButton.isEnabled = false
-//            }
-//        }
-//    }
     
     @IBOutlet weak var forwardButton: UIButton!
-//        {
-//        
-//        didSet {
-//            
-//            if hcWebView.canGoForward {
-//                
-//                // TODO: set button layout
-//                forwardButton.isEnabled = true
-//            } else {
-//                
-//                forwardButton.isEnabled = false
-//            }
-//        }
-//    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +51,17 @@ class HCWebViewController: HCBaseViewController {
         setupWebView()
         
         view.isOpaque = false
-//        view.backgroundColor = .clear
+        view.backgroundColor = .clear
+        
+        webTitleLabel.text = "Loading..."
+        
+        goBackKVO()
+        
+        goForwardKVO()
+        
+        webTitleKVO()
+        
+        setBackgroundColor()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,11 +70,14 @@ class HCWebViewController: HCBaseViewController {
         loadURL(urlString: self.urlString)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
         
-        print(forwardButton.frame.origin)
-        print(backButton.frame.origin)
+        webTopView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
+        
+        contentView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
+        
+        webBottomView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
+        
     }
     
     func loadURL(urlString: String) {
@@ -94,25 +91,27 @@ class HCWebViewController: HCBaseViewController {
     
     func setupWebView() {
         
-        hcWebView.addObserver(self, forKeyPath: #keyPath(WKWebView.title), options: .new, context: nil)
-    }
-    
-    override func observeValue(
-        forKeyPath keyPath: String?,
-        of object: Any?, change: [NSKeyValueChangeKey : Any]?,
-        context: UnsafeMutableRawPointer?) {
+        webTopView.roundCorners(
+            [.layerMinXMinYCorner, .layerMaxXMinYCorner],
+            radius: 5.0)
         
-        if keyPath == "title" {
-            if let title = hcWebView.title {
-                
-                webTitleLabel.text = title
-            }
-        }
+        contentView.roundCorners(
+            [.layerMinXMinYCorner, .layerMaxXMinYCorner],
+            radius: 5.0)
+        
+        webBottomView.addTopBorderWithColor(
+            color: .hexStringToUIColor(hex: .grayDCDCDC),
+            width: 0.5)
+        
+        webTopView.addBottomBorderWithColor(
+            color: .hexStringToUIColor(hex: .grayDCDCDC),
+            width: 0.5)
+        
     }
     
     @IBAction func onDismiss(_ sender: Any) {
         
-        self.parent?.navigationController?.setNavigationBarHidden(false, animated: false)
+    self.parent?.navigationController?.setNavigationBarHidden(false, animated: false)
         
         self.parent?.tabBarController?.tabBar.isHidden = false
         
@@ -125,6 +124,8 @@ class HCWebViewController: HCBaseViewController {
         self.removeFromParent()
         
         loadURL(urlString: "about:blank")
+        
+        hcWebView.reload()
         
     }
     
@@ -141,6 +142,99 @@ class HCWebViewController: HCBaseViewController {
         if hcWebView.canGoForward {
             
             hcWebView.goForward()
+        }
+        
+    }
+    
+    @IBAction func onReload(_ sender: Any) {
+        
+        hcWebView.reload()
+    }
+    
+    
+}
+
+extension HCWebViewController {
+    
+    func goBackKVO() {
+        
+        if goBackObservationToken != nil {
+            
+            return
+        }
+        
+        goBackObservationToken =  observe(\.hcWebView?.canGoBack, options: [.new]) { (strongSelf, change) in
+            // return token
+            
+            guard let canGoBack = change.newValue else { return }
+            
+            if canGoBack == true {
+                
+                DispatchQueue.main.async {
+                    
+                    self.backButton.isEnabled = true
+                self.backButton.setImage(UIImage.asset(.Icons_WebGoBack_Enable), for: .normal)
+                    
+                }
+            } else {
+                
+                DispatchQueue.main.async {
+                    
+                    self.backButton.isEnabled = false
+                    
+                    self.backButton.setImage(UIImage.asset(.Icons_WebGoBack_Disable), for: .normal)
+                }
+            }
+        }
+    }
+    
+    func goForwardKVO() {
+        
+        if goForwardObservationToken != nil {
+            
+            return
+        }
+        
+        goForwardObservationToken =  observe(\.hcWebView?.canGoForward, options: [.new]) { (strongSelf, change) in
+            // return token
+            
+            guard let canGoForward = change.newValue else { return }
+            
+            if canGoForward == true {
+                
+                DispatchQueue.main.async {
+                    
+                    self.forwardButton.isEnabled = true
+                    
+                        
+                self.forwardButton.setImage(UIImage.asset(.Icons_WebGoForward_Enable), for: .normal)
+                    
+                }
+            } else {
+                
+                DispatchQueue.main.async {
+                    
+                    self.forwardButton.isEnabled = false
+                    
+                    self.forwardButton.setImage(UIImage.asset(.Icons_WebGoForward_Disable), for: .normal)
+                }
+            }
+        }
+    }
+    
+    func webTitleKVO() {
+        
+        if webTitleObservationToken != nil {
+            
+            return
+        }
+        
+        webTitleObservationToken =  observe(\.hcWebView?.title, options: [.new]) { (strongSelf, change) in
+            // return token
+            
+            guard let title = change.newValue else { return }
+            
+            self.webTitleLabel.text = title
         }
         
     }

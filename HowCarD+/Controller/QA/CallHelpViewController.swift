@@ -211,7 +211,7 @@ extension CallHelpViewController: UITableViewDataSource {
                         
                         vc.view.translatesAutoresizingMaskIntoConstraints = false
                         
-                        vc.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 500)
+                        vc.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                         
                         vc.view.topAnchor.constraint(equalTo: strongSelf.view.topAnchor, constant: 0).isActive = true
                         
@@ -242,6 +242,8 @@ extension CallHelpViewController: UITableViewDataSource {
                     
                     guard let strongSelf = self,
                         let vc = strongSelf.webVC as? HCWebViewController else { return }
+                    
+                    
 //
                     strongSelf.view.endEditing(true)
                     
@@ -260,7 +262,7 @@ extension CallHelpViewController: UITableViewDataSource {
                         
                         vc.view.translatesAutoresizingMaskIntoConstraints = false
                         
-                        vc.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 500)
+                        vc.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                         
                         vc.view.topAnchor.constraint(equalTo: strongSelf.view.topAnchor, constant: 0).isActive = true
                         
