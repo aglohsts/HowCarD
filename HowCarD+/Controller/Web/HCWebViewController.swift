@@ -124,9 +124,6 @@ class HCWebViewController: HCBaseViewController {
         self.removeFromParent()
         
         loadURL(urlString: "about:blank")
-        
-        hcWebView.reload()
-        
     }
     
     @IBAction func onGoBack(_ sender: Any) {

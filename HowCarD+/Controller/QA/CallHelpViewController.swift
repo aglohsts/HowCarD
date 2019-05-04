@@ -12,11 +12,6 @@ import WebKit
 
 class CallHelpViewController: HCBaseViewController {
     
-    let webVC = UIStoryboard(
-        name: StoryboardCategory.web,
-        bundle: nil).instantiateViewController(
-            withIdentifier: String(describing: HCWebViewController.self))
-    
     let composer = MFMailComposeViewController()
     
     let qaProvider = QAProvider()
@@ -189,39 +184,46 @@ extension CallHelpViewController: UITableViewDataSource {
             
                 callHelpCell.sendMailHandler = { [weak self] in
                     
-                    guard let strongSelf = self, let vc = strongSelf.webVC as? HCWebViewController else { return }
+                    
+                    
+                    guard let strongSelf = self,
+                        let webVC = UIStoryboard(
+                            name: StoryboardCategory.web,
+                            bundle: nil).instantiateViewController(
+                                withIdentifier: String(describing: HCWebViewController.self)) as? HCWebViewController
+                        else { return }
                     
                     strongSelf.view.endEditing(true)
 //                    self?.showMailComposer(email: (self?.searchResult[indexPath.row].bankInfo.mailWeb)!)
 
                     // add view
 
-                    if vc.view.superview == nil {
+                    if webVC.view.superview == nil {
 
-                        vc.urlString = self?.searchResult[indexPath.row].bankInfo.mailWeb ?? ""
+                        webVC.urlString = self?.searchResult[indexPath.row].bankInfo.mailWeb ?? ""
 
                         strongSelf.navigationController?.setNavigationBarHidden(true, animated: true)
 //                        strongSelf.navigationController?.isNavigationBarHidden = true
                         
                         strongSelf.tabBarController?.tabBar.isHidden = true
                         
-                        strongSelf.addChild(vc)
+                        strongSelf.addChild(webVC)
                         
-                        strongSelf.view.addSubview(vc.view)
+                        strongSelf.view.addSubview(webVC.view)
                         
-                        vc.view.translatesAutoresizingMaskIntoConstraints = false
+                        webVC.view.translatesAutoresizingMaskIntoConstraints = false
                         
-                        vc.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                        webVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                         
-                        vc.view.topAnchor.constraint(equalTo: strongSelf.view.topAnchor, constant: 0).isActive = true
+                        webVC.view.topAnchor.constraint(equalTo: strongSelf.view.topAnchor, constant: 0).isActive = true
                         
-                        vc.view.leadingAnchor.constraint(equalTo: strongSelf.view.leadingAnchor).isActive = true
+                        webVC.view.leadingAnchor.constraint(equalTo: strongSelf.view.leadingAnchor).isActive = true
                         
-                        vc.view.trailingAnchor.constraint(equalTo: strongSelf.view.trailingAnchor).isActive = true
+                        webVC.view.trailingAnchor.constraint(equalTo: strongSelf.view.trailingAnchor).isActive = true
                         
-                        vc.view.bottomAnchor.constraint(equalTo: strongSelf.view.bottomAnchor).isActive = true
+                        webVC.view.bottomAnchor.constraint(equalTo: strongSelf.view.bottomAnchor).isActive = true
                         
-                        vc.didMove(toParent: strongSelf)
+                        webVC.didMove(toParent: strongSelf)
                     }
                 }
             }
@@ -241,38 +243,42 @@ extension CallHelpViewController: UITableViewDataSource {
                 callHelpCell.sendMailHandler = { [weak self] in
                     
                     guard let strongSelf = self,
-                        let vc = strongSelf.webVC as? HCWebViewController else { return }
+                        let webVC = UIStoryboard(
+                            name: StoryboardCategory.web,
+                            bundle: nil).instantiateViewController(
+                                withIdentifier: String(describing: HCWebViewController.self)) as? HCWebViewController
+                        else { return }
                     
                     
 //
                     strongSelf.view.endEditing(true)
                     
-                    if vc.view.superview == nil {
+                    if webVC.view.superview == nil {
                         
-                        vc.urlString = self?.bankObjects[indexPath.row].bankInfo.mailWeb ?? ""
+                        webVC.urlString = self?.bankObjects[indexPath.row].bankInfo.mailWeb ?? ""
                         
                         strongSelf.navigationController?.setNavigationBarHidden(true, animated: true)
                         //                        strongSelf.navigationController?.isNavigationBarHidden = true
                         
                         strongSelf.tabBarController?.tabBar.isHidden = true
                         
-                        strongSelf.addChild(vc)
+                        strongSelf.addChild(webVC)
                         
-                        strongSelf.view.addSubview(vc.view)
+                        strongSelf.view.addSubview(webVC.view)
                         
-                        vc.view.translatesAutoresizingMaskIntoConstraints = false
+                        webVC.view.translatesAutoresizingMaskIntoConstraints = false
                         
-                        vc.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                        webVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                         
-                        vc.view.topAnchor.constraint(equalTo: strongSelf.view.topAnchor, constant: 0).isActive = true
+                        webVC.view.topAnchor.constraint(equalTo: strongSelf.view.topAnchor, constant: 0).isActive = true
                         
-                        vc.view.leadingAnchor.constraint(equalTo: strongSelf.view.leadingAnchor).isActive = true
+                        webVC.view.leadingAnchor.constraint(equalTo: strongSelf.view.leadingAnchor).isActive = true
                         
-                        vc.view.trailingAnchor.constraint(equalTo: strongSelf.view.trailingAnchor).isActive = true
+                        webVC.view.trailingAnchor.constraint(equalTo: strongSelf.view.trailingAnchor).isActive = true
                         
-                        vc.view.bottomAnchor.constraint(equalTo: strongSelf.view.bottomAnchor).isActive = true
+                        webVC.view.bottomAnchor.constraint(equalTo: strongSelf.view.bottomAnchor).isActive = true
                         
-                        vc.didMove(toParent: strongSelf)
+                        webVC.didMove(toParent: strongSelf)
                     }
                 }
 //            }
