@@ -57,6 +57,17 @@ enum ImageAsset: String {
     // Other Icons - DRecomm
     case Icons_Next
     
+    case Icons_cvs
+    case Icons_gas
+    case Icons_internet
+    case Icons_mobilePay
+    case Icons_movie
+    case Icons_oversea
+    case Icons_parking
+    case Icons_refund
+    case Icons_supermarket
+    case Icons_travel
+    
     // Other Icons - QA
     case Icons_Call
     case Icons_WriteMessage

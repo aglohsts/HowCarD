@@ -60,7 +60,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISk-Ox-wM9" userLabel="Liked Discounts Container View">
                                 <rect key="frame" x="0.0" y="138" width="414" height="724"/>
                                 <connections>
-                                    <segue destination="rah-Fq-eha" kind="embed" identifier="" id="sgf-wr-4gC"/>
+                                    <segue destination="rah-Fq-eha" kind="embed" identifier="LikedDiscountSegue" id="sgf-wr-4gC"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0G1-hJ-qSp">

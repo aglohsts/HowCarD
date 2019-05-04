@@ -51,6 +51,7 @@
 		CA23A32D226DC9BD008B8DD8 /* MyCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA23A32C226DC9BD008B8DD8 /* MyCardCollectionViewCell.swift */; };
 		CA25DFD8226E1FFC003AC89C /* DRecommProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25DFD7226E1FFC003AC89C /* DRecommProvider.swift */; };
 		CA25DFDA226E200C003AC89C /* DRecommRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25DFD9226E200C003AC89C /* DRecommRequest.swift */; };
+		CA260463227D700700267ED5 /* FirebaseManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA260462227D700700267ED5 /* FirebaseManager+Extension.swift */; };
 		CA2D6B0322647BD600C25883 /* QueryDocumentSnapshot+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D6B0222647BD600C25883 /* QueryDocumentSnapshot+Extension.swift */; };
 		CA2F7DC322563872005E4361 /* Filter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA2F7DC222563872005E4361 /* Filter.storyboard */; };
 		CA2F7DC6225638D7005E4361 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2F7DC5225638D7005E4361 /* FilterViewController.swift */; };
@@ -163,6 +164,7 @@
 		CA23A32C226DC9BD008B8DD8 /* MyCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA25DFD7226E1FFC003AC89C /* DRecommProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommProvider.swift; sourceTree = "<group>"; };
 		CA25DFD9226E200C003AC89C /* DRecommRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommRequest.swift; sourceTree = "<group>"; };
+		CA260462227D700700267ED5 /* FirebaseManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirebaseManager+Extension.swift"; sourceTree = "<group>"; };
 		CA2D6B0222647BD600C25883 /* QueryDocumentSnapshot+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QueryDocumentSnapshot+Extension.swift"; sourceTree = "<group>"; };
 		CA2F7DC222563872005E4361 /* Filter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Filter.storyboard; sourceTree = "<group>"; };
 		CA2F7DC5225638D7005E4361 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
@@ -594,6 +596,7 @@
 			isa = PBXGroup;
 			children = (
 				CAFE829422608051004F4E63 /* FirebaseManager.swift */,
+				CA260462227D700700267ED5 /* FirebaseManager+Extension.swift */,
 			);
 			path = FirebaseManager;
 			sourceTree = "<group>";
@@ -850,6 +853,7 @@
 				CAF16FAA2274727E0013D864 /* CollectedCardViewController.swift in Sources */,
 				CA9194172276054200DA277E /* HCBaseTableViewCell.swift in Sources */,
 				CAF16FA8227472290013D864 /* LikedDiscountViewController.swift in Sources */,
+				CA260463227D700700267ED5 /* FirebaseManager+Extension.swift in Sources */,
 				CA12C762227975AE00491BD4 /* DRecommCategoryDetailTableViewCell.swift in Sources */,
 				CAFE827B225DF071004F4E63 /* HCTableViewSectionHeaderView.swift in Sources */,
 				CA323DB522684C57007A39FD /* HCParser.swift in Sources */,

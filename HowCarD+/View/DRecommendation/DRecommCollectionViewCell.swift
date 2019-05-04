@@ -14,10 +14,14 @@ class DRecommCollectionViewCell: HCBaseCollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
 
-    func layoutCell(category: String, image: String) {
+    func layoutCell(category: String, image: ImageAsset) {
         
         label.text = category
         
-        imageView.loadImage(image, placeHolder: UIImage.asset(.Image_Placeholder2))
+        imageView.image = UIImage.asset(image)
+        
+//        imageView.loadImageByURL(image, placeHolder: UIImage.asset(.Image_Placeholder2))
+        
+//        imageView.loadImage(image, placeHolder: UIImage.asset(.Image_Placeholder2))
     }
 }

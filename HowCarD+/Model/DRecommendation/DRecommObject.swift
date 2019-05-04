@@ -22,7 +22,27 @@ struct DRecommTopObject: Codable {
     
     let categoryId: String // cvs
     
-    let image: String
+    var image: URL?
+    
+    let categoryFilePath: String
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case categoryTitle
+        
+        case categoryId
+        
+        case categoryFilePath
+    }
+}
+
+struct DRecommTopObject2 {
+    
+    let categoryTitle: String // 超商
+    
+    let categoryId: String // cvs
+    
+    var image: ImageAsset
 }
 
 struct DRecommSections: Codable {
@@ -55,4 +75,11 @@ struct DRecommSubCategory: Codable {
 struct DRecommSubContent: Codable {
     
     let discountInfos: [DiscountInfo]
+}
+
+struct DRecommTopFile {
+    
+    var path: String = ""
+    
+    var url: URL?
 }
