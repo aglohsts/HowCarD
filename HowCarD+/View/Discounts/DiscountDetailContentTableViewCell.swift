@@ -12,9 +12,14 @@ class DiscountDetailContentTableViewCell: HCBaseTableViewCell {
 
     @IBOutlet weak var label: UILabel!
     
+    @IBOutlet weak var contentBackView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        layoutView()
+        
+        setViewBackground(hex: .viewBackground)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -24,6 +29,19 @@ class DiscountDetailContentTableViewCell: HCBaseTableViewCell {
     
     func layoutCell(content: String) {
         label.text = content
+    }
+    
+    func layoutView() {
+        
+        contentBackView.roundCorners(
+            [.layerMinXMaxYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner],
+            radius: 10)
+    }
+    
+    override func setViewBackground(hex: HCColorHex) {
+        self.backgroundColor = UIColor.clear
+        
+        contentBackView.backgroundColor = UIColor.white
     }
 
 }

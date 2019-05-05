@@ -141,6 +141,9 @@ extension DiscountDetailViewController {
         
         self.tableView.estimatedSectionHeaderHeight = 200
         
+        imageView.roundCorners(
+            [.layerMinXMaxYCorner],
+            radius: 30.0)
     }
     
     private func layoutTopView(title: String, bankName: String, cardName: String, timePeriod: String, image: String) {
