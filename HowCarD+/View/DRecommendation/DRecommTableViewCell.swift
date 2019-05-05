@@ -97,6 +97,9 @@ class DRecommTableViewCell: FoldingCell {
                 foreMarkIsReadView.layer.backgroundColor = UIColor.lightGray.cgColor
                 
                 containerMarkIsReadView.layer.backgroundColor = UIColor.lightGray.cgColor
+                
+                foreTitleLabel.font = UIFont.systemFont(ofSize: 14.0)
+                
             } else {
                 
                 foreMarkIsReadView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .tint).cgColor
@@ -201,6 +204,103 @@ class DRecommTableViewCell: FoldingCell {
 //        isUnfolded = false
 
     }
+}
+
+extension DRecommTableViewCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath)
+        -> CGSize {
+            
+            switch collectionView {
+                
+            case foreCollectionView:
+                
+                return CGSize(width: foreCollectionView.frame.width / 3 - 20, height: foreCollectionView.frame.height)
+                
+            case containerCollectionView:
+                
+                return CGSize(
+                    width: containerCollectionView.frame.width / 3 - 20,
+                    height: containerCollectionView.frame.height
+                )
+                
+            case briefIntroCollectionView:
+                
+                return CGSize(
+                    width: briefIntroCollectionView.frame.width / 3 - 20,
+                    height: briefIntroCollectionView.frame.height
+                )
+                
+            default: return CGSize.zero
+            }
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int)
+        -> UIEdgeInsets {
+
+            switch collectionView {
+                
+            case foreCollectionView:
+                
+                return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+                
+            case containerCollectionView:
+                
+                return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+                
+            case briefIntroCollectionView:
+                
+                return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+                
+            default: return UIEdgeInsets.zero
+            }
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumLineSpacingForSectionAt section: Int)
+        -> CGFloat {
+
+            switch collectionView {
+                
+            case foreCollectionView:
+                
+                return 5.0
+                
+            case containerCollectionView:
+                
+                return 5.0
+                
+            case briefIntroCollectionView:
+                
+                return 5.0
+                
+            default: return 0
+            }
+    }
+//
+//    func collectionView(
+//        _ collectionView: UICollectionView,
+//        layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int)
+//        -> CGFloat {
+//
+//
+//    }
+//
+//    func collectionView(
+//        _ collectionView: UICollectionView,
+//        layout collectionViewLayout: UICollectionViewLayout,
+//        referenceSizeForHeaderInSection section: Int)
+//        -> CGSize {
+//
+//            return CGSize(width: UIScreen.width, height: 25.0)
+//    }
 }
 
 extension DRecommTableViewCell: UICollectionViewDelegate {

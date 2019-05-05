@@ -12,7 +12,8 @@ class CardTagCollectionViewCell: HCBaseCollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        setViewBackground(hex: .viewBackground)
     }
 
     @IBOutlet weak var tagLabel: UILabel!
@@ -20,6 +21,10 @@ class CardTagCollectionViewCell: HCBaseCollectionViewCell {
     func layoutCell(tag: String) {
 
         tagLabel.text = tag
+    }
+    
+    override func setViewBackground(hex: HCColorHex) {
+        self.backgroundColor = UIColor.clear
     }
 
 }

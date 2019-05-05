@@ -12,16 +12,25 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CardTagCollectionViewCell" id="gTV-IL-0wX" customClass="CardTagCollectionViewCell" customModule="HowCarD_" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CardTagCollectionViewCell" id="gTV-IL-0wX" customClass="CardTagCollectionViewCell" customModule="HowCarD" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="55" height="21"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="55" height="21"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Np0-dO-oFu">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Np0-dO-oFu">
                         <rect key="frame" x="0.0" y="0.0" width="55" height="21"/>
                         <subviews>
+                            <view clipsSubviews="YES" alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ane-Ba-hHk">
+                                <rect key="frame" x="0.0" y="0.0" width="55" height="21"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="agCornerRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7an-tL-BxM">
                                 <rect key="frame" x="1" y="1" width="53" height="19"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -34,16 +43,26 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.43529411759999997" green="0.74509803919999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ane-Ba-hHk" secondAttribute="bottom" id="GGl-Wk-5Yh"/>
                             <constraint firstAttribute="trailing" secondItem="7an-tL-BxM" secondAttribute="trailing" constant="1" id="Xlg-BX-ZkQ"/>
+                            <constraint firstItem="ane-Ba-hHk" firstAttribute="top" secondItem="Np0-dO-oFu" secondAttribute="top" id="ch3-hp-pHn"/>
                             <constraint firstItem="7an-tL-BxM" firstAttribute="leading" secondItem="Np0-dO-oFu" secondAttribute="leading" constant="1" id="eZS-RI-lwL"/>
+                            <constraint firstAttribute="trailing" secondItem="ane-Ba-hHk" secondAttribute="trailing" id="ezS-eY-Jbi"/>
                             <constraint firstItem="7an-tL-BxM" firstAttribute="top" secondItem="Np0-dO-oFu" secondAttribute="top" constant="1" id="gOt-54-yzf"/>
+                            <constraint firstItem="ane-Ba-hHk" firstAttribute="leading" secondItem="Np0-dO-oFu" secondAttribute="leading" id="iFQ-H9-WcO"/>
                             <constraint firstAttribute="bottom" secondItem="7an-tL-BxM" secondAttribute="bottom" constant="1" id="jlW-ub-cd3"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="agCornerRadius">
-                                <real key="value" value="2"/>
+                                <real key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="agBorderWidth">
+                                <real key="value" value="0.10000000000000001"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="agBorderColor">
+                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
