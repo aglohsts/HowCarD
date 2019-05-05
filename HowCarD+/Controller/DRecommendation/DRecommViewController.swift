@@ -83,9 +83,8 @@ class DRecommViewController: HCBaseViewController {
     ]
     
     enum Const {
-        static let closeCellHeight: CGFloat = 135
-        static let openCellHeight: CGFloat = 280
-        static let rowsCount = 10
+        static let closeCellHeight: CGFloat = 126
+        static let openCellHeight: CGFloat = 251
     }
     
     override func viewDidLoad() {
@@ -397,8 +396,6 @@ extension DRecommViewController: UITableViewDelegate {
         guard case let cell as DRecommTableViewCell = cell else {
             return
         }
-        
-        cell.backgroundColor = .white
         
         if dRecommArray[indexPath.section][indexPath.row].cellHeight == Const.closeCellHeight {
             cell.unfold(false, animated: false, completion: nil)

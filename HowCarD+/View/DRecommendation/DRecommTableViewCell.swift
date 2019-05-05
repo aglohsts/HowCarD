@@ -110,10 +110,19 @@ class DRecommTableViewCell: FoldingCell {
         super.awakeFromNib()
         
         setupCollectionView()
+        
+//        layoutCell()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    private func layoutCell() {
+        
+        foregroundView.roundCorners([.layerMaxXMaxYCorner], radius: 20.0)
+        
+        containerView.roundCorners([.layerMaxXMaxYCorner], radius: 20.0)
     }
     
     func layoutCell(image: String, title: String, target: String, timePeriod: String?, note: String, isRead: Bool) {

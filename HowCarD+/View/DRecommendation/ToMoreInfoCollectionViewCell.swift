@@ -10,4 +10,14 @@ import UIKit
 
 class ToMoreInfoCollectionViewCell: HCBaseCollectionViewCell {
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        setViewBackground(hex: .viewBackground)
+    }
+    
+    override func setViewBackground(hex: HCColorHex) {
+        
+        self.backgroundColor = UIColor.clear
+    }
 }
