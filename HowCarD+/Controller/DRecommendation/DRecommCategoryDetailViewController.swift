@@ -108,7 +108,7 @@ extension DRecommCategoryDetailViewController: UITableViewDelegate {
         
         guard let headerView = view as? DRecommCategoryHeaderView else { return }
         
-        headerView.contentView.backgroundColor = UIColor.hexStringToUIColor(hex: .tintBackground)
+        headerView.contentView.backgroundColor = UIColor.clear
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -118,7 +118,7 @@ extension DRecommCategoryDetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 35 + (UIScreen.width / 2 - 60) * 1.3
+        return 35 + (UIScreen.width / 2 - 60) * 1.3 + 20
     }
 }
 

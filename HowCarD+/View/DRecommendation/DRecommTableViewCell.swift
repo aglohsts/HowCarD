@@ -106,9 +106,9 @@ class DRecommTableViewCell: FoldingCell {
                 
 //                containerView.backgroundColor = UIColor.hexStringToUIColor(hex: .markAsReadBackground)
                 
-                foreTitleLabel.font = UIFont.systemFont(ofSize: 13.0)
+                foreTitleLabel.isRegularFont(size: 13)
                 
-                containerTitleLabel.font = UIFont.systemFont(ofSize: 13.0)
+                containerTitleLabel.isRegularFont(size: 13)
                 
             } else {
                 
@@ -405,5 +405,4 @@ extension DRecommTableViewCell: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
     }
-
 }

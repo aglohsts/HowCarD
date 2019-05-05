@@ -303,7 +303,9 @@ extension MoreDiscountViewController: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath)
         -> CGSize {
             
-            return CGSize(width: UIScreen.width - 30, height: 280.0)
+            return CGSize(
+                width: UIScreen.width - 20,
+                height: (UIScreen.width - 20) * 0.8)
     }
     
     func collectionView(
@@ -312,7 +314,7 @@ extension MoreDiscountViewController: UICollectionViewDelegateFlowLayout {
         insetForSectionAt section: Int)
         -> UIEdgeInsets {
             
-            return UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 15)
+            return UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
     }
     //
     //    func collectionView(
@@ -417,5 +419,4 @@ extension MoreDiscountViewController: UICollectionViewDataSource {
             }
         return discountCollectionViewCell
     }
-
 }
