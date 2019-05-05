@@ -10,6 +10,8 @@ import UIKit
 
 class DRecommTopViewController: HCBaseViewController {
     
+    var isTapped: Bool = false
+    
     let dRecommProvider = DRecommProvider()
     
     var touchHandler: ((String) -> Void)?
@@ -109,6 +111,8 @@ extension DRecommTopViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         touchHandler?(dRecommTops[indexPath.item].categoryId)
+        
+        isTapped = true
     }
 }
 
@@ -133,6 +137,14 @@ extension DRecommTopViewController: UICollectionViewDataSource {
         newInfoCell.layoutCell(category: dRecommTops[indexPath.item].categoryTitle, image: dRecommTops[indexPath.item].image)
 
 //        newInfoCell.layoutCell(category: dRecommTops[indexPath.item].categoryTitle, image: imageUrl)
+        
+        if isTapped {
+            
+            newInfoCell.label.font = UIFont.boldSystemFont(ofSize: 11.0)
+        } else {
+            
+            newInfoCell.label.font = UIFont.systemFont(ofSize: 11.0)
+        }
 
         return newInfoCell
     }

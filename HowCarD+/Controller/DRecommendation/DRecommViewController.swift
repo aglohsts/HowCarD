@@ -121,7 +121,9 @@ class DRecommViewController: HCBaseViewController {
     }
     
     override func setBackgroundColor(_ hex: HCColorHex) {
-        tableView.backgroundColor = UIColor.hexStringToUIColor(hex: .viewBackground)
+        tableView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
+        
+        view.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
     }
     
     @objc func refreshHandler() {

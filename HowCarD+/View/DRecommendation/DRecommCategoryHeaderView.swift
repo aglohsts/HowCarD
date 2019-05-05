@@ -18,19 +18,22 @@ class DRecommCategoryHeaderView: UITableViewHeaderFooterView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        headerBackView.roundCorners([.layerMaxXMinYCorner, .layerMaxXMaxYCorner], radius: 21)
+        headerBackView.roundCorners(
+            [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner],
+            radius: 14.5
+        )
         
         imageView.roundCorners(
             [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner],
-            radius: 18
+            radius: 10
         )
         
         imageBackView.roundCorners(
             [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner],
-            radius: 18
+            radius: 10
         )
         
-        headerBackView.backgroundColor = UIColor.hexStringToUIColor(hex: .darkblue)
+//        headerBackView.backgroundColor = UIColor.hexStringToUIColor(hex: .darkblue)
         
         imageBackView.backgroundColor = UIColor.hexStringToUIColor(hex: .grayEFF2F4)
     }

@@ -267,7 +267,7 @@ extension CardDetailViewController: UITableViewDelegate {
 
         guard let headerView = view as? CardDetailTableViewHeaderView else { return }
 
-        headerView.contentView.backgroundColor = UIColor.hexStringToUIColor(hex: .sectionTitleBackground)
+        headerView.contentView.backgroundColor = UIColor.hexStringToUIColor(hex: .tintBackground)
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

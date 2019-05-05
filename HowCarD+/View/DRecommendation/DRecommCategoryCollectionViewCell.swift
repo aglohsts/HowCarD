@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DRecommCategoryCollectionViewCell: UICollectionViewCell {
+class DRecommCategoryCollectionViewCell: HCBaseCollectionViewCell {
     
     @IBOutlet weak var discountImageView: UIImageView!
     
@@ -22,6 +22,8 @@ class DRecommCategoryCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         
         setCellView()
+        
+        setViewBackground(hex: .viewBackground)
     }
     
     func setCellView() {
@@ -42,5 +44,9 @@ class DRecommCategoryCollectionViewCell: UICollectionViewCell {
         titleLabel.text = title
         
         briefContentLabel.text = briefContent
+    }
+    
+    override func setViewBackground(hex: HCColorHex) {
+        super.setViewBackground(hex: hex)
     }
 }

@@ -16,7 +16,7 @@ enum HCColorHex: String {
     
     case grayEFF2F4 = "EFF2F4"
     
-    case sectionTitleBackground = "D5ECF4" // tint
+    case tintBackground = "D5ECF4" // tint
     
     case darkblue = "023246"
     

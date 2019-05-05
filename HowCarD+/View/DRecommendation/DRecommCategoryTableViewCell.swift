@@ -66,9 +66,10 @@ class DRecommCategoryTableViewCell: HCBaseTableViewCell {
     }
     
     override func setViewBackground(hex: HCColorHex) {
-        super.setViewBackground(hex: hex)
         
-        collectionView.backgroundColor = UIColor.hexStringToUIColor(hex: .grayEFF2F4)
+        self.backgroundColor = UIColor.hexStringToUIColor(hex: .tintBackground)
+        
+        collectionView.backgroundColor = UIColor.hexStringToUIColor(hex: .tintBackground)
     }
     
     func layoutCell(subCategory: [DRecommSubCategory], subTitle: String) {
@@ -83,7 +84,8 @@ class DRecommCategoryTableViewCell: HCBaseTableViewCell {
 extension DRecommCategoryTableViewCell {
     
     private func setupCollectionView() {
-
+        
+        collectionView.showsHorizontalScrollIndicator = false
     }
 }
 
@@ -103,7 +105,7 @@ extension DRecommCategoryTableViewCell: UICollectionViewDelegateFlowLayout {
         insetForSectionAt section: Int)
         -> UIEdgeInsets {
             
-            return UIEdgeInsets(top: 8.0, left: 8.0, bottom: 8.0, right: 8.0)
+            return UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
     }
     //
     //    func collectionView(

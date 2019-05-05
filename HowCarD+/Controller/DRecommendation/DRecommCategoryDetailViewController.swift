@@ -21,16 +21,12 @@ class DRecommCategoryDetailViewController: HCBaseViewController {
             
             DispatchQueue.main.async {
                 
-                self.categoryLabel.text = self.dRecommSections?.categoryTitle
-                
                 self.tableView.reloadData()
             }
         }
     }
     
     @IBOutlet weak var backView: UIView!
-    
-    @IBOutlet weak var categoryLabel: UILabel!
     
     @IBOutlet weak var tableView: UITableView! {
         
@@ -59,9 +55,9 @@ class DRecommCategoryDetailViewController: HCBaseViewController {
     
     override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
         
-        tableView.backgroundColor = UIColor.hexStringToUIColor(hex: .grayEFF2F4)
+        tableView.backgroundColor = UIColor.hexStringToUIColor(hex: .tintBackground)
         
-        backView.backgroundColor = UIColor.hexStringToUIColor(hex: .grayEFF2F4)
+        backView.backgroundColor = UIColor.hexStringToUIColor(hex: .tintBackground)
     }
 }
 
@@ -87,8 +83,6 @@ extension DRecommCategoryDetailViewController {
         tableView.separatorStyle = .none
         
         tableView.showsVerticalScrollIndicator = false
-        
-        categoryLabel.text = ""
     }
 }
 
@@ -114,21 +108,17 @@ extension DRecommCategoryDetailViewController: UITableViewDelegate {
         
         guard let headerView = view as? DRecommCategoryHeaderView else { return }
         
-        headerView.contentView.backgroundColor = UIColor.hexStringToUIColor(hex: .grayEFF2F4)
+        headerView.contentView.backgroundColor = UIColor.hexStringToUIColor(hex: .tintBackground)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        return 50
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return 400
+        return 35
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
+        
+        return 35 + (UIScreen.width / 2 - 60) * 1.3
     }
 }
 

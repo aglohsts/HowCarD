@@ -46,6 +46,15 @@ class DRecommCardTableViewCell: HCBaseTableViewCell {
         super.setSelected(selected, animated: animated)
 
         setupCollectionView()
+        
+        setViewBackground(hex: .tintBackground)
+    }
+    
+    override func setViewBackground(hex: HCColorHex) {
+        
+        self.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
+        
+        collectionView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
     }
 }
 

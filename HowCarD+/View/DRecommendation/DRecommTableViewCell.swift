@@ -108,6 +108,8 @@ class DRecommTableViewCell: FoldingCell {
                 
                 foreTitleLabel.font = UIFont.systemFont(ofSize: 13.0)
                 
+                containerTitleLabel.font = UIFont.systemFont(ofSize: 13.0)
+                
             } else {
                 
                 foreMarkIsReadView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .tint).cgColor

@@ -16,11 +16,11 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OZO-PK-dg4">
-                    <rect key="frame" x="0.0" y="3" width="150" height="54"/>
+                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OZO-PK-dg4">
+                    <rect key="frame" x="152.5" y="3" width="109.5" height="54"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TiR-e6-30y">
-                            <rect key="frame" x="3" y="4" width="46" height="46"/>
+                            <rect key="frame" x="6" y="4" width="46" height="46"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mH9-JL-uRV">
                                     <rect key="frame" x="0.5" y="0.5" width="45" height="45"/>
@@ -35,21 +35,20 @@
                                 <constraint firstItem="mH9-JL-uRV" firstAttribute="leading" secondItem="TiR-e6-30y" secondAttribute="leading" constant="0.5" id="Zja-LP-NFG"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9e-BU-2U0">
-                            <rect key="frame" x="57" y="18.5" width="85" height="17"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9e-BU-2U0">
+                            <rect key="frame" x="60" y="18.5" width="37.5" height="17"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                            <color key="textColor" red="0.43529411759999997" green="0.74509803919999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="TiR-e6-30y" firstAttribute="leading" secondItem="OZO-PK-dg4" secondAttribute="leading" constant="3" id="1ie-nD-niC"/>
+                        <constraint firstItem="TiR-e6-30y" firstAttribute="leading" secondItem="OZO-PK-dg4" secondAttribute="leading" constant="6" id="1ie-nD-niC"/>
                         <constraint firstItem="z9e-BU-2U0" firstAttribute="leading" secondItem="TiR-e6-30y" secondAttribute="trailing" constant="8" id="BTP-Ad-cjo"/>
                         <constraint firstItem="z9e-BU-2U0" firstAttribute="centerY" secondItem="OZO-PK-dg4" secondAttribute="centerY" id="Ioh-Ev-k5b"/>
                         <constraint firstAttribute="bottom" secondItem="TiR-e6-30y" secondAttribute="bottom" constant="4" id="Jnk-1k-mz1"/>
-                        <constraint firstAttribute="trailing" secondItem="z9e-BU-2U0" secondAttribute="trailing" constant="8" id="Xat-Sv-cwu"/>
-                        <constraint firstAttribute="width" constant="150" id="YJ5-tZ-z5u"/>
+                        <constraint firstAttribute="trailing" secondItem="z9e-BU-2U0" secondAttribute="trailing" constant="12" id="Xat-Sv-cwu"/>
                         <constraint firstItem="TiR-e6-30y" firstAttribute="top" secondItem="OZO-PK-dg4" secondAttribute="top" constant="4" id="wjJ-aU-vRD"/>
                     </constraints>
                 </view>
@@ -57,8 +56,8 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="OZO-PK-dg4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="3" id="2vo-D8-CUl"/>
+                <constraint firstItem="OZO-PK-dg4" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Rr8-C3-PQs"/>
                 <constraint firstAttribute="bottom" secondItem="OZO-PK-dg4" secondAttribute="bottom" constant="3" id="hWk-8k-J9G"/>
-                <constraint firstItem="OZO-PK-dg4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="oNg-RI-5nw"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
