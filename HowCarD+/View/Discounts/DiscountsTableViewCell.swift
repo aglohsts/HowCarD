@@ -44,6 +44,8 @@ class DiscountsTableViewCell: HCBaseTableViewCell {
         super.awakeFromNib()
         
         setupCollectionView()
+        
+        setViewBackground(hex: .viewBackground)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -53,6 +55,8 @@ class DiscountsTableViewCell: HCBaseTableViewCell {
     
     override func setViewBackground(hex: HCColorHex) {
         super.setViewBackground(hex: hex)
+        
+        self.backgroundColor = .hexStringToUIColor(hex: hex)
         
         collectionView.backgroundColor = .hexStringToUIColor(hex: hex)
     }
@@ -66,14 +70,11 @@ class DiscountsTableViewCell: HCBaseTableViewCell {
     
     private func setupCollectionView() {
         
-        setViewBackground(hex: .viewBackground)
-        
         collectionView.agRegisterCellWithNib(
             identifier: String(describing: DiscountCollectionViewCell.self),
             bundle: nil)
         
         collectionView.showsHorizontalScrollIndicator = false
-        
     }
     
     @IBAction func onViewAll(_ sender: Any) {
@@ -91,7 +92,7 @@ extension DiscountsTableViewCell: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath)
         -> CGSize {
             
-            return CGSize(width: UIScreen.width / 2 - 25, height: 200.0)
+            return CGSize(width: UIScreen.width / 2 - 30, height: 200.0)
     }
     
     func collectionView(
@@ -102,15 +103,15 @@ extension DiscountsTableViewCell: UICollectionViewDelegateFlowLayout {
             
             return UIEdgeInsets(top: 24.0, left: 16, bottom: 24, right: 15)
     }
-    //
-    //    func collectionView(
-    //        _ collectionView: UICollectionView,
-    //        layout collectionViewLayout: UICollectionViewLayout,
-    //        minimumLineSpacingForSectionAt section: Int)
-    //        -> CGFloat {
-    //
-    //            return 15.0
-    //    }
+    
+        func collectionView(
+            _ collectionView: UICollectionView,
+            layout collectionViewLayout: UICollectionViewLayout,
+            minimumLineSpacingForSectionAt section: Int)
+            -> CGFloat {
+    
+                return 8.0
+        }
     //
     //    func collectionView(
     //        _ collectionView: UICollectionView,

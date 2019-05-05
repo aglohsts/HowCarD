@@ -28,11 +28,14 @@ class DiscountCollectionViewCell: HCBaseCollectionViewCell {
             
             if isRead {
                 
-                backView.layer.backgroundColor = UIColor.white.cgColor
+                backView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .markAsReadBackground).cgColor
                 
+                discountTitleLabel.isRegularFont(size: 13)
             } else {
                 
-                backView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .grayEFF2F4).cgColor
+                backView.layer.backgroundColor = UIColor.white.cgColor
+                
+                discountTitleLabel.isBoldFont(size: 13)
             }
         }
     }
@@ -116,10 +119,14 @@ class DiscountCollectionViewCell: HCBaseCollectionViewCell {
         
         if isRead {
             
-            backView.layer.backgroundColor = UIColor.white.cgColor
+            backView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .markAsReadBackground).cgColor
+            
+            discountTitleLabel.isRegularFont(size: 13)
         } else {
             
-            backView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .grayEFF2F4).cgColor
+            backView.layer.backgroundColor = UIColor.white.cgColor
+            
+            discountTitleLabel.isBoldFont(size: 13)
         }
     }
 }
