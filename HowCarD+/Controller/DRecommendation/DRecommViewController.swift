@@ -129,6 +129,8 @@ class DRecommViewController: HCBaseViewController {
         let deadlineTime = DispatchTime.now() + .seconds(1)
         DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: { [weak self] in
             if #available(iOS 10.0, *) {
+                
+                // TODO: 下拉更新
                 self?.tableView.refreshControl?.endRefreshing()
             }
             self?.tableView.reloadData()

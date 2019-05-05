@@ -24,19 +24,19 @@ extension HCFirebaseManager {
     
     func generateURL(endPoint: HCFirebaseStorageEndpoint, path: String, urlCompletion: @escaping ((URL) -> Void)) {
   
-    storageRef().child("dRecomm/top/Icons_cvs.png").downloadURL(completion: { (url, error) in
-        
-        //\(endPoint.rawValue)\(path)
-        print(url)
-        if let error = error {
+        storageRef().child("dRecomm/top/Icons_cvs.png").downloadURL(completion: { (url, error) in
             
-            print(error.localizedDescription)
-        }
-        
-        guard let url = url else { return }
-        
-        urlCompletion(url)
-        })
+            //\(endPoint.rawValue)\(path)
+            print(url)
+            if let error = error {
+                
+                print(error.localizedDescription)
+            }
+            
+            guard let url = url else { return }
+            
+            urlCompletion(url)
+            })
     }
     
     func getURL(urlCompletion: @escaping ((URL) -> Void)) {
