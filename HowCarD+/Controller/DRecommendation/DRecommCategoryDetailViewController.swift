@@ -59,9 +59,9 @@ class DRecommCategoryDetailViewController: HCBaseViewController {
     
     override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
         
-        tableView.backgroundColor = UIColor.hexStringToUIColor(hex: .grayDCDCDC)
+        tableView.backgroundColor = UIColor.hexStringToUIColor(hex: .grayEFF2F4)
         
-        backView.backgroundColor = UIColor.hexStringToUIColor(hex: .grayDCDCDC)
+        backView.backgroundColor = UIColor.hexStringToUIColor(hex: .grayEFF2F4)
     }
 }
 
@@ -114,7 +114,7 @@ extension DRecommCategoryDetailViewController: UITableViewDelegate {
         
         guard let headerView = view as? DRecommCategoryHeaderView else { return }
         
-        headerView.contentView.backgroundColor = UIColor.hexStringToUIColor(hex: .grayDCDCDC)
+        headerView.contentView.backgroundColor = UIColor.hexStringToUIColor(hex: .grayEFF2F4)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

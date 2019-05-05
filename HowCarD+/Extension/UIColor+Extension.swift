@@ -10,15 +10,17 @@ import UIKit
 
 enum HCColorHex: String {
     
-    case viewBackground = "F8f8f8"
+    case viewBackground = "EFEFEF"
     
     case tint = "6FBEDB"
     
-    case grayDCDCDC = "DCDCDC"
+    case grayEFF2F4 = "EFF2F4"
     
     case sectionTitleBackground = "D5ECF4" // tint
     
     case darkblue = "023246"
+    
+    case markAsReadBackground = "F4f4f4"
 }
 
 extension UIColor {

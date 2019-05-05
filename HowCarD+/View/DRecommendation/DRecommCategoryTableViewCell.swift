@@ -68,7 +68,7 @@ class DRecommCategoryTableViewCell: HCBaseTableViewCell {
     override func setViewBackground(hex: HCColorHex) {
         super.setViewBackground(hex: hex)
         
-        collectionView.backgroundColor = UIColor.hexStringToUIColor(hex: .grayDCDCDC)
+        collectionView.backgroundColor = UIColor.hexStringToUIColor(hex: .grayEFF2F4)
     }
     
     func layoutCell(subCategory: [DRecommSubCategory], subTitle: String) {

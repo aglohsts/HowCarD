@@ -32,7 +32,7 @@ class DRecommCategoryHeaderView: UITableViewHeaderFooterView {
         
         headerBackView.backgroundColor = UIColor.hexStringToUIColor(hex: .darkblue)
         
-        imageBackView.backgroundColor = UIColor.hexStringToUIColor(hex: .grayDCDCDC)
+        imageBackView.backgroundColor = UIColor.hexStringToUIColor(hex: .grayEFF2F4)
     }
     
     func layoutView(image: String, headerTitle: String) {

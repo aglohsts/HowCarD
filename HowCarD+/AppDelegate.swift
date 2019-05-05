@@ -34,7 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         HCFirebaseManager.shared.configure()
         
         Fabric.with([Crashlytics.self])
-
+        
+        setNavBar()
+        
         return true
     }
 
@@ -58,4 +60,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
 
+}
+
+extension AppDelegate {
+    
+    func setNavBar() {
+    
+        let font = UIFont.boldSystemFont(ofSize: 14)
+        
+        //        let font = UIFont(name: "SF Mono", size: 13) ?? UIFont.boldSystemFont(ofSize: 13)
+        
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSAttributedString.Key.font: font]
+    }
 }

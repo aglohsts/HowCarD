@@ -134,5 +134,4 @@ class HCBaseViewController: UIViewController {
         
         view.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
     }
-
 }

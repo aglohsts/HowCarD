@@ -83,8 +83,8 @@ class DRecommViewController: HCBaseViewController {
     ]
     
     enum Const {
-        static let closeCellHeight: CGFloat = 126
-        static let openCellHeight: CGFloat = 251
+        static let closeCellHeight: CGFloat = 133
+        static let openCellHeight: CGFloat = 257
     }
     
     override func viewDidLoad() {
@@ -121,7 +121,7 @@ class DRecommViewController: HCBaseViewController {
     }
     
     override func setBackgroundColor(_ hex: HCColorHex) {
-        tableView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
+        tableView.backgroundColor = UIColor.hexStringToUIColor(hex: .viewBackground)
     }
     
     @objc func refreshHandler() {

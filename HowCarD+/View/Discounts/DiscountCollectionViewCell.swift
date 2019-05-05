@@ -32,7 +32,7 @@ class DiscountCollectionViewCell: HCBaseCollectionViewCell {
                 
             } else {
                 
-                backView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .grayDCDCDC).cgColor
+                backView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .grayEFF2F4).cgColor
             }
         }
     }
@@ -119,7 +119,7 @@ class DiscountCollectionViewCell: HCBaseCollectionViewCell {
             backView.layer.backgroundColor = UIColor.white.cgColor
         } else {
             
-            backView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .grayDCDCDC).cgColor
+            backView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .grayEFF2F4).cgColor
         }
     }
 }

@@ -100,11 +100,11 @@ class HCWebViewController: HCBaseViewController {
             radius: 5.0)
         
         webBottomView.addTopBorderWithColor(
-            color: .hexStringToUIColor(hex: .grayDCDCDC),
+            color: .hexStringToUIColor(hex: .grayEFF2F4),
             width: 0.5)
         
         webTopView.addBottomBorderWithColor(
-            color: .hexStringToUIColor(hex: .grayDCDCDC),
+            color: .hexStringToUIColor(hex: .grayEFF2F4),
             width: 0.5)
         
     }

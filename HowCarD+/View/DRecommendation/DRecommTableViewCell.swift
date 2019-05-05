@@ -94,17 +94,26 @@ class DRecommTableViewCell: FoldingCell {
             
             if isRead {
                 
-                foreMarkIsReadView.layer.backgroundColor = UIColor.lightGray.cgColor
+//                foreMarkIsReadView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .grayEFF2F4).cgColor
                 
-                containerMarkIsReadView.layer.backgroundColor = UIColor.lightGray.cgColor
+//                containerMarkIsReadView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .grayEFF2F4).cgColor
                 
-                foreTitleLabel.font = UIFont.systemFont(ofSize: 14.0)
+                foreMarkIsReadView.isHidden = true
+                
+                containerMarkIsReadView.isHidden = true
+                
+//                foregroundView.backgroundColor = UIColor.hexStringToUIColor(hex: .markAsReadBackground)
+                
+//                containerView.backgroundColor = UIColor.hexStringToUIColor(hex: .markAsReadBackground)
+                
+                foreTitleLabel.font = UIFont.systemFont(ofSize: 13.0)
                 
             } else {
                 
                 foreMarkIsReadView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .tint).cgColor
                 
                 containerMarkIsReadView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .tint).cgColor
+                
             }
         }
     }
@@ -114,7 +123,7 @@ class DRecommTableViewCell: FoldingCell {
         
         setupCollectionView()
         
-//        layoutCell()
+        self.backgroundColor = UIColor.hexStringToUIColor(hex: .viewBackground)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
