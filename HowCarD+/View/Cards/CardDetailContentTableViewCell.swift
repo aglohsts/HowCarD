@@ -11,10 +11,10 @@ import UIKit
 class CardDetailContentTableViewCell: HCBaseTableViewCell {
 
     @IBOutlet weak var arrowButton: UIButton!
-
-    var briefInfo: String = ""
-
-    var detailInfo: String = ""
+    
+    @IBOutlet weak var contentBackView: UIView!
+    
+    var detailObservationToken: NSKeyValueObservation?
 
     var isDetail: Bool = false {
         didSet {
@@ -36,7 +36,8 @@ class CardDetailContentTableViewCell: HCBaseTableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        detailKVO()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -67,6 +68,70 @@ class CardDetailContentTableViewCell: HCBaseTableViewCell {
     
     override func prepareForReuse() {
         
-        arrowButton.isHidden = false
+        if contentLabel.text == nil {
+
+            self.arrowButton.isHidden = true
+
+            self.contentLabel.isHidden = true
+
+            self.contentBackView.isHidden = true
+
+        } else {
+        
+            self.arrowButton.isHidden = false
+            
+            self.contentLabel.isHidden = false
+            
+            self.contentBackView.isHidden = false
+        }
+    }
+    
+    func detailKVO() {
+        
+        detailObservationToken =  observe(\.contentLabel.text, options: [.old, .new]) { (strongSelf, change) in
+            // return token
+            
+            if change.newValue == nil {
+
+                self.arrowButton.isHidden = true
+
+                self.contentLabel.isHidden = true
+
+                self.contentBackView.isHidden = true
+
+                DispatchQueue.main.async {
+
+                    self.reloadInputViews()
+                }
+            }
+            
+            if change.oldValue == nil {
+                
+                self.arrowButton.isHidden = true
+                
+                self.contentLabel.isHidden = true
+                
+                self.contentBackView.isHidden = true
+                
+                DispatchQueue.main.async {
+                    
+                    self.reloadInputViews()
+                }
+            } else {
+                
+                self.arrowButton.isHidden = false
+                
+                self.contentLabel.isHidden = false
+                
+                self.contentBackView.isHidden = false
+                
+                DispatchQueue.main.async {
+                    
+                    self.reloadInputViews()
+                }
+            }
+            
+
+        }
     }
 }

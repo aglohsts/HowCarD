@@ -29,19 +29,19 @@
                                     <constraint firstAttribute="width" secondItem="O9o-wg-BD1" secondAttribute="height" multiplier="2:1" id="qOm-wD-JMn"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DiscountsNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucc-Uk-8dU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="DiscountsNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucc-Uk-8dU">
                                 <rect key="frame" x="8" y="143.5" width="239" height="16"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TargetLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IA5-P0-Da3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="TargetLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IA5-P0-Da3">
                                 <rect key="frame" x="8" y="300.5" width="239" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TimePeriodLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCr-q6-azg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="TimePeriodLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCr-q6-azg">
                                 <rect key="frame" x="8" y="324.5" width="95" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -71,6 +71,7 @@
                             <constraint firstItem="Ucc-Uk-8dU" firstAttribute="leading" secondItem="DZX-E0-eMb" secondAttribute="leading" constant="8" id="U8C-R2-nCG"/>
                             <constraint firstAttribute="trailing" secondItem="O9o-wg-BD1" secondAttribute="trailing" id="WJT-ni-a8a"/>
                             <constraint firstItem="IA5-P0-Da3" firstAttribute="trailing" secondItem="Ucc-Uk-8dU" secondAttribute="trailing" id="bcd-wj-ilx"/>
+                            <constraint firstItem="IA5-P0-Da3" firstAttribute="top" relation="lessThanOrEqual" secondItem="Ucc-Uk-8dU" secondAttribute="bottom" priority="500" constant="16" id="e2X-yu-e6c"/>
                             <constraint firstItem="9bT-IE-RDi" firstAttribute="bottom" secondItem="O9o-wg-BD1" secondAttribute="bottom" constant="13" id="hto-5v-864"/>
                             <constraint firstItem="IA5-P0-Da3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ucc-Uk-8dU" secondAttribute="bottom" priority="750" constant="8" id="mLr-iJ-cJx"/>
                             <constraint firstItem="IA5-P0-Da3" firstAttribute="leading" secondItem="Ucc-Uk-8dU" secondAttribute="leading" id="mp4-ku-d8h"/>
