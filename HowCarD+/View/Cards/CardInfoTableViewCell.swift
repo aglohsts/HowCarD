@@ -11,6 +11,8 @@ import UIKit
 class CardInfoTableViewCell: HCBaseTableViewCell {
     
     var collectButtonDidTouchHandler: (() -> Void)?
+    
+    var briefInfos: [ BriefIntro ] = []
 
     var tagArray = [String]() {
         
@@ -61,13 +63,26 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
 
     @IBOutlet weak var cardNameLabel: UILabel!
     
+    @IBOutlet weak var cardInfoCollectionView: UICollectionView! {
+        
+        didSet {
+            
+            cardInfoCollectionView.delegate = self
+            
+            cardInfoCollectionView.dataSource = self
+        }
+    }
+    
     @IBOutlet weak var tagCollectionView: UICollectionView! {
+        
         didSet {
             tagCollectionView.delegate = self
 
             tagCollectionView.dataSource = self
         }
     }
+    
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -86,7 +101,8 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
         bankName: String,
         cardName: String,
         cardImage: String,
-        tags: [String]
+        tags: [String],
+        briefInfos: [ BriefIntro ]
         ) {
 
         self.isRead = isRead
@@ -102,7 +118,8 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
         cardImageView.loadImage(cardImage)
         
         self.tagArray = tags
-
+        
+        self.briefInfos = briefInfos
     }
 
     func setupCollectionView() {
@@ -111,6 +128,16 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
             identifier: String(describing: CardTagCollectionViewCell.self),
             bundle: nil
         )
+        
+        cardInfoCollectionView.agRegisterCellWithNib(
+            identifier: String(describing:
+                BriefInfoCollectionViewCell.self),
+            bundle: nil
+        )
+        
+        tagCollectionView.showsHorizontalScrollIndicator = false
+        
+        cardInfoCollectionView.showsHorizontalScrollIndicator = false
     }
     
     @IBAction func onCollectCard(_ sender: Any) {
@@ -119,29 +146,147 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
     }
 }
 
+extension CardInfoTableViewCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath)
+        -> CGSize {
+            
+            switch collectionView {
+                
+            case tagCollectionView:
+                
+                return CGSize(
+                    width: tagCollectionView.frame.width / 3 - 20,
+                    height: tagCollectionView.frame.height
+                )
+                
+            case cardInfoCollectionView:
+                
+                return CGSize(
+                    width: cardInfoCollectionView.frame.width / 3 - 20,
+                    height: cardInfoCollectionView.frame.height
+                )
+                
+            default: return CGSize.zero
+            }
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int)
+        -> UIEdgeInsets {
+            
+            switch collectionView {
+                
+            case tagCollectionView:
+                
+                return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+                
+            case cardInfoCollectionView:
+                
+                return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+
+            default: return UIEdgeInsets.zero
+            }
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumLineSpacingForSectionAt section: Int)
+        -> CGFloat {
+            
+            switch collectionView {
+                
+            case tagCollectionView:
+                
+                return 5.0
+                
+            case cardInfoCollectionView:
+                
+                return 5.0
+                
+            default: return 0
+            }
+    }
+    //
+    //    func collectionView(
+    //        _ collectionView: UICollectionView,
+    //        layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int)
+    //        -> CGFloat {
+    //
+    //
+    //    }
+    //
+    //    func collectionView(
+    //        _ collectionView: UICollectionView,
+    //        layout collectionViewLayout: UICollectionViewLayout,
+    //        referenceSizeForHeaderInSection section: Int)
+    //        -> CGSize {
+    //
+    //            return CGSize(width: UIScreen.width, height: 25.0)
+    //    }
+}
+
+
 extension CardInfoTableViewCell: UICollectionViewDelegate {
 
 }
 
 extension CardInfoTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tagArray.count
+        
+        switch collectionView {
+            
+        case cardInfoCollectionView: return briefInfos.count
+            
+        case tagCollectionView: return tagArray.count
+            
+        default: return 0
+        }
     }
 
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath)
     -> UICollectionViewCell {
-
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: CardTagCollectionViewCell.self),
-            for: indexPath
-        )
-
-        guard let tagCell = cell as? CardTagCollectionViewCell else { return cell }
-
-        tagCell.layoutCell(tag: tagArray[indexPath.item])
-
-        return tagCell
+        
+        switch collectionView {
+            
+        case cardInfoCollectionView:
+            
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: String(describing: BriefInfoCollectionViewCell.self),
+                for: indexPath
+            )
+            
+            guard let briefInfoCell = cell as? BriefInfoCollectionViewCell else { return cell }
+            
+            briefInfoCell.layoutCell(
+                title: briefInfos[indexPath.row].title,
+                content: briefInfos[indexPath.row].content)
+            
+            return briefInfoCell
+            
+        case tagCollectionView:
+            
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: String(describing: CardTagCollectionViewCell.self),
+                for: indexPath
+            )
+            
+            guard let tagCell = cell as? CardTagCollectionViewCell else { return cell }
+            
+            tagCell.layoutCell(tag: tagArray[indexPath.item])
+            
+            return tagCell
+            
+        default:
+            
+            return UICollectionViewCell()
+        }
     }
 }

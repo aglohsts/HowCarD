@@ -87,6 +87,7 @@ class CardsViewController: HCBaseViewController {
     override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
         super.setBackgroundColor()
         tableView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
+        
     }
     
     private func setTableView() {
@@ -345,7 +346,8 @@ extension CardsViewController: UITableViewDataSource {
             bankName: cardsBasicInfo[indexPath.row].bank,
             cardName: cardsBasicInfo[indexPath.row].name,
             cardImage: cardsBasicInfo[indexPath.row].image,
-            tags: cardsBasicInfo[indexPath.row].tags
+            tags: cardsBasicInfo[indexPath.row].tags,
+            briefInfos: cardsBasicInfo[indexPath.row].briefIntro
         )
         
         cardInfoCell.collectButtonDidTouchHandler = { [weak self] in

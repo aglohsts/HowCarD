@@ -14,6 +14,8 @@ class CardDetailContentTableViewCell: HCBaseTableViewCell {
     
     @IBOutlet weak var contentBackView: UIView!
     
+    
+    
     var isDetailAvailable: Bool = false {
         
         didSet {
