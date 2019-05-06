@@ -39,7 +39,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CardNameLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mW-wP-mdW">
-                                                            <rect key="frame" x="96" y="19" width="110.5" height="24"/>
+                                                            <rect key="frame" x="96" y="8" width="110.5" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="24" id="vla-Gs-bUQ"/>
                                                             </constraints>
@@ -91,7 +91,7 @@
                                                             </connections>
                                                         </button>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="K7C-kx-VYq">
-                                                            <rect key="frame" x="96" y="51" width="305" height="126"/>
+                                                            <rect key="frame" x="96" y="40" width="305" height="137"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iWJ-It-bVt">
                                                                 <size key="itemSize" width="95" height="124"/>
@@ -100,13 +100,43 @@
                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             </collectionViewFlowLayout>
                                                             <cells>
-                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="N2L-Ez-ii6">
-                                                                    <rect key="frame" x="0.0" y="1" width="95" height="124"/>
+                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000001192092896" contentMode="center" reuseIdentifier="ToMoreInfoCollectionViewCell" id="IyU-sg-S9u" customClass="MoreInfoCollectionViewCell">
+                                                                    <rect key="frame" x="0.0" y="6.5" width="95" height="124"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                         <rect key="frame" x="0.0" y="0.0" width="95" height="124"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
+                                                                        <subviews>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons_Next" translatesAutoresizingMaskIntoConstraints="NO" id="F19-uo-hzS">
+                                                                                <rect key="frame" x="23.5" y="33" width="28" height="28"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" secondItem="F19-uo-hzS" secondAttribute="height" multiplier="1:1" id="Amj-wO-DsV"/>
+                                                                                    <constraint firstAttribute="width" constant="28" id="QA4-t5-ZC7"/>
+                                                                                </constraints>
+                                                                            </imageView>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="詳細資訊" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0uO-Um-5ND">
+                                                                                <rect key="frame" x="15" y="71" width="45" height="15"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="15" id="MN6-FA-cWB"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                                <color key="textColor" red="0.43529411759999997" green="0.74509803919999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
                                                                     </view>
+                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <constraints>
+                                                                        <constraint firstItem="F19-uo-hzS" firstAttribute="centerX" secondItem="IyU-sg-S9u" secondAttribute="centerX" constant="-10" id="NuW-wv-bqv"/>
+                                                                        <constraint firstItem="0uO-Um-5ND" firstAttribute="centerX" secondItem="F19-uo-hzS" secondAttribute="centerX" id="Vr0-wi-AED"/>
+                                                                        <constraint firstItem="0uO-Um-5ND" firstAttribute="top" secondItem="F19-uo-hzS" secondAttribute="bottom" constant="10" id="fwk-Rp-V1x"/>
+                                                                        <constraint firstItem="F19-uo-hzS" firstAttribute="centerY" secondItem="IyU-sg-S9u" secondAttribute="centerY" constant="-15" id="oT0-rt-Hxm"/>
+                                                                    </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="agCornerRadius">
+                                                                            <real key="value" value="3"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </collectionViewCell>
                                                             </cells>
                                                         </collectionView>
@@ -116,7 +146,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="2FI-Ac-viR" secondAttribute="trailing" id="03k-rN-LR1"/>
                                                         <constraint firstItem="TvH-0C-sst" firstAttribute="top" secondItem="K7C-kx-VYq" secondAttribute="bottom" constant="8" id="1nO-WM-Kpk"/>
                                                         <constraint firstItem="TvH-0C-sst" firstAttribute="leading" secondItem="l9i-0B-f6P" secondAttribute="trailing" constant="8" id="Cxo-e8-vLZ"/>
-                                                        <constraint firstItem="7mW-wP-mdW" firstAttribute="top" secondItem="Tzr-5S-lFe" secondAttribute="top" constant="19" id="KXC-41-1kD"/>
+                                                        <constraint firstItem="7mW-wP-mdW" firstAttribute="top" secondItem="Tzr-5S-lFe" secondAttribute="top" constant="8" id="KXC-41-1kD"/>
                                                         <constraint firstItem="1Bq-TT-nzD" firstAttribute="top" secondItem="Tzr-5S-lFe" secondAttribute="top" id="Lqd-WX-IG2"/>
                                                         <constraint firstItem="K7C-kx-VYq" firstAttribute="leading" secondItem="7mW-wP-mdW" secondAttribute="leading" id="M0u-9Y-9hI"/>
                                                         <constraint firstAttribute="bottom" secondItem="TvH-0C-sst" secondAttribute="bottom" constant="5" id="XA8-ba-Bn5"/>
@@ -422,6 +452,7 @@
     <resources>
         <image name="Icons_ArrowDown" width="11" height="7"/>
         <image name="Icons_Bookmark_Normal" width="15" height="20"/>
+        <image name="Icons_Next" width="68" height="68"/>
         <image name="Icons_Website_White" width="17" height="17"/>
         <image name="Image_Placeholder" width="500" height="500"/>
         <image name="TransparentBackground" width="19" height="19"/>

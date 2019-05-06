@@ -26,6 +26,10 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
         didSet {
             if isRead {
                 readMarkView.layer.backgroundColor = UIColor.lightGray.cgColor
+                
+                backView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .markAsReadBackground).cgColor
+                
+                cardNameLabel.isRegularFont(size: 14)
 
             } else {
                 readMarkView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .tint).cgColor
@@ -158,7 +162,7 @@ extension CardInfoTableViewCell: UICollectionViewDelegateFlowLayout {
             case tagCollectionView:
                 
                 return CGSize(
-                    width: tagCollectionView.frame.width / 3 - 20,
+                    width: tagCollectionView.frame.width / 5,
                     height: tagCollectionView.frame.height
                 )
                 
@@ -203,11 +207,11 @@ extension CardInfoTableViewCell: UICollectionViewDelegateFlowLayout {
                 
             case tagCollectionView:
                 
-                return 5.0
+                return 4.0
                 
             case cardInfoCollectionView:
                 
-                return 5.0
+                return 4.0
                 
             default: return 0
             }
@@ -241,7 +245,7 @@ extension CardInfoTableViewCell: UICollectionViewDataSource {
         
         switch collectionView {
             
-        case cardInfoCollectionView: return briefInfos.count
+        case cardInfoCollectionView: return briefInfos.count + 1
             
         case tagCollectionView: return tagArray.count
             
@@ -258,18 +262,32 @@ extension CardInfoTableViewCell: UICollectionViewDataSource {
             
         case cardInfoCollectionView:
             
-            let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: String(describing: BriefInfoCollectionViewCell.self),
-                for: indexPath
-            )
-            
-            guard let briefInfoCell = cell as? BriefInfoCollectionViewCell else { return cell }
-            
-            briefInfoCell.layoutCell(
-                title: briefInfos[indexPath.row].title,
-                content: briefInfos[indexPath.row].content)
-            
-            return briefInfoCell
+            if indexPath.item == briefInfos.count {
+                
+                let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: String(describing: ToMoreInfoCollectionViewCell.self),
+                    for: indexPath
+                )
+                
+                guard let moreInfoCell = cell as? ToMoreInfoCollectionViewCell else { return cell }
+                
+                return moreInfoCell
+                
+            } else {
+                
+                let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: String(describing: BriefInfoCollectionViewCell.self),
+                    for: indexPath
+                )
+                
+                guard let briefInfoCell = cell as? BriefInfoCollectionViewCell else { return cell }
+                
+                briefInfoCell.layoutCell(
+                    title: briefInfos[indexPath.row].title,
+                    content: briefInfos[indexPath.row].content)
+                
+                return briefInfoCell
+            }
             
         case tagCollectionView:
             
