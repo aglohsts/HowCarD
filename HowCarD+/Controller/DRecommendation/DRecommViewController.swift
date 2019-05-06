@@ -118,6 +118,8 @@ class DRecommViewController: HCBaseViewController {
         }
         
         setBackgroundColor(.viewBackground)
+        
+        
     }
     
     override func setBackgroundColor(_ hex: HCColorHex) {
@@ -399,18 +401,19 @@ extension DRecommViewController: UITableViewDelegate {
             return
         }
         
-//        if dRecommArray[indexPath.section][indexPath.row].cellHeight == Const.closeCellHeight {
-//            
-//            cell.unfold(true, animated: false, completion: nil)
-//        } else {
-//            
-//            cell.unfold(false, animated: false, completion: nil)
-//        }
+        if dRecommArray[indexPath.section][indexPath.row].cellHeight == Const.closeCellHeight {
+            
+            cell.unfold(false, animated: false, completion: nil)
+        } else {
+            
+            cell.unfold(true, animated: false, completion: nil)
+        }
         
 //                cell.number = indexPath.row
     }
     
     func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return dRecommArray[indexPath.section][indexPath.row].cellHeight
     }
     
@@ -492,17 +495,26 @@ extension DRecommViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
+        if dRecommArray[indexPath.section][indexPath.row].cellHeight == Const.closeCellHeight {
+
+            cell.unfold(false, animated: false, completion: nil)
+        } else {
+
+            cell.unfold(true, animated: false, completion: nil)
+        }
+        
         let durations: [TimeInterval] = [0.26, 0.2, 0.2]
         cell.durationsForExpandedState = durations
         cell.durationsForCollapsedState = durations
         
         switch indexPath.section {
+            
         case 0, 2: // card
-            
+
             let dRecommData = dRecommArray[indexPath.section][indexPath.row] as? CardBasicInfoObject
-            
+
             guard let card = dRecommData else { return UITableViewCell() }
-            
+
             cell.layoutCell(
                 image: card.image,
                 title: card.name,
@@ -511,17 +523,17 @@ extension DRecommViewController: UITableViewDataSource {
                 note: card.note,
                 isRead: card.isRead
             )
-            
+
             cell.layoutCollectionView(briefIntroArray: card.briefIntro, tagArray: card.tags)
-            
+
             cell.toDetailHandler = {
                 self.performSegue(withIdentifier: Segue.cardDetail, sender: indexPath)
             }
-            
+
         case 1, 3: // discount
-            
+
             let dRecommData = dRecommArray[indexPath.section][indexPath.row] as? DiscountDetail
-            
+
             guard let discount = dRecommData else { return UITableViewCell() }
             
             cell.layoutCell(
@@ -532,13 +544,13 @@ extension DRecommViewController: UITableViewDataSource {
                 note: discount.note,
                 isRead: discount.info.isRead
             )
-            
+
             cell.layoutCollectionView(briefIntroArray: discount.briefIntro, tagArray: nil)
-            
+
             cell.toDetailHandler = {
                 self.performSegue(withIdentifier: Segue.discountDetail, sender: indexPath)
             }
-            
+
         default: return UITableViewCell()
         }
         

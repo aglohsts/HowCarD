@@ -17,13 +17,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K4K-dE-uBT">
-                    <rect key="frame" x="29" y="5" width="369" height="90"/>
+                    <rect key="frame" x="21" y="5" width="377" height="90"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Zn-S5-EFQ">
-                    <rect key="frame" x="16" y="9" width="3" height="15"/>
+                    <rect key="frame" x="8" y="7" width="3" height="15"/>
                     <color key="backgroundColor" red="0.43529411759999997" green="0.74509803919999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="ADH-BW-zM4"/>
@@ -34,9 +34,9 @@
             <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="K4K-dE-uBT" firstAttribute="leading" secondItem="3Zn-S5-EFQ" secondAttribute="trailing" constant="10" id="ANH-d9-Uvt"/>
-                <constraint firstItem="3Zn-S5-EFQ" firstAttribute="top" secondItem="K4K-dE-uBT" secondAttribute="top" constant="4" id="YAE-Pd-Auf"/>
+                <constraint firstItem="3Zn-S5-EFQ" firstAttribute="top" secondItem="K4K-dE-uBT" secondAttribute="top" constant="2" id="YAE-Pd-Auf"/>
                 <constraint firstAttribute="bottom" secondItem="K4K-dE-uBT" secondAttribute="bottom" constant="5" id="wvi-NX-uaQ"/>
-                <constraint firstItem="3Zn-S5-EFQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="xtO-Pm-PM2"/>
+                <constraint firstItem="3Zn-S5-EFQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="xtO-Pm-PM2"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="K4K-dE-uBT" secondAttribute="trailing" constant="16" id="z0J-hD-31s"/>
                 <constraint firstAttribute="top" secondItem="K4K-dE-uBT" secondAttribute="top" constant="-5" id="zv7-z5-tBj"/>
             </constraints>

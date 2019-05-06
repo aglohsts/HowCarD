@@ -10,13 +10,23 @@ import UIKit
 
 class CardDetailViewController: HCBaseViewController {
     
+    @IBOutlet weak var topBackView: UIView!
+    
     var cardID: String = ""
     
     let cardProvider = CardProvider()
     
+    var isDetailAvailable: Bool = true
+    
     var collectedCardIds = [String]()
     
-    @IBOutlet weak var cardImageView: UIImageView!
+    @IBOutlet weak var cardImageView: UIImageView! {
+        
+        didSet {
+            
+            cardImageView.image = UIImage()
+        }
+    }
     
     var cardCollectTouchHandler: (() -> Void)?
     
@@ -130,6 +140,10 @@ class CardDetailViewController: HCBaseViewController {
         tableView.separatorStyle = .none
         
         tableView.showsVerticalScrollIndicator = false
+        
+        topBackView.roundCorners(
+            [.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner],
+            radius: 10)
     }
     
     private func setHeaderViewContent(cardName: String, bankName: String, image: String) {
@@ -248,6 +262,12 @@ extension CardDetailViewController {
 }
 
 extension CardDetailViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return 35
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = tableView.dequeueReusableHeaderFooterView(
             withIdentifier: String(describing: CardDetailTableViewHeaderView.self)
@@ -267,7 +287,7 @@ extension CardDetailViewController: UITableViewDelegate {
 
         guard let headerView = view as? CardDetailTableViewHeaderView else { return }
 
-        headerView.contentView.backgroundColor = UIColor.hexStringToUIColor(hex: .tintBackground)
+        headerView.contentView.backgroundColor = UIColor.hexStringToUIColor(hex: .gray)
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -307,7 +327,15 @@ extension CardDetailViewController: UITableViewDataSource {
         
         let content = data.isDetail ? data.detailContent : data.briefContent
         
-        contentCell.layoutCell(title: data.title, content: content, isDetail: data.isDetail)
+        if data.detailContent == nil {
+
+            isDetailAvailable = false
+        } else {
+
+            isDetailAvailable = true
+        }
+        
+        contentCell.layoutCell(title: data.title, content: content, isDetail: data.isDetail, isDetailAvailable: isDetailAvailable)
 
         contentCell.showDetailDidTouchHandler = { [weak self] in
 

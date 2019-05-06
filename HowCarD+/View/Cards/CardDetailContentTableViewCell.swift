@@ -14,6 +14,30 @@ class CardDetailContentTableViewCell: HCBaseTableViewCell {
     
     @IBOutlet weak var contentBackView: UIView!
     
+    var isDetailAvailable: Bool = false {
+        
+        didSet {
+            
+            if isDetailAvailable {
+                
+                self.arrowButton.isHidden = false
+                
+                DispatchQueue.main.async {
+                    
+                    self.reloadInputViews()
+                }
+            } else {
+                
+                self.arrowButton.isHidden = true
+                
+                DispatchQueue.main.async {
+                    
+                    self.reloadInputViews()
+                }
+            }
+        }
+    }
+    
     var detailObservationToken: NSKeyValueObservation?
 
     var isDetail: Bool = false {
@@ -37,7 +61,7 @@ class CardDetailContentTableViewCell: HCBaseTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        detailKVO()
+//        detailKVO()
         
         layoutView()
     }
@@ -49,41 +73,24 @@ class CardDetailContentTableViewCell: HCBaseTableViewCell {
     }
     @IBOutlet weak var titleLabel: UILabel!
 
-    @IBOutlet weak var contentLabel: UILabel! {
-        
-        didSet {
-            
-            if contentLabel.text == nil {
-                
-                self.arrowButton.isHidden = true
-                
-                self.contentLabel.isHidden = true
-                
-                self.contentBackView.isHidden = true
-                
-                DispatchQueue.main.async {
-                    
-                    self.reloadInputViews()
-                }
-            }
-        }
-    }
+    @IBOutlet weak var contentLabel: UILabel! 
 
     @IBAction func onShowDetail(_ sender: Any) {
         
         self.reloadInputViews()
 
         showDetailDidTouchHandler?()
-
     }
 
-    func layoutCell(title: String, content: String?, isDetail: Bool) {
+    func layoutCell(title: String, content: String?, isDetail: Bool, isDetailAvailable: Bool) {
 
         titleLabel.text = title
 
         contentLabel.text = content
 
         self.isDetail = isDetail
+        
+        self.isDetailAvailable = isDetailAvailable
     }
     
     func layoutView() {
@@ -95,70 +102,14 @@ class CardDetailContentTableViewCell: HCBaseTableViewCell {
     
     override func prepareForReuse() {
         
-        if contentLabel.text == nil {
-
-            self.arrowButton.isHidden = true
-
-            self.contentLabel.isHidden = true
-
-            self.contentBackView.isHidden = true
-
-        } else {
-
+        if isDetailAvailable {
+            
             self.arrowButton.isHidden = false
-
-            self.contentLabel.isHidden = false
-
-            self.contentBackView.isHidden = false
-        }
-    }
-    
-    func detailKVO() {
-        
-        detailObservationToken =  observe(\.contentLabel.text, options: [.old, .new, .initial]) { (strongSelf, change) in
-            // return token
             
-//            if change.newValue == nil {
-//
-//                self.arrowButton.isHidden = true
-//
-//                self.contentLabel.isHidden = true
-//
-//                self.contentBackView.isHidden = true
-//
-//                DispatchQueue.main.async {
-//
-//                    self.reloadInputViews()
-//                }
-//            }
+        } else {
             
+            self.arrowButton.isHidden = true
             
-            
-            if change.oldValue == nil {
-                
-                self.arrowButton.isHidden = true
-                
-                self.contentLabel.isHidden = true
-                
-                self.contentBackView.isHidden = true
-                
-                DispatchQueue.main.async {
-                    
-                    self.reloadInputViews()
-                }
-            } else {
-                
-                self.arrowButton.isHidden = false
-                
-                self.contentLabel.isHidden = false
-                
-                self.contentBackView.isHidden = false
-                
-                DispatchQueue.main.async {
-                    
-                    self.reloadInputViews()
-                }
-            }
         }
     }
 }

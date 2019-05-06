@@ -81,7 +81,7 @@ struct DiscountDetail: Codable, Collapsable {
     
     let note: String
     
-    var cellHeight: CGFloat = 135
+    var cellHeight: CGFloat = 133
     
     enum CodingKeys: String, CodingKey {
         

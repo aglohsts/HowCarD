@@ -21,6 +21,8 @@ enum HCColorHex: String {
     case darkblue = "023246"
     
     case markAsReadBackground = "F4f4f4"
+    
+    case gray = "C0C3C8"
 }
 
 extension UIColor {
