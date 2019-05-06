@@ -61,8 +61,6 @@ class CardDetailContentTableViewCell: HCBaseTableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-//        detailKVO()
-        
         layoutView()
     }
 
@@ -73,7 +71,7 @@ class CardDetailContentTableViewCell: HCBaseTableViewCell {
     }
     @IBOutlet weak var titleLabel: UILabel!
 
-    @IBOutlet weak var contentLabel: UILabel! 
+    @IBOutlet weak var contentLabel: UILabel!
 
     @IBAction func onShowDetail(_ sender: Any) {
         
