@@ -23,11 +23,11 @@ class CardDetailContentTableViewCell: HCBaseTableViewCell {
                 
                 arrowButton.setImage(UIImage.asset(.Icons_ArrowUp), for: .normal)
                 
-                //                contentLabel.text = detailInfo
+                contentBackView.backgroundColor = UIColor.hexStringToUIColor(hex: .tintBackground)
             } else {
                 arrowButton.setImage(UIImage.asset(.Icons_ArrowDown), for: .normal)
                 
-                //                contentLabel.text = briefInfo
+                contentBackView.backgroundColor = UIColor.white
             }
         }
     }
@@ -38,6 +38,8 @@ class CardDetailContentTableViewCell: HCBaseTableViewCell {
         super.awakeFromNib()
         
         detailKVO()
+        
+        layoutView()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -47,7 +49,25 @@ class CardDetailContentTableViewCell: HCBaseTableViewCell {
     }
     @IBOutlet weak var titleLabel: UILabel!
 
-    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel! {
+        
+        didSet {
+            
+            if contentLabel.text == nil {
+                
+                self.arrowButton.isHidden = true
+                
+                self.contentLabel.isHidden = true
+                
+                self.contentBackView.isHidden = true
+                
+                DispatchQueue.main.async {
+                    
+                    self.reloadInputViews()
+                }
+            }
+        }
+    }
 
     @IBAction func onShowDetail(_ sender: Any) {
         
@@ -66,6 +86,13 @@ class CardDetailContentTableViewCell: HCBaseTableViewCell {
         self.isDetail = isDetail
     }
     
+    func layoutView() {
+        
+        contentBackView.roundCorners(
+            [.layerMinXMaxYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner],
+            radius: 10)
+    }
+    
     override func prepareForReuse() {
         
         if contentLabel.text == nil {
@@ -77,33 +104,35 @@ class CardDetailContentTableViewCell: HCBaseTableViewCell {
             self.contentBackView.isHidden = true
 
         } else {
-        
+
             self.arrowButton.isHidden = false
-            
+
             self.contentLabel.isHidden = false
-            
+
             self.contentBackView.isHidden = false
         }
     }
     
     func detailKVO() {
         
-        detailObservationToken =  observe(\.contentLabel.text, options: [.old, .new]) { (strongSelf, change) in
+        detailObservationToken =  observe(\.contentLabel.text, options: [.old, .new, .initial]) { (strongSelf, change) in
             // return token
             
-            if change.newValue == nil {
-
-                self.arrowButton.isHidden = true
-
-                self.contentLabel.isHidden = true
-
-                self.contentBackView.isHidden = true
-
-                DispatchQueue.main.async {
-
-                    self.reloadInputViews()
-                }
-            }
+//            if change.newValue == nil {
+//
+//                self.arrowButton.isHidden = true
+//
+//                self.contentLabel.isHidden = true
+//
+//                self.contentBackView.isHidden = true
+//
+//                DispatchQueue.main.async {
+//
+//                    self.reloadInputViews()
+//                }
+//            }
+            
+            
             
             if change.oldValue == nil {
                 
@@ -130,8 +159,6 @@ class CardDetailContentTableViewCell: HCBaseTableViewCell {
                     self.reloadInputViews()
                 }
             }
-            
-
         }
     }
 }

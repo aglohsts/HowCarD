@@ -399,13 +399,15 @@ extension DRecommViewController: UITableViewDelegate {
             return
         }
         
-        if dRecommArray[indexPath.section][indexPath.row].cellHeight == Const.closeCellHeight {
-            cell.unfold(false, animated: false, completion: nil)
-        } else {
-            cell.unfold(true, animated: false, completion: nil)
-        }
+//        if dRecommArray[indexPath.section][indexPath.row].cellHeight == Const.closeCellHeight {
+//            
+//            cell.unfold(true, animated: false, completion: nil)
+//        } else {
+//            
+//            cell.unfold(false, animated: false, completion: nil)
+//        }
         
-        //        cell.number = indexPath.row
+//                cell.number = indexPath.row
     }
     
     func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -419,22 +421,22 @@ extension DRecommViewController: UITableViewDelegate {
             return
         }
         
-        markAsRead(indexPath: indexPath)
-        
         if cell.isAnimating() {
             return
         }
         
+        markAsRead(indexPath: indexPath)
+        
         var duration = 0.0
-        let cellIsCollapsed = dRecommArray[indexPath.section][indexPath.row].cellHeight == Const.closeCellHeight
+        let cellIsCollapsed = dRecommArray[indexPath.section][indexPath.row].cellHeight == Const.openCellHeight
         
         if cellIsCollapsed {
-            dRecommArray[indexPath.section][indexPath.row].cellHeight = Const.openCellHeight
-            cell.unfold(true, animated: true, completion: nil)
-            duration = 0.5
-        } else {
             dRecommArray[indexPath.section][indexPath.row].cellHeight = Const.closeCellHeight
             cell.unfold(false, animated: true, completion: nil)
+            duration = 0.5
+        } else {
+            dRecommArray[indexPath.section][indexPath.row].cellHeight = Const.openCellHeight
+            cell.unfold(true, animated: true, completion: nil)
             duration = 0.8
         }
         

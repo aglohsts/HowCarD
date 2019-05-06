@@ -40,7 +40,7 @@ struct CardBasicInfoObject: Codable, Collapsable {
     
     let note: String
     
-    var cellHeight: CGFloat  = 135
+    var cellHeight: CGFloat  = 133
     
     var isCollected: Bool = false
     
