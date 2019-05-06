@@ -23,14 +23,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="255" height="347"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O9o-wg-BD1">
-                                <rect key="frame" x="0.0" y="0.0" width="255" height="127.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="255" height="170"/>
                                 <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="O9o-wg-BD1" secondAttribute="height" multiplier="2:1" id="qOm-wD-JMn"/>
+                                    <constraint firstAttribute="width" secondItem="O9o-wg-BD1" secondAttribute="height" multiplier="3:2" id="qOm-wD-JMn"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="DiscountsNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucc-Uk-8dU">
-                                <rect key="frame" x="8" y="143.5" width="239" height="16"/>
+                                <rect key="frame" x="8" y="271" width="239" height="16"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -48,7 +48,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bT-IE-RDi">
-                                <rect key="frame" x="212" y="105.5" width="35" height="35"/>
+                                <rect key="frame" x="212" y="148" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="VzA-wU-mfL"/>
                                     <constraint firstAttribute="width" constant="35" id="dIS-PZ-DhU"/>

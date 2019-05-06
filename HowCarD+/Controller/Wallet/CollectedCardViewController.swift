@@ -161,6 +161,10 @@ extension CollectedCardViewController {
 
 extension CollectedCardViewController: UITableViewDelegate {
     
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        
+//        return 80
+//    }
 }
 
 extension CollectedCardViewController: UITableViewDataSource {

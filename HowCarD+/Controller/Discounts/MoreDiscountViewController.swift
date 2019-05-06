@@ -305,7 +305,7 @@ extension MoreDiscountViewController: UICollectionViewDelegateFlowLayout {
             
             return CGSize(
                 width: UIScreen.width - 20,
-                height: (UIScreen.width - 20) * 0.8)
+                height: (UIScreen.width - 20) * 0.9)
     }
     
     func collectionView(

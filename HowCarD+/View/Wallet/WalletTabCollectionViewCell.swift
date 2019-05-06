@@ -24,7 +24,7 @@ class WalletTabCollectionViewCell: HCBaseCollectionViewCell {
                 self.bottomBorder.backgroundColor = UIColor(red: 63/255, green: 58/255, blue: 58/255, alpha: 1).cgColor
             } else {
                 
-                self.bottomBorder.backgroundColor = UIColor.hexStringToUIColor(hex: .grayEFF2F4).cgColor
+                self.bottomBorder.backgroundColor = UIColor.lightGray.cgColor
             }
         }
     }

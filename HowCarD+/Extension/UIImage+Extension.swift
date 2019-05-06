@@ -68,6 +68,10 @@ enum ImageAsset: String {
     case Icons_supermarket
     case Icons_travel
     
+    // Other Icons - Wallet
+    case Icons_CollectedCard
+    case Icons_LikedDiscount
+    
     // Other Icons - QA
     case Icons_Call
     case Icons_WriteMessage

@@ -51,7 +51,7 @@ class WalletViewController2: HCBaseViewController {
     
     @IBOutlet weak var collectedCardsContainerView: UIView!
     
-    var tabArray: [ImageAsset] = [.Image_Placeholder, .Image_Placeholder2]
+    var tabArray: [ImageAsset] = [.Icons_LikedDiscount, .Icons_CollectedCard]
     
     override func viewDidLoad() {
         
@@ -59,7 +59,7 @@ class WalletViewController2: HCBaseViewController {
         
         setBackgroundColor()
 
-        setNavBar()
+//        setNavBar()
         
 //        confirmUserSignnedIn()
         

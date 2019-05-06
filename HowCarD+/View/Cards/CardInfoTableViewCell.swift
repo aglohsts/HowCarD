@@ -44,13 +44,9 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
             if isCollected {
                 
                 collectedBtn.setImage(UIImage.asset(.Icons_Bookmark_Saved), for: .normal)
-                
-//                collectedBtn.setTitle("V", for: .normal)
             } else {
                 
                 collectedBtn.setImage(UIImage.asset(.Icons_Bookmark_Normal), for: .normal)
-                
-//                collectedBtn.setTitle("X", for: .normal)
             }
         }
     }

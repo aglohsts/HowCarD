@@ -40,7 +40,7 @@ class DiscountsViewController: HCBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setNavBar()
+//        setNavBar()
         
         setBackgroundColor()
         
