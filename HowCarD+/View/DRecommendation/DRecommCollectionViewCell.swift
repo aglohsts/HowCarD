@@ -14,6 +14,12 @@ class DRecommCollectionViewCell: HCBaseCollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        imageView.isRoundedImage()
+    }
+    
     func layoutCell(category: String, image: ImageAsset) {
         
         label.text = category
