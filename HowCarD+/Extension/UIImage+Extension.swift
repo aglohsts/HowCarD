@@ -89,6 +89,7 @@ enum ImageAsset: String {
     // Image
     case Image_Placeholder
     case Image_Placeholder2
+    case Background_Auth
 
     // swiftlint:enable identifier_name
 }

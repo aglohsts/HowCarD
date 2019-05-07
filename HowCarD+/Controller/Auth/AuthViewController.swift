@@ -31,7 +31,6 @@ class AuthViewController: HCBaseViewController {
     
     @IBOutlet var authButtons: [UIButton]!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
