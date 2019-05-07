@@ -28,6 +28,8 @@ class WalletViewController2: HCBaseViewController {
         static let likedDiscount = "LikedDiscountSegue"
         
         static let collectedCard = "collectedCardSegue"
+        
+        static let auth = "authSegue"
     }
     
     var containerViews: [UIView] {
@@ -59,9 +61,9 @@ class WalletViewController2: HCBaseViewController {
         
         setBackgroundColor()
 
-//        setNavBar()
+        setNavBar()
         
-//        confirmUserSignnedIn()
+        confirmUserSignnedIn()
         
         if selectedTab == TabCategory.likedDiscount.rawValue {
             
@@ -108,6 +110,10 @@ extension WalletViewController2 {
         } else if segue.identifier == Segue.collectedCard {
             
             guard let collectedCardVC = segue.destination as? CollectedCardViewController else { return }
+            
+        } else if segue.identifier == Segue.auth {
+            
+            guard let collectedCardVC = segue.destination as? AuthViewController else { return }
         }
     
     }
@@ -145,7 +151,7 @@ extension WalletViewController2 {
         
         if HCFirebaseManager.shared.agAuth().currentUser == nil {
         
-            presentSignInVC()
+            presentAuthVC()
         }
     }
     
@@ -170,6 +176,18 @@ extension WalletViewController2 {
             let navVC = UINavigationController(rootViewController: signUpVC)
             
             self.present(navVC, animated: true, completion: nil)
+        }
+    }
+    
+    func presentAuthVC() {
+        
+        if let authVC = UIStoryboard(
+            name: StoryboardCategory.auth,
+            bundle: nil).instantiateViewController(
+                withIdentifier: String(describing: AuthViewController.self)) as? AuthViewController {
+//            let navVC = UINavigationController(rootViewController: authVC)
+            
+            self.present(authVC, animated: true, completion: nil)
         }
     }
     

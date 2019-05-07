@@ -87,6 +87,7 @@
 		CAC426F922759219003C6D26 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC426F822759219003C6D26 /* NotificationCenter.swift */; };
 		CAC426FB2275ADFB003C6D26 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC426FA2275ADFB003C6D26 /* Array+Extension.swift */; };
 		CAC426FD2275FCFA003C6D26 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC426FC2275FCFA003C6D26 /* UIColor+Extension.swift */; };
+		CAC8299B22813B07007B5F82 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC8299A22813B07007B5F82 /* AuthViewController.swift */; };
 		CAF16FA522746EEF0013D864 /* MyCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF16FA422746EEF0013D864 /* MyCardViewController.swift */; };
 		CAF16FA8227472290013D864 /* LikedDiscountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF16FA7227472290013D864 /* LikedDiscountViewController.swift */; };
 		CAF16FAA2274727E0013D864 /* CollectedCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF16FA92274727E0013D864 /* CollectedCardViewController.swift */; };
@@ -201,6 +202,7 @@
 		CAC426F822759219003C6D26 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		CAC426FA2275ADFB003C6D26 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		CAC426FC2275FCFA003C6D26 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		CAC8299A22813B07007B5F82 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		CAF16FA422746EEF0013D864 /* MyCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardViewController.swift; sourceTree = "<group>"; };
 		CAF16FA7227472290013D864 /* LikedDiscountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedDiscountViewController.swift; sourceTree = "<group>"; };
 		CAF16FA92274727E0013D864 /* CollectedCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectedCardViewController.swift; sourceTree = "<group>"; };
@@ -609,6 +611,7 @@
 			children = (
 				CAFE8289225F3C9D004F4E63 /* SignUpViewController.swift */,
 				CAFE828D22605F99004F4E63 /* SignInViewController.swift */,
+				CAC8299A22813B07007B5F82 /* AuthViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -888,6 +891,7 @@
 				CAFE8279225DE3BD004F4E63 /* DiscountDetailViewController.swift in Sources */,
 				CA47A187225B133F00AD16AF /* CardTagCollectionViewCell.swift in Sources */,
 				CA6B5C6C2266B89100B180A2 /* HCConstant.swift in Sources */,
+				CAC8299B22813B07007B5F82 /* AuthViewController.swift in Sources */,
 				CA171B78225339E90042BBDC /* HCTabBarViewController.swift in Sources */,
 				CA47A18A225B332C00AD16AF /* CardDetailTableViewHeaderView.swift in Sources */,
 				CA171B9D22544E330042BBDC /* DRecommTableViewCell.swift in Sources */,
