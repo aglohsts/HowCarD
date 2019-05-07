@@ -20,24 +20,22 @@ class SignInViewController: HCBaseViewController {
     
     @IBOutlet weak var passwordView: UIView!
     
+    @IBOutlet weak var backView: UIView!
+    
+    @IBOutlet weak var signInButton: UIButton!
+    
+    @IBOutlet weak var nextTimeButton: UIButton!
+    
+    var dismissHandler: (() -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setNavBar()
-    }
-    
-    private func setNavBar() {
-
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage.asset(.Icons_24px_Dismiss),
-            style: .plain,
-            target: self,
-            action: #selector(onDismiss))
-    }
-    
-    @objc private func onDismiss() {
+        setBackgroundColor()
         
-        self.dismiss(animated: true, completion: nil)
+        layoutView()
+        
+        layoutButton()
     }
     
     @IBAction func onSignIn(_ sender: Any) {
@@ -73,6 +71,37 @@ class SignInViewController: HCBaseViewController {
     @IBAction func onNextTime(_ sender: Any) {
         
         dismissHandler?()
+    }
+    
+    private func layoutButton() {
+        
+        signInButton.roundCorners(
+            [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner],
+            radius: 17)
+        
+        nextTimeButton.roundCorners(
+            [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner],
+            radius: 17)
+    }
+    
+    private func layoutView() {
+        
+        backView.roundCorners(
+            [.layerMinXMinYCorner , .layerMinXMaxYCorner],
+            radius: 15.0
+        )
+        
+        emailView.roundCorners(
+            [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner], radius: 2.0)
+        
+        passwordView.roundCorners(
+            [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner], radius: 2.0)
+    }
+    
+    override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
+        super.setBackgroundColor()
+        
+        backView.backgroundColor = UIColor.hexStringToUIColor(hex: .tintBackground)
     }
 }
 

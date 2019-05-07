@@ -632,10 +632,13 @@
                         <viewLayoutGuide key="safeArea" id="ue2-Ie-WVN"/>
                     </view>
                     <connections>
+                        <outlet property="backView" destination="dDm-Br-gnC" id="n9B-pj-KZm"/>
                         <outlet property="emailTextField" destination="VJM-Jn-mIL" id="dBj-Tv-aHN"/>
                         <outlet property="emailView" destination="K4i-1U-YvV" id="f75-qG-eYb"/>
+                        <outlet property="nextTimeButton" destination="ejC-ek-FtJ" id="Nqa-E7-4Lb"/>
                         <outlet property="passwordTextField" destination="cuS-OA-WXJ" id="d8v-St-qQw"/>
                         <outlet property="passwordView" destination="f6a-Bg-aot" id="MII-En-9wD"/>
+                        <outlet property="signInButton" destination="ghD-C6-5bT" id="K44-hW-KX2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f8k-Dg-mh2" userLabel="First Responder" sceneMemberID="firstResponder"/>

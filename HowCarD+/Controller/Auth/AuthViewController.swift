@@ -94,6 +94,11 @@ extension AuthViewController {
             
             guard let signInVC = segue.destination as? SignInViewController else { return }
             
+            signInVC.dismissHandler = {
+                
+                self.dismiss(animated: true, completion: nil)
+            }
+            
         } else if segue.identifier == Segue.signUp {
             
             guard let signUpVC = segue.destination as? SignUpViewController else { return }
