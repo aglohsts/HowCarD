@@ -18,9 +18,7 @@ private enum FirestoreCollectionReference: String {
 
 private enum UserDocumentData: String {
     
-    case firstName
-    
-    case lastName
+    case userName
     
     case email
     
@@ -102,11 +100,10 @@ class HCFirebaseManager {
         }
     }
     
-    func addNewUser(uid: String, firstName: String, lastName: String, email: String) {
+    func addNewUser(uid: String, userName: String, email: String) {
         
         firestoreRef(to: .users).document(uid).setData([
-            UserDocumentData.firstName.rawValue: "\(firstName)",
-            UserDocumentData.lastName.rawValue: "\(lastName)",
+            UserDocumentData.userName.rawValue: "\(userName)",
             UserDocumentData.uid.rawValue: "\(uid)",
             UserDocumentData.email.rawValue: "\(email)"
             ])

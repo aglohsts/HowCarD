@@ -16,16 +16,24 @@ class SignUpViewController: HCBaseViewController {
     
     @IBOutlet weak var passwordTextField: UITextField!
     
-    @IBOutlet weak var firstNameTextField: UITextField!
-    
-    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var userNameTextField: UITextField!
     
     @IBOutlet weak var confirmPwdTextField: UITextField!
     
+    @IBOutlet weak var signUpButton: UIButton!
+    
+    @IBOutlet weak var nextTimeButton: UIButton!
+    
+    @IBOutlet weak var backView: UIView!
+    
+    var dismissHandler: (() -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setNavBar()
+        
+        layoutButton()
+        
+        layoutView()
     }
     
     private func setNavBar() {
@@ -37,6 +45,31 @@ class SignUpViewController: HCBaseViewController {
             action: #selector(onDismiss))
     }
     
+    private func layoutButton() {
+        
+        signUpButton.roundCorners(
+            [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner],
+            radius: 17)
+        
+        nextTimeButton.roundCorners(
+            [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner],
+            radius: 17)
+    }
+    
+    private func layoutView() {
+        
+        backView.roundCorners(
+            [.layerMaxXMinYCorner , .layerMaxXMaxYCorner],
+            radius: 15.0
+        )
+    }
+    
+    override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
+        super.setBackgroundColor()
+        
+        backView.backgroundColor = UIColor.hexStringToUIColor(hex: .tintBackground)
+    }
+    
     @objc private func onDismiss() {
         
         self.dismiss(animated: true, completion: nil)
@@ -44,7 +77,7 @@ class SignUpViewController: HCBaseViewController {
     
     @IBAction func onSignUp(_ sender: Any) {
         
-        if emailTextField.text == "" || passwordTextField.text == "" || confirmPwdTextField.text == "" || firstNameTextField.text == "" || lastNameTextField.text == "" {
+        if emailTextField.text == "" || passwordTextField.text == "" || confirmPwdTextField.text == "" || userNameTextField.text == "" {
             
             presentAlertWith1Action(title: "Error", message: "請輸入您的帳號資訊。")
             
@@ -53,8 +86,7 @@ class SignUpViewController: HCBaseViewController {
             guard let email = emailTextField.text,
                 let password = passwordTextField.text,
                 let confirmPwd = confirmPwdTextField.text,
-            let firstName = firstNameTextField.text,
-            let lastName = lastNameTextField.text else { return }
+            let userName = userNameTextField.text else { return }
             
             if password == confirmPwd {
                 
@@ -64,8 +96,7 @@ class SignUpViewController: HCBaseViewController {
                         
                         HCFirebaseManager.shared.addNewUser(
                             uid: user!.user.uid,
-                            firstName: firstName,
-                            lastName: lastName,
+                            userName: userName,
                             email: email
                         )
                         
@@ -92,4 +123,10 @@ class SignUpViewController: HCBaseViewController {
             }
         }
     }
+    
+    @IBAction func onNextTime(_ sender: Any) {
+        
+        dismissHandler?()
+    }
+    
 }

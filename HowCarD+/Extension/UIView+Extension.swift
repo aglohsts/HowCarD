@@ -56,6 +56,13 @@ extension UIView {
         clipsToBounds = true
     }
     
+    func isRoundedView() {
+        
+        self.layer.cornerRadius = self.frame.size.height / 2
+        
+        self.clipsToBounds = true
+    }
+    
     func addTopBorderWithColor(color: UIColor, width: CGFloat) {
         let border = CALayer()
         border.backgroundColor = color.cgColor

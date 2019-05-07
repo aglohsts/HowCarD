@@ -9,6 +9,13 @@
 import UIKit
 
 class AuthViewController: HCBaseViewController {
+    
+    private struct Segue {
+        
+        static let signIn = "signInSegue"
+        
+        static let signUp = "signUpSegue"
+    }
 
     @IBOutlet weak var scrollView: UIScrollView! {
         
@@ -76,6 +83,26 @@ class AuthViewController: HCBaseViewController {
             
             self?.view.layoutIfNeeded()
         })
+    }
+}
+
+extension AuthViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Segue.signIn {
+            
+            guard let signInVC = segue.destination as? SignInViewController else { return }
+            
+        } else if segue.identifier == Segue.signUp {
+            
+            guard let signUpVC = segue.destination as? SignUpViewController else { return }
+            
+            signUpVC.dismissHandler = {
+                
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
 }
 
