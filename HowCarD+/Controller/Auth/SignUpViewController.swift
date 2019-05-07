@@ -26,6 +26,14 @@ class SignUpViewController: HCBaseViewController {
     
     @IBOutlet weak var backView: UIView!
     
+    @IBOutlet weak var userNameView: UIView!
+    
+    @IBOutlet weak var emailView: UIView!
+    
+    @IBOutlet weak var passwordView: UIView!
+    
+    @IBOutlet weak var confirmPwdView: UIView!
+    
     var dismissHandler: (() -> Void)?
     
     override func viewDidLoad() {
@@ -34,15 +42,6 @@ class SignUpViewController: HCBaseViewController {
         layoutButton()
         
         layoutView()
-    }
-    
-    private func setNavBar() {
-        
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage.asset(.Icons_24px_Dismiss),
-            style: .plain,
-            target: self,
-            action: #selector(onDismiss))
     }
     
     private func layoutButton() {
@@ -62,17 +61,24 @@ class SignUpViewController: HCBaseViewController {
             [.layerMaxXMinYCorner , .layerMaxXMaxYCorner],
             radius: 15.0
         )
+        
+        userNameView.roundCorners(
+            [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner], radius: 2.0)
+        
+        emailView.roundCorners(
+            [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner], radius: 2.0)
+        
+        passwordView.roundCorners(
+            [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner], radius: 2.0)
+        
+        confirmPwdView.roundCorners(
+            [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner], radius: 2.0)
     }
     
     override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
         super.setBackgroundColor()
         
         backView.backgroundColor = UIColor.hexStringToUIColor(hex: .tintBackground)
-    }
-    
-    @objc private func onDismiss() {
-        
-        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func onSignUp(_ sender: Any) {

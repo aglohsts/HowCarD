@@ -16,6 +16,10 @@ class SignInViewController: HCBaseViewController {
     
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var emailView: UIView!
+    
+    @IBOutlet weak var passwordView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,17 +70,9 @@ class SignInViewController: HCBaseViewController {
         }
     }
     
-    @IBAction func toSignUp(_ sender: Any) {
+    @IBAction func onNextTime(_ sender: Any) {
         
-//        presentSignUpVC()
-        
-//        self.dismiss(animated: false, completion: {[weak self] in
-//
-//            self?.presentSignUpVC()
-//
-//        })
-        
-        
+        dismissHandler?()
     }
 }
 
