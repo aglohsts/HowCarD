@@ -123,10 +123,44 @@ class HCTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         _ tabBarController: UITabBarController,
         shouldSelect viewController: UIViewController)
     -> Bool {
-
-//        guard let navVC = viewController as? UINavigationController else { return true }
-
+        
+        guard let navVC = viewController as? UINavigationController,
+            let _ = navVC.viewControllers.first as? WalletViewController2
+            else { return true }
+        
+        guard HCFirebaseManager.shared.agAuth().currentUser != nil else {
+            
+            if let authVC = UIStoryboard.auth.instantiateInitialViewController() {
+                
+                authVC.modalPresentationStyle = .overCurrentContext
+                
+                self.present(authVC, animated: true, completion: nil)
+            }
+            
+            return false
+        }
+        
         return true
+    }
+    
+    func confirmUserSignnedIn() {
+        
+        if HCFirebaseManager.shared.agAuth().currentUser == nil {
+            
+            presentAuthVC()
+        }
+    }
+    
+    func presentAuthVC() {
+        
+        if let authVC = UIStoryboard(
+            name: StoryboardCategory.auth,
+            bundle: nil).instantiateViewController(
+                withIdentifier: String(describing: AuthViewController.self)) as? AuthViewController {
+            //            let navVC = UINavigationController(rootViewController: authVC)
+            
+            self.present(authVC, animated: true, completion: nil)
+        }
     }
 
 }

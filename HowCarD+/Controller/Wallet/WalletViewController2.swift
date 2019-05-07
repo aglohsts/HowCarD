@@ -63,8 +63,6 @@ class WalletViewController2: HCBaseViewController {
 
         setNavBar()
         
-        confirmUserSignnedIn()
-        
         if selectedTab == TabCategory.likedDiscount.rawValue {
             
             updateContainer(tab: .likedDiscount)
@@ -88,8 +86,6 @@ class WalletViewController2: HCBaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        confirmUserSignnedIn()
     }
     
     override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
@@ -145,50 +141,6 @@ extension WalletViewController2 {
     @objc private func onSignOut() {
         
         signOut()
-    }
-    
-    func confirmUserSignnedIn() {
-        
-        if HCFirebaseManager.shared.agAuth().currentUser == nil {
-        
-            presentAuthVC()
-        }
-    }
-    
-    func presentSignInVC() {
-        
-        if let signInVC = UIStoryboard(
-            name: StoryboardCategory.auth,
-            bundle: nil).instantiateViewController(
-                withIdentifier: String(describing: SignInViewController.self)) as? SignInViewController {
-            let navVC = UINavigationController(rootViewController: signInVC)
-            
-            self.present(navVC, animated: true, completion: nil)
-        }
-    }
-    
-    func presentSignUpVC() {
-        
-        if let signUpVC = UIStoryboard(
-            name: StoryboardCategory.auth,
-            bundle: nil).instantiateViewController(
-                withIdentifier: String(describing: SignUpViewController.self)) as? SignUpViewController {
-            let navVC = UINavigationController(rootViewController: signUpVC)
-            
-            self.present(navVC, animated: true, completion: nil)
-        }
-    }
-    
-    func presentAuthVC() {
-        
-        if let authVC = UIStoryboard(
-            name: StoryboardCategory.auth,
-            bundle: nil).instantiateViewController(
-                withIdentifier: String(describing: AuthViewController.self)) as? AuthViewController {
-//            let navVC = UINavigationController(rootViewController: authVC)
-            
-            self.present(authVC, animated: true, completion: nil)
-        }
     }
     
     func signOut() {
