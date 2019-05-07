@@ -354,33 +354,47 @@ extension CardsViewController: UITableViewDataSource {
             
             guard let strongSelf = self else { return }
             
-            guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
-            
-            if strongSelf.cardsBasicInfo[indexPath.row].isCollected {
+            if HCFirebaseManager.shared.agAuth().currentUser != nil {
                 
-                HCFirebaseManager.shared.deleteId(
-                    userCollection: .collectedCards,
-                    uid: user.uid,
-                    id: strongSelf.cardsBasicInfo[indexPath.row].id
+                guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+                
+                if strongSelf.cardsBasicInfo[indexPath.row].isCollected {
+                    
+                    HCFirebaseManager.shared.deleteId(
+                        userCollection: .collectedCards,
+                        uid: user.uid,
+                        id: strongSelf.cardsBasicInfo[indexPath.row].id
+                    )
+                } else {
+                    
+                    HCFirebaseManager.shared.addId(
+                        userCollection: .collectedCards,
+                        uid: user.uid,
+                        id: strongSelf.cardsBasicInfo[indexPath.row].id
+                    )
+                }
+                
+                strongSelf.cardsBasicInfo[indexPath.row].isCollected = !strongSelf.cardsBasicInfo[indexPath.row].isCollected
+                
+                //            strongSelf.updateIsCollectedCardId()
+                NotificationCenter.default.post(
+                    name: Notification.Name(rawValue: NotificationNames.updateCollectedCard.rawValue),
+                    object: nil
                 )
+                
             } else {
                 
-                HCFirebaseManager.shared.addId(
-                    userCollection: .collectedCards,
-                    uid: user.uid,
-                    id: strongSelf.cardsBasicInfo[indexPath.row].id
-                )
+                if let authVC = UIStoryboard.auth.instantiateInitialViewController() {
+                    
+                    authVC.modalPresentationStyle = .overCurrentContext
+                    
+                    let navVC = UINavigationController(rootViewController: authVC)
+                    
+                    strongSelf.present(navVC, animated: true, completion: nil)
+                }
             }
-            
-            strongSelf.cardsBasicInfo[indexPath.row].isCollected = !strongSelf.cardsBasicInfo[indexPath.row].isCollected
-            
-//            strongSelf.updateIsCollectedCardId()
-            NotificationCenter.default.post(
-                name: Notification.Name(rawValue: NotificationNames.updateCollectedCard.rawValue),
-                object: nil
-            )
-            
         }
+        
         return cardInfoCell
     }
 }
