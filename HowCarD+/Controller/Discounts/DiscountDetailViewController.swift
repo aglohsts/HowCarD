@@ -93,33 +93,48 @@ class DiscountDetailViewController: HCBaseViewController {
     }
     
     @IBAction func onLikeDiscount(_ sender: Any) {
-    
-        guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
         
-        if self.discountDetail != nil {
+        
+        if HCFirebaseManager.shared.agAuth().currentUser != nil {
             
-            if self.discountDetail!.info.isLiked {
+            guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+            
+            if self.discountDetail != nil {
                 
-                HCFirebaseManager.shared.deleteId(
-                    userCollection: .likedDiscounts,
-                    uid: user.uid,
-                    id: self.discountDetail!.info.discountId
-                )
-            } else {
+                if self.discountDetail!.info.isLiked {
+                    
+                    HCFirebaseManager.shared.deleteId(
+                        userCollection: .likedDiscounts,
+                        uid: user.uid,
+                        id: self.discountDetail!.info.discountId
+                    )
+                } else {
+                    
+                    HCFirebaseManager.shared.addId(
+                        userCollection: .likedDiscounts,
+                        uid: user.uid,
+                        id: self.discountDetail!.info.discountId
+                    )
+                }
                 
-                HCFirebaseManager.shared.addId(
-                    userCollection: .likedDiscounts,
-                    uid: user.uid,
-                    id: self.discountDetail!.info.discountId
+                self.discountDetail!.info.isLiked = !self.discountDetail!.info.isLiked
+                
+                NotificationCenter.default.post(
+                    name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
+                    object: nil
                 )
             }
             
-            self.discountDetail!.info.isLiked = !self.discountDetail!.info.isLiked
-     
-            NotificationCenter.default.post(
-                name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
-                object: nil
-            )
+        } else {
+            
+            if let authVC = UIStoryboard.auth.instantiateInitialViewController() {
+                
+                authVC.modalPresentationStyle = .overCurrentContext
+                
+                let navVC = UINavigationController(rootViewController: authVC)
+                
+                self.present(navVC, animated: true, completion: nil)
+            }
         }
     }
 }
@@ -144,6 +159,12 @@ extension DiscountDetailViewController {
         imageView.roundCorners(
             [.layerMinXMaxYCorner],
             radius: 30.0)
+        
+        titleLabel.text = ""
+        
+        targetLabel.text = ""
+        
+        timePeriodLabel.text = ""
     }
     
     private func layoutTopView(title: String, bankName: String, cardName: String, timePeriod: String, image: String) {
