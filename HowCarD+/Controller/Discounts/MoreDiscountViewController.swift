@@ -391,9 +391,12 @@ extension MoreDiscountViewController: UICollectionViewDataSource {
         )
 
         discountCollectionViewCell.likeBtnTouchHandler = { [weak self] in
-
-            guard let strongSelf = self, let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
             
+            
+            if HCFirebaseManager.shared.agAuth().currentUser != nil {
+                
+                guard let strongSelf = self, let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+                
                 if strongSelf.discountObject!.discountInfos[indexPath.item].isLiked {
                     
                     HCFirebaseManager.shared.deleteId(
@@ -409,14 +412,26 @@ extension MoreDiscountViewController: UICollectionViewDataSource {
                         id: strongSelf.discountObject!.discountInfos[indexPath.item].discountId
                     )
                 }
-            strongSelf.discountObject!.discountInfos[indexPath.row].isLiked =
-                !strongSelf.discountObject!.discountInfos[indexPath.row].isLiked
-
+                 strongSelf.discountObject!.discountInfos[indexPath.row].isLiked =
+                    !strongSelf.discountObject!.discountInfos[indexPath.row].isLiked
+                
                 NotificationCenter.default.post(
                     name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
                     object: nil
                 )
+                
+            } else {
+                
+                if let authVC = UIStoryboard.auth.instantiateInitialViewController() {
+                    
+                    authVC.modalPresentationStyle = .overCurrentContext
+                    
+                    let navVC = UINavigationController(rootViewController: authVC)
+                    
+                    self?.present(navVC, animated: true, completion: nil)
+                }
             }
+        }
         return discountCollectionViewCell
     }
 }

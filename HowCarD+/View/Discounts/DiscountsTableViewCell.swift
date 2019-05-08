@@ -21,6 +21,8 @@ class DiscountsTableViewCell: HCBaseTableViewCell {
     
     var isReadTouchHandler: ((IndexPath) -> Void)?
     
+    var presentAuthVCHandler: (() -> Void)?
+    
     var discountInfos: [DiscountInfo] = [] {
         
         didSet {
@@ -92,7 +94,7 @@ extension DiscountsTableViewCell: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath)
         -> CGSize {
             
-            return CGSize(width: UIScreen.width / 2 - 30, height: 200.0)
+            return CGSize(width: UIScreen.width / 2 - 30, height: 220.0)
     }
     
     func collectionView(
@@ -172,35 +174,39 @@ extension DiscountsTableViewCell: UICollectionViewDataSource {
             
             discountCollectionViewCell.likeBtnTouchHandler = { [weak self] in
 
-                // TODO: handle 沒登入：跳提醒登入或註冊然後 present SignInVC
-                
-                guard let strongSelf = self, let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
-                
-                if strongSelf.discountInfos[indexPath.row].isLiked {
+                if HCFirebaseManager.shared.agAuth().currentUser != nil {
                     
-                    HCFirebaseManager.shared.deleteId(
-                        userCollection: .likedDiscounts,
-                        uid: user.uid,
-                        id: strongSelf.discountInfos[indexPath.row].discountId
+                    guard let strongSelf = self, let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+                    
+                    if strongSelf.discountInfos[indexPath.row].isLiked {
+                        
+                        HCFirebaseManager.shared.deleteId(
+                            userCollection: .likedDiscounts,
+                            uid: user.uid,
+                            id: strongSelf.discountInfos[indexPath.row].discountId
+                        )
+                    } else {
+                        
+                        HCFirebaseManager.shared.addId(
+                            userCollection: .likedDiscounts,
+                            uid: user.uid,
+                            id: strongSelf.discountInfos[indexPath.row].discountId
+                        )
+                    }
+                    
+                    strongSelf.discountInfos[indexPath.row].isLiked = !strongSelf.discountInfos[indexPath.row].isLiked
+                    
+                    NotificationCenter.default.post(
+                        name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
+                        object: nil
                     )
+                    
                 } else {
                     
-                    HCFirebaseManager.shared.addId(
-                        userCollection: .likedDiscounts,
-                        uid: user.uid,
-                        id: strongSelf.discountInfos[indexPath.row].discountId
-                    )
+                    self?.presentAuthVCHandler?()
                 }
-                
-                strongSelf.discountInfos[indexPath.row].isLiked = !strongSelf.discountInfos[indexPath.row].isLiked
-                
-//                strongSelf.likeButtonDidTouchHandler?(strongSelf.discountInfos[indexPath.row], strongSelf)
-                
-                NotificationCenter.default.post(
-                    name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
-                    object: nil
-                )
             }
+
             return discountCollectionViewCell
     }
     

@@ -385,6 +385,18 @@ extension DiscountsViewController: UITableViewDataSource {
             self.markDiscountAsRead(indexPath: indexPath)
         }
         
+        discountTableViewCell.presentAuthVCHandler = { [weak self] in
+            
+            if let authVC = UIStoryboard.auth.instantiateInitialViewController() {
+                
+                authVC.modalPresentationStyle = .overCurrentContext
+                
+                let navVC = UINavigationController(rootViewController: authVC)
+                
+                self?.present(navVC, animated: true, completion: nil)
+            }
+        }
+        
 //        discountTableViewCell.likeButtonDidTouchHandler = { [weak self] (object, cell) in
 //
 //            guard let strongSelf = self else { return }
