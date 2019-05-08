@@ -89,6 +89,9 @@ enum ImageAsset: String {
     // Other Icons - Auth
     case Icons_SignIn
     case Icons_SignUp
+    case Icons_User
+    case Icons_Email
+    case Icons_Password
 
     // Image
     case Image_Placeholder
