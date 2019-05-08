@@ -41,7 +41,7 @@ class CardDetailViewController: HCBaseViewController {
             if isCollected {
                 
                 DispatchQueue.main.async {
-
+                    
                     self.collectedBtn.setImage(UIImage.asset(.Icons_Bookmark_Saved), for: .normal)
                 }
             } else {
@@ -171,31 +171,42 @@ class CardDetailViewController: HCBaseViewController {
     
     @IBAction func onCollectCard(_ sender: Any) {
         
-        // TODO: handle 沒登入：跳提醒登入或註冊然後 present SignInVC
-        
-        guard let user = HCFirebaseManager.shared.agAuth().currentUser,
-            let cardObject = cardObject else { return }
-        
-        if isCollected {
+        if HCFirebaseManager.shared.agAuth().currentUser != nil {
             
-            HCFirebaseManager.shared.deleteId(
-                userCollection: .collectedCards,
-                uid: user.uid,
-                id: cardObject.basicInfo.id
+            guard let user = HCFirebaseManager.shared.agAuth().currentUser, let cardObject = cardObject else { return }
+            
+            if isCollected {
+                
+                HCFirebaseManager.shared.deleteId(
+                    userCollection: .collectedCards,
+                    uid: user.uid,
+                    id: cardObject.basicInfo.id
+                )
+            } else {
+                
+                HCFirebaseManager.shared.addId(userCollection: .collectedCards, uid: user.uid, id: cardObject.basicInfo.id)
+            }
+            
+            isCollected = !isCollected
+            
+            NotificationCenter.default.post(
+                name: Notification.Name(rawValue: NotificationNames.updateCollectedCard.rawValue),
+                object: nil
             )
+            
+            cardCollectTouchHandler?()
+            
         } else {
             
-            HCFirebaseManager.shared.addId(userCollection: .collectedCards, uid: user.uid, id: cardObject.basicInfo.id)
+            if let authVC = UIStoryboard.auth.instantiateInitialViewController() {
+                
+                authVC.modalPresentationStyle = .overCurrentContext
+                
+                let navVC = UINavigationController(rootViewController: authVC)
+                
+                self.present(navVC, animated: true, completion: nil)
+            }
         }
-        
-        isCollected = !isCollected
-        
-        NotificationCenter.default.post(
-            name: Notification.Name(rawValue: NotificationNames.updateCollectedCard.rawValue),
-            object: nil
-        )
-        
-        cardCollectTouchHandler?()
     }
 }
 

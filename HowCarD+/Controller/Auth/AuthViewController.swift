@@ -25,6 +25,8 @@ class AuthViewController: HCBaseViewController {
         }
     }
     
+    @IBOutlet weak var topView: UIView!
+    
     @IBOutlet weak var indicatorView: UIView!
     
     @IBOutlet weak var indicatorXConstraint: NSLayoutConstraint!
@@ -37,15 +39,17 @@ class AuthViewController: HCBaseViewController {
         setupScrollView()
         
         layoutButtons()
+        
+        setBackgroundColor()
     }
     
-    func setupScrollView() {
+    private func setupScrollView() {
         
         let statusHeight = UIApplication.shared.statusBarFrame.size.height
         
         scrollView.contentSize = CGSize(
             width: UIScreen.main.bounds.width * 2,
-            height: UIScreen.main.bounds.height - 50 - statusHeight
+            height: UIScreen.main.bounds.height - topView.frame.height - statusHeight
         )
         
         scrollView.isPagingEnabled = true
@@ -94,6 +98,12 @@ class AuthViewController: HCBaseViewController {
             
             self?.view.layoutIfNeeded()
         })
+    }
+    
+    override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
+        super.setBackgroundColor()
+        
+        topView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
     }
 }
 
