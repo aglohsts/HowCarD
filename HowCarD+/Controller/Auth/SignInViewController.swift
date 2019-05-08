@@ -100,8 +100,6 @@ class SignInViewController: HCBaseViewController {
     
     override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
         super.setBackgroundColor()
-        
-        backView.backgroundColor = UIColor.hexStringToUIColor(hex: .tintBackground)
     }
 }
 

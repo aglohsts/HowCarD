@@ -85,6 +85,10 @@ enum ImageAsset: String {
     case Icons_WebGoForward_Enable
     case Icons_WebReload_Disable
     case Icons_WebReload_Enable
+    
+    // Other Icons - Auth
+    case Icons_SignIn
+    case Icons_SignUp
 
     // Image
     case Image_Placeholder

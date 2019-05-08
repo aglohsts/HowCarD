@@ -35,6 +35,8 @@ class AuthViewController: HCBaseViewController {
         super.viewDidLoad()
 
         setupScrollView()
+        
+        layoutButtons()
     }
     
     func setupScrollView() {
@@ -49,6 +51,16 @@ class AuthViewController: HCBaseViewController {
         scrollView.isPagingEnabled = true
         
         scrollView.showsHorizontalScrollIndicator = false
+    }
+    
+    private func layoutButtons() {
+        
+        authButtons.forEach { (button) in
+            
+            button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)
+            
+            button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+        }
     }
     
     @IBAction func onChangeAuthView(_ sender: UIButton) {
