@@ -64,7 +64,7 @@ class CardsViewController: HCBaseViewController {
         
         setBackgroundColor()
 
-        setNavBar()
+//        setNavBar()
         
         getData()
         
@@ -349,6 +349,14 @@ extension CardsViewController: UITableViewDataSource {
             tags: cardsBasicInfo[indexPath.row].tags,
             briefInfos: cardsBasicInfo[indexPath.row].briefIntro
         )
+        
+        cardInfoCell.toCardDetailHandler = { [weak self] in
+            
+            self?.performSegue(
+                withIdentifier: Segue.toDetail,
+                sender: (indexPath, self?.cardsBasicInfo[indexPath.row].isCollected)
+            )
+        }
         
         cardInfoCell.collectButtonDidTouchHandler = { [weak self] in
             

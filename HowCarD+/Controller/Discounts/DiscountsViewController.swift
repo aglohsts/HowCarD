@@ -318,7 +318,7 @@ extension DiscountsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 250
+        return 270
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

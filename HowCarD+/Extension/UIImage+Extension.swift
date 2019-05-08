@@ -75,6 +75,7 @@ enum ImageAsset: String {
     // Other Icons - QA
     case Icons_Call
     case Icons_WriteMessage
+    case Icons_Bank
     
     // Other Icons - Web
     case Icons_WebDismiss_Disable

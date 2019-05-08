@@ -12,6 +12,8 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
     
     var collectButtonDidTouchHandler: (() -> Void)?
     
+    var toCardDetailHandler: (() -> Void)?
+    
     var briefInfos: [ BriefIntro ] = []
 
     var tagArray = [String]() {
@@ -233,7 +235,20 @@ extension CardInfoTableViewCell: UICollectionViewDelegateFlowLayout {
 
 
 extension CardInfoTableViewCell: UICollectionViewDelegate {
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        switch collectionView {
+            
+        case cardInfoCollectionView:
+            
+            if indexPath.item == briefInfos.count {
+                
+                toCardDetailHandler?()
+            }
+            
+        default: return
+        }
+    }
 }
 
 extension CardInfoTableViewCell: UICollectionViewDataSource {
@@ -279,8 +294,8 @@ extension CardInfoTableViewCell: UICollectionViewDataSource {
                 guard let briefInfoCell = cell as? BriefInfoCollectionViewCell else { return cell }
                 
                 briefInfoCell.layoutCell(
-                    title: briefInfos[indexPath.row].title,
-                    content: briefInfos[indexPath.row].content)
+                    title: briefInfos[indexPath.item].title,
+                    content: briefInfos[indexPath.item].content)
                 
                 return briefInfoCell
             }

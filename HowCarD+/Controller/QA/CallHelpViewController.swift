@@ -12,7 +12,7 @@ import WebKit
 
 class CallHelpViewController: HCBaseViewController {
     
-    let composer = MFMailComposeViewController()
+//    let composer = MFMailComposeViewController()
     
     let qaProvider = QAProvider()
     
@@ -117,21 +117,21 @@ extension CallHelpViewController {
         })
     }
     
-    func showMailComposer(email: String) {
-        
-        guard MFMailComposeViewController.canSendMail() == true else {
-            // TODO: Show alert informing user
-            return
-        }
-        
-        composer.mailComposeDelegate = self
-        
-        composer.setToRecipients([email])
-        
-        composer.setSubject("信用卡問題")
-        
-        present(composer, animated: true, completion: nil)
-    }
+//    func showMailComposer(email: String) {
+//        
+//        guard MFMailComposeViewController.canSendMail() == true else {
+//            // TODO: Show alert informing user
+//            return
+//        }
+//        
+//        composer.mailComposeDelegate = self
+//        
+//        composer.setToRecipients([email])
+//        
+//        composer.setSubject("信用卡問題")
+//        
+//        present(composer, animated: true, completion: nil)
+//    }
 }
 
 extension CallHelpViewController: UITableViewDelegate {
@@ -314,34 +314,34 @@ extension CallHelpViewController: UISearchBarDelegate {
     }
 }
 
-extension CallHelpViewController: MFMailComposeViewControllerDelegate {
-    
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        
-        if let error = error {
-            // TODO: Show error message
-            controller.dismiss(animated: true, completion: nil)
-
-            return
-        }
-
-        switch result {
-        case .cancelled: print("cancelled")
-
-        case .failed: print("failed")
-
-        case .saved: print("saved")
-
-        case .sent: print("sent")
-
-        @unknown default:
-
-            if let error = error {
-
-                print(error)
-            }
-        }
-        
-        controller.dismiss(animated: true, completion: nil)
-    }
-}
+//extension CallHelpViewController: MFMailComposeViewControllerDelegate {
+//
+//    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+//
+//        if let error = error {
+//            // TODO: Show error message
+//            controller.dismiss(animated: true, completion: nil)
+//
+//            return
+//        }
+//
+//        switch result {
+//        case .cancelled: print("cancelled")
+//
+//        case .failed: print("failed")
+//
+//        case .saved: print("saved")
+//
+//        case .sent: print("sent")
+//
+//        @unknown default:
+//
+//            if let error = error {
+//
+//                print(error)
+//            }
+//        }
+//
+//        controller.dismiss(animated: true, completion: nil)
+//    }
+//}

@@ -65,7 +65,7 @@ class CallHelpTableViewCell: HCBaseTableViewCell {
 
     func layoutCell(bankIconImage: String, bankName: String, bankId: String, phoneNumber: String, mailWeb: String?) {
         
-        bankIconImageView.loadImage(bankIconImage, placeHolder: UIImage.asset(.Image_Placeholder))
+        bankIconImageView.loadImage(bankIconImage, placeHolder: UIImage.asset(.Icons_Bank))
         
         bankIdLabel.text = bankId
         
