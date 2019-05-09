@@ -25,7 +25,19 @@ enum HCColorHex: String {
     case gray = "C0C3C8"
 }
 
+private enum HCColor: String {
+    
+    case tint = "Tint"
+}
+
 extension UIColor {
+    
+    static let tint = HCColor(.tint)
+    
+    private static func HCColor(_ color: HCColor) -> UIColor? {
+        
+        return UIColor(named: color.rawValue)
+    }
     
     static func hexStringToUIColor(hex: HCColorHex) -> UIColor {
         

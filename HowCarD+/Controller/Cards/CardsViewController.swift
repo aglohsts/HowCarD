@@ -255,7 +255,8 @@ extension CardsViewController {
         
         DispatchQueue.main.async {
             
-            self.tableView.reloadData()
+//            self.tableView.reloadData()
+            self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
         }
     }
     
@@ -265,13 +266,13 @@ extension CardsViewController {
         
         DispatchQueue.main.async {
             
-            self.tableView.reloadData()
+//            self.tableView.reloadData()
+            
+            self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
         }
     }
     
     func checkCollectedCard() {
-        
-        userCollectedCardIds = HCFirebaseManager.shared.collectedCardIds
         
         /// 比對 id 有哪些 isCollected == true，true 的話改物件狀態
         for index in 0 ..< self.cardsBasicInfo.count {
@@ -281,7 +282,7 @@ extension CardsViewController {
                 cardsBasicInfo[index].isCollected = false
             }
             
-            self.userCollectedCardIds.forEach ({ (id) in
+            HCFirebaseManager.shared.collectedCardIds.forEach ({ (id) in
                 
                 if cardsBasicInfo[index].id == id {
                     
@@ -313,6 +314,8 @@ extension CardsViewController {
 }
 
 extension CardsViewController: UITableViewDelegate {
+    
+    
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         

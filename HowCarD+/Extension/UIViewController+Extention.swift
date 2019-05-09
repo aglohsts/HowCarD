@@ -54,7 +54,13 @@ extension UIViewController {
         self.present(alertController, animated: true, completion: completion)
     }
     
-    func changeCollectStatus(status: Bool, userCollection: UserCollection, uid: String, id: String, changeStatusHandler: () -> Void) {
+    func changeCollectStatus(
+        status: Bool,
+        userCollection: UserCollection,
+        uid: String,
+        id: String,
+        changeStatusHandler: () -> Void
+        ) {
         
         if status == true {
             

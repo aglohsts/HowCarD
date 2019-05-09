@@ -23,16 +23,7 @@ class DiscountsTableViewCell: HCBaseTableViewCell {
     
     var presentAuthVCHandler: (() -> Void)?
     
-    var discountInfos: [DiscountInfo] = [] {
-        
-        didSet {
-            
-            DispatchQueue.main.async {
-                
-                self.collectionView.reloadData()
-            }
-        }
-    }
+    var discountInfos: [DiscountInfo] = []
 
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -68,6 +59,8 @@ class DiscountsTableViewCell: HCBaseTableViewCell {
         categoryLabel.text = category
         
         self.discountInfos = discountInfos
+        
+        collectionView.reloadData()
     }
     
     private func setupCollectionView() {

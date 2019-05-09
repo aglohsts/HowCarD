@@ -252,10 +252,9 @@ extension DiscountsViewController {
         
         checkLikedDiscount()
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             
-            self.tableView.reloadData()
-            
+            self?.updateCollectionViewCell()
         }
     }
     
@@ -263,10 +262,43 @@ extension DiscountsViewController {
         
         checkReadDiscount()
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             
-            self.tableView.reloadData()
+            self?.updateCollectionViewCell()
             
+        }
+    }
+    
+    func updateCollectionViewCell() {
+        
+        let cells = self.tableView.visibleCells
+        
+        for cell in cells {
+            
+            if let indexPath = self.tableView.indexPath(for: cell),
+                let discountTableViewCell = cell as? DiscountsTableViewCell {
+                
+                discountTableViewCell.discountInfos = self.discountObjects[indexPath.section].discountInfos
+                
+                for collectionCell in discountTableViewCell.collectionView.visibleCells {
+                    
+                    if let index = discountTableViewCell.collectionView.indexPath(for: collectionCell)?.row,
+                        let discountCollectionViewCell = collectionCell as? DiscountCollectionViewCell {
+                        
+                        let data = discountTableViewCell.discountInfos[index]
+                        
+                        discountCollectionViewCell.layoutCell(
+                            image: data.image,
+                            discountTitle: data.title,
+                            bankName: data.bankName,
+                            cardName: data.cardName,
+                            timePeriod: data.timePeriod,
+                            isLiked: data.isLiked,
+                            isRead: data.isRead
+                        )
+                    }
+                }
+            }
         }
     }
     
