@@ -471,12 +471,4 @@ class HCFirebaseManager {
             }
         }
     }
-
-    func checkUserSignnedIn() {
-        
-        if Auth.auth().currentUser == nil {
-            
-            // TODO: show alert 然後提供註冊登入選項，個別導到頁面
-        }
-    }
 }

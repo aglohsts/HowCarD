@@ -397,52 +397,6 @@ extension DiscountsViewController: UITableViewDataSource {
             }
         }
         
-//        discountTableViewCell.likeButtonDidTouchHandler = { [weak self] (object, cell) in
-//
-//            guard let strongSelf = self else { return }
-        
-//            guard let indexPath = strongSelf.tableView.indexPath(for: cell) else { return }
-//
-//            let datas: [DiscountInfo] = strongSelf.discountObjects[indexPath.section].discountInfos.map({ item in
-//
-//                if item.discountId == object.discountId {
-//                    return object
-//                }
-//
-//                return item
-//            })
-            
-            
-            
-//            strongSelf.discountObjects[indexPath.section].discountInfos = datas
-            
-            /// 反向物件的 isLiked
-//            strongSelf.discountObjects[indexPath.section].discountInfos[indexPath.row].isLiked =
-//                !strongSelf.discountObjects[indexPath.section].discountInfos[indexPath.row].isLiked
-//
-//            if strongSelf.discountObjects[indexPath.section].discountInfos[indexPath.row].isLiked {
-//
-//                HCFirebaseManager.shared.deleteId(
-//                    userCollection: .likedDiscounts,
-//                    uid: user.uid,
-//                    id: strongSelf.discountObjects[indexPath.section]
-//                        .discountInfos[indexPath.row].discountId
-//                )
-//            } else {
-//
-//                HCFirebaseManager.shared.addId(
-//                    userCollection: .likedDiscounts,
-//                    uid: user.uid,
-//                    id: strongSelf.discountObjects[indexPath.section]
-//                        .discountInfos[indexPath.row].discountId
-//                )
-//            }
-        
-//
-            
-            
-//        }
-        
         return discountTableViewCell
     }
 

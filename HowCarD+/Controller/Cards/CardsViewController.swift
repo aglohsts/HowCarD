@@ -140,6 +140,7 @@ extension CardsViewController {
         HCFirebaseManager.shared.getId(uid: user.uid, userCollection: .collectedCards, completion: { [weak self] ids in
             
             self?.userCollectedCardIds = ids
+            // get HCFirebaseManager.shared.collectedCardIds
             
             self?.group.leave()
         })
@@ -175,6 +176,7 @@ extension CardsViewController {
         HCFirebaseManager.shared.getId(uid: user.uid, userCollection: .isReadCards, completion: { [weak self] ids in
             
             self?.userReadCardIds = ids
+            // get HCFirebaseManager.shared.isReadCardIds
             
             self?.group.leave()
         })
@@ -291,8 +293,6 @@ extension CardsViewController {
     
     func checkReadCard() {
         
-        userReadCardIds = HCFirebaseManager.shared.isReadCardIds
-        
         /// 比對 id 有哪些 isCollected == true，true 的話改物件狀態
         for index in 0 ..< self.cardsBasicInfo.count {
             
@@ -301,7 +301,7 @@ extension CardsViewController {
                 cardsBasicInfo[index].isRead = false
             }
             
-            self.userReadCardIds.forEach ({ (id) in
+            HCFirebaseManager.shared.isReadCardIds.forEach ({ (id) in
                 
                 if cardsBasicInfo[index].id == id {
                     
@@ -315,6 +315,7 @@ extension CardsViewController {
 extension CardsViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return 170
     }
 
@@ -362,45 +363,26 @@ extension CardsViewController: UITableViewDataSource {
             
             guard let strongSelf = self else { return }
             
-            if HCFirebaseManager.shared.agAuth().currentUser != nil {
+            HCFirebaseManager.shared.checkUserSignnedIn(viewController: strongSelf, checkedSignnedInCompletionHandler: {
                 
                 guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
                 
-                if strongSelf.cardsBasicInfo[indexPath.row].isCollected {
-                    
-                    HCFirebaseManager.shared.deleteId(
-                        userCollection: .collectedCards,
-                        uid: user.uid,
-                        id: strongSelf.cardsBasicInfo[indexPath.row].id
-                    )
-                } else {
-                    
-                    HCFirebaseManager.shared.addId(
-                        userCollection: .collectedCards,
-                        uid: user.uid,
-                        id: strongSelf.cardsBasicInfo[indexPath.row].id
-                    )
-                }
-                
-                strongSelf.cardsBasicInfo[indexPath.row].isCollected = !strongSelf.cardsBasicInfo[indexPath.row].isCollected
-                
-                //            strongSelf.updateIsCollectedCardId()
-                NotificationCenter.default.post(
-                    name: Notification.Name(rawValue: NotificationNames.updateCollectedCard.rawValue),
-                    object: nil
-                )
-                
-            } else {
-                
-                if let authVC = UIStoryboard.auth.instantiateInitialViewController() {
-                    
-                    authVC.modalPresentationStyle = .overCurrentContext
-                    
-                    let navVC = UINavigationController(rootViewController: authVC)
-                    
-                    strongSelf.present(navVC, animated: true, completion: nil)
-                }
-            }
+                strongSelf.changeCollectStatus(
+                    status: strongSelf.cardsBasicInfo[indexPath.row].isCollected,
+                    userCollection: .collectedCards,
+                    uid: user.uid,
+                    id: strongSelf.cardsBasicInfo[indexPath.row].id,
+                    changeStatusHandler: {
+                        
+                        strongSelf.cardsBasicInfo[indexPath.row].isCollected =
+                            !strongSelf.cardsBasicInfo[indexPath.row].isCollected
+
+                        NotificationCenter.default.post(
+                            name: Notification.Name(rawValue: NotificationNames.updateCollectedCard.rawValue),
+                            object: nil
+                        )
+                    })
+            })
         }
         
         return cardInfoCell

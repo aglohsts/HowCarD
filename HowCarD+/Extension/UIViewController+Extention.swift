@@ -53,4 +53,27 @@ extension UIViewController {
             
         self.present(alertController, animated: true, completion: completion)
     }
+    
+    func changeCollectStatus(status: Bool, userCollection: UserCollection, uid: String, id: String, changeStatusHandler: () -> Void) {
+        
+        if status == true {
+            
+            HCFirebaseManager.shared.deleteId(
+                userCollection: userCollection,
+                uid: uid,
+                id: id
+            )
+        } else {
+            
+            HCFirebaseManager.shared.addId(
+                userCollection: userCollection,
+                uid: uid,
+                id: id
+            )
+        }
+        
+        changeStatusHandler()
+    }
+    
+    
 }

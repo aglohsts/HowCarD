@@ -51,4 +51,23 @@ extension HCFirebaseManager {
             
         })
     }
+    
+    func checkUserSignnedIn(viewController: UIViewController, checkedSignnedInCompletionHandler: (() -> Void)?) {
+        
+        if HCFirebaseManager.shared.agAuth().currentUser != nil {
+            
+            checkedSignnedInCompletionHandler?()
+            
+        } else {
+            
+            if let authVC = UIStoryboard.auth.instantiateInitialViewController() {
+                
+                authVC.modalPresentationStyle = .overCurrentContext
+                
+                let navVC = UINavigationController(rootViewController: authVC)
+                
+                viewController.present(navVC, animated: true, completion: nil)
+            }
+        }
+    }
 }
