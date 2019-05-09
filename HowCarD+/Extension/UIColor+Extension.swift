@@ -25,9 +25,11 @@ enum HCColorHex: String {
     case gray = "C0C3C8"
 }
 
-private enum HCColor: String {
+enum HCColor: String {
     
     case tint = "Tint"
+    
+    case viewBackGround = "defaultViewBackground"
 }
 
 extension UIColor {
