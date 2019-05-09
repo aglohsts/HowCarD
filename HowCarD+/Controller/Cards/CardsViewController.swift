@@ -347,6 +347,7 @@ extension CardsViewController: UITableViewDataSource {
         cardInfoCell.layoutCell(
             isRead: cardsBasicInfo[indexPath.row].isRead,
             isCollected: cardsBasicInfo[indexPath.row].isCollected,
+            isMyCard: cardsBasicInfo[indexPath.row].isMyCard,
             bankName: cardsBasicInfo[indexPath.row].bank,
             cardName: cardsBasicInfo[indexPath.row].name,
             cardImage: cardsBasicInfo[indexPath.row].image,
@@ -386,6 +387,35 @@ extension CardsViewController: UITableViewDataSource {
                         )
                     })
             })
+        }
+        
+        cardInfoCell.isMyCardDidTouchHandler = { [weak self] in
+            
+            guard let strongSelf = self else { return }
+            
+        HCFirebaseManager.shared.checkUserSignnedIn(viewController: strongSelf, checkedSignnedInCompletionHandler: {
+                
+                guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+                
+                strongSelf.changeCollectStatus(
+                    status: strongSelf.cardsBasicInfo[indexPath.row].isMyCard,
+                    userCollection: .myCards,
+                    uid: user.uid,
+                    id: strongSelf.cardsBasicInfo[indexPath.row].id,
+                    changeStatusHandler: {
+                        
+                        strongSelf.cardsBasicInfo[indexPath.row].isMyCard = !strongSelf.cardsBasicInfo[indexPath.row].isMyCard
+                        
+                        
+                        // TODO: Notification
+//                        NotificationCenter.default.post(
+//                            name: Notification.Name(rawValue: NotificationNames.updateMyCard.rawValue),
+//                            object: nil
+//                        )
+                })
+            })
+            
+            
         }
         
         return cardInfoCell

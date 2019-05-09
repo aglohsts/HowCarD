@@ -46,6 +46,8 @@ struct CardBasicInfoObject: Codable, Collapsable {
     
     var isRead: Bool = false
     
+    var isMyCard: Bool = false
+    
     enum CodingKeys: String, CodingKey {
         
         case bank

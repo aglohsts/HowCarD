@@ -30,7 +30,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tzr-5S-lFe">
-                                                    <rect key="frame" x="0.0" y="5" width="409" height="211"/>
+                                                    <rect key="frame" x="0.0" y="5" width="364" height="211"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9i-0B-f6P">
                                                             <rect key="frame" x="13" y="191" width="75" height="12"/>
@@ -78,20 +78,8 @@
                                                             </collectionViewFlowLayout>
                                                             <cells/>
                                                         </collectionView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FI-Ac-viR">
-                                                            <rect key="frame" x="379" y="0.0" width="30" height="25"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="30" id="FhG-x4-uI2"/>
-                                                                <constraint firstAttribute="height" constant="25" id="Qwj-OZ-iIh"/>
-                                                            </constraints>
-                                                            <color key="tintColor" red="0.43529411759999997" green="0.74509803919999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <state key="normal" image="Icons_Bookmark_Normal"/>
-                                                            <connections>
-                                                                <action selector="onCollectCard:" destination="gFs-gU-LIA" eventType="touchUpInside" id="vP7-mN-NWP"/>
-                                                            </connections>
-                                                        </button>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="K7C-kx-VYq">
-                                                            <rect key="frame" x="96" y="40" width="305" height="137"/>
+                                                            <rect key="frame" x="96" y="40" width="260" height="137"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iWJ-It-bVt">
                                                                 <size key="itemSize" width="95" height="124"/>
@@ -143,14 +131,12 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="2FI-Ac-viR" secondAttribute="trailing" id="03k-rN-LR1"/>
                                                         <constraint firstItem="TvH-0C-sst" firstAttribute="top" secondItem="K7C-kx-VYq" secondAttribute="bottom" constant="8" id="1nO-WM-Kpk"/>
                                                         <constraint firstItem="TvH-0C-sst" firstAttribute="leading" secondItem="l9i-0B-f6P" secondAttribute="trailing" constant="8" id="Cxo-e8-vLZ"/>
                                                         <constraint firstItem="7mW-wP-mdW" firstAttribute="top" secondItem="Tzr-5S-lFe" secondAttribute="top" constant="8" id="KXC-41-1kD"/>
                                                         <constraint firstItem="1Bq-TT-nzD" firstAttribute="top" secondItem="Tzr-5S-lFe" secondAttribute="top" id="Lqd-WX-IG2"/>
                                                         <constraint firstItem="K7C-kx-VYq" firstAttribute="leading" secondItem="7mW-wP-mdW" secondAttribute="leading" id="M0u-9Y-9hI"/>
                                                         <constraint firstAttribute="bottom" secondItem="TvH-0C-sst" secondAttribute="bottom" constant="5" id="XA8-ba-Bn5"/>
-                                                        <constraint firstItem="2FI-Ac-viR" firstAttribute="top" secondItem="Tzr-5S-lFe" secondAttribute="top" id="bcV-EA-Hbp"/>
                                                         <constraint firstItem="1Bq-TT-nzD" firstAttribute="leading" secondItem="Tzr-5S-lFe" secondAttribute="leading" id="huy-s2-4yb"/>
                                                         <constraint firstItem="K7C-kx-VYq" firstAttribute="top" secondItem="7mW-wP-mdW" secondAttribute="bottom" constant="8" id="k2j-fn-lgz"/>
                                                         <constraint firstItem="ecP-cb-Nff" firstAttribute="leading" secondItem="1Bq-TT-nzD" secondAttribute="trailing" constant="8" id="kFo-5w-cxi"/>
@@ -177,16 +163,38 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2FI-Ac-viR">
+                                                    <rect key="frame" x="374" y="5" width="35" height="35"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="ddm-lN-PGq"/>
+                                                        <constraint firstAttribute="width" constant="35" id="tlF-0h-Esg"/>
+                                                    </constraints>
+                                                    <color key="tintColor" red="0.43529411759999997" green="0.74509803919999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <state key="normal" image="Icons_Bookmark_Normal" backgroundImage="CircleButtonWhiteBackground"/>
+                                                    <connections>
+                                                        <action selector="onCollectCard:" destination="gFs-gU-LIA" eventType="touchUpInside" id="vP7-mN-NWP"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XWn-TA-4kG">
+                                                    <rect key="frame" x="340" y="84" width="54" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="myCard"/>
+                                                    <connections>
+                                                        <action selector="onIsMyCard:" destination="gFs-gU-LIA" eventType="touchUpInside" id="f3o-TB-bcq"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Tzr-5S-lFe" firstAttribute="top" secondItem="LxG-Iy-ZU5" secondAttribute="top" constant="5" id="1mY-Pi-QxB"/>
-                                                <constraint firstAttribute="trailing" secondItem="Tzr-5S-lFe" secondAttribute="trailing" constant="5" id="21y-3O-H9f"/>
+                                                <constraint firstAttribute="trailing" secondItem="Tzr-5S-lFe" secondAttribute="trailing" constant="50" id="21y-3O-H9f"/>
+                                                <constraint firstItem="2FI-Ac-viR" firstAttribute="top" secondItem="LxG-Iy-ZU5" secondAttribute="top" constant="5" id="3Cd-wM-tMr"/>
                                                 <constraint firstItem="Tzr-5S-lFe" firstAttribute="leading" secondItem="LxG-Iy-ZU5" secondAttribute="leading" id="56e-Lf-zLh"/>
                                                 <constraint firstItem="REc-lU-akm" firstAttribute="leading" secondItem="1Bq-TT-nzD" secondAttribute="trailing" constant="8" id="5oc-ee-TmS"/>
                                                 <constraint firstItem="l9i-0B-f6P" firstAttribute="trailing" secondItem="REc-lU-akm" secondAttribute="trailing" id="65A-MH-Dpp"/>
                                                 <constraint firstAttribute="trailing" secondItem="TvH-0C-sst" secondAttribute="trailing" constant="16" id="Fee-uw-S6O"/>
                                                 <constraint firstAttribute="bottom" secondItem="Tzr-5S-lFe" secondAttribute="bottom" id="RJf-wP-jni"/>
                                                 <constraint firstItem="l9i-0B-f6P" firstAttribute="top" secondItem="REc-lU-akm" secondAttribute="bottom" constant="8" id="Xt4-9d-1h2"/>
+                                                <constraint firstAttribute="trailing" secondItem="2FI-Ac-viR" secondAttribute="trailing" constant="5" id="lTz-fZ-kk8"/>
                                                 <constraint firstItem="l9i-0B-f6P" firstAttribute="leading" secondItem="REc-lU-akm" secondAttribute="leading" id="pWn-hA-bBG"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -197,6 +205,7 @@
                                             <outlet property="cardInfoCollectionView" destination="K7C-kx-VYq" id="lxH-wj-ays"/>
                                             <outlet property="cardNameLabel" destination="7mW-wP-mdW" id="fY2-th-YtI"/>
                                             <outlet property="collectedBtn" destination="2FI-Ac-viR" id="3fc-vr-m1N"/>
+                                            <outlet property="isMyCardBtn" destination="XWn-TA-4kG" id="eDw-wP-eM9"/>
                                             <outlet property="readMarkView" destination="1Bq-TT-nzD" id="2jz-V0-xbF"/>
                                             <outlet property="tagCollectionView" destination="TvH-0C-sst" id="WcF-2M-a0O"/>
                                         </connections>
@@ -450,6 +459,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="CircleButtonWhiteBackground" width="35" height="35"/>
         <image name="Icons_ArrowDown" width="11" height="7"/>
         <image name="Icons_Bookmark_Normal" width="15" height="20"/>
         <image name="Icons_Next" width="68" height="68"/>

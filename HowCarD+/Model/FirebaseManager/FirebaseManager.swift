@@ -38,11 +38,25 @@ enum UserCollection: String {
     case myCards
 }
 
-private enum DataKey: String {
+enum MyCardCollection: String {
+    
+    case billInfo
+}
+
+private enum UserCollectionDataKey: String {
     
     case discountId
     
     case cardId
+}
+
+private enum MyCardCollectionDataKey: String {
+    
+    case cardNickName
+    
+    case needBillRemind
+    
+    case billDueDate
 }
 
 class HCFirebaseManager {
@@ -114,7 +128,7 @@ class HCFirebaseManager {
         firestoreRef(to: .users).document(uid)
             .collection(UserCollection.likedDiscounts.rawValue)
             .addDocument(data: [
-                DataKey.discountId.rawValue: "\(discountId)"
+                UserCollectionDataKey.discountId.rawValue: "\(discountId)"
                 ])
     }
     
@@ -122,7 +136,7 @@ class HCFirebaseManager {
         
         firestoreRef(to: .users).document(uid)
             .collection(UserCollection.likedDiscounts.rawValue)
-            .whereField(DataKey.discountId.rawValue, isEqualTo: discountId)
+            .whereField(UserCollectionDataKey.discountId.rawValue, isEqualTo: discountId)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
@@ -153,7 +167,7 @@ class HCFirebaseManager {
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
                 .addDocument(data: [
-                    DataKey.discountId.rawValue: "\(id)"
+                    UserCollectionDataKey.discountId.rawValue: "\(id)"
                     ])
             likedDiscountIds.append(id)
             
@@ -162,7 +176,7 @@ class HCFirebaseManager {
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
                 .addDocument(data: [
-                    DataKey.discountId.rawValue: "\(id)"
+                    UserCollectionDataKey.discountId.rawValue: "\(id)"
                     ])
             isReadDiscountIds.append(id)
             
@@ -171,7 +185,7 @@ class HCFirebaseManager {
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
                 .addDocument(data: [
-                    DataKey.cardId.rawValue: "\(id)"
+                    UserCollectionDataKey.cardId.rawValue: "\(id)"
                     ])
             collectedCardIds.append(id)
         
@@ -180,7 +194,7 @@ class HCFirebaseManager {
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
                 .addDocument(data: [
-                    DataKey.cardId.rawValue: "\(id)"
+                    UserCollectionDataKey.cardId.rawValue: "\(id)"
                     ])
             myCardIds.append(id)
             
@@ -189,10 +203,25 @@ class HCFirebaseManager {
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
                 .addDocument(data: [
-                    DataKey.cardId.rawValue: "\(id)"
+                    UserCollectionDataKey.cardId.rawValue: "\(id)"
                     ])
             isReadCardIds.append(id)
         }
+    }
+    
+    func setMyCard(uid: String, id: String, nickName: String, needBillRemind: Bool, billDueDate: Int?) {
+        
+        firestoreRef(to: .users)
+            .document(uid)
+            .collection(UserCollection.myCards.rawValue)
+            .document(UserCollectionDataKey.cardId
+                .rawValue)
+            .collection(MyCardCollection.billInfo.rawValue)
+            .addDocument(data: [
+                MyCardCollectionDataKey.cardNickName.rawValue : "\(nickName)",
+                MyCardCollectionDataKey.needBillRemind.rawValue : needBillRemind,
+                MyCardCollectionDataKey.billDueDate.rawValue : billDueDate
+                ])
     }
     
     func deleteId(userCollection: UserCollection, uid: String, id: String) {
@@ -203,7 +232,7 @@ class HCFirebaseManager {
             
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
-                .whereField(DataKey.discountId.rawValue, isEqualTo: id)
+                .whereField(UserCollectionDataKey.discountId.rawValue, isEqualTo: id)
                 .getDocuments() { (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
@@ -229,7 +258,7 @@ class HCFirebaseManager {
             
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
-                .whereField(DataKey.discountId.rawValue, isEqualTo: id)
+                .whereField(UserCollectionDataKey.discountId.rawValue, isEqualTo: id)
                 .getDocuments() { (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
@@ -255,7 +284,7 @@ class HCFirebaseManager {
             
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
-                .whereField(DataKey.cardId.rawValue, isEqualTo: id)
+                .whereField(UserCollectionDataKey.cardId.rawValue, isEqualTo: id)
                 .getDocuments() { (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
@@ -281,7 +310,7 @@ class HCFirebaseManager {
             
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
-                .whereField(DataKey.cardId.rawValue, isEqualTo: id)
+                .whereField(UserCollectionDataKey.cardId.rawValue, isEqualTo: id)
                 .getDocuments() { (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
@@ -307,7 +336,7 @@ class HCFirebaseManager {
             
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
-                .whereField(DataKey.cardId.rawValue, isEqualTo: id)
+                .whereField(UserCollectionDataKey.cardId.rawValue, isEqualTo: id)
                 .getDocuments() { (querySnapshot, err) in
                     if let err = err {
                         print("Error getting documents: \(err)")
@@ -357,7 +386,7 @@ class HCFirebaseManager {
                         return
                 }
                 
-                strongSelf.likedDiscountIds = documents.compactMap({ $0[DataKey.discountId.rawValue] as? String })
+                strongSelf.likedDiscountIds = documents.compactMap({ $0[UserCollectionDataKey.discountId.rawValue] as? String })
                 
                 completion(strongSelf.likedDiscountIds)
             }
@@ -384,7 +413,7 @@ class HCFirebaseManager {
                         return
                     }
                     
-                    strongSelf.isReadDiscountIds = documents.compactMap({ $0[DataKey.discountId.rawValue] as? String })
+                    strongSelf.isReadDiscountIds = documents.compactMap({ $0[UserCollectionDataKey.discountId.rawValue] as? String })
                     
                 completion(strongSelf.isReadDiscountIds)
             }
@@ -411,7 +440,7 @@ class HCFirebaseManager {
                         return
                 }
                     
-                strongSelf.collectedCardIds = documents.compactMap({ $0[DataKey.cardId.rawValue] as? String })
+                strongSelf.collectedCardIds = documents.compactMap({ $0[UserCollectionDataKey.cardId.rawValue] as? String })
                 
                 completion(strongSelf.collectedCardIds)
             }
@@ -438,7 +467,7 @@ class HCFirebaseManager {
                     return
                     }
                 
-                strongSelf.myCardIds = documents.compactMap({ $0[DataKey.cardId.rawValue] as? String })
+                strongSelf.myCardIds = documents.compactMap({ $0[UserCollectionDataKey.cardId.rawValue] as? String })
                 
                 completion(strongSelf.myCardIds)
             }
@@ -465,7 +494,7 @@ class HCFirebaseManager {
                         return
                     }
                     
-                    strongSelf.isReadCardIds = documents.compactMap({ $0[DataKey.cardId.rawValue] as? String })
+                    strongSelf.isReadCardIds = documents.compactMap({ $0[UserCollectionDataKey.cardId.rawValue] as? String })
                     
                     completion(strongSelf.isReadCardIds)
             }

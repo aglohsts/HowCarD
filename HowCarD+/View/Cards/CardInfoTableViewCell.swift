@@ -14,6 +14,8 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
     
     var toCardDetailHandler: (() -> Void)?
     
+    var isMyCardDidTouchHandler: (() -> Void)?
+    
     var briefInfos: [ BriefIntro ] = []
 
     var tagArray = [String]() {
@@ -53,7 +55,23 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
         }
     }
     
+    var isMyCard: Bool = false {
+        
+        didSet {
+            
+            if isMyCard{
+                // TODO: button image
+                isMyCardBtn.setTitle("isMyCard", for: .normal)
+            } else {
+                
+                isMyCardBtn.setTitle("notMyCard", for: .normal)
+            }
+        }
+    }
+    
     @IBOutlet weak var collectedBtn: UIButton!
+    
+    @IBOutlet weak var isMyCardBtn: UIButton!
 
     @IBOutlet weak var backView: UIView!
 
@@ -84,7 +102,6 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
         }
     }
     
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -100,6 +117,7 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
     func layoutCell(
         isRead: Bool,
         isCollected: Bool,
+        isMyCard: Bool,
         bankName: String,
         cardName: String,
         cardImage: String,
@@ -110,6 +128,8 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
         self.isRead = isRead
 
         self.isCollected = isCollected
+        
+        self.isMyCard = isMyCard
 
 //        bankIconImageView.image = bankIcon
 
@@ -146,6 +166,12 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
         
         collectButtonDidTouchHandler?()
     }
+    
+    @IBAction func onIsMyCard(_ sender: Any) {
+        
+        isMyCardDidTouchHandler?()
+    }
+    
 }
 
 extension CardInfoTableViewCell: UICollectionViewDelegateFlowLayout {
