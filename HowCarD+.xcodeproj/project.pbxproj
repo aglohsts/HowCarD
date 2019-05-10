@@ -70,6 +70,7 @@
 		CA47A18A225B332C00AD16AF /* CardDetailTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47A189225B332C00AD16AF /* CardDetailTableViewHeaderView.swift */; };
 		CA47A18E225B3CEA00AD16AF /* CardDetailTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA47A18D225B3CEA00AD16AF /* CardDetailTableViewHeaderView.xib */; };
 		CA47A190225B42C000AD16AF /* CardDetailContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47A18F225B42C000AD16AF /* CardDetailContentTableViewCell.swift */; };
+		CA560BA222856C2D00C9FAC0 /* HowCarDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA560BA122856C2D00C9FAC0 /* HowCarDTests.swift */; };
 		CA69860A227ABC8000437024 /* InnerTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA698609227ABC8000437024 /* InnerTableView.swift */; };
 		CA69860C227ABF1E00437024 /* DRecommCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA69860B227ABF1E00437024 /* DRecommCategoryCollectionViewCell.swift */; };
 		CA6B5C6C2266B89100B180A2 /* HCConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6B5C6B2266B89100B180A2 /* HCConstant.swift */; };
@@ -116,6 +117,16 @@
 		CAFE829522608051004F4E63 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE829422608051004F4E63 /* FirebaseManager.swift */; };
 		F046E3020440D087E1F00B31 /* Pods_HowCarD_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A471D918A639FEEC5AA07E /* Pods_HowCarD_.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CA560BA422856C2D00C9FAC0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA171B56225330070042BBDC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA171B5D225330070042BBDC;
+			remoteInfo = "HowCarD+";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5B5A0842CFBB48209D25D8D8 /* Pods-HowCarD+.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowCarD+.debug.xcconfig"; path = "Target Support Files/Pods-HowCarD+/Pods-HowCarD+.debug.xcconfig"; sourceTree = "<group>"; };
@@ -186,6 +197,9 @@
 		CA47A189225B332C00AD16AF /* CardDetailTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailTableViewHeaderView.swift; sourceTree = "<group>"; };
 		CA47A18D225B3CEA00AD16AF /* CardDetailTableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardDetailTableViewHeaderView.xib; sourceTree = "<group>"; };
 		CA47A18F225B42C000AD16AF /* CardDetailContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailContentTableViewCell.swift; sourceTree = "<group>"; };
+		CA560B9F22856C2D00C9FAC0 /* HowCarDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HowCarDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA560BA122856C2D00C9FAC0 /* HowCarDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowCarDTests.swift; sourceTree = "<group>"; };
+		CA560BA322856C2D00C9FAC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA698609227ABC8000437024 /* InnerTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerTableView.swift; sourceTree = "<group>"; };
 		CA69860B227ABF1E00437024 /* DRecommCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA6B5C6B2266B89100B180A2 /* HCConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCConstant.swift; sourceTree = "<group>"; };
@@ -241,6 +255,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CA560B9C22856C2D00C9FAC0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -291,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				CA171B60225330070042BBDC /* HowCarD+ */,
+				CA560BA022856C2D00C9FAC0 /* HowCarDTests */,
 				CA171B5F225330070042BBDC /* Products */,
 				5F0C69AD3C32B6788442842C /* Pods */,
 				9B533D92812688D9B683595E /* Frameworks */,
@@ -301,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				CA171B5E225330070042BBDC /* HowCarD.app */,
+				CA560B9F22856C2D00C9FAC0 /* HowCarDTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -526,6 +549,15 @@
 			path = Discount;
 			sourceTree = "<group>";
 		};
+		CA560BA022856C2D00C9FAC0 /* HowCarDTests */ = {
+			isa = PBXGroup;
+			children = (
+				CA560BA122856C2D00C9FAC0 /* HowCarDTests.swift */,
+				CA560BA322856C2D00C9FAC0 /* Info.plist */,
+			);
+			path = HowCarDTests;
+			sourceTree = "<group>";
+		};
 		CA6B5C692266B83300B180A2 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -674,6 +706,24 @@
 			productReference = CA171B5E225330070042BBDC /* HowCarD.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CA560B9E22856C2D00C9FAC0 /* HowCarDTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA560BA622856C2D00C9FAC0 /* Build configuration list for PBXNativeTarget "HowCarDTests" */;
+			buildPhases = (
+				CA560B9B22856C2D00C9FAC0 /* Sources */,
+				CA560B9C22856C2D00C9FAC0 /* Frameworks */,
+				CA560B9D22856C2D00C9FAC0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CA560BA522856C2D00C9FAC0 /* PBXTargetDependency */,
+			);
+			name = HowCarDTests;
+			productName = HowCarDTests;
+			productReference = CA560B9F22856C2D00C9FAC0 /* HowCarDTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -686,6 +736,10 @@
 				TargetAttributes = {
 					CA171B5D225330070042BBDC = {
 						CreatedOnToolsVersion = 10.2;
+					};
+					CA560B9E22856C2D00C9FAC0 = {
+						CreatedOnToolsVersion = 10.2;
+						TestTargetID = CA171B5D225330070042BBDC;
 					};
 				};
 			};
@@ -703,6 +757,7 @@
 			projectRoot = "";
 			targets = (
 				CA171B5D225330070042BBDC /* HowCarD+ */,
+				CA560B9E22856C2D00C9FAC0 /* HowCarDTests */,
 			);
 		};
 /* End PBXProject section */
@@ -732,6 +787,13 @@
 				CA6B5E35226E865D00182FFB /* DRecommCardTableViewCell.xib in Resources */,
 				CA171B812253407A0042BBDC /* Discounts.storyboard in Resources */,
 				CA47A18E225B3CEA00AD16AF /* CardDetailTableViewHeaderView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA560B9D22856C2D00C9FAC0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -910,7 +972,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CA560B9B22856C2D00C9FAC0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA560BA222856C2D00C9FAC0 /* HowCarDTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CA560BA522856C2D00C9FAC0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA171B5D225330070042BBDC /* HowCarD+ */;
+			targetProxy = CA560BA422856C2D00C9FAC0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CA171B65225330070042BBDC /* Main.storyboard */ = {
@@ -1089,6 +1167,48 @@
 			};
 			name = Release;
 		};
+		CA560BA722856C2D00C9FAC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 54Y59X3FBZ;
+				INFOPLIST_FILE = HowCarDTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = lohsts.HowCarDTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HowCarD.app/HowCarD";
+			};
+			name = Debug;
+		};
+		CA560BA822856C2D00C9FAC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 54Y59X3FBZ;
+				INFOPLIST_FILE = HowCarDTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = lohsts.HowCarDTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HowCarD.app/HowCarD";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1106,6 +1226,15 @@
 			buildConfigurations = (
 				CA171B71225330090042BBDC /* Debug */,
 				CA171B72225330090042BBDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA560BA622856C2D00C9FAC0 /* Build configuration list for PBXNativeTarget "HowCarDTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA560BA722856C2D00C9FAC0 /* Debug */,
+				CA560BA822856C2D00C9FAC0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
