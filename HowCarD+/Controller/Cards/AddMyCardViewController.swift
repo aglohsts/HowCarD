@@ -17,13 +17,16 @@ class AddMyCardViewController: UIViewController {
          11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
          21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
         ]
-
+    
+    var addMyCardCompletionHandler: (() -> Void)?
+    
+    @IBOutlet weak var billDueDateView: UIView!
+    
     @IBOutlet weak var cardNickNameTextField: UITextField!
     
     @IBOutlet weak var billDueDateTextField: UITextField!
     
     @IBOutlet weak var billRemindSwitch: UISwitch!
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +34,36 @@ class AddMyCardViewController: UIViewController {
         createPickerView()
     }
     
-    @IBAction func onBillRemindSwitch(_ sender: Any) {
+    @IBAction func onBillRemindSwitch(_ sender: UISwitch) {
         
-        
+        if sender.isOn {
+            
+            billDueDateView.backgroundColor = UIColor.tint?.withAlphaComponent(1.0)
+        } else {
+            
+            billDueDateTextField.isUserInteractionEnabled = false
+            
+            billDueDateView.backgroundColor = UIColor.tint?.withAlphaComponent(0.5)
+        }
     }
     
+    @IBAction func onAddMyCard(_ sender: Any) {
+        
+        
+        self.dismiss(animated: true, completion: { [weak self] in
+            
+            // TODO: 資料打到 Firebase
+            
+            self?.addMyCardCompletionHandler?()
+        })
+    }
+    
+    @IBAction func onCancel(_ sender: Any) { 
+        
+        // TODO: Completion + my card
+        
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension AddMyCardViewController {

@@ -105,6 +105,15 @@ struct CardContent: Codable {
     }
 }
 
+struct MyCardObject {
+    
+    var nickname: String?
+    
+    let needBillRemind: Bool
+    
+    var billDueDate: Int?
+}
+
 enum Tags: String {
     case feedback = "回饋"
     

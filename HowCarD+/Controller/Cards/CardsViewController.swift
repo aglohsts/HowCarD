@@ -16,16 +16,20 @@ class CardsViewController: HCBaseViewController {
     
     var userReadCardIds: [String] = []
     
+    var addMyCardSelectedPath: IndexPath = [0, 0]
+    
     private struct Segue {
         
-        static let toDetail = "toCardDetail"
+        static let toDetail = "toCardDetailSegue"
+        
+        static let addMyCard = "addMyCardSegue"
     }
     
     let cardProvider = CardProvider()
     
-    var banks = [BankObject]()
+    var banks: [BankObject] = []
     
-    var cardsBasicInfo = [CardBasicInfoObject]() {
+    var cardsBasicInfo: [CardBasicInfoObject] = [] {
 
         didSet {
 
@@ -205,6 +209,36 @@ extension CardsViewController {
                 strongSelf.cardsBasicInfo[datas.0.row].isCollected = vc.isCollected
                 
 //                strongSelf.updateIsCollectedCardId()
+            }
+        } else if segue.identifier == Segue.addMyCard {
+            
+            let addMyCardVC = segue.destination as? AddMyCardViewController
+            
+            addMyCardVC?.addMyCardCompletionHandler = { [weak self] in
+                
+                guard let strongSelf = self else { return }
+                
+                guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+                
+                let selectedPath = strongSelf.addMyCardSelectedPath
+                
+                strongSelf.changeCollectStatus(
+                    status: strongSelf.cardsBasicInfo[selectedPath.row].isMyCard,
+                    userCollection: .myCards,
+                    uid: user.uid,
+                    id: strongSelf.cardsBasicInfo[selectedPath.row].id,
+                    changeStatusHandler: {
+                        
+                        strongSelf.cardsBasicInfo[selectedPath.row].isMyCard = !strongSelf.cardsBasicInfo[selectedPath.row].isMyCard
+                })
+                
+                
+                
+                // TODO: Notification
+                //                        NotificationCenter.default.post(
+                //                            name: Notification.Name(rawValue: NotificationNames.updateMyCard.rawValue),
+                //                            object: nil
+                //                        )
             }
         }
     }
@@ -394,25 +428,17 @@ extension CardsViewController: UITableViewDataSource {
             guard let strongSelf = self else { return }
             
         HCFirebaseManager.shared.checkUserSignnedIn(viewController: strongSelf, checkedSignnedInCompletionHandler: {
-                
-                guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
-                
-                strongSelf.changeCollectStatus(
-                    status: strongSelf.cardsBasicInfo[indexPath.row].isMyCard,
-                    userCollection: .myCards,
-                    uid: user.uid,
-                    id: strongSelf.cardsBasicInfo[indexPath.row].id,
-                    changeStatusHandler: {
-                        
-                        strongSelf.cardsBasicInfo[indexPath.row].isMyCard = !strongSelf.cardsBasicInfo[indexPath.row].isMyCard
-                        
-                        
-                        // TODO: Notification
-//                        NotificationCenter.default.post(
-//                            name: Notification.Name(rawValue: NotificationNames.updateMyCard.rawValue),
-//                            object: nil
-//                        )
-                })
+            
+                if strongSelf.cardsBasicInfo[indexPath.row].isMyCard {
+                    
+                    // TODO: 跳 alert 確定移除我的卡片嗎
+                    
+                } else {
+                    
+                    strongSelf.addMyCardSelectedPath = indexPath
+                    
+                    
+                }
             })
             
             
