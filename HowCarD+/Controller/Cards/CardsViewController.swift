@@ -418,31 +418,34 @@ extension CardsViewController: UITableViewDataSource {
                         uid: user.uid,
                         id: strongSelf.cardsBasicInfo[indexPath.row].id
                     )
+                    strongSelf.cardsBasicInfo[indexPath.row].isMyCard = !strongSelf.cardsBasicInfo[indexPath.row].isMyCard
                     
                 } else {
                     
                     // add AddMyCardVC view
+                
                     strongSelf.view.endEditing(true)
                     
                     strongSelf.navigationController?.setNavigationBarHidden(true, animated: true)
                     
-                    strongSelf.tabBarController?.tabBar.isHidden = true
+//                    strongSelf.tabBarController?.tabBar.isHidden = true
                     
                     strongSelf.addChild(addMyCardVC)
-                    
-                    strongSelf.view.addSubview(addMyCardVC.view)
-                    
-                    addMyCardVC.view.translatesAutoresizingMaskIntoConstraints = false
+
+                    addMyCardVC.loadViewIfNeeded()
+//                    addMyCardVC.view.translatesAutoresizingMaskIntoConstraints = false
                     
                     addMyCardVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                     
-                    addMyCardVC.view.topAnchor.constraint(equalTo: strongSelf.view.topAnchor, constant: 0).isActive = true
-                    
-                    addMyCardVC.view.leadingAnchor.constraint(equalTo: strongSelf.view.leadingAnchor).isActive = true
-                    
-                    addMyCardVC.view.trailingAnchor.constraint(equalTo: strongSelf.view.trailingAnchor).isActive = true
-                    
-                    addMyCardVC.view.bottomAnchor.constraint(equalTo: strongSelf.view.bottomAnchor).isActive = true
+                    strongSelf.view.addSubview(addMyCardVC.view)
+ 
+//                    addMyCardVC.view.topAnchor.constraint(equalTo: strongSelf.view.topAnchor, constant: 0).isActive = true
+//
+//                    addMyCardVC.view.leadingAnchor.constraint(equalTo: strongSelf.view.leadingAnchor).isActive = true
+//
+//                    addMyCardVC.view.trailingAnchor.constraint(equalTo: strongSelf.view.trailingAnchor).isActive = true
+//
+//                    addMyCardVC.view.bottomAnchor.constraint(equalTo: strongSelf.view.bottomAnchor).isActive = true
                     
                     addMyCardVC.didMove(toParent: strongSelf)
                     

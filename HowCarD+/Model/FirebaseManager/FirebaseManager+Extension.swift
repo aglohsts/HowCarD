@@ -73,6 +73,8 @@ extension HCFirebaseManager {
     
     func addMyCardInfo(uid: String, id: String, nickname: String?, needBillRemind: Bool, billDueDate: Int?, documentID: String) {
         
+        let newDocumentId = UUID().uuidString
+        
             firestoreRef(to: .users)
                 .document(uid)
                 .collection(UserCollection.myCards.rawValue)

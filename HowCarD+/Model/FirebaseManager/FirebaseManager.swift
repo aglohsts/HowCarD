@@ -217,6 +217,7 @@ class HCFirebaseManager {
         }
     }
     
+// swiftlint:disable cyclomatic_complexity
     func deleteId(userCollection: UserCollection, uid: String, id: String) {
         
         switch userCollection {
@@ -288,9 +289,21 @@ class HCFirebaseManager {
                         
                         querySnapshot!.documents.forEach({ [weak self] (document) in
                             // 用 documentID 去刪除 document
+                            
+                            // 刪除文件下的 collection
+                            // 刪不掉
+                            
+//                            self?.firestoreRef(to: .users)
+//                                .document(uid)
+//                                .collection(userCollection.rawValue)
+//                                .document(document.documentID)
+//                                .collection(MyCardCollection.billInfo.rawValue)
+//                                .document(billInfoDocumentId).delete()
+                            
+                            // 刪除文件
                             self?.firestoreRef(to: .users)
                                 .document(uid).collection(userCollection.rawValue)
-                                .document(document.documentID).delete()
+                                .document().delete()
                         })
                     }
             }
@@ -352,6 +365,7 @@ class HCFirebaseManager {
             isReadCardIds.remove(at: index)
         }
     }
+// swiftlint:enable cyclomatic_complexity
     
     func getId(uid: String, userCollection: UserCollection, completion: @escaping ([String]) -> Void) {
         
