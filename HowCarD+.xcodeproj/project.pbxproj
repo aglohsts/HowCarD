@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CA0379B122781F580093086D /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0379B022781F580093086D /* WalletViewController.swift */; };
+		CA0A31F522852449004F73B3 /* AddMyCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0A31F422852448004F73B3 /* AddMyCardViewController.swift */; };
 		CA12C75B2279616C00491BD4 /* DRecommCategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA12C75A2279616C00491BD4 /* DRecommCategoryHeaderView.swift */; };
 		CA12C75D2279620400491BD4 /* DRecommCategoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA12C75C2279620400491BD4 /* DRecommCategoryHeaderView.xib */; };
 		CA12C7602279747700491BD4 /* DRecommCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA12C75F2279747700491BD4 /* DRecommCategoryTableViewCell.swift */; };
@@ -121,6 +122,7 @@
 		6F7DA0CF1E2FC5FC71E1B720 /* Pods-HowCarD+.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowCarD+.release.xcconfig"; path = "Target Support Files/Pods-HowCarD+/Pods-HowCarD+.release.xcconfig"; sourceTree = "<group>"; };
 		96A471D918A639FEEC5AA07E /* Pods_HowCarD_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowCarD_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0379B022781F580093086D /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
+		CA0A31F422852448004F73B3 /* AddMyCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyCardViewController.swift; sourceTree = "<group>"; };
 		CA12C75A2279616C00491BD4 /* DRecommCategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommCategoryHeaderView.swift; sourceTree = "<group>"; };
 		CA12C75C2279620400491BD4 /* DRecommCategoryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DRecommCategoryHeaderView.xib; sourceTree = "<group>"; };
 		CA12C75F2279747700491BD4 /* DRecommCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommCategoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 			children = (
 				CA171B91225350350042BBDC /* CardsViewController.swift */,
 				CA47A183225AF7CD00AD16AF /* CardDetailViewController.swift */,
+				CA0A31F422852448004F73B3 /* AddMyCardViewController.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";
@@ -817,6 +820,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA0A31F522852449004F73B3 /* AddMyCardViewController.swift in Sources */,
 				CA13E913227AF26700DA641F /* CallHelpTableViewCell.swift in Sources */,
 				CA1BFCE0226F0B8D008F38BC /* DRecommObject.swift in Sources */,
 				CA6B5E34226E865D00182FFB /* DRecommDiscountTableViewCell.swift in Sources */,
