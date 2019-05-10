@@ -174,7 +174,8 @@ class MoreDiscountViewController: HCBaseViewController {
                 HCFirebaseManager.shared.addId(
                     userCollection: .isReadDiscounts,
                     uid: user.uid,
-                    id: discountObject!.discountInfos[indexPath.item].discountId
+                    id: discountObject!.discountInfos[indexPath.item].discountId,
+                    addIdCompletionHandler: nil
                 )
             }
         }
@@ -409,7 +410,8 @@ extension MoreDiscountViewController: UICollectionViewDataSource {
                     HCFirebaseManager.shared.addId(
                         userCollection: .likedDiscounts,
                         uid: user.uid,
-                        id: strongSelf.discountObject!.discountInfos[indexPath.item].discountId
+                        id: strongSelf.discountObject!.discountInfos[indexPath.item].discountId,
+                        addIdCompletionHandler: nil
                     )
                 }
                  strongSelf.discountObject!.discountInfos[indexPath.row].isLiked =

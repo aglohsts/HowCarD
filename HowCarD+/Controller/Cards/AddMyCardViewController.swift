@@ -44,8 +44,16 @@ class AddMyCardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        layoutView()
 
         createPickerView()
+    }
+    
+    private func layoutView() {
+        
+        view.isOpaque = false
+//        view.backgroundColor = .clear
     }
     
     @IBAction func onBillRemindSwitch(_ sender: UISwitch) {
@@ -79,22 +87,33 @@ class AddMyCardViewController: UIViewController {
     
     @IBAction func onAddMyCard(_ sender: Any) {
         
+        let nickname = cardNickNameTextField.text == "" ? nil : cardNickNameTextField.text
         
-        self.dismiss(animated: true, completion: { [weak self] in
-            
-            guard let strongSelf = self else { return }
-            
-            let nickname = self?.cardNickNameTextField.text == "" ? nil : self?.cardNickNameTextField.text
-            
-            strongSelf.addMyCardCompletionHandler?(nickname, strongSelf.needBillRemind, strongSelf.selectedDate)
-        })
+        
+        addMyCardCompletionHandler?(nickname, needBillRemind, selectedDate)
+        
+        self.parent?.navigationController?.setNavigationBarHidden(false, animated: false)
+        
+        self.parent?.tabBarController?.tabBar.isHidden = false
+        
+        self.willMove(toParent: nil)
+        
+        self.view.removeFromSuperview()
+        
+        self.removeFromParent()
     }
     
     @IBAction func onCancel(_ sender: Any) { 
+
+        self.parent?.navigationController?.setNavigationBarHidden(false, animated: false)
         
-        // TODO: Completion + my card
+        self.parent?.tabBarController?.tabBar.isHidden = false
         
-        self.dismiss(animated: true, completion: nil)
+        self.willMove(toParent: nil)
+        
+        self.view.removeFromSuperview()
+        
+        self.removeFromParent()
     }
 }
 

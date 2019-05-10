@@ -151,7 +151,8 @@ extension DiscountsViewController {
                 userCollection: .isReadDiscounts,
                 uid: user.uid,
                 id: discountObjects[indexPath.section]
-                    .discountInfos[indexPath.row].discountId
+                    .discountInfos[indexPath.row].discountId,
+                addIdCompletionHandler: nil
             )
         }
         

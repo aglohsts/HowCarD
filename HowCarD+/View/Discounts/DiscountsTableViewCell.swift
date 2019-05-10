@@ -183,7 +183,8 @@ extension DiscountsTableViewCell: UICollectionViewDataSource {
                         HCFirebaseManager.shared.addId(
                             userCollection: .likedDiscounts,
                             uid: user.uid,
-                            id: strongSelf.discountInfos[indexPath.row].discountId
+                            id: strongSelf.discountInfos[indexPath.row].discountId,
+                            addIdCompletionHandler: nil
                         )
                     }
                     

@@ -113,7 +113,8 @@ class DiscountDetailViewController: HCBaseViewController {
                     HCFirebaseManager.shared.addId(
                         userCollection: .likedDiscounts,
                         uid: user.uid,
-                        id: self.discountDetail!.info.discountId
+                        id: self.discountDetail!.info.discountId,
+                        addIdCompletionHandler: nil
                     )
                 }
                 

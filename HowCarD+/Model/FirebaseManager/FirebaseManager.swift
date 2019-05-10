@@ -158,7 +158,7 @@ class HCFirebaseManager {
             }
     }
     
-    func addId(userCollection: UserCollection, uid: String, id: String) {
+    func addId(userCollection: UserCollection, uid: String, id: String, addIdCompletionHandler: ((Error?) -> Void)?) {
         
         switch userCollection {
             
@@ -166,36 +166,44 @@ class HCFirebaseManager {
             
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
-                .addDocument(data: [
+                .addDocument(
+                    data: [
                     UserCollectionDataKey.discountId.rawValue: "\(id)"
-                    ])
+                    ],
+                    completion: addIdCompletionHandler)
             likedDiscountIds.append(id)
             
         case .isReadDiscounts:
             
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
-                .addDocument(data: [
+                .addDocument(
+                    data: [
                     UserCollectionDataKey.discountId.rawValue: "\(id)"
-                    ])
+                    ],
+                    completion: addIdCompletionHandler)
             isReadDiscountIds.append(id)
             
         case .collectedCards:
         
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
-                .addDocument(data: [
+                .addDocument(
+                    data: [
                     UserCollectionDataKey.cardId.rawValue: "\(id)"
-                    ])
+                    ],
+                    completion: addIdCompletionHandler)
             collectedCardIds.append(id)
         
         case .myCards:
             
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
-                .addDocument(data: [
-                    UserCollectionDataKey.cardId.rawValue: "\(id)"
-                    ])
+                .addDocument(
+                    data: [
+                        UserCollectionDataKey.cardId.rawValue: "\(id)"
+                    ],
+                    completion: addIdCompletionHandler)
             myCardIds.append(id)
             
         case .isReadCards:

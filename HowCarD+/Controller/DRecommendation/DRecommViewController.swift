@@ -272,7 +272,8 @@ extension DRecommViewController {
                     HCFirebaseManager.shared.addId(
                         userCollection: .isReadCards,
                         uid: user.uid,
-                        id: newCards[indexPath.row].id
+                        id: newCards[indexPath.row].id,
+                        addIdCompletionHandler: nil
                     )
                 }
                 
@@ -306,7 +307,8 @@ extension DRecommViewController {
                     HCFirebaseManager.shared.addId(
                         userCollection: .isReadDiscounts,
                         uid: user.uid,
-                        id: newDiscounts[indexPath.row].info.discountId
+                        id: newDiscounts[indexPath.row].info.discountId,
+                        addIdCompletionHandler: nil
                     )
                 }
                 
@@ -339,7 +341,8 @@ extension DRecommViewController {
                     HCFirebaseManager.shared.addId(
                         userCollection: .isReadCards,
                         uid: user.uid,
-                        id: selectedCards[indexPath.row].id
+                        id: selectedCards[indexPath.row].id,
+                        addIdCompletionHandler: nil
                     )
                 }
                 
@@ -372,7 +375,8 @@ extension DRecommViewController {
                     HCFirebaseManager.shared.addId(
                         userCollection: .isReadDiscounts,
                         uid: user.uid,
-                        id: selectedDiscounts[indexPath.row].info.discountId
+                        id: selectedDiscounts[indexPath.row].info.discountId,
+                        addIdCompletionHandler: nil
                     )
                 }
                 

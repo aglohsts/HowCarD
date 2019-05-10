@@ -59,6 +59,8 @@ extension UIViewController {
         userCollection: UserCollection,
         uid: String,
         id: String,
+        deleteIdCompletionHandler: (() -> Void)?,
+        addIdCompletionHandler: (() -> Void)?,
         changeStatusHandler: () -> Void
         ) {
         
@@ -69,17 +71,20 @@ extension UIViewController {
                 uid: uid,
                 id: id
             )
+            
+            deleteIdCompletionHandler?()
         } else {
             
             HCFirebaseManager.shared.addId(
                 userCollection: userCollection,
                 uid: uid,
-                id: id
+                id: id,
+                addIdCompletionHandler: nil
             )
+            
+            addIdCompletionHandler?()
         }
         
         changeStatusHandler()
     }
-    
-    
 }

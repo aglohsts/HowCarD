@@ -182,7 +182,6 @@
                                                     <state key="normal" title="myCard"/>
                                                     <connections>
                                                         <action selector="onIsMyCard:" destination="gFs-gU-LIA" eventType="touchUpInside" id="f3o-TB-bcq"/>
-                                                        <segue destination="pUz-yz-aEh" kind="presentation" identifier="addMyCardSegue" id="Yx4-lW-68Y"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -237,16 +236,16 @@
         <!--Add My Card View Controller-->
         <scene sceneID="1h2-cA-kIR">
             <objects>
-                <viewController id="pUz-yz-aEh" customClass="AddMyCardViewController" customModule="HowCarD" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddMyCardViewController" id="pUz-yz-aEh" customClass="AddMyCardViewController" customModule="HowCarD" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SDG-dn-06j">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibK-8O-5nz">
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibK-8O-5nz" userLabel="backView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="07s-dj-q1n">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="07s-dj-q1n" userLabel="setCardView">
                                 <rect key="frame" x="0.0" y="562" width="414" height="300"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZo-5y-7B2">

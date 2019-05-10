@@ -184,7 +184,12 @@ class CardDetailViewController: HCBaseViewController {
                 )
             } else {
                 
-                HCFirebaseManager.shared.addId(userCollection: .collectedCards, uid: user.uid, id: cardObject.basicInfo.id)
+                HCFirebaseManager.shared.addId(
+                    userCollection: .collectedCards,
+                    uid: user.uid,
+                    id: cardObject.basicInfo.id,
+                    addIdCompletionHandler: nil
+                )
             }
             
             isCollected = !isCollected
