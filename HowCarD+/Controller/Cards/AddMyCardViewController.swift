@@ -10,7 +10,7 @@ import UIKit
 
 class AddMyCardViewController: UIViewController {
     
-    var selectedDate: Int?
+    var selectedDate: Int? = 1
     
     let dates: [ Int ] =
         [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
@@ -18,7 +18,7 @@ class AddMyCardViewController: UIViewController {
          21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
         ]
     
-    var addMyCardCompletionHandler: (() -> Void)?
+    var addMyCardCompletionHandler: ((String?, Bool, Int?) -> Void)?
     
     @IBOutlet weak var billDueDateView: UIView!
     
@@ -27,6 +27,20 @@ class AddMyCardViewController: UIViewController {
     @IBOutlet weak var billDueDateTextField: UITextField!
     
     @IBOutlet weak var billRemindSwitch: UISwitch!
+    
+    var needBillRemind: Bool = true {
+        
+        didSet {
+            
+            if needBillRemind {
+                
+                selectedDate = 1
+            } else {
+                
+                selectedDate = nil
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,12 +52,28 @@ class AddMyCardViewController: UIViewController {
         
         if sender.isOn {
             
+            billDueDateTextField.isUserInteractionEnabled = true
+            
             billDueDateView.backgroundColor = UIColor.tint?.withAlphaComponent(1.0)
+            
+            needBillRemind = true
+            
+            selectedDate = 1
+            
+            guard let dueDate = selectedDate else { return }
+            
+            billDueDateTextField.text = String(dueDate)
         } else {
             
             billDueDateTextField.isUserInteractionEnabled = false
             
             billDueDateView.backgroundColor = UIColor.tint?.withAlphaComponent(0.5)
+            
+            needBillRemind = false
+            
+            selectedDate = nil
+            
+            billDueDateTextField.text = nil
         }
     }
     
@@ -52,9 +82,11 @@ class AddMyCardViewController: UIViewController {
         
         self.dismiss(animated: true, completion: { [weak self] in
             
-            // TODO: 資料打到 Firebase
+            guard let strongSelf = self else { return }
             
-            self?.addMyCardCompletionHandler?()
+            let nickname = self?.cardNickNameTextField.text == "" ? nil : self?.cardNickNameTextField.text
+            
+            strongSelf.addMyCardCompletionHandler?(nickname, strongSelf.needBillRemind, strongSelf.selectedDate)
         })
     }
     

@@ -214,7 +214,9 @@ extension CardsViewController {
             
             let addMyCardVC = segue.destination as? AddMyCardViewController
             
-            addMyCardVC?.addMyCardCompletionHandler = { [weak self] in
+            addMyCardVC?.addMyCardCompletionHandler = {
+                [weak self] (nickname,  needBillRemind, selectedDate)
+                in
                 
                 guard let strongSelf = self else { return }
                 
@@ -230,6 +232,17 @@ extension CardsViewController {
                     changeStatusHandler: {
                         
                         strongSelf.cardsBasicInfo[selectedPath.row].isMyCard = !strongSelf.cardsBasicInfo[selectedPath.row].isMyCard
+                        
+                        
+                        HCFirebaseManager.shared.setMyCard(
+                            uid: user.uid,
+                            id: strongSelf.cardsBasicInfo[selectedPath.row].id,
+                            nickname: nickname ?? nil,
+                            needBillRemind: needBillRemind,
+                            billDueDate: selectedDate ?? nil
+                        )
+                        
+                        
                 })
                 
                 
@@ -435,9 +448,8 @@ extension CardsViewController: UITableViewDataSource {
                     
                 } else {
                     
+                    // 把選到的 indexPath 記下
                     strongSelf.addMyCardSelectedPath = indexPath
-                    
-                    
                 }
             })
             

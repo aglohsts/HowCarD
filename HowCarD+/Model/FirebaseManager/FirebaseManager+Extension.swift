@@ -70,4 +70,48 @@ extension HCFirebaseManager {
             }
         }
     }
+    
+    func addMyCardInfo(uid: String, id: String, nickname: String?, needBillRemind: Bool, billDueDate: Int?, documentID: String) {
+        
+            firestoreRef(to: .users)
+                .document(uid)
+                .collection(UserCollection.myCards.rawValue)
+                .document(documentID)
+                .collection(MyCardCollection.billInfo.rawValue)
+                .addDocument(data: [
+                    MyCardCollectionDataKey.cardNickName.rawValue: nickname,
+                    MyCardCollectionDataKey.needBillRemind.rawValue: needBillRemind,
+                    MyCardCollectionDataKey.billDueDate.rawValue: billDueDate
+                    ])
+        
+    }
+    
+    func setMyCard(uid: String, id: String, nickname: String?, needBillRemind: Bool, billDueDate: Int?) {
+        
+        firestoreRef(to: .users).document(uid)
+            .collection(UserCollection.myCards.rawValue)
+            .whereField(UserCollectionDataKey.cardId.rawValue, isEqualTo: id)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        print("\(document.documentID) => \(document.data())")
+                    }
+                    
+                    querySnapshot!.documents.forEach({ [weak self] (document) in
+                        
+                        // 用 documentID 去新增卡片資訊
+                        self?.addMyCardInfo(
+                            uid: uid,
+                            id: id,
+                            nickname: nickname,
+                            needBillRemind: needBillRemind,
+                            billDueDate: billDueDate,
+                            documentID: document.documentID
+                        )
+                    })
+                }
+        }
+    }
 }

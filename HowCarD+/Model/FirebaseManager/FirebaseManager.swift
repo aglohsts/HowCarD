@@ -12,11 +12,11 @@ import FirebaseFirestore
 import FirebaseDatabase
 import FirebaseAuth
 
-private enum FirestoreCollectionReference: String {
+enum FirestoreCollectionReference: String {
     case users
 }
 
-private enum UserDocumentData: String {
+enum UserDocumentData: String {
     
     case userName
     
@@ -43,14 +43,14 @@ enum MyCardCollection: String {
     case billInfo
 }
 
-private enum UserCollectionDataKey: String {
+enum UserCollectionDataKey: String {
     
     case discountId
     
     case cardId
 }
 
-private enum MyCardCollectionDataKey: String {
+enum MyCardCollectionDataKey: String {
     
     case cardNickName
     
@@ -81,7 +81,7 @@ class HCFirebaseManager {
     
     var getDocuments: (() -> [QueryDocumentSnapshot])?
     
-    private func firestoreRef(to collectionReference: FirestoreCollectionReference) -> CollectionReference {
+    func firestoreRef(to collectionReference: FirestoreCollectionReference) -> CollectionReference {
         
         return Firestore.firestore().collection(collectionReference.rawValue)
     }
@@ -207,21 +207,6 @@ class HCFirebaseManager {
                     ])
             isReadCardIds.append(id)
         }
-    }
-    
-    func setMyCard(uid: String, id: String, nickName: String, needBillRemind: Bool, billDueDate: Int?) {
-        
-        firestoreRef(to: .users)
-            .document(uid)
-            .collection(UserCollection.myCards.rawValue)
-            .document(UserCollectionDataKey.cardId
-                .rawValue)
-            .collection(MyCardCollection.billInfo.rawValue)
-            .addDocument(data: [
-                MyCardCollectionDataKey.cardNickName.rawValue : "\(nickName)",
-                MyCardCollectionDataKey.needBillRemind.rawValue : needBillRemind,
-                MyCardCollectionDataKey.billDueDate.rawValue : billDueDate
-                ])
     }
     
     func deleteId(userCollection: UserCollection, uid: String, id: String) {
