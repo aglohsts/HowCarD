@@ -144,9 +144,5 @@ extension HCFirebaseManager {
             }
             
         }
-    
-            
-        
-        
     }
 }
