@@ -116,4 +116,37 @@ extension HCFirebaseManager {
                 }
         }
     }
+    
+    func getMyCardInfo(uid: String, userCollection: UserCollection = .myCards, id: String) {
+        // TODO
+        if userCollection == .myCards {
+            
+            firestoreRef(to: .users)
+                .document(uid)
+                .collection(userCollection.rawValue)
+                .whereField(UserCollectionDataKey.cardId.rawValue, isEqualTo: id)
+                
+                
+                .getDocuments { [weak self] (snapshot, error) in
+                    
+                    guard let strongSelf = self, let documents = snapshot?.documents else {
+                        
+                        guard let error = error else { return }
+                        
+                        print("Error fetching document: \(error)")
+                        
+                        return
+                    }
+                    
+                    
+                    
+                    strongSelf.likedDiscountIds = documents.compactMap({ $0[UserCollectionDataKey.discountId.rawValue] as? String })
+            }
+            
+        }
+    
+            
+        
+        
+    }
 }

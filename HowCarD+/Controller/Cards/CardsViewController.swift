@@ -71,6 +71,7 @@ class CardsViewController: HCBaseViewController {
         getData()
         
         cardAddObserver()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,12 +120,15 @@ extension CardsViewController {
         getCardBasicInfo()
         getUserCollectedCardId()
         getUserReadCardId()
+        getMyCardId()
         
         group.notify(queue: .main, execute: { [weak self] in
             
             self?.checkCollectedCard()
             
             self?.checkReadCard()
+            
+            self?.checkMyCard()
             
             DispatchQueue.main.async {
                 
@@ -179,6 +183,21 @@ extension CardsViewController {
             
             self?.userReadCardIds = ids
             // get HCFirebaseManager.shared.isReadCardIds
+            
+            self?.group.leave()
+        })
+    }
+    
+    func getMyCardId() {
+        
+        guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+        
+        group.enter()
+        
+        HCFirebaseManager.shared.getId(uid: user.uid, userCollection: .myCards, completion: { [weak self] ids in
+            
+            
+            // get HCFirebaseManager.shared.myCardIds
             
             self?.group.leave()
         })
@@ -250,6 +269,14 @@ extension CardsViewController {
                 name: NSNotification.Name(NotificationNames.updateReadCard.rawValue),
                 object: nil
         )
+        
+        NotificationCenter.default
+            .addObserver(
+                self,
+                selector: #selector(updateMyCard),
+                name: NSNotification.Name(NotificationNames.updateMyCard.rawValue),
+                object: nil
+        )
     }
     
     @objc func updateCollectedCard() {
@@ -270,6 +297,18 @@ extension CardsViewController {
         DispatchQueue.main.async {
             
 //            self.tableView.reloadData()
+            
+            self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
+        }
+    }
+    
+    @objc func updateMyCard() {
+        
+        checkMyCard()
+        
+        DispatchQueue.main.async {
+            
+            //            self.tableView.reloadData()
             
             self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
         }
@@ -297,7 +336,7 @@ extension CardsViewController {
     
     func checkReadCard() {
         
-        /// 比對 id 有哪些 isCollected == true，true 的話改物件狀態
+        /// 比對 id 有哪些 isRead == true，true 的話改物件狀態
         for index in 0 ..< self.cardsBasicInfo.count {
             
             if cardsBasicInfo[index].isRead != false {
@@ -310,6 +349,26 @@ extension CardsViewController {
                 if cardsBasicInfo[index].id == id {
                     
                     cardsBasicInfo[index].isRead = true
+                }
+            })
+        }
+    }
+    
+    func checkMyCard() {
+        
+        /// 比對 id 有哪些 isMyCard == true，true 的話改物件狀態
+        for index in 0 ..< self.cardsBasicInfo.count {
+            
+            if cardsBasicInfo[index].isMyCard != false {
+                
+                cardsBasicInfo[index].isMyCard = false
+            }
+            
+            HCFirebaseManager.shared.myCardIds.forEach ({ (id) in
+                
+                if cardsBasicInfo[index].id == id {
+                    
+                    cardsBasicInfo[index].isMyCard = true
                 }
             })
         }

@@ -290,16 +290,6 @@ class HCFirebaseManager {
                         querySnapshot!.documents.forEach({ [weak self] (document) in
                             // 用 documentID 去刪除 document
                             
-                            // 刪除文件下的 collection
-                            // 刪不掉
-                            
-//                            self?.firestoreRef(to: .users)
-//                                .document(uid)
-//                                .collection(userCollection.rawValue)
-//                                .document(document.documentID)
-//                                .collection(MyCardCollection.billInfo.rawValue)
-//                                .document(billInfoDocumentId).delete()
-                            
                             // 刪除文件
                             self?.firestoreRef(to: .users)
                                 .document(uid).collection(userCollection.rawValue)
@@ -326,6 +316,29 @@ class HCFirebaseManager {
                         }
                         
                         querySnapshot!.documents.forEach({ [weak self] (document) in
+                            
+                            // 刪除文件下的 collection
+                            // 刪不掉
+                            // 結果發現 Firebase 說 Swift 不能刪 collection
+                            if let billInfoDocumentId =
+                                self?.firestoreRef(to: .users)
+                                    .document(uid)
+                                    .collection(userCollection.rawValue)
+                                    .document(document.documentID)
+                                    .collection(MyCardCollection.billInfo.rawValue)
+                                    .document().documentID {
+                                
+                                print(billInfoDocumentId)
+                                
+                                self?.firestoreRef(to: .users)
+                                    .document(uid)
+                                    .collection(userCollection.rawValue)
+                                    .document(document.documentID)
+                                    .collection(MyCardCollection.billInfo.rawValue)
+                                    .document(billInfoDocumentId).delete()
+                            }
+                            
+                            
                             // 用 documentID 去刪除 document
                             self?.firestoreRef(to: .users)
                                 .document(uid).collection(userCollection.rawValue)
