@@ -285,8 +285,8 @@ extension CardsViewController {
         
         DispatchQueue.main.async {
             
-//            self.tableView.reloadData()
-            self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
+            self.tableView.reloadData()
+//            self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
         }
     }
     
@@ -296,9 +296,9 @@ extension CardsViewController {
         
         DispatchQueue.main.async {
             
-//            self.tableView.reloadData()
+            self.tableView.reloadData()
             
-            self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
+//            self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
         }
     }
     
@@ -308,9 +308,9 @@ extension CardsViewController {
         
         DispatchQueue.main.async {
             
-            //            self.tableView.reloadData()
+                        self.tableView.reloadData()
             
-            self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
+//            self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
         }
     }
     

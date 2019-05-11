@@ -60,11 +60,11 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
         didSet {
             
             if isMyCard{
-                // TODO: button image
-                isMyCardBtn.setTitle("isMyCard", for: .normal)
+                
+                isMyCardBtn.setImage(UIImage.asset(.Icons_isMyCard_Selected), for: .normal)
             } else {
                 
-                isMyCardBtn.setTitle("notMyCard", for: .normal)
+                isMyCardBtn.setImage(UIImage.asset(.Icons_isMyCard_Normal), for: .normal)
             }
         }
     }

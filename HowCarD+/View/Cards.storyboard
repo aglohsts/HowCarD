@@ -176,10 +176,10 @@
                                                         <action selector="onCollectCard:" destination="gFs-gU-LIA" eventType="touchUpInside" id="vP7-mN-NWP"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XWn-TA-4kG">
-                                                    <rect key="frame" x="340" y="84" width="54" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XWn-TA-4kG">
+                                                    <rect key="frame" x="350" y="82" width="35" height="35"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="myCard"/>
+                                                    <state key="normal" image="Icons_isMyCard_Normal" backgroundImage="CircleButtonWhiteBackground"/>
                                                     <connections>
                                                         <action selector="onIsMyCard:" destination="gFs-gU-LIA" eventType="touchUpInside" id="f3o-TB-bcq"/>
                                                     </connections>
@@ -638,6 +638,7 @@
         <image name="Icons_Bookmark_Normal" width="15" height="20"/>
         <image name="Icons_Next" width="68" height="68"/>
         <image name="Icons_Website_White" width="17" height="17"/>
+        <image name="Icons_isMyCard_Normal" width="21" height="18"/>
         <image name="Image_Placeholder" width="500" height="500"/>
         <image name="TransparentBackground" width="19" height="19"/>
         <namedColor name="Tint">

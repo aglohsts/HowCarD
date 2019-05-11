@@ -108,7 +108,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="138" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSH-gt-qOV">
-                                                <rect key="frame" x="38" y="10" width="62" height="30"/>
+                                                <rect key="frame" x="49" y="5" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="nSH-gt-qOV" secondAttribute="height" multiplier="1:1" id="AXP-TK-CkP"/>
+                                                </constraints>
                                                 <state key="normal" title="MyCards"/>
                                                 <connections>
                                                     <action selector="onChangeWalletView:" destination="V7q-If-gsN" eventType="touchUpInside" id="2V8-2C-Bdk"/>
@@ -118,15 +121,19 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="nSH-gt-qOV" firstAttribute="centerX" secondItem="h7U-1u-If0" secondAttribute="centerX" id="I26-zq-Tat"/>
+                                            <constraint firstItem="nSH-gt-qOV" firstAttribute="top" secondItem="h7U-1u-If0" secondAttribute="top" constant="5" id="Xxb-cW-xPB"/>
                                             <constraint firstItem="nSH-gt-qOV" firstAttribute="centerY" secondItem="h7U-1u-If0" secondAttribute="centerY" id="dTc-Rk-ux0"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NBh-tv-hBp">
                                         <rect key="frame" x="138" y="0.0" width="138" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9oh-86-nef">
-                                                <rect key="frame" x="24.5" y="10" width="89" height="30"/>
-                                                <state key="normal" title="LikeDiscount"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9oh-86-nef">
+                                                <rect key="frame" x="49" y="5" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="9oh-86-nef" secondAttribute="height" multiplier="1:1" id="N2d-Em-prw"/>
+                                                </constraints>
+                                                <state key="normal" image="Icons_LikedDiscount_Normal"/>
                                                 <connections>
                                                     <action selector="onChangeWalletView:" destination="V7q-If-gsN" eventType="touchUpInside" id="Tvs-JN-M6Q"/>
                                                 </connections>
@@ -134,6 +141,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="9oh-86-nef" firstAttribute="top" secondItem="NBh-tv-hBp" secondAttribute="top" constant="5" id="77c-kt-6ZD"/>
                                             <constraint firstItem="9oh-86-nef" firstAttribute="centerX" secondItem="NBh-tv-hBp" secondAttribute="centerX" id="C3f-x6-QLY"/>
                                             <constraint firstItem="9oh-86-nef" firstAttribute="centerY" secondItem="NBh-tv-hBp" secondAttribute="centerY" id="O6a-QB-eaq"/>
                                         </constraints>
@@ -141,9 +149,12 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qMb-IY-j9C">
                                         <rect key="frame" x="276" y="0.0" width="138" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Moe-4V-Gmb">
-                                                <rect key="frame" x="19" y="10" width="99" height="30"/>
-                                                <state key="normal" title="CollectedCard"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Moe-4V-Gmb">
+                                                <rect key="frame" x="49" y="5" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Moe-4V-Gmb" secondAttribute="height" multiplier="1:1" id="M90-b0-MUt"/>
+                                                </constraints>
+                                                <state key="normal" image="Icons_CollectedCard_Normal"/>
                                                 <connections>
                                                     <action selector="onChangeWalletView:" destination="V7q-If-gsN" eventType="touchUpInside" id="fus-Cb-TcQ"/>
                                                 </connections>
@@ -152,6 +163,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="Moe-4V-Gmb" firstAttribute="centerY" secondItem="qMb-IY-j9C" secondAttribute="centerY" id="01p-g9-p3S"/>
+                                            <constraint firstItem="Moe-4V-Gmb" firstAttribute="top" secondItem="qMb-IY-j9C" secondAttribute="top" constant="5" id="e0C-bu-VSL"/>
                                             <constraint firstItem="Moe-4V-Gmb" firstAttribute="centerX" secondItem="qMb-IY-j9C" secondAttribute="centerX" id="vXc-UO-1Gy"/>
                                         </constraints>
                                     </view>
@@ -675,6 +687,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Icons_CollectedCard_Normal" width="81" height="81"/>
+        <image name="Icons_LikedDiscount_Normal" width="81" height="81"/>
         <namedColor name="Tint">
             <color red="0.43529411764705883" green="0.74509803921568629" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

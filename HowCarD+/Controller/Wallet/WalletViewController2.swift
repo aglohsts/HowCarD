@@ -53,7 +53,7 @@ class WalletViewController2: HCBaseViewController {
     
     @IBOutlet weak var collectedCardsContainerView: UIView!
     
-    var tabArray: [ImageAsset] = [.Icons_LikedDiscount, .Icons_CollectedCard]
+    var tabArray: [ImageAsset] = [.Icons_LikedDiscount_Normal, .Icons_CollectedCard_Normal]
     
     override func viewDidLoad() {
         

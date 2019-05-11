@@ -39,6 +39,9 @@ enum ImageAsset: String {
     case Icons_24px_Filter_Normal
     case Icons_24px_Filter_Filtered
     case Icons_24px_Share
+    
+    // Nav Bar - Wallet
+    case Icons_24px_Signout
 
     // Other Icons - Cards
     case Icons_ApplyCard
@@ -47,6 +50,8 @@ enum ImageAsset: String {
     case Icons_ArrowUp
     case Icons_Bookmark_Normal
     case Icons_Bookmark_Saved
+    case Icons_isMyCard_Normal
+    case Icons_isMyCard_Selected
 
     // Other ICons - Discounts
     case Icons_ArrowRight
@@ -69,8 +74,12 @@ enum ImageAsset: String {
     case Icons_travel
     
     // Other Icons - Wallet
-    case Icons_CollectedCard
-    case Icons_LikedDiscount
+    case Icons_CollectedCard_Normal
+    case Icons_CollectedCard_Selected
+    case Icons_LikedDiscount_Normal
+    case Icons_LikedDiscount_Selected
+    case Icons_MyCard_Normal
+    case Icons_MyCard_Selected
     
     // Other Icons - QA
     case Icons_Call
