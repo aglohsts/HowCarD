@@ -16,6 +16,10 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
     
     var isMyCardDidTouchHandler: (() -> Void)?
     
+    var toOfficialWebHandler: (() -> Void)?
+    
+    var toApplyCardHandler: (() -> Void)?
+    
     var briefInfos: [ BriefIntro ] = []
 
     var tagArray = [String]() {
@@ -183,9 +187,13 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
     }
     
     @IBAction func onToOfficialWeb(_ sender: Any) {
+        
+        toOfficialWebHandler?()
     }
     
     @IBAction func onToApplyCard(_ sender: Any) {
+    
+        toApplyCardHandler?()
     }
     
 }

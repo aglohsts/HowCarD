@@ -38,7 +38,7 @@ class CallHelpTableViewCell: HCBaseTableViewCell {
         }
     }
     
-    var sendMailHandler: (() -> Void)?
+    var leaveMessageHandler: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -82,8 +82,8 @@ class CallHelpTableViewCell: HCBaseTableViewCell {
         UIApplication.shared.open(number)
     }
     
-    @IBAction func onSendMail(_ sender: Any) {
+    @IBAction func onLeaveMessage(_ sender: Any) {
         
-        sendMailHandler?()
+        leaveMessageHandler?()
     }
 }

@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5v9-Jr-p98" userLabel="topView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x9o-Ds-GaD">
@@ -138,7 +138,7 @@
                             <constraint firstItem="5v9-Jr-p98" firstAttribute="leading" secondItem="y73-03-cJG" secondAttribute="leading" id="d38-ah-8n2"/>
                             <constraint firstItem="x9o-Ds-GaD" firstAttribute="top" secondItem="y73-03-cJG" secondAttribute="top" constant="50" id="eSY-zL-MQe"/>
                             <constraint firstItem="x9o-Ds-GaD" firstAttribute="leading" secondItem="y73-03-cJG" secondAttribute="leading" id="p0r-dv-tEi"/>
-                            <constraint firstItem="5v9-Jr-p98" firstAttribute="top" secondItem="y73-03-cJG" secondAttribute="top" id="rN0-XE-Xdd"/>
+                            <constraint firstItem="5v9-Jr-p98" firstAttribute="top" secondItem="rib-Ea-SeX" secondAttribute="top" id="rN0-XE-Xdd"/>
                             <constraint firstItem="y73-03-cJG" firstAttribute="bottom" secondItem="x9o-Ds-GaD" secondAttribute="bottom" id="w6g-q2-teR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="y73-03-cJG"/>

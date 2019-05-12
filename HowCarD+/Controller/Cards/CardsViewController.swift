@@ -376,8 +376,6 @@ extension CardsViewController {
 }
 
 extension CardsViewController: UITableViewDelegate {
-    
-    
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -385,8 +383,6 @@ extension CardsViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        performSegue(withIdentifier: Segue.toDetail, sender: (indexPath, cardsBasicInfo[indexPath.row].isCollected))
         
         markCardAsRead(indexPath: indexPath)
     }
@@ -398,7 +394,10 @@ extension CardsViewController: UITableViewDataSource {
         return cardsBasicInfo.count
     }
 
+    // TODO: 縮短 function
+    // swiftlint:disable function_body_length
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(
             withIdentifier: String(describing: CardInfoTableViewCell.self),
             for: indexPath
@@ -451,6 +450,88 @@ extension CardsViewController: UITableViewDataSource {
                         )
                     })
             })
+        }
+        
+        // 去官網
+        cardInfoCell.toOfficialWebHandler = { [weak self] in
+            
+            guard let strongSelf = self,
+                let webVC = UIStoryboard(
+                    name: StoryboardCategory.web,
+                    bundle: nil).instantiateViewController(
+                        withIdentifier: String(describing: HCWebViewController.self)) as? HCWebViewController
+                else { return }
+            
+            strongSelf.view.endEditing(true)
+            
+            if webVC.view.superview == nil {
+                
+                webVC.urlString = strongSelf.cardsBasicInfo[indexPath.row].officialWeb
+                
+                strongSelf.navigationController?.setNavigationBarHidden(true, animated: true)
+                //                        strongSelf.navigationController?.isNavigationBarHidden = true
+                
+                strongSelf.tabBarController?.tabBar.isHidden = true
+                
+                strongSelf.addChild(webVC)
+                
+                strongSelf.view.addSubview(webVC.view)
+                
+                webVC.view.translatesAutoresizingMaskIntoConstraints = false
+                
+                webVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                
+                webVC.view.topAnchor.constraint(equalTo: strongSelf.view.topAnchor, constant: 0).isActive = true
+                
+                webVC.view.leadingAnchor.constraint(equalTo: strongSelf.view.leadingAnchor).isActive = true
+                
+                webVC.view.trailingAnchor.constraint(equalTo: strongSelf.view.trailingAnchor).isActive = true
+                
+                webVC.view.bottomAnchor.constraint(equalTo: strongSelf.view.bottomAnchor).isActive = true
+                
+                webVC.didMove(toParent: strongSelf)
+            }
+        }
+        
+        // 去辦卡
+        cardInfoCell.toApplyCardHandler = { [weak self] in
+            
+            guard let strongSelf = self,
+                let webVC = UIStoryboard(
+                    name: StoryboardCategory.web,
+                    bundle: nil).instantiateViewController(
+                        withIdentifier: String(describing: HCWebViewController.self)) as? HCWebViewController
+                else { return }
+            
+            strongSelf.view.endEditing(true)
+            
+            if webVC.view.superview == nil {
+                
+                webVC.urlString = strongSelf.cardsBasicInfo[indexPath.row].getCardWeb
+                
+                strongSelf.navigationController?.setNavigationBarHidden(true, animated: true)
+                //                        strongSelf.navigationController?.isNavigationBarHidden = true
+                
+                strongSelf.tabBarController?.tabBar.isHidden = true
+                
+                strongSelf.addChild(webVC)
+                
+                strongSelf.view.addSubview(webVC.view)
+                
+                webVC.view.translatesAutoresizingMaskIntoConstraints = false
+                
+                webVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                
+                webVC.view.topAnchor.constraint(equalTo: strongSelf.view.topAnchor, constant: 0).isActive = true
+                
+                webVC.view.leadingAnchor.constraint(equalTo: strongSelf.view.leadingAnchor).isActive = true
+                
+                webVC.view.trailingAnchor.constraint(equalTo: strongSelf.view.trailingAnchor).isActive = true
+                
+                webVC.view.bottomAnchor.constraint(equalTo: strongSelf.view.bottomAnchor).isActive = true
+                
+                webVC.didMove(toParent: strongSelf)
+            }
         }
         
         // cell 中按下 isMyCardBtn
@@ -541,4 +622,5 @@ extension CardsViewController: UITableViewDataSource {
         }
         return cardInfoCell
     }
+    // swiftlint:enable function_body_length
 }

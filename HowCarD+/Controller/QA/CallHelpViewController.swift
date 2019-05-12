@@ -182,7 +182,7 @@ extension CallHelpViewController: UITableViewDataSource {
             
             if searchResult[indexPath.row].bankInfo.mailWeb != nil {
             
-                callHelpCell.sendMailHandler = { [weak self] in
+                callHelpCell.leaveMessageHandler = { [weak self] in
                     
                     
                     
@@ -240,7 +240,7 @@ extension CallHelpViewController: UITableViewDataSource {
             
 //            if bankObjects[indexPath.row].bankInfo.mailWeb != nil {
             
-                callHelpCell.sendMailHandler = { [weak self] in
+                callHelpCell.leaveMessageHandler = { [weak self] in
                     
                     guard let strongSelf = self,
                         let webVC = UIStoryboard(
@@ -248,9 +248,7 @@ extension CallHelpViewController: UITableViewDataSource {
                             bundle: nil).instantiateViewController(
                                 withIdentifier: String(describing: HCWebViewController.self)) as? HCWebViewController
                         else { return }
-                    
-                    
-//
+
                     strongSelf.view.endEditing(true)
                     
                     if webVC.view.superview == nil {
