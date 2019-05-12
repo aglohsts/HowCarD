@@ -31,7 +31,9 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
             if isRead {
                 readMarkView.layer.backgroundColor = UIColor.lightGray.cgColor
                 
-                backView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .markAsReadBackground).cgColor
+                readMarkView.isHidden = true
+                
+                rightBackView.layer.backgroundColor = UIColor.hexStringToUIColor(hex: .markAsReadBackground).cgColor
                 
                 cardNameLabel.isRegularFont(size: 14)
 
@@ -69,11 +71,17 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
         }
     }
     
+    @IBOutlet weak var toOfficialWebBtn: UIButton!
+    
+    @IBOutlet weak var toApplyCardBtn: UIButton!
+    
     @IBOutlet weak var collectedBtn: UIButton!
     
     @IBOutlet weak var isMyCardBtn: UIButton!
 
-    @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var leftBackView: UIView!
+    
+    @IBOutlet weak var rightBackView: UIView!
 
     @IBOutlet weak var readMarkView: UIView!
 
@@ -107,6 +115,8 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
         super.awakeFromNib()
 
         setupCollectionView()
+        
+        layoutView()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -172,6 +182,35 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
         isMyCardDidTouchHandler?()
     }
     
+    @IBAction func onToOfficialWeb(_ sender: Any) {
+    }
+    
+    @IBAction func onToApplyCard(_ sender: Any) {
+    }
+    
+}
+
+extension CardInfoTableViewCell {
+    
+    func layoutView() {
+        
+        leftBackView.roundCorners(
+            [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner],
+            radius: 5.0
+        )
+        
+        rightBackView.roundCorners(
+            [.layerMaxXMinYCorner, .layerMaxXMaxYCorner, .layerMinXMaxYCorner],
+            radius: 8.0
+        )
+        
+        readMarkView.isRoundedView()
+        
+        toOfficialWebBtn.isRoundedView()
+        
+        toApplyCardBtn.isRoundedView()
+
+    }
 }
 
 extension CardInfoTableViewCell: UICollectionViewDelegateFlowLayout {
