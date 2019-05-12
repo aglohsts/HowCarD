@@ -468,7 +468,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c2p-Ja-Neq">
-                                            <rect key="frame" x="8" y="8" width="402" height="90"/>
+                                            <rect key="frame" x="8" y="8" width="322" height="90"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image_Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="vXz-En-Azq">
                                                     <rect key="frame" x="10" y="10" width="119" height="75"/>
@@ -482,7 +482,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CardNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KgA-Zd-9mc">
-                                                    <rect key="frame" x="145" y="10" width="219" height="21"/>
+                                                    <rect key="frame" x="136" y="10" width="110.5" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="4U7-cb-ffc"/>
                                                     </constraints>
@@ -491,16 +491,16 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BankNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UtK-LT-Qtf">
-                                                    <rect key="frame" x="145" y="39" width="241" height="19"/>
+                                                    <rect key="frame" x="136" y="38" width="170" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="19" id="1BD-S3-ctu"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="poh-c1-eQ5">
-                                                    <rect key="frame" x="145" y="64" width="241" height="21"/>
+                                                    <rect key="frame" x="136" y="64" width="170" height="21"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="kh0-Et-lex"/>
@@ -513,43 +513,84 @@
                                                     </collectionViewFlowLayout>
                                                     <cells/>
                                                 </collectionView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SK6-Pp-Qzm">
-                                                    <rect key="frame" x="372" y="0.0" width="30" height="25"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="25" id="eZY-ja-zhI"/>
-                                                        <constraint firstAttribute="width" constant="30" id="ped-xW-Ls0"/>
-                                                    </constraints>
-                                                    <color key="tintColor" red="0.43529411759999997" green="0.74509803919999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <state key="normal" image="Icons_Bookmark_Normal"/>
-                                                    <connections>
-                                                        <action selector="onCollectCard:" destination="pX2-kF-epT" eventType="touchUpInside" id="Ug5-7m-0Xf"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="UtK-LT-Qtf" secondAttribute="trailing" constant="16" id="5mO-W2-WKK"/>
-                                                <constraint firstAttribute="trailing" secondItem="SK6-Pp-Qzm" secondAttribute="trailing" id="ALX-yS-Mat"/>
                                                 <constraint firstAttribute="trailing" secondItem="poh-c1-eQ5" secondAttribute="trailing" constant="16" id="Da7-Ja-DCv"/>
                                                 <constraint firstItem="poh-c1-eQ5" firstAttribute="leading" secondItem="KgA-Zd-9mc" secondAttribute="leading" id="SXE-LJ-RFn"/>
                                                 <constraint firstItem="UtK-LT-Qtf" firstAttribute="leading" secondItem="KgA-Zd-9mc" secondAttribute="leading" id="SZp-sm-jwi"/>
-                                                <constraint firstItem="SK6-Pp-Qzm" firstAttribute="leading" secondItem="KgA-Zd-9mc" secondAttribute="trailing" constant="8" id="StH-Vr-NhC"/>
                                                 <constraint firstAttribute="bottom" secondItem="vXz-En-Azq" secondAttribute="bottom" constant="5" id="TXQ-HA-Yl8"/>
-                                                <constraint firstItem="KgA-Zd-9mc" firstAttribute="leading" secondItem="vXz-En-Azq" secondAttribute="trailing" constant="16" id="VxG-Xj-a9a"/>
-                                                <constraint firstItem="UtK-LT-Qtf" firstAttribute="top" secondItem="KgA-Zd-9mc" secondAttribute="bottom" constant="8" id="aTu-yr-nPv"/>
+                                                <constraint firstItem="KgA-Zd-9mc" firstAttribute="leading" secondItem="vXz-En-Azq" secondAttribute="trailing" constant="7" id="VxG-Xj-a9a"/>
+                                                <constraint firstItem="UtK-LT-Qtf" firstAttribute="top" secondItem="KgA-Zd-9mc" secondAttribute="bottom" constant="7" id="aTu-yr-nPv"/>
+                                                <constraint firstItem="poh-c1-eQ5" firstAttribute="top" secondItem="UtK-LT-Qtf" secondAttribute="bottom" constant="7" id="elh-II-iku"/>
                                                 <constraint firstItem="vXz-En-Azq" firstAttribute="top" secondItem="c2p-Ja-Neq" secondAttribute="top" constant="10" id="igR-nj-wRZ"/>
                                                 <constraint firstItem="KgA-Zd-9mc" firstAttribute="top" secondItem="vXz-En-Azq" secondAttribute="top" id="kcB-fm-bZl"/>
                                                 <constraint firstItem="vXz-En-Azq" firstAttribute="leading" secondItem="c2p-Ja-Neq" secondAttribute="leading" constant="10" id="qWT-dh-cY4"/>
-                                                <constraint firstItem="SK6-Pp-Qzm" firstAttribute="top" secondItem="c2p-Ja-Neq" secondAttribute="top" id="uSR-gk-rEY"/>
                                                 <constraint firstItem="poh-c1-eQ5" firstAttribute="bottom" secondItem="vXz-En-Azq" secondAttribute="bottom" id="wBg-vd-Vk4"/>
                                             </constraints>
                                         </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SK6-Pp-Qzm">
+                                            <rect key="frame" x="335" y="8" width="33" height="33"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="33" id="eZY-ja-zhI"/>
+                                                <constraint firstAttribute="width" constant="33" id="ped-xW-Ls0"/>
+                                            </constraints>
+                                            <color key="tintColor" red="0.43529411759999997" green="0.74509803919999995" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <state key="normal" image="Icons_Bookmark_Normal" backgroundImage="CircleButtonWhiteBackground"/>
+                                            <connections>
+                                                <action selector="onCollectCard:" destination="pX2-kF-epT" eventType="touchUpInside" id="Ug5-7m-0Xf"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4t7-hK-lEf">
+                                            <rect key="frame" x="373" y="8" width="33" height="33"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="33" id="9Qp-kv-Did"/>
+                                                <constraint firstAttribute="height" constant="33" id="zhS-sG-6Ta"/>
+                                            </constraints>
+                                            <state key="normal" image="Icons_isMyCard_Normal" backgroundImage="CircleButtonWhiteBackground"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eo5-Hb-5Fl">
+                                            <rect key="frame" x="335" y="46" width="71" height="23.5"/>
+                                            <color key="backgroundColor" name="Tint"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                            <state key="normal" title="去官網">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="onToOfficialWeb:" destination="pX2-kF-epT" eventType="touchUpInside" id="ynh-BR-0te"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUW-ZH-lzc">
+                                            <rect key="frame" x="335" y="74.5" width="71" height="23.5"/>
+                                            <color key="backgroundColor" name="Tint"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                            <state key="normal" title="去辦卡">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="onToApplyCard:" destination="pX2-kF-epT" eventType="touchUpInside" id="Lc0-R2-5hX"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="c2p-Ja-Neq" secondAttribute="trailing" constant="4" id="dNs-2W-rUh"/>
+                                        <constraint firstItem="RUW-ZH-lzc" firstAttribute="bottom" secondItem="c2p-Ja-Neq" secondAttribute="bottom" id="6KE-YL-OZC"/>
+                                        <constraint firstAttribute="trailing" secondItem="4t7-hK-lEf" secondAttribute="trailing" constant="8" id="CqC-oL-fVD"/>
+                                        <constraint firstItem="SK6-Pp-Qzm" firstAttribute="top" secondItem="c2p-Ja-Neq" secondAttribute="top" id="D0E-Nq-eHZ"/>
+                                        <constraint firstItem="RUW-ZH-lzc" firstAttribute="height" secondItem="eo5-Hb-5Fl" secondAttribute="height" id="DFo-nn-nn3"/>
+                                        <constraint firstItem="eo5-Hb-5Fl" firstAttribute="trailing" secondItem="4t7-hK-lEf" secondAttribute="trailing" id="DN9-6c-Qkc"/>
+                                        <constraint firstItem="SK6-Pp-Qzm" firstAttribute="top" secondItem="mIK-Fl-fzT" secondAttribute="top" constant="8" id="FTc-AF-obS"/>
+                                        <constraint firstItem="eo5-Hb-5Fl" firstAttribute="trailing" secondItem="RUW-ZH-lzc" secondAttribute="trailing" id="OAB-P4-bW1"/>
+                                        <constraint firstItem="4t7-hK-lEf" firstAttribute="top" secondItem="mIK-Fl-fzT" secondAttribute="top" constant="8" id="S2X-bS-yfu"/>
+                                        <constraint firstItem="RUW-ZH-lzc" firstAttribute="top" secondItem="eo5-Hb-5Fl" secondAttribute="bottom" constant="5" id="bdk-fe-2sA"/>
+                                        <constraint firstItem="eo5-Hb-5Fl" firstAttribute="top" secondItem="4t7-hK-lEf" secondAttribute="bottom" constant="5" id="bgu-Jv-7cu"/>
+                                        <constraint firstItem="eo5-Hb-5Fl" firstAttribute="leading" secondItem="RUW-ZH-lzc" secondAttribute="leading" id="eTU-Nb-RYo"/>
                                         <constraint firstAttribute="bottom" secondItem="c2p-Ja-Neq" secondAttribute="bottom" constant="8" id="eeC-z6-eOA"/>
+                                        <constraint firstItem="eo5-Hb-5Fl" firstAttribute="leading" secondItem="SK6-Pp-Qzm" secondAttribute="leading" id="oHh-yd-Etk"/>
                                         <constraint firstItem="c2p-Ja-Neq" firstAttribute="top" secondItem="mIK-Fl-fzT" secondAttribute="top" constant="8" id="ozM-5h-Ce9"/>
+                                        <constraint firstItem="SK6-Pp-Qzm" firstAttribute="leading" secondItem="c2p-Ja-Neq" secondAttribute="trailing" constant="5" id="pwe-pb-qsS"/>
+                                        <constraint firstItem="4t7-hK-lEf" firstAttribute="leading" secondItem="SK6-Pp-Qzm" secondAttribute="trailing" constant="5" id="rte-ZS-sYa"/>
                                         <constraint firstItem="c2p-Ja-Neq" firstAttribute="leading" secondItem="mIK-Fl-fzT" secondAttribute="leading" constant="8" id="rvC-lu-qbf"/>
                                     </constraints>
                                 </view>
@@ -650,8 +691,11 @@
                         <outlet property="cardImageView" destination="vXz-En-Azq" id="4gM-w3-XgR"/>
                         <outlet property="cardNameLabel" destination="KgA-Zd-9mc" id="Qcr-Vv-rQr"/>
                         <outlet property="collectedBtn" destination="SK6-Pp-Qzm" id="noD-Ov-for"/>
+                        <outlet property="isMyCardBtn" destination="4t7-hK-lEf" id="jWM-qM-zl0"/>
                         <outlet property="tableView" destination="FmM-UV-JFj" id="tfN-n9-aBW"/>
                         <outlet property="tagCollectionView" destination="poh-c1-eQ5" id="rwA-EA-HPF"/>
+                        <outlet property="toApplyCardBtn" destination="RUW-ZH-lzc" id="8hP-ud-ed8"/>
+                        <outlet property="toOfficialWebBtn" destination="eo5-Hb-5Fl" id="Jil-Ex-Xeu"/>
                         <outlet property="topBackView" destination="c2p-Ja-Neq" id="M0u-kV-jSI"/>
                     </connections>
                 </viewController>

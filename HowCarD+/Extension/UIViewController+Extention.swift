@@ -87,4 +87,43 @@ extension UIViewController {
         
         changeStatusHandler()
     }
+    
+    func openWebView(url: String) {
+        
+        guard let webVC = UIStoryboard(
+                name: StoryboardCategory.web,
+                bundle: nil).instantiateViewController(
+                    withIdentifier: String(describing: HCWebViewController.self)) as? HCWebViewController
+            else { return }
+        
+        self.view.endEditing(true)
+        
+        if webVC.view.superview == nil {
+            
+            webVC.urlString = url
+            
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+            //                        strongSelf.navigationController?.isNavigationBarHidden = true
+            
+            self.tabBarController?.tabBar.isHidden = true
+            
+            self.addChild(webVC)
+            
+            self.view.addSubview(webVC.view)
+            
+            webVC.view.translatesAutoresizingMaskIntoConstraints = false
+            
+            webVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            
+            webVC.view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
+            
+            webVC.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+            
+            webVC.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+            
+            webVC.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+            
+            webVC.didMove(toParent: self)
+        }
+    }
 }

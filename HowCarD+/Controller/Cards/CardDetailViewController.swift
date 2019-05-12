@@ -32,6 +32,12 @@ class CardDetailViewController: HCBaseViewController {
     
     @IBOutlet weak var collectedBtn: UIButton!
     
+    @IBOutlet weak var isMyCardBtn: UIButton!
+    
+    @IBOutlet weak var toOfficialWebBtn: UIButton!
+    
+    @IBOutlet weak var toApplyCardBtn: UIButton!
+    
     var isCollected: Bool = false {
     
         didSet {
@@ -130,41 +136,6 @@ class CardDetailViewController: HCBaseViewController {
         tableView.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
     }
 
-    private func setupTableView() {
-
-        tableView.agRegisterHeaderWithNib(
-            identifier: String(describing: CardDetailTableViewHeaderView.self),
-            bundle: nil
-        )
-
-        tableView.separatorStyle = .none
-        
-        tableView.showsVerticalScrollIndicator = false
-        
-        topBackView.roundCorners(
-            [.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner],
-            radius: 10)
-    }
-    
-    private func setHeaderViewContent(cardName: String, bankName: String, image: String) {
-        
-        cardNameLabel.text = cardName
-        
-        bankNameLabel.text = bankName
-        
-        cardImageView.loadImage(image, placeHolder: UIImage.asset(.Image_Placeholder))
-    }
-
-    private func setNavBar() {
-
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage.asset(.Icons_24px_Share),
-            style: .plain,
-            target: self,
-            action: #selector(onShare))
-
-    }
-
     @objc private func onShare() {
 
     }
@@ -213,9 +184,58 @@ class CardDetailViewController: HCBaseViewController {
             }
         }
     }
+    
+    @IBAction func onToOfficialWeb(_ sender: Any) {
+        
+        openWebView(url: cardObject?.basicInfo.officialWeb ?? "")
+    }
+    
+    @IBAction func onToApplyCard(_ sender: Any) {
+        
+        openWebView(url: cardObject?.basicInfo.getCardWeb ?? "")
+    }
 }
 
 extension CardDetailViewController {
+    
+    private func setupTableView() {
+        
+        tableView.agRegisterHeaderWithNib(
+            identifier: String(describing: CardDetailTableViewHeaderView.self),
+            bundle: nil
+        )
+        
+        tableView.separatorStyle = .none
+        
+        tableView.showsVerticalScrollIndicator = false
+        
+        topBackView.roundCorners(
+            [.layerMinXMinYCorner, .layerMaxXMaxYCorner, .layerMaxXMinYCorner],
+            radius: 10)
+    }
+    
+    private func setHeaderViewContent(cardName: String, bankName: String, image: String) {
+        
+        cardNameLabel.text = cardName
+        
+        bankNameLabel.text = bankName
+        
+        cardImageView.loadImage(image, placeHolder: UIImage.asset(.Image_Placeholder))
+        
+        toOfficialWebBtn.isRoundedView()
+        
+        toApplyCardBtn.isRoundedView()
+    }
+    
+    private func setNavBar() {
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage.asset(.Icons_24px_Share),
+            style: .plain,
+            target: self,
+            action: #selector(onShare)
+        )
+    }
     
     func getcardDetail() {
         

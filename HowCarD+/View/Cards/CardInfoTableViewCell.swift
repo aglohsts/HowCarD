@@ -195,7 +195,6 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
     
         toApplyCardHandler?()
     }
-    
 }
 
 extension CardInfoTableViewCell {

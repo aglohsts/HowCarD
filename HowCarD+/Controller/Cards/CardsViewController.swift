@@ -455,83 +455,21 @@ extension CardsViewController: UITableViewDataSource {
         // 去官網
         cardInfoCell.toOfficialWebHandler = { [weak self] in
             
-            guard let strongSelf = self,
-                let webVC = UIStoryboard(
-                    name: StoryboardCategory.web,
-                    bundle: nil).instantiateViewController(
-                        withIdentifier: String(describing: HCWebViewController.self)) as? HCWebViewController
-                else { return }
+            guard let strongSelf = self else { return }
             
-            strongSelf.view.endEditing(true)
-            
-            if webVC.view.superview == nil {
-                
-                webVC.urlString = strongSelf.cardsBasicInfo[indexPath.row].officialWeb
-                
-                strongSelf.navigationController?.setNavigationBarHidden(true, animated: true)
-                //                        strongSelf.navigationController?.isNavigationBarHidden = true
-                
-                strongSelf.tabBarController?.tabBar.isHidden = true
-                
-                strongSelf.addChild(webVC)
-                
-                strongSelf.view.addSubview(webVC.view)
-                
-                webVC.view.translatesAutoresizingMaskIntoConstraints = false
-                
-                webVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                
-                webVC.view.topAnchor.constraint(equalTo: strongSelf.view.topAnchor, constant: 0).isActive = true
-                
-                webVC.view.leadingAnchor.constraint(equalTo: strongSelf.view.leadingAnchor).isActive = true
-                
-                webVC.view.trailingAnchor.constraint(equalTo: strongSelf.view.trailingAnchor).isActive = true
-                
-                webVC.view.bottomAnchor.constraint(equalTo: strongSelf.view.bottomAnchor).isActive = true
-                
-                webVC.didMove(toParent: strongSelf)
-            }
+            strongSelf.openWebView(
+                url: strongSelf.cardsBasicInfo[indexPath.row].officialWeb
+            )
         }
         
         // 去辦卡
         cardInfoCell.toApplyCardHandler = { [weak self] in
             
-            guard let strongSelf = self,
-                let webVC = UIStoryboard(
-                    name: StoryboardCategory.web,
-                    bundle: nil).instantiateViewController(
-                        withIdentifier: String(describing: HCWebViewController.self)) as? HCWebViewController
-                else { return }
+            guard let strongSelf = self else { return }
             
-            strongSelf.view.endEditing(true)
-            
-            if webVC.view.superview == nil {
-                
-                webVC.urlString = strongSelf.cardsBasicInfo[indexPath.row].getCardWeb
-                
-                strongSelf.navigationController?.setNavigationBarHidden(true, animated: true)
-                //                        strongSelf.navigationController?.isNavigationBarHidden = true
-                
-                strongSelf.tabBarController?.tabBar.isHidden = true
-                
-                strongSelf.addChild(webVC)
-                
-                strongSelf.view.addSubview(webVC.view)
-                
-                webVC.view.translatesAutoresizingMaskIntoConstraints = false
-                
-                webVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                
-                webVC.view.topAnchor.constraint(equalTo: strongSelf.view.topAnchor, constant: 0).isActive = true
-                
-                webVC.view.leadingAnchor.constraint(equalTo: strongSelf.view.leadingAnchor).isActive = true
-                
-                webVC.view.trailingAnchor.constraint(equalTo: strongSelf.view.trailingAnchor).isActive = true
-                
-                webVC.view.bottomAnchor.constraint(equalTo: strongSelf.view.bottomAnchor).isActive = true
-                
-                webVC.didMove(toParent: strongSelf)
-            }
+            strongSelf.openWebView(
+                url: strongSelf.cardsBasicInfo[indexPath.row].getCardWeb
+            )
         }
         
         // cell 中按下 isMyCardBtn
