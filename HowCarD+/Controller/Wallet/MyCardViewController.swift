@@ -216,5 +216,3 @@ class MyCardViewController: UIViewController, HFCardCollectionViewLayoutDelegate
         return UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
     }
 }
-
-

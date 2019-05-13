@@ -140,11 +140,6 @@ extension CallHelpViewController: UITableViewDelegate {
         
         return 40
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
-    }
 }
 
 extension CallHelpViewController: UITableViewDataSource {
@@ -183,9 +178,7 @@ extension CallHelpViewController: UITableViewDataSource {
             if searchResult[indexPath.row].bankInfo.mailWeb != nil {
             
                 callHelpCell.leaveMessageHandler = { [weak self] in
-                    
-                    
-                    
+   
                     guard let strongSelf = self,
                         let webVC = UIStoryboard(
                             name: StoryboardCategory.web,

@@ -42,6 +42,7 @@ enum ImageAsset: String {
     
     // Nav Bar - Wallet
     case Icons_24px_Signout
+    case Icons_24px_Manage
 
     // Other Icons - Cards
     case Icons_ApplyCard

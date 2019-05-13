@@ -22,7 +22,13 @@ class CollectedCardViewController: HCBaseViewController {
         }
     }
     
-    @IBOutlet weak var deleteBtn: UIButton!
+    @IBOutlet weak var searchBar: UISearchBar!  {
+        
+        didSet {
+            
+            searchBar.delegate = self
+        }
+    }
     
     var userCollectedCardIds: [String] = []
     
@@ -32,27 +38,20 @@ class CollectedCardViewController: HCBaseViewController {
     
     var userCollectedCards: [CardBasicInfoObject] = []
     
-    var isDeleting: Bool = false {
+    var searchResult: [CardBasicInfoObject] = []  {
         
         didSet {
             
             DispatchQueue.main.async { [weak self] in
                 
-                guard let strongSelf = self else { return }
-            
-                if strongSelf.isDeleting {
-
-                    strongSelf.deleteBtn.setImage(UIImage.asset(.Icons_Done), for: .normal)
-                    
-                } else {
-                strongSelf.deleteBtn.setImage(UIImage.asset(.Icons_Delete), for: .normal)
-                    
-                }
-                
-                strongSelf.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
     }
+    
+    var isSearching = false
+    
+    var isDeleting: Bool = true
     
     override func viewDidLoad() {
         
@@ -65,17 +64,14 @@ class CollectedCardViewController: HCBaseViewController {
         setBackgroundColor()
 
         getData()
+        
+        setupSearchBar()
     }
     
     override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {
         super.setBackgroundColor()
         
         tableView.backgroundColor = .hexStringToUIColor(hex: hex)
-    }
-    
-    @IBAction func onDelete(_ sender: Any) {
-        
-        isDeleting = !isDeleting
     }
 }
 
@@ -186,6 +182,49 @@ extension CollectedCardViewController {
             self?.tableView.reloadData()
         }
     }
+    
+    private func setupSearchBar() {
+        
+        // SearchBar text
+        let textFieldInsideUISearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        
+        textFieldInsideUISearchBar?.textColor = UIColor.darkGray
+        
+        textFieldInsideUISearchBar?.font = textFieldInsideUISearchBar?.font?.withSize(13)
+        
+        // SearchBar placeholder
+        let textFieldInsideUISearchBarLabel = textFieldInsideUISearchBar!.value(forKey: "placeholderLabel") as? UILabel
+        
+        textFieldInsideUISearchBarLabel?.textColor = UIColor.lightGray
+    }
+}
+
+extension CollectedCardViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchText == "" {
+            
+            isSearching = false
+            
+            DispatchQueue.main.async { [weak self] in
+                
+                self?.tableView.reloadData()
+            }
+        } else {
+            
+            searchResult = userCollectedCards.filter({
+                
+                $0.bank.contains(searchText) ||
+                $0.id.contains(searchText) ||
+                $0.name.uppercased().contains(searchText.uppercased()) ||
+                $0.name.lowercased().contains(searchText.lowercased())
+                
+            })
+            
+            isSearching = true
+        }
+    }
 }
 
 extension CollectedCardViewController: UITableViewDelegate {
@@ -199,7 +238,13 @@ extension CollectedCardViewController: UITableViewDelegate {
 extension CollectedCardViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return userCollectedCards.count
+        if isSearching {
+            
+            return searchResult.count
+        } else {
+            
+            return userCollectedCards.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -211,12 +256,26 @@ extension CollectedCardViewController: UITableViewDataSource {
         
         guard let collectedCardCell = cell as? CollectedCardTableViewCell else { return cell }
         
-        collectedCardCell.layoutCell(
-            cardImage: userCollectedCards[indexPath.row].image,
-            cardName: userCollectedCards[indexPath.row].name,
-            bankName: userCollectedCards[indexPath.row].bank,
-            tags: userCollectedCards[indexPath.row].tags,
-            isDeleting: isDeleting)
+        
+        
+        if isSearching {
+            
+            collectedCardCell.layoutCell(
+                cardImage: searchResult[indexPath.row].image,
+                cardName: searchResult[indexPath.row].name,
+                bankName: searchResult[indexPath.row].bank,
+                tags: searchResult[indexPath.row].tags,
+                isDeleting: isDeleting)
+            
+        } else {
+            
+            collectedCardCell.layoutCell(
+                cardImage: userCollectedCards[indexPath.row].image,
+                cardName: userCollectedCards[indexPath.row].name,
+                bankName: userCollectedCards[indexPath.row].bank,
+                tags: userCollectedCards[indexPath.row].tags,
+                isDeleting: isDeleting)
+        }
         
         collectedCardCell.deleteDidTouchHandler = {
             
@@ -229,11 +288,23 @@ extension CollectedCardViewController: UITableViewDataSource {
             
             strongSelf.userCollectedCardIds.remove(at: indexPath.row)
             
-            HCFirebaseManager.shared.deleteId(
-                userCollection: .collectedCards,
-                uid: user.uid,
-                id: strongSelf.userCollectedCards[indexPath.row].id
-            )
+            if strongSelf.isSearching {
+                
+                HCFirebaseManager.shared.deleteId(
+                    userCollection: .collectedCards,
+                    uid: user.uid,
+                    id: strongSelf.searchResult[indexPath.row].id
+                )
+            } else {
+                
+                HCFirebaseManager.shared.deleteId(
+                    userCollection: .collectedCards,
+                    uid: user.uid,
+                    id: strongSelf.userCollectedCards[indexPath.row].id
+                )
+            }
+            
+            
             
             NotificationCenter.default.post(
                 name: Notification.Name(rawValue: NotificationNames.updateCollectedCard.rawValue),
@@ -247,29 +318,5 @@ extension CollectedCardViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         
         return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-//        if editingStyle == .delete {
-//            
-//            guard let selectedIndex = self.userCollectedCardIds.firstIndex(of: userCollectedCards[indexPath.row].id),
-//                let user = HCFirebaseManager.shared.agAuth().currentUser else {
-//                    return
-//            }
-//            
-//            userCollectedCardIds.remove(at: selectedIndex)
-//            
-//            HCFirebaseManager.shared.deleteId(
-//                userCollection: .collectedCards,
-//                uid: user.uid,
-//                id: self.userCollectedCards[indexPath.row].id
-//            )
-//            
-//            NotificationCenter.default.post(
-//                name: Notification.Name(rawValue: NotificationNames.updateCollectedCard.rawValue),
-//                object: nil
-//            )
-//        }
     }
 }

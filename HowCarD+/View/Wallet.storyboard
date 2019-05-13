@@ -442,38 +442,17 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="bnq-zE-yQU">
-                                            <rect key="frame" x="0.0" y="0.0" width="370" height="44"/>
+                                        <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="bnq-zE-yQU">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </searchBar>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nw6-ni-zcc">
-                                            <rect key="frame" x="370" y="0.0" width="44" height="44"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6Q-4L-mop">
-                                                    <rect key="frame" x="12.5" y="11" width="19" height="22"/>
-                                                    <state key="normal" image="Icons_Delete"/>
-                                                    <connections>
-                                                        <action selector="onDelete:" destination="3jh-Kj-05A" eventType="touchUpInside" id="Vmw-g1-a54"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="nw6-ni-zcc" secondAttribute="height" multiplier="1:1" id="57F-R1-0mj"/>
-                                                <constraint firstItem="Y6Q-4L-mop" firstAttribute="centerY" secondItem="nw6-ni-zcc" secondAttribute="centerY" id="ARn-PP-UwL"/>
-                                                <constraint firstItem="Y6Q-4L-mop" firstAttribute="centerX" secondItem="nw6-ni-zcc" secondAttribute="centerX" id="BSE-97-onQ"/>
-                                            </constraints>
-                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="bnq-zE-yQU" firstAttribute="leading" secondItem="PWt-x2-EYe" secondAttribute="leading" id="13b-i3-jPO"/>
                                         <constraint firstItem="bnq-zE-yQU" firstAttribute="top" secondItem="PWt-x2-EYe" secondAttribute="top" id="2Nu-Ns-IZg"/>
                                         <constraint firstAttribute="bottom" secondItem="bnq-zE-yQU" secondAttribute="bottom" id="MPD-Ng-7qn"/>
-                                        <constraint firstAttribute="trailing" secondItem="nw6-ni-zcc" secondAttribute="trailing" id="RoD-s8-WUy"/>
-                                        <constraint firstItem="nw6-ni-zcc" firstAttribute="leading" secondItem="bnq-zE-yQU" secondAttribute="trailing" id="aEe-mn-mKJ"/>
-                                        <constraint firstAttribute="bottom" secondItem="nw6-ni-zcc" secondAttribute="bottom" id="auF-C7-TvN"/>
-                                        <constraint firstItem="nw6-ni-zcc" firstAttribute="top" secondItem="PWt-x2-EYe" secondAttribute="top" id="whj-m8-f0q"/>
+                                        <constraint firstAttribute="trailing" secondItem="bnq-zE-yQU" secondAttribute="trailing" id="fmf-x6-3yV"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
@@ -602,7 +581,7 @@
                         <viewLayoutGuide key="safeArea" id="zXU-Bm-CkZ"/>
                     </view>
                     <connections>
-                        <outlet property="deleteBtn" destination="Y6Q-4L-mop" id="pjC-ET-IiP"/>
+                        <outlet property="searchBar" destination="bnq-zE-yQU" id="eoU-Nf-317"/>
                         <outlet property="tableView" destination="bKS-eU-a9C" id="zS2-f3-eys"/>
                     </connections>
                 </viewController>

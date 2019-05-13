@@ -293,7 +293,7 @@ class HCFirebaseManager {
                             // 刪除文件
                             self?.firestoreRef(to: .users)
                                 .document(uid).collection(userCollection.rawValue)
-                                .document().delete()
+                                .document(document.documentID).delete()
                         })
                     }
             }
