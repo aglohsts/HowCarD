@@ -81,9 +81,9 @@ extension HCFirebaseManager {
                 .document(documentID)
                 .collection(MyCardCollection.billInfo.rawValue)
                 .addDocument(data: [
-                    MyCardCollectionDataKey.cardNickName.rawValue: nickname,
-                    MyCardCollectionDataKey.needBillRemind.rawValue: needBillRemind,
-                    MyCardCollectionDataKey.billDueDate.rawValue: billDueDate
+                    BillInfo.CodingKeys.cardNickname.rawValue: nickname,
+                    BillInfo.CodingKeys.needBillRemind.rawValue: needBillRemind,
+                    BillInfo.CodingKeys.billDueDate.rawValue: billDueDate
                     ])
         
     }
@@ -117,32 +117,57 @@ extension HCFirebaseManager {
         }
     }
     
-    func getMyCardInfo(uid: String, userCollection: UserCollection = .myCards, id: String) {
-        // TODO
+    func getMyCardInfo(uid: String, userCollection: UserCollection = .myCards, completion: @escaping ([MyCardObject]) -> Void) {
+
         if userCollection == .myCards {
             
-            firestoreRef(to: .users)
-                .document(uid)
-                .collection(userCollection.rawValue)
-                .whereField(UserCollectionDataKey.cardId.rawValue, isEqualTo: id)
-                
-                
-                .getDocuments { [weak self] (snapshot, error) in
-                    
-                    guard let strongSelf = self, let documents = snapshot?.documents else {
-                        
-                        guard let error = error else { return }
-                        
-                        print("Error fetching document: \(error)")
-                        
-                        return
-                    }
-                    
-                    
-                    
-                    strongSelf.likedDiscountIds = documents.compactMap({ $0[UserCollectionDataKey.discountId.rawValue] as? String })
-            }
+            var myCardObjects: [MyCardObject] = []
             
+            HCFirebaseManager.shared.myCardIds.forEach { (id) in
+
+                firestoreRef(to: .users).document(uid)
+                    .collection(userCollection.rawValue)
+                    .whereField(UserCollectionDataKey.cardId.rawValue, isEqualTo: id)
+                    .getDocuments { (querySnapshot, err) in
+                        if let err = err {
+                            print("Error getting documents: \(err)")
+                        } else {
+                            for document in querySnapshot!.documents {
+                                print("\(document.documentID) => \(document.data())")
+                            }
+                            
+                            querySnapshot!.documents.forEach({ [weak self] (document) in
+                                
+                                self?.firestoreRef(to: .users)
+                                    .document(uid)
+                                    .collection(userCollection.rawValue)
+                                    .document(document.documentID)
+                                    .collection(MyCardCollection.billInfo.rawValue)
+                                    .getDocuments(completion: { (querySnapshot, _) in
+                                        
+                                        let decoder = JSONDecoder()
+                                        
+                                        querySnapshot?.documents.forEach({ (queryDocumentSnapshot) in
+                                            
+                                            if let jsonData = try? JSONSerialization.data(
+                                                withJSONObject: queryDocumentSnapshot.data()
+                                            ) {
+                                                if let info = try? decoder.decode(BillInfo.self, from: jsonData) {
+                                                    
+                                                    myCardObjects.append(MyCardObject(cardId: id, billInfo: info))
+                                            
+                                                }
+                                            }
+                                            
+                                        })
+                                        
+                                        print(myCardObjects)
+                                        completion(myCardObjects)
+                                })
+                            })
+                        }
+                }
+            }
         }
     }
 }

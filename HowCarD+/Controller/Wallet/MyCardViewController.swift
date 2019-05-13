@@ -58,6 +58,9 @@ class MyCardViewController: UIViewController, HFCardCollectionViewLayoutDelegate
     override func viewDidLoad() {
         self.setupExample()
         super.viewDidLoad()
+        
+        guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+        HCFirebaseManager.shared.getMyCardInfo(uid: user.uid)
     }
     
     // MARK: CollectionView
@@ -96,7 +99,7 @@ class MyCardViewController: UIViewController, HFCardCollectionViewLayoutDelegate
         ) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "CardCell",
+            withReuseIdentifier: String(describing: WalletCollectionViewCell.self),
             for: indexPath
         )
         

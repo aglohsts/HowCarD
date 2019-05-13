@@ -105,13 +105,29 @@ struct CardContent: Codable {
     }
 }
 
-struct MyCardObject {
+struct MyCardObject: Codable {
     
-    var nickname: String?
+    let cardId: String
+    
+    let billInfo: BillInfo
+}
+
+struct BillInfo: Codable {
+    
+    var cardNickname: String?
     
     let needBillRemind: Bool
     
     var billDueDate: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case cardNickname
+        
+        case needBillRemind
+        
+        case billDueDate
+    }
 }
 
 enum Tags: String {

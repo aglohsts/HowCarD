@@ -602,7 +602,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewLayout key="collectionViewLayout" id="6LE-I8-ywY" customClass="HFCardCollectionViewLayout" customModule="HFCardCollectionViewLayout"/>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CardCell" id="KKY-rJ-2XT" customClass="WalletCollectionViewCell" customModule="HowCarD" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WalletCollectionViewCell" id="KKY-rJ-2XT" customClass="WalletCollectionViewCell" customModule="HowCarD" customModuleProvider="target">
                                         <rect key="frame" x="38" y="0.0" width="338" height="160"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -613,21 +613,6 @@
                                                     <rect key="frame" x="0.0" y="80" width="338" height="80"/>
                                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </tableView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9B-84-hcW">
-                                                    <rect key="frame" x="221" y="36" width="80" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="EVb-xA-PKX"/>
-                                                        <constraint firstAttribute="height" constant="40" id="Ffe-cO-rED"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <state key="normal" title="Flip Card">
-                                                        <color key="titleColor" red="0.99272640479999996" green="0.98591910729999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="buttonFlipAction" destination="KKY-rJ-2XT" eventType="touchUpInside" id="ldz-rD-f4p"/>
-                                                    </connections>
-                                                </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p5e-Th-3tU">
                                                     <rect key="frame" x="15" y="20" width="30" height="30"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -651,20 +636,16 @@
                                         <constraints>
                                             <constraint firstItem="sHu-ho-y5B" firstAttribute="leading" secondItem="KKY-rJ-2XT" secondAttribute="leading" id="9cK-O5-1bd"/>
                                             <constraint firstItem="qBe-rC-lkm" firstAttribute="top" secondItem="KKY-rJ-2XT" secondAttribute="top" constant="20" id="CfY-Ta-cr2"/>
-                                            <constraint firstItem="P9B-84-hcW" firstAttribute="leading" secondItem="KKY-rJ-2XT" secondAttribute="leadingMargin" constant="213" id="Dgt-7h-5Te"/>
                                             <constraint firstItem="sHu-ho-y5B" firstAttribute="top" secondItem="KKY-rJ-2XT" secondAttribute="top" constant="80" id="FVr-3g-Dn2"/>
                                             <constraint firstItem="qBe-rC-lkm" firstAttribute="leading" secondItem="p5e-Th-3tU" secondAttribute="trailing" constant="15" id="RUj-bz-x0k"/>
                                             <constraint firstAttribute="bottom" secondItem="sHu-ho-y5B" secondAttribute="bottom" id="T1L-4T-bvU"/>
                                             <constraint firstItem="p5e-Th-3tU" firstAttribute="leading" secondItem="KKY-rJ-2XT" secondAttribute="leadingMargin" constant="7" id="URJ-5x-hgp"/>
-                                            <constraint firstItem="sHu-ho-y5B" firstAttribute="top" secondItem="P9B-84-hcW" secondAttribute="bottom" constant="4" id="gsb-jJ-Flc"/>
                                             <constraint firstItem="p5e-Th-3tU" firstAttribute="top" secondItem="KKY-rJ-2XT" secondAttribute="top" constant="20" id="qBX-pm-dQC"/>
                                             <constraint firstAttribute="trailing" secondItem="sHu-ho-y5B" secondAttribute="trailing" id="sEl-3F-8qi"/>
-                                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="P9B-84-hcW" secondAttribute="trailing" id="vTh-dD-7b8"/>
                                             <constraint firstAttribute="trailing" secondItem="qBe-rC-lkm" secondAttribute="trailing" constant="20" id="x6A-Dc-gbp"/>
                                         </constraints>
                                         <size key="customSize" width="338" height="160"/>
                                         <connections>
-                                            <outlet property="buttonFlip" destination="P9B-84-hcW" id="WeC-Ad-eIQ"/>
                                             <outlet property="imageIcon" destination="p5e-Th-3tU" id="MWd-y1-xBO"/>
                                             <outlet property="tableView" destination="sHu-ho-y5B" id="Yxc-Vf-L77"/>
                                         </connections>

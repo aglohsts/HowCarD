@@ -13,8 +13,7 @@ import HFCardCollectionViewLayout
 class WalletCollectionViewCell: HFCardCollectionViewCell {
     
     var cardCollectionViewLayout: HFCardCollectionViewLayout?
-    
-    @IBOutlet var buttonFlip: UIButton?
+
     @IBOutlet var tableView: UITableView?
     @IBOutlet var labelText: UILabel?
     @IBOutlet var imageIcon: UIImageView?
@@ -24,7 +23,6 @@ class WalletCollectionViewCell: HFCardCollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.buttonFlip?.isHidden = true
         self.tableView?.scrollsToTop = false
         
         self.tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "TableCell")
@@ -35,18 +33,7 @@ class WalletCollectionViewCell: HFCardCollectionViewCell {
     }
     
     func cardIsRevealed(_ isRevealed: Bool) {
-        self.buttonFlip?.isHidden = !isRevealed
         self.tableView?.scrollsToTop = isRevealed
-    }
-    
-    @IBAction func buttonFlipAction() {
-        if let backView = self.backView {
-            // Same Corner radius like the contentview of the HFCardCollectionViewCell
-            backView.layer.cornerRadius = self.cornerRadius
-            backView.layer.masksToBounds = true
-            
-            self.cardCollectionViewLayout?.flipRevealedCard(toView: backView)
-        }
     }
 }
 

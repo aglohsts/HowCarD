@@ -52,7 +52,7 @@ enum UserCollectionDataKey: String {
 
 enum MyCardCollectionDataKey: String {
     
-    case cardNickName
+    case cardNickname
     
     case needBillRemind
     
