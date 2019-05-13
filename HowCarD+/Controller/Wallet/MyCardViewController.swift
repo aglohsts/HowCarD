@@ -36,7 +36,18 @@ struct CardLayoutSetupOptions {
     var numberOfCards: Int = 15
 }
 
-class MyCardViewController: UIViewController, HFCardCollectionViewLayoutDelegate, UICollectionViewDataSource {
+class MyCardViewController: UIViewController {
+    
+    var myCardObjects: [MyCardObject] = [] {
+        
+        didSet {
+            
+            DispatchQueue.main.async { [weak self] in
+                
+                self?.collectionView.reloadData()
+            }
+        }
+    }
     
     @IBOutlet weak var collectionView: UICollectionView! {
         
@@ -59,66 +70,7 @@ class MyCardViewController: UIViewController, HFCardCollectionViewLayoutDelegate
         self.setupExample()
         super.viewDidLoad()
         
-        guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
-        HCFirebaseManager.shared.getMyCardInfo(uid: user.uid)
-    }
-    
-    // MARK: CollectionView
-    
-    func cardCollectionViewLayout(
-        _ collectionViewLayout: HFCardCollectionViewLayout,
-        willRevealCardAtIndex index: Int
-        ) {
-        if let cell = self.collectionView?
-            .cellForItem(at: IndexPath(item: index, section: 0)) as? WalletCollectionViewCell {
-            
-            cell.cardCollectionViewLayout = self.cardCollectionViewLayout
-            cell.cardIsRevealed(true)
-        }
-    }
-    
-    func cardCollectionViewLayout(
-        _ collectionViewLayout: HFCardCollectionViewLayout,
-        willUnrevealCardAtIndex index: Int
-        ) {
-        if let cell = self.collectionView?
-            .cellForItem(at: IndexPath(item: index, section: 0)) as? WalletCollectionViewCell {
-            
-            cell.cardCollectionViewLayout = self.cardCollectionViewLayout
-            cell.cardIsRevealed(false)
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.cardArray.count
-    }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-        ) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: WalletCollectionViewCell.self),
-            for: indexPath
-        )
-        
-        guard let walletCell = cell as? WalletCollectionViewCell else { return cell }
-        
-        walletCell.backgroundColor = self.cardArray[indexPath.item].color
-        walletCell.imageIcon?.image = self.cardArray[indexPath.item].icon
-        
-        return walletCell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.cardCollectionViewLayout?.revealCardAt(index: indexPath.item)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let tempItem = self.cardArray[sourceIndexPath.item]
-        self.cardArray.remove(at: sourceIndexPath.item)
-        self.cardArray.insert(tempItem, at: destinationIndexPath.item)
+        getMyCardInfo()
     }
     
     // MARK: Actions
@@ -148,6 +100,22 @@ class MyCardViewController: UIViewController, HFCardCollectionViewLayoutDelegate
             self.collectionView?.deleteItems(at: [IndexPath(item: index, section: 0)])
         })
     }
+}
+
+extension MyCardViewController {
+    
+    func getMyCardInfo() {
+            
+        guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+
+        HCFirebaseManager.shared.getMyCardInfo(uid: user.uid, completion: { [weak self] (myCardObjects) in
+            
+            self?.myCardObjects = myCardObjects
+        })
+    }
+}
+
+extension MyCardViewController {
     
     // MARK: Private Functions
     
@@ -217,5 +185,66 @@ class MyCardViewController: UIViewController, HFCardCollectionViewLayoutDelegate
         let randomGreen: CGFloat = CGFloat(drand48())
         let randomBlue: CGFloat = CGFloat(drand48())
         return UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
+    }
+}
+    
+    // MARK: CollectionView
+extension MyCardViewController: HFCardCollectionViewLayoutDelegate, UICollectionViewDataSource  {
+    
+    func cardCollectionViewLayout(
+        _ collectionViewLayout: HFCardCollectionViewLayout,
+        willRevealCardAtIndex index: Int
+        ) {
+        if let cell = self.collectionView?
+            .cellForItem(at: IndexPath(item: index, section: 0)) as? WalletCollectionViewCell {
+            
+            cell.cardCollectionViewLayout = self.cardCollectionViewLayout
+            cell.cardIsRevealed(true)
+        }
+    }
+    
+    func cardCollectionViewLayout(
+        _ collectionViewLayout: HFCardCollectionViewLayout,
+        willUnrevealCardAtIndex index: Int
+        ) {
+        if let cell = self.collectionView?
+            .cellForItem(at: IndexPath(item: index, section: 0)) as? WalletCollectionViewCell {
+            
+            cell.cardCollectionViewLayout = self.cardCollectionViewLayout
+            cell.cardIsRevealed(false)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return self.myCardObjects.count
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+        ) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: String(describing: WalletCollectionViewCell.self),
+            for: indexPath
+        )
+        
+        guard let walletCell = cell as? WalletCollectionViewCell else { return cell }
+        
+        walletCell.backgroundColor = self.cardArray[indexPath.item].color
+        walletCell.imageIcon?.image = self.cardArray[indexPath.item].icon
+        
+        return walletCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.cardCollectionViewLayout?.revealCardAt(index: indexPath.item)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let tempItem = self.cardArray[sourceIndexPath.item]
+        self.cardArray.remove(at: sourceIndexPath.item)
+        self.cardArray.insert(tempItem, at: destinationIndexPath.item)
     }
 }

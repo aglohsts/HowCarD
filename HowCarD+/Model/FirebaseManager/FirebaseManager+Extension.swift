@@ -121,53 +121,67 @@ extension HCFirebaseManager {
 
         if userCollection == .myCards {
             
-            var myCardObjects: [MyCardObject] = []
-            
-            HCFirebaseManager.shared.myCardIds.forEach { (id) in
-
-                firestoreRef(to: .users).document(uid)
-                    .collection(userCollection.rawValue)
-                    .whereField(UserCollectionDataKey.cardId.rawValue, isEqualTo: id)
-                    .getDocuments { (querySnapshot, err) in
-                        if let err = err {
-                            print("Error getting documents: \(err)")
-                        } else {
-                            for document in querySnapshot!.documents {
-                                print("\(document.documentID) => \(document.data())")
-                            }
-                            
-                            querySnapshot!.documents.forEach({ [weak self] (document) in
+            getId(uid: uid, userCollection: .myCards, completion: { [weak self] (myCardIds) in
+                
+                guard let strongSelf = self else { return }
+                
+                myCardIds.forEach { [weak self] (id) in
+                    
+                    self?.group.enter()
+                    
+                    self?.firestoreRef(to: .users).document(uid)
+                        .collection(userCollection.rawValue)
+                        .whereField(UserCollectionDataKey.cardId.rawValue, isEqualTo: id)
+                        .getDocuments { (querySnapshot, err) in
+                            if let err = err {
+                                print("Error getting documents: \(err)")
+                            } else {
+                                for document in querySnapshot!.documents {
+                                    print("\(document.documentID) => \(document.data())")
+                                }
                                 
-                                self?.firestoreRef(to: .users)
-                                    .document(uid)
-                                    .collection(userCollection.rawValue)
-                                    .document(document.documentID)
-                                    .collection(MyCardCollection.billInfo.rawValue)
-                                    .getDocuments(completion: { (querySnapshot, _) in
-                                        
-                                        let decoder = JSONDecoder()
-                                        
-                                        querySnapshot?.documents.forEach({ (queryDocumentSnapshot) in
+                                self?.group.leave()
+                                
+                                querySnapshot!.documents.forEach({ [weak self] (document) in
+                                    
+                                    self?.group.enter()
+                                    
+                                    self?.firestoreRef(to: .users)
+                                        .document(uid)
+                                        .collection(userCollection.rawValue)
+                                        .document(document.documentID)
+                                        .collection(MyCardCollection.billInfo.rawValue)
+                                        .getDocuments(completion: { (querySnapshot, _) in
                                             
-                                            if let jsonData = try? JSONSerialization.data(
-                                                withJSONObject: queryDocumentSnapshot.data()
-                                            ) {
-                                                if let info = try? decoder.decode(BillInfo.self, from: jsonData) {
-                                                    
-                                                    myCardObjects.append(MyCardObject(cardId: id, billInfo: info))
+                                            let decoder = JSONDecoder()
                                             
+                                            querySnapshot?.documents.forEach({ (queryDocumentSnapshot) in
+                                                
+                                                if let jsonData = try? JSONSerialization.data(
+                                                    withJSONObject: queryDocumentSnapshot.data()
+                                                    ) {
+                                                    if let info = try? decoder.decode(BillInfo.self, from: jsonData) {
+                                                        
+                                                        self?.myCardObjects.append(MyCardObject(cardId: id, billInfo: info))
+                                                        
+                                                    }
                                                 }
-                                            }
+                                                
+                                            })
+                                            
+                                            self?.group.leave()
                                             
                                         })
-                                        
-                                        print(myCardObjects)
-                                        completion(myCardObjects)
                                 })
-                            })
-                        }
+                            }
+                    }
                 }
-            }
+                
+                strongSelf.group.notify(queue: .global(), execute: {
+                    
+                    completion(strongSelf.myCardObjects)
+                })
+            })
         }
     }
 }

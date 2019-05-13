@@ -75,6 +75,10 @@ class HCFirebaseManager {
 
     var isReadCardIds: [String] = []
     
+    let group = DispatchGroup()
+    
+    var myCardObjects: [MyCardObject] = []
+    
     func configure() {
         FirebaseApp.configure()
     }
