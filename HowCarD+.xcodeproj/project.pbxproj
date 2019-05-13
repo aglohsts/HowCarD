@@ -86,6 +86,8 @@
 		CA70B0672261D69D008F631B /* CardObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70B0662261D69D008F631B /* CardObject.swift */; };
 		CA9194172276054200DA277E /* HCBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9194162276054200DA277E /* HCBaseTableViewCell.swift */; };
 		CA919419227606DF00DA277E /* HCBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA919418227606DF00DA277E /* HCBaseCollectionViewCell.swift */; };
+		CAA376FE2289799D006E32E3 /* BillRemindTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA376FD2289799D006E32E3 /* BillRemindTableViewCell.swift */; };
+		CAA37700228979AD006E32E3 /* BillDueDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA376FF228979AD006E32E3 /* BillDueDateTableViewCell.swift */; };
 		CAC426F922759219003C6D26 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC426F822759219003C6D26 /* NotificationCenter.swift */; };
 		CAC426FB2275ADFB003C6D26 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC426FA2275ADFB003C6D26 /* Array+Extension.swift */; };
 		CAC426FD2275FCFA003C6D26 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC426FC2275FCFA003C6D26 /* UIColor+Extension.swift */; };
@@ -141,7 +143,7 @@
 		CA1303CB227B516000C62E7E /* Web.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Web.storyboard; sourceTree = "<group>"; };
 		CA1303CE227B51A400C62E7E /* HCWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCWebViewController.swift; sourceTree = "<group>"; };
 		CA1303D0227C1E2C00C62E7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CA13E90F227AF18C00DA641F /* CallHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallHelpViewController.swift; sourceTree = "<group>"; };
+		CA13E90F227AF18C00DA641F /* CallHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CallHelpViewController.swift; path = ../QA/CallHelpViewController.swift; sourceTree = "<group>"; };
 		CA13E912227AF26700DA641F /* CallHelpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallHelpTableViewCell.swift; sourceTree = "<group>"; };
 		CA13E915227AF4C900DA641F /* QAObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAObject.swift; sourceTree = "<group>"; };
 		CA13E917227AF4D900DA641F /* QAProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAProvider.swift; sourceTree = "<group>"; };
@@ -215,6 +217,8 @@
 		CA70B0662261D69D008F631B /* CardObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardObject.swift; sourceTree = "<group>"; };
 		CA9194162276054200DA277E /* HCBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCBaseTableViewCell.swift; sourceTree = "<group>"; };
 		CA919418227606DF00DA277E /* HCBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCBaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		CAA376FD2289799D006E32E3 /* BillRemindTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillRemindTableViewCell.swift; sourceTree = "<group>"; };
+		CAA376FF228979AD006E32E3 /* BillDueDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDueDateTableViewCell.swift; sourceTree = "<group>"; };
 		CAC426F822759219003C6D26 /* NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		CAC426FA2275ADFB003C6D26 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		CAC426FC2275FCFA003C6D26 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -235,7 +239,7 @@
 		CAFE827A225DF071004F4E63 /* HCTableViewSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCTableViewSectionHeaderView.swift; sourceTree = "<group>"; };
 		CAFE827C225DF081004F4E63 /* HCTableViewSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HCTableViewSectionHeaderView.xib; sourceTree = "<group>"; };
 		CAFE827E225DF304004F4E63 /* DiscountDetailContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountDetailContentTableViewCell.swift; sourceTree = "<group>"; };
-		CAFE8280225E09CD004F4E63 /* DiscountLikedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountLikedListViewController.swift; sourceTree = "<group>"; };
+		CAFE8280225E09CD004F4E63 /* DiscountLikedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DiscountLikedListViewController.swift; path = ../Discounts/DiscountLikedListViewController.swift; sourceTree = "<group>"; };
 		CAFE8282225E3CE8004F4E63 /* DiscountLikedListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountLikedListTableViewCell.swift; sourceTree = "<group>"; };
 		CAFE8284225EE349004F4E63 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		CAFE8286225F1D92004F4E63 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -421,7 +425,7 @@
 				CA171B8C22534FF30042BBDC /* DiscountsViewController.swift */,
 				CAF58D87225CA1AB00818CDD /* MoreDiscountViewController.swift */,
 				CAFE8278225DE3BD004F4E63 /* DiscountDetailViewController.swift */,
-				CAFE8280225E09CD004F4E63 /* DiscountLikedListViewController.swift */,
+				CA13E90F227AF18C00DA641F /* CallHelpViewController.swift */,
 			);
 			path = Discounts;
 			sourceTree = "<group>";
@@ -441,6 +445,7 @@
 			children = (
 				CA171B93225350450042BBDC /* WalletViewController2.swift */,
 				CAF16FA422746EEF0013D864 /* MyCardViewController.swift */,
+				CAFE8280225E09CD004F4E63 /* DiscountLikedListViewController.swift */,
 				CAF16FA7227472290013D864 /* LikedDiscountViewController.swift */,
 				CAF16FA92274727E0013D864 /* CollectedCardViewController.swift */,
 				CA0379B022781F580093086D /* WalletViewController.swift */,
@@ -452,7 +457,6 @@
 			isa = PBXGroup;
 			children = (
 				CA171B95225350510042BBDC /* QAViewController.swift */,
-				CA13E90F227AF18C00DA641F /* CallHelpViewController.swift */,
 			);
 			path = QA;
 			sourceTree = "<group>";
@@ -608,6 +612,8 @@
 				CAF16FAB227477930013D864 /* WalletTabCollectionViewCell.swift */,
 				CAF16FAD22748B040013D864 /* LikedDiscountTableViewCell.swift */,
 				CAF16FAF22748B170013D864 /* CollectedCardTableViewCell.swift */,
+				CAA376FD2289799D006E32E3 /* BillRemindTableViewCell.swift */,
+				CAA376FF228979AD006E32E3 /* BillDueDateTableViewCell.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -895,6 +901,7 @@
 				CA2F7DDB22579B8B005E4361 /* CardInfoTableViewCell.swift in Sources */,
 				CAF16FB022748B170013D864 /* CollectedCardTableViewCell.swift in Sources */,
 				CAFE828E22605F99004F4E63 /* SignInViewController.swift in Sources */,
+				CAA376FE2289799D006E32E3 /* BillRemindTableViewCell.swift in Sources */,
 				CA2D6B0322647BD600C25883 /* QueryDocumentSnapshot+Extension.swift in Sources */,
 				CA6B5C732267141100B180A2 /* Bundle+Extension.swift in Sources */,
 				CA171BAF2255A1120042BBDC /* UIView+Extension.swift in Sources */,
@@ -909,6 +916,7 @@
 				CAF2CD60227F91870043CFAD /* UILabel+Extention.swift in Sources */,
 				CA1BFCE2226F0FFC008F38BC /* ToMoreInfoCollectionViewCell.swift in Sources */,
 				CA70B0672261D69D008F631B /* CardObject.swift in Sources */,
+				CAA37700228979AD006E32E3 /* BillDueDateTableViewCell.swift in Sources */,
 				CA171B7D22533D5D0042BBDC /* UIImage+Extension.swift in Sources */,
 				CA1BFCE5226F485C008F38BC /* DRecommCategoryDetailViewController.swift in Sources */,
 				CA171BAD2254CBC70042BBDC /* DRecommTopViewController.swift in Sources */,

@@ -16,7 +16,8 @@ class WalletCollectionViewCell: HFCardCollectionViewCell {
 
     @IBOutlet var tableView: UITableView?
     @IBOutlet var labelText: UILabel?
-    @IBOutlet var imageIcon: UIImageView?
+    @IBOutlet var iconImageView: UIImageView?
+    @IBOutlet weak var cardNameLabel: UILabel!
     
     @IBOutlet var backView: UIView?
     @IBOutlet var buttonFlipBack: UIButton?
@@ -30,10 +31,27 @@ class WalletCollectionViewCell: HFCardCollectionViewCell {
         self.tableView?.delegate = self
         self.tableView?.allowsSelectionDuringEditing = false
         self.tableView?.reloadData()
+        
+        setupCell()
     }
     
     func cardIsRevealed(_ isRevealed: Bool) {
         self.tableView?.scrollsToTop = isRevealed
+    }
+}
+
+extension WalletCollectionViewCell {
+    
+    func layoutCell(cardName: String, imageIcon: String) {
+        
+        cardNameLabel.text = cardName
+        
+        iconImageView?.loadImage(imageIcon, placeHolder: UIImage.asset(.Icons_36px_Cards_Normal))
+    }
+    
+    private func setupCell() {
+        
+        cardNameLabel.text = ""
     }
 }
 
@@ -44,7 +62,7 @@ extension WalletCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

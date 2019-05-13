@@ -233,7 +233,7 @@ extension MyCardViewController: HFCardCollectionViewLayoutDelegate, UICollection
         guard let walletCell = cell as? WalletCollectionViewCell else { return cell }
         
         walletCell.backgroundColor = self.cardArray[indexPath.item].color
-        walletCell.imageIcon?.image = self.cardArray[indexPath.item].icon
+        walletCell.iconImageView?.image = self.cardArray[indexPath.item].icon
         
         return walletCell
     }
