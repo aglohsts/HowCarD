@@ -26,7 +26,32 @@ class CollectedCardTableViewCell: HCBaseTableViewCell {
         }
     }
     
-    var tagArray = [String]() {
+    @IBOutlet weak var deleteBtn: UIButton!
+    
+    var isDeleting: Bool = false {
+        
+        didSet {
+            
+            if isDeleting {
+                
+                DispatchQueue.main.async { [weak self] in
+                    
+                    self?.deleteBtn.isHidden = false
+                    self?.deleteBtn.setImage(UIImage.asset(.Icons_Delete), for: .normal)
+                }
+            } else {
+                
+                DispatchQueue.main.async { [weak self] in
+                    
+                    self?.deleteBtn.isHidden = true
+                }
+            }
+        }
+    }
+    
+    var deleteDidTouchHandler: (() -> Void)?
+    
+    var tagArray:[String] = [] {
         
         didSet {
             
@@ -47,7 +72,7 @@ class CollectedCardTableViewCell: HCBaseTableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func layoutCell(cardImage: String, cardName: String, bankName: String, tags: [String]) {
+    func layoutCell(cardImage: String, cardName: String, bankName: String, tags: [String], isDeleting: Bool) {
         
         cardImageView.loadImage(cardImage, placeHolder: UIImage.asset(.Image_Placeholder2))
         
@@ -56,6 +81,8 @@ class CollectedCardTableViewCell: HCBaseTableViewCell {
         bankNameLabel.text = bankName
         
         self.tagArray = tags
+        
+        self.isDeleting = isDeleting
     }
     
     private func setupCollectionView() {
@@ -64,6 +91,11 @@ class CollectedCardTableViewCell: HCBaseTableViewCell {
             identifier: String(describing: CardTagCollectionViewCell.self),
             bundle: nil
         )
+    }
+    
+    @IBAction func onDelete(_ sender: Any) {
+        
+        deleteDidTouchHandler?()
     }
 }
 

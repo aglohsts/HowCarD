@@ -459,6 +459,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstAttribute="width" secondItem="nw6-ni-zcc" secondAttribute="height" multiplier="1:1" id="57F-R1-0mj"/>
                                                 <constraint firstItem="Y6Q-4L-mop" firstAttribute="centerY" secondItem="nw6-ni-zcc" secondAttribute="centerY" id="ARn-PP-UwL"/>
                                                 <constraint firstItem="Y6Q-4L-mop" firstAttribute="centerX" secondItem="nw6-ni-zcc" secondAttribute="centerX" id="BSE-97-onQ"/>
                                             </constraints>
@@ -468,10 +469,8 @@
                                     <constraints>
                                         <constraint firstItem="bnq-zE-yQU" firstAttribute="leading" secondItem="PWt-x2-EYe" secondAttribute="leading" id="13b-i3-jPO"/>
                                         <constraint firstItem="bnq-zE-yQU" firstAttribute="top" secondItem="PWt-x2-EYe" secondAttribute="top" id="2Nu-Ns-IZg"/>
-                                        <constraint firstAttribute="trailing" secondItem="bnq-zE-yQU" secondAttribute="trailing" id="G5y-ha-p1J"/>
                                         <constraint firstAttribute="bottom" secondItem="bnq-zE-yQU" secondAttribute="bottom" id="MPD-Ng-7qn"/>
                                         <constraint firstAttribute="trailing" secondItem="nw6-ni-zcc" secondAttribute="trailing" id="RoD-s8-WUy"/>
-                                        <constraint firstAttribute="trailing" secondItem="bnq-zE-yQU" secondAttribute="trailing" constant="44" id="XW2-xG-GFB"/>
                                         <constraint firstItem="nw6-ni-zcc" firstAttribute="leading" secondItem="bnq-zE-yQU" secondAttribute="trailing" id="aEe-mn-mKJ"/>
                                         <constraint firstAttribute="bottom" secondItem="nw6-ni-zcc" secondAttribute="bottom" id="auF-C7-TvN"/>
                                         <constraint firstItem="nw6-ni-zcc" firstAttribute="top" secondItem="PWt-x2-EYe" secondAttribute="top" id="whj-m8-f0q"/>
@@ -537,6 +536,9 @@
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ixz-iQ-DLX">
                                                                     <rect key="frame" x="12.5" y="11" width="19" height="22"/>
                                                                     <state key="normal" image="Icons_Delete"/>
+                                                                    <connections>
+                                                                        <action selector="onDelete:" destination="pK4-Ts-YXL" eventType="touchUpInside" id="Cf7-jq-0vR"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -583,6 +585,7 @@
                                             <outlet property="bankNameLabel" destination="b6R-TB-PJc" id="Ab7-Nk-vfB"/>
                                             <outlet property="cardImageView" destination="dvJ-hp-0WF" id="31m-wP-T5v"/>
                                             <outlet property="cardNameLabel" destination="tNs-9W-u7b" id="PrT-YR-hxD"/>
+                                            <outlet property="deleteBtn" destination="ixz-iQ-DLX" id="JbJ-hl-3FG"/>
                                             <outlet property="tagCollectionView" destination="cSN-ye-IpW" id="0dY-Tt-oTx"/>
                                         </connections>
                                     </tableViewCell>

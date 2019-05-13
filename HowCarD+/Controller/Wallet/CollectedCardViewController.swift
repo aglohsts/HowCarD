@@ -36,15 +36,20 @@ class CollectedCardViewController: HCBaseViewController {
         
         didSet {
             
-            if isDeleting {
+            DispatchQueue.main.async { [weak self] in
                 
-                DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+            
+                if strongSelf.isDeleting {
+
+                    strongSelf.deleteBtn.setImage(UIImage.asset(.Icons_Done), for: .normal)
                     
-                    self?.deleteBtn.setImage(UIImage.asset(.Icons_Done), for: .normal)
+                } else {
+                strongSelf.deleteBtn.setImage(UIImage.asset(.Icons_Delete), for: .normal)
+                    
                 }
-            } else {
                 
-                
+                strongSelf.tableView.reloadData()
             }
         }
     }
@@ -70,7 +75,7 @@ class CollectedCardViewController: HCBaseViewController {
     
     @IBAction func onDelete(_ sender: Any) {
         
-        
+        isDeleting = !isDeleting
     }
 }
 
@@ -210,7 +215,31 @@ extension CollectedCardViewController: UITableViewDataSource {
             cardImage: userCollectedCards[indexPath.row].image,
             cardName: userCollectedCards[indexPath.row].name,
             bankName: userCollectedCards[indexPath.row].bank,
-            tags: userCollectedCards[indexPath.row].tags)
+            tags: userCollectedCards[indexPath.row].tags,
+            isDeleting: isDeleting)
+        
+        collectedCardCell.deleteDidTouchHandler = {
+            
+            [weak self] in
+            
+            guard let strongSelf = self,
+                let user = HCFirebaseManager.shared.agAuth().currentUser else {
+                    return
+            }
+            
+            strongSelf.userCollectedCardIds.remove(at: indexPath.row)
+            
+            HCFirebaseManager.shared.deleteId(
+                userCollection: .collectedCards,
+                uid: user.uid,
+                id: strongSelf.userCollectedCards[indexPath.row].id
+            )
+            
+            NotificationCenter.default.post(
+                name: Notification.Name(rawValue: NotificationNames.updateCollectedCard.rawValue),
+                object: nil
+            )
+        }
         
         return collectedCardCell
     }
@@ -222,25 +251,25 @@ extension CollectedCardViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        if editingStyle == .delete {
-            
-            guard let selectedIndex = self.userCollectedCardIds.firstIndex(of: userCollectedCards[indexPath.row].id),
-                let user = HCFirebaseManager.shared.agAuth().currentUser else {
-                    return
-            }
-            
-            userCollectedCardIds.remove(at: selectedIndex)
-            
-            HCFirebaseManager.shared.deleteId(
-                userCollection: .collectedCards,
-                uid: user.uid,
-                id: self.userCollectedCards[indexPath.row].id
-            )
-            
-            NotificationCenter.default.post(
-                name: Notification.Name(rawValue: NotificationNames.updateCollectedCard.rawValue),
-                object: nil
-            )
-        }
+//        if editingStyle == .delete {
+//            
+//            guard let selectedIndex = self.userCollectedCardIds.firstIndex(of: userCollectedCards[indexPath.row].id),
+//                let user = HCFirebaseManager.shared.agAuth().currentUser else {
+//                    return
+//            }
+//            
+//            userCollectedCardIds.remove(at: selectedIndex)
+//            
+//            HCFirebaseManager.shared.deleteId(
+//                userCollection: .collectedCards,
+//                uid: user.uid,
+//                id: self.userCollectedCards[indexPath.row].id
+//            )
+//            
+//            NotificationCenter.default.post(
+//                name: Notification.Name(rawValue: NotificationNames.updateCollectedCard.rawValue),
+//                object: nil
+//            )
+//        }
     }
 }
