@@ -46,15 +46,15 @@ class CardDetailViewController: HCBaseViewController {
 
             if isCollected {
                 
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
                     
-                    self.collectedBtn.setImage(UIImage.asset(.Icons_Bookmark_Saved), for: .normal)
+                    self?.collectedBtn.setImage(UIImage.asset(.Icons_Bookmark_Saved), for: .normal)
                 }
             } else {
 
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
                     
-                    self.collectedBtn.setImage(UIImage.asset(.Icons_Bookmark_Normal), for: .normal)
+                    self?.collectedBtn.setImage(UIImage.asset(.Icons_Bookmark_Normal), for: .normal)
                 }
             }
         }
@@ -84,16 +84,16 @@ class CardDetailViewController: HCBaseViewController {
         
         didSet {
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
                 
-                self.tagCollectionView.reloadData()
+                self?.tagCollectionView.reloadData()
                 
-                self.setHeaderViewContent(
-                    cardName: self.cardObject?.basicInfo.name ?? "",
-                    bankName: self.cardObject?.basicInfo.bank ?? "",
-                    image: self.cardObject?.basicInfo.image ?? ""
+                self?.setHeaderViewContent(
+                    cardName: self?.cardObject?.basicInfo.name ?? "",
+                    bankName: self?.cardObject?.basicInfo.bank ?? "",
+                    image: self?.cardObject?.basicInfo.image ?? ""
                 )
             }
         }
@@ -290,9 +290,9 @@ extension CardDetailViewController {
             }
         }
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             
-            self.tableView.reloadData()
+            self?.tableView.reloadData()
         }
     }
 }

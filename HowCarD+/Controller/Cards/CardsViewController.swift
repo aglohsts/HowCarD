@@ -31,9 +31,9 @@ class CardsViewController: HCBaseViewController {
 
         didSet {
 
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
 
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
     }
@@ -283,9 +283,9 @@ extension CardsViewController {
         
         checkCollectedCard()
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             
-            self.tableView.reloadData()
+            self?.tableView.reloadData()
 //            self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
         }
     }
@@ -294,9 +294,9 @@ extension CardsViewController {
         
         checkReadCard()
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             
-            self.tableView.reloadData()
+            self?.tableView.reloadData()
             
 //            self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
         }
@@ -306,9 +306,9 @@ extension CardsViewController {
         
         checkMyCard()
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             
-                        self.tableView.reloadData()
+            self?.tableView.reloadData()
             
 //            self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
         }

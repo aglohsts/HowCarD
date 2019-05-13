@@ -15,11 +15,11 @@ class DRecommTableViewCell: FoldingCell {
         
         didSet {
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 
-                self.foreCollectionView.reloadData()
+                self?.foreCollectionView.reloadData()
                 
-                self.containerCollectionView.reloadData()
+                self?.containerCollectionView.reloadData()
             }
         }
     }
@@ -28,9 +28,9 @@ class DRecommTableViewCell: FoldingCell {
         
         didSet {
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 
-                self.briefIntroCollectionView.reloadData()
+                self?.briefIntroCollectionView.reloadData()
             }
         }
     }

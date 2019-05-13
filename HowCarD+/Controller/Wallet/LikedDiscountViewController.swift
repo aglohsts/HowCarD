@@ -91,9 +91,9 @@ extension LikedDiscountViewController {
                 }
             })
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         })
     }
@@ -191,9 +191,9 @@ extension LikedDiscountViewController {
             }
         })
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             
-            self.tableView.reloadData()
+            self?.tableView.reloadData()
         }
     }
 }

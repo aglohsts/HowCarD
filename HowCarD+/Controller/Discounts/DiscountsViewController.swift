@@ -174,7 +174,7 @@ extension DiscountsViewController {
             
             self?.checkReadDiscount()
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { 
                 
                 self?.tableView.reloadData()
             }

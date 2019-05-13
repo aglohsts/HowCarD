@@ -51,9 +51,9 @@ class DiscountDetailViewController: HCBaseViewController {
                 isLiked = discountDetail!.info.isLiked
             }
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
     }
@@ -61,14 +61,14 @@ class DiscountDetailViewController: HCBaseViewController {
     var isLiked: Bool = false {
         didSet {
             if isLiked {
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
                     
-                    self.likeButton.setImage(UIImage.asset(.Icons_Heart_Selected), for: .normal)
+                    self?.likeButton.setImage(UIImage.asset(.Icons_Heart_Selected), for: .normal)
                 }
             } else {
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
                     
-                    self.likeButton.setImage(UIImage.asset(.Icons_Heart_Normal), for: .normal)
+                    self?.likeButton.setImage(UIImage.asset(.Icons_Heart_Normal), for: .normal)
                 }
             } 
         }
@@ -201,7 +201,7 @@ extension DiscountDetailViewController {
                 })
             }
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { 
                 strongSelf.tableView.reloadData()
             }
         })

@@ -20,9 +20,9 @@ class CallHelpViewController: HCBaseViewController {
         
         didSet {
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
     }
@@ -39,9 +39,9 @@ class CallHelpViewController: HCBaseViewController {
         
         didSet {
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
     }
@@ -293,9 +293,9 @@ extension CallHelpViewController: UISearchBarDelegate {
             
             isSearching = false
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         } else {
             

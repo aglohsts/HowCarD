@@ -167,19 +167,19 @@ extension HCWebViewController {
             
             if canGoBack == true {
                 
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
                     
-                    self.backButton.isEnabled = true
-                self.backButton.setImage(UIImage.asset(.Icons_WebGoBack_Enable), for: .normal)
+                    self?.backButton.isEnabled = true
+                self?.backButton.setImage(UIImage.asset(.Icons_WebGoBack_Enable), for: .normal)
                     
                 }
             } else {
                 
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
                     
-                    self.backButton.isEnabled = false
+                    self?.backButton.isEnabled = false
                     
-                    self.backButton.setImage(UIImage.asset(.Icons_WebGoBack_Disable), for: .normal)
+                    self?.backButton.setImage(UIImage.asset(.Icons_WebGoBack_Disable), for: .normal)
                 }
             }
         }
@@ -199,21 +199,21 @@ extension HCWebViewController {
             
             if canGoForward == true {
                 
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
                     
-                    self.forwardButton.isEnabled = true
+                    self?.forwardButton.isEnabled = true
                     
                         
-                self.forwardButton.setImage(UIImage.asset(.Icons_WebGoForward_Enable), for: .normal)
+                self?.forwardButton.setImage(UIImage.asset(.Icons_WebGoForward_Enable), for: .normal)
                     
                 }
             } else {
                 
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
                     
-                    self.forwardButton.isEnabled = false
+                    self?.forwardButton.isEnabled = false
                     
-                    self.forwardButton.setImage(UIImage.asset(.Icons_WebGoForward_Disable), for: .normal)
+                    self?.forwardButton.setImage(UIImage.asset(.Icons_WebGoForward_Disable), for: .normal)
                 }
             }
         }

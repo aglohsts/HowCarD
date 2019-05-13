@@ -22,9 +22,9 @@ class MoreDiscountViewController: HCBaseViewController {
         
         didSet {
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 
-                self.collectionView.reloadData()
+                self?.collectionView.reloadData()
             }
         }
     }
@@ -95,9 +95,9 @@ class MoreDiscountViewController: HCBaseViewController {
         
         checkLikedDiscount()
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             
-            self.collectionView.reloadData()
+            self?.collectionView.reloadData()
         }
     }
     
@@ -105,9 +105,9 @@ class MoreDiscountViewController: HCBaseViewController {
         
         checkReadDiscount()
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             
-            self.collectionView.reloadData()
+            self?.collectionView.reloadData()
         }
     }
     
@@ -238,6 +238,7 @@ extension MoreDiscountViewController {
             }
             
             DispatchQueue.main.async {
+                
                 self?.collectionView.reloadData()
             }
         })

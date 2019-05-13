@@ -14,9 +14,9 @@ class DRecommCardTableViewCell: HCBaseTableViewCell {
         
         didSet {
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 
-                self.collectionView.reloadData()
+                self?.collectionView.reloadData()
             }
         }
     }

@@ -125,7 +125,7 @@ class HCTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     -> Bool {
         
         guard let navVC = viewController as? UINavigationController,
-            let _ = navVC.viewControllers.first as? WalletViewController2
+            let _ = navVC.viewControllers.first as? WalletViewController
             else { return true }
         
         guard HCFirebaseManager.shared.agAuth().currentUser != nil else {

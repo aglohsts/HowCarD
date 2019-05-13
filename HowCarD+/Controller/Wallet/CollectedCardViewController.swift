@@ -22,13 +22,32 @@ class CollectedCardViewController: HCBaseViewController {
         }
     }
     
+    @IBOutlet weak var deleteBtn: UIButton!
+    
     var userCollectedCardIds: [String] = []
     
     let cardProvider = CardProvider()
     
-    var cardsBasicInfo = [CardBasicInfoObject]()
+    var cardsBasicInfo: [CardBasicInfoObject] = []
     
-    var userCollectedCards = [CardBasicInfoObject]()
+    var userCollectedCards: [CardBasicInfoObject] = []
+    
+    var isDeleting: Bool = false {
+        
+        didSet {
+            
+            if isDeleting {
+                
+                DispatchQueue.main.async { [weak self] in
+                    
+                    self?.deleteBtn.setImage(UIImage.asset(.Icons_Done), for: .normal)
+                }
+            } else {
+                
+                
+            }
+        }
+    }
     
     override func viewDidLoad() {
         
@@ -47,6 +66,11 @@ class CollectedCardViewController: HCBaseViewController {
         super.setBackgroundColor()
         
         tableView.backgroundColor = .hexStringToUIColor(hex: hex)
+    }
+    
+    @IBAction func onDelete(_ sender: Any) {
+        
+        
     }
 }
 
@@ -72,9 +96,9 @@ extension CollectedCardViewController {
                 }
             })
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         })
     }
@@ -152,9 +176,9 @@ extension CollectedCardViewController {
             }
         })
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
             
-            self.tableView.reloadData()
+            self?.tableView.reloadData()
         }
     }
 }

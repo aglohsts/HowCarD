@@ -30,9 +30,9 @@ class CollectedCardTableViewCell: HCBaseTableViewCell {
         
         didSet {
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 
-                self.tagCollectionView.reloadData()
+                self?.tagCollectionView.reloadData()
             }
         }
     }

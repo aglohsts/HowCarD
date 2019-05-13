@@ -80,6 +80,8 @@ enum ImageAsset: String {
     case Icons_LikedDiscount_Selected
     case Icons_MyCard_Normal
     case Icons_MyCard_Selected
+    case Icons_Delete
+    case Icons_Done
     
     // Other Icons - QA
     case Icons_Call

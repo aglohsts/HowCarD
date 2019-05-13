@@ -24,17 +24,17 @@ class CardDetailContentTableViewCell: HCBaseTableViewCell {
                 
                 self.arrowButton.isHidden = false
                 
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
                     
-                    self.reloadInputViews()
+                    self?.reloadInputViews()
                 }
             } else {
                 
                 self.arrowButton.isHidden = true
                 
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
                     
-                    self.reloadInputViews()
+                    self?.reloadInputViews()
                 }
             }
         }
