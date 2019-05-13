@@ -13,15 +13,15 @@ class BillRemindTableViewCell: UITableViewCell {
     @IBOutlet weak var billRemindSwitch: UISwitch!
     
     var needBillRemind: Bool = true {
-        
+
         didSet {
-            
+
             if needBillRemind {
-                
-                selectedDate = 1
+
+                billRemindSwitch.isOn = true
             } else {
-                
-                selectedDate = nil
+
+                billRemindSwitch.isOn = false
             }
         }
     }
@@ -54,6 +54,11 @@ class BillRemindTableViewCell: UITableViewCell {
 //            billDueDateTextField.text = String(dueDate)
             
             //Notification Center
+            NotificationCenter.default.post(
+                name: Notification.Name(rawValue: NotificationNames.updateBillInfo.rawValue),
+                object: nil
+            )
+            
         } else {
             
 //            billDueDateTextField.isUserInteractionEnabled = false
@@ -67,6 +72,10 @@ class BillRemindTableViewCell: UITableViewCell {
 //            billDueDateTextField.text = nil
             
             //Notification Center
+            NotificationCenter.default.post(
+                name: Notification.Name(rawValue: NotificationNames.updateBillInfo.rawValue),
+                object: nil
+            )
         }
     }
     
@@ -75,7 +84,3 @@ class BillRemindTableViewCell: UITableViewCell {
         self.needBillRemind = needBillRemind
     }
 }
-
-
-
-

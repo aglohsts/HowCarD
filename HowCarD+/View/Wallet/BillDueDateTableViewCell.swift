@@ -71,6 +71,22 @@ extension BillDueDateTableViewCell {
         
         billDueDateTextField.inputView = pickerView
     }
+    
+    func billDueDateAddObserver() {
+        
+        NotificationCenter.default
+            .addObserver(
+                self,
+                selector: #selector(updateBillInfo),
+                name: NSNotification.Name(NotificationNames.updateBillInfo.rawValue),
+                object: nil
+        )
+    }
+    
+    @objc func updateBillInfo() {
+        
+        needBillRemind = !needBillRemind
+    }
 }
 
 extension BillDueDateTableViewCell: UIPickerViewDelegate {

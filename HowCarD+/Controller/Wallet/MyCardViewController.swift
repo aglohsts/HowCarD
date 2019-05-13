@@ -111,6 +111,8 @@ extension MyCardViewController {
         HCFirebaseManager.shared.getMyCardInfo(uid: user.uid, completion: { [weak self] (myCardObjects) in
             
             self?.myCardObjects = myCardObjects
+            
+            print(self?.myCardObjects)
         })
     }
 }
@@ -232,8 +234,13 @@ extension MyCardViewController: HFCardCollectionViewLayoutDelegate, UICollection
         
         guard let walletCell = cell as? WalletCollectionViewCell else { return cell }
         
-        walletCell.backgroundColor = self.cardArray[indexPath.item].color
-        walletCell.iconImageView?.image = self.cardArray[indexPath.item].icon
+        walletCell.layoutCell(
+            cardName: myCardObjects[indexPath.row].billInfo.cardNickname ?? "OO卡",
+            imageIcon: "",
+            myCardObject: myCardObjects[indexPath.row])
+        
+//        walletCell.backgroundColor = self.cardArray[indexPath.item].color
+//        walletCell.iconImageView?.image = self.cardArray[indexPath.item].icon
         
         return walletCell
     }

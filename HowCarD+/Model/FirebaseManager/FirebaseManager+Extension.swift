@@ -127,9 +127,9 @@ extension HCFirebaseManager {
                 
                 myCardIds.forEach { [weak self] (id) in
                     
-                    self?.group.enter()
+                    strongSelf.group.enter()
                     
-                    self?.firestoreRef(to: .users).document(uid)
+                    strongSelf.firestoreRef(to: .users).document(uid)
                         .collection(userCollection.rawValue)
                         .whereField(UserCollectionDataKey.cardId.rawValue, isEqualTo: id)
                         .getDocuments { (querySnapshot, err) in
@@ -140,13 +140,13 @@ extension HCFirebaseManager {
                                     print("\(document.documentID) => \(document.data())")
                                 }
                                 
-                                self?.group.leave()
+                                strongSelf.group.leave()
                                 
                                 querySnapshot!.documents.forEach({ [weak self] (document) in
                                     
-                                    self?.group.enter()
+                                    strongSelf.group.enter()
                                     
-                                    self?.firestoreRef(to: .users)
+                                    strongSelf.firestoreRef(to: .users)
                                         .document(uid)
                                         .collection(userCollection.rawValue)
                                         .document(document.documentID)
@@ -162,21 +162,20 @@ extension HCFirebaseManager {
                                                     ) {
                                                     if let info = try? decoder.decode(BillInfo.self, from: jsonData) {
                                                         
-                                                        self?.myCardObjects.append(MyCardObject(cardId: id, billInfo: info))
+                                                        strongSelf.myCardObjects.append(MyCardObject(cardId: id, billInfo: info))
                                                         
                                                     }
                                                 }
                                                 
                                             })
                                             
-                                            self?.group.leave()
+                                            strongSelf.group.leave()
                                             
                                         })
                                 })
                             }
                     }
                 }
-                
                 strongSelf.group.notify(queue: .global(), execute: {
                     
                     completion(strongSelf.myCardObjects)

@@ -14,21 +14,38 @@ class WalletCollectionViewCell: HFCardCollectionViewCell {
     
     var cardCollectionViewLayout: HFCardCollectionViewLayout?
 
-    @IBOutlet var tableView: UITableView?
-    @IBOutlet var labelText: UILabel?
+    @IBOutlet var tableView: UITableView? {
+        
+        didSet {
+            
+            tableView?.dataSource = self
+            
+            tableView?.delegate = self
+        }
+    }
     @IBOutlet var iconImageView: UIImageView?
     @IBOutlet weak var cardNameLabel: UILabel!
     
     @IBOutlet var backView: UIView?
     @IBOutlet var buttonFlipBack: UIButton?
     
+    var myCardObject: MyCardObject? {
+        
+        didSet {
+            
+            DispatchQueue.main.async { [weak self] in
+                
+                self?.tableView?.reloadData()
+            }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.tableView?.scrollsToTop = false
         
-        self.tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "TableCell")
-        self.tableView?.dataSource = self
-        self.tableView?.delegate = self
+//        self.tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "TableCell")
+        
         self.tableView?.allowsSelectionDuringEditing = false
         self.tableView?.reloadData()
         
@@ -42,11 +59,13 @@ class WalletCollectionViewCell: HFCardCollectionViewCell {
 
 extension WalletCollectionViewCell {
     
-    func layoutCell(cardName: String, imageIcon: String) {
+    func layoutCell(cardName: String, imageIcon: String, myCardObject: MyCardObject) {
         
         cardNameLabel.text = cardName
         
         iconImageView?.loadImage(imageIcon, placeHolder: UIImage.asset(.Icons_36px_Cards_Normal))
+        
+        self.myCardObject = myCardObject
     }
     
     private func setupCell() {
@@ -66,12 +85,49 @@ extension WalletCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell")
-        cell?.textLabel?.text = "Table Cell #\(indexPath.row)"
-        cell?.textLabel?.textColor = .white
-        cell?.backgroundColor = .clear
-        cell?.selectionStyle = .none
-        return cell!
+        
+        var cell = UITableViewCell()
+        
+        switch indexPath.row {
+        case 0:
+            
+            cell = tableView.dequeueReusableCell(
+                withIdentifier: String(describing: BillRemindTableViewCell.self),
+                for: indexPath
+            )
+            
+            guard let billRemindCell = cell as? BillRemindTableViewCell else { return UITableViewCell() }
+            
+            billRemindCell.layoutCell(needBillRemind: myCardObject?.billInfo.needBillRemind ?? false)
+            
+            return billRemindCell
+            
+        case 1:
+            
+            cell = tableView.dequeueReusableCell(
+                withIdentifier: String(describing: BillDueDateTableViewCell.self),
+                for: indexPath
+            )
+            
+            guard let billDueDateCell = cell as? BillDueDateTableViewCell else { return UITableViewCell() }
+            
+            billDueDateCell.layoutCell(
+                dueDate: myCardObject?.billInfo.billDueDate,
+                needBillRemind: myCardObject?.billInfo.needBillRemind ?? false)
+            
+            return billDueDateCell
+            
+        default:
+            
+            return UITableViewCell()
+        }
+        
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell")
+//        cell?.textLabel?.text = "Table Cell #\(indexPath.row)"
+//        cell?.textLabel?.textColor = .white
+//        cell?.backgroundColor = .clear
+//        cell?.selectionStyle = .none
+        
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
