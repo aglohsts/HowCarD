@@ -389,11 +389,6 @@ extension CardsViewController: UITableViewDelegate {
         
         return 170
     }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
-    }
 }
 
 extension CardsViewController: UITableViewDataSource {
@@ -558,12 +553,11 @@ extension CardsViewController: UITableViewDataSource {
                         })
                         
                     strongSelf.cardsBasicInfo[indexPath.row].isMyCard = !strongSelf.cardsBasicInfo[indexPath.row].isMyCard
-                        
-        // TODO: Notification
-        //                        NotificationCenter.default.post(
-        //                            name: Notification.Name(rawValue: NotificationNames.updateMyCard.rawValue),
-        //                            object: nil
-        //                        )
+
+                        NotificationCenter.default.post(
+                            name: Notification.Name(rawValue: NotificationNames.updateMyCard.rawValue),
+                            object: nil
+                        )
                     }
                 }
             })

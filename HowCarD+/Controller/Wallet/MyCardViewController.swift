@@ -63,6 +63,8 @@ class MyCardViewController: HCBaseViewController {
         
         getMyCardInfo()
         
+        myCardAddObserver()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -112,9 +114,27 @@ extension MyCardViewController {
                 
                 self?.collectionView.reloadData()
             }
-            print(self?.myCardObjects)
         })
     }
+    
+    func myCardAddObserver() {
+        
+        NotificationCenter.default
+            .addObserver(
+                self,
+                selector: #selector(updateMyCard),
+                name: NSNotification.Name(NotificationNames.updateMyCard.rawValue),
+                object: nil
+        )
+    }
+    
+    @objc func updateMyCard() {
+        
+        self.myCardObjects = []
+        
+        getMyCardInfo()
+    }
+    
 }
 
 extension MyCardViewController {
@@ -252,6 +272,11 @@ extension MyCardViewController: HFCardCollectionViewLayoutDelegate, UICollection
 
                 strongSelf.collectionView.reloadData()
             }
+            
+//            NotificationCenter.default.post(
+//                name: Notification.Name(rawValue: NotificationNames.updateMyCard.rawValue),
+//                object: nil
+//            )
         }
 //        walletCell.backgroundColor = self.cardArray[indexPath.item].color
 //        walletCell.iconImageView?.image = self.cardArray[indexPath.item].icon

@@ -215,6 +215,12 @@ class CardDetailViewController: HCBaseViewController {
         
         if HCFirebaseManager.shared.agAuth().currentUser != nil {
             
+            guard let addMyCardVC = UIStoryboard(
+                name: StoryboardCategory.cards,
+                bundle: nil).instantiateViewController(
+                    withIdentifier: String(describing: AddMyCardViewController.self)) as? AddMyCardViewController
+                else { return }
+            
             guard let user = HCFirebaseManager.shared.agAuth().currentUser, let cardObject = cardObject else { return }
             
             if isMyCard {
@@ -224,17 +230,65 @@ class CardDetailViewController: HCBaseViewController {
                     uid: user.uid,
                     id: cardObject.basicInfo.id
                 )
+                
+                isMyCard = !isMyCard
             } else {
                 
-                HCFirebaseManager.shared.addId(
-                    userCollection: .myCards,
-                    uid: user.uid,
-                    id: cardObject.basicInfo.id,
-                    addIdCompletionHandler: nil
-                )
+                // add AddMyCardVC view
+                
+                self.view.endEditing(true)
+                
+                self.navigationController?.setNavigationBarHidden(true, animated: true)
+                
+                //                    strongSelf.tabBarController?.tabBar.isHidden = true
+                
+                self.addChild(addMyCardVC)
+                
+                addMyCardVC.loadViewIfNeeded()
+                //                    addMyCardVC.view.translatesAutoresizingMaskIntoConstraints = false
+                
+                addMyCardVC.view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                
+                self.view.addSubview(addMyCardVC.view)
+                
+                //                    addMyCardVC.view.topAnchor.constraint(equalTo: strongSelf.view.topAnchor, constant: 0).isActive = true
+                //
+                //                    addMyCardVC.view.leadingAnchor.constraint(equalTo: strongSelf.view.leadingAnchor).isActive = true
+                //
+                //                    addMyCardVC.view.trailingAnchor.constraint(equalTo: strongSelf.view.trailingAnchor).isActive = true
+                //
+                //                    addMyCardVC.view.bottomAnchor.constraint(equalTo: strongSelf.view.bottomAnchor).isActive = true
+                
+                addMyCardVC.didMove(toParent: self)
+                
+                // 在 addMyCardVC 中按下確定新增
+                addMyCardVC.addMyCardCompletionHandler = { [weak self]
+                    (nickname,  needBillRemind, selectedDate)
+                    in
+                    
+                    guard let strongSelf = self, let object = strongSelf.cardObject else { return }
+                    
+                    // 按下確定要新增再新增id
+                    HCFirebaseManager.shared.addId(
+                        userCollection: .myCards,
+                        uid: user.uid,
+                        id: cardObject.basicInfo.id,
+                        addIdCompletionHandler: { [weak self] error in
+                            
+                            HCFirebaseManager.shared.setMyCard(
+                                uid: user.uid,
+                                id: object.basicInfo.id,
+                                nickname: nickname,
+                                needBillRemind: needBillRemind,
+                                billDueDate: selectedDate
+                            )
+                    })
+                    }
+   
+                isMyCard = !isMyCard
             }
             
-            isMyCard = !isMyCard
+            
             
             NotificationCenter.default.post(
                 name: Notification.Name(rawValue: NotificationNames.updateMyCard.rawValue),
