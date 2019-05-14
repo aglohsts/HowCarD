@@ -231,9 +231,6 @@ extension MyCardViewController: HFCardCollectionViewLayoutDelegate, UICollection
             self?.myCardObjects[indexPath.item] = updatedCardObject
             
             self?.updatedObjects.append(updatedCardObject)
-            
-            print("========")
-            print(self?.updatedObjects)
         }
         
         myCardCell.deleteDidTouchHandler = { [weak self] in

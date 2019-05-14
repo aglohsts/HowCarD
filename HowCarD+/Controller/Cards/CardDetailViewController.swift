@@ -63,6 +63,30 @@ class CardDetailViewController: HCBaseViewController {
             self.cardObject?.basicInfo.isCollected = isCollected
         }
     }
+    
+    var isMyCard: Bool = false {
+        
+        didSet {
+            
+            if isMyCard {
+                
+                DispatchQueue.main.async { [weak self] in
+                    
+                    self?.isMyCardBtn.setImage(UIImage.asset(.Icons_isMyCard_Selected), for: .normal)
+                }
+            } else {
+                
+                DispatchQueue.main.async { [weak self] in
+                    
+                    self?.isMyCardBtn.setImage(UIImage.asset(.Icons_isMyCard_Normal), for: .normal)
+                }
+            }
+        }
+        willSet {
+            
+            self.cardObject?.basicInfo.isMyCard = isMyCard
+        }
+    }
 
     @IBOutlet weak var cardNameLabel: UILabel! {
         

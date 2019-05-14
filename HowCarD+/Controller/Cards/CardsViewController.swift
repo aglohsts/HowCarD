@@ -196,7 +196,6 @@ extension CardsViewController {
         
         HCFirebaseManager.shared.getId(uid: user.uid, userCollection: .myCards, completion: { [weak self] ids in
             
-            
             // get HCFirebaseManager.shared.myCardIds
             
             self?.group.leave()
@@ -209,7 +208,9 @@ extension CardsViewController {
             
             let cardDetailVC = segue.destination as? CardDetailViewController
             
-            guard let datas = sender as? (IndexPath, Bool) else { return }
+            guard let datas = sender as? (IndexPath, Bool, Bool) else { return }
+            
+            markCardAsRead(indexPath: datas.0)
             
             cardDetailVC?.cardID = cardsBasicInfo[datas.0.row].id
             
@@ -219,11 +220,15 @@ extension CardsViewController {
             
             vc.isCollected = datas.1
             
+            vc.isMyCard = datas.2
+            
             vc.cardCollectTouchHandler = { [weak self] in
                 
                 guard let strongSelf = self else { return }
                 
                 strongSelf.cardsBasicInfo[datas.0.row].isCollected = vc.isCollected
+                
+                strongSelf.cardsBasicInfo[datas.0.row].isMyCard = vc.isMyCard
                 
 //                strongSelf.updateIsCollectedCardId()
             }
@@ -384,7 +389,7 @@ extension CardsViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        markCardAsRead(indexPath: indexPath)
+        
     }
 }
 
@@ -420,7 +425,9 @@ extension CardsViewController: UITableViewDataSource {
             
             self?.performSegue(
                 withIdentifier: Segue.toDetail,
-                sender: (indexPath, self?.cardsBasicInfo[indexPath.row].isCollected)
+                sender: (indexPath,
+                         self?.cardsBasicInfo[indexPath.row].isCollected,
+                         self?.cardsBasicInfo[indexPath.row].isMyCard)
             )
         }
         
