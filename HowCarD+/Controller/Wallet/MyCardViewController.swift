@@ -91,14 +91,14 @@ class MyCardViewController: UIViewController {
         }
     }
     
-    @IBAction func deleteCardAtIndex0orSelected() {
-        var index = 0
-        if self.cardCollectionViewLayout!.revealedIndex >= 0 {
-            index = self.cardCollectionViewLayout!.revealedIndex
-        }
+    func deleteCardAt(indexPath: IndexPath) {
+//        var index = 0
+//        if self.cardCollectionViewLayout!.revealedIndex >= 0 {
+//            index = self.cardCollectionViewLayout!.revealedIndex
+//        }
         self.cardCollectionViewLayout?.flipRevealedCardBack(completion: {
-            self.cardArray.remove(at: index)
-            self.collectionView?.deleteItems(at: [IndexPath(item: index, section: 0)])
+//            self.cardArray.remove(at: index)
+            self.collectionView?.deleteItems(at: [IndexPath(item: indexPath.item, section: 0)])
         })
     }
 }
@@ -252,9 +252,25 @@ extension MyCardViewController: HFCardCollectionViewLayoutDelegate, UICollection
             print(self?.myCardObjects)
         }
         
-        myCardCell.deleteDidTouchHandler = {
+        myCardCell.deleteDidTouchHandler = { [weak self] in
             
-            
+            guard let strongSelf = self,
+                let user = HCFirebaseManager.shared.agAuth().currentUser else {
+                    return
+            }
+
+            HCFirebaseManager.shared.deleteId(
+                    userCollection: .myCards,
+                    uid: user.uid,
+                    id: strongSelf.myCardObjects[indexPath.item].cardId
+            )
+
+            strongSelf.myCardObjects.remove(at: indexPath.item)
+
+            DispatchQueue.main.async { [weak self] in
+
+                strongSelf.collectionView.reloadData()
+            }
         }
 //        walletCell.backgroundColor = self.cardArray[indexPath.item].color
 //        walletCell.iconImageView?.image = self.cardArray[indexPath.item].icon
