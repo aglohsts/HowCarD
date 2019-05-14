@@ -222,15 +222,18 @@ extension CardsViewController {
             
             vc.isMyCard = datas.2
             
-            vc.cardCollectTouchHandler = { [weak self] in
+            vc.cardCollectDidTouchHandler = { [weak self] in
                 
                 guard let strongSelf = self else { return }
                 
                 strongSelf.cardsBasicInfo[datas.0.row].isCollected = vc.isCollected
+            }
+            
+            vc.isMyCardDidTouchHandler = { [weak self] in
+                
+                guard let strongSelf = self else { return }
                 
                 strongSelf.cardsBasicInfo[datas.0.row].isMyCard = vc.isMyCard
-                
-//                strongSelf.updateIsCollectedCardId()
             }
         }
     }

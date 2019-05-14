@@ -28,7 +28,9 @@ class CardDetailViewController: HCBaseViewController {
         }
     }
     
-    var cardCollectTouchHandler: (() -> Void)?
+    var cardCollectDidTouchHandler: (() -> Void)?
+    
+    var isMyCardDidTouchHandler: (() -> Void)?
     
     @IBOutlet weak var collectedBtn: UIButton!
     
@@ -194,7 +196,52 @@ class CardDetailViewController: HCBaseViewController {
                 object: nil
             )
             
-            cardCollectTouchHandler?()
+            cardCollectDidTouchHandler?()
+            
+        } else {
+            
+            if let authVC = UIStoryboard.auth.instantiateInitialViewController() {
+                
+                authVC.modalPresentationStyle = .overCurrentContext
+                
+                let navVC = UINavigationController(rootViewController: authVC)
+                
+                self.present(navVC, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    @IBAction func onIsMyCardButton(_ sender: Any) {
+        
+        if HCFirebaseManager.shared.agAuth().currentUser != nil {
+            
+            guard let user = HCFirebaseManager.shared.agAuth().currentUser, let cardObject = cardObject else { return }
+            
+            if isMyCard {
+                
+                HCFirebaseManager.shared.deleteId(
+                    userCollection: .myCards,
+                    uid: user.uid,
+                    id: cardObject.basicInfo.id
+                )
+            } else {
+                
+                HCFirebaseManager.shared.addId(
+                    userCollection: .myCards,
+                    uid: user.uid,
+                    id: cardObject.basicInfo.id,
+                    addIdCompletionHandler: nil
+                )
+            }
+            
+            isMyCard = !isMyCard
+            
+            NotificationCenter.default.post(
+                name: Notification.Name(rawValue: NotificationNames.updateMyCard.rawValue),
+                object: nil
+            )
+            
+            isMyCardDidTouchHandler?()
             
         } else {
             
@@ -297,20 +344,45 @@ extension CardDetailViewController {
                 name: NSNotification.Name(NotificationNames.updateCollectedCard.rawValue),
                 object: nil
         )
+        
+        NotificationCenter.default
+            .addObserver(
+                self,
+                selector: #selector(updateMyCard),
+                name: NSNotification.Name(NotificationNames.updateMyCard.rawValue),
+                object: nil
+        )
     }
     
     @objc func updateCollectedCard() {
         
-        let userCollectedCardIds = HCFirebaseManager.shared.collectedCardIds
-        
-        /// 比對 id 有哪些 isLike == true，true 的話改物件狀態
+        /// 比對 id 有哪些 true，true 的話改物件狀態
         isCollected = false
         
-        userCollectedCardIds.forEach { (id) in
+        HCFirebaseManager.shared.collectedCardIds.forEach { (id) in
             
             if cardID == id {
                 
                 isCollected = true
+            }
+        }
+        
+        DispatchQueue.main.async { [weak self] in
+            
+            self?.tableView.reloadData()
+        }
+    }
+    
+    @objc func updateMyCard() {
+        
+        /// 比對 id 有哪些 true，true 的話改物件狀態
+        isMyCard = false
+        
+        HCFirebaseManager.shared.myCardIds.forEach { (id) in
+            
+            if cardID == id {
+                
+                isMyCard = true
             }
         }
         

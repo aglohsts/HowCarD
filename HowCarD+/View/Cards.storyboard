@@ -604,6 +604,9 @@
                                                 <constraint firstAttribute="height" constant="33" id="zhS-sG-6Ta"/>
                                             </constraints>
                                             <state key="normal" image="Icons_isMyCard_Normal" backgroundImage="CircleButtonWhiteBackground"/>
+                                            <connections>
+                                                <action selector="onIsMyCardButton:" destination="pX2-kF-epT" eventType="touchUpInside" id="R0b-KX-MYl"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eo5-Hb-5Fl">
                                             <rect key="frame" x="335" y="46" width="71" height="23.5"/>
