@@ -282,7 +282,7 @@ extension CardsViewController {
             .addObserver(
                 self,
                 selector: #selector(updateMyCard),
-                name: NSNotification.Name(NotificationNames.updateMyCard.rawValue),
+                name: NSNotification.Name(NotificationNames.myCardVCUpdateMyCard.rawValue),
                 object: nil
         )
     }
@@ -499,7 +499,14 @@ extension CardsViewController: UITableViewDataSource {
                     HCFirebaseManager.shared.deleteId(
                         userCollection: .myCards,
                         uid: user.uid,
-                        id: strongSelf.cardsBasicInfo[indexPath.row].id
+                        id: strongSelf.cardsBasicInfo[indexPath.row].id,
+                        completion: { _ in
+                         
+                            NotificationCenter.default.post(
+                                name: Notification.Name(rawValue: NotificationNames.cardVCUpdateMyCard.rawValue),
+                                object: nil
+                            )
+                        }
                     )
                     strongSelf.cardsBasicInfo[indexPath.row].isMyCard = !strongSelf.cardsBasicInfo[indexPath.row].isMyCard
                     
@@ -533,9 +540,7 @@ extension CardsViewController: UITableViewDataSource {
                     addMyCardVC.didMove(toParent: strongSelf)
                     
                    // 在 addMyCardVC 中按下確定新增
-                    addMyCardVC.addMyCardCompletionHandler = { [weak self]
-                        (nickname,  needBillRemind, selectedDate)
-                        in
+                    addMyCardVC.addMyCardCompletionHandler = { [weak self] (nickname, needBillRemind, selectedDate) in
                         // 按下確定要新增再新增id
                         HCFirebaseManager.shared.addId(
                             userCollection: .myCards,
@@ -547,21 +552,24 @@ extension CardsViewController: UITableViewDataSource {
                                     id: strongSelf.cardsBasicInfo[indexPath.row].id,
                                     nickname: nickname,
                                     needBillRemind: needBillRemind,
-                                    billDueDate: selectedDate
+                                    billDueDate: selectedDate,
+                                    completion: {
+                                        
+                                        NotificationCenter.default.post(
+                                            name: Notification.Name(rawValue: NotificationNames.cardVCUpdateMyCard.rawValue),
+                                            object: nil
+                                        )
+                                    }
                                 )
                         })
                         
-                    strongSelf.cardsBasicInfo[indexPath.row].isMyCard = !strongSelf.cardsBasicInfo[indexPath.row].isMyCard
-
-                        NotificationCenter.default.post(
-                            name: Notification.Name(rawValue: NotificationNames.updateMyCard.rawValue),
-                            object: nil
-                        )
+                        strongSelf.cardsBasicInfo[indexPath.row].isMyCard = !strongSelf.cardsBasicInfo[indexPath.row].isMyCard
                     }
                 }
             })
         }
         return cardInfoCell
     }
-    // swiftlint:enable function_body_length
 }
+
+// swiftlint:enable function_body_length

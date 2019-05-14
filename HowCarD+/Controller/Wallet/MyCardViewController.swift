@@ -42,7 +42,12 @@ class MyCardViewController: HCBaseViewController {
     
     var cardsBasicInfo: [CardBasicInfoObject] = []
     
-    var myCardObjects: [MyCardObject] = []
+    var myCardObjects: [MyCardObject] = [] {
+        didSet {
+            print(myCardObjects.count)
+            print("Yo")
+        }
+    }
     
     var updatedObjects:  [MyCardObject] = []
     
@@ -107,7 +112,9 @@ class MyCardViewController: HCBaseViewController {
 
 extension MyCardViewController {
     
-    func getData() {
+    @objc func getData() {
+        
+        myCardObjects = []
         
         getMyCardInfo()
         getCardBasicInfo()
@@ -168,8 +175,8 @@ extension MyCardViewController {
         NotificationCenter.default
             .addObserver(
                 self,
-                selector: #selector(checkMyCard),
-                name: NSNotification.Name(NotificationNames.updateMyCard.rawValue),
+                selector: #selector(getData),
+                name: NSNotification.Name(NotificationNames.cardVCUpdateMyCard.rawValue),
                 object: nil
         )
     }
@@ -205,7 +212,6 @@ extension MyCardViewController {
             }
         }
     }
-    
 }
 
 extension MyCardViewController {
@@ -334,20 +340,32 @@ extension MyCardViewController: HFCardCollectionViewLayoutDelegate, UICollection
             HCFirebaseManager.shared.deleteId(
                     userCollection: .myCards,
                     uid: user.uid,
-                    id: strongSelf.myCardObjects[indexPath.item].cardId
+                    id: strongSelf.myCardObjects[indexPath.item].cardId,
+                    completion: { result in
+                        
+                        switch result {
+                            
+                        case .success:
+                            
+                            strongSelf.myCardObjects.remove(at: indexPath.item)
+                            
+                            DispatchQueue.main.async { [weak self] in
+                                
+                                self?.collectionView.reloadData()
+                                
+                                NotificationCenter.default.post(
+                                    name: Notification.Name(rawValue: NotificationNames.myCardVCUpdateMyCard.rawValue),
+                                    object: nil
+                                )
+                            }
+                            
+                        case .failure: break
+                            
+                        }
+                        
+                    }
             )
-
-            strongSelf.myCardObjects.remove(at: indexPath.item)
-
-            DispatchQueue.main.async { [weak self] in
-
-                strongSelf.collectionView.reloadData()
-            }
-            
-//            NotificationCenter.default.post(
-//                name: Notification.Name(rawValue: NotificationNames.updateMyCard.rawValue),
-//                object: nil
-//            )
+        
         }
 //        walletCell.backgroundColor = self.cardArray[indexPath.item].color
 //        walletCell.iconImageView?.image = self.cardArray[indexPath.item].icon

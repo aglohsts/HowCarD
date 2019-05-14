@@ -222,7 +222,7 @@ class HCFirebaseManager {
     }
     
 // swiftlint:disable cyclomatic_complexity
-    func deleteId(userCollection: UserCollection, uid: String, id: String) {
+    func deleteId(userCollection: UserCollection, uid: String, id: String, completion: ((Result<Void>) -> Void)? = nil) {
         
         switch userCollection {
             
@@ -349,6 +349,8 @@ class HCFirebaseManager {
                                 .document(document.documentID).delete()
                         })
                     }
+                    
+                    completion?(Result.success(()))
             }
             
             guard let index = myCardIds.firstIndex(of: id) else { return }

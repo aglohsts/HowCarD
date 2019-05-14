@@ -88,7 +88,7 @@ extension HCFirebaseManager {
         
     }
     
-    func setMyCard(uid: String, id: String, nickname: String?, needBillRemind: Bool, billDueDate: Int?) {
+    func setMyCard(uid: String, id: String, nickname: String?, needBillRemind: Bool, billDueDate: Int?, completion: (() -> Void)? = nil) {
         
         firestoreRef(to: .users).document(uid)
             .collection(UserCollection.myCards.rawValue)
@@ -114,11 +114,15 @@ extension HCFirebaseManager {
                         )
                     })
                 }
+    
+                completion?()
         }
     }
     
     func getMyCardInfo(uid: String, userCollection: UserCollection = .myCards, completion: @escaping ([MyCardObject]) -> Void) {
 
+        myCardObjects = []
+        
         if userCollection == .myCards {
             
             getId(uid: uid, userCollection: .myCards, completion: { [weak self] (myCardIds) in
@@ -139,8 +143,6 @@ extension HCFirebaseManager {
                                 for document in querySnapshot!.documents {
                                     print("\(document.documentID) => \(document.data())")
                                 }
-                                
-                                strongSelf.group.leave()
                                 
                                 querySnapshot!.documents.forEach({ [weak self] (document) in
                                     
@@ -173,6 +175,8 @@ extension HCFirebaseManager {
                                             
                                         })
                                 })
+                                
+                                strongSelf.group.leave()
                             }
                     }
                 }

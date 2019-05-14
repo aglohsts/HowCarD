@@ -291,7 +291,7 @@ class CardDetailViewController: HCBaseViewController {
             
             
             NotificationCenter.default.post(
-                name: Notification.Name(rawValue: NotificationNames.updateMyCard.rawValue),
+                name: Notification.Name(rawValue: NotificationNames.cardVCUpdateMyCard.rawValue),
                 object: nil
             )
             
@@ -403,7 +403,7 @@ extension CardDetailViewController {
             .addObserver(
                 self,
                 selector: #selector(updateMyCard),
-                name: NSNotification.Name(NotificationNames.updateMyCard.rawValue),
+                name: NSNotification.Name(NotificationNames.cardVCUpdateMyCard.rawValue),
                 object: nil
         )
     }
