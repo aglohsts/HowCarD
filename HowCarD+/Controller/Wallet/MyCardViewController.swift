@@ -11,7 +11,7 @@ import HFCardCollectionViewLayout
 
 protocol MyCardVCUpdateBillInfoDelegate: AnyObject {
     
-    func updateBillInfo(indexPath: IndexPath, myCardObject: MyCardObject)
+    func updateBillInfo(myCardObject: MyCardObject)
 }
 
 struct CardInfo {
@@ -88,9 +88,9 @@ class MyCardViewController: UIViewController, MyCardVCUpdateBillInfoDelegate {
         
     }
     
-    func updateBillInfo(indexPath: IndexPath, myCardObject: MyCardObject) {
+    func updateBillInfo(myCardObject: MyCardObject) {
         
-        myCardObjects[indexPath.row] = myCardObject
+        myCardObjects[0] = myCardObject
         
         print(myCardObjects)
     }
@@ -263,6 +263,12 @@ extension MyCardViewController: HFCardCollectionViewLayoutDelegate, UICollection
             imageIcon: "",
             myCardObject: myCardObjects[indexPath.row])
         
+        walletCell.updateMyCardInfoHandler = { [weak self] (updateCardObject) in
+            
+            self?.myCardObjects[indexPath.item] = updateCardObject
+            
+            print(self?.myCardObjects)
+        }
 //        walletCell.backgroundColor = self.cardArray[indexPath.item].color
 //        walletCell.iconImageView?.image = self.cardArray[indexPath.item].icon
         

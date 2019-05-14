@@ -25,14 +25,10 @@ class BillDueDateTableViewCell: UITableViewCell {
             self.reloadInputViews()
         }
     }
-    
-    var selectedDate: Int? = 1
-    
-    @objc dynamic var inputText: String?
 
     @IBOutlet weak var billDueDateTextField: UITextField!
     
-    var billDueDateUpdateHandler: ((Int?) -> Void)?
+    var billDueDateUpdateHandler: ((MyCardObject) -> Void)?
     
     var needBillRemind: Bool = true {
         
@@ -50,7 +46,10 @@ class BillDueDateTableViewCell: UITableViewCell {
                 
                 billDueDateTextField.text = nil
                 
-                selectedDate = nil
+                if myCardObject != nil {
+                    
+                    myCardObject?.billInfo.billDueDate = nil
+                }
             }
         }
     }
@@ -59,7 +58,6 @@ class BillDueDateTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         createPickerView()
-        updateDateKVO()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -72,19 +70,19 @@ class BillDueDateTableViewCell: UITableViewCell {
 
 extension BillDueDateTableViewCell {
     
-    func layoutCell(dueDate: Int?, needBillRemind: Bool) {
+    func layoutCell(myCardObject: MyCardObject) {
         
-        self.selectedDate = dueDate
-        
-        if selectedDate == nil {
+        if myCardObject.billInfo.billDueDate == nil {
 
             billDueDateTextField.text = nil
         } else {
 
-            billDueDateTextField.text = String(selectedDate!)
+            billDueDateTextField.text = String(myCardObject.billInfo.billDueDate!)
         }
 
-        self.needBillRemind = needBillRemind
+        self.needBillRemind = myCardObject.billInfo.needBillRemind
+        
+        self.myCardObject = myCardObject
     }
     
     func createPickerView() {
@@ -94,29 +92,6 @@ extension BillDueDateTableViewCell {
         pickerView.delegate = self
         
         billDueDateTextField.inputView = pickerView
-    }
-    
-    func updateDateKVO() {
-        
-        if dueDateObservationToken != nil {
-            
-            return
-        }
-        
-        dueDateObservationToken =  observe(\.inputText, options: [.new]) { [weak self] (strongSelf, change) in
-            // return token
-            
-            guard let updatedDate = change.newValue else { return }
-            
-            if updatedDate == nil {
-                
-                self?.billDueDateUpdateHandler?(nil)
-            } else {
-                
-                self?.billDueDateUpdateHandler?(Int(updatedDate!))
-            }
-        }
-        
     }
 }
 
@@ -129,13 +104,15 @@ extension BillDueDateTableViewCell: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        selectedDate = dates[row]
+        myCardObject?.billInfo.billDueDate = dates[row]
         
-        guard let date = selectedDate else { return }
+        guard let date = myCardObject?.billInfo.billDueDate else { return }
         
         billDueDateTextField.text = String(date)
         
-        inputText = billDueDateTextField.text
+        guard let object = myCardObject else { return }
+        
+        billDueDateUpdateHandler?(object)
     }
 }
 

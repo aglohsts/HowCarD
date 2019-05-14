@@ -12,7 +12,7 @@ class BillRemindTableViewCell: UITableViewCell {
     
     @IBOutlet weak var billRemindSwitch: UISwitch!
     
-    var selectedDate: Int? = 1
+    var myCardObject: MyCardObject?
     
     var needBillRemind: Bool = true {
 
@@ -28,7 +28,7 @@ class BillRemindTableViewCell: UITableViewCell {
         }
     }
     
-    var billRemindSwitchDidTouchHandler: ((Bool, Int?) -> Void)?
+    var billRemindSwitchDidTouchHandler: ((MyCardObject) -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,54 +43,27 @@ class BillRemindTableViewCell: UITableViewCell {
     
     @IBAction func onBillRemindSwitch(_ sender: UISwitch) {
         
-        if sender.isOn {
+        needBillRemind = !needBillRemind
+        
+        myCardObject?.billInfo.needBillRemind = needBillRemind
+        
+        if needBillRemind == false {
             
-//            billDueDateTextField.isUserInteractionEnabled = true
-//
-//            billDueDateView.backgroundColor = UIColor.tint?.withAlphaComponent(1.0)
-            
-            needBillRemind = true
-            
-            selectedDate = 1
-//
-//            guard let dueDate = selectedDate else { return }
-//
-//            billDueDateTextField.text = String(dueDate)
-            
-            //Notification Center
-//            NotificationCenter.default.post(
-//                name: Notification.Name(rawValue: NotificationNames.updateBillInfo.rawValue),
-//                object: nil
-//            )
-//            updatedDate = 1
-            
-            billRemindSwitchDidTouchHandler?(needBillRemind, selectedDate)
-            
+            myCardObject?.billInfo.billDueDate = nil
         } else {
             
-//            billDueDateTextField.isUserInteractionEnabled = false
-//
-//            billDueDateView.backgroundColor = UIColor.tint?.withAlphaComponent(0.5)
-            
-            needBillRemind = false
-            
-            selectedDate = nil
-//
-//            billDueDateTextField.text = nil
-            
-            //Notification Center
-//            NotificationCenter.default.post(
-//                name: Notification.Name(rawValue: NotificationNames.updateBillInfo.rawValue),
-//                object: nil
-//            )
-//            updatedDate = nil
-            
-            billRemindSwitchDidTouchHandler?(needBillRemind, selectedDate)
+            myCardObject?.billInfo.billDueDate = 1
         }
+        
+        guard let object = myCardObject else { return }
+        
+        billRemindSwitchDidTouchHandler?(object)
     }
     
-    func layoutCell(needBillRemind: Bool) {
+    func layoutCell(myCardObject: MyCardObject) {
         
-        self.needBillRemind = needBillRemind
+        self.myCardObject = myCardObject
+        
+        self.needBillRemind = myCardObject.billInfo.needBillRemind
     }
 }

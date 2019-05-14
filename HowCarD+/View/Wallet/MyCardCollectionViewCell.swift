@@ -14,6 +14,8 @@ class WalletCollectionViewCell: HFCardCollectionViewCell {
     
     var cardCollectionViewLayout: HFCardCollectionViewLayout?
     
+    var updateMyCardInfoHandler: ((MyCardObject) -> Void)?
+    
     weak var myCardVCUpdateBillInfoDelegate: MyCardVCUpdateBillInfoDelegate?
 
     @IBOutlet var tableView: UITableView? {
@@ -100,22 +102,26 @@ extension WalletCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
             
             guard let billRemindCell = cell as? BillRemindTableViewCell else { return UITableViewCell() }
             
-            billRemindCell.layoutCell(needBillRemind: myCardObject?.billInfo.needBillRemind ?? false)
+            if myCardObject != nil {
+                
+                billRemindCell.layoutCell(myCardObject: myCardObject!)
+            }
             
-            billRemindCell.billRemindSwitchDidTouchHandler = { [weak self] (needBillRemind, updatedDate) in
+            billRemindCell.billRemindSwitchDidTouchHandler = { [weak self] (myCardObject) in
                 
                 guard let strongSelf = self else { return }
                 
-                strongSelf.myCardObject?.billInfo.needBillRemind = needBillRemind
+                strongSelf.myCardObject? = myCardObject
+//
+//                guard let myCardObject = strongSelf.myCardObject else { return }
                 
-                strongSelf.myCardObject?.billInfo.billDueDate = updatedDate
+//                print(indexPath)
                 
-                guard let myCardObject = strongSelf.myCardObject else { return }
+//                strongSelf.myCardVCUpdateBillInfoDelegate?.updateBillInfo(
+//                    myCardObject: myCardObject
+//                )
                 
-                strongSelf.myCardVCUpdateBillInfoDelegate?.updateBillInfo(
-                    indexPath: indexPath,
-                    myCardObject: myCardObject
-                )
+                strongSelf.updateMyCardInfoHandler?(myCardObject)
             }
             
             return billRemindCell
@@ -129,22 +135,26 @@ extension WalletCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
             
             guard let billDueDateCell = cell as? BillDueDateTableViewCell else { return UITableViewCell() }
             
-            billDueDateCell.layoutCell(
-                dueDate: myCardObject?.billInfo.billDueDate,
-                needBillRemind: myCardObject?.billInfo.needBillRemind ?? false)
+            if myCardObject != nil {
+                
+                billDueDateCell.layoutCell(myCardObject: myCardObject!)
+            }
             
-            billDueDateCell.billDueDateUpdateHandler = { [weak self] (updatedDate) in
+            billDueDateCell.billDueDateUpdateHandler = { [weak self] (myCardObject) in
                 
                 guard let strongSelf = self else { return }
                 
-                strongSelf.myCardObject?.billInfo.billDueDate = updatedDate
+                strongSelf.myCardObject = myCardObject
                 
-                guard let myCardObject = strongSelf.myCardObject else { return }
+//                guard let myCardObject = strongSelf.myCardObject else { return }
+//
+//                print(indexPath)
+//
+//                strongSelf.myCardVCUpdateBillInfoDelegate?.updateBillInfo(
+//                    myCardObject: myCardObject
+//                )
                 
-                strongSelf.myCardVCUpdateBillInfoDelegate?.updateBillInfo(
-                    indexPath: indexPath,
-                    myCardObject: myCardObject
-                )
+                strongSelf.updateMyCardInfoHandler?(myCardObject)
             }
             
             return billDueDateCell
