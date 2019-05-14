@@ -89,7 +89,6 @@ class AddMyCardViewController: UIViewController {
         
         let nickname = cardNickNameTextField.text == "" ? nil : cardNickNameTextField.text
         
-        
         addMyCardCompletionHandler?(nickname, needBillRemind, selectedDate)
         
         self.parent?.navigationController?.setNavigationBarHidden(false, animated: false)

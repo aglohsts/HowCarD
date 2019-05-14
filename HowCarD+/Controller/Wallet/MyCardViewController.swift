@@ -9,11 +9,6 @@
 import UIKit
 import HFCardCollectionViewLayout
 
-protocol MyCardVCUpdateBillInfoDelegate: AnyObject {
-    
-    func updateBillInfo(myCardObject: MyCardObject)
-}
-
 struct CardInfo {
     var color: UIColor
     var icon: UIImage
@@ -41,18 +36,9 @@ struct CardLayoutSetupOptions {
     var numberOfCards: Int = 15
 }
 
-class MyCardViewController: UIViewController, MyCardVCUpdateBillInfoDelegate {
+class MyCardViewController: UIViewController {
     
-    var myCardObjects: [MyCardObject] = [] {
-        
-        didSet {
-            
-            DispatchQueue.main.async { [weak self] in
-                
-                self?.collectionView.reloadData()
-            }
-        }
-    }
+    var myCardObjects: [MyCardObject] = []
     
     @IBOutlet weak var collectionView: UICollectionView! {
         
@@ -83,16 +69,9 @@ class MyCardViewController: UIViewController, MyCardVCUpdateBillInfoDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        // TODO: 1. 修改原本物件 2. 寫東西到Firebase
+        // TODO: 寫東西到Firebase
         
         
-    }
-    
-    func updateBillInfo(myCardObject: MyCardObject) {
-        
-        myCardObjects[0] = myCardObject
-        
-        print(myCardObjects)
     }
     
     // MARK: Actions
@@ -134,6 +113,11 @@ extension MyCardViewController {
             
             self?.myCardObjects = myCardObjects
             
+            
+            DispatchQueue.main.async { [weak self] in
+                
+                self?.collectionView.reloadData()
+            }
             print(self?.myCardObjects)
         })
     }
@@ -255,8 +239,6 @@ extension MyCardViewController: HFCardCollectionViewLayoutDelegate, UICollection
         )
         
         guard let walletCell = cell as? WalletCollectionViewCell else { return cell }
-        
-        walletCell.myCardVCUpdateBillInfoDelegate = self
         
         walletCell.layoutCell(
             cardName: myCardObjects[indexPath.row].billInfo.cardNickname ?? "OO卡",

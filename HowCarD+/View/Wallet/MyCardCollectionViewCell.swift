@@ -15,8 +15,6 @@ class WalletCollectionViewCell: HFCardCollectionViewCell {
     var cardCollectionViewLayout: HFCardCollectionViewLayout?
     
     var updateMyCardInfoHandler: ((MyCardObject) -> Void)?
-    
-    weak var myCardVCUpdateBillInfoDelegate: MyCardVCUpdateBillInfoDelegate?
 
     @IBOutlet var tableView: UITableView? {
         
@@ -33,16 +31,7 @@ class WalletCollectionViewCell: HFCardCollectionViewCell {
     @IBOutlet var backView: UIView?
     @IBOutlet var buttonFlipBack: UIButton?
     
-    var myCardObject: MyCardObject? {
-        
-        didSet {
-            
-            DispatchQueue.main.async { [weak self] in
-                
-                self?.tableView?.reloadData()
-            }
-        }
-    }
+    var myCardObject: MyCardObject?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -112,14 +101,6 @@ extension WalletCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
                 guard let strongSelf = self else { return }
                 
                 strongSelf.myCardObject? = myCardObject
-//
-//                guard let myCardObject = strongSelf.myCardObject else { return }
-                
-//                print(indexPath)
-                
-//                strongSelf.myCardVCUpdateBillInfoDelegate?.updateBillInfo(
-//                    myCardObject: myCardObject
-//                )
                 
                 strongSelf.updateMyCardInfoHandler?(myCardObject)
             }
@@ -145,14 +126,6 @@ extension WalletCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
                 guard let strongSelf = self else { return }
                 
                 strongSelf.myCardObject = myCardObject
-                
-//                guard let myCardObject = strongSelf.myCardObject else { return }
-//
-//                print(indexPath)
-//
-//                strongSelf.myCardVCUpdateBillInfoDelegate?.updateBillInfo(
-//                    myCardObject: myCardObject
-//                )
                 
                 strongSelf.updateMyCardInfoHandler?(myCardObject)
             }

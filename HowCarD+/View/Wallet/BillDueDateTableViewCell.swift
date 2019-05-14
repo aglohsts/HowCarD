@@ -18,13 +18,7 @@ class BillDueDateTableViewCell: UITableViewCell {
           21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
     ]
     
-    var myCardObject: MyCardObject? {
-        
-        didSet {
-            
-            self.reloadInputViews()
-        }
-    }
+    var myCardObject: MyCardObject?
 
     @IBOutlet weak var billDueDateTextField: UITextField!
     
@@ -105,13 +99,13 @@ extension BillDueDateTableViewCell: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         myCardObject?.billInfo.billDueDate = dates[row]
-        
+
         guard let date = myCardObject?.billInfo.billDueDate else { return }
-        
+
         billDueDateTextField.text = String(date)
-        
+
         guard let object = myCardObject else { return }
-        
+
         billDueDateUpdateHandler?(object)
     }
 }
