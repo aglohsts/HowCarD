@@ -35,7 +35,20 @@ class WalletViewController: HCBaseViewController {
     
     @IBOutlet weak var indicatorXConstraint: NSLayoutConstraint!
     
-    @IBOutlet var walletButtons: [UIButton]!
+    @IBOutlet var walletButtons: [UIButton]! {
+        
+        didSet {
+            
+            walletButtons[0].setImage(UIImage.asset(.Icons_MyCard_Normal), for: .normal)
+            walletButtons[0].setImage(UIImage.asset(.Icons_MyCard_Selected), for: .selected)
+            
+            walletButtons[1].setImage(UIImage.asset(.Icons_LikedDiscount_Normal), for: .normal)
+            walletButtons[1].setImage(UIImage.asset(.Icons_LikedDiscount_Selected), for: .selected)
+            
+            walletButtons[2].setImage(UIImage.asset(.Icons_CollectedCard_Normal), for: .normal)
+            walletButtons[2].setImage(UIImage.asset(.Icons_CollectedCard_Selected), for: .selected)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,45 +73,43 @@ class WalletViewController: HCBaseViewController {
         scrollView.contentSize = CGSize(
             width: UIScreen.width * 3,
             height: UIScreen.height - topView.frame.height - statusBarHeight - navigationBarHeight - tabBarHeight)
+        
+        walletButtons[0].isSelected = true
     }
     
     @IBAction func onChangeWalletView(_ sender: UIButton) {
-        
-        switch sender {
             
-        case walletButtons[0]:
-            scrollView.setContentOffset(
-                CGPoint(x: 0, y: 0),
-                animated: true
-            )
+        for button in walletButtons {
             
-        case walletButtons[1]:
-            scrollView.setContentOffset(
-                CGPoint(x: UIScreen.width + 1, y: 0),
-                animated: true
-            )
-        case walletButtons[2]:
-            scrollView.setContentOffset(
-                CGPoint(x: UIScreen.width * 2 + 1, y: 0),
-                animated: true
-            )
-            
-        default: return
+            button.isSelected = false
         }
         
+        sender.isSelected = true
+        
+        moveIndicatorView(toPage: sender.tag)
     }
 }
 
 extension WalletViewController {
+    
+    private func moveIndicatorView(toPage: Int) {
+        
+        indicatorXConstraint.constant = CGFloat(toPage) * UIScreen.width / 3
+        
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            
+            self?.scrollView.contentOffset.x = CGFloat(toPage) * UIScreen.width
+            
+            self?.view.layoutIfNeeded()
+        })
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == Segue.myCard {
             
             guard let myCardVC = segue.destination as? MyCardViewController else { return }
-            
-            
-            
+ 
         } else if segue.identifier == Segue.likedDiscount {
             
             guard let likedDiscountVC = segue.destination as? LikedDiscountViewController else { return }
@@ -120,6 +131,13 @@ extension WalletViewController: UIScrollViewDelegate {
         let temp = Double(scrollView.contentOffset.x / UIScreen.width)
         
         let index = lround(temp)
+        
+        for button in walletButtons {
+            
+            button.isSelected = false
+        }
+        
+        walletButtons[index].isSelected = true
         
         UIView.animate(withDuration: 0.1, animations: { [weak self] in
             

@@ -107,12 +107,12 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7U-1u-If0">
                                         <rect key="frame" x="0.0" y="0.0" width="138" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSH-gt-qOV">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSH-gt-qOV">
                                                 <rect key="frame" x="49" y="5" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="nSH-gt-qOV" secondAttribute="height" multiplier="1:1" id="AXP-TK-CkP"/>
                                                 </constraints>
-                                                <state key="normal" title="MyCards"/>
+                                                <state key="normal" title="MyCards" image="Icons_MyCard_Selected"/>
                                                 <connections>
                                                     <action selector="onChangeWalletView:" destination="V7q-If-gsN" eventType="touchUpInside" id="2V8-2C-Bdk"/>
                                                 </connections>
@@ -803,6 +803,7 @@
         <image name="Icons_CollectedCard_Normal" width="81" height="81"/>
         <image name="Icons_Delete" width="19" height="20"/>
         <image name="Icons_LikedDiscount_Normal" width="81" height="81"/>
+        <image name="Icons_MyCard_Selected" width="81" height="81"/>
         <namedColor name="Tint">
             <color red="0.43529411764705883" green="0.74509803921568629" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -16,7 +16,7 @@ struct CardInfo {
 
 struct CardLayoutSetupOptions {
     var firstMovableIndex: Int = 0
-    var cardHeadHeight: CGFloat = 80
+    var cardHeadHeight: CGFloat = 60
     var cardShouldExpandHeadHeight: Bool = true
     var cardShouldStretchAtScrollTop: Bool = true
     var cardMaximumHeight: CGFloat = 0
@@ -32,8 +32,6 @@ struct CardLayoutSetupOptions {
     var scrollAreaBottom: CGFloat = 120
     var scrollShouldSnapCardHead: Bool = false
     var scrollStopCardsAtTop: Bool = true
-    
-    var numberOfCards: Int = 15
 }
 
 class MyCardViewController: UIViewController {
@@ -58,11 +56,10 @@ class MyCardViewController: UIViewController {
     var cardArray: [CardInfo] = []
     
     override func viewDidLoad() {
-        self.setupExample()
+        self.setupCards()
         super.viewDidLoad()
         
         getMyCardInfo()
-        
         
     }
     
@@ -71,25 +68,9 @@ class MyCardViewController: UIViewController {
         
         // TODO: 寫東西到Firebase
         
-        
     }
     
     // MARK: Actions
-    
-    @IBAction func goBackAction() {
-        _ = self.navigationController?.popViewController(animated: true)
-    }
-    
-    @IBAction func addCardAction() {
-        let index = 0
-        let newItem = createCardInfo()
-        self.cardArray.insert(newItem, at: index)
-        self.collectionView?.insertItems(at: [IndexPath(item: index, section: 0)])
-        
-        if self.cardArray.count == 1 {
-            self.cardCollectionViewLayout?.revealCardAt(index: index)
-        }
-    }
     
     func deleteCardAt(indexPath: IndexPath) {
 //        var index = 0
@@ -127,7 +108,7 @@ extension MyCardViewController {
     
     // MARK: Private Functions
     
-    private func setupExample() {
+    private func setupCards() {
         if let cardCollectionViewLayout = self.collectionView?.collectionViewLayout as? HFCardCollectionViewLayout {
             self.cardCollectionViewLayout = cardCollectionViewLayout
         }
@@ -155,21 +136,8 @@ extension MyCardViewController {
                 = cardLayoutOptions.bottomStackedCardsMinimumScale
             self.cardCollectionViewLayout?.bottomStackedCardsMaximumScale
                 = cardLayoutOptions.bottomStackedCardsMaximumScale
-            
-            let count = cardLayoutOptions.numberOfCards
-            
-            for index in 0..<count {
-                self.cardArray.insert(createCardInfo(), at: index)
-            }
         }
         self.collectionView?.reloadData()
-    }
-    
-    private func createCardInfo() -> CardInfo {
-        let icons: [UIImage] = [#imageLiteral(resourceName: "Icons_24px_Dismiss"), #imageLiteral(resourceName: "Icons_24px_Filter_Filtered"), #imageLiteral(resourceName: "Icons_Next"), #imageLiteral(resourceName: "Icons_36px_DRec_Selected"), #imageLiteral(resourceName: "Icons_Heart_Selected"), #imageLiteral(resourceName: "Icons_36px_Wallet_Selected")]
-        let icon = icons[Int(arc4random_uniform(6))]
-        let newItem = CardInfo(color: self.getRandomColor(), icon: icon)
-        return newItem
     }
     
     private func setupBackgroundView() {
