@@ -18,8 +18,6 @@ class WalletViewController: HCBaseViewController {
         
         static let collectedCard = "collectedCardSegue"
     }
-
-    @IBOutlet weak var myCardBtn: UIButton!
     
     @IBOutlet weak var topView: UIView!
     
@@ -38,13 +36,12 @@ class WalletViewController: HCBaseViewController {
     @IBOutlet var walletButtons: [UIButton]! {
         
         didSet {
-            
             walletButtons[0].setImage(UIImage.asset(.Icons_MyCard_Normal), for: .normal)
             walletButtons[0].setImage(UIImage.asset(.Icons_MyCard_Selected), for: .selected)
-            
+
             walletButtons[1].setImage(UIImage.asset(.Icons_LikedDiscount_Normal), for: .normal)
             walletButtons[1].setImage(UIImage.asset(.Icons_LikedDiscount_Selected), for: .selected)
-            
+
             walletButtons[2].setImage(UIImage.asset(.Icons_CollectedCard_Normal), for: .normal)
             walletButtons[2].setImage(UIImage.asset(.Icons_CollectedCard_Selected), for: .selected)
         }
@@ -102,6 +99,7 @@ extension WalletViewController {
     
     private func moveIndicatorView(toPage: Int) {
         
+        
         indicatorXConstraint.constant = CGFloat(toPage) * UIScreen.width / 3
         
         UIView.animate(withDuration: 0.3, animations: { [weak self] in
@@ -140,9 +138,9 @@ extension WalletViewController: UIScrollViewDelegate {
         
         let index = lround(temp)
         
-        for button in walletButtons {
+        for btn in walletButtons {
             
-            button.isSelected = false
+            btn.isSelected = false
         }
         
         walletButtons[index].isSelected = true
@@ -151,5 +149,20 @@ extension WalletViewController: UIScrollViewDelegate {
             
             self?.view.layoutIfNeeded()
         })
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        for index in 0..<walletButtons.count where walletButtons[index].isSelected {
+            indicatorXConstraint.constant = size.width * CGFloat(index)
+            scrollView.contentOffset.x = size.width * CGFloat(index)
+        }
+        
+        UIView.animate(withDuration: 0.1, animations: { [weak self] in
+            
+            self?.view.layoutIfNeeded()
+        })
+        
     }
 }

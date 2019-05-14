@@ -114,7 +114,7 @@
                                                 </constraints>
                                                 <state key="normal" title="MyCards" image="Icons_MyCard_Selected"/>
                                                 <connections>
-                                                    <action selector="onChangeWalletView:" destination="V7q-If-gsN" eventType="touchUpInside" id="2V8-2C-Bdk"/>
+                                                    <action selector="onChangeWalletView:" destination="V7q-If-gsN" eventType="touchUpInside" id="mW3-mo-o6J"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -128,14 +128,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NBh-tv-hBp">
                                         <rect key="frame" x="138" y="0.0" width="138" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9oh-86-nef">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9oh-86-nef">
                                                 <rect key="frame" x="49" y="5" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="9oh-86-nef" secondAttribute="height" multiplier="1:1" id="N2d-Em-prw"/>
                                                 </constraints>
                                                 <state key="normal" image="Icons_LikedDiscount_Normal"/>
                                                 <connections>
-                                                    <action selector="onChangeWalletView:" destination="V7q-If-gsN" eventType="touchUpInside" id="Tvs-JN-M6Q"/>
+                                                    <action selector="onChangeWalletView:" destination="V7q-If-gsN" eventType="touchUpInside" id="smq-j1-bgw"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -149,14 +149,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qMb-IY-j9C">
                                         <rect key="frame" x="276" y="0.0" width="138" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Moe-4V-Gmb">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Moe-4V-Gmb">
                                                 <rect key="frame" x="49" y="5" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Moe-4V-Gmb" secondAttribute="height" multiplier="1:1" id="M90-b0-MUt"/>
                                                 </constraints>
                                                 <state key="normal" image="Icons_CollectedCard_Normal"/>
                                                 <connections>
-                                                    <action selector="onChangeWalletView:" destination="V7q-If-gsN" eventType="touchUpInside" id="fus-Cb-TcQ"/>
+                                                    <action selector="onChangeWalletView:" destination="V7q-If-gsN" eventType="touchUpInside" id="LG3-Bv-7Yp"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -306,12 +306,11 @@
                     <connections>
                         <outlet property="indicatorView" destination="fSL-IB-G8l" id="FHW-je-iKd"/>
                         <outlet property="indicatorXConstraint" destination="cL6-H8-SsZ" id="XYQ-f3-YbH"/>
-                        <outlet property="myCardBtn" destination="nSH-gt-qOV" id="yex-zk-1Xk"/>
                         <outlet property="scrollView" destination="DbG-4M-0vY" id="iRs-yp-eym"/>
                         <outlet property="topView" destination="zxM-GJ-WqL" id="wmW-sB-cJY"/>
-                        <outletCollection property="walletButtons" destination="nSH-gt-qOV" collectionClass="NSMutableArray" id="QRp-MH-HRm"/>
-                        <outletCollection property="walletButtons" destination="9oh-86-nef" collectionClass="NSMutableArray" id="lxH-n6-z0U"/>
-                        <outletCollection property="walletButtons" destination="Moe-4V-Gmb" collectionClass="NSMutableArray" id="UJG-3A-9Gc"/>
+                        <outletCollection property="walletButtons" destination="nSH-gt-qOV" collectionClass="NSMutableArray" id="uew-4m-d6z"/>
+                        <outletCollection property="walletButtons" destination="9oh-86-nef" collectionClass="NSMutableArray" id="KgH-cH-lMs"/>
+                        <outletCollection property="walletButtons" destination="Moe-4V-Gmb" collectionClass="NSMutableArray" id="21A-d5-yHj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="skM-Ld-OVT" userLabel="First Responder" sceneMemberID="firstResponder"/>

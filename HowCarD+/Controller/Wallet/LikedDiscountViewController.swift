@@ -34,8 +34,6 @@ class LikedDiscountViewController: HCBaseViewController {
     
     var isSearching = false
     
-    var likedDiscountIds: [String] = []
-    
     var discountObjects: [DiscountObject] = []
     
     var userLikedDiscounts: [DiscountInfo] = []
@@ -79,7 +77,7 @@ extension LikedDiscountViewController {
         
         group.notify(queue: .main, execute: {
             
-            self.likedDiscountIds.forEach({ (id) in
+            HCFirebaseManager.shared.likedDiscountIds.forEach({ (id) in
                 
                 for index1 in 0 ..< self.discountObjects.count {
                     
@@ -148,8 +146,6 @@ extension LikedDiscountViewController {
         
         HCFirebaseManager.shared.getId(uid: user.uid, userCollection: .likedDiscounts, completion: { [weak self] ids in
             
-            self?.likedDiscountIds = ids
-            
             self?.group.leave()
         })
     }
@@ -174,13 +170,11 @@ extension LikedDiscountViewController {
     
     @objc func updateLikedDiscount() {
         
-        likedDiscountIds = HCFirebaseManager.shared.likedDiscountIds
-        
         /// 先清空 userLikedDiscounts 再比
         self.userLikedDiscounts = []
         
         /// 比對 id 有哪些 isLike == true，true 的話改物件狀態
-        self.likedDiscountIds.forEach({ (id) in
+        HCFirebaseManager.shared.likedDiscountIds.forEach({ (id) in
             
             for index1 in 0 ..< self.discountObjects.count {
                 
@@ -302,7 +296,40 @@ extension LikedDiscountViewController: UITableViewDataSource {
             )
         }
         
-        
+        likedDiscountCell.deleteDidTouchHandler = { [weak self] in
+            
+            guard let strongSelf = self,
+                let user = HCFirebaseManager.shared.agAuth().currentUser else {
+                    return
+            }
+            
+//            strongSelf.userLikedDiscounts.remove(at: indexPath.row)
+            
+            if strongSelf.isSearching {
+
+                HCFirebaseManager.shared.deleteId(
+                    userCollection: .likedDiscounts,
+                    uid: user.uid,
+                    id: strongSelf.searchResult[indexPath.row].discountId
+                )
+                
+//                strongSelf.searchResult.remove(at: indexPath.row)
+            } else {
+
+                HCFirebaseManager.shared.deleteId(
+                    userCollection: .likedDiscounts,
+                    uid: user.uid,
+                    id: strongSelf.userLikedDiscounts[indexPath.row].discountId
+                )
+                
+//                strongSelf.userLikedDiscounts.remove(at: indexPath.row)
+            }
+            
+            NotificationCenter.default.post(
+                name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
+                object: nil
+            )
+        }
         
         return likedDiscountCell
     }
@@ -310,29 +337,5 @@ extension LikedDiscountViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         
         return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        if editingStyle == .delete {
-            
-            guard let selectedIndex = self.likedDiscountIds.firstIndex(of: userLikedDiscounts[indexPath.row].discountId),
-                let user = HCFirebaseManager.shared.agAuth().currentUser else {
-                    return   
-            }
-            
-            likedDiscountIds.remove(at: selectedIndex)
-            
-            HCFirebaseManager.shared.deleteId(
-                userCollection: .likedDiscounts,
-                uid: user.uid,
-                id: self.userLikedDiscounts[indexPath.row].discountId
-            )
-            
-            NotificationCenter.default.post(
-                name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
-                object: nil
-            )
-        }
     }
 }

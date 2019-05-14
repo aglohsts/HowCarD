@@ -30,8 +30,6 @@ class CollectedCardViewController: HCBaseViewController {
         }
     }
     
-    var userCollectedCardIds: [String] = []
-    
     let cardProvider = CardProvider()
     
     var cardsBasicInfo: [CardBasicInfoObject] = []
@@ -86,7 +84,7 @@ extension CollectedCardViewController {
             
             // 拿到資料後要比對user收藏的cardID和物件，畫面顯示有收藏的
             
-            self.userCollectedCardIds.forEach({ (id) in
+            HCFirebaseManager.shared.collectedCardIds.forEach({ (id) in
                 
                 for index in 0 ..< self.cardsBasicInfo.count {
                     
@@ -133,8 +131,6 @@ extension CollectedCardViewController {
         
         HCFirebaseManager.shared.getId(uid: user.uid, userCollection: .collectedCards, completion: { [weak self] ids in
             
-            self?.userCollectedCardIds = ids
-            
             self?.group.leave()
         })
     }
@@ -159,13 +155,11 @@ extension CollectedCardViewController {
     
     @objc func updateCollectedCard() {
         
-        userCollectedCardIds = HCFirebaseManager.shared.collectedCardIds
-        
         /// 先清空 userCollectedCards 再比
         self.userCollectedCards = []
         
         /// 比對 id 有哪些 isLike == true，true 的話改物件狀態
-        self.userCollectedCardIds.forEach({ (id) in
+        HCFirebaseManager.shared.collectedCardIds.forEach({ (id) in
             
             for index in 0 ..< self.cardsBasicInfo.count {
                     
@@ -286,8 +280,6 @@ extension CollectedCardViewController: UITableViewDataSource {
                     return
             }
             
-            strongSelf.userCollectedCardIds.remove(at: indexPath.row)
-            
             if strongSelf.isSearching {
                 
                 HCFirebaseManager.shared.deleteId(
@@ -295,6 +287,9 @@ extension CollectedCardViewController: UITableViewDataSource {
                     uid: user.uid,
                     id: strongSelf.searchResult[indexPath.row].id
                 )
+                
+//                strongSelf.searchResult.remove(at: indexPath.row)
+                
             } else {
                 
                 HCFirebaseManager.shared.deleteId(
@@ -302,9 +297,9 @@ extension CollectedCardViewController: UITableViewDataSource {
                     uid: user.uid,
                     id: strongSelf.userCollectedCards[indexPath.row].id
                 )
+                
+//                strongSelf.userCollectedCards.remove(at: indexPath.row)
             }
-            
-            
             
             NotificationCenter.default.post(
                 name: Notification.Name(rawValue: NotificationNames.updateCollectedCard.rawValue),
