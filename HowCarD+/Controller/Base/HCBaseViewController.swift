@@ -135,7 +135,7 @@ class HCBaseViewController: UIViewController {
         view.backgroundColor = UIColor.hexStringToUIColor(hex: hex)
     }
     
-    func setBackgroundColor2(_ color: HCColor = HCColor.viewBackGround) {
+    func setBackgroundColor2(_ color: HCColor = HCColor.viewBackground) {
         
         view.backgroundColor = UIColor(named: color.rawValue)
     }

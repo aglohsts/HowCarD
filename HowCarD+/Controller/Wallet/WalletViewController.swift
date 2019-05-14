@@ -88,6 +88,14 @@ class WalletViewController: HCBaseViewController {
         
         moveIndicatorView(toPage: sender.tag)
     }
+    
+    override func setBackgroundColor2(_ color: HCColor = HCColor.viewBackground) {
+        super.setBackgroundColor2()
+        
+        scrollView.backgroundColor = UIColor.viewBackground
+        
+        topView.backgroundColor = UIColor.viewBackground
+    }
 }
 
 extension WalletViewController {

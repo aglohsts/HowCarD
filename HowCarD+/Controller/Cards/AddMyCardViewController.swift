@@ -28,6 +28,12 @@ class AddMyCardViewController: UIViewController {
     
     @IBOutlet weak var billRemindSwitch: UISwitch!
     
+    @IBOutlet weak var addCardButton: UIButton!
+    
+    @IBOutlet weak var cancelButton: UIButton!
+    
+    @IBOutlet weak var setCardView: UIView!
+    
     var needBillRemind: Bool = true {
         
         didSet {
@@ -54,6 +60,14 @@ class AddMyCardViewController: UIViewController {
         
         view.isOpaque = false
 //        view.backgroundColor = .clear
+        setCardView.roundCorners(
+            [.layerMinXMinYCorner, .layerMaxXMinYCorner],
+            radius: 5.0
+        )
+        
+        addCardButton.isRoundedView()
+        
+        cancelButton.isRoundedView()
     }
     
     @IBAction func onBillRemindSwitch(_ sender: UISwitch) {

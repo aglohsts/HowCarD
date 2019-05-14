@@ -34,7 +34,7 @@ struct CardLayoutSetupOptions {
     var scrollStopCardsAtTop: Bool = true
 }
 
-class MyCardViewController: UIViewController {
+class MyCardViewController: HCBaseViewController {
     
     var myCardObjects: [MyCardObject] = []
     
@@ -82,6 +82,7 @@ class MyCardViewController: UIViewController {
             self.collectionView?.deleteItems(at: [IndexPath(item: indexPath.item, section: 0)])
         })
     }
+    
 }
 
 extension MyCardViewController {

@@ -29,12 +29,18 @@ enum HCColor: String {
     
     case tint = "Tint"
     
-    case viewBackGround = "defaultViewBackground"
+    case viewBackground = "defaultViewBackground"
+    
+    case tintBackground = "TintBackground"
 }
 
 extension UIColor {
     
     static let tint = HCColor(.tint)
+    
+    static let viewBackground = HCColor(.viewBackground)
+    
+    static let tintBackground = HCColor(.tintBackground)
     
     private static func HCColor(_ color: HCColor) -> UIColor? {
         
