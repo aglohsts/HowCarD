@@ -117,6 +117,11 @@ extension MyCardCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
                 strongSelf.myCardObject? = myCardObject
                 
                 strongSelf.updateMyCardInfoHandler?(myCardObject)
+                
+                DispatchQueue.main.async {
+                    
+                    strongSelf.tableView?.reloadData()
+                }
             }
             
             return billRemindCell
@@ -142,6 +147,7 @@ extension MyCardCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
                 strongSelf.myCardObject = myCardObject
                 
                 strongSelf.updateMyCardInfoHandler?(myCardObject)
+
             }
             
             return billDueDateCell

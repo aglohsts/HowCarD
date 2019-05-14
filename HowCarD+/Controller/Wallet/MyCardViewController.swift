@@ -78,6 +78,8 @@ class MyCardViewController: HCBaseViewController {
                 updatedObject: object
             )
         }
+        
+        print("viewWillDisappear")
     }
     
     // MARK: Actions
@@ -230,7 +232,8 @@ extension MyCardViewController: HFCardCollectionViewLayoutDelegate, UICollection
             
             self?.updatedObjects.append(updatedCardObject)
             
-            print(self?.myCardObjects)
+            print("========")
+            print(self?.updatedObjects)
         }
         
         myCardCell.deleteDidTouchHandler = { [weak self] in

@@ -202,18 +202,30 @@ extension HCFirebaseManager {
                         
                         guard let strongSelf = self else { return }
                         
+                        // 拿id
                         strongSelf.firestoreRef(to: .users)
                             .document(uid)
                             .collection(userCollection.rawValue)
                             .document(document.documentID)
                             .collection(MyCardCollection.billInfo.rawValue)
-                            .document()
-                            .updateData([
-                                BillInfo.CodingKeys.cardNickname.rawValue: updatedObject.billInfo.cardNickname,
-                                BillInfo.CodingKeys.needBillRemind.rawValue: updatedObject.billInfo.needBillRemind,
-                                BillInfo.CodingKeys.billDueDate.rawValue: updatedObject.billInfo.billDueDate
-                                ])
-    
+                            .getDocuments(completion: { (querySnapshot, error) in
+                                
+                                // 用 id 更新 billInfo
+                                querySnapshot?.documents.forEach({ (queryDocumentSnapshot) in
+                                    
+                                    strongSelf.firestoreRef(to: .users)
+                                        .document(uid)
+                                        .collection(userCollection.rawValue)
+                                        .document(document.documentID)
+                                        .collection(MyCardCollection.billInfo.rawValue)
+                                        .document(queryDocumentSnapshot.documentID)
+                                        .updateData([
+                                            BillInfo.CodingKeys.cardNickname.rawValue: updatedObject.billInfo.cardNickname,
+                                            BillInfo.CodingKeys.needBillRemind.rawValue: updatedObject.billInfo.needBillRemind,
+                                            BillInfo.CodingKeys.billDueDate.rawValue: updatedObject.billInfo.billDueDate
+                                        ])
+                                })
+                            })
                     })
                 }
             }
