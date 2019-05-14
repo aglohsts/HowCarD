@@ -169,7 +169,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fSL-IB-G8l" userLabel="IndicatorView">
                                         <rect key="frame" x="0.0" y="48" width="138" height="2"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="Tint"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="2" id="x3e-Mt-lWa"/>
                                         </constraints>
@@ -513,7 +513,7 @@
                                                             <rect key="frame" x="368" y="42.5" width="44" height="44"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ixz-iQ-DLX">
-                                                                    <rect key="frame" x="12.5" y="11" width="19" height="22"/>
+                                                                    <rect key="frame" x="14" y="11" width="16" height="22"/>
                                                                     <state key="normal" image="Icons_Delete"/>
                                                                     <connections>
                                                                         <action selector="onDelete:" destination="pK4-Ts-YXL" eventType="touchUpInside" id="Cf7-jq-0vR"/>
@@ -611,7 +611,7 @@
                                             <subviews>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="67" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sHu-ho-y5B">
                                                     <rect key="frame" x="0.0" y="80" width="338" height="238"/>
-                                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="BillRemindTableViewCell" rowHeight="67" id="hXc-Pu-bNI" customClass="BillRemindTableViewCell" customModule="HowCarD" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="28" width="338" height="67"/>
@@ -639,6 +639,7 @@
                                                                     <constraint firstAttribute="trailing" secondItem="SeE-7x-AOe" secondAttribute="trailing" constant="16" id="kBL-cf-7wQ"/>
                                                                 </constraints>
                                                             </tableViewCellContentView>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <connections>
                                                                 <outlet property="billRemindSwitch" destination="SeE-7x-AOe" id="OIS-qt-IpO"/>
                                                             </connections>
@@ -689,6 +690,7 @@
                                                                     <constraint firstItem="o3I-pl-jyA" firstAttribute="leading" secondItem="WIy-T1-Wck" secondAttribute="trailing" constant="8" id="hGb-ee-rot"/>
                                                                 </constraints>
                                                             </tableViewCellContentView>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <connections>
                                                                 <outlet property="billDueDateTextField" destination="o3I-pl-jyA" id="Y7g-Zi-6Ya"/>
                                                             </connections>
@@ -708,28 +710,28 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="f41-fA-l6l"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FHh-AA-mNc">
-                                                    <rect key="frame" x="272" y="20" width="46" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FHh-AA-mNc">
+                                                    <rect key="frame" x="303" y="20" width="19" height="22"/>
+                                                    <state key="normal" image="Icons_Delete"/>
                                                     <connections>
                                                         <action selector="onDelete:" destination="KKY-rJ-2XT" eventType="touchUpInside" id="Sfz-BR-mhK"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="0.43642729920000001" green="0.43642729920000001" blue="0.43642729920000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" name="TintBackground"/>
                                         <constraints>
                                             <constraint firstItem="sHu-ho-y5B" firstAttribute="leading" secondItem="KKY-rJ-2XT" secondAttribute="leading" id="9cK-O5-1bd"/>
+                                            <constraint firstAttribute="trailing" secondItem="FHh-AA-mNc" secondAttribute="trailing" constant="16" id="EID-e2-1WD"/>
                                             <constraint firstItem="sHu-ho-y5B" firstAttribute="top" secondItem="KKY-rJ-2XT" secondAttribute="top" constant="80" id="FVr-3g-Dn2"/>
                                             <constraint firstItem="qBe-rC-lkm" firstAttribute="leading" secondItem="p5e-Th-3tU" secondAttribute="trailing" constant="15" id="RUj-bz-x0k"/>
                                             <constraint firstAttribute="bottom" secondItem="sHu-ho-y5B" secondAttribute="bottom" id="T1L-4T-bvU"/>
                                             <constraint firstItem="p5e-Th-3tU" firstAttribute="leading" secondItem="KKY-rJ-2XT" secondAttribute="leadingMargin" constant="7" id="URJ-5x-hgp"/>
                                             <constraint firstItem="p5e-Th-3tU" firstAttribute="top" secondItem="KKY-rJ-2XT" secondAttribute="top" constant="20" id="qBX-pm-dQC"/>
+                                            <constraint firstItem="FHh-AA-mNc" firstAttribute="top" secondItem="KKY-rJ-2XT" secondAttribute="top" constant="20" id="rc8-NJ-wcV"/>
                                             <constraint firstAttribute="trailing" secondItem="sHu-ho-y5B" secondAttribute="trailing" id="sEl-3F-8qi"/>
                                             <constraint firstItem="qBe-rC-lkm" firstAttribute="centerY" secondItem="p5e-Th-3tU" secondAttribute="centerY" id="ubW-85-OCa"/>
                                             <constraint firstAttribute="trailing" secondItem="qBe-rC-lkm" secondAttribute="trailing" constant="20" id="x6A-Dc-gbp"/>
@@ -806,6 +808,9 @@
         <image name="Icons_MyCard_Selected" width="81" height="81"/>
         <namedColor name="Tint">
             <color red="0.43529411764705883" green="0.74509803921568629" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="TintBackground">
+            <color red="0.83529411764705885" green="0.92549019607843142" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

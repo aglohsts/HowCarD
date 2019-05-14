@@ -209,7 +209,7 @@ extension MyCardViewController: HFCardCollectionViewLayoutDelegate, UICollection
         guard let myCardCell = cell as? MyCardCollectionViewCell else { return cell }
         
         myCardCell.layoutCell(
-            cardName: myCardObjects[indexPath.row].billInfo.cardNickname ?? "OO卡",
+            cardName: myCardObjects[indexPath.row].billInfo.cardNickname ?? "我的信用卡",
             imageIcon: "",
             myCardObject: myCardObjects[indexPath.row])
         

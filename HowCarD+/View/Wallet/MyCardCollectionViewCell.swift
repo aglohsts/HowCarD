@@ -36,15 +36,13 @@ class MyCardCollectionViewCell: HFCardCollectionViewCell {
     var myCardObject: MyCardObject?
     
     override func awakeFromNib() {
-        super.awakeFromNib()
-        self.tableView?.scrollsToTop = false
+        super.awakeFromNib()  
         
 //        self.tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "TableCell")
-        
-        self.tableView?.allowsSelectionDuringEditing = false
-        self.tableView?.reloadData()
-        
+ 
         setupCell()
+        
+        setupTableView()
     }
     
     func cardIsRevealed(_ isRevealed: Bool) {
@@ -63,7 +61,7 @@ extension MyCardCollectionViewCell {
         
         cardNameLabel.text = cardName
         
-        iconImageView?.loadImage(imageIcon, placeHolder: UIImage.asset(.Icons_36px_Cards_Normal))
+        iconImageView?.loadImage(imageIcon, placeHolder: UIImage.asset(.Icons_36px_Cards_Selected))
         
         self.myCardObject = myCardObject
     }
@@ -73,7 +71,14 @@ extension MyCardCollectionViewCell {
         cardNameLabel.text = ""
     }
     
-    
+    private func setupTableView() {
+        
+        self.tableView?.scrollsToTop = false
+        self.tableView?.allowsSelectionDuringEditing = false
+        self.tableView?.reloadData()
+        
+        self.tableView?.separatorStyle = .none
+    }
 }
 
 extension MyCardCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
