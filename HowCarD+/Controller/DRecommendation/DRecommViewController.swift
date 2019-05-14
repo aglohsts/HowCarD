@@ -97,6 +97,12 @@ class DRecommViewController: HCBaseViewController {
         getData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getData()
+    }
+    
     private func setupTableView() {
         
         tableView.agRegisterHeaderWithNib(

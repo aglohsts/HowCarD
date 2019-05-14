@@ -51,15 +51,15 @@ class DiscountsViewController: HCBaseViewController {
         discountAddObserver()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-//        tableView.reloadData()
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getData()
     }
     
     override func setBackgroundColor(_ hex: HCColorHex = HCColorHex.viewBackground) {

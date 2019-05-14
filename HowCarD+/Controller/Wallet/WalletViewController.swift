@@ -51,6 +51,8 @@ class WalletViewController: HCBaseViewController {
         super.viewDidLoad()
 
         setupScrollView()
+        
+        setNavBar()
     }
     
     func setupScrollView() {
@@ -96,6 +98,87 @@ class WalletViewController: HCBaseViewController {
 }
 
 extension WalletViewController {
+    
+    private func setNavBar() {
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage.asset(.Icons_24px_Signout),
+            style: .plain,
+            target: self,
+            action: #selector(onSignOut))
+    }
+    
+    @objc private func onSignOut() {
+        
+        signOut()
+        
+        
+        
+        let tab = tabBarController
+        CATransaction.begin()
+        navigationController?.popToRootViewController(animated: true)
+        CATransaction.setCompletionBlock({
+            tab?.selectedIndex = 0
+        })
+        CATransaction.commit()
+    }
+    
+    func signOut() {
+        
+        if HCFirebaseManager.shared.agAuth().currentUser != nil {
+            do {
+                try HCFirebaseManager.shared.agAuth().signOut()
+                
+                HCFirebaseManager.shared.likedDiscountIds = []
+                
+                HCFirebaseManager.shared.isReadDiscountIds = []
+                
+                HCFirebaseManager.shared.collectedCardIds = []
+                
+                HCFirebaseManager.shared.myCardIds = []
+                
+                HCFirebaseManager.shared.isReadCardIds = []
+                
+                NotificationCenter.default.post(
+                    name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
+                    object: nil
+                )
+                
+                NotificationCenter.default.post(
+                    name: Notification.Name(rawValue: NotificationNames.updateCollectedCard.rawValue),
+                    object: nil
+                )
+                
+                NotificationCenter.default.post(
+                    name: Notification.Name(rawValue: NotificationNames.updateReadDiscount.rawValue),
+                    object: nil
+                )
+                
+                NotificationCenter.default.post(
+                    name: Notification.Name(rawValue: NotificationNames.updateReadCard.rawValue),
+                    object: nil
+                )
+                
+                NotificationCenter.default.post(
+                    name: Notification.Name(rawValue: NotificationNames.cardVCUpdateMyCard.rawValue),
+                    object: nil
+                )
+                
+                NotificationCenter.default.post(
+                    name: Notification.Name(rawValue: NotificationNames.updateBillInfo.rawValue),
+                    object: nil
+                )
+                
+                NotificationCenter.default.post(
+                    name: Notification.Name(rawValue: NotificationNames.myCardVCUpdateMyCard.rawValue),
+                    object: nil
+                )
+                
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        }
+    }
     
     private func moveIndicatorView(toPage: Int) {
         

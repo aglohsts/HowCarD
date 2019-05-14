@@ -75,7 +75,9 @@ class CardsViewController: HCBaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-  
+        super.viewWillAppear(animated)
+        
+        getData()
     }
 
     private func setNavBar() {
