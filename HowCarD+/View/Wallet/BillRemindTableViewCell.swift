@@ -12,6 +12,8 @@ class BillRemindTableViewCell: UITableViewCell {
     
     @IBOutlet weak var billRemindSwitch: UISwitch!
     
+    var selectedDate: Int? = 1
+    
     var needBillRemind: Bool = true {
 
         didSet {
@@ -25,6 +27,8 @@ class BillRemindTableViewCell: UITableViewCell {
             }
         }
     }
+    
+    var billRemindSwitchDidTouchHandler: ((Bool, Int?) -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,17 +51,20 @@ class BillRemindTableViewCell: UITableViewCell {
             
             needBillRemind = true
             
-//            selectedDate = 1
+            selectedDate = 1
 //
 //            guard let dueDate = selectedDate else { return }
 //
 //            billDueDateTextField.text = String(dueDate)
             
             //Notification Center
-            NotificationCenter.default.post(
-                name: Notification.Name(rawValue: NotificationNames.updateBillInfo.rawValue),
-                object: nil
-            )
+//            NotificationCenter.default.post(
+//                name: Notification.Name(rawValue: NotificationNames.updateBillInfo.rawValue),
+//                object: nil
+//            )
+//            updatedDate = 1
+            
+            billRemindSwitchDidTouchHandler?(needBillRemind, selectedDate)
             
         } else {
             
@@ -67,15 +74,18 @@ class BillRemindTableViewCell: UITableViewCell {
             
             needBillRemind = false
             
-//            selectedDate = nil
+            selectedDate = nil
 //
 //            billDueDateTextField.text = nil
             
             //Notification Center
-            NotificationCenter.default.post(
-                name: Notification.Name(rawValue: NotificationNames.updateBillInfo.rawValue),
-                object: nil
-            )
+//            NotificationCenter.default.post(
+//                name: Notification.Name(rawValue: NotificationNames.updateBillInfo.rawValue),
+//                object: nil
+//            )
+//            updatedDate = nil
+            
+            billRemindSwitchDidTouchHandler?(needBillRemind, selectedDate)
         }
     }
     

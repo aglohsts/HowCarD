@@ -9,6 +9,11 @@
 import UIKit
 import HFCardCollectionViewLayout
 
+protocol MyCardVCUpdateBillInfoDelegate: AnyObject {
+    
+    func updateBillInfo(indexPath: IndexPath, myCardObject: MyCardObject)
+}
+
 struct CardInfo {
     var color: UIColor
     var icon: UIImage
@@ -36,7 +41,7 @@ struct CardLayoutSetupOptions {
     var numberOfCards: Int = 15
 }
 
-class MyCardViewController: UIViewController {
+class MyCardViewController: UIViewController, MyCardVCUpdateBillInfoDelegate {
     
     var myCardObjects: [MyCardObject] = [] {
         
@@ -71,6 +76,23 @@ class MyCardViewController: UIViewController {
         super.viewDidLoad()
         
         getMyCardInfo()
+        
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // TODO: 1. 修改原本物件 2. 寫東西到Firebase
+        
+        
+    }
+    
+    func updateBillInfo(indexPath: IndexPath, myCardObject: MyCardObject) {
+        
+        myCardObjects[indexPath.row] = myCardObject
+        
+        print(myCardObjects)
     }
     
     // MARK: Actions
@@ -233,6 +255,8 @@ extension MyCardViewController: HFCardCollectionViewLayoutDelegate, UICollection
         )
         
         guard let walletCell = cell as? WalletCollectionViewCell else { return cell }
+        
+        walletCell.myCardVCUpdateBillInfoDelegate = self
         
         walletCell.layoutCell(
             cardName: myCardObjects[indexPath.row].billInfo.cardNickname ?? "OO卡",

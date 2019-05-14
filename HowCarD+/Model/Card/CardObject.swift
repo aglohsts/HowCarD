@@ -109,14 +109,14 @@ struct MyCardObject: Codable {
     
     let cardId: String
     
-    let billInfo: BillInfo
+    var billInfo: BillInfo
 }
 
 struct BillInfo: Codable {
     
     var cardNickname: String?
     
-    let needBillRemind: Bool
+    var needBillRemind: Bool
     
     var billDueDate: Int?
     

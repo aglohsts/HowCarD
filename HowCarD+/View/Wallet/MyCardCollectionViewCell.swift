@@ -13,6 +13,8 @@ import HFCardCollectionViewLayout
 class WalletCollectionViewCell: HFCardCollectionViewCell {
     
     var cardCollectionViewLayout: HFCardCollectionViewLayout?
+    
+    weak var myCardVCUpdateBillInfoDelegate: MyCardVCUpdateBillInfoDelegate?
 
     @IBOutlet var tableView: UITableView? {
         
@@ -100,6 +102,22 @@ extension WalletCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
             
             billRemindCell.layoutCell(needBillRemind: myCardObject?.billInfo.needBillRemind ?? false)
             
+            billRemindCell.billRemindSwitchDidTouchHandler = { [weak self] (needBillRemind, updatedDate) in
+                
+                guard let strongSelf = self else { return }
+                
+                strongSelf.myCardObject?.billInfo.needBillRemind = needBillRemind
+                
+                strongSelf.myCardObject?.billInfo.billDueDate = updatedDate
+                
+                guard let myCardObject = strongSelf.myCardObject else { return }
+                
+                strongSelf.myCardVCUpdateBillInfoDelegate?.updateBillInfo(
+                    indexPath: indexPath,
+                    myCardObject: myCardObject
+                )
+            }
+            
             return billRemindCell
             
         case 1:
@@ -114,6 +132,20 @@ extension WalletCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
             billDueDateCell.layoutCell(
                 dueDate: myCardObject?.billInfo.billDueDate,
                 needBillRemind: myCardObject?.billInfo.needBillRemind ?? false)
+            
+            billDueDateCell.billDueDateUpdateHandler = { [weak self] (updatedDate) in
+                
+                guard let strongSelf = self else { return }
+                
+                strongSelf.myCardObject?.billInfo.billDueDate = updatedDate
+                
+                guard let myCardObject = strongSelf.myCardObject else { return }
+                
+                strongSelf.myCardVCUpdateBillInfoDelegate?.updateBillInfo(
+                    indexPath: indexPath,
+                    myCardObject: myCardObject
+                )
+            }
             
             return billDueDateCell
             
