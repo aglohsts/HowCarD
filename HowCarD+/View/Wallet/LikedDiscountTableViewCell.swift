@@ -18,6 +18,8 @@ class LikedDiscountTableViewCell: HCBaseTableViewCell {
     
     @IBOutlet weak var discountImageView: UIImageView!
     
+    var deleteDidTouchHandler: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -38,4 +40,8 @@ class LikedDiscountTableViewCell: HCBaseTableViewCell {
         discountImageView.loadImage(discountImage, placeHolder: UIImage.asset(.Image_Placeholder2))
     }
 
+    @IBAction func onDelete(_ sender: Any) {
+        
+        deleteDidTouchHandler?()
+    }
 }

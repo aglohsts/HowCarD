@@ -59,7 +59,7 @@ class AddMyCardViewController: UIViewController {
     private func layoutView() {
         
         view.isOpaque = false
-//        view.backgroundColor = .clear
+
         setCardView.roundCorners(
             [.layerMinXMinYCorner, .layerMaxXMinYCorner],
             radius: 5.0
@@ -76,7 +76,7 @@ class AddMyCardViewController: UIViewController {
             
             billDueDateTextField.isUserInteractionEnabled = true
             
-            billDueDateView.backgroundColor = UIColor.tint?.withAlphaComponent(1.0)
+            billDueDateView.backgroundColor = UIColor.tintBackground?.withAlphaComponent(1.0)
             
             needBillRemind = true
             
@@ -89,7 +89,7 @@ class AddMyCardViewController: UIViewController {
             
             billDueDateTextField.isUserInteractionEnabled = false
             
-            billDueDateView.backgroundColor = UIColor.tint?.withAlphaComponent(0.5)
+            billDueDateView.backgroundColor = UIColor.tintBackground?.withAlphaComponent(0.2)
             
             needBillRemind = false
             

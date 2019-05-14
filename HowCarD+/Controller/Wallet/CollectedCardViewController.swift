@@ -22,7 +22,7 @@ class CollectedCardViewController: HCBaseViewController {
         }
     }
     
-    @IBOutlet weak var searchBar: UISearchBar!  {
+    @IBOutlet weak var searchBar: UISearchBar! {
         
         didSet {
             

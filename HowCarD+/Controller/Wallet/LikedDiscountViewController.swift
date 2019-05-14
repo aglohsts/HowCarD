@@ -24,11 +24,32 @@ class LikedDiscountViewController: HCBaseViewController {
         }
     }
     
+    @IBOutlet weak var searchBar: UISearchBar! {
+        
+        didSet {
+            
+            searchBar.delegate = self
+        }
+    }
+    
+    var isSearching = false
+    
     var likedDiscountIds: [String] = []
     
     var discountObjects: [DiscountObject] = []
     
     var userLikedDiscounts: [DiscountInfo] = []
+    
+    var searchResult: [DiscountInfo] = []  {
+        
+        didSet {
+            
+            DispatchQueue.main.async { [weak self] in
+                
+                self?.tableView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -198,6 +219,38 @@ extension LikedDiscountViewController {
     }
 }
 
+extension LikedDiscountViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchText == "" {
+            
+            isSearching = false
+            
+            DispatchQueue.main.async { [weak self] in
+                
+                self?.tableView.reloadData()
+            }
+        } else {
+            
+            searchResult = userLikedDiscounts.filter({
+                
+                $0.bankName.contains(searchText) ||
+                $0.cardName.uppercased().contains(searchText.uppercased()) ||
+                $0.cardName.lowercased().contains(searchText.lowercased()) ||
+                $0.title.uppercased().contains(searchText.uppercased()) ||
+                $0.title.contains(searchText) ||
+                $0.title.lowercased().contains(searchText.lowercased()) ||
+                
+                $0.timePeriod.contains(searchText)
+            })
+            
+            isSearching = true
+        }
+    }
+}
+
+
 extension LikedDiscountViewController: UITableViewDelegate {
     
 }
@@ -206,7 +259,13 @@ extension LikedDiscountViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return userLikedDiscounts.count
+        if isSearching {
+            
+            return searchResult.count
+        } else {
+            
+            return userLikedDiscounts.count
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -223,13 +282,27 @@ extension LikedDiscountViewController: UITableViewDataSource {
         
         guard let likedDiscountCell = cell as? LikedDiscountTableViewCell else { return cell }
         
-        likedDiscountCell.layoutCell(
-            discountTitle: self.userLikedDiscounts[indexPath.row].title,
-            bankName: self.userLikedDiscounts[indexPath.row].bankName,
-            cardName: self.userLikedDiscounts[indexPath.row].cardName,
-            timePeriod: self.userLikedDiscounts[indexPath.row].timePeriod,
-            discountImage: self.userLikedDiscounts[indexPath.row].image
-        )
+        if isSearching {
+            
+            likedDiscountCell.layoutCell(
+                discountTitle: self.searchResult[indexPath.row].title,
+                bankName: self.searchResult[indexPath.row].bankName,
+                cardName: self.searchResult[indexPath.row].cardName,
+                timePeriod: self.searchResult[indexPath.row].timePeriod,
+                discountImage: self.searchResult[indexPath.row].image
+            )
+        } else {
+            
+            likedDiscountCell.layoutCell(
+                discountTitle: self.userLikedDiscounts[indexPath.row].title,
+                bankName: self.userLikedDiscounts[indexPath.row].bankName,
+                cardName: self.userLikedDiscounts[indexPath.row].cardName,
+                timePeriod: self.userLikedDiscounts[indexPath.row].timePeriod,
+                discountImage: self.userLikedDiscounts[indexPath.row].image
+            )
+        }
+        
+        
         
         return likedDiscountCell
     }
