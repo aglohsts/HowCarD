@@ -10,11 +10,13 @@ import UIKit
 import QuartzCore
 import HFCardCollectionViewLayout
 
-class WalletCollectionViewCell: HFCardCollectionViewCell {
+class MyCardCollectionViewCell: HFCardCollectionViewCell {
     
     var cardCollectionViewLayout: HFCardCollectionViewLayout?
     
     var updateMyCardInfoHandler: ((MyCardObject) -> Void)?
+    
+    var deleteDidTouchHandler: (() -> Void)?
 
     @IBOutlet var tableView: UITableView? {
         
@@ -27,9 +29,9 @@ class WalletCollectionViewCell: HFCardCollectionViewCell {
     }
     @IBOutlet var iconImageView: UIImageView?
     @IBOutlet weak var cardNameLabel: UILabel!
+    @IBOutlet weak var deleteButton: UIButton!
     
     @IBOutlet var backView: UIView?
-    @IBOutlet var buttonFlipBack: UIButton?
     
     var myCardObject: MyCardObject?
     
@@ -48,9 +50,14 @@ class WalletCollectionViewCell: HFCardCollectionViewCell {
     func cardIsRevealed(_ isRevealed: Bool) {
         self.tableView?.scrollsToTop = isRevealed
     }
+    
+    @IBAction func onDelete(_ sender: Any) {
+        
+        deleteDidTouchHandler?()
+    }
 }
 
-extension WalletCollectionViewCell {
+extension MyCardCollectionViewCell {
     
     func layoutCell(cardName: String, imageIcon: String, myCardObject: MyCardObject) {
         
@@ -65,9 +72,11 @@ extension WalletCollectionViewCell {
         
         cardNameLabel.text = ""
     }
+    
+    
 }
 
-extension WalletCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
+extension MyCardCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

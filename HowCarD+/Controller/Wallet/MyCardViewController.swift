@@ -204,7 +204,7 @@ extension MyCardViewController: HFCardCollectionViewLayoutDelegate, UICollection
         willRevealCardAtIndex index: Int
         ) {
         if let cell = self.collectionView?
-            .cellForItem(at: IndexPath(item: index, section: 0)) as? WalletCollectionViewCell {
+            .cellForItem(at: IndexPath(item: index, section: 0)) as? MyCardCollectionViewCell {
             
             cell.cardCollectionViewLayout = self.cardCollectionViewLayout
             cell.cardIsRevealed(true)
@@ -216,7 +216,7 @@ extension MyCardViewController: HFCardCollectionViewLayoutDelegate, UICollection
         willUnrevealCardAtIndex index: Int
         ) {
         if let cell = self.collectionView?
-            .cellForItem(at: IndexPath(item: index, section: 0)) as? WalletCollectionViewCell {
+            .cellForItem(at: IndexPath(item: index, section: 0)) as? MyCardCollectionViewCell {
             
             cell.cardCollectionViewLayout = self.cardCollectionViewLayout
             cell.cardIsRevealed(false)
@@ -234,27 +234,32 @@ extension MyCardViewController: HFCardCollectionViewLayoutDelegate, UICollection
         ) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: String(describing: WalletCollectionViewCell.self),
+            withReuseIdentifier: String(describing: MyCardCollectionViewCell.self),
             for: indexPath
         )
         
-        guard let walletCell = cell as? WalletCollectionViewCell else { return cell }
+        guard let myCardCell = cell as? MyCardCollectionViewCell else { return cell }
         
-        walletCell.layoutCell(
+        myCardCell.layoutCell(
             cardName: myCardObjects[indexPath.row].billInfo.cardNickname ?? "OO卡",
             imageIcon: "",
             myCardObject: myCardObjects[indexPath.row])
         
-        walletCell.updateMyCardInfoHandler = { [weak self] (updateCardObject) in
+        myCardCell.updateMyCardInfoHandler = { [weak self] (updateCardObject) in
             
             self?.myCardObjects[indexPath.item] = updateCardObject
             
             print(self?.myCardObjects)
         }
+        
+        myCardCell.deleteDidTouchHandler = {
+            
+            
+        }
 //        walletCell.backgroundColor = self.cardArray[indexPath.item].color
 //        walletCell.iconImageView?.image = self.cardArray[indexPath.item].icon
         
-        return walletCell
+        return myCardCell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
