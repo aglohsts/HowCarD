@@ -183,4 +183,40 @@ extension HCFirebaseManager {
             })
         }
     }
+    
+    func updateMyCardInfo(userCollection: UserCollection = .myCards, uid: String, id: String, updatedObject: MyCardObject) {
+        
+        firestoreRef(to: .users).document(uid)
+            .collection(userCollection.rawValue)
+            .whereField(UserCollectionDataKey.cardId.rawValue, isEqualTo: id)
+            .getDocuments { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        print("\(document.documentID) => \(document.data())")
+                    }
+                    
+                    
+                    querySnapshot!.documents.forEach({ [weak self] (document) in
+                        
+                        guard let strongSelf = self else { return }
+                        
+                        strongSelf.firestoreRef(to: .users)
+                            .document(uid)
+                            .collection(userCollection.rawValue)
+                            .document(document.documentID)
+                            .collection(MyCardCollection.billInfo.rawValue)
+                            .document()
+                            .updateData([
+                                BillInfo.CodingKeys.cardNickname.rawValue: updatedObject.billInfo.cardNickname,
+                                BillInfo.CodingKeys.needBillRemind.rawValue: updatedObject.billInfo.needBillRemind,
+                                BillInfo.CodingKeys.billDueDate.rawValue: updatedObject.billInfo.billDueDate
+                                ])
+    
+                    })
+                }
+            }
+        
+    }
 }

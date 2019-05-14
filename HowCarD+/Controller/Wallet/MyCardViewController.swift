@@ -38,6 +38,8 @@ class MyCardViewController: HCBaseViewController {
     
     var myCardObjects: [MyCardObject] = []
     
+    var updatedObjects:  [MyCardObject] = []
+    
     @IBOutlet weak var collectionView: UICollectionView! {
         
         didSet {
@@ -66,8 +68,16 @@ class MyCardViewController: HCBaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        // TODO: 寫東西到Firebase
+        guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
         
+        for object in updatedObjects {
+            
+            HCFirebaseManager.shared.updateMyCardInfo(
+                uid: user.uid,
+                id: object.cardId,
+                updatedObject: object
+            )
+        }
     }
     
     // MARK: Actions
@@ -214,9 +224,11 @@ extension MyCardViewController: HFCardCollectionViewLayoutDelegate, UICollection
             imageIcon: "",
             myCardObject: myCardObjects[indexPath.row])
         
-        myCardCell.updateMyCardInfoHandler = { [weak self] (updateCardObject) in
+        myCardCell.updateMyCardInfoHandler = { [weak self] (updatedCardObject) in
             
-            self?.myCardObjects[indexPath.item] = updateCardObject
+            self?.myCardObjects[indexPath.item] = updatedCardObject
+            
+            self?.updatedObjects.append(updatedCardObject)
             
             print(self?.myCardObjects)
         }
