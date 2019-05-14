@@ -36,6 +36,12 @@ struct CardLayoutSetupOptions {
 
 class MyCardViewController: HCBaseViewController {
     
+    let cardProvider = CardProvider()
+    
+    let group = DispatchGroup()
+    
+    var cardsBasicInfo: [CardBasicInfoObject] = []
+    
     var myCardObjects: [MyCardObject] = []
     
     var updatedObjects:  [MyCardObject] = []
@@ -61,7 +67,7 @@ class MyCardViewController: HCBaseViewController {
         self.setupCards()
         super.viewDidLoad()
         
-        getMyCardInfo()
+        getData()
         
         myCardAddObserver()
         
@@ -101,7 +107,25 @@ class MyCardViewController: HCBaseViewController {
 
 extension MyCardViewController {
     
+    func getData() {
+        
+        getMyCardInfo()
+        getCardBasicInfo()
+        
+        group.notify(queue: .main, execute: { [weak self] in
+            
+            self?.checkMyCard()
+            
+            DispatchQueue.main.async {
+                
+                self?.collectionView.reloadData()
+            }
+        })
+    }
+    
     func getMyCardInfo() {
+        
+        group.enter()
             
         guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
 
@@ -109,11 +133,33 @@ extension MyCardViewController {
             
             self?.myCardObjects = myCardObjects
             
-            
             DispatchQueue.main.async { [weak self] in
                 
                 self?.collectionView.reloadData()
             }
+            
+            self?.group.leave()
+        })
+    }
+    
+    func getCardBasicInfo() {
+        
+        group.enter()
+        
+        cardProvider.getCardBasicInfo(completion: { [weak self] result in
+            
+            switch result {
+                
+            case .success(let cardsBasicInfo):
+                
+                self?.cardsBasicInfo = cardsBasicInfo
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+            
+            self?.group.leave()
         })
     }
     
@@ -122,17 +168,42 @@ extension MyCardViewController {
         NotificationCenter.default
             .addObserver(
                 self,
-                selector: #selector(updateMyCard),
+                selector: #selector(checkMyCard),
                 name: NSNotification.Name(NotificationNames.updateMyCard.rawValue),
                 object: nil
         )
     }
     
-    @objc func updateMyCard() {
+    @objc func checkMyCard() {
         
-        self.myCardObjects = []
+        /// 比對 id 有哪些 isMyCard == true，true 的話改物件狀態
+        for index in 0 ..< self.cardsBasicInfo.count {
+            
+            if cardsBasicInfo[index].isMyCard != false {
+                
+                cardsBasicInfo[index].isMyCard = false
+            }
+            
+            HCFirebaseManager.shared.myCardIds.forEach ({ (id) in
+                
+                if cardsBasicInfo[index].id == id {
+                    
+                    cardsBasicInfo[index].isMyCard = true
+                }
+            })
+        }
         
-        getMyCardInfo()
+        /// 把卡片名字給 myCardObject
+        for index in 0 ..< myCardObjects.count {
+            
+            cardsBasicInfo.forEach { (cardBasicInfoObject) in
+                
+                if cardBasicInfoObject.id == myCardObjects[index].cardId {
+                    
+                    myCardObjects[index].billInfo.cardName = cardBasicInfoObject.name
+                }
+            }
+        }
     }
     
 }
@@ -242,7 +313,7 @@ extension MyCardViewController: HFCardCollectionViewLayoutDelegate, UICollection
         guard let myCardCell = cell as? MyCardCollectionViewCell else { return cell }
         
         myCardCell.layoutCell(
-            cardName: myCardObjects[indexPath.row].billInfo.cardNickname ?? "我的信用卡",
+            cardName: myCardObjects[indexPath.row].billInfo.cardNickname ?? myCardObjects[indexPath.row].billInfo.cardName,
             imageIcon: "",
             myCardObject: myCardObjects[indexPath.row])
         

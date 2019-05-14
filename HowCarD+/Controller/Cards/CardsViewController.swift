@@ -549,7 +549,6 @@ extension CardsViewController: UITableViewDataSource {
                                     needBillRemind: needBillRemind,
                                     billDueDate: selectedDate
                                 )
-                                
                         })
                         
                     strongSelf.cardsBasicInfo[indexPath.row].isMyCard = !strongSelf.cardsBasicInfo[indexPath.row].isMyCard

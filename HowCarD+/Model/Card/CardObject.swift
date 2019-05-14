@@ -114,6 +114,8 @@ struct MyCardObject: Codable {
 
 struct BillInfo: Codable {
     
+    var cardName: String = "我的卡片"
+    
     var cardNickname: String?
     
     var needBillRemind: Bool
