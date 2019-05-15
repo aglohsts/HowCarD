@@ -8,6 +8,117 @@
 
 /* Begin PBXBuildFile section */
 		CA0379B122781F580093086D /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0379B022781F580093086D /* WalletViewController.swift */; };
+		CA04F96A228BBA2300304868 /* AddMyCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0A31F422852448004F73B3 /* AddMyCardViewController.swift */; };
+		CA04F96B228BBA2300304868 /* CallHelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA13E912227AF26700DA641F /* CallHelpTableViewCell.swift */; };
+		CA04F96C228BBA2300304868 /* DRecommObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1BFCDF226F0B8D008F38BC /* DRecommObject.swift */; };
+		CA04F96D228BBA2300304868 /* DRecommDiscountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6B5E32226E865D00182FFB /* DRecommDiscountTableViewCell.swift */; };
+		CA04F96E228BBA2300304868 /* CardRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6B5C7622675BC300B180A2 /* CardRequest.swift */; };
+		CA04F96F228BBA2300304868 /* DiscountLikedListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE8282225E3CE8004F4E63 /* DiscountLikedListTableViewCell.swift */; };
+		CA04F970228BBA2300304868 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171BA72254C2D60042BBDC /* UICollectionView+Extension.swift */; };
+		CA04F971228BBA2300304868 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0379B022781F580093086D /* WalletViewController.swift */; };
+		CA04F972228BBA2300304868 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2F7DD52256FA0D005E4361 /* UIScreen+Extension.swift */; };
+		CA04F973228BBA2300304868 /* CardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B91225350350042BBDC /* CardsViewController.swift */; };
+		CA04F974228BBA2300304868 /* CardInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2F7DDA22579B8B005E4361 /* CardInfoTableViewCell.swift */; };
+		CA04F975228BBA2300304868 /* CollectedCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF16FAF22748B170013D864 /* CollectedCardTableViewCell.swift */; };
+		CA04F976228BBA2300304868 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE828D22605F99004F4E63 /* SignInViewController.swift */; };
+		CA04F977228BBA2300304868 /* BillRemindTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA376FD2289799D006E32E3 /* BillRemindTableViewCell.swift */; };
+		CA04F978228BBA2300304868 /* QueryDocumentSnapshot+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2D6B0222647BD600C25883 /* QueryDocumentSnapshot+Extension.swift */; };
+		CA04F979228BBA2300304868 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6B5C722267141100B180A2 /* Bundle+Extension.swift */; };
+		CA04F97A228BBA2300304868 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171BAE2255A1120042BBDC /* UIView+Extension.swift */; };
+		CA04F97B228BBA2300304868 /* DRecommCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6B5E2B226E861800182FFB /* DRecommCardTableViewCell.swift */; };
+		CA04F97C228BBA2300304868 /* FilterIconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2F7DD32256F04B005E4361 /* FilterIconCollectionViewCell.swift */; };
+		CA04F97D228BBA2300304868 /* CardDetailContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47A18F225B42C000AD16AF /* CardDetailContentTableViewCell.swift */; };
+		CA04F97E228BBA2300304868 /* DRecommRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25DFD9226E200C003AC89C /* DRecommRequest.swift */; };
+		CA04F97F228BBA2300304868 /* UIViewController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE828B22603F15004F4E63 /* UIViewController+Extention.swift */; };
+		CA04F980228BBA2300304868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B61225330070042BBDC /* AppDelegate.swift */; };
+		CA04F981228BBA2300304868 /* MyCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF16FA422746EEF0013D864 /* MyCardViewController.swift */; };
+		CA04F982228BBA2300304868 /* DRecommViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B8722534F6D0042BBDC /* DRecommViewController.swift */; };
+		CA04F983228BBA2300304868 /* UILabel+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF2CD5F227F91870043CFAD /* UILabel+Extention.swift */; };
+		CA04F984228BBA2300304868 /* ToMoreInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1BFCE1226F0FFC008F38BC /* ToMoreInfoCollectionViewCell.swift */; };
+		CA04F985228BBA2300304868 /* CardObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70B0662261D69D008F631B /* CardObject.swift */; };
+		CA04F986228BBA2300304868 /* BillDueDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA376FF228979AD006E32E3 /* BillDueDateTableViewCell.swift */; };
+		CA04F987228BBA2300304868 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B7C22533D5D0042BBDC /* UIImage+Extension.swift */; };
+		CA04F988228BBA2300304868 /* DRecommCategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1BFCE4226F485C008F38BC /* DRecommCategoryDetailViewController.swift */; };
+		CA04F989228BBA2300304868 /* DRecommTopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171BA52254BED90042BBDC /* DRecommTopViewController.swift */; };
+		CA04F98A228BBA2300304868 /* BankObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE829122607D8F004F4E63 /* BankObject.swift */; };
+		CA04F98B228BBA2300304868 /* LikedDiscountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF16FAD22748B040013D864 /* LikedDiscountTableViewCell.swift */; };
+		CA04F98C228BBA2300304868 /* HCBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171BB12255EDFF0042BBDC /* HCBaseViewController.swift */; };
+		CA04F98D228BBA2300304868 /* WalletViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B93225350450042BBDC /* WalletViewController2.swift */; };
+		CA04F98E228BBA2300304868 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47A183225AF7CD00AD16AF /* CardDetailViewController.swift */; };
+		CA04F98F228BBA2300304868 /* DiscountObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3870692269BC6700D06B90 /* DiscountObject.swift */; };
+		CA04F990228BBA2300304868 /* QAObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA13E915227AF4C900DA641F /* QAObject.swift */; };
+		CA04F991228BBA2300304868 /* DiscountDetailContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE827E225DF304004F4E63 /* DiscountDetailContentTableViewCell.swift */; };
+		CA04F992228BBA2300304868 /* DRecommProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA25DFD7226E1FFC003AC89C /* DRecommProvider.swift */; };
+		CA04F993228BBA2300304868 /* DRecommCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA69860B227ABF1E00437024 /* DRecommCategoryCollectionViewCell.swift */; };
+		CA04F994228BBA2300304868 /* BriefInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1BFCDB226F05E1008F38BC /* BriefInfoCollectionViewCell.swift */; };
+		CA04F995228BBA2300304868 /* CollectedCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF16FA92274727E0013D864 /* CollectedCardViewController.swift */; };
+		CA04F996228BBA2300304868 /* HCBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9194162276054200DA277E /* HCBaseTableViewCell.swift */; };
+		CA04F997228BBA2300304868 /* LikedDiscountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF16FA7227472290013D864 /* LikedDiscountViewController.swift */; };
+		CA04F998228BBA2300304868 /* FirebaseManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA260462227D700700267ED5 /* FirebaseManager+Extension.swift */; };
+		CA04F999228BBA2300304868 /* DRecommCategoryDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA12C761227975AE00491BD4 /* DRecommCategoryDetailTableViewCell.swift */; };
+		CA04F99A228BBA2300304868 /* HCTableViewSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE827A225DF071004F4E63 /* HCTableViewSectionHeaderView.swift */; };
+		CA04F99B228BBA2300304868 /* HCParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA323DB422684C57007A39FD /* HCParser.swift */; };
+		CA04F99C228BBA2300304868 /* DRecommCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171BA32254BC990042BBDC /* DRecommCollectionViewCell.swift */; };
+		CA04F99D228BBA2300304868 /* QAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B95225350510042BBDC /* QAViewController.swift */; };
+		CA04F99E228BBA2300304868 /* QAProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA13E917227AF4D900DA641F /* QAProvider.swift */; };
+		CA04F99F228BBA2300304868 /* DiscountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF40390225C77E20037F1DD /* DiscountCollectionViewCell.swift */; };
+		CA04F9A0228BBA2300304868 /* DRecommCategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA12C75A2279616C00491BD4 /* DRecommCategoryHeaderView.swift */; };
+		CA04F9A1228BBA2300304868 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B7A22533B290042BBDC /* UIStoryboard+Extension.swift */; };
+		CA04F9A2228BBA2300304868 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC426FA2275ADFB003C6D26 /* Array+Extension.swift */; };
+		CA04F9A3228BBA2300304868 /* WalletTabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF16FAB227477930013D864 /* WalletTabCollectionViewCell.swift */; };
+		CA04F9A4228BBA2300304868 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC426F822759219003C6D26 /* NotificationCenter.swift */; };
+		CA04F9A5228BBA2300304868 /* DRecommCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA12C75F2279747700491BD4 /* DRecommCategoryTableViewCell.swift */; };
+		CA04F9A6228BBA2300304868 /* MyCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA23A32C226DC9BD008B8DD8 /* MyCardCollectionViewCell.swift */; };
+		CA04F9A7228BBA2300304868 /* DiscountLikedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE8280225E09CD004F4E63 /* DiscountLikedListViewController.swift */; };
+		CA04F9A8228BBA2300304868 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2F7DC5225638D7005E4361 /* FilterViewController.swift */; };
+		CA04F9A9228BBA2300304868 /* DiscountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38706D2269E01100D06B90 /* DiscountRequest.swift */; };
+		CA04F9AA228BBA2300304868 /* DiscountProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA38706B2269DFA300D06B90 /* DiscountProvider.swift */; };
+		CA04F9AB228BBA2300304868 /* CallHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA13E90F227AF18C00DA641F /* CallHelpViewController.swift */; };
+		CA04F9AC228BBA2300304868 /* HCBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA919418227606DF00DA277E /* HCBaseCollectionViewCell.swift */; };
+		CA04F9AD228BBA2300304868 /* DiscountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B8C22534FF30042BBDC /* DiscountsViewController.swift */; };
+		CA04F9AE228BBA2300304868 /* InnerTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA698609227ABC8000437024 /* InnerTableView.swift */; };
+		CA04F9AF228BBA2300304868 /* DiscountsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF58D8B225DB41000818CDD /* DiscountsTableViewCell.swift */; };
+		CA04F9B0228BBA2300304868 /* MoreDiscountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF58D87225CA1AB00818CDD /* MoreDiscountViewController.swift */; };
+		CA04F9B1228BBA2300304868 /* HCWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1303CE227B51A400C62E7E /* HCWebViewController.swift */; };
+		CA04F9B2228BBA2300304868 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF58D89225CD97D00818CDD /* UIImageView+Extension.swift */; };
+		CA04F9B3228BBA2300304868 /* CardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6B5C742267599E00B180A2 /* CardProvider.swift */; };
+		CA04F9B4228BBA2300304868 /* DiscountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE8278225DE3BD004F4E63 /* DiscountDetailViewController.swift */; };
+		CA04F9B5228BBA2300304868 /* CardTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47A185225B133F00AD16AF /* CardTagCollectionViewCell.swift */; };
+		CA04F9B6228BBA2300304868 /* HCConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6B5C6B2266B89100B180A2 /* HCConstant.swift */; };
+		CA04F9B7228BBA2300304868 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC8299A22813B07007B5F82 /* AuthViewController.swift */; };
+		CA04F9B8228BBA2300304868 /* HCTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B77225339E90042BBDC /* HCTabBarViewController.swift */; };
+		CA04F9B9228BBA2300304868 /* CardDetailTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA47A189225B332C00AD16AF /* CardDetailTableViewHeaderView.swift */; };
+		CA04F9BA228BBA2300304868 /* DRecommTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B9C22544E330042BBDC /* DRecommTableViewCell.swift */; };
+		CA04F9BB228BBA2300304868 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE829422608051004F4E63 /* FirebaseManager.swift */; };
+		CA04F9BC228BBA2300304868 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC426FC2275FCFA003C6D26 /* UIColor+Extension.swift */; };
+		CA04F9BD228BBA2300304868 /* KingfisherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6B5C6D2266FF3F00B180A2 /* KingfisherWrapper.swift */; };
+		CA04F9BE228BBA2300304868 /* HTTPCilent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6B5C7022670D2700B180A2 /* HTTPCilent.swift */; };
+		CA04F9BF228BBA2300304868 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA171B9F225457BA0042BBDC /* UITableView+Extension.swift */; };
+		CA04F9C0228BBA2300304868 /* QARequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA13E919227AF54100DA641F /* QARequest.swift */; };
+		CA04F9C1228BBA2300304868 /* FilterTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2F7DD72257793A005E4361 /* FilterTextCollectionViewCell.swift */; };
+		CA04F9C2228BBA2300304868 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE8289225F3C9D004F4E63 /* SignUpViewController.swift */; };
+		CA04F9C4228BBA2300304868 /* Pods_HowCarD_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A471D918A639FEEC5AA07E /* Pods_HowCarD_.framework */; };
+		CA04F9C6228BBA2300304868 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA171B6A225330090042BBDC /* LaunchScreen.storyboard */; };
+		CA04F9C7228BBA2300304868 /* DRecommDiscountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6B5E2C226E861800182FFB /* DRecommDiscountTableViewCell.xib */; };
+		CA04F9C8228BBA2300304868 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA171B822253408F0042BBDC /* Wallet.storyboard */; };
+		CA04F9CA228BBA2300304868 /* BriefInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA1BFCDC226F05E1008F38BC /* BriefInfoCollectionViewCell.xib */; };
+		CA04F9CB228BBA2300304868 /* Filter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA2F7DC222563872005E4361 /* Filter.storyboard */; };
+		CA04F9CC228BBA2300304868 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAFE8284225EE349004F4E63 /* Auth.storyboard */; };
+		CA04F9CD228BBA2300304868 /* Web.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA1303CB227B516000C62E7E /* Web.storyboard */; };
+		CA04F9CE228BBA2300304868 /* DRecommendation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA171B74225334260042BBDC /* DRecommendation.storyboard */; };
+		CA04F9CF228BBA2300304868 /* HCTableViewSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAFE827C225DF081004F4E63 /* HCTableViewSectionHeaderView.xib */; };
+		CA04F9D0228BBA2300304868 /* DiscountCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF58D82225C81D800818CDD /* DiscountCollectionViewCell.xib */; };
+		CA04F9D1228BBA2300304868 /* Cards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA171B7E22533FA50042BBDC /* Cards.storyboard */; };
+		CA04F9D2228BBA2300304868 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA171B65225330070042BBDC /* Main.storyboard */; };
+		CA04F9D3228BBA2300304868 /* DRecommCategoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA12C75C2279620400491BD4 /* DRecommCategoryHeaderView.xib */; };
+		CA04F9D4228BBA2300304868 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA1303D0227C1E2C00C62E7E /* Assets.xcassets */; };
+		CA04F9D5228BBA2300304868 /* CardTagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA47A186225B133F00AD16AF /* CardTagCollectionViewCell.xib */; };
+		CA04F9D6228BBA2300304868 /* QA.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA171B842253409A0042BBDC /* QA.storyboard */; };
+		CA04F9D7228BBA2300304868 /* DRecommCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6B5E33226E865D00182FFB /* DRecommCardTableViewCell.xib */; };
+		CA04F9D8228BBA2300304868 /* Discounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA171B802253407A0042BBDC /* Discounts.storyboard */; };
+		CA04F9D9228BBA2300304868 /* CardDetailTableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA47A18D225B3CEA00AD16AF /* CardDetailTableViewHeaderView.xib */; };
+		CA04F9E2228BBA6E00304868 /* Info_Develop.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA04F9E1228BBA6D00304868 /* Info_Develop.plist */; };
+		CA04F9E7228BBD5200304868 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA04F9E6228BBD5200304868 /* GoogleService-Info.plist */; };
 		CA0A31F522852449004F73B3 /* AddMyCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0A31F422852448004F73B3 /* AddMyCardViewController.swift */; };
 		CA12C75B2279616C00491BD4 /* DRecommCategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA12C75A2279616C00491BD4 /* DRecommCategoryHeaderView.swift */; };
 		CA12C75D2279620400491BD4 /* DRecommCategoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA12C75C2279620400491BD4 /* DRecommCategoryHeaderView.xib */; };
@@ -135,6 +246,9 @@
 		6F7DA0CF1E2FC5FC71E1B720 /* Pods-HowCarD+.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowCarD+.release.xcconfig"; path = "Target Support Files/Pods-HowCarD+/Pods-HowCarD+.release.xcconfig"; sourceTree = "<group>"; };
 		96A471D918A639FEEC5AA07E /* Pods_HowCarD_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowCarD_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0379B022781F580093086D /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
+		CA04F9E0228BBA2300304868 /* HowCarD+_Develop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HowCarD+_Develop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA04F9E1228BBA6D00304868 /* Info_Develop.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info_Develop.plist; sourceTree = "<group>"; };
+		CA04F9E6228BBD5200304868 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CA0A31F422852448004F73B3 /* AddMyCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyCardViewController.swift; sourceTree = "<group>"; };
 		CA12C75A2279616C00491BD4 /* DRecommCategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRecommCategoryHeaderView.swift; sourceTree = "<group>"; };
 		CA12C75C2279620400491BD4 /* DRecommCategoryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DRecommCategoryHeaderView.xib; sourceTree = "<group>"; };
@@ -251,6 +365,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CA04F9C3228BBA2300304868 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA04F9C4228BBA2300304868 /* Pods_HowCarD_.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA171B5B225330070042BBDC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -284,6 +406,14 @@
 				96A471D918A639FEEC5AA07E /* Pods_HowCarD_.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CA04F9E5228BBD5200304868 /* plist */ = {
+			isa = PBXGroup;
+			children = (
+				CA04F9E6228BBD5200304868 /* GoogleService-Info.plist */,
+			);
+			path = plist;
 			sourceTree = "<group>";
 		};
 		CA1303CD227B518F00C62E7E /* Web */ = {
@@ -328,6 +458,7 @@
 			children = (
 				CA171B5E225330070042BBDC /* HowCarD.app */,
 				CA560B9F22856C2D00C9FAC0 /* HowCarDTests.xctest */,
+				CA04F9E0228BBA2300304868 /* HowCarD+_Develop.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -344,8 +475,10 @@
 				CA171B732253333D0042BBDC /* View */,
 				CA171B61225330070042BBDC /* AppDelegate.swift */,
 				CA171B6A225330090042BBDC /* LaunchScreen.storyboard */,
+				CA04F9E1228BBA6D00304868 /* Info_Develop.plist */,
 				CA171B6D225330090042BBDC /* Info.plist */,
 				CAFE8286225F1D92004F4E63 /* GoogleService-Info.plist */,
+				CA04F9E5228BBD5200304868 /* plist */,
 			);
 			path = "HowCarD+";
 			sourceTree = "<group>";
@@ -691,6 +824,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CA04F967228BBA2300304868 /* HowCarD+_Develop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA04F9DD228BBA2300304868 /* Build configuration list for PBXNativeTarget "HowCarD+_Develop" */;
+			buildPhases = (
+				CA04F968228BBA2300304868 /* [CP] Check Pods Manifest.lock */,
+				CA04F969228BBA2300304868 /* Sources */,
+				CA04F9C3228BBA2300304868 /* Frameworks */,
+				CA04F9C5228BBA2300304868 /* Resources */,
+				CA04F9DA228BBA2300304868 /* [CP] Embed Pods Frameworks */,
+				CA04F9DB228BBA2300304868 /* SwiftLint */,
+				CA04F9DC228BBA2300304868 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HowCarD+_Develop";
+			productName = HowCarD;
+			productReference = CA04F9E0228BBA2300304868 /* HowCarD+_Develop.app */;
+			productType = "com.apple.product-type.application";
+		};
 		CA171B5D225330070042BBDC /* HowCarD+ */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA171B70225330090042BBDC /* Build configuration list for PBXNativeTarget "HowCarD+" */;
@@ -764,11 +918,40 @@
 			targets = (
 				CA171B5D225330070042BBDC /* HowCarD+ */,
 				CA560B9E22856C2D00C9FAC0 /* HowCarDTests */,
+				CA04F967228BBA2300304868 /* HowCarD+_Develop */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CA04F9C5228BBA2300304868 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA04F9C6228BBA2300304868 /* LaunchScreen.storyboard in Resources */,
+				CA04F9E2228BBA6E00304868 /* Info_Develop.plist in Resources */,
+				CA04F9C7228BBA2300304868 /* DRecommDiscountTableViewCell.xib in Resources */,
+				CA04F9C8228BBA2300304868 /* Wallet.storyboard in Resources */,
+				CA04F9CA228BBA2300304868 /* BriefInfoCollectionViewCell.xib in Resources */,
+				CA04F9CB228BBA2300304868 /* Filter.storyboard in Resources */,
+				CA04F9CC228BBA2300304868 /* Auth.storyboard in Resources */,
+				CA04F9CD228BBA2300304868 /* Web.storyboard in Resources */,
+				CA04F9CE228BBA2300304868 /* DRecommendation.storyboard in Resources */,
+				CA04F9CF228BBA2300304868 /* HCTableViewSectionHeaderView.xib in Resources */,
+				CA04F9D0228BBA2300304868 /* DiscountCollectionViewCell.xib in Resources */,
+				CA04F9D1228BBA2300304868 /* Cards.storyboard in Resources */,
+				CA04F9D2228BBA2300304868 /* Main.storyboard in Resources */,
+				CA04F9D3228BBA2300304868 /* DRecommCategoryHeaderView.xib in Resources */,
+				CA04F9D4228BBA2300304868 /* Assets.xcassets in Resources */,
+				CA04F9D5228BBA2300304868 /* CardTagCollectionViewCell.xib in Resources */,
+				CA04F9D6228BBA2300304868 /* QA.storyboard in Resources */,
+				CA04F9D7228BBA2300304868 /* DRecommCardTableViewCell.xib in Resources */,
+				CA04F9D8228BBA2300304868 /* Discounts.storyboard in Resources */,
+				CA04F9D9228BBA2300304868 /* CardDetailTableViewHeaderView.xib in Resources */,
+				CA04F9E7228BBD5200304868 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA171B5C225330070042BBDC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -822,6 +1005,81 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HowCarD+/Pods-HowCarD+-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		CA04F968228BBA2300304868 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HowCarD+-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA04F9DA228BBA2300304868 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HowCarD+/Pods-HowCarD+-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HowCarD+/Pods-HowCarD+-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HowCarD+/Pods-HowCarD+-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA04F9DB228BBA2300304868 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		CA04F9DC228BBA2300304868 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Info.plist",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\"\n";
 		};
 		CA91941E2276C86100DA277E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -884,6 +1142,102 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CA04F969228BBA2300304868 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA04F96A228BBA2300304868 /* AddMyCardViewController.swift in Sources */,
+				CA04F96B228BBA2300304868 /* CallHelpTableViewCell.swift in Sources */,
+				CA04F96C228BBA2300304868 /* DRecommObject.swift in Sources */,
+				CA04F96D228BBA2300304868 /* DRecommDiscountTableViewCell.swift in Sources */,
+				CA04F96E228BBA2300304868 /* CardRequest.swift in Sources */,
+				CA04F96F228BBA2300304868 /* DiscountLikedListTableViewCell.swift in Sources */,
+				CA04F970228BBA2300304868 /* UICollectionView+Extension.swift in Sources */,
+				CA04F971228BBA2300304868 /* WalletViewController.swift in Sources */,
+				CA04F972228BBA2300304868 /* UIScreen+Extension.swift in Sources */,
+				CA04F973228BBA2300304868 /* CardsViewController.swift in Sources */,
+				CA04F974228BBA2300304868 /* CardInfoTableViewCell.swift in Sources */,
+				CA04F975228BBA2300304868 /* CollectedCardTableViewCell.swift in Sources */,
+				CA04F976228BBA2300304868 /* SignInViewController.swift in Sources */,
+				CA04F977228BBA2300304868 /* BillRemindTableViewCell.swift in Sources */,
+				CA04F978228BBA2300304868 /* QueryDocumentSnapshot+Extension.swift in Sources */,
+				CA04F979228BBA2300304868 /* Bundle+Extension.swift in Sources */,
+				CA04F97A228BBA2300304868 /* UIView+Extension.swift in Sources */,
+				CA04F97B228BBA2300304868 /* DRecommCardTableViewCell.swift in Sources */,
+				CA04F97C228BBA2300304868 /* FilterIconCollectionViewCell.swift in Sources */,
+				CA04F97D228BBA2300304868 /* CardDetailContentTableViewCell.swift in Sources */,
+				CA04F97E228BBA2300304868 /* DRecommRequest.swift in Sources */,
+				CA04F97F228BBA2300304868 /* UIViewController+Extention.swift in Sources */,
+				CA04F980228BBA2300304868 /* AppDelegate.swift in Sources */,
+				CA04F981228BBA2300304868 /* MyCardViewController.swift in Sources */,
+				CA04F982228BBA2300304868 /* DRecommViewController.swift in Sources */,
+				CA04F983228BBA2300304868 /* UILabel+Extention.swift in Sources */,
+				CA04F984228BBA2300304868 /* ToMoreInfoCollectionViewCell.swift in Sources */,
+				CA04F985228BBA2300304868 /* CardObject.swift in Sources */,
+				CA04F986228BBA2300304868 /* BillDueDateTableViewCell.swift in Sources */,
+				CA04F987228BBA2300304868 /* UIImage+Extension.swift in Sources */,
+				CA04F988228BBA2300304868 /* DRecommCategoryDetailViewController.swift in Sources */,
+				CA04F989228BBA2300304868 /* DRecommTopViewController.swift in Sources */,
+				CA04F98A228BBA2300304868 /* BankObject.swift in Sources */,
+				CA04F98B228BBA2300304868 /* LikedDiscountTableViewCell.swift in Sources */,
+				CA04F98C228BBA2300304868 /* HCBaseViewController.swift in Sources */,
+				CA04F98D228BBA2300304868 /* WalletViewController2.swift in Sources */,
+				CA04F98E228BBA2300304868 /* CardDetailViewController.swift in Sources */,
+				CA04F98F228BBA2300304868 /* DiscountObject.swift in Sources */,
+				CA04F990228BBA2300304868 /* QAObject.swift in Sources */,
+				CA04F991228BBA2300304868 /* DiscountDetailContentTableViewCell.swift in Sources */,
+				CA04F992228BBA2300304868 /* DRecommProvider.swift in Sources */,
+				CA04F993228BBA2300304868 /* DRecommCategoryCollectionViewCell.swift in Sources */,
+				CA04F994228BBA2300304868 /* BriefInfoCollectionViewCell.swift in Sources */,
+				CA04F995228BBA2300304868 /* CollectedCardViewController.swift in Sources */,
+				CA04F996228BBA2300304868 /* HCBaseTableViewCell.swift in Sources */,
+				CA04F997228BBA2300304868 /* LikedDiscountViewController.swift in Sources */,
+				CA04F998228BBA2300304868 /* FirebaseManager+Extension.swift in Sources */,
+				CA04F999228BBA2300304868 /* DRecommCategoryDetailTableViewCell.swift in Sources */,
+				CA04F99A228BBA2300304868 /* HCTableViewSectionHeaderView.swift in Sources */,
+				CA04F99B228BBA2300304868 /* HCParser.swift in Sources */,
+				CA04F99C228BBA2300304868 /* DRecommCollectionViewCell.swift in Sources */,
+				CA04F99D228BBA2300304868 /* QAViewController.swift in Sources */,
+				CA04F99E228BBA2300304868 /* QAProvider.swift in Sources */,
+				CA04F99F228BBA2300304868 /* DiscountCollectionViewCell.swift in Sources */,
+				CA04F9A0228BBA2300304868 /* DRecommCategoryHeaderView.swift in Sources */,
+				CA04F9A1228BBA2300304868 /* UIStoryboard+Extension.swift in Sources */,
+				CA04F9A2228BBA2300304868 /* Array+Extension.swift in Sources */,
+				CA04F9A3228BBA2300304868 /* WalletTabCollectionViewCell.swift in Sources */,
+				CA04F9A4228BBA2300304868 /* NotificationCenter.swift in Sources */,
+				CA04F9A5228BBA2300304868 /* DRecommCategoryTableViewCell.swift in Sources */,
+				CA04F9A6228BBA2300304868 /* MyCardCollectionViewCell.swift in Sources */,
+				CA04F9A7228BBA2300304868 /* DiscountLikedListViewController.swift in Sources */,
+				CA04F9A8228BBA2300304868 /* FilterViewController.swift in Sources */,
+				CA04F9A9228BBA2300304868 /* DiscountRequest.swift in Sources */,
+				CA04F9AA228BBA2300304868 /* DiscountProvider.swift in Sources */,
+				CA04F9AB228BBA2300304868 /* CallHelpViewController.swift in Sources */,
+				CA04F9AC228BBA2300304868 /* HCBaseCollectionViewCell.swift in Sources */,
+				CA04F9AD228BBA2300304868 /* DiscountsViewController.swift in Sources */,
+				CA04F9AE228BBA2300304868 /* InnerTableView.swift in Sources */,
+				CA04F9AF228BBA2300304868 /* DiscountsTableViewCell.swift in Sources */,
+				CA04F9B0228BBA2300304868 /* MoreDiscountViewController.swift in Sources */,
+				CA04F9B1228BBA2300304868 /* HCWebViewController.swift in Sources */,
+				CA04F9B2228BBA2300304868 /* UIImageView+Extension.swift in Sources */,
+				CA04F9B3228BBA2300304868 /* CardProvider.swift in Sources */,
+				CA04F9B4228BBA2300304868 /* DiscountDetailViewController.swift in Sources */,
+				CA04F9B5228BBA2300304868 /* CardTagCollectionViewCell.swift in Sources */,
+				CA04F9B6228BBA2300304868 /* HCConstant.swift in Sources */,
+				CA04F9B7228BBA2300304868 /* AuthViewController.swift in Sources */,
+				CA04F9B8228BBA2300304868 /* HCTabBarViewController.swift in Sources */,
+				CA04F9B9228BBA2300304868 /* CardDetailTableViewHeaderView.swift in Sources */,
+				CA04F9BA228BBA2300304868 /* DRecommTableViewCell.swift in Sources */,
+				CA04F9BB228BBA2300304868 /* FirebaseManager.swift in Sources */,
+				CA04F9BC228BBA2300304868 /* UIColor+Extension.swift in Sources */,
+				CA04F9BD228BBA2300304868 /* KingfisherWrapper.swift in Sources */,
+				CA04F9BE228BBA2300304868 /* HTTPCilent.swift in Sources */,
+				CA04F9BF228BBA2300304868 /* UITableView+Extension.swift in Sources */,
+				CA04F9C0228BBA2300304868 /* QARequest.swift in Sources */,
+				CA04F9C1228BBA2300304868 /* FilterTextCollectionViewCell.swift in Sources */,
+				CA04F9C2228BBA2300304868 /* SignUpViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA171B5A225330070042BBDC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1018,6 +1372,47 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		CA04F9DE228BBA2300304868 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B5A0842CFBB48209D25D8D8 /* Pods-HowCarD+.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 54Y59X3FBZ;
+				INFOPLIST_FILE = "$(SRCROOT)/HowCarD+/Info_Develop.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = lohsts.Develop.HowCarD;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		CA04F9DF228BBA2300304868 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F7DA0CF1E2FC5FC71E1B720 /* Pods-HowCarD+.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 54Y59X3FBZ;
+				INFOPLIST_FILE = "$(SRCROOT)/HowCarD+/Info_Develop.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = lohsts.Develop.HowCarD;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		CA171B6E225330090042BBDC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1220,6 +1615,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CA04F9DD228BBA2300304868 /* Build configuration list for PBXNativeTarget "HowCarD+_Develop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA04F9DE228BBA2300304868 /* Debug */,
+				CA04F9DF228BBA2300304868 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CA171B59225330070042BBDC /* Build configuration list for PBXProject "HowCarD+" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
