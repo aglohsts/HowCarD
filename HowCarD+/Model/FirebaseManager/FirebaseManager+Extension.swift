@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 import FirebaseStorage
+import NVActivityIndicatorView
 
 enum HCFirebaseStorageEndpoint: String {
     
@@ -235,4 +236,6 @@ extension HCFirebaseManager {
             }
         
     }
+    
+    
 }

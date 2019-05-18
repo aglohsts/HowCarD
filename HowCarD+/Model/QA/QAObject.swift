@@ -28,4 +28,6 @@ struct BankInfo: Codable {
     let officialWeb: String
     
     let mailWeb: String?
+    
+    let qaLink: String?
 }

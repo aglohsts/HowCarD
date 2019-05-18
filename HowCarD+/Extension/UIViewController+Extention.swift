@@ -59,6 +59,7 @@ extension UIViewController {
         userCollection: UserCollection,
         uid: String,
         id: String,
+        loadingAnimation: ((UIViewController) -> Void)?,
         deleteIdCompletionHandler: (() -> Void)?,
         addIdCompletionHandler: (() -> Void)?,
         changeStatusHandler: () -> Void
@@ -67,9 +68,11 @@ extension UIViewController {
         if status == true {
             
             HCFirebaseManager.shared.deleteId(
+                viewController: self,
                 userCollection: userCollection,
                 uid: uid,
-                id: id
+                id: id,
+                loadingAnimation: loadingAnimation
             )
             
             deleteIdCompletionHandler?()

@@ -338,32 +338,36 @@ extension MyCardViewController: HFCardCollectionViewLayoutDelegate, UICollection
             }
 
             HCFirebaseManager.shared.deleteId(
-                    userCollection: .myCards,
-                    uid: user.uid,
-                    id: strongSelf.myCardObjects[indexPath.item].cardId,
-                    completion: { result in
+                viewController: strongSelf,
+                userCollection: .myCards,
+                uid: user.uid,
+                id: strongSelf.myCardObjects[indexPath.item].cardId,
+                loadingAnimation: strongSelf.startLoadingAnimation(viewController:),
+                completion: { result in
+                    
+                    switch result {
                         
-                        switch result {
+                    case .success:
+                        
+                        strongSelf.startLoadingAnimation(viewController: strongSelf)
+                        
+                        strongSelf.myCardObjects.remove(at: indexPath.item)
+                        
+                        DispatchQueue.main.async { [weak self] in
                             
-                        case .success:
+                            self?.collectionView.reloadData()
                             
-                            strongSelf.myCardObjects.remove(at: indexPath.item)
-                            
-                            DispatchQueue.main.async { [weak self] in
-                                
-                                self?.collectionView.reloadData()
-                                
-                                NotificationCenter.default.post(
-                                    name: Notification.Name(rawValue: NotificationNames.myCardVCUpdateMyCard.rawValue),
-                                    object: nil
-                                )
-                            }
-                            
-                        case .failure: break
-                            
+                            NotificationCenter.default.post(
+                                name: Notification.Name(rawValue: NotificationNames.myCardVCUpdateMyCard.rawValue),
+                                object: nil
+                            )
                         }
                         
+                    case .failure: break
+                        
                     }
+                    
+                }
             )
         
         }

@@ -222,7 +222,14 @@ class HCFirebaseManager {
     }
     
 // swiftlint:disable cyclomatic_complexity
-    func deleteId(userCollection: UserCollection, uid: String, id: String, completion: ((Result<Void>) -> Void)? = nil) {
+// swiftlint:disable function_body_length
+    func deleteId(
+        viewController: UIViewController,
+        userCollection: UserCollection,
+        uid: String, id: String,
+        loadingAnimation: ((UIViewController) -> Void)? = nil,
+        completion: ((Result<Void>) -> Void)? = nil
+    ) {
         
         switch userCollection {
             
@@ -235,9 +242,12 @@ class HCFirebaseManager {
                     if let err = err {
                         print("Error getting documents: \(err)")
                     } else {
+                        
                         for document in querySnapshot!.documents {
                             print("\(document.documentID) => \(document.data())")
                         }
+                        
+                        loadingAnimation?(viewController)
                         
                         querySnapshot!.documents.forEach({ [weak self] (document) in
                             // 用 documentID 去刪除 document
@@ -261,9 +271,12 @@ class HCFirebaseManager {
                     if let err = err {
                         print("Error getting documents: \(err)")
                     } else {
+
                         for document in querySnapshot!.documents {
                             print("\(document.documentID) => \(document.data())")
                         }
+                        
+                        loadingAnimation?(viewController)
                         
                         querySnapshot!.documents.forEach({ [weak self] (document) in
                             // 用 documentID 去刪除 document
@@ -272,6 +285,8 @@ class HCFirebaseManager {
                                 .document(document.documentID).delete()
                         })
                     }
+                    
+                    completion?(Result.success(()))
             }
             
             guard let index = isReadDiscountIds.firstIndex(of: id) else { return }
@@ -287,6 +302,9 @@ class HCFirebaseManager {
                     if let err = err {
                         print("Error getting documents: \(err)")
                     } else {
+                        
+                        loadingAnimation?(viewController)
+                        
                         for document in querySnapshot!.documents {
                             print("\(document.documentID) => \(document.data())")
                         }
@@ -300,6 +318,8 @@ class HCFirebaseManager {
                                 .document(document.documentID).delete()
                         })
                     }
+                    
+                    completion?(Result.success(()))
             }
             
             guard let index = collectedCardIds.firstIndex(of: id) else { return }
@@ -315,6 +335,9 @@ class HCFirebaseManager {
                     if let err = err {
                         print("Error getting documents: \(err)")
                     } else {
+                        
+                        loadingAnimation?(viewController)
+                        
                         for document in querySnapshot!.documents {
                             print("\(document.documentID) => \(document.data())")
                         }
@@ -366,6 +389,9 @@ class HCFirebaseManager {
                     if let err = err {
                         print("Error getting documents: \(err)")
                     } else {
+                        
+                        loadingAnimation?(viewController)
+                        
                         for document in querySnapshot!.documents {
                             print("\(document.documentID) => \(document.data())")
                         }
@@ -377,6 +403,8 @@ class HCFirebaseManager {
                                 .document(document.documentID).delete()
                         })
                     }
+                    
+                    completion?(Result.success(()))
             }
             
             guard let index = isReadCardIds.firstIndex(of: id) else { return }
@@ -385,6 +413,7 @@ class HCFirebaseManager {
         }
     }
 // swiftlint:enable cyclomatic_complexity
+// swiftlint:enable function_body_length
     
     func getId(uid: String, userCollection: UserCollection, completion: @escaping ([String]) -> Void) {
         

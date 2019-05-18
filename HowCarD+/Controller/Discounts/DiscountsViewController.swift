@@ -381,6 +381,7 @@ extension DiscountsViewController: UITableViewDataSource {
         guard let discountTableViewCell = cell as? DiscountsTableViewCell else { return cell }
 
         discountTableViewCell.layoutTableViewCell(
+            discountVC: self,
             category: discountObjects[indexPath.section].category,
             discountInfos: discountObjects[indexPath.section].discountInfos
         )

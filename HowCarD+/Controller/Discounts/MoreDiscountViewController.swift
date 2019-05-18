@@ -402,6 +402,7 @@ extension MoreDiscountViewController: UICollectionViewDataSource {
                 if strongSelf.discountObject!.discountInfos[indexPath.item].isLiked {
                     
                     HCFirebaseManager.shared.deleteId(
+                        viewController: strongSelf,
                         userCollection: .likedDiscounts,
                         uid: user.uid,
                         id: strongSelf.discountObject!.discountInfos[indexPath.item].discountId

@@ -444,6 +444,7 @@ extension CardsViewController: UITableViewDataSource {
                     userCollection: .collectedCards,
                     uid: user.uid,
                     id: strongSelf.cardsBasicInfo[indexPath.row].id,
+                    loadingAnimation: strongSelf.startLoadingAnimation(viewController:),
                     deleteIdCompletionHandler: nil,
                     addIdCompletionHandler: nil,
                     changeStatusHandler: {
@@ -492,6 +493,8 @@ extension CardsViewController: UITableViewDataSource {
             
        // 確認已登入
             HCFirebaseManager.shared.checkUserSignnedIn(viewController: strongSelf, checkedSignnedInCompletionHandler: {
+                
+                guard let strongSelf = self else { return }
             
                 // 確認已登入後做的事：
                 if strongSelf.cardsBasicInfo[indexPath.row].isMyCard {
@@ -499,15 +502,28 @@ extension CardsViewController: UITableViewDataSource {
                     // TODO: 跳 alert 確定移除我的卡片嗎
                     
                     HCFirebaseManager.shared.deleteId(
+                        viewController: strongSelf,
                         userCollection: .myCards,
                         uid: user.uid,
                         id: strongSelf.cardsBasicInfo[indexPath.row].id,
-                        completion: { _ in
+                        loadingAnimation: strongSelf.startLoadingAnimation(viewController:),
+                        completion: { result in
+                            
+                            switch result {
+                                
+                            case .success:
+                                
+//                                strongSelf.startLoadingAnimation(viewController: strongSelf)
+                                
+                                NotificationCenter.default.post(
+                                    name: Notification.Name(rawValue: NotificationNames.cardVCUpdateMyCard.rawValue),
+                                    object: nil
+                                )
+                                
+                            case .failure: break
+                            }
                          
-                            NotificationCenter.default.post(
-                                name: Notification.Name(rawValue: NotificationNames.cardVCUpdateMyCard.rawValue),
-                                object: nil
-                            )
+                            
                         }
                     )
                     strongSelf.cardsBasicInfo[indexPath.row].isMyCard = !strongSelf.cardsBasicInfo[indexPath.row].isMyCard

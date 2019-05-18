@@ -175,9 +175,11 @@ class CardDetailViewController: HCBaseViewController {
             if isCollected {
                 
                 HCFirebaseManager.shared.deleteId(
+                    viewController: self,
                     userCollection: .collectedCards,
                     uid: user.uid,
-                    id: cardObject.basicInfo.id
+                    id: cardObject.basicInfo.id,
+                    loadingAnimation: startLoadingAnimation(viewController:)
                 )
             } else {
                 
@@ -226,9 +228,11 @@ class CardDetailViewController: HCBaseViewController {
             if isMyCard {
                 
                 HCFirebaseManager.shared.deleteId(
+                    viewController: self,
                     userCollection: .myCards,
                     uid: user.uid,
-                    id: cardObject.basicInfo.id
+                    id: cardObject.basicInfo.id,
+                    loadingAnimation: startLoadingAnimation(viewController:)
                 )
                 
                 isMyCard = !isMyCard

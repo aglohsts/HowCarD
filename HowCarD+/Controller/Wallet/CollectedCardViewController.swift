@@ -283,9 +283,11 @@ extension CollectedCardViewController: UITableViewDataSource {
             if strongSelf.isSearching {
                 
                 HCFirebaseManager.shared.deleteId(
+                    viewController: strongSelf,
                     userCollection: .collectedCards,
                     uid: user.uid,
-                    id: strongSelf.searchResult[indexPath.row].id
+                    id: strongSelf.searchResult[indexPath.row].id,
+                    loadingAnimation: strongSelf.startLoadingAnimation(viewController:)
                 )
                 
 //                strongSelf.searchResult.remove(at: indexPath.row)
@@ -293,9 +295,11 @@ extension CollectedCardViewController: UITableViewDataSource {
             } else {
                 
                 HCFirebaseManager.shared.deleteId(
+                    viewController: strongSelf,
                     userCollection: .collectedCards,
                     uid: user.uid,
-                    id: strongSelf.userCollectedCards[indexPath.row].id
+                    id: strongSelf.userCollectedCards[indexPath.row].id,
+                    loadingAnimation: strongSelf.startLoadingAnimation(viewController:)
                 )
                 
 //                strongSelf.userCollectedCards.remove(at: indexPath.row)

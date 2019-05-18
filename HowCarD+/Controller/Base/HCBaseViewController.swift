@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManager
+import NVActivityIndicatorView
 
 extension Tab {
     func navBarTitle() -> String {
@@ -27,7 +28,7 @@ extension Tab {
 
 }
 
-class HCBaseViewController: UIViewController {
+class HCBaseViewController: UIViewController, NVActivityIndicatorViewable {
 
     private let tabs: [Tab] = [.dRecommend, .discounts, .cards, .wallet, .qa]
 
@@ -138,5 +139,41 @@ class HCBaseViewController: UIViewController {
     func setBackgroundColor2(_ color: HCColor = HCColor.viewBackground) {
         
         view.backgroundColor = UIColor(named: color.rawValue)
+    }
+    
+    func startLoadingAnimation(viewController: UIViewController) {
+        
+        let loadingView = NVActivityIndicatorView(
+            frame: CGRect(
+                x: 0, y: 0,
+                width: 90,
+                height: 90),
+            type: .ballRotateChase,
+            color: .white,
+            padding: 20)
+        
+        loadingView.center = self.view.center
+        
+        self.view.addSubview(loadingView)
+        
+        let size = CGSize(width: 80, height: 80)
+        
+        self.startAnimating(
+            size,
+            message: nil,
+            messageFont: nil,
+            type: .pacman,
+            color: .white,
+            padding: 20,
+            displayTimeThreshold: nil,
+            minimumDisplayTime: nil,
+            backgroundColor: nil,
+            textColor: .white,
+            fadeInAnimation: nil
+        )
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
+            self.stopAnimating(nil)
+        }
     }
 }

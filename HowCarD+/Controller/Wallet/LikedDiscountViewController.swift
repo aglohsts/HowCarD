@@ -308,18 +308,22 @@ extension LikedDiscountViewController: UITableViewDataSource {
             if strongSelf.isSearching {
 
                 HCFirebaseManager.shared.deleteId(
+                    viewController: strongSelf,
                     userCollection: .likedDiscounts,
                     uid: user.uid,
-                    id: strongSelf.searchResult[indexPath.row].discountId
+                    id: strongSelf.searchResult[indexPath.row].discountId,
+                    loadingAnimation: strongSelf.startLoadingAnimation(viewController:)
                 )
                 
 //                strongSelf.searchResult.remove(at: indexPath.row)
             } else {
 
                 HCFirebaseManager.shared.deleteId(
+                    viewController: strongSelf,
                     userCollection: .likedDiscounts,
                     uid: user.uid,
-                    id: strongSelf.userLikedDiscounts[indexPath.row].discountId
+                    id: strongSelf.userLikedDiscounts[indexPath.row].discountId,
+                    loadingAnimation: strongSelf.startLoadingAnimation(viewController:)
                 )
                 
 //                strongSelf.userLikedDiscounts.remove(at: indexPath.row)

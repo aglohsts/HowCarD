@@ -93,8 +93,7 @@ class DiscountDetailViewController: HCBaseViewController {
     }
     
     @IBAction func onLikeDiscount(_ sender: Any) {
-        
-        
+    
         if HCFirebaseManager.shared.agAuth().currentUser != nil {
             
             guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
@@ -104,9 +103,11 @@ class DiscountDetailViewController: HCBaseViewController {
                 if self.discountDetail!.info.isLiked {
                     
                     HCFirebaseManager.shared.deleteId(
+                        viewController: self,
                         userCollection: .likedDiscounts,
                         uid: user.uid,
-                        id: self.discountDetail!.info.discountId
+                        id: self.discountDetail!.info.discountId,
+                        loadingAnimation: self.startLoadingAnimation(viewController:)
                     )
                 } else {
                     

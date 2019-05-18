@@ -13,6 +13,8 @@ class DiscountsTableViewCell: HCBaseTableViewCell {
     
     @IBOutlet weak var categoryLabel: UILabel!
     
+    var discountVC: DiscountsViewController?
+    
     var toMoreDiscountHandler: (() -> Void)?
     
     var toDiscountDetailHandler: ((IndexPath) -> Void)?
@@ -54,7 +56,9 @@ class DiscountsTableViewCell: HCBaseTableViewCell {
         collectionView.backgroundColor = .hexStringToUIColor(hex: hex)
     }
     
-    func layoutTableViewCell(category: String, discountInfos: [DiscountInfo]) {
+    func layoutTableViewCell(discountVC: DiscountsViewController, category: String, discountInfos: [DiscountInfo]) {
+        
+        self.discountVC = discountVC
         
         categoryLabel.text = category
         
@@ -169,14 +173,16 @@ extension DiscountsTableViewCell: UICollectionViewDataSource {
 
                 if HCFirebaseManager.shared.agAuth().currentUser != nil {
                     
-                    guard let strongSelf = self, let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
+                    guard let strongSelf = self, let user = HCFirebaseManager.shared.agAuth().currentUser, let vc = strongSelf.discountVC else { return }
                     
                     if strongSelf.discountInfos[indexPath.row].isLiked {
                         
                         HCFirebaseManager.shared.deleteId(
+                            viewController: vc,
                             userCollection: .likedDiscounts,
                             uid: user.uid,
-                            id: strongSelf.discountInfos[indexPath.row].discountId
+                            id: strongSelf.discountInfos[indexPath.row].discountId,
+                            loadingAnimation: vc.startLoadingAnimation(viewController:)
                         )
                     } else {
                         

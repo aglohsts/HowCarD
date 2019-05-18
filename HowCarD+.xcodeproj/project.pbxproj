@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17E6A0A08122B606EF9F892F /* Pods_HowCarD_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A471D918A639FEEC5AA07E /* Pods_HowCarD_.framework */; };
 		CA0379B122781F580093086D /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0379B022781F580093086D /* WalletViewController.swift */; };
 		CA04F96A228BBA2300304868 /* AddMyCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0A31F422852448004F73B3 /* AddMyCardViewController.swift */; };
 		CA04F96B228BBA2300304868 /* CallHelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA13E912227AF26700DA641F /* CallHelpTableViewCell.swift */; };
@@ -97,7 +98,6 @@
 		CA04F9C0228BBA2300304868 /* QARequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA13E919227AF54100DA641F /* QARequest.swift */; };
 		CA04F9C1228BBA2300304868 /* FilterTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2F7DD72257793A005E4361 /* FilterTextCollectionViewCell.swift */; };
 		CA04F9C2228BBA2300304868 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFE8289225F3C9D004F4E63 /* SignUpViewController.swift */; };
-		CA04F9C4228BBA2300304868 /* Pods_HowCarD_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96A471D918A639FEEC5AA07E /* Pods_HowCarD_.framework */; };
 		CA04F9C6228BBA2300304868 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA171B6A225330090042BBDC /* LaunchScreen.storyboard */; };
 		CA04F9C7228BBA2300304868 /* DRecommDiscountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6B5E2C226E861800182FFB /* DRecommDiscountTableViewCell.xib */; };
 		CA04F9C8228BBA2300304868 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA171B822253408F0042BBDC /* Wallet.storyboard */; };
@@ -242,8 +242,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5B5A0842CFBB48209D25D8D8 /* Pods-HowCarD+.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowCarD+.debug.xcconfig"; path = "Target Support Files/Pods-HowCarD+/Pods-HowCarD+.debug.xcconfig"; sourceTree = "<group>"; };
-		6F7DA0CF1E2FC5FC71E1B720 /* Pods-HowCarD+.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowCarD+.release.xcconfig"; path = "Target Support Files/Pods-HowCarD+/Pods-HowCarD+.release.xcconfig"; sourceTree = "<group>"; };
+		42D2346DF278FD143FC9CD08 /* Pods-HowCarD+.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowCarD+.debug.xcconfig"; path = "Target Support Files/Pods-HowCarD+/Pods-HowCarD+.debug.xcconfig"; sourceTree = "<group>"; };
+		8588EE9147B3FFF46345FB7D /* Pods-HowCarD+.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowCarD+.release.xcconfig"; path = "Target Support Files/Pods-HowCarD+/Pods-HowCarD+.release.xcconfig"; sourceTree = "<group>"; };
 		96A471D918A639FEEC5AA07E /* Pods_HowCarD_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HowCarD_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0379B022781F580093086D /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
 		CA04F9E0228BBA2300304868 /* HowCarD+_Develop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HowCarD+_Develop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -369,7 +369,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA04F9C4228BBA2300304868 /* Pods_HowCarD_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F046E3020440D087E1F00B31 /* Pods_HowCarD_.framework in Frameworks */,
+				17E6A0A08122B606EF9F892F /* Pods_HowCarD_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,8 +394,8 @@
 		5F0C69AD3C32B6788442842C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5B5A0842CFBB48209D25D8D8 /* Pods-HowCarD+.debug.xcconfig */,
-				6F7DA0CF1E2FC5FC71E1B720 /* Pods-HowCarD+.release.xcconfig */,
+				42D2346DF278FD143FC9CD08 /* Pods-HowCarD+.debug.xcconfig */,
+				8588EE9147B3FFF46345FB7D /* Pods-HowCarD+.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -828,11 +828,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA04F9DD228BBA2300304868 /* Build configuration list for PBXNativeTarget "HowCarD+_Develop" */;
 			buildPhases = (
-				CA04F968228BBA2300304868 /* [CP] Check Pods Manifest.lock */,
 				CA04F969228BBA2300304868 /* Sources */,
 				CA04F9C3228BBA2300304868 /* Frameworks */,
 				CA04F9C5228BBA2300304868 /* Resources */,
-				CA04F9DA228BBA2300304868 /* [CP] Embed Pods Frameworks */,
 				CA04F9DB228BBA2300304868 /* SwiftLint */,
 				CA04F9DC228BBA2300304868 /* ShellScript */,
 			);
@@ -990,45 +988,6 @@
 
 /* Begin PBXShellScriptBuildPhase section */
 		7D56C79157EB607B436A3214 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HowCarD+/Pods-HowCarD+-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HowCarD+/Pods-HowCarD+-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HowCarD+/Pods-HowCarD+-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CA04F968228BBA2300304868 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-HowCarD+-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CA04F9DA228BBA2300304868 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1374,7 +1333,6 @@
 /* Begin XCBuildConfiguration section */
 		CA04F9DE228BBA2300304868 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B5A0842CFBB48209D25D8D8 /* Pods-HowCarD+.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1395,7 +1353,6 @@
 		};
 		CA04F9DF228BBA2300304868 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6F7DA0CF1E2FC5FC71E1B720 /* Pods-HowCarD+.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1531,7 +1488,7 @@
 		};
 		CA171B71225330090042BBDC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B5A0842CFBB48209D25D8D8 /* Pods-HowCarD+.debug.xcconfig */;
+			baseConfigurationReference = 42D2346DF278FD143FC9CD08 /* Pods-HowCarD+.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1552,7 +1509,7 @@
 		};
 		CA171B72225330090042BBDC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6F7DA0CF1E2FC5FC71E1B720 /* Pods-HowCarD+.release.xcconfig */;
+			baseConfigurationReference = 8588EE9147B3FFF46345FB7D /* Pods-HowCarD+.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import UIKit
 
 class HowCarDTests: XCTestCase {
 
