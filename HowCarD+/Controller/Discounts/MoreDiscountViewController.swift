@@ -176,7 +176,7 @@ class MoreDiscountViewController: HCBaseViewController {
                     userCollection: .isReadDiscounts,
                     uid: user.uid,
                     id: discountObject!.discountInfos[indexPath.item].discountId,
-                    loadingAnimation: self.startLoadingAnimation(viewController:),
+                    loadingAnimation: nil,
                     addIdCompletionHandler: { _ in
                         
                         NotificationCenter.default.post(

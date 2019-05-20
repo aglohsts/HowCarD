@@ -283,7 +283,8 @@ extension LikedDiscountViewController: UITableViewDataSource {
                 bankName: self.searchResult[indexPath.row].bankName,
                 cardName: self.searchResult[indexPath.row].cardName,
                 timePeriod: self.searchResult[indexPath.row].timePeriod,
-                discountImage: self.searchResult[indexPath.row].image
+                discountImage: self.searchResult[indexPath.row].image,
+                isSearching: self.isSearching
             )
         } else {
             
@@ -292,7 +293,8 @@ extension LikedDiscountViewController: UITableViewDataSource {
                 bankName: self.userLikedDiscounts[indexPath.row].bankName,
                 cardName: self.userLikedDiscounts[indexPath.row].cardName,
                 timePeriod: self.userLikedDiscounts[indexPath.row].timePeriod,
-                discountImage: self.userLikedDiscounts[indexPath.row].image
+                discountImage: self.userLikedDiscounts[indexPath.row].image,
+                isSearching: self.isSearching
             )
         }
         

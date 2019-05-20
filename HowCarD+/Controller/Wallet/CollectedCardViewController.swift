@@ -257,7 +257,8 @@ extension CollectedCardViewController: UITableViewDataSource {
                 cardName: searchResult[indexPath.row].name,
                 bankName: searchResult[indexPath.row].bank,
                 tags: searchResult[indexPath.row].tags,
-                isDeleting: isDeleting)
+                isDeleting: isDeleting,
+                isSearching: isSearching)
             
         } else {
             
@@ -266,7 +267,8 @@ extension CollectedCardViewController: UITableViewDataSource {
                 cardName: userCollectedCards[indexPath.row].name,
                 bankName: userCollectedCards[indexPath.row].bank,
                 tags: userCollectedCards[indexPath.row].tags,
-                isDeleting: isDeleting)
+                isDeleting: isDeleting,
+                isSearching: isSearching)
         }
         
         collectedCardCell.deleteDidTouchHandler = {

@@ -258,7 +258,7 @@ extension CardsViewController {
                 userCollection: .isReadCards,
                 uid: user.uid,
                 id: cardsBasicInfo[indexPath.row].id,
-                loadingAnimation: self.startLoadingAnimation(viewController:),
+                loadingAnimation: nil,
                 addIdCompletionHandler: nil
             )
         }

@@ -430,6 +430,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="deleteButton" destination="EsF-7B-4cu" id="MI5-ro-02o"/>
                                             <outlet property="discountImageView" destination="L4y-oP-zW9" id="jBI-nT-cOE"/>
                                             <outlet property="discountTitleLabel" destination="VcQ-Kt-NQt" id="8Va-ft-PgI"/>
                                             <outlet property="targetLabel" destination="JZm-9Q-786" id="9ws-Al-ERO"/>

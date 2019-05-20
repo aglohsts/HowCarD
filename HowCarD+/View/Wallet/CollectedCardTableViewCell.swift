@@ -49,6 +49,26 @@ class CollectedCardTableViewCell: HCBaseTableViewCell {
         }
     }
     
+    var isSearching: Bool = false {
+        
+        didSet {
+            
+            if isSearching {
+                
+                DispatchQueue.main.async { [weak self] in
+                
+                    self?.deleteBtn.isHidden = true
+                }
+            } else {
+                
+                DispatchQueue.main.async { [weak self] in
+                
+                    self?.deleteBtn.isHidden = false
+                }
+            }
+        }
+    }
+    
     var deleteDidTouchHandler: (() -> Void)?
     
     var tagArray:[String] = [] {
@@ -72,7 +92,14 @@ class CollectedCardTableViewCell: HCBaseTableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func layoutCell(cardImage: String, cardName: String, bankName: String, tags: [String], isDeleting: Bool) {
+    func layoutCell(
+        cardImage: String,
+        cardName: String,
+        bankName: String,
+        tags: [String],
+        isDeleting: Bool,
+        isSearching: Bool)
+    {
         
         cardImageView.loadImage(cardImage, placeHolder: UIImage.asset(.Image_Placeholder2))
         
@@ -83,6 +110,8 @@ class CollectedCardTableViewCell: HCBaseTableViewCell {
         self.tagArray = tags
         
         self.isDeleting = isDeleting
+        
+        self.isSearching = isSearching
     }
     
     private func setupCollectionView() {

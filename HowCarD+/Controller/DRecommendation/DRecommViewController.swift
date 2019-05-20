@@ -235,19 +235,13 @@ extension DRecommViewController {
     }
     
     @objc func updateReadDiscount() {
-        checkReadDiscount()
         
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        checkReadDiscount()
     }
     
     @objc func updateReadCard() {
-        checkReadCard()
         
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        checkReadCard()
     }
     // swiftlint:disable cyclomatic_complexity
     func markAsRead(indexPath: IndexPath) {
@@ -280,7 +274,7 @@ extension DRecommViewController {
                         userCollection: .isReadCards,
                         uid: user.uid,
                         id: newCards[indexPath.row].id,
-                        loadingAnimation: self.startLoadingAnimation(viewController:),
+                        loadingAnimation: nil,
                         addIdCompletionHandler: { _ in
                             
                             NotificationCenter.default.post(
@@ -317,7 +311,7 @@ extension DRecommViewController {
                         userCollection: .isReadDiscounts,
                         uid: user.uid,
                         id: newDiscounts[indexPath.row].info.discountId,
-                        loadingAnimation: self.startLoadingAnimation(viewController:),
+                        loadingAnimation: nil,
                         addIdCompletionHandler: { _ in
                             
                             NotificationCenter.default.post(
@@ -355,7 +349,7 @@ extension DRecommViewController {
                         userCollection: .isReadCards,
                         uid: user.uid,
                         id: selectedCards[indexPath.row].id,
-                        loadingAnimation: self.startLoadingAnimation(viewController:),
+                        loadingAnimation: nil,
                         addIdCompletionHandler: { _ in
                             
                             NotificationCenter.default.post(
@@ -393,7 +387,7 @@ extension DRecommViewController {
                         userCollection: .isReadDiscounts,
                         uid: user.uid,
                         id: selectedDiscounts[indexPath.row].info.discountId,
-                        loadingAnimation: self.startLoadingAnimation(viewController:),
+                        loadingAnimation: nil,
                         addIdCompletionHandler: { _ in
                             
                             NotificationCenter.default.post(

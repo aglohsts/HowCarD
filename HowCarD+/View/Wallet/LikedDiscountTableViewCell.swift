@@ -18,7 +18,29 @@ class LikedDiscountTableViewCell: HCBaseTableViewCell {
     
     @IBOutlet weak var discountImageView: UIImageView!
     
+    @IBOutlet weak var deleteButton: UIButton!
+    
     var deleteDidTouchHandler: (() -> Void)?
+    
+    var isSearching: Bool = false {
+        
+        didSet {
+            
+            if isSearching {
+                
+                DispatchQueue.main.async { [weak self] in
+                
+                    self?.deleteButton.isHidden = true
+                }
+            } else {
+                
+                DispatchQueue.main.async { [weak self] in
+                
+                    self?.deleteButton.isHidden = false
+                }
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +51,13 @@ class LikedDiscountTableViewCell: HCBaseTableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func layoutCell(discountTitle: String, bankName: String, cardName: String, timePeriod: String, discountImage: String) {
+    func layoutCell(discountTitle: String,
+                    bankName: String,
+                    cardName: String,
+                    timePeriod: String,
+                    discountImage: String,
+                    isSearching: Bool)
+    {
         
         discountTitleLabel.text = discountTitle
         
@@ -38,6 +66,8 @@ class LikedDiscountTableViewCell: HCBaseTableViewCell {
         timePeriodLabel.text = timePeriod
         
         discountImageView.loadImage(discountImage, placeHolder: UIImage.asset(.Image_Placeholder2))
+        
+        self.isSearching = isSearching
     }
 
     @IBAction func onDelete(_ sender: Any) {

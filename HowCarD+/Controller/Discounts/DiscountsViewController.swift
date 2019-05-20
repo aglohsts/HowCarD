@@ -153,7 +153,7 @@ extension DiscountsViewController {
                 uid: user.uid,
                 id: discountObjects[indexPath.section]
                     .discountInfos[indexPath.row].discountId,
-                loadingAnimation: self.startLoadingAnimation(viewController:),
+                loadingAnimation: nil,
                 addIdCompletionHandler: { _ in
                     
                     NotificationCenter.default.post(
