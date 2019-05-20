@@ -124,8 +124,6 @@ class DRecommViewController: HCBaseViewController {
         }
         
         setBackgroundColor(.viewBackground)
-        
-        
     }
     
     override func setBackgroundColor(_ hex: HCColorHex) {
@@ -320,8 +318,6 @@ extension DRecommViewController {
                             )
                     })
                 }
-                
-                
             }
         case DRecommSection.selectedCards.rawValue:
             
@@ -358,8 +354,6 @@ extension DRecommViewController {
                             )
                     })
                 }
-                
-                
             }
         case DRecommSection.selectedDiscounts.rawValue:
             

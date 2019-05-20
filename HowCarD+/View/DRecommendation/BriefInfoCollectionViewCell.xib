@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000000000000004" contentMode="center" reuseIdentifier="BriefInfoCollectionViewCell" id="gTV-IL-0wX" customClass="BriefInfoCollectionViewCell" customModule="HowCarD_" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000000000000004" contentMode="center" reuseIdentifier="BriefInfoCollectionViewCell" id="gTV-IL-0wX" customClass="BriefInfoCollectionViewCell" customModule="HowCarD" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="97" height="81"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -32,17 +32,17 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bDo-XV-PHE">
-                        <rect key="frame" x="3" y="23" width="91" height="53"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <rect key="frame" x="3" y="28" width="91" height="48"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7x0-Dr-wMy">
-                        <rect key="frame" x="3" y="3" width="91" height="15"/>
+                        <rect key="frame" x="3" y="8" width="91" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="Bag-lp-QRB"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -57,7 +57,7 @@
                 <constraint firstAttribute="trailing" secondItem="Wzc-SK-Mbc" secondAttribute="trailing" id="ckb-qf-zjH"/>
                 <constraint firstItem="7x0-Dr-wMy" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="3" id="i34-ZP-eRo"/>
                 <constraint firstAttribute="bottom" secondItem="bDo-XV-PHE" secondAttribute="bottom" constant="5" id="rI5-tR-CHn"/>
-                <constraint firstItem="7x0-Dr-wMy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="3" id="uc4-cU-hVc"/>
+                <constraint firstItem="7x0-Dr-wMy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="uc4-cU-hVc"/>
                 <constraint firstItem="bDo-XV-PHE" firstAttribute="top" secondItem="7x0-Dr-wMy" secondAttribute="bottom" constant="5" id="vMN-1X-nXd"/>
                 <constraint firstItem="Wzc-SK-Mbc" firstAttribute="centerX" secondItem="bDo-XV-PHE" secondAttribute="centerX" id="yZc-ff-J5o"/>
             </constraints>
