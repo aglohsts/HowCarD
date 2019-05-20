@@ -11,6 +11,7 @@ identifier_name:
     - app
     - nib
     - key
+    - vc
 
 excluded:
   - Carthage
