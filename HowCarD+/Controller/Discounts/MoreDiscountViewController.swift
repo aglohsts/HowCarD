@@ -172,18 +172,22 @@ class MoreDiscountViewController: HCBaseViewController {
                 guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
                 
                 HCFirebaseManager.shared.addId(
+                    viewController: self,
                     userCollection: .isReadDiscounts,
                     uid: user.uid,
                     id: discountObject!.discountInfos[indexPath.item].discountId,
-                    addIdCompletionHandler: nil
-                )
+                    loadingAnimation: self.startLoadingAnimation(viewController:),
+                    addIdCompletionHandler: { _ in
+                        
+                        NotificationCenter.default.post(
+                            name: Notification.Name(rawValue: NotificationNames.updateReadDiscount.rawValue),
+                            object: nil
+                        )
+                })
             }
         }
         
-        NotificationCenter.default.post(
-            name: Notification.Name(rawValue: NotificationNames.updateReadDiscount.rawValue),
-            object: nil
-        )
+        
     }
     
     func discountAddObserver() {
@@ -405,24 +409,44 @@ extension MoreDiscountViewController: UICollectionViewDataSource {
                         viewController: strongSelf,
                         userCollection: .likedDiscounts,
                         uid: user.uid,
-                        id: strongSelf.discountObject!.discountInfos[indexPath.item].discountId
-                    )
+                        id: strongSelf.discountObject!.discountInfos[indexPath.item].discountId,
+                        loadingAnimation: strongSelf.startLoadingAnimation(viewController:),
+                        completion: { result in
+                            
+                            switch result {
+                                
+                            case .success:
+                                
+                                strongSelf.discountObject!.discountInfos[indexPath.row].isLiked =
+                                    !strongSelf.discountObject!.discountInfos[indexPath.row].isLiked
+                                
+                                NotificationCenter.default.post(
+                                    name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
+                                    object: nil
+                                )
+                                
+                            case .failure: break
+                            }
+                    })
                 } else {
                     
                     HCFirebaseManager.shared.addId(
+                        viewController: strongSelf,
                         userCollection: .likedDiscounts,
                         uid: user.uid,
                         id: strongSelf.discountObject!.discountInfos[indexPath.item].discountId,
-                        addIdCompletionHandler: nil
-                    )
+                        loadingAnimation: strongSelf.startLoadingAnimation(viewController:),
+                        addIdCompletionHandler: { _ in
+                            
+                            strongSelf.discountObject!.discountInfos[indexPath.row].isLiked =
+                                !strongSelf.discountObject!.discountInfos[indexPath.row].isLiked
+                            
+                            NotificationCenter.default.post(
+                                name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
+                                object: nil
+                            )
+                    })
                 }
-                 strongSelf.discountObject!.discountInfos[indexPath.row].isLiked =
-                    !strongSelf.discountObject!.discountInfos[indexPath.row].isLiked
-                
-                NotificationCenter.default.post(
-                    name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
-                    object: nil
-                )
                 
             } else {
                 

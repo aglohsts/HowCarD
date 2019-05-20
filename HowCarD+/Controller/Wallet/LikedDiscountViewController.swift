@@ -312,8 +312,22 @@ extension LikedDiscountViewController: UITableViewDataSource {
                     userCollection: .likedDiscounts,
                     uid: user.uid,
                     id: strongSelf.searchResult[indexPath.row].discountId,
-                    loadingAnimation: strongSelf.startLoadingAnimation(viewController:)
-                )
+                    loadingAnimation: strongSelf.startLoadingAnimation(viewController:),
+                    completion: { result in
+                        
+                        switch result {
+                            
+                        case .success:
+                            
+                            NotificationCenter.default.post(
+                                name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
+                                object: nil
+                            )
+                            
+                        case .failure: break
+                        }
+                        
+                })
                 
 //                strongSelf.searchResult.remove(at: indexPath.row)
             } else {
@@ -323,16 +337,25 @@ extension LikedDiscountViewController: UITableViewDataSource {
                     userCollection: .likedDiscounts,
                     uid: user.uid,
                     id: strongSelf.userLikedDiscounts[indexPath.row].discountId,
-                    loadingAnimation: strongSelf.startLoadingAnimation(viewController:)
-                )
+                    loadingAnimation: strongSelf.startLoadingAnimation(viewController:),
+                    completion: { result in
+                        
+                        switch result {
+                            
+                        case .success:
+                            
+                            NotificationCenter.default.post(
+                                name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
+                                object: nil
+                            )
+                            
+                        case .failure: break
+                        }
+                })
                 
 //                strongSelf.userLikedDiscounts.remove(at: indexPath.row)
             }
-            
-            NotificationCenter.default.post(
-                name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
-                object: nil
-            )
+
         }
         
         return likedDiscountCell

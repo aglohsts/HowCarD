@@ -79,9 +79,11 @@ extension UIViewController {
         } else {
             
             HCFirebaseManager.shared.addId(
+                viewController: self,
                 userCollection: userCollection,
                 uid: uid,
                 id: id,
+                loadingAnimation: loadingAnimation,
                 addIdCompletionHandler: nil
             )
             

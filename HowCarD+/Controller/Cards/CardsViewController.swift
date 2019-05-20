@@ -254,9 +254,11 @@ extension CardsViewController {
             guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
             
             HCFirebaseManager.shared.addId(
+                viewController: self,
                 userCollection: .isReadCards,
                 uid: user.uid,
                 id: cardsBasicInfo[indexPath.row].id,
+                loadingAnimation: self.startLoadingAnimation(viewController:),
                 addIdCompletionHandler: nil
             )
         }
@@ -513,8 +515,6 @@ extension CardsViewController: UITableViewDataSource {
                                 
                             case .success:
                                 
-//                                strongSelf.startLoadingAnimation(viewController: strongSelf)
-                                
                                 NotificationCenter.default.post(
                                     name: Notification.Name(rawValue: NotificationNames.cardVCUpdateMyCard.rawValue),
                                     object: nil
@@ -522,8 +522,6 @@ extension CardsViewController: UITableViewDataSource {
                                 
                             case .failure: break
                             }
-                         
-                            
                         }
                     )
                     strongSelf.cardsBasicInfo[indexPath.row].isMyCard = !strongSelf.cardsBasicInfo[indexPath.row].isMyCard
@@ -558,12 +556,15 @@ extension CardsViewController: UITableViewDataSource {
                     addMyCardVC.didMove(toParent: strongSelf)
                     
                    // 在 addMyCardVC 中按下確定新增
-                    addMyCardVC.addMyCardCompletionHandler = { [weak self] (nickname, needBillRemind, selectedDate) in
+                    addMyCardVC.addMyCardCompletionHandler = { (nickname, needBillRemind, selectedDate) in
                         // 按下確定要新增再新增id
                         HCFirebaseManager.shared.addId(
+                            viewController: strongSelf,
                             userCollection: .myCards,
                             uid: user.uid,
-                            id: strongSelf.cardsBasicInfo[indexPath.row].id, addIdCompletionHandler: { error in
+                            id: strongSelf.cardsBasicInfo[indexPath.row].id,
+                            loadingAnimation: strongSelf.startLoadingAnimation(viewController:),
+                            addIdCompletionHandler: { error in
                                 
                                 HCFirebaseManager.shared.setMyCard(
                                     uid: user.uid,
@@ -571,7 +572,7 @@ extension CardsViewController: UITableViewDataSource {
                                     nickname: nickname,
                                     needBillRemind: needBillRemind,
                                     billDueDate: selectedDate,
-                                    completion: {
+                                    completion: { _ in
                                         
                                         NotificationCenter.default.post(
                                             name: Notification.Name(rawValue: NotificationNames.cardVCUpdateMyCard.rawValue),

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
 
 class SignUpViewController: HCBaseViewController {
 
@@ -94,7 +92,7 @@ class SignUpViewController: HCBaseViewController {
             
             if password == confirmPwd {
                 
-                Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+                HCFirebaseManager.shared.agAuth().createUser(withEmail: email, password: password) { (user, error) in
                     
                     if error == nil, user != nil {
                         

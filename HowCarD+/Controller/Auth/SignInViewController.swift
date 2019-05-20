@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
 
 class SignInViewController: HCBaseViewController {
 
@@ -51,7 +49,7 @@ class SignInViewController: HCBaseViewController {
             guard let email = emailTextField.text,
                 let password = passwordTextField.text else { return }
             
-            Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            HCFirebaseManager.shared.agAuth().signIn(withEmail: email, password: password) { (user, error) in
                 
                 if error == nil {
 

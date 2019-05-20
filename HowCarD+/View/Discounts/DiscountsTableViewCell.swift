@@ -182,24 +182,42 @@ extension DiscountsTableViewCell: UICollectionViewDataSource {
                             userCollection: .likedDiscounts,
                             uid: user.uid,
                             id: strongSelf.discountInfos[indexPath.row].discountId,
-                            loadingAnimation: vc.startLoadingAnimation(viewController:)
-                        )
+                            loadingAnimation: vc.startLoadingAnimation(viewController:),
+                            completion: { result in
+                                
+                                switch result {
+                                    
+                                case .success:
+                                    
+                                    strongSelf.discountInfos[indexPath.row].isLiked = !strongSelf.discountInfos[indexPath.row].isLiked
+                                    
+                                    NotificationCenter.default.post(
+                                        name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
+                                        object: nil
+                                    )
+                                    
+                                case .failure: break
+                                }
+                                
+                        })
                     } else {
                         
                         HCFirebaseManager.shared.addId(
+                            viewController: vc,
                             userCollection: .likedDiscounts,
                             uid: user.uid,
                             id: strongSelf.discountInfos[indexPath.row].discountId,
-                            addIdCompletionHandler: nil
-                        )
+                            loadingAnimation: vc.startLoadingAnimation(viewController:),
+                            addIdCompletionHandler: { error in
+                                
+                                strongSelf.discountInfos[indexPath.row].isLiked = !strongSelf.discountInfos[indexPath.row].isLiked
+                                
+                                NotificationCenter.default.post(
+                                    name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
+                                    object: nil
+                                )
+                        })
                     }
-                    
-                    strongSelf.discountInfos[indexPath.row].isLiked = !strongSelf.discountInfos[indexPath.row].isLiked
-                    
-                    NotificationCenter.default.post(
-                        name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
-                        object: nil
-                    )
                     
                 } else {
                     

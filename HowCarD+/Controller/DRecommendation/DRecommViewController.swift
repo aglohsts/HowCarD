@@ -276,17 +276,19 @@ extension DRecommViewController {
                     guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
                     
                     HCFirebaseManager.shared.addId(
+                        viewController: self,
                         userCollection: .isReadCards,
                         uid: user.uid,
                         id: newCards[indexPath.row].id,
-                        addIdCompletionHandler: nil
-                    )
+                        loadingAnimation: self.startLoadingAnimation(viewController:),
+                        addIdCompletionHandler: { _ in
+                            
+                            NotificationCenter.default.post(
+                                name: Notification.Name(rawValue: NotificationNames.updateReadCard.rawValue),
+                                object: nil
+                            )
+                    })
                 }
-                
-                NotificationCenter.default.post(
-                    name: Notification.Name(rawValue: NotificationNames.updateReadCard.rawValue),
-                    object: nil
-                )
             }
             
         case DRecommSection.newDiscounts.rawValue:
@@ -311,17 +313,21 @@ extension DRecommViewController {
                     guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
                     
                     HCFirebaseManager.shared.addId(
+                        viewController: self,
                         userCollection: .isReadDiscounts,
                         uid: user.uid,
                         id: newDiscounts[indexPath.row].info.discountId,
-                        addIdCompletionHandler: nil
-                    )
+                        loadingAnimation: self.startLoadingAnimation(viewController:),
+                        addIdCompletionHandler: { _ in
+                            
+                            NotificationCenter.default.post(
+                                name: Notification.Name(rawValue: NotificationNames.updateReadDiscount.rawValue),
+                                object: nil
+                            )
+                    })
                 }
                 
-                NotificationCenter.default.post(
-                    name: Notification.Name(rawValue: NotificationNames.updateReadDiscount.rawValue),
-                    object: nil
-                )
+                
             }
         case DRecommSection.selectedCards.rawValue:
             
@@ -345,17 +351,21 @@ extension DRecommViewController {
                     guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
                     
                     HCFirebaseManager.shared.addId(
+                        viewController: self,
                         userCollection: .isReadCards,
                         uid: user.uid,
                         id: selectedCards[indexPath.row].id,
-                        addIdCompletionHandler: nil
-                    )
+                        loadingAnimation: self.startLoadingAnimation(viewController:),
+                        addIdCompletionHandler: { _ in
+                            
+                            NotificationCenter.default.post(
+                                name: Notification.Name(rawValue: NotificationNames.updateReadCard.rawValue),
+                                object: nil
+                            )
+                    })
                 }
                 
-                NotificationCenter.default.post(
-                    name: Notification.Name(rawValue: NotificationNames.updateReadCard.rawValue),
-                    object: nil
-                )
+                
             }
         case DRecommSection.selectedDiscounts.rawValue:
             
@@ -379,17 +389,19 @@ extension DRecommViewController {
                     guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
                     
                     HCFirebaseManager.shared.addId(
+                        viewController: self,
                         userCollection: .isReadDiscounts,
                         uid: user.uid,
                         id: selectedDiscounts[indexPath.row].info.discountId,
-                        addIdCompletionHandler: nil
-                    )
+                        loadingAnimation: self.startLoadingAnimation(viewController:),
+                        addIdCompletionHandler: { _ in
+                            
+                            NotificationCenter.default.post(
+                                name: Notification.Name(rawValue: NotificationNames.updateReadDiscount.rawValue),
+                                object: nil
+                            )
+                    })
                 }
-                
-                NotificationCenter.default.post(
-                    name: Notification.Name(rawValue: NotificationNames.updateReadDiscount.rawValue),
-                    object: nil
-                )
             }
         default: return
         }

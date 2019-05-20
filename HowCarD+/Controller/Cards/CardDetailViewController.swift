@@ -179,25 +179,44 @@ class CardDetailViewController: HCBaseViewController {
                     userCollection: .collectedCards,
                     uid: user.uid,
                     id: cardObject.basicInfo.id,
-                    loadingAnimation: startLoadingAnimation(viewController:)
-                )
+                    loadingAnimation: startLoadingAnimation(viewController:),
+                    completion: { [weak self] result in
+                        
+                        guard let strongSelf = self else { return }
+                        
+                        switch result {
+                            
+                        case .success:
+                            
+                            strongSelf.isCollected = !strongSelf.isCollected
+                            
+                            NotificationCenter.default.post(
+                                name: Notification.Name(rawValue: NotificationNames.updateCollectedCard.rawValue),
+                                object: nil
+                            )
+                            
+                        case .failure: break
+                        }
+                })
             } else {
                 
                 HCFirebaseManager.shared.addId(
+                    viewController: self,
                     userCollection: .collectedCards,
                     uid: user.uid,
                     id: cardObject.basicInfo.id,
-                    addIdCompletionHandler: nil
-                )
+                    loadingAnimation: startLoadingAnimation(viewController:),
+                    addIdCompletionHandler: { _ in
+                        
+                        self.isCollected = !self.isCollected
+                        
+                        NotificationCenter.default.post(
+                            name: Notification.Name(rawValue: NotificationNames.updateCollectedCard.rawValue),
+                            object: nil
+                        )
+                })
             }
-            
-            isCollected = !isCollected
-            
-            NotificationCenter.default.post(
-                name: Notification.Name(rawValue: NotificationNames.updateCollectedCard.rawValue),
-                object: nil
-            )
-            
+
             cardCollectDidTouchHandler?()
             
         } else {
@@ -232,10 +251,24 @@ class CardDetailViewController: HCBaseViewController {
                     userCollection: .myCards,
                     uid: user.uid,
                     id: cardObject.basicInfo.id,
-                    loadingAnimation: startLoadingAnimation(viewController:)
-                )
-                
-                isMyCard = !isMyCard
+                    loadingAnimation: self.startLoadingAnimation(viewController:),
+                    completion: { result in
+                        
+                        switch result {
+                            
+                        case .success:
+                            
+                            self.isMyCard = !self.isMyCard
+                            
+                            NotificationCenter.default.post(
+                                name: Notification.Name(rawValue: NotificationNames.cardVCUpdateMyCard.rawValue),
+                                object: nil
+                            )
+                            
+                        case .failure: break
+                        }
+                        
+                })
             } else {
                 
                 // add AddMyCardVC view
@@ -274,9 +307,11 @@ class CardDetailViewController: HCBaseViewController {
                     
                     // 按下確定要新增再新增id
                     HCFirebaseManager.shared.addId(
+                        viewController: strongSelf,
                         userCollection: .myCards,
                         uid: user.uid,
                         id: cardObject.basicInfo.id,
+                        loadingAnimation: strongSelf.startLoadingAnimation(viewController:),
                         addIdCompletionHandler: { [weak self] error in
                             
                             HCFirebaseManager.shared.setMyCard(
@@ -284,20 +319,25 @@ class CardDetailViewController: HCBaseViewController {
                                 id: object.basicInfo.id,
                                 nickname: nickname,
                                 needBillRemind: needBillRemind,
-                                billDueDate: selectedDate
-                            )
+                                billDueDate: selectedDate,
+                                completion: { result in
+                                    
+                                    switch result {
+                                        
+                                    case .success:
+                                        strongSelf.isMyCard = !strongSelf.isMyCard
+                                        
+                                        NotificationCenter.default.post(
+                                            name: Notification.Name(rawValue: NotificationNames.cardVCUpdateMyCard.rawValue),
+                                            object: nil
+                                        )
+                                        
+                                    case .failure: break
+                                    }
+                            })
                     })
                     }
-   
-                isMyCard = !isMyCard
             }
-            
-            
-            
-            NotificationCenter.default.post(
-                name: Notification.Name(rawValue: NotificationNames.cardVCUpdateMyCard.rawValue),
-                object: nil
-            )
             
             isMyCardDidTouchHandler?()
             

@@ -146,8 +146,8 @@ class HCBaseViewController: UIViewController, NVActivityIndicatorViewable {
         let loadingView = NVActivityIndicatorView(
             frame: CGRect(
                 x: 0, y: 0,
-                width: 90,
-                height: 90),
+                width: 80,
+                height: 80),
             type: .ballRotateChase,
             color: .white,
             padding: 20)

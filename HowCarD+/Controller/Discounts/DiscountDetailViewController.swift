@@ -107,24 +107,42 @@ class DiscountDetailViewController: HCBaseViewController {
                         userCollection: .likedDiscounts,
                         uid: user.uid,
                         id: self.discountDetail!.info.discountId,
-                        loadingAnimation: self.startLoadingAnimation(viewController:)
-                    )
+                        loadingAnimation: self.startLoadingAnimation(viewController:),
+                        completion: { result in
+                            
+                            switch result {
+                                
+                            case .success:
+                                
+                                self.discountDetail!.info.isLiked = !self.discountDetail!.info.isLiked
+                                
+                                NotificationCenter.default.post(
+                                    name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
+                                    object: nil
+                                )
+                                
+                            case .failure: break
+                            }
+                            
+                    })
                 } else {
                     
                     HCFirebaseManager.shared.addId(
+                        viewController: self,
                         userCollection: .likedDiscounts,
                         uid: user.uid,
                         id: self.discountDetail!.info.discountId,
-                        addIdCompletionHandler: nil
-                    )
+                        loadingAnimation: self.startLoadingAnimation(viewController:),
+                        addIdCompletionHandler: { _ in
+                            
+                            self.discountDetail!.info.isLiked = !self.discountDetail!.info.isLiked
+                            
+                            NotificationCenter.default.post(
+                                name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
+                                object: nil
+                            )
+                    })
                 }
-                
-                self.discountDetail!.info.isLiked = !self.discountDetail!.info.isLiked
-                
-                NotificationCenter.default.post(
-                    name: Notification.Name(rawValue: NotificationNames.updateLikedDiscount.rawValue),
-                    object: nil
-                )
             }
             
         } else {

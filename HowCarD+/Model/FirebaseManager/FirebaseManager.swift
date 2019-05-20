@@ -162,11 +162,17 @@ class HCFirebaseManager {
             }
     }
     
-    func addId(userCollection: UserCollection, uid: String, id: String, addIdCompletionHandler: ((Error?) -> Void)?) {
+    func addId(viewController: UIViewController,
+               userCollection: UserCollection,
+               uid: String, id: String,
+               loadingAnimation: ((UIViewController) -> Void)? = nil,
+               addIdCompletionHandler: ((Error?) -> Void)?) {
         
         switch userCollection {
             
         case .likedDiscounts:
+            
+            loadingAnimation?(viewController)
             
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
@@ -179,6 +185,8 @@ class HCFirebaseManager {
             
         case .isReadDiscounts:
             
+            loadingAnimation?(viewController)
+            
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
                 .addDocument(
@@ -189,6 +197,8 @@ class HCFirebaseManager {
             isReadDiscountIds.append(id)
             
         case .collectedCards:
+            
+            loadingAnimation?(viewController)
         
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
@@ -201,6 +211,8 @@ class HCFirebaseManager {
         
         case .myCards:
             
+            loadingAnimation?(viewController)
+            
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
                 .addDocument(
@@ -212,11 +224,16 @@ class HCFirebaseManager {
             
         case .isReadCards:
             
+            loadingAnimation?(viewController)
+            
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
-                .addDocument(data: [
+                .addDocument(
+                    data: [
                     UserCollectionDataKey.cardId.rawValue: "\(id)"
-                    ])
+                    ],
+                    completion: addIdCompletionHandler)
+            
             isReadCardIds.append(id)
         }
     }
@@ -235,6 +252,8 @@ class HCFirebaseManager {
             
         case .likedDiscounts:
             
+            loadingAnimation?(viewController)
+            
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
                 .whereField(UserCollectionDataKey.discountId.rawValue, isEqualTo: id)
@@ -247,8 +266,6 @@ class HCFirebaseManager {
                             print("\(document.documentID) => \(document.data())")
                         }
                         
-                        loadingAnimation?(viewController)
-                        
                         querySnapshot!.documents.forEach({ [weak self] (document) in
                             // 用 documentID 去刪除 document
                             self?.firestoreRef(to: .users)
@@ -256,6 +273,8 @@ class HCFirebaseManager {
                                 .document(document.documentID).delete()
                         })
                     }
+                    
+                    completion?(Result.success(()))
             }
             
             guard let index = likedDiscountIds.firstIndex(of: id) else { return }
@@ -263,6 +282,8 @@ class HCFirebaseManager {
             likedDiscountIds.remove(at: index)
             
         case .isReadDiscounts:
+            
+            loadingAnimation?(viewController)
             
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
@@ -275,8 +296,6 @@ class HCFirebaseManager {
                         for document in querySnapshot!.documents {
                             print("\(document.documentID) => \(document.data())")
                         }
-                        
-                        loadingAnimation?(viewController)
                         
                         querySnapshot!.documents.forEach({ [weak self] (document) in
                             // 用 documentID 去刪除 document
@@ -295,6 +314,8 @@ class HCFirebaseManager {
             
         case .collectedCards:
             
+            loadingAnimation?(viewController)
+            
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
                 .whereField(UserCollectionDataKey.cardId.rawValue, isEqualTo: id)
@@ -302,8 +323,6 @@ class HCFirebaseManager {
                     if let err = err {
                         print("Error getting documents: \(err)")
                     } else {
-                        
-                        loadingAnimation?(viewController)
                         
                         for document in querySnapshot!.documents {
                             print("\(document.documentID) => \(document.data())")
@@ -328,6 +347,8 @@ class HCFirebaseManager {
             
         case .myCards:
             
+            loadingAnimation?(viewController)
+            
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
                 .whereField(UserCollectionDataKey.cardId.rawValue, isEqualTo: id)
@@ -335,8 +356,6 @@ class HCFirebaseManager {
                     if let err = err {
                         print("Error getting documents: \(err)")
                     } else {
-                        
-                        loadingAnimation?(viewController)
                         
                         for document in querySnapshot!.documents {
                             print("\(document.documentID) => \(document.data())")
@@ -382,6 +401,8 @@ class HCFirebaseManager {
             
         case .isReadCards:
             
+            loadingAnimation?(viewController)
+            
             firestoreRef(to: .users).document(uid)
                 .collection(userCollection.rawValue)
                 .whereField(UserCollectionDataKey.cardId.rawValue, isEqualTo: id)
@@ -389,8 +410,6 @@ class HCFirebaseManager {
                     if let err = err {
                         print("Error getting documents: \(err)")
                     } else {
-                        
-                        loadingAnimation?(viewController)
                         
                         for document in querySnapshot!.documents {
                             print("\(document.documentID) => \(document.data())")

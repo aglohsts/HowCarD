@@ -250,8 +250,6 @@ extension CollectedCardViewController: UITableViewDataSource {
         
         guard let collectedCardCell = cell as? CollectedCardTableViewCell else { return cell }
         
-        
-        
         if isSearching {
             
             collectedCardCell.layoutCell(
@@ -287,8 +285,21 @@ extension CollectedCardViewController: UITableViewDataSource {
                     userCollection: .collectedCards,
                     uid: user.uid,
                     id: strongSelf.searchResult[indexPath.row].id,
-                    loadingAnimation: strongSelf.startLoadingAnimation(viewController:)
-                )
+                    loadingAnimation: strongSelf.startLoadingAnimation(viewController:),
+                    completion: { result in
+                        
+                        switch result {
+                            
+                        case .success:
+                            NotificationCenter.default.post(
+                                name: Notification.Name(rawValue: NotificationNames.updateCollectedCard.rawValue),
+                                object: nil
+                            )
+                            
+                        case .failure: break
+                        }
+                        
+                })
                 
 //                strongSelf.searchResult.remove(at: indexPath.row)
                 
@@ -299,16 +310,24 @@ extension CollectedCardViewController: UITableViewDataSource {
                     userCollection: .collectedCards,
                     uid: user.uid,
                     id: strongSelf.userCollectedCards[indexPath.row].id,
-                    loadingAnimation: strongSelf.startLoadingAnimation(viewController:)
-                )
+                    loadingAnimation: strongSelf.startLoadingAnimation(viewController:),
+                    completion: { result in
+                        
+                        switch result {
+                            
+                        case .success:
+                            NotificationCenter.default.post(
+                                name: Notification.Name(rawValue: NotificationNames.updateCollectedCard.rawValue),
+                                object: nil
+                            )
+                            
+                        case .failure: break
+                        }
+                        
+                })
                 
 //                strongSelf.userCollectedCards.remove(at: indexPath.row)
             }
-            
-            NotificationCenter.default.post(
-                name: Notification.Name(rawValue: NotificationNames.updateCollectedCard.rawValue),
-                object: nil
-            )
         }
         
         return collectedCardCell

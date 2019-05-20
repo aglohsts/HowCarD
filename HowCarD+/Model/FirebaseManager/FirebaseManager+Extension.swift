@@ -89,7 +89,7 @@ extension HCFirebaseManager {
         
     }
     
-    func setMyCard(uid: String, id: String, nickname: String?, needBillRemind: Bool, billDueDate: Int?, completion: (() -> Void)? = nil) {
+    func setMyCard(uid: String, id: String, nickname: String?, needBillRemind: Bool, billDueDate: Int?, completion: ((Result<Void>) -> Void)? = nil) {
         
         firestoreRef(to: .users).document(uid)
             .collection(UserCollection.myCards.rawValue)
@@ -116,7 +116,7 @@ extension HCFirebaseManager {
                     })
                 }
     
-                completion?()
+                completion?(Result.success(()))
         }
     }
     

@@ -148,18 +148,22 @@ extension DiscountsViewController {
             guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
             
             HCFirebaseManager.shared.addId(
+                viewController: self,
                 userCollection: .isReadDiscounts,
                 uid: user.uid,
                 id: discountObjects[indexPath.section]
                     .discountInfos[indexPath.row].discountId,
-                addIdCompletionHandler: nil
-            )
+                loadingAnimation: self.startLoadingAnimation(viewController:),
+                addIdCompletionHandler: { _ in
+                    
+                    NotificationCenter.default.post(
+                        name: Notification.Name(rawValue: NotificationNames.updateReadDiscount.rawValue),
+                        object: nil
+                    )
+            })
         }
         
-        NotificationCenter.default.post(
-            name: Notification.Name(rawValue: NotificationNames.updateReadDiscount.rawValue),
-            object: nil
-        )
+        
     }
     
     func getData() {
