@@ -4,11 +4,6 @@ HowCarD+
 
 [![](https://i.imgur.com/A85x7hD.png)](https://testflight.apple.com/join/uk1Rll8L)  Download here :point_right: https://testflight.apple.com/join/uk1Rll8L
 
-
-## Table of Contents
-
-[TOC]
-
 ## General Info
 
 Organizing credit cards and related discount information for people with a stack of credit cards to use the right one at the proper moment to maximize rebates.
