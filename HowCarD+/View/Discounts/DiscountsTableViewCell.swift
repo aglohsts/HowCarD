@@ -82,6 +82,15 @@ class DiscountsTableViewCell: HCBaseTableViewCell {
 //        guard let discountsVC = sender.source as? DiscountsViewController else { return }
         // sender: UIStoryboardSegue
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        DispatchQueue.main.async { [weak self] in
+            
+            self?.collectionView.reloadData()
+        }
+    }
 }
 
 extension DiscountsTableViewCell: UICollectionViewDelegateFlowLayout {

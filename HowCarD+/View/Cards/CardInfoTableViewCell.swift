@@ -65,7 +65,7 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
         
         didSet {
             
-            if isMyCard{
+            if isMyCard {
                 
                 isMyCardBtn.setImage(UIImage.asset(.Icons_isMyCard_Selected), for: .normal)
             } else {
@@ -195,6 +195,18 @@ class CardInfoTableViewCell: HCBaseTableViewCell {
     
         toApplyCardHandler?()
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        DispatchQueue.main.async { [weak self] in
+            
+            self?.cardInfoCollectionView.reloadData()
+            
+            self?.tagCollectionView.reloadData()
+        }
+        
+    }
 }
 
 extension CardInfoTableViewCell {
@@ -304,7 +316,6 @@ extension CardInfoTableViewCell: UICollectionViewDelegateFlowLayout {
     //            return CGSize(width: UIScreen.width, height: 25.0)
     //    }
 }
-
 
 extension CardInfoTableViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

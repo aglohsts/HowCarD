@@ -211,7 +211,16 @@ class DRecommTableViewCell: FoldingCell {
     }
     
     override func prepareForReuse() {
-
+        super.prepareForReuse()
+        
+        DispatchQueue.main.async { [weak self] in
+            
+            self?.containerCollectionView.reloadData()
+            
+            self?.foreCollectionView.reloadData()
+            
+            self?.briefIntroCollectionView.reloadData()
+        }
     }
 }
 

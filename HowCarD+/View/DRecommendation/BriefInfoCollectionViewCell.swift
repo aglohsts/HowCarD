@@ -25,4 +25,12 @@ class BriefInfoCollectionViewCell: HCBaseCollectionViewCell {
         
         contentLabel.text = content
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        titleLabel.text = ""
+        
+        titleLabel.text = ""
+    }
 }
