@@ -12,14 +12,14 @@ HowCarD+
 
 ## Skills
 * 於物件間廣泛使用 **closure** 進行溝通。
-* 使用 **weak**、**unowned** 處理 memory leak 及 retain cycles 的問題.
-* 使用 **WKWebView** 讓使用者於 App 中瀏覽網頁，並透過 **Key-Value Observing** 追蹤使用者行為.
-* 以 **Notification Center** 於不同 view controller 間溝通，當有指定事件發生時即 post notification.
+* 使用 **weak**、**unowned** 處理 memory leak 及 retain cycles 的問題。
+* 使用 **WKWebView** 讓使用者於 App 中瀏覽網頁，並透過 **Key-Value Observing** 追蹤使用者行為。
+* 以 **Notification Center** 於不同 view controller 間溝通，當有指定事件發生時即 post notification。
 
 ## Features
 * **D+ 精選** 
     * 分為 4 類別，最新卡片、最新優惠、精選卡片、精選優惠。
-    * 使用 Library：`FoldingCell`
+    * 使用 Library：`FoldingCell`。
 
 * **卡好康**
     * 呈現信用卡相關的優惠資訊。
