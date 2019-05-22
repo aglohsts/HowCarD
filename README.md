@@ -12,7 +12,7 @@ HowCarD+
 
 ## Skills
 * 於物件間廣泛使用 **closure** 進行溝通。
-* 使用 **weak**、**unowned** 處理 memory leak 及 retain cycles 的問題。
+* 使用 **weak**、**unowned** 處理 memory leak 及 retain cycle 的問題。
 * 使用 **WKWebView** 讓使用者於 App 中瀏覽網頁，並透過 **Key-Value Observing** 追蹤使用者行為。
 * 以 **Notification Center** 於不同 view controller 間溝通，當有指定事件發生時即 post notification。
 
@@ -23,7 +23,7 @@ HowCarD+
 
 * **卡好康**
     * 呈現信用卡相關的優惠資訊。
-    * 將 UICollectionView 置於 UITableViewCell 中。
+    * 將 `UICollectionView` 置於 `UITableViewCell` 中。
     
 * **卡了解**
     * 簡介信用卡，並可點選按鈕以查看詳細資訊。
@@ -32,7 +32,7 @@ HowCarD+
     * 若使用者對該卡感興趣，可先將卡片收藏並在 `卡收好` tab 查看。
 * **卡收好**
     * 分為 3 類別: 我的卡片、喜歡的優惠、已收藏卡片。
-    * 以 UIScrollView 方便使用者左右滑動切換不同的類別。
+    * 以 `UIScrollView` 方便使用者左右滑動切換不同的類別。
     
 * **卡客服**
     * 方便使用者於需要時能即時打電話聯絡客服或連至銀行留言頁面（若該銀行有提供留言功能）。
@@ -47,3 +47,10 @@ HowCarD+
 * FoldingCell
 * HFCardCollectionViewLayout
 * NVActivityIndicatorView
+
+## Requirement
+* iOS 11.0+
+* Xcode 10.2
+
+## Contacts
+**Agnes Lo** :email: lohsts@gmail.com
