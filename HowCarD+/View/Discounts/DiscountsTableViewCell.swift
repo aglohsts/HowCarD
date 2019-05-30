@@ -86,10 +86,10 @@ class DiscountsTableViewCell: HCBaseTableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        DispatchQueue.main.async { [weak self] in
-            
-            self?.collectionView.reloadData()
-        }
+//        DispatchQueue.main.async { [weak self] in
+//            
+//            self?.collectionView.reloadData()
+//        }
     }
 }
 

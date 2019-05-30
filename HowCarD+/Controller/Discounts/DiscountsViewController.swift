@@ -119,30 +119,30 @@ extension DiscountsViewController {
         } else if segue.identifier == Segue.discountDetail {
             
             guard let discountDetailVC = segue.destination as? DiscountDetailViewController,
-                let selectedPath = sender as? IndexPath
+                let selectedPath = sender as? (Int, IndexPath)
                 
             else {
                 return
             }
             
-            discountDetailVC.discountId = discountObjects[selectedPath.section]
-                .discountInfos[selectedPath.row]
+            discountDetailVC.discountId = discountObjects[selectedPath.0]
+                .discountInfos[selectedPath.1.row]
                 .discountId
         }
     }
     
-    func markDiscountAsRead(indexPath: IndexPath) {
+    func markDiscountAsRead(index: Int, indexPath: IndexPath) {
         
-        discountObjects[indexPath.section]
+        discountObjects[index]
             .discountInfos[indexPath.row].isRead = true
         
         // 先檢查有無重複
-        if userReadDiscountIds.contains(discountObjects[indexPath.section]
+        if userReadDiscountIds.contains(discountObjects[index]
             .discountInfos[indexPath.row].discountId) {
             
             return
         } else {
-            userReadDiscountIds.append(discountObjects[indexPath.section]
+            userReadDiscountIds.append(discountObjects[index]
                 .discountInfos[indexPath.row].discountId)
             
             guard let user = HCFirebaseManager.shared.agAuth().currentUser else { return }
@@ -151,7 +151,7 @@ extension DiscountsViewController {
                 viewController: self,
                 userCollection: .isReadDiscounts,
                 uid: user.uid,
-                id: discountObjects[indexPath.section]
+                id: discountObjects[index]
                     .discountInfos[indexPath.row].discountId,
                 loadingAnimation: nil,
                 addIdCompletionHandler: { _ in
@@ -162,8 +162,7 @@ extension DiscountsViewController {
                     )
             })
         }
-        
-        
+   
     }
     
     func getData() {
@@ -413,14 +412,14 @@ extension DiscountsViewController: UITableViewDataSource {
             )
         }
         
-        discountTableViewCell.toDiscountDetailHandler = { [weak self] (indexPath) in
+        discountTableViewCell.toDiscountDetailHandler = { [weak self] (path) in
             
-            self?.performSegue(withIdentifier: Segue.discountDetail, sender: indexPath)
+            self?.performSegue(withIdentifier: Segue.discountDetail, sender: (indexPath.section, path))
         }
         
-        discountTableViewCell.isReadTouchHandler = {  (indexPath) in
+        discountTableViewCell.isReadTouchHandler = { [weak self] (path) in
  
-            self.markDiscountAsRead(indexPath: indexPath)
+            self?.markDiscountAsRead(index: indexPath.section, indexPath: path)
         }
         
         discountTableViewCell.presentAuthVCHandler = { [weak self] in
